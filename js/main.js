@@ -6,10 +6,33 @@ function toggleFaq(element) {
     if (!isOpen) faqItem.classList.add('open');
 }
 
-// Header scroll shadow
+// Header scroll — compact + shadow
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
-    header.style.boxShadow = window.pageYOffset > 100 ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+    if (window.pageYOffset > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu toggle
+const burger = document.getElementById('menuBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+// Close menu on link click
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+    });
 });
 
 // Smooth scroll for nav
