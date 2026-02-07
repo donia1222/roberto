@@ -145,8 +145,30 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     transition: background 150ms;
 }
 .header-nav-item:hover { background: var(--gunpowder50); }
-.header-actions { display: flex; align-items: center; gap: 16px; }
-.header-cta { height: 44px; padding: 0 24px; font-size: 15px; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.header-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gunpowder500);
+    background: var(--gunpowder50);
+    transition: all 200ms ease;
+}
+.header-icon-btn:hover {
+    color: var(--cerulean500);
+    background: var(--cerulean50);
+}
+.header-icon-btn--primary {
+    color: #fff;
+    background: var(--begonia400);
+}
+.header-icon-btn--primary:hover {
+    background: var(--begonia500);
+    color: #fff;
+}
 
 /* ===== HERO ===== */
 .hero {
