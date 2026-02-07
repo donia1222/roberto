@@ -175,7 +175,7 @@
 <!-- HEADER -->
 <header class="header">
     <div class="header-inner">
-        <a href="#" class="header-logo">
+        <a href="#" class="header-logo" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">
             <span class="header-logo-text">Lweb<span class="header-logo-subtitle"><svg width="12" height="12" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#D52B1E"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span></span>
         </a>
         <nav class="header-nav" aria-label="Hauptnavigation">
@@ -213,6 +213,10 @@
         <a href="https://github.com/donia1222" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:info@lweb.ch">info@lweb.ch</a>
         <a href="tel:+41765608645">+41 76 560 86 45</a>
+        <button onclick="downloadVCard()" class="vcard-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Visitenkarte speichern
+        </button>
     </div>
 </div>
 
@@ -288,11 +292,11 @@
     <div class="container">
         <div class="metrics-grid">
             <div class="metric-item">
-                <div class="metric-number">5+</div>
+                <div class="metric-number">6+</div>
                 <div class="metric-label">Jahre Erfahrung</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">30+</div>
+                <div class="metric-number">50+</div>
                 <div class="metric-label">Apps &amp; Websites realisiert</div>
             </div>
             <div class="metric-item">
@@ -356,13 +360,33 @@
 <section class="section apps" id="apps">
     <div class="container">
         <div class="section-header">
-            <h2>Meine veröffentlichten Apps</h2>
+            <h2>Meine veröffentlichten <span style="color:var(--begonia400)">Apps</span></h2>
             <p>Alle Apps im App Store und Google Play Store verfügbar. Entwickelt mit React Native für native Performance auf iOS und Android.</p>
         </div>
         <!-- FEATURED: Keto Scanner (Neueste App) -->
         <div class="app-featured">
-            <div class="app-featured-image">
-                <img src="img/ketoscanner.png" alt="Keto Scanner App - Barcode Scanner für Keto Diät">
+            <div class="app-featured-showcase">
+                <button class="app-featured-arrow app-featured-arrow--prev" onclick="slidePhone(-1)" aria-label="Zurück">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="app-featured-phone">
+                    <div class="app-featured-phone-notch"></div>
+                    <div class="app-featured-slider" id="phoneSlider">
+                        <img src="capturas/Captura 2026-01-19 a las 0.09.30.png" alt="Keto Scanner Home" class="app-featured-slide active">
+                        <img src="capturas/Captura 2026-01-19 a las 0.09.47.png" alt="Keto Scanner Explore" class="app-featured-slide">
+                        <img src="capturas/Captura 2026-01-19 a las 0.10.11.png" alt="Keto Scanner Analyse" class="app-featured-slide">
+                        <img src="capturas/buscarcopia.png" alt="Keto Scanner Suche" class="app-featured-slide">
+                    </div>
+                </div>
+                <button class="app-featured-arrow app-featured-arrow--next" onclick="slidePhone(1)" aria-label="Weiter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div class="app-featured-dots" id="phoneDots">
+                    <span class="app-featured-dot active"></span>
+                    <span class="app-featured-dot"></span>
+                    <span class="app-featured-dot"></span>
+                    <span class="app-featured-dot"></span>
+                </div>
             </div>
             <div class="app-featured-content">
                 <div class="app-card-tech">
@@ -372,18 +396,11 @@
                 <h3>Keto Scanner</h3>
                 <p class="app-featured-tagline">Scannen. Analysieren. Keto entscheiden.</p>
                 <p>Die ultimative Keto-App: Scannen Sie Produkt-Barcodes und erfahren Sie sofort, ob ein Lebensmittel keto-freundlich ist. Komplette Nährwertanalyse mit 1-5 Sterne Keto-Bewertung. Über 2,8 Millionen Produkte in der Datenbank.</p>
-                <ul class="app-featured-features">
-                    <li>Barcode-Scanner mit sofortiger Keto-Bewertung (1-5 Sterne)</li>
-                    <li>Nährwertanalyse: Kohlenhydrate, Proteine, Fette, Zucker</li>
-                    <li>Community-Funktion: Sehen Sie, was andere Nutzer scannen</li>
-                    <li>Scan-Verlauf und Favoriten speichern</li>
-                    <li>10 Sprachen, 2,8+ Millionen Produkte</li>
-                </ul>
                 <div class="app-featured-rating">
                     <span class="app-featured-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                     <span>4.8/5 &mdash; 150+ Bewertungen</span>
                 </div>
-                <div class="app-card-links" style="margin-top:20px;">
+                <div class="app-card-links" style="margin-top:24px;">
                     <a href="https://apps.apple.com/us/app/keto-barcode-scanner/id6757723290" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
                     <a href="https://play.google.com/store/apps/details?id=com.lwebch.KetoScanner" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
                     <a href="https://www.keto-scan.com" target="_blank" rel="noopener" class="app-link app-link--web">keto-scan.com</a>
@@ -391,6 +408,7 @@
             </div>
         </div>
 
+        <h3 class="apps-subtitle">Weitere Apps</h3>
         <div class="apps-grid">
             <div class="app-card">
                 <div class="app-card-image" style="background:linear-gradient(135deg,#f0edf8 0%,#f5f2e8 100%);">
@@ -513,7 +531,7 @@
 <section class="section websites" id="websites">
     <div class="container">
         <div class="section-header">
-            <h2>Websites für KMU &amp; Gewerbe</h2>
+            <h2>Websites für <span style="color:var(--begonia400)">KMU &amp; Gewerbe</span></h2>
             <p>Moderne, schnelle Websites für Unternehmen in Buchs SG, im Rheintal, St. Gallen und Liechtenstein. Von Restaurants bis Handwerker.</p>
         </div>
         <div class="websites-grid">
@@ -571,6 +589,14 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>React</span></div>
                 </div>
             </div>
+            <div class="website-card website-card--cta">
+                <div class="website-card-cta-inner">
+                    <div class="website-card-cta-number">20+</div>
+                    <h4>Weitere Projekte in 2025</h4>
+                    <p>Ich habe noch viele weitere Websites realisiert. Lassen Sie uns über Ihr Projekt sprechen.</p>
+                    <a href="#contact" class="gbcta gbcta--primary gbcta--small">Kontakt aufnehmen</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -579,22 +605,49 @@
 <section class="section techstack" id="techstack">
     <div class="container">
         <div class="section-header">
-            <h2>Modernste Technologien</h2>
+            <h2><svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Modernste Technologien</h2>
             <p>Ich arbeite mit den neuesten Frameworks und Tools für maximale Performance und Zukunftssicherheit.</p>
         </div>
-        <div class="techstack-grid">
-            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><span>React</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><span>React Native</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><span>TypeScript</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><span>Next.js</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><span>Remix</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span>Swift</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><span>Xcode</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span>OpenAI API</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><span>Framer Motion</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><span>FFmpeg</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span>Web3</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><span>Node.js</span></div>
+        <div class="techstack-scroll-wrapper">
+            <div class="techstack-scroll-fade"></div>
+            <div class="techstack-scroll-columns">
+                <!-- Column 1: scrolls UP -->
+                <div class="techstack-col techstack-col--up">
+                    <div class="techstack-col-track">
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><div class="ts-card-text"><strong>React</strong><span>UI Library</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><div class="ts-card-text"><strong>React Native</strong><span>Cross-Platform Apps</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="ts-card-text"><strong>TypeScript</strong><span>Type-safe JavaScript</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><div class="ts-card-text"><strong>Next.js</strong><span>Fullstack Framework</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><div class="ts-card-text"><strong>Remix</strong><span>Web Framework</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="ts-card-text"><strong>Swift</strong><span>iOS Native</span></div></div>
+                        <!-- duplicate for seamless loop -->
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><div class="ts-card-text"><strong>React</strong><span>UI Library</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><div class="ts-card-text"><strong>React Native</strong><span>Cross-Platform Apps</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="ts-card-text"><strong>TypeScript</strong><span>Type-safe JavaScript</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><div class="ts-card-text"><strong>Next.js</strong><span>Fullstack Framework</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><div class="ts-card-text"><strong>Remix</strong><span>Web Framework</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="ts-card-text"><strong>Swift</strong><span>iOS Native</span></div></div>
+                    </div>
+                </div>
+                <!-- Column 2: scrolls DOWN -->
+                <div class="techstack-col techstack-col--down">
+                    <div class="techstack-col-track">
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="ts-card-text"><strong>Xcode</strong><span>iOS Development</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="ts-card-text"><strong>OpenAI API</strong><span>KI-Integration</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="ts-card-text"><strong>Framer Motion</strong><span>Animationen</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><div class="ts-card-text"><strong>FFmpeg</strong><span>Video Processing</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ts-card-text"><strong>Web3</strong><span>Blockchain</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="ts-card-text"><strong>Node.js</strong><span>Backend Runtime</span></div></div>
+                        <!-- duplicate for seamless loop -->
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="ts-card-text"><strong>Xcode</strong><span>iOS Development</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="ts-card-text"><strong>OpenAI API</strong><span>KI-Integration</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="ts-card-text"><strong>Framer Motion</strong><span>Animationen</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><div class="ts-card-text"><strong>FFmpeg</strong><span>Video Processing</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ts-card-text"><strong>Web3</strong><span>Blockchain</span></div></div>
+                        <div class="ts-card"><div class="ts-card-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="ts-card-text"><strong>Node.js</strong><span>Backend Runtime</span></div></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -604,7 +657,7 @@
     <div class="container">
         <div class="about-inner">
             <div class="about-content">
-                <h2>Roberto Salvador &mdash; Ihr Entwickler vor Ort</h2>
+                <h2>Roberto Salvador<br>Ihr <span class="typing-text" id="aboutTyping">Entwickler</span> vor Ort</h2>
                 <p>Seit über 5 Jahren entwickle ich Apps und Websites für Unternehmen in Buchs SG, im Rheintal, Kanton St. Gallen und Liechtenstein. Direkt vom Entwickler &mdash; ohne teure Agentur dazwischen. Persönlich, unkompliziert und zu fairen Preisen.</p>
                 <div class="about-points">
                     <div class="about-point">
@@ -626,7 +679,17 @@
                 </div>
             </div>
             <div class="about-image">
-                <img src="img/about.jpeg" alt="Roberto Salvador - App Entwickler in Buchs SG, Kanton St. Gallen">
+                <div class="about-image-ring">
+                    <svg class="about-ring-text" viewBox="0 0 300 300">
+                        <defs>
+                            <path id="ringPath" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/>
+                        </defs>
+                        <text>
+                            <textPath href="#ringPath" startOffset="0%">React Native &bull; Expo &bull; Next.js &bull; TypeScript &bull; Xcode &bull; OpenAI &bull; Node.js &bull;</textPath>
+                        </text>
+                    </svg>
+                    <img src="img/profile.png" alt="Roberto Salvador - App Entwickler in Buchs SG, Kanton St. Gallen">
+                </div>
             </div>
         </div>
     </div>
@@ -663,10 +726,10 @@
 <section class="trust">
     <div class="container">
         <div class="trust-grid">
-            <div class="trust-stat"><div class="trust-stat-number">5+</div><div class="trust-stat-label">Jahre Erfahrung</div></div>
-            <div class="trust-stat"><div class="trust-stat-number">30+</div><div class="trust-stat-label">Apps entwickelt</div></div>
+            <div class="trust-stat"><div class="trust-stat-number">6+</div><div class="trust-stat-label">Jahre Erfahrung</div></div>
+            <div class="trust-stat"><div class="trust-stat-number">20+</div><div class="trust-stat-label">Apps entwickelt</div></div>
             <div class="trust-stat"><div class="trust-stat-number">6</div><div class="trust-stat-label">Apps im App Store</div></div>
-            <div class="trust-stat"><div class="trust-stat-number">10+</div><div class="trust-stat-label">Websites live</div></div>
+            <div class="trust-stat"><div class="trust-stat-number">33+</div><div class="trust-stat-label">Websites online</div></div>
         </div>
     </div>
 </section>
@@ -770,6 +833,10 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     Buchs SG, Kanton St. Gallen, Schweiz
                 </div>
+                <button onclick="downloadVCard()" class="vcard-btn vcard-btn--footer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    Visitenkarte speichern
+                </button>
             </div>
             <div class="footer-col">
                 <h4>Leistungen</h4>
@@ -820,6 +887,16 @@
     </div>
 </footer>
 
+<div class="cookie-banner" id="cookieBanner">
+    <p>Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.</p>
+    <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies()">Akzeptieren</button>
+        <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
+    </div>
+</div>
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 <script src="js/main.js"></script>
 </body>
 </html>
