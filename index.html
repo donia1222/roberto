@@ -262,22 +262,15 @@
                             <div class="phone-btn-mini"></div>
                         </div>
                     </div>
-                    <div class="float-icon fi-react" title="React">&#9883;</div>
-                    <div class="float-icon fi-ts" title="TypeScript">TS</div>
-                    <div class="float-icon fi-nextjs" title="Next.js">N</div>
-                    <div class="float-icon fi-swift" title="Swift">S</div>
-                    <div class="float-icon fi-ai" title="OpenAI">AI</div>
-                    <div class="float-icon fi-remix" title="Remix">R</div>
-                    <div class="float-icon fi-rn" title="React Native">RN</div>
-                    <div class="float-icon fi-node" title="Node.js">JS</div>
-                    <div class="float-icon fi-web3" title="Web3">W3</div>
+                    <div class="float-icon fi-react" title="React"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div>
+                    <div class="float-icon fi-ts" title="TypeScript"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                    <div class="float-icon fi-nextjs" title="Next.js"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div>
+                    <div class="float-icon fi-swift" title="Swift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <div class="float-icon fi-ai" title="OpenAI"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <div class="float-icon fi-node" title="Node.js"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
                     <div class="float-code fc-top">
                         <span class="code-kw">const</span> <span class="code-fn">app</span> = <span class="code-fn">createApp</span>()<br>
                         <span class="code-tag">&lt;View&gt;</span><span class="code-str">{content}</span><span class="code-tag">&lt;/View&gt;</span>
-                    </div>
-                    <div class="float-code fc-bottom">
-                        <span class="code-cmt">// KI-gestützt</span><br>
-                        <span class="code-kw">await</span> <span class="code-fn">openai</span>.<span class="code-fn">chat</span>(<span class="code-str">"..."</span>)
                     </div>
                     <div class="hero-particle hp1"></div>
                     <div class="hero-particle hp2"></div>
@@ -319,32 +312,41 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                <div class="service-icon service-icon--mobile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
                 <h4>Mobile App Entwicklung</h4>
                 <p>Native iOS &amp; Android Apps mit React Native. Eine Codebasis, zwei Plattformen &mdash; das spart Ihnen Zeit und Geld.</p>
+                <a href="#contact" class="service-link">Projekt starten <span>&rarr;</span></a>
             </div>
             <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+                <div class="service-icon service-icon--web">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                 </div>
                 <h4>Website Entwicklung</h4>
                 <p>Moderne, schnelle Websites mit Next.js und Remix. Perfekt für KMU, Restaurants, Handwerker und Startups in der Region.</p>
+                <a href="#contact" class="service-link">Website erstellen <span>&rarr;</span></a>
+            </div>
+            <div class="service-card service-card--cta">
+                <h3>Ihre App oder Website zum fairen Preis</h3>
+                <p>Direkt vom Entwickler, ohne Agenturaufschlag. Professionell, persönlich und unkompliziert.</p>
+                <a href="#contact" class="service-cta-btn">Kostenloses Erstgespräch</a>
             </div>
             <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                <div class="service-icon service-icon--ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                 </div>
                 <h4>KI-Integration</h4>
                 <p>OpenAI API, intelligente Chatbots und automatisierte Prozesse. Machen Sie Ihre App oder Website smarter.</p>
+                <a href="#contact" class="service-link">KI entdecken <span>&rarr;</span></a>
             </div>
             <div class="service-card">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <div class="service-icon service-icon--support">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
                 <h4>Beratung &amp; Support</h4>
                 <p>Technische Beratung, Architektur-Planung und langfristiger Support nach dem Launch. Persönlich und unkompliziert.</p>
+                <a href="#contact" class="service-link">Beratung anfragen <span>&rarr;</span></a>
             </div>
         </div>
     </div>
@@ -581,18 +583,18 @@
             <p>Ich arbeite mit den neuesten Frameworks und Tools für maximale Performance und Zukunftssicherheit.</p>
         </div>
         <div class="techstack-grid">
-            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;">&#9883;</div><span>React</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;">RN</div><span>React Native</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#3178c622;color:#3178c6;">TS</div><span>TypeScript</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#00000012;color:#000;">N</div><span>Next.js</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#121212;color:#fff;font-size:14px;">R</div><span>Remix</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#f0513422;color:#f05138;">S</div><span>Swift</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#147efb22;color:#147efb;">X</div><span>Xcode</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#10a37f22;color:#10a37f;">AI</div><span>OpenAI API</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#06223822;color:#0055ff;">FM</div><span>Framer Motion</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#007808;color:#fff;font-size:14px;">FF</div><span>FFmpeg</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#f7931a22;color:#f7931a;">W3</div><span>Web3</span></div>
-            <div class="tech-item"><div class="tech-icon" style="background:#339933;color:#fff;font-size:14px;">JS</div><span>Node.js</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><span>React</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><span>React Native</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><span>TypeScript</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><span>Next.js</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><span>Remix</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span>Swift</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><span>Xcode</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span>OpenAI API</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><span>Framer Motion</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><span>FFmpeg</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span>Web3</span></div>
+            <div class="tech-item"><div class="tech-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><span>Node.js</span></div>
         </div>
     </div>
 </section>
