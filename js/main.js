@@ -195,10 +195,189 @@ if (localStorage.getItem('cookieConsent')) {
     document.getElementById('cookieBanner').style.display = 'none';
 }
 
-// Chatbot — Conecta con el backend de lweb.ch/chat
-var CHAT_API_URL = 'https://www.lweb.ch/chat';
+// Language switcher
+var i18nMap = [
+    // Metrics
+    {s: '.metric-label', keys: ['metric.label1','metric.label2','metric.label3']},
+    // Services
+    {s: '.services .section-header h2', k: 'services.title'},
+    {s: '.services .section-header p', k: 'services.desc'},
+    {s: '.service-card:nth-child(1) h4', k: 'service1.title'},
+    {s: '.service-card:nth-child(1) p', k: 'service1.desc'},
+    {s: '.service-card:nth-child(1) .service-link', k: 'service1.link', suffix: ' →'},
+    {s: '.service-card:nth-child(2) h4', k: 'service2.title'},
+    {s: '.service-card:nth-child(2) p', k: 'service2.desc'},
+    {s: '.service-card:nth-child(2) .service-link', k: 'service2.link', suffix: ' →'},
+    {s: '.service-card--cta h3', k: 'services.cta.title'},
+    {s: '.service-card--cta > p', k: 'services.cta.desc'},
+    {s: '.service-cta-btn', k: 'services.cta.btn'},
+    {s: '.service-card:nth-child(4) h4', k: 'service3.title'},
+    {s: '.service-card:nth-child(4) p', k: 'service3.desc'},
+    {s: '.service-card:nth-child(4) .service-link', k: 'service3.link', suffix: ' →'},
+    {s: '.service-card:nth-child(5) h4', k: 'service4.title'},
+    {s: '.service-card:nth-child(5) p', k: 'service4.desc'},
+    {s: '.service-card:nth-child(5) .service-link', k: 'service4.link', suffix: ' →'},
+    // Apps
+    {s: '.apps .section-header h2', k: 'apps.title', html: true},
+    {s: '.apps .section-header p', k: 'apps.desc'},
+    {s: '.app-featured-tagline', k: 'apps.featured.tagline'},
+    {s: '.app-featured-content > p', k: 'apps.featured.desc'},
+    {s: '.app-featured-rating span:last-child', k: 'apps.featured.rating'},
+    {s: '.apps-subtitle', k: 'apps.subtitle'},
+    {s: '.app-card:nth-child(1) .app-card-content p', k: 'app1.desc'},
+    {s: '.app-card:nth-child(2) .app-card-content p', k: 'app2.desc'},
+    {s: '.app-card:nth-child(3) .app-card-content p', k: 'app3.desc'},
+    {s: '.app-card:nth-child(4) .app-card-content p', k: 'app4.desc'},
+    {s: '.app-card:nth-child(5) .app-card-content p', k: 'app5.desc'},
+    {s: '.app-card:nth-child(6) .app-card-content p', k: 'app6.desc'},
+    // Workflow
+    {s: '.workflow .section-header h2', k: 'workflow.title'},
+    {s: '.workflow .section-header p', k: 'workflow.desc'},
+    {s: '.workflow-step:nth-child(1) h4', k: 'wf1.title'},
+    {s: '.workflow-step:nth-child(1) p', k: 'wf1.desc'},
+    {s: '.workflow-step:nth-child(2) h4', k: 'wf2.title'},
+    {s: '.workflow-step:nth-child(2) p', k: 'wf2.desc'},
+    {s: '.workflow-step:nth-child(3) h4', k: 'wf3.title'},
+    {s: '.workflow-step:nth-child(3) p', k: 'wf3.desc'},
+    {s: '.workflow-step:nth-child(4) h4', k: 'wf4.title'},
+    {s: '.workflow-step:nth-child(4) p', k: 'wf4.desc'},
+    // Websites
+    {s: '.websites .section-header h2', k: 'websites.title', html: true},
+    {s: '.websites .section-header p', k: 'websites.desc'},
+    {s: '.website-card:nth-child(1) .website-card-content p', k: 'web1.desc'},
+    {s: '.website-card:nth-child(2) .website-card-content p', k: 'web2.desc'},
+    {s: '.website-card:nth-child(3) .website-card-content p', k: 'web3.desc'},
+    {s: '.website-card:nth-child(4) .website-card-content p', k: 'web4.desc'},
+    {s: '.website-card:nth-child(5) .website-card-content p', k: 'web5.desc'},
+    {s: '.website-card:nth-child(6) .website-card-content p', k: 'web6.desc'},
+    {s: '.website-card--cta h4', k: 'webcta.title'},
+    {s: '.website-card--cta p', k: 'webcta.desc'},
+    {s: '.website-card--cta .gbcta', k: 'webcta.btn'},
+    // Tech
+    {s: '.techstack .section-header h2', k: 'tech.title', html: true},
+    {s: '.techstack .section-header p', k: 'tech.desc'},
+    // About
+    {s: '.about-content h2', k: 'about.title', html: true},
+    {s: '.about-content > p', k: 'about.desc'},
+    {s: '.about-point', keys: ['about.point1','about.point2','about.point3','about.point4'], textOnly: true},
+    // Why Me
+    {s: '.why-me .section-header h2', k: 'why.title'},
+    {s: '.why-me .section-header p', k: 'why.desc'},
+    {s: '.why-card:nth-child(1) h4', k: 'why1.title'},
+    {s: '.why-card:nth-child(1) p', k: 'why1.desc'},
+    {s: '.why-card:nth-child(2) h4', k: 'why2.title'},
+    {s: '.why-card:nth-child(2) p', k: 'why2.desc'},
+    {s: '.why-card:nth-child(3) h4', k: 'why3.title'},
+    {s: '.why-card:nth-child(3) p', k: 'why3.desc'},
+    // Trust
+    {s: '.trust-stat-label', keys: ['trust.label1','trust.label2','trust.label3','trust.label4']},
+    // FAQ
+    {s: '.faq .section-header h2', k: 'faq.title'},
+    {s: '.faq-item:nth-child(1) .faq-question h4', k: 'faq1.q'},
+    {s: '.faq-item:nth-child(1) .faq-answer p', k: 'faq1.a'},
+    {s: '.faq-item:nth-child(2) .faq-question h4', k: 'faq2.q'},
+    {s: '.faq-item:nth-child(2) .faq-answer p', k: 'faq2.a'},
+    {s: '.faq-item:nth-child(3) .faq-question h4', k: 'faq3.q'},
+    {s: '.faq-item:nth-child(3) .faq-answer p', k: 'faq3.a'},
+    {s: '.faq-item:nth-child(4) .faq-question h4', k: 'faq4.q'},
+    {s: '.faq-item:nth-child(4) .faq-answer p', k: 'faq4.a'},
+    {s: '.faq-item:nth-child(5) .faq-question h4', k: 'faq5.q'},
+    {s: '.faq-item:nth-child(5) .faq-answer p', k: 'faq5.a'},
+    {s: '.faq-item:nth-child(6) .faq-question h4', k: 'faq6.q'},
+    {s: '.faq-item:nth-child(6) .faq-answer p', k: 'faq6.a'},
+    {s: '.faq-item:nth-child(7) .faq-question h4', k: 'faq7.q'},
+    {s: '.faq-item:nth-child(7) .faq-answer p', k: 'faq7.a'},
+    {s: '.faq-bot-cta > p', k: 'faq.bot.text'},
+    {s: '.faq-bot-btn', k: 'faq.bot.btn', keepSvg: true},
+    // CTA
+    {s: '.cta-banner h2', k: 'cta.title'},
+    {s: '.cta-banner > .container > p', k: 'cta.desc'},
+    // Footer
+    {s: '.footer-brand > p', k: 'footer.desc'},
+    {s: '.vcard-btn--footer', k: 'footer.vcard', keepSvg: true},
+    {s: '.footer-col:nth-child(2) h4', k: 'footer.col1'},
+    {s: '.footer-col:nth-child(2) li:nth-child(1) a', k: 'footer.s1'},
+    {s: '.footer-col:nth-child(2) li:nth-child(2) a', k: 'footer.s2'},
+    {s: '.footer-col:nth-child(2) li:nth-child(3) a', k: 'footer.s3'},
+    {s: '.footer-col:nth-child(2) li:nth-child(4) a', k: 'footer.s4'},
+    {s: '.footer-col:nth-child(4) h4', k: 'footer.col3'},
+    // Cookie
+    {s: '.cookie-banner > p', k: 'cookie.text'},
+    {s: '.cookie-btn--accept', k: 'cookie.accept'},
+    {s: '.cookie-btn--decline', k: 'cookie.decline'},
+];
 
-var chatbotSystemPrompt = 'Hallo! Willkommen bei Lweb.ch, wo wir maßgeschneiderte Lösungen für die Erstellung von Websites, Online-Shops, mobilen Anwendungen und intelligente Chatbot-Integrationen anbieten. Im Folgenden findest du detaillierte Informationen zu unseren Leistungen, insbesondere zur Integration von KI-basierten Chatbots, die speziell entwickelt wurden, um Kundenanfragen effizient zu beantworten:\n\n' +
+function switchLang(lang) {
+    if (!translations[lang]) return;
+    var t = translations[lang];
+
+    // data-i18n attributes
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key]) el.innerHTML = t[key];
+    });
+
+    // Selector-based mapping
+    i18nMap.forEach(function(item) {
+        if (item.keys) {
+            var els = document.querySelectorAll(item.s);
+            els.forEach(function(el, idx) {
+                if (item.keys[idx] && t[item.keys[idx]]) {
+                    if (item.textOnly) {
+                        // Keep child elements (icons), only replace text nodes
+                        var textNodes = [];
+                        for (var c = 0; c < el.childNodes.length; c++) {
+                            if (el.childNodes[c].nodeType === 3) textNodes.push(el.childNodes[c]);
+                        }
+                        if (textNodes.length > 0) {
+                            textNodes[textNodes.length - 1].textContent = '\n                        ' + t[item.keys[idx]] + '\n                    ';
+                        }
+                    } else {
+                        el.textContent = t[item.keys[idx]];
+                    }
+                }
+            });
+        } else if (item.k && t[item.k]) {
+            var el = document.querySelector(item.s);
+            if (!el) return;
+            if (item.html) {
+                el.innerHTML = t[item.k];
+            } else if (item.keepSvg) {
+                var svg = el.querySelector('svg');
+                el.textContent = '';
+                if (svg) el.appendChild(svg);
+                el.appendChild(document.createTextNode(' ' + t[item.k]));
+            } else {
+                el.textContent = t[item.k] + (item.suffix || '');
+            }
+        }
+    });
+
+    // Update lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    var activeBtn = document.querySelector('.lang-btn[onclick*="' + lang + '"]');
+    if (activeBtn) activeBtn.classList.add('active');
+
+    // Save preference
+    localStorage.setItem('lweb_lang', lang);
+    document.documentElement.lang = lang === 'de' ? 'de-CH' : lang;
+}
+
+// Restore saved language
+var savedLang = localStorage.getItem('lweb_lang');
+if (savedLang && savedLang !== 'de') {
+    switchLang(savedLang);
+}
+
+// Chatbot — via backend PHP
+var CHAT_API_URL = 'https://web.lweb.ch/bot_respuestasweb.php';
+
+var chatbotSystemPrompt = 'RULE #1: You MUST reply in the SAME language the user writes in. If the user writes in Spanish, reply in Spanish. If in English, reply in English. If in French, reply in French. If in German, reply in German. NEVER default to German unless the user writes in German.\n\n' +
+'Willkommen bei Lweb.ch — maßgeschneiderte Lösungen für Websites, Online-Shops, mobile Apps und Chatbot-Integrationen. Hier sind die Details:\n\n' +
 '1. **Erstellung von maßgeschneiderten Websites**: Bei Lweb.ch erstellen wir individuelle Websites, die du vollständig anpassen kannst – ohne Programmierkenntnisse. Bereits ab 990 CHF erhältst du eine Website mit einem benutzerfreundlichen Admin-Panel zur Anpassung von Bildern, Texten, Farben und mehr.\n\n' +
 '2. **Online-Shops (E-Commerce)**: Wir bieten komplette Online-Shop-Lösungen ab 2450 CHF, die von der Inventarverwaltung bis zur sicheren Zahlungsabwicklung alles abdecken.\n\n' +
 '3. **Integration von Künstlicher Intelligenz (KI) und Chatbots**: Unser intelligenter Chatbot basiert auf modernsten KI-Technologien (wie ChatGPT) und ist speziell dafür konzipiert, häufig gestellte Fragen in Echtzeit zu beantworten.\n\n' +
@@ -254,6 +433,14 @@ function openChatBot() {
 function closeChatBot() {
     document.getElementById('chatbotOverlay').classList.remove('open');
     document.getElementById('chatbotModal').classList.remove('open');
+}
+
+function clearChat() {
+    chatbotMessages = [];
+    localStorage.removeItem('lweb_chat_history');
+    var container = document.getElementById('chatbotMessages');
+    container.innerHTML = '<div class="chatbot-msg chatbot-msg--bot"><p>Hallo! Wie kann ich Ihnen helfen? 👋</p></div>';
+    document.getElementById('chatbotSuggestions').style.display = 'flex';
 }
 
 function sendSuggestion(text) {
@@ -316,22 +503,35 @@ function sendToChat() {
         { role: 'system', content: chatbotSystemPrompt }
     ].concat(recentMessages);
 
+    // Convertir historial al formato Gemini que espera bot_respuestas.php
+    var convHistory = [];
+    for (var i = 0; i < recentMessages.length; i++) {
+        var m = recentMessages[i];
+        convHistory.push({
+            role: m.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: m.content }]
+        });
+    }
+    var userMsg = recentMessages.length > 0 ? recentMessages[recentMessages.length - 1].content : '';
+
     fetch(CHAT_API_URL, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ messages: messagesToSend })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            conversationHistory: convHistory,
+            prompt: chatbotSystemPrompt,
+            userMessage: userMsg
+        })
     })
     .then(function(res) { return res.json(); })
     .then(function(data) {
         hideTyping();
-        if (data.response) {
-            chatbotMessages.push({ role: 'assistant', content: data.response });
+        if (data.status === 'success' && data.botReply) {
+            chatbotMessages.push({ role: 'assistant', content: data.botReply });
             saveChatHistory();
-            addChatMessage(data.response, 'bot');
-        } else if (data.error) {
-            addChatMessage('Fehler: ' + data.error, 'bot');
+            addChatMessage(data.botReply, 'bot');
+        } else if (data.message) {
+            addChatMessage('Fehler: ' + data.message, 'bot');
         } else {
             addChatMessage('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.', 'bot');
         }

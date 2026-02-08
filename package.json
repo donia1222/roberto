@@ -1,0 +1,18 @@
+{
+  "name": "roberto-portfolio",
+  "version": "1.0.0",
+  "description": "**App Entwickler in Buchs SG | React Native Specialist & Full-Stack Developer**",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "openai": "^6.18.0"
+  }
+}

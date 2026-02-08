@@ -105,7 +105,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: none;
     height: 72px;
     transition: height 300ms ease, box-shadow 300ms ease;
 }
@@ -1444,6 +1444,40 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
 .footer-col li a { font-size: 14px; color: var(--gunpowder400); transition: color 200ms; }
 .footer-col li a:hover { color: #fff; }
+/* Language selector */
+.footer-lang {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 24px 0;
+    margin-bottom: 16px;
+    border-top: 1px solid var(--gunpowder800);
+    flex-wrap: wrap;
+}
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 1000px;
+    border: 1px solid var(--gunpowder700);
+    background: transparent;
+    color: var(--gunpowder400);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.lang-btn:hover {
+    border-color: var(--gunpowder400);
+    color: #fff;
+}
+.lang-btn.active {
+    background: var(--begonia400);
+    border-color: var(--begonia400);
+    color: #fff;
+}
 .footer-bottom { border-top: 1px solid var(--gunpowder800); padding-top: 32px; display: flex; align-items: center; justify-content: space-between; }
 .footer-bottom p { font-size: 13px; color: var(--gunpowder500); }
 .footer-social { display: flex; gap: 12px; }
@@ -1524,11 +1558,9 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     text-align: center;
     margin-top: 48px;
     padding-top: 32px;
-    border-top: 1px solid var(--gunpowder150);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    display: none;
     
 }
 .faq-bot-cta p {
@@ -1633,6 +1665,25 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 .chatbot-avatar svg {
     color: #fff;
+}
+.chatbot-clear {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+    margin-right: 4px;
+    margin-bottom: 5px;
+}
+.chatbot-clear:hover {
+    background: rgba(255,107,107,0.3);
+    color: #FF6B6B;
 }
 .chatbot-close {
     width: 36px;
