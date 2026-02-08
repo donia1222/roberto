@@ -32,7 +32,7 @@
 
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     font-family: 'Plus Jakarta Sans', Arial, sans-serif;
     font-size: 16px;
@@ -341,11 +341,15 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     transform: translateY(-1px);
 }
 .vcard-btn--footer {
-    background: var(--gunpowder800);
+    background: var(--begonia400);
     margin-top: 16px;
+    color: #fff;
+}
+.vcard-btn--footer svg {
+    stroke: #fff;
 }
 .vcard-btn--footer:hover {
-    background: var(--gunpowder700);
+    background: var(--begonia500);
 }
 
 /* Header scroll state */
@@ -595,7 +599,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .metric-label { font-size: 16px; font-weight: 500; color: var(--gunpowder500); }
 
 /* ===== SECTIONS ===== */
-.section { padding: 100px 0; }
+.section { padding: 100px 0; overflow: hidden; }
 .section-header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
 .section-header h2 { margin-bottom: 20px; color: var(--gunpowder900); }
 .section-header p { font-size: 18px; line-height: 1.6; color: var(--gunpowder500); }
@@ -1099,7 +1103,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .app-card { background: #fff; border-radius: var(--radius-M); overflow: hidden; transition: all 300ms ease; border: 1px solid transparent; }
 .app-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1); border-color: var(--cerulean100); }
 .app-card-image { width: 100%; height: 200px; overflow: hidden; background: var(--gunpowder50); display: flex; align-items: center; justify-content: center; padding: 24px; }
-.app-card-image img { width: 80px; height: 80px; border-radius: 18px; object-fit: cover; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.app-card-image img { width: 120px; height: 120px; border-radius: 24px; object-fit: cover; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 .app-card-content { padding: 28px; }
 .app-card-tech { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
 .app-card-tech span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 1000px; background: var(--cerulean50); color: var(--cerulean500); }
@@ -1134,7 +1138,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .workflow-step p { font-size: 15px; line-height: 1.6; color: var(--gunpowder500); }
 
 /* ===== WEBSITES ===== */
-.websites { background: var(--gunpowder50); }
+.websites { background: var(--gunpowder50); overflow: hidden; }
 .websites .section-header h2 { color: var(--gunpowder900); }
 .websites .section-header p { color: var(--gunpowder500); }
 .websites-grid {
@@ -1217,7 +1221,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 
 /* ===== TECH STACK (Scroll Marquee) ===== */
-.techstack { background: linear-gradient(180deg, #fff8f0 0%, #fff4e8 50%, #fff8f0 100%); }
+.techstack { background: linear-gradient(180deg, #fff8f0 0%, #fff4e8 50%, #fff8f0 100%); overflow: hidden; }
 .techstack-scroll-wrapper {
     position: relative;
     max-width: 700px;
@@ -1271,6 +1275,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     border: 1px solid #eef2f7;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     flex-shrink: 0;
+    min-width: 0;
 }
 .ts-card-icon {
     width: 48px;
@@ -1282,16 +1287,27 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     justify-content: center;
 }
 .ts-card-icon svg { width: 24px; height: 24px; }
+.ts-card-text {
+    min-width: 0;
+    overflow: hidden;
+}
 .ts-card-text strong {
     display: block;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--gunpowder800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .ts-card-text span {
+    display: block;
     font-size: 13px;
     color: var(--gunpowder400);
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .techstack-col:hover .techstack-col-track {
     animation-play-state: paused;
@@ -1316,7 +1332,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 
 /* ===== ABOUT ===== */
-.about { background: var(--gunpowder50); }
+.about { background: var(--gunpowder50); overflow: hidden; }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-content h2 { margin-bottom: 20px; color: var(--gunpowder900); }
 .about-content > p { font-size: 17px; line-height: 1.7; color: var(--gunpowder500); margin-bottom: 28px; }
@@ -1330,8 +1346,8 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     justify-content: center;
 }
 .about-image-ring > img {
-    width: 298px;
-    height: 298px;
+    width: 232px;
+    height: 232px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
@@ -1346,16 +1362,16 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     position: relative;
     display: inline-block;
     border-radius: 50%;
-    padding: 6px;
-    width: 310px;
-    height: 310px;
+    padding: 4px;
+    width: 240px;
+    height: 240px;
 }
 .about-ring-text {
     position: absolute;
-    top: -30px;
-    left: -30px;
-    width: 370px;
-    height: 370px;
+    top: -25px;
+    left: -25px;
+    width: 290px;
+    height: 290px;
     animation: ringTextSpin 20s linear infinite;
     z-index: 2;
 }
@@ -1599,6 +1615,12 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     .app-featured-arrow svg { width: 16px; height: 16px; }
     .services-grid, .apps-grid, .workflow-steps, .metrics-grid { grid-template-columns: 1fr; }
     .techstack-scroll-wrapper { height: 380px; max-width: 100%; }
+    .techstack-scroll-columns { gap: 12px; }
+    .ts-card { padding: 14px 14px; gap: 10px; }
+    .ts-card-icon { width: 42px; height: 42px; }
+    .ts-card-icon svg { width: 20px; height: 20px; }
+    .ts-card-text strong { font-size: 14px; }
+    .ts-card-text span { font-size: 11px; }
     .service-card--cta { grid-column: span 1; }
     .trust-grid { grid-template-columns: 1fr; }
     .trust-stat-number { font-size: 44px; }
@@ -1608,3 +1630,4 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .gbcta { height: 48px; padding: 0 20px; font-size: 16px; }
 }
+

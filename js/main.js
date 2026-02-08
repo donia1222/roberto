@@ -6,19 +6,13 @@ function toggleFaq(element) {
     if (!isOpen) faqItem.classList.add('open');
 }
 
-// Header scroll — compact + shadow + scroll-top button
-var scrollTopBtn = document.getElementById('scrollTopBtn');
+// Header scroll — compact + shadow
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     if (window.pageYOffset > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
-    }
-    if (window.pageYOffset > 1200) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
     }
 });
 
