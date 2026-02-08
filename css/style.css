@@ -47,7 +47,7 @@ img { max-width: 100%; height: auto; display: block; }
 ul { list-style: none; }
 
 /* ===== TYPOGRAPHY ===== */
-h1 { font-size: 66px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+h1 { font-size: 56px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
 h2 { font-size: 44px; line-height: 1.15; font-weight: 800; letter-spacing: -0.01em; }
 h3 { font-size: 24px; line-height: 1.15; font-weight: 800; }
 h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
