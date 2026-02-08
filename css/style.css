@@ -406,15 +406,16 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: var(--gunpowder500);
     margin-bottom: 32px;
 }
-.hero-buttons { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+.hero-buttons { display: flex; gap: 16px; margin-bottom: 40px;  }
 .hero-features { display: flex; flex-direction: column; gap: 16px; }
 .hero-feature {
-    display: flex;
+  display: flex;
     align-items: flex-start;
     gap: 12px;
     font-size: 15px;
     line-height: 1.5;
     color: var(--gunpowder600);
+    
 }
 .hero-feature-icon {
     flex-shrink: 0;
@@ -1528,6 +1529,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     margin-left: auto;
     margin-right: auto;
     display: none;
+    
 }
 .faq-bot-cta p {
     font-size: 15px;
@@ -1842,7 +1844,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     h2 { font-size: 34px; }
     .hero-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-content { max-width: 100%; text-align: center; }
-    .hero-buttons { justify-content: center; }
+    .hero-buttons { justify-content: center; display: flex; flex-direction: column; flex-direction: column-reverse; }
     .hero-features { align-items: center; }
     .hero-image { order: -1; }
     .hero-anim { width: 380px; height: 380px; }
