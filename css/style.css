@@ -157,8 +157,52 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     border-radius: 8px;
     cursor: pointer;
     transition: background 150ms;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.header-nav-item svg {
+    color: var(--begonia400);
+    flex-shrink: 0;
+    transition: transform 300ms ease;
 }
 .header-nav-item:hover { background: var(--gunpowder50); }
+.header-nav-item:nth-child(1):hover svg { animation: navSpin 600ms ease; }
+.header-nav-item:nth-child(2):hover svg { animation: navWiggle 500ms ease; }
+.header-nav-item:nth-child(3):hover svg { animation: navPulse 500ms ease; }
+.header-nav-item:nth-child(4):hover svg { animation: navBounce 500ms ease; }
+.header-nav-item:nth-child(5):hover svg { animation: navFloat 500ms ease; }
+.header-nav-item:nth-child(6):hover svg { animation: navPop 400ms ease; }
+@keyframes navSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+@keyframes navWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-12deg); }
+    75% { transform: rotate(12deg); }
+}
+@keyframes navPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+@keyframes navBounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-4px); }
+    60% { transform: translateY(2px); }
+}
+@keyframes navFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px) scale(1.1); }
+}
+@keyframes navPop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.3) rotate(-10deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+.header-nav-item--bot:hover {
+    background: var(--gunpowder50);
+}
 .header-actions { display: flex; align-items: center; gap: 10px; }
 .header-icon-btn {
     width: 40px;
@@ -318,7 +362,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: #fff;
 }
 .mobile-menu-footer {
-    margin-top: 48px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -332,6 +376,28 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 .mobile-menu-footer a:hover {
     color: var(--cerulean400);
+}
+.mobile-menu-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+.mobile-menu-action-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.mobile-menu-action-btn:hover {
+    background: var(--begonia400);
+    border-color: var(--begonia400);
 }
 
 /* vCard button */

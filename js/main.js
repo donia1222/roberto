@@ -429,6 +429,14 @@ function saveChatHistory() {
     localStorage.setItem('lweb_chat_history', JSON.stringify(chatbotMessages));
 }
 
+function openChatFromMenu() {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+    document.querySelector('.header').classList.remove('menu-open');
+    setTimeout(function() { openChatBot(); }, 350);
+}
+
 function openChatBot() {
     document.getElementById('chatbotOverlay').classList.add('open');
     document.getElementById('chatbotModal').classList.add('open');
