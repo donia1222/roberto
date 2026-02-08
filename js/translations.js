@@ -10,7 +10,7 @@ var translations = {
         'nav.contact': 'Kontakt',
         // Hero
         'hero.badge': 'Verfügbar für neue Projekte in Buchs SG & Umgebung',
-        'hero.title': 'Ihre Web & App zum<br><span>fairen Preis</span>',
+        'hero.title': 'Ihre Web / App zum<br><span>fairen Preis</span>',
         'hero.subtitle': 'Professionelle App Entwicklung und moderne Websites in Buchs SG, Kanton St. Gallen und Liechtenstein. Native iOS & Android Apps mit React Native — schnell, günstig und in höchster Qualität.',
         'hero.cta1': 'Kostenloses Erstgespräch',
         'hero.cta2': 'Meine Apps ansehen',
