@@ -22,6 +22,7 @@ var translations = {
         'metric.label2': 'Apps & Websites realisiert',
         'metric.label3': 'Kundenzufriedenheit',
         // Services
+        
         'services.title': 'Meine Leistungen',
         'services.desc': 'Von der Idee bis zur Veröffentlichung — alles aus einer Hand, zum fairen Preis. Kein Agenturaufschlag, direkt vom Entwickler in Buchs SG.',
         'service1.title': 'Mobile App Entwicklung',
