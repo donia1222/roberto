@@ -791,8 +791,51 @@
                 <div class="faq-answer"><p>Fliessend Deutsch, Spanisch und Englisch. Kommunikation in der Sprache Ihrer Wahl.</p></div>
             </div>
         </div>
+        <div class="faq-bot-cta">
+            <p>Keine passende Antwort gefunden?</p>
+            <button class="faq-bot-btn" onclick="openChatBot()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                Frage den Bot
+            </button>
+        </div>
     </div>
 </section>
+
+<!-- CHATBOT MODAL -->
+<div class="chatbot-overlay" id="chatbotOverlay" onclick="closeChatBot()"></div>
+<div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-header">
+        <div class="chatbot-header-info">
+            <div class="chatbot-avatar">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div>
+                <strong>Lweb Bot</strong>
+                <span class="chatbot-status">Online</span>
+            </div>
+        </div>
+        <button class="chatbot-close" onclick="closeChatBot()" aria-label="Schliessen">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chatbot-msg chatbot-msg--bot">
+            <p>Hallo! Ich bin der Lweb Bot. Ich kann Ihnen Fragen zu unseren Leistungen, Apps, Websites, Technologien und Preisen beantworten. Wie kann ich Ihnen helfen?</p>
+        </div>
+    </div>
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <button onclick="sendSuggestion('Was kostet eine App?')">Was kostet eine App?</button>
+        <button onclick="sendSuggestion('Welche Apps habt ihr?')">Welche Apps habt ihr?</button>
+        <button onclick="sendSuggestion('Welche Technologien nutzt ihr?')">Welche Technologien?</button>
+        <button onclick="sendSuggestion('Kontaktdaten')">Kontaktdaten</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Ihre Frage eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()">
+        <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Senden">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+    </div>
+</div>
 
 <!-- CTA -->
 <section class="cta-banner" id="contact">
