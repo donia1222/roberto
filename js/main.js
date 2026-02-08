@@ -23,7 +23,9 @@ const mobileMenu = document.getElementById('mobileMenu');
 burger.addEventListener('click', () => {
     burger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    var isOpen = mobileMenu.classList.contains('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.querySelector('.header').classList.toggle('menu-open', isOpen);
 });
 
 // Close menu on link click
@@ -32,6 +34,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         burger.classList.remove('open');
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
+        document.querySelector('.header').classList.remove('menu-open');
     });
 });
 
@@ -117,6 +120,16 @@ if (workflowSteps) workflowObserver.observe(workflowSteps);
 var phoneSlideIndex = 0;
 var phoneSlides = document.querySelectorAll('.app-featured-slide');
 var phoneDots = document.querySelectorAll('.app-featured-dot');
+var showcaseBgs = [
+    'linear-gradient(155deg, #dbeafe 0%, #bfdbfe 50%, #e0eafc 100%)',
+    'linear-gradient(155deg, #fef3e2 0%, #fde6c4 50%, #fff0db 100%)',
+    'linear-gradient(155deg, #d1fae5 0%, #a7f3d0 50%, #dcfce7 100%)'
+];
+var appShowcase = document.getElementById('appShowcase');
+
+function updateShowcaseBg() {
+    if (appShowcase) appShowcase.style.background = showcaseBgs[phoneSlideIndex];
+}
 
 function slidePhone(direction) {
     phoneSlides[phoneSlideIndex].classList.remove('active');
@@ -126,6 +139,7 @@ function slidePhone(direction) {
     if (phoneSlideIndex < 0) phoneSlideIndex = phoneSlides.length - 1;
     phoneSlides[phoneSlideIndex].classList.add('active');
     phoneDots[phoneSlideIndex].classList.add('active');
+    updateShowcaseBg();
 }
 
 phoneDots.forEach(function(dot, index) {
@@ -135,6 +149,7 @@ phoneDots.forEach(function(dot, index) {
         phoneSlideIndex = index;
         phoneSlides[phoneSlideIndex].classList.add('active');
         phoneDots[phoneSlideIndex].classList.add('active');
+        updateShowcaseBg();
     });
 });
 
@@ -417,6 +432,7 @@ function saveChatHistory() {
 function openChatBot() {
     document.getElementById('chatbotOverlay').classList.add('open');
     document.getElementById('chatbotModal').classList.add('open');
+    document.body.classList.add('chatbot-open');
     document.getElementById('chatbotInput').focus();
     // Restore saved messages in UI
     var container = document.getElementById('chatbotMessages');
@@ -433,6 +449,7 @@ function openChatBot() {
 function closeChatBot() {
     document.getElementById('chatbotOverlay').classList.remove('open');
     document.getElementById('chatbotModal').classList.remove('open');
+    document.body.classList.remove('chatbot-open');
 }
 
 function clearChat() {

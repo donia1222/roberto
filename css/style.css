@@ -244,6 +244,18 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
+.header.menu-open {
+    background: rgba(15, 29, 44, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.header.menu-open .header-logo {
+    color: #fff;
+}
+.header.menu-open .header-logo-subtitle {
+    color: rgba(255,255,255,0.6);
+}
+
 /* Mobile menu modal */
 .mobile-menu {
     position: fixed;
@@ -705,13 +717,14 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 .app-featured-showcase {
     position: relative;
-    background: linear-gradient(155deg, #e6f9f1 0%, #b8ead8 25%, #7edcbf 50%, #5dbfa5 75%, #e8dcc8 100%);
+    background: linear-gradient(155deg, #dbeafe 0%, #bfdbfe 50%, #e0eafc 100%);
     border-radius: var(--radius-L);
     padding: 48px 32px 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 520px;
+    transition: background 600ms ease;
 }
 .app-featured-phone {
     position: relative;
@@ -733,6 +746,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     background: #fff;
     border-radius: 0 0 18px 18px;
     z-index: 3;
+    display: none;
 }
 .app-featured-slider {
     position: relative;
@@ -1109,7 +1123,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .app-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 1000px; transition: all 200ms; }
 .app-link--appstore { background: var(--gunpowder900); color: #fff; }
 .app-link--appstore:hover { background: var(--gunpowder700); }
-.app-link--playstore { background: var(--accent-green); color: #fff; }
+.app-link--playstore { background: #03A9F4; color: #fff; }
 .app-link--playstore:hover { opacity: 0.9; }
 .app-link--web { background: var(--cerulean50); color: var(--cerulean500); }
 .app-link--web:hover { background: var(--cerulean100); }
@@ -1666,6 +1680,11 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .chatbot-avatar svg {
     color: #fff;
 }
+.chatbot-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 .chatbot-clear {
     width: 36px;
     height: 36px;
@@ -1678,8 +1697,6 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     justify-content: center;
     cursor: pointer;
     transition: all 200ms ease;
-    margin-right: 4px;
-    margin-bottom: 5px;
 }
 .chatbot-clear:hover {
     background: rgba(255,107,107,0.3);
@@ -1838,17 +1855,28 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .chatbot-send:hover {
     background: var(--begonia500);
 }
+body.chatbot-open {
+    overflow: hidden;
+    touch-action: none;
+}
 @media (max-width: 768px) {
     .chatbot-modal {
+        top: 0;
         bottom: 0;
         right: 0;
         left: 0;
         width: 100%;
-        max-height: 100vh;
-        border-radius: var(--radius-M) var(--radius-M) 0 0;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
     }
     .chatbot-messages {
-        max-height: calc(100vh - 200px);
+        flex: 1;
+        min-height: 0;
+        max-height: none;
+    }
+    .chatbot-input-area {
+        padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
     }
 }
 
