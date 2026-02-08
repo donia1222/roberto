@@ -433,7 +433,7 @@ function openChatBot() {
     document.getElementById('chatbotOverlay').classList.add('open');
     document.getElementById('chatbotModal').classList.add('open');
     document.body.classList.add('chatbot-open');
-    document.getElementById('chatbotInput').focus();
+    if (window.innerWidth > 768) document.getElementById('chatbotInput').focus();
     // Restore saved messages in UI
     var container = document.getElementById('chatbotMessages');
     if (container.children.length <= 1 && chatbotMessages.length > 0) {
