@@ -689,14 +689,17 @@ var calcState = {
 };
 
 var calcTotalSteps = 5;
+var arrowSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+function cT(key) { return svcT(key); }
 
 function openPriceCalc() {
     calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+    calcRenderStep1();
     calcGoToStep(1);
     document.getElementById('calcOverlay').classList.add('open');
     document.getElementById('calcModal').classList.add('open');
     document.body.classList.add('calc-open');
-    // Reset all selections
     var opts = document.querySelectorAll('.calc-option');
     for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
     document.getElementById('calcNextBtn').disabled = true;
@@ -706,6 +709,67 @@ function closePriceCalc() {
     document.getElementById('calcOverlay').classList.remove('open');
     document.getElementById('calcModal').classList.remove('open');
     document.body.classList.remove('calc-open');
+}
+
+function calcRenderStep1() {
+    var step1 = document.querySelector('.calc-step[data-step="1"]');
+    var badge = step1.querySelector('.calc-step-badge');
+    var h3 = step1.querySelector('.calc-step-header h3');
+    var p = step1.querySelector('.calc-step-header p');
+    badge.textContent = cT('calc.step') + ' 1 ' + cT('calc.of') + ' 5';
+    h3.textContent = cT('calc.s1.title');
+    p.textContent = cT('calc.s1.desc');
+
+    var opts = step1.querySelectorAll('.calc-option');
+    var keys = ['website', 'app', 'combo'];
+    for (var i = 0; i < opts.length; i++) {
+        var k = keys[i];
+        opts[i].querySelector('.calc-option-text strong').textContent = cT('calc.s1.' + k);
+        opts[i].querySelector('.calc-option-text span').textContent = cT('calc.s1.' + k + '.desc');
+    }
+}
+
+function calcRenderStep4() {
+    var step4 = document.querySelector('.calc-step[data-step="4"]');
+    var badge = step4.querySelector('.calc-step-badge');
+    var h3 = step4.querySelector('.calc-step-header h3');
+    var p = step4.querySelector('.calc-step-header p');
+    badge.textContent = cT('calc.step') + ' 4 ' + cT('calc.of') + ' 5';
+    h3.textContent = cT('calc.s4.title');
+    p.textContent = cT('calc.s4.desc');
+
+    var opts = step4.querySelectorAll('.calc-option');
+    var keys = ['ready', 'idea', 'scratch'];
+    for (var i = 0; i < opts.length; i++) {
+        opts[i].querySelector('.calc-option-text strong').textContent = cT('calc.design.' + keys[i]);
+        opts[i].querySelector('.calc-option-text span').textContent = cT('calc.design.' + keys[i] + '.desc');
+    }
+}
+
+function calcRenderStep5() {
+    var step5 = document.querySelector('.calc-step[data-step="5"]');
+    var badge = step5.querySelector('.calc-step-badge');
+    var h3 = step5.querySelector('.calc-step-header h3');
+    var p = step5.querySelector('.calc-step-header p');
+    badge.textContent = cT('calc.step') + ' 5 ' + cT('calc.of') + ' 5';
+    h3.textContent = cT('calc.s5.title');
+    p.textContent = cT('calc.s5.desc');
+
+    var opts = step5.querySelectorAll('.calc-option');
+    var keys = ['yes', 'no', 'maybe'];
+    for (var i = 0; i < opts.length; i++) {
+        opts[i].querySelector('.calc-option-text strong').textContent = cT('calc.ai.' + keys[i]);
+        opts[i].querySelector('.calc-option-text span').textContent = cT('calc.ai.' + keys[i] + '.desc');
+    }
+}
+
+function calcRenderResultLabels() {
+    var resultStep = document.querySelector('.calc-step[data-step="result"]');
+    resultStep.querySelector('.calc-result h3').textContent = cT('calc.result.title');
+    resultStep.querySelector('.calc-result-note').textContent = cT('calc.result.note');
+    resultStep.querySelector('.gbcta--primary').innerHTML =
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> ' +
+        cT('calc.result.cta');
 }
 
 function calcGoToStep(step) {
@@ -718,41 +782,42 @@ function calcGoToStep(step) {
     var target = document.querySelector('.calc-step[data-step="' + targetStep + '"]');
     if (target) target.classList.add('active');
 
-    // Progress bar
     var pct = isResult ? 100 : (step / calcTotalSteps) * 100;
     document.getElementById('calcProgressBar').style.width = pct + '%';
 
-    // Nav buttons
     var backBtn = document.getElementById('calcBackBtn');
     var nextBtn = document.getElementById('calcNextBtn');
     var navEl = document.getElementById('calcNav');
 
     if (isResult) {
         navEl.style.display = 'none';
+        calcRenderResultLabels();
         calcShowResult();
     } else {
         navEl.style.display = 'flex';
         backBtn.classList.toggle('visible', step > 1);
+        backBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> ' + cT('calc.nav.back');
         nextBtn.disabled = !calcStepValid(step);
 
         if (step === calcTotalSteps) {
-            nextBtn.textContent = 'Berechnen';
-            nextBtn.innerHTML = 'Berechnen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+            nextBtn.innerHTML = cT('calc.nav.calculate') + ' ' + arrowSvg;
         } else {
-            nextBtn.innerHTML = 'Weiter <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+            nextBtn.innerHTML = cT('calc.nav.next') + ' ' + arrowSvg;
         }
     }
 
-    // Build dynamic steps
+    if (step === 1) calcRenderStep1();
     if (step === 2) calcBuildScopeStep();
     if (step === 3) calcBuildFeatureStep();
+    if (step === 4) calcRenderStep4();
+    if (step === 5) calcRenderStep5();
 }
 
 function calcStepValid(step) {
     switch (step) {
         case 1: return calcState.type !== '';
         case 2: return calcState.scope !== '';
-        case 3: return true; // features optional
+        case 3: return true;
         case 4: return calcState.design !== '';
         case 5: return calcState.ai !== '';
         default: return true;
@@ -795,40 +860,36 @@ function calcToggleFeature(el) {
     } else {
         calcState.features.push(val);
     }
-    // Features are optional so always valid
     document.getElementById('calcNextBtn').disabled = false;
 }
 
-// Dynamic scope options
 function calcBuildScopeStep() {
     var container = document.getElementById('calcScopeOptions');
     container.innerHTML = '';
     var options = [];
-    var title = '';
-    var desc = '';
+
+    var badge = document.querySelector('.calc-step[data-step="2"] .calc-step-badge');
+    badge.textContent = cT('calc.step') + ' 2 ' + cT('calc.of') + ' 5';
 
     if (calcState.type === 'website') {
-        title = 'Welchen Typ Website brauchen Sie?';
-        desc = 'Wählen Sie den Typ, der am besten passt.';
+        document.getElementById('calcStep2Title').textContent = cT('calc.s2w.title');
+        document.getElementById('calcStep2Desc').textContent = cT('calc.s2w.desc');
         options = [
-            { value: 'landing', label: 'Landing Page', desc: 'Eine einzelne Seite, z.B. für Kampagnen', icon: 'scope' },
-            { value: 'small', label: 'Kleine Website', desc: '1–3 Seiten, z.B. Portfolio oder Restaurant', icon: 'scope' },
-            { value: 'medium', label: 'Mittlere Website', desc: '4–7 Seiten mit mehreren Bereichen', icon: 'scope' },
-            { value: 'large', label: 'Grosse Website', desc: '8+ Seiten, umfangreich mit vielen Inhalten', icon: 'scope' },
-            { value: 'shop', label: 'Online-Shop', desc: 'E-Commerce mit Produkten und Zahlung', icon: 'scope' }
+            { value: 'landing', key: 'landing' },
+            { value: 'small', key: 'small' },
+            { value: 'medium', key: 'medium' },
+            { value: 'large', key: 'large' },
+            { value: 'shop', key: 'shop' }
         ];
     } else {
-        title = 'Wie komplex ist Ihre App?';
-        desc = 'Schätzen Sie den ungefähren Umfang.';
+        document.getElementById('calcStep2Title').textContent = cT('calc.s2a.title');
+        document.getElementById('calcStep2Desc').textContent = cT('calc.s2a.desc');
         options = [
-            { value: 'simple', label: 'Einfache App', desc: 'Wenige Screens, grundlegende Funktionen', icon: 'scope' },
-            { value: 'medium', label: 'Mittlere App', desc: 'Mehrere Screens, Benutzerkonten, API', icon: 'scope' },
-            { value: 'complex', label: 'Komplexe App', desc: 'Viele Features, Backend, Echtzeit-Daten', icon: 'scope' }
+            { value: 'simple', key: 'simple' },
+            { value: 'medium', key: 'appmedium' },
+            { value: 'complex', key: 'complex' }
         ];
     }
-
-    document.getElementById('calcStep2Title').textContent = title;
-    document.getElementById('calcStep2Desc').textContent = desc;
 
     for (var i = 0; i < options.length; i++) {
         var o = options[i];
@@ -837,81 +898,63 @@ function calcBuildScopeStep() {
         btn.setAttribute('data-value', o.value);
         if (calcState.scope === o.value) btn.classList.add('selected');
         btn.innerHTML =
-            '<div class="calc-option-icon calc-option-icon--' + o.icon + '">' +
+            '<div class="calc-option-icon calc-option-icon--scope">' +
                 '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>' +
             '</div>' +
-            '<div class="calc-option-text"><strong>' + o.label + '</strong><span>' + o.desc + '</span></div>' +
+            '<div class="calc-option-text"><strong>' + cT('calc.scope.' + o.key) + '</strong><span>' + cT('calc.scope.' + o.key + '.desc') + '</span></div>' +
             '<div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
         btn.onclick = (function(b) { return function() { calcSelectSingle(b, 'scope'); }; })(btn);
         container.appendChild(btn);
     }
 }
 
-// Dynamic feature options
 function calcBuildFeatureStep() {
     var container = document.getElementById('calcFeatureOptions');
     container.innerHTML = '';
-    var options = [];
+    var featureKeys = [];
+
+    var badge = document.querySelector('.calc-step[data-step="3"] .calc-step-badge');
+    badge.textContent = cT('calc.step') + ' 3 ' + cT('calc.of') + ' 5';
+    document.querySelector('.calc-step[data-step="3"] .calc-step-header p').textContent = cT('calc.s3.desc');
 
     if (calcState.type === 'website') {
-        document.getElementById('calcStep3Title').textContent = 'Welche Funktionen brauchen Sie?';
-        options = [
-            { value: 'contact', label: 'Kontaktformular', desc: 'Anfragen direkt per E-Mail erhalten' },
-            { value: 'cms', label: 'CMS / Admin-Panel', desc: 'Inhalte selbst verwalten und bearbeiten' },
-            { value: 'multilang', label: 'Mehrsprachig', desc: 'Website in mehreren Sprachen' },
-            { value: 'blog', label: 'Blog', desc: 'Regelmässige Beiträge und Artikel' },
-            { value: 'booking', label: 'Buchungssystem', desc: 'Termine oder Reservierungen online' },
-            { value: 'seo', label: 'SEO-Paket', desc: 'Erweiterte Suchmaschinen-Optimierung' },
-            { value: 'analytics', label: 'Analytics', desc: 'Besucherstatistiken und Tracking' }
-        ];
+        document.getElementById('calcStep3Title').textContent = cT('calc.s3.title');
+        featureKeys = ['contact', 'cms', 'multilang', 'blog', 'booking', 'seo', 'analytics'];
     } else {
-        document.getElementById('calcStep3Title').textContent = 'Welche App-Funktionen brauchen Sie?';
-        options = [
-            { value: 'auth', label: 'Login & Benutzerkonten', desc: 'Registrierung, Anmeldung, Profile' },
-            { value: 'push', label: 'Push-Benachrichtigungen', desc: 'Mitteilungen direkt aufs Handy' },
-            { value: 'payment', label: 'In-App Bezahlung', desc: 'Stripe, Apple Pay, Google Pay' },
-            { value: 'camera', label: 'Kamera / Scanner', desc: 'Fotos, QR-Codes, Barcode-Scanner' },
-            { value: 'gps', label: 'GPS / Standort', desc: 'Karten, Navigation, Geolocation' },
-            { value: 'chat', label: 'Chat / Messaging', desc: 'Echtzeit-Kommunikation zwischen Nutzern' },
-            { value: 'api', label: 'Backend / API', desc: 'Server, Datenbank, REST-API' },
-            { value: 'admin', label: 'Admin-Panel (Web)', desc: 'Web-Dashboard zur Verwaltung' },
-            { value: 'stores', label: 'Store-Veröffentlichung', desc: 'App Store & Play Store Einreichung' }
-        ];
+        document.getElementById('calcStep3Title').textContent = cT('calc.s3.titleApp');
+        featureKeys = ['auth', 'push', 'payment', 'camera', 'gps', 'chat', 'api', 'admin', 'stores'];
     }
 
-    for (var i = 0; i < options.length; i++) {
-        var o = options[i];
+    for (var i = 0; i < featureKeys.length; i++) {
+        var k = featureKeys[i];
         var btn = document.createElement('button');
         btn.className = 'calc-option';
-        btn.setAttribute('data-value', o.value);
-        if (calcState.features.indexOf(o.value) > -1) btn.classList.add('selected');
+        btn.setAttribute('data-value', k);
+        if (calcState.features.indexOf(k) > -1) btn.classList.add('selected');
         btn.innerHTML =
             '<div class="calc-option-icon calc-option-icon--feature">' +
                 '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>' +
             '</div>' +
-            '<div class="calc-option-text"><strong>' + o.label + '</strong><span>' + o.desc + '</span></div>' +
+            '<div class="calc-option-text"><strong>' + cT('calc.feat.' + k) + '</strong><span>' + cT('calc.feat.' + k + '.desc') + '</span></div>' +
             '<div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
         btn.onclick = (function(b) { return function() { calcToggleFeature(b); }; })(btn);
         container.appendChild(btn);
     }
 }
 
-// Price calculation logic
 function calcComputePrice() {
     var min = 0;
     var max = 0;
-    var weeks = '';
+    var weeksRange = '';
 
     if (calcState.type === 'website') {
-        // Base prices by scope
         switch (calcState.scope) {
-            case 'landing': min = 950; max = 1500; weeks = '1–2 Wochen'; break;
-            case 'small':   min = 1200; max = 2200; weeks = '2–3 Wochen'; break;
-            case 'medium':  min = 2200; max = 3800; weeks = '3–5 Wochen'; break;
-            case 'large':   min = 3800; max = 6500; weeks = '5–8 Wochen'; break;
-            case 'shop':    min = 3500; max = 7500; weeks = '5–9 Wochen'; break;
+            case 'landing': min = 700; max = 1200; weeksRange = '1–2'; break;
+            case 'small':   min = 900; max = 1800; weeksRange = '2–3'; break;
+            case 'medium':  min = 1800; max = 3200; weeksRange = '3–5'; break;
+            case 'large':   min = 3200; max = 5500; weeksRange = '5–8'; break;
+            case 'shop':    min = 2800; max = 6000; weeksRange = '5–9'; break;
         }
-        // Feature additions
         var webFeaturePrices = {
             contact: [100, 200], cms: [400, 700], multilang: [400, 900],
             blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200]
@@ -921,14 +964,12 @@ function calcComputePrice() {
             if (fp) { min += fp[0]; max += fp[1]; }
         }
     } else {
-        // App base prices
         var isCombo = calcState.type === 'app-landing';
         switch (calcState.scope) {
-            case 'simple':  min = 4500; max = 7500; weeks = '4–6 Wochen'; break;
-            case 'medium':  min = 7500; max = 14000; weeks = '6–10 Wochen'; break;
-            case 'complex': min = 14000; max = 25000; weeks = '10–16 Wochen'; break;
+            case 'simple':  min = 4500; max = 7500; weeksRange = '4–6'; break;
+            case 'medium':  min = 7500; max = 14000; weeksRange = '6–10'; break;
+            case 'complex': min = 14000; max = 25000; weeksRange = '10–16'; break;
         }
-        // Feature additions
         var appFeaturePrices = {
             auth: [500, 900], push: [300, 600], payment: [900, 1800],
             camera: [400, 800], gps: [400, 800], chat: [1200, 2500],
@@ -938,22 +979,19 @@ function calcComputePrice() {
             var ap = appFeaturePrices[calcState.features[i]];
             if (ap) { min += ap[0]; max += ap[1]; }
         }
-        // Add landing page cost for combo
         if (isCombo) { min += 950; max += 2000; }
     }
 
-    // Design cost
     switch (calcState.design) {
         case 'ready': break;
         case 'idea': min += 300; max += 600; break;
         case 'scratch': min += 600; max += 1500; break;
     }
 
-    // AI cost
     if (calcState.ai === 'yes') { min += 1500; max += 3500; }
     if (calcState.ai === 'maybe') { min += 500; max += 1500; }
 
-    return { min: min, max: max, weeks: weeks };
+    return { min: min, max: max, weeksRange: weeksRange };
 }
 
 function calcFormatCHF(n) {
@@ -963,32 +1001,31 @@ function calcFormatCHF(n) {
 function calcShowResult() {
     var price = calcComputePrice();
 
-    // Summary tags
     var summaryEl = document.getElementById('calcResultSummary');
     var tags = [];
-    var typeLabel = { website: 'Website', app: 'Mobile App', 'app-landing': 'App + Landing' };
-    tags.push(typeLabel[calcState.type] || calcState.type);
 
-    var scopeLabels = {
-        landing: 'Landing Page', small: 'Klein (1–3 S.)', medium: 'Mittel',
-        large: 'Gross (8+ S.)', shop: 'Online-Shop',
-        simple: 'Einfach', complex: 'Komplex'
+    tags.push(cT('calc.type.' + (calcState.type === 'app-landing' ? 'combo' : calcState.type)));
+
+    var scopeKeyMap = {
+        landing: 'landing', small: 'smallLabel', medium: 'mediumLabel',
+        large: 'largeLabel', shop: 'shopLabel',
+        simple: 'simpleLabel', complex: 'complexLabel'
     };
-    if (scopeLabels[calcState.scope]) tags.push(scopeLabels[calcState.scope]);
-    if (calcState.features.length > 0) tags.push(calcState.features.length + ' Features');
-    if (calcState.ai === 'yes') tags.push('Mit KI');
-    if (calcState.design === 'scratch') tags.push('Neues Design');
+    var sk = scopeKeyMap[calcState.scope];
+    if (sk) tags.push(cT('calc.scope.' + sk));
+
+    if (calcState.features.length > 0) tags.push(calcState.features.length + ' ' + cT('calc.result.features'));
+    if (calcState.ai === 'yes') tags.push(cT('calc.result.withAI'));
+    if (calcState.design === 'scratch') tags.push(cT('calc.result.newDesign'));
 
     summaryEl.innerHTML = '';
     for (var i = 0; i < tags.length; i++) {
         summaryEl.innerHTML += '<span class="calc-result-tag">' + tags[i] + '</span>';
     }
 
-    // Price
     document.getElementById('calcResultPrice').textContent = calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max);
 
-    // Time
     document.getElementById('calcResultTime').innerHTML =
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
-        'Geschätzte Dauer: ' + price.weeks;
+        cT('calc.result.duration') + ': ' + price.weeksRange + ' ' + cT('calc.weeks');
 }
