@@ -573,25 +573,62 @@ function sendToChat() {
 
 // vCard download
 function downloadVCard() {
-    var vCardContent = 'BEGIN:VCARD\n' +
-        'VERSION:3.0\n' +
-        'FN:Lweb Schweiz\n' +
-        'ORG:Lweb\n' +
-        'TITLE:App & Web Entwicklung\n' +
-        'ADR:;;Buchs;Buchs;SG;9471;Switzerland\n' +
-        'TEL:+41765608645\n' +
-        'EMAIL:info@lweb.ch\n' +
-        'URL:https://lweb.ch\n' +
-        'NOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps, moderne Websites und KI-Lösungen.\n' +
-        'END:VCARD';
+    var imageUrl = 'https://web.lweb.ch/logolweb.png';
 
-    var blob = new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' });
-    var link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'Lweb_Visitenkarte.vcf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    function shareOrDownload(vCardContent) {
+        var file = new File([vCardContent], 'Lweb_Visitenkarte.vcf', { type: 'text/vcard' });
+
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({
+                title: 'Lweb Visitenkarte',
+                files: [file]
+            }).catch(function() {});
+        } else {
+            var blob = new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Lweb_Visitenkarte.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+
+    function buildVCard(photoLine) {
+        return 'BEGIN:VCARD\n' +
+            'VERSION:3.0\n' +
+            'FN:Lweb Schweiz\n' +
+            'ORG:Lweb\n' +
+            'TITLE:App & Web Entwicklung\n' +
+            'ADR:;;Buchs;Buchs;SG;9471;Switzerland\n' +
+            'TEL:+41765608645\n' +
+            'EMAIL:info@lweb.ch\n' +
+            'URL:https://lweb.ch\n' +
+            'NOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps\\, moderne Websites und KI-Lösungen.\n' +
+            (photoLine ? photoLine + '\n' : '') +
+            'END:VCARD';
+    }
+
+    fetch(imageUrl)
+        .then(function(res) {
+            if (!res.ok) throw new Error('Image fetch failed');
+            return res.blob();
+        })
+        .then(function(blob) {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                var base64data = reader.result.split(',')[1];
+                var photoLine = 'PHOTO;ENCODING=b;TYPE=PNG:' + base64data;
+                shareOrDownload(buildVCard(photoLine));
+            };
+            reader.onerror = function() {
+                shareOrDownload(buildVCard(''));
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(function() {
+            shareOrDownload(buildVCard(''));
+        });
 }
 
 // ===== SERVICE MODAL =====
