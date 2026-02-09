@@ -1511,9 +1511,9 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .trust-stat-label { font-size: 16px; font-weight: 500; opacity: 0.9; }
 
 /* ===== FAQ ===== */
-.faq { background: var(--gunpowder50); }
+.faq { background: var(--gunpowder50); margin-top: -60px; }
 .faq-list { max-width: 800px; margin: 0 auto; }
-.faq-item { border-bottom: 1px solid var(--gunpowder150); }
+.faq-item { border-bottom: 1px solid var(--gunpowder150);  }
 .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; cursor: pointer; gap: 16px; transition: color 200ms; }
 .faq-question:hover { color: var(--begonia400); }
 .faq-question h4 { font-size: 17px; font-weight: 700; }
