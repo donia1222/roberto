@@ -589,3 +589,88 @@ function downloadVCard() {
     link.click();
     document.body.removeChild(link);
 }
+
+// ===== SERVICE MODAL =====
+var serviceIcons = {
+    mobile: {
+        svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+        cls: 'svc-modal-icon--mobile'
+    },
+    web: {
+        svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
+        cls: 'svc-modal-icon--web'
+    },
+    ai: {
+        svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>',
+        cls: 'svc-modal-icon--ai'
+    },
+    support: {
+        svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+        cls: 'svc-modal-icon--support'
+    }
+};
+
+var checkSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+
+function getCurrentLang() {
+    return localStorage.getItem('lweb_lang') || 'de';
+}
+
+function svcT(key) {
+    var lang = getCurrentLang();
+    var t = translations[lang] || translations['de'];
+    return t[key] || (translations['de'][key] || '');
+}
+
+function openServiceModal(type) {
+    var icon = serviceIcons[type];
+    if (!icon) return;
+
+    var modal = document.getElementById('svcModal');
+    var overlay = document.getElementById('svcModalOverlay');
+    var prefix = 'svc.' + type + '.';
+
+    // Icon
+    var iconEl = document.getElementById('svcModalIcon');
+    iconEl.className = 'svc-modal-icon ' + icon.cls;
+    iconEl.innerHTML = icon.svg;
+
+    // Title & subtitle
+    document.getElementById('svcModalTitle').textContent = svcT(prefix + 'title');
+    document.getElementById('svcModalSubtitle').textContent = svcT(prefix + 'subtitle');
+
+    // Features
+    var featuresEl = document.getElementById('svcModalFeatures');
+    featuresEl.innerHTML = '';
+    for (var i = 1; i <= 6; i++) {
+        var text = svcT(prefix + 'f' + i);
+        if (!text) continue;
+        var div = document.createElement('div');
+        div.className = 'svc-modal-feature';
+        div.innerHTML = '<span class="svc-modal-feature-icon">' + checkSvg + '</span><span>' + text + '</span>';
+        featuresEl.appendChild(div);
+    }
+
+    // Pricing
+    document.getElementById('svcModalPrice').textContent = svcT(prefix + 'price');
+    document.getElementById('svcModalPriceNote').textContent = svcT(prefix + 'priceNote');
+
+    // CTA
+    document.getElementById('svcModalCta').textContent = svcT(prefix + 'cta');
+
+    // Open
+    overlay.classList.add('open');
+    modal.classList.add('open');
+    document.body.classList.add('svc-modal-open');
+}
+
+function closeServiceModal() {
+    document.getElementById('svcModalOverlay').classList.remove('open');
+    document.getElementById('svcModal').classList.remove('open');
+    document.body.classList.remove('svc-modal-open');
+}
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeServiceModal();
+});

@@ -320,42 +320,42 @@
             <p>Von der Idee bis zur Veröffentlichung &mdash; alles aus einer Hand, zum fairen Preis. Kein Agenturaufschlag, direkt vom Entwickler in Buchs SG.</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('mobile')">
                 <div class="service-icon service-icon--mobile">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
                 <h4>Mobile App Entwicklung</h4>
                 <p>Native iOS &amp; Android Apps mit React Native. Eine Codebasis, zwei Plattformen &mdash; das spart Ihnen Zeit und Geld.</p>
-                <a href="#contact" class="service-link">Projekt starten <span>&rarr;</span></a>
+                <span class="service-link">Projekt starten <span>&rarr;</span></span>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('web')">
                 <div class="service-icon service-icon--web">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                 </div>
                 <h4>Website Entwicklung</h4>
                 <p>Moderne, schnelle Websites mit Next.js und Remix. Perfekt für KMU, Restaurants, Handwerker und Startups in der Region.</p>
-                <a href="#contact" class="service-link">Website erstellen <span>&rarr;</span></a>
+                <span class="service-link">Website erstellen <span>&rarr;</span></span>
             </div>
             <div class="service-card service-card--cta">
                 <h3>Ihre App oder Website zum fairen Preis</h3>
                 <p>Direkt vom Entwickler, ohne Agenturaufschlag. Professionell, persönlich und unkompliziert.</p>
                 <a href="#contact" class="service-cta-btn">Kostenloses Erstgespräch</a>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('ai')">
                 <div class="service-icon service-icon--ai">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                 </div>
                 <h4>KI-Integration</h4>
                 <p>OpenAI API, intelligente Chatbots und automatisierte Prozesse. Machen Sie Ihre App oder Website smarter.</p>
-                <a href="#contact" class="service-link">KI entdecken <span>&rarr;</span></a>
+                <span class="service-link">KI entdecken <span>&rarr;</span></span>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceModal('support')">
                 <div class="service-icon service-icon--support">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
                 <h4>Beratung &amp; Support</h4>
                 <p>Technische Beratung, Architektur-Planung und langfristiger Support nach dem Launch. Persönlich und unkompliziert.</p>
-                <a href="#contact" class="service-link">Beratung anfragen <span>&rarr;</span></a>
+                <span class="service-link">Beratung anfragen <span>&rarr;</span></span>
             </div>
         </div>
     </div>
@@ -940,6 +940,33 @@
         </div>
     </div>
 </footer>
+
+<!-- SERVICE MODAL -->
+<div class="svc-modal-overlay" id="svcModalOverlay" onclick="closeServiceModal()"></div>
+<div class="svc-modal" id="svcModal">
+    <button class="svc-modal-close" onclick="closeServiceModal()" aria-label="Schliessen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="svc-modal-header" id="svcModalHeader">
+        <div class="svc-modal-icon" id="svcModalIcon"></div>
+        <h3 id="svcModalTitle"></h3>
+        <p id="svcModalSubtitle"></p>
+    </div>
+    <div class="svc-modal-body">
+        <div class="svc-modal-features" id="svcModalFeatures"></div>
+        <div class="svc-modal-pricing" id="svcModalPricing">
+            <div class="svc-modal-price" id="svcModalPrice"></div>
+            <span class="svc-modal-price-note" id="svcModalPriceNote"></span>
+        </div>
+    </div>
+    <div class="svc-modal-footer">
+        <a href="#contact" class="gbcta gbcta--primary gbcta--small" id="svcModalCta" onclick="closeServiceModal()"></a>
+        <a href="mailto:info@lweb.ch" class="svc-modal-mail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            info@lweb.ch
+        </a>
+    </div>
+</div>
 
 <div class="cookie-banner" id="cookieBanner">
     <p>Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.</p>
