@@ -646,13 +646,16 @@ function openServiceModal(type) {
     // Features
     var featuresEl = document.getElementById('svcModalFeatures');
     featuresEl.innerHTML = '';
+    var idx = 0;
     for (var i = 1; i <= 6; i++) {
         var text = svcT(prefix + 'f' + i);
         if (!text) continue;
         var div = document.createElement('div');
-        div.className = 'svc-modal-feature';
+        div.className = 'svc-modal-feature web-modal-stagger';
+        div.style.animationDelay = (idx * 80) + 'ms';
         div.innerHTML = '<span class="svc-modal-feature-icon">' + checkSvg + '</span><span>' + text + '</span>';
         featuresEl.appendChild(div);
+        idx++;
     }
 
     // Pricing
@@ -783,7 +786,16 @@ function calcGoToStep(step) {
     var isResult = step > calcTotalSteps;
     var targetStep = isResult ? 'result' : String(step);
     var target = document.querySelector('.calc-step[data-step="' + targetStep + '"]');
-    if (target) target.classList.add('active');
+    if (target) {
+        target.classList.add('active');
+        var opts = target.querySelectorAll('.calc-option');
+        for (var j = 0; j < opts.length; j++) {
+            opts[j].classList.remove('web-modal-stagger');
+            void opts[j].offsetWidth;
+            opts[j].classList.add('web-modal-stagger');
+            opts[j].style.animationDelay = (j * 70) + 'ms';
+        }
+    }
 
     var pct = isResult ? 100 : (step / calcTotalSteps) * 100;
     document.getElementById('calcProgressBar').style.width = pct + '%';
@@ -897,7 +909,8 @@ function calcBuildScopeStep() {
     for (var i = 0; i < options.length; i++) {
         var o = options[i];
         var btn = document.createElement('button');
-        btn.className = 'calc-option';
+        btn.className = 'calc-option web-modal-stagger';
+        btn.style.animationDelay = (i * 70) + 'ms';
         btn.setAttribute('data-value', o.value);
         if (calcState.scope === o.value) btn.classList.add('selected');
         btn.innerHTML =
@@ -931,7 +944,8 @@ function calcBuildFeatureStep() {
     for (var i = 0; i < featureKeys.length; i++) {
         var k = featureKeys[i];
         var btn = document.createElement('button');
-        btn.className = 'calc-option';
+        btn.className = 'calc-option web-modal-stagger';
+        btn.style.animationDelay = (i * 70) + 'ms';
         btn.setAttribute('data-value', k);
         if (calcState.features.indexOf(k) > -1) btn.classList.add('selected');
         btn.innerHTML =
@@ -1023,7 +1037,7 @@ function calcShowResult() {
 
     summaryEl.innerHTML = '';
     for (var i = 0; i < tags.length; i++) {
-        summaryEl.innerHTML += '<span class="calc-result-tag">' + tags[i] + '</span>';
+        summaryEl.innerHTML += '<span class="calc-result-tag web-modal-stagger" style="animation-delay:' + (i * 70) + 'ms">' + tags[i] + '</span>';
     }
 
     document.getElementById('calcResultPrice').textContent = calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max);
@@ -1224,7 +1238,8 @@ function openWebModal(id) {
     techsEl.innerHTML = '';
     for (var i = 0; i < project.techs.length; i++) {
         var span = document.createElement('span');
-        span.className = 'web-modal-tech';
+        span.className = 'web-modal-tech web-modal-stagger';
+        span.style.animationDelay = (i * 60) + 'ms';
         span.textContent = project.techs[i];
         techsEl.appendChild(span);
     }
@@ -1232,9 +1247,11 @@ function openWebModal(id) {
     // Features
     var featEl = document.getElementById('webModalFeatures');
     featEl.innerHTML = '';
+    var baseDelay = project.techs.length * 60;
     for (var j = 0; j < project.features.length; j++) {
         var div = document.createElement('div');
-        div.className = 'svc-modal-feature';
+        div.className = 'svc-modal-feature web-modal-stagger';
+        div.style.animationDelay = (baseDelay + j * 80) + 'ms';
         div.innerHTML = '<span class="svc-modal-feature-icon">' + checkSvg + '</span><span>' + project.features[j] + '</span>';
         featEl.appendChild(div);
     }

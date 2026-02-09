@@ -2180,6 +2180,14 @@ body.svc-modal-open {
 }
 .website-card { cursor: pointer; transition: transform 200ms ease, box-shadow 200ms ease; }
 .website-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+@keyframes webModalFadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.web-modal-stagger {
+    opacity: 0;
+    animation: webModalFadeUp 350ms ease forwards;
+}
 @media (max-width: 768px) {
     .web-modal-image { height: 140px; }
 }
