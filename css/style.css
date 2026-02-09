@@ -3018,17 +3018,23 @@ body.calc-open {
 
 /* Analyzer Loading */
 .analyzer-loading { text-align: center; padding: 40px 0; }
-.analyzer-spinner {
-    width: 44px;
-    height: 44px;
-    border: 4px solid var(--gunpowder150);
-    border-top-color: var(--begonia400);
-    border-radius: 50%;
+.analyzer-progress-bar {
+    width: 100%;
+    max-width: 480px;
+    height: 12px;
+    background: var(--gunpowder150);
+    border-radius: 6px;
     margin: 0 auto 16px;
-    animation: analyzerSpin 0.8s linear infinite;
+    overflow: hidden;
 }
-@keyframes analyzerSpin { to { transform: rotate(360deg); } }
-.analyzer-loading p { font-size: 16px; color: var(--gunpowder500); }
+.analyzer-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--begonia400), var(--begonia500, #ff6b6b));
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+.analyzer-progress-text { font-size: 16px; color: var(--gunpowder500); }
 
 /* Analyzer Error */
 .analyzer-error { text-align: center; padding: 24px; }

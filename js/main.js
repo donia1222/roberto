@@ -1731,6 +1731,20 @@ function analyzeWebsite() {
     loading.style.display = 'block';
     error.style.display = 'none';
 
+    var progressFill = document.getElementById('analyzerProgressFill');
+    var progressPercent = document.getElementById('analyzerProgressPercent');
+    var progress = 0;
+    progressFill.style.width = '0%';
+    progressPercent.textContent = '0';
+    var progressInterval = setInterval(function() {
+        if (progress < 90) {
+            progress += Math.random() * 8 + 2;
+            if (progress > 90) progress = 90;
+            progressFill.style.width = Math.round(progress) + '%';
+            progressPercent.textContent = Math.round(progress);
+        }
+    }, 400);
+
     var lang = document.documentElement.lang || 'de-CH';
     var langConfig = {
         'de-CH': { name: 'Deutsch', instruction: 'Antworte auf Deutsch.', ask: 'Analysiere:' },
@@ -1771,18 +1785,24 @@ function analyzeWebsite() {
         })
         .then(function(res) { return res.json(); })
         .then(function(data) {
+            clearInterval(progressInterval);
+            progressFill.style.width = '100%';
+            progressPercent.textContent = '100';
             btn.disabled = false;
-            loading.style.display = 'none';
 
-            if (data.status === 'success' && data.botReply) {
-                parseAnalyzerResults(data.botReply);
-                document.getElementById('analyzerModalUrl').textContent = url;
-                openAnalyzerModal();
-            } else {
-                error.style.display = 'block';
-            }
+            setTimeout(function() {
+                loading.style.display = 'none';
+                if (data.status === 'success' && data.botReply) {
+                    parseAnalyzerResults(data.botReply);
+                    document.getElementById('analyzerModalUrl').textContent = url;
+                    openAnalyzerModal();
+                } else {
+                    error.style.display = 'block';
+                }
+            }, 400);
         })
         .catch(function() {
+            clearInterval(progressInterval);
             btn.disabled = false;
             loading.style.display = 'none';
             error.style.display = 'block';

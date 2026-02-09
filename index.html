@@ -782,7 +782,7 @@
 <section class="section web-analyzer" id="webanalyzer">
     <div class="container">
         <div class="section-header">
-            <h2 data-i18n-html="analyzer.title">Kostenlose <span style="color:var(--begonia400)">Website-Analyse</span></h2>
+            <h2 data-i18n-html="analyzer.title">Kostenlose<br><span style="color:var(--begonia400)">Website-Analyse</span></h2>
             <p data-i18n="analyzer.desc">Geben Sie Ihre URL ein und erhalten Sie eine KI-gestützte Analyse mit konkreten Verbesserungsvorschlägen für Design, SEO, Performance, Mobile und Barrierefreiheit.</p>
         </div>
         <div class="analyzer-input-wrapper">
@@ -797,8 +797,10 @@
             <p class="analyzer-hint" data-i18n="analyzer.hint">Kostenlos &mdash; keine Registrierung nötig</p>
         </div>
         <div class="analyzer-loading" id="analyzerLoading" style="display:none">
-            <div class="analyzer-spinner"></div>
-            <p data-i18n="analyzer.loading">Website wird analysiert...</p>
+            <div class="analyzer-progress-bar">
+                <div class="analyzer-progress-fill" id="analyzerProgressFill"></div>
+            </div>
+            <p class="analyzer-progress-text"><span id="analyzerProgressPercent">0</span>% &mdash; <span data-i18n="analyzer.loading">Website wird analysiert...</span></p>
         </div>
         <div class="analyzer-error" id="analyzerError" style="display:none">
             <p data-i18n="analyzer.error">Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</p>
