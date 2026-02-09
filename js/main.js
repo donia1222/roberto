@@ -339,6 +339,10 @@ function switchLang(lang) {
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key]) el.placeholder = t[key];
+    });
 
     // Selector-based mapping
     i18nMap.forEach(function(item) {
@@ -1643,4 +1647,319 @@ function closeLegalModal() {
     document.getElementById('legalModalOverlay').classList.remove('open');
     document.getElementById('legalModal').classList.remove('open');
     document.body.classList.remove('svc-modal-open');
+}
+
+// ===== WEB ANALYZER =====
+function fetchWebContent(url, callback) {
+    var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+    fetch(proxyUrl, { signal: AbortSignal.timeout(10000) })
+    .then(function(res) { return res.text(); })
+    .then(function(html) {
+        try {
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            // Remove scripts, styles, nav, footer noise
+            var remove = doc.querySelectorAll('script,style,noscript,iframe,svg');
+            for (var i = 0; i < remove.length; i++) remove[i].remove();
+
+            var info = [];
+            // Title
+            var title = doc.querySelector('title');
+            if (title) info.push('Title: ' + title.textContent.trim());
+            // Meta description
+            var metaDesc = doc.querySelector('meta[name="description"]');
+            if (metaDesc) info.push('Meta description: ' + metaDesc.getAttribute('content'));
+            // Meta keywords
+            var metaKw = doc.querySelector('meta[name="keywords"]');
+            if (metaKw) info.push('Keywords: ' + metaKw.getAttribute('content'));
+            // OG tags
+            var ogTitle = doc.querySelector('meta[property="og:title"]');
+            if (ogTitle) info.push('OG Title: ' + ogTitle.getAttribute('content'));
+            var ogDesc = doc.querySelector('meta[property="og:description"]');
+            if (ogDesc) info.push('OG Description: ' + ogDesc.getAttribute('content'));
+            // Viewport
+            var viewport = doc.querySelector('meta[name="viewport"]');
+            info.push('Viewport: ' + (viewport ? viewport.getAttribute('content') : 'MISSING'));
+            // Lang
+            var htmlEl = doc.querySelector('html');
+            if (htmlEl && htmlEl.getAttribute('lang')) info.push('Lang: ' + htmlEl.getAttribute('lang'));
+            else info.push('Lang attribute: MISSING');
+            // Headings
+            var headings = doc.querySelectorAll('h1,h2,h3');
+            var hTexts = [];
+            for (var h = 0; h < Math.min(headings.length, 15); h++) {
+                hTexts.push(headings[h].tagName + ': ' + headings[h].textContent.trim().substring(0, 100));
+            }
+            if (hTexts.length) info.push('Headings:\n' + hTexts.join('\n'));
+            // Images without alt
+            var imgs = doc.querySelectorAll('img');
+            var noAlt = 0, totalImgs = imgs.length;
+            for (var im = 0; im < imgs.length; im++) {
+                if (!imgs[im].getAttribute('alt')) noAlt++;
+            }
+            info.push('Images: ' + totalImgs + ' total, ' + noAlt + ' without alt');
+            // Links count
+            var links = doc.querySelectorAll('a[href]');
+            info.push('Links: ' + links.length);
+            // Body text (first ~1500 chars)
+            var body = doc.querySelector('body');
+            var bodyText = body ? body.textContent.replace(/\s+/g, ' ').trim().substring(0, 1500) : '';
+            if (bodyText) info.push('Page text (excerpt): ' + bodyText);
+
+            callback(info.join('\n'));
+        } catch(e) {
+            callback(null);
+        }
+    })
+    .catch(function() {
+        callback(null);
+    });
+}
+
+function analyzeWebsite() {
+    var input = document.getElementById('analyzerUrl');
+    var url = input.value.trim();
+
+    if (!url) { input.focus(); return; }
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    try { new URL(url); } catch(e) { input.focus(); return; }
+
+    var btn = document.getElementById('analyzerBtn');
+    var loading = document.getElementById('analyzerLoading');
+    var error = document.getElementById('analyzerError');
+
+    btn.disabled = true;
+    loading.style.display = 'block';
+    error.style.display = 'none';
+
+    var lang = document.documentElement.lang || 'de-CH';
+    var langConfig = {
+        'de-CH': { name: 'Deutsch', instruction: 'Antworte auf Deutsch.', ask: 'Analysiere:' },
+        'de': { name: 'Deutsch', instruction: 'Antworte auf Deutsch.', ask: 'Analysiere:' },
+        'en': { name: 'English', instruction: 'Reply in English.', ask: 'Analyze:' },
+        'es': { name: 'Español', instruction: 'Responde en español.', ask: 'Analiza:' },
+        'fr': { name: 'Français', instruction: 'Réponds en français.', ask: 'Analyse:' },
+        'it': { name: 'Italiano', instruction: 'Rispondi in italiano.', ask: 'Analizza:' }
+    };
+    var lc = langConfig[lang] || langConfig['de-CH'];
+
+    var systemPrompt = 'You are a web analyst. ' + lc.instruction + ' ' +
+        'You will receive the actual HTML content of a website. Analyze it based on what you see.\n' +
+        'CRITICAL: You MUST use EXACTLY these markers WITH square brackets as section headings. Do NOT omit the brackets:\n\n' +
+        '[DESIGN]\n[SEO]\n[PERFORMANCE]\n[MOBILE]\n[ACCESSIBILITY]\n[VERDICT]\n\n' +
+        'Rules:\n' +
+        '- Each marker must appear on its own line, exactly as shown above, with [ and ]\n' +
+        '- 2-3 bullet points per section, each starting with -\n' +
+        '- Be specific about what you see on THIS website (mention actual content, colors, structure)\n' +
+        '- For [VERDICT]: first line must be ONLY a number 0-10 (e.g. "7"), then 1-2 summary bullets\n' +
+        '- Be honest and critical. If something is bad, say so.';
+
+    // Fetch the actual website content first
+    fetchWebContent(url, function(siteContent) {
+        var userMessage = lc.ask + ' ' + url;
+        if (siteContent) {
+            userMessage += '\n\n--- Website content ---\n' + siteContent;
+        }
+
+        fetch(CHAT_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                conversationHistory: [],
+                prompt: systemPrompt,
+                userMessage: userMessage
+            })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            btn.disabled = false;
+            loading.style.display = 'none';
+
+            if (data.status === 'success' && data.botReply) {
+                parseAnalyzerResults(data.botReply);
+                document.getElementById('analyzerModalUrl').textContent = url;
+                openAnalyzerModal();
+            } else {
+                error.style.display = 'block';
+            }
+        })
+        .catch(function() {
+            btn.disabled = false;
+            loading.style.display = 'none';
+            error.style.display = 'block';
+        });
+    });
+}
+
+function openAnalyzerModal() {
+    document.getElementById('analyzerModalOverlay').classList.add('open');
+    document.getElementById('analyzerModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAnalyzerModal() {
+    document.getElementById('analyzerModalOverlay').classList.remove('open');
+    document.getElementById('analyzerModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function parseAnalyzerResults(text) {
+    // Normalize: convert plain-text section headers to bracketed markers
+    text = text.replace(/^#{1,3}\s*(Design|Diseño|Gestaltung)\s*$/gim, '[DESIGN]');
+    text = text.replace(/^\*{1,2}(Design|Diseño|Gestaltung)\*{1,2}\s*$/gim, '[DESIGN]');
+    text = text.replace(/^(Design|Diseño|Gestaltung)\s*:?\s*$/gim, '[DESIGN]');
+    text = text.replace(/^#{1,3}\s*SEO\s*$/gim, '[SEO]');
+    text = text.replace(/^\*{1,2}SEO\*{1,2}\s*$/gim, '[SEO]');
+    text = text.replace(/^SEO\s*:?\s*$/gim, '[SEO]');
+    text = text.replace(/^#{1,3}\s*(Performance|Rendimiento|Leistung)\s*$/gim, '[PERFORMANCE]');
+    text = text.replace(/^\*{1,2}(Performance|Rendimiento|Leistung)\*{1,2}\s*$/gim, '[PERFORMANCE]');
+    text = text.replace(/^(Performance|Rendimiento|Leistung)\s*:?\s*$/gim, '[PERFORMANCE]');
+    text = text.replace(/^#{1,3}\s*(Mobile|Móvil|Mobil)\s*$/gim, '[MOBILE]');
+    text = text.replace(/^\*{1,2}(Mobile|Móvil|Mobil)\*{1,2}\s*$/gim, '[MOBILE]');
+    text = text.replace(/^(Mobile|Móvil|Mobil)\s*:?\s*$/gim, '[MOBILE]');
+    text = text.replace(/^#{1,3}\s*(Accessibility|Accesibilidad|Barrierefreiheit|Accessibilité|Accessibilità)\s*$/gim, '[ACCESSIBILITY]');
+    text = text.replace(/^\*{1,2}(Accessibility|Accesibilidad|Barrierefreiheit|Accessibilité|Accessibilità)\*{1,2}\s*$/gim, '[ACCESSIBILITY]');
+    text = text.replace(/^(Accessibility|Accesibilidad|Barrierefreiheit|Accessibilité|Accessibilità)\s*:?\s*$/gim, '[ACCESSIBILITY]');
+    text = text.replace(/^#{1,3}\s*(Verdict|Veredicto|Endergebnis|Verdetto)\s*$/gim, '[VERDICT]');
+    text = text.replace(/^\*{1,2}(Verdict|Veredicto|Endergebnis|Verdetto)\*{1,2}\s*$/gim, '[VERDICT]');
+    text = text.replace(/^(Verdict|Veredicto|Endergebnis|Verdetto|Verdict\s*Final|Veredicto\s*Final|Verdetto\s*Finale)\s*:?\s*$/gim, '[VERDICT]');
+
+    var sectionDefs = [
+        { id: 'analyzerDesign', patterns: ['[DESIGN]'] },
+        { id: 'analyzerSEO', patterns: ['[SEO]'] },
+        { id: 'analyzerPerformance', patterns: ['[PERFORMANCE]'] },
+        { id: 'analyzerMobile', patterns: ['[MOBILE]'] },
+        { id: 'analyzerAccessibility', patterns: ['[ACCESSIBILITY]', '[BARRIEREFREIHEIT]'] },
+        { id: 'analyzerVerdict', patterns: ['[VERDICT]'] }
+    ];
+
+    // Find positions of all sections
+    var found = [];
+    for (var i = 0; i < sectionDefs.length; i++) {
+        var def = sectionDefs[i];
+        var bestIdx = -1;
+        var bestLen = 0;
+        for (var p = 0; p < def.patterns.length; p++) {
+            var idx = text.indexOf(def.patterns[p]);
+            if (idx !== -1 && (bestIdx === -1 || idx < bestIdx)) {
+                bestIdx = idx;
+                bestLen = def.patterns[p].length;
+            }
+        }
+        found.push({ id: def.id, start: bestIdx, len: bestLen });
+    }
+
+    // Sort by position to find section boundaries
+    var sorted = found.filter(function(f) { return f.start !== -1; })
+        .sort(function(a, b) { return a.start - b.start; });
+
+    // If no markers found at all, show full response in all cards equally split
+    if (sorted.length === 0) {
+        var allCards = ['analyzerDesign', 'analyzerSEO', 'analyzerPerformance', 'analyzerMobile', 'analyzerAccessibility', 'analyzerVerdict'];
+        // Show full response in the first card, dash in the rest
+        document.getElementById(allCards[0]).querySelector('.analyzer-card-body').innerHTML = formatAnalyzerText(text);
+        for (var x = 1; x < allCards.length; x++) {
+            document.getElementById(allCards[x]).querySelector('.analyzer-card-body').innerHTML = '<p style="color:var(--gunpowder400);font-style:italic;">—</p>';
+        }
+        return;
+    }
+
+    // Extract content for each found section
+    for (var s = 0; s < sorted.length; s++) {
+        var current = sorted[s];
+        var contentStart = current.start + current.len;
+        var contentEnd = (s + 1 < sorted.length) ? sorted[s + 1].start : text.length;
+        var content = text.substring(contentStart, contentEnd).trim();
+        var el = document.getElementById(current.id);
+        el.querySelector('.analyzer-card-body').innerHTML = formatAnalyzerText(content);
+    }
+
+    // Set dash for sections not found
+    var foundIds = sorted.map(function(f) { return f.id; });
+    var allIds = ['analyzerDesign', 'analyzerSEO', 'analyzerPerformance', 'analyzerMobile', 'analyzerAccessibility', 'analyzerVerdict'];
+    for (var n = 0; n < allIds.length; n++) {
+        if (foundIds.indexOf(allIds[n]) === -1) {
+            document.getElementById(allIds[n]).querySelector('.analyzer-card-body').innerHTML = '<p style="color:var(--gunpowder400);font-style:italic;">—</p>';
+        }
+    }
+
+    // Animate verdict score circle
+    var verdictBody = document.getElementById('analyzerVerdict').querySelector('.analyzer-card-body');
+    var verdictText = verdictBody.textContent || '';
+    var scoreMatch = verdictText.match(/\b(\d+(?:\.\d+)?)\s*(?:\/\s*10)?/);
+    if (!scoreMatch) {
+        // Also check the raw sorted content for the verdict
+        for (var v = 0; v < sorted.length; v++) {
+            if (sorted[v].id === 'analyzerVerdict') {
+                var rawStart = sorted[v].start + sorted[v].len;
+                var rawEnd = (v + 1 < sorted.length) ? sorted[v + 1].start : text.length;
+                var rawContent = text.substring(rawStart, rawEnd);
+                scoreMatch = rawContent.match(/\b(\d+(?:\.\d+)?)\s*(?:\/\s*10)?/);
+                break;
+            }
+        }
+    }
+    var score = scoreMatch ? parseFloat(scoreMatch[1]) : 0;
+    if (score > 10) score = 10;
+    updateScoreCircle(score);
+}
+
+function formatAnalyzerText(content) {
+    var lines = content.split('\n');
+    var html = '<ul>';
+    var hasItems = false;
+    for (var l = 0; l < lines.length; l++) {
+        var line = lines[l].replace(/^\s*[-*•]\s*/, '').replace(/^\d+\.\s*/, '').trim();
+        // Skip empty lines and section headers
+        if (!line || /^\[.*\]$/.test(line) || /^#{1,3}\s/.test(line)) continue;
+        line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html += '<li>' + line + '</li>';
+        hasItems = true;
+    }
+    html += '</ul>';
+    return hasItems ? html : '<p style="color:var(--gunpowder400);font-style:italic;">—</p>';
+}
+
+function updateScoreCircle(score) {
+    var arc = document.getElementById('analyzerScoreArc');
+    var num = document.getElementById('analyzerScoreNumber');
+    var circumference = 2 * Math.PI * 52; // ~326.7
+    var pct = score / 10;
+    var dashLen = pct * circumference;
+
+    // Color based on score
+    var color = '#f44336'; // red
+    if (score >= 7) color = 'var(--accent-green)';
+    else if (score >= 5) color = '#ffeb3b';
+    else if (score >= 3) color = '#ff9800';
+
+    arc.style.stroke = color;
+    arc.setAttribute('stroke-dasharray', '0 ' + circumference);
+    num.textContent = '—';
+
+    // Animate after a short delay
+    setTimeout(function() {
+        arc.style.transition = 'stroke-dasharray 1s ease-out';
+        arc.setAttribute('stroke-dasharray', dashLen + ' ' + circumference);
+        // Animate number
+        var start = 0;
+        var end = score;
+        var duration = 800;
+        var startTime = null;
+        function animateNum(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var current = Math.round(progress * end * 10) / 10;
+            num.textContent = current % 1 === 0 ? current.toFixed(0) : current.toFixed(1);
+            if (progress < 1) requestAnimationFrame(animateNum);
+        }
+        requestAnimationFrame(animateNum);
+    }, 200);
+}
+
+function analyzerGoToContact() {
+    closeAnalyzerModal();
+    setTimeout(function() {
+        var el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
 }
