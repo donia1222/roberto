@@ -979,7 +979,7 @@ function calcBuildFeatureStep() {
 
     if (calcState.type === 'website') {
         document.getElementById('calcStep3Title').textContent = cT('calc.s3.title');
-        featureKeys = ['contact', 'cms', 'multilang', 'blog', 'booking', 'seo', 'analytics'];
+        featureKeys = ['contact', 'cms', 'multilang', 'blog', 'booking', 'seo', 'analytics', 'vcard'];
     } else {
         document.getElementById('calcStep3Title').textContent = cT('calc.s3.titleApp');
         featureKeys = ['auth', 'push', 'payment', 'camera', 'gps', 'chat', 'api', 'admin', 'stores'];
@@ -1018,7 +1018,8 @@ function calcComputePrice() {
         }
         var webFeaturePrices = {
             contact: [100, 200], cms: [400, 700], multilang: [400, 900],
-            blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200]
+            blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200],
+            vcard: [150, 300]
         };
         for (var i = 0; i < calcState.features.length; i++) {
             var fp = webFeaturePrices[calcState.features[i]];
@@ -1112,7 +1113,7 @@ function calcBuildWhatsAppMsg(price, tags) {
 
     var featureLabels = {
         contact: 'Kontaktformular', cms: 'CMS', multilang: 'Mehrsprachig', blog: 'Blog',
-        booking: 'Buchungssystem', seo: 'SEO', analytics: 'Analytics',
+        booking: 'Buchungssystem', seo: 'SEO', analytics: 'Analytics', vcard: 'Digitale Visitenkarte',
         auth: 'Login/Benutzer', push: 'Push-Benachrichtigungen', payment: 'In-App Zahlung',
         camera: 'Kamera/Scanner', gps: 'GPS/Standort', chat: 'Chat/Messaging',
         api: 'Backend/API', admin: 'Admin-Panel', stores: 'Store-Veröffentlichung'
