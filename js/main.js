@@ -605,11 +605,16 @@ function sendToChat() {
             saveChatHistory();
             addChatMessage(data.botReply, 'bot');
             if (voiceCallActive) {
-                voiceWaitingResponse = false;
                 var clean = data.botReply.replace(/<[^>]*>/g, '').replace(/\*\*/g, '');
                 voiceSetStatus('Antwort', clean);
                 document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
-                setTimeout(function() { if (voiceCallActive) voiceListen(); }, 3000);
+                setTimeout(function() {
+                    if (voiceCallActive) {
+                        voiceWaitingResponse = false;
+                        voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
+                        document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
+                    }
+                }, 3000);
             }
         } else if (data.message) {
             addChatMessage('Fehler: ' + data.message, 'bot');
@@ -621,9 +626,14 @@ function sendToChat() {
         hideTyping();
         addChatMessage('Verbindungsfehler. Bitte kontaktieren Sie uns direkt: <a href="mailto:info@lweb.ch">info@lweb.ch</a>', 'bot');
         if (voiceCallActive) {
-            voiceWaitingResponse = false;
             voiceSetStatus('Fehler', 'Verbindungsfehler');
-            setTimeout(function() { if (voiceCallActive) voiceListen(); }, 3000);
+            setTimeout(function() {
+                if (voiceCallActive) {
+                    voiceWaitingResponse = false;
+                    voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
+                    document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
+                }
+            }, 3000);
         }
     });
 }
@@ -712,7 +722,6 @@ function startVoiceCall() {
     voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt');
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
 
-    // Create recognition instance ONCE to avoid re-prompting for permission
     try {
         voiceRecognition = new SpeechRecognition();
     } catch(e) {
@@ -722,9 +731,10 @@ function startVoiceCall() {
     }
     voiceRecognition.lang = 'de-DE';
     voiceRecognition.interimResults = true;
-    voiceRecognition.continuous = false;
+    voiceRecognition.continuous = true;
 
     voiceRecognition.onresult = function(e) {
+        if (voiceWaitingResponse) return;
         var transcript = '';
         var isFinal = false;
         for (var i = e.resultIndex; i < e.results.length; i++) {
@@ -746,20 +756,20 @@ function startVoiceCall() {
     };
     voiceRecognition.onerror = function(e) {
         console.log('Voice error:', e.error);
-        if (voiceCallActive && !voiceWaitingResponse) {
-            voiceRestart();
-        }
     };
     voiceRecognition.onend = function() {
-        if (voiceCallActive && !voiceWaitingResponse) {
-            voiceRestart();
+        if (voiceCallActive) {
+            setTimeout(function() {
+                if (voiceCallActive && voiceRecognition) {
+                    try { voiceRecognition.start(); } catch(e) {}
+                }
+            }, 300);
         }
     };
 
     try {
         voiceRecognition.start();
     } catch(e) {
-        console.log('Voice start error:', e);
         voiceSetStatus('Fehler', 'Spracherkennung nicht verfügbar');
     }
 }
@@ -779,32 +789,6 @@ function stopVoiceCall() {
 function voiceSetStatus(status, text) {
     document.getElementById('chatbotVoiceStatus').textContent = status;
     document.getElementById('chatbotVoiceText').textContent = text || '';
-}
-
-function voiceRestart() {
-    if (!voiceCallActive || !voiceRecognition) return;
-    document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
-    voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
-    setTimeout(function() {
-        if (!voiceCallActive || !voiceRecognition) return;
-        try {
-            voiceRecognition.start();
-        } catch(e) {
-            console.log('Voice restart error:', e);
-        }
-    }, 300);
-}
-
-function voiceListen() {
-    if (!voiceCallActive || !voiceRecognition) return;
-    document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
-    voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
-    try {
-        voiceRecognition.start();
-    } catch(e) {
-        console.log('Voice listen error:', e);
-        voiceRestart();
-    }
 }
 
 // vCard download
