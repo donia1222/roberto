@@ -672,5 +672,323 @@ function closeServiceModal() {
 
 // Close on Escape
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeServiceModal();
+    if (e.key === 'Escape') {
+        closeServiceModal();
+        closePriceCalc();
+    }
 });
+
+// ===== PRICE CALCULATOR =====
+var calcState = {
+    step: 1,
+    type: '',
+    scope: '',
+    features: [],
+    design: '',
+    ai: ''
+};
+
+var calcTotalSteps = 5;
+
+function openPriceCalc() {
+    calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+    calcGoToStep(1);
+    document.getElementById('calcOverlay').classList.add('open');
+    document.getElementById('calcModal').classList.add('open');
+    document.body.classList.add('calc-open');
+    // Reset all selections
+    var opts = document.querySelectorAll('.calc-option');
+    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+    document.getElementById('calcNextBtn').disabled = true;
+}
+
+function closePriceCalc() {
+    document.getElementById('calcOverlay').classList.remove('open');
+    document.getElementById('calcModal').classList.remove('open');
+    document.body.classList.remove('calc-open');
+}
+
+function calcGoToStep(step) {
+    calcState.step = step;
+    var steps = document.querySelectorAll('.calc-step');
+    for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
+
+    var isResult = step > calcTotalSteps;
+    var targetStep = isResult ? 'result' : String(step);
+    var target = document.querySelector('.calc-step[data-step="' + targetStep + '"]');
+    if (target) target.classList.add('active');
+
+    // Progress bar
+    var pct = isResult ? 100 : (step / calcTotalSteps) * 100;
+    document.getElementById('calcProgressBar').style.width = pct + '%';
+
+    // Nav buttons
+    var backBtn = document.getElementById('calcBackBtn');
+    var nextBtn = document.getElementById('calcNextBtn');
+    var navEl = document.getElementById('calcNav');
+
+    if (isResult) {
+        navEl.style.display = 'none';
+        calcShowResult();
+    } else {
+        navEl.style.display = 'flex';
+        backBtn.classList.toggle('visible', step > 1);
+        nextBtn.disabled = !calcStepValid(step);
+
+        if (step === calcTotalSteps) {
+            nextBtn.textContent = 'Berechnen';
+            nextBtn.innerHTML = 'Berechnen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+        } else {
+            nextBtn.innerHTML = 'Weiter <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+        }
+    }
+
+    // Build dynamic steps
+    if (step === 2) calcBuildScopeStep();
+    if (step === 3) calcBuildFeatureStep();
+}
+
+function calcStepValid(step) {
+    switch (step) {
+        case 1: return calcState.type !== '';
+        case 2: return calcState.scope !== '';
+        case 3: return true; // features optional
+        case 4: return calcState.design !== '';
+        case 5: return calcState.ai !== '';
+        default: return true;
+    }
+}
+
+function calcNext() {
+    if (!calcStepValid(calcState.step)) return;
+    calcGoToStep(calcState.step + 1);
+}
+
+function calcBack() {
+    if (calcState.step > 1) calcGoToStep(calcState.step - 1);
+}
+
+function calcSelectType(el) {
+    var siblings = el.parentNode.querySelectorAll('.calc-option');
+    for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
+    el.classList.add('selected');
+    calcState.type = el.getAttribute('data-value');
+    calcState.scope = '';
+    calcState.features = [];
+    document.getElementById('calcNextBtn').disabled = false;
+}
+
+function calcSelectSingle(el, field) {
+    var siblings = el.parentNode.querySelectorAll('.calc-option');
+    for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
+    el.classList.add('selected');
+    calcState[field] = el.getAttribute('data-value');
+    document.getElementById('calcNextBtn').disabled = false;
+}
+
+function calcToggleFeature(el) {
+    el.classList.toggle('selected');
+    var val = el.getAttribute('data-value');
+    var idx = calcState.features.indexOf(val);
+    if (idx > -1) {
+        calcState.features.splice(idx, 1);
+    } else {
+        calcState.features.push(val);
+    }
+    // Features are optional so always valid
+    document.getElementById('calcNextBtn').disabled = false;
+}
+
+// Dynamic scope options
+function calcBuildScopeStep() {
+    var container = document.getElementById('calcScopeOptions');
+    container.innerHTML = '';
+    var options = [];
+    var title = '';
+    var desc = '';
+
+    if (calcState.type === 'website') {
+        title = 'Welchen Typ Website brauchen Sie?';
+        desc = 'Wählen Sie den Typ, der am besten passt.';
+        options = [
+            { value: 'landing', label: 'Landing Page', desc: 'Eine einzelne Seite, z.B. für Kampagnen', icon: 'scope' },
+            { value: 'small', label: 'Kleine Website', desc: '1–3 Seiten, z.B. Portfolio oder Restaurant', icon: 'scope' },
+            { value: 'medium', label: 'Mittlere Website', desc: '4–7 Seiten mit mehreren Bereichen', icon: 'scope' },
+            { value: 'large', label: 'Grosse Website', desc: '8+ Seiten, umfangreich mit vielen Inhalten', icon: 'scope' },
+            { value: 'shop', label: 'Online-Shop', desc: 'E-Commerce mit Produkten und Zahlung', icon: 'scope' }
+        ];
+    } else {
+        title = 'Wie komplex ist Ihre App?';
+        desc = 'Schätzen Sie den ungefähren Umfang.';
+        options = [
+            { value: 'simple', label: 'Einfache App', desc: 'Wenige Screens, grundlegende Funktionen', icon: 'scope' },
+            { value: 'medium', label: 'Mittlere App', desc: 'Mehrere Screens, Benutzerkonten, API', icon: 'scope' },
+            { value: 'complex', label: 'Komplexe App', desc: 'Viele Features, Backend, Echtzeit-Daten', icon: 'scope' }
+        ];
+    }
+
+    document.getElementById('calcStep2Title').textContent = title;
+    document.getElementById('calcStep2Desc').textContent = desc;
+
+    for (var i = 0; i < options.length; i++) {
+        var o = options[i];
+        var btn = document.createElement('button');
+        btn.className = 'calc-option';
+        btn.setAttribute('data-value', o.value);
+        if (calcState.scope === o.value) btn.classList.add('selected');
+        btn.innerHTML =
+            '<div class="calc-option-icon calc-option-icon--' + o.icon + '">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>' +
+            '</div>' +
+            '<div class="calc-option-text"><strong>' + o.label + '</strong><span>' + o.desc + '</span></div>' +
+            '<div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
+        btn.onclick = (function(b) { return function() { calcSelectSingle(b, 'scope'); }; })(btn);
+        container.appendChild(btn);
+    }
+}
+
+// Dynamic feature options
+function calcBuildFeatureStep() {
+    var container = document.getElementById('calcFeatureOptions');
+    container.innerHTML = '';
+    var options = [];
+
+    if (calcState.type === 'website') {
+        document.getElementById('calcStep3Title').textContent = 'Welche Funktionen brauchen Sie?';
+        options = [
+            { value: 'contact', label: 'Kontaktformular', desc: 'Anfragen direkt per E-Mail erhalten' },
+            { value: 'cms', label: 'CMS / Admin-Panel', desc: 'Inhalte selbst verwalten und bearbeiten' },
+            { value: 'multilang', label: 'Mehrsprachig', desc: 'Website in mehreren Sprachen' },
+            { value: 'blog', label: 'Blog', desc: 'Regelmässige Beiträge und Artikel' },
+            { value: 'booking', label: 'Buchungssystem', desc: 'Termine oder Reservierungen online' },
+            { value: 'seo', label: 'SEO-Paket', desc: 'Erweiterte Suchmaschinen-Optimierung' },
+            { value: 'analytics', label: 'Analytics', desc: 'Besucherstatistiken und Tracking' }
+        ];
+    } else {
+        document.getElementById('calcStep3Title').textContent = 'Welche App-Funktionen brauchen Sie?';
+        options = [
+            { value: 'auth', label: 'Login & Benutzerkonten', desc: 'Registrierung, Anmeldung, Profile' },
+            { value: 'push', label: 'Push-Benachrichtigungen', desc: 'Mitteilungen direkt aufs Handy' },
+            { value: 'payment', label: 'In-App Bezahlung', desc: 'Stripe, Apple Pay, Google Pay' },
+            { value: 'camera', label: 'Kamera / Scanner', desc: 'Fotos, QR-Codes, Barcode-Scanner' },
+            { value: 'gps', label: 'GPS / Standort', desc: 'Karten, Navigation, Geolocation' },
+            { value: 'chat', label: 'Chat / Messaging', desc: 'Echtzeit-Kommunikation zwischen Nutzern' },
+            { value: 'api', label: 'Backend / API', desc: 'Server, Datenbank, REST-API' },
+            { value: 'admin', label: 'Admin-Panel (Web)', desc: 'Web-Dashboard zur Verwaltung' },
+            { value: 'stores', label: 'Store-Veröffentlichung', desc: 'App Store & Play Store Einreichung' }
+        ];
+    }
+
+    for (var i = 0; i < options.length; i++) {
+        var o = options[i];
+        var btn = document.createElement('button');
+        btn.className = 'calc-option';
+        btn.setAttribute('data-value', o.value);
+        if (calcState.features.indexOf(o.value) > -1) btn.classList.add('selected');
+        btn.innerHTML =
+            '<div class="calc-option-icon calc-option-icon--feature">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>' +
+            '</div>' +
+            '<div class="calc-option-text"><strong>' + o.label + '</strong><span>' + o.desc + '</span></div>' +
+            '<div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
+        btn.onclick = (function(b) { return function() { calcToggleFeature(b); }; })(btn);
+        container.appendChild(btn);
+    }
+}
+
+// Price calculation logic
+function calcComputePrice() {
+    var min = 0;
+    var max = 0;
+    var weeks = '';
+
+    if (calcState.type === 'website') {
+        // Base prices by scope
+        switch (calcState.scope) {
+            case 'landing': min = 950; max = 1500; weeks = '1–2 Wochen'; break;
+            case 'small':   min = 1200; max = 2200; weeks = '2–3 Wochen'; break;
+            case 'medium':  min = 2200; max = 3800; weeks = '3–5 Wochen'; break;
+            case 'large':   min = 3800; max = 6500; weeks = '5–8 Wochen'; break;
+            case 'shop':    min = 3500; max = 7500; weeks = '5–9 Wochen'; break;
+        }
+        // Feature additions
+        var webFeaturePrices = {
+            contact: [100, 200], cms: [400, 700], multilang: [400, 900],
+            blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200]
+        };
+        for (var i = 0; i < calcState.features.length; i++) {
+            var fp = webFeaturePrices[calcState.features[i]];
+            if (fp) { min += fp[0]; max += fp[1]; }
+        }
+    } else {
+        // App base prices
+        var isCombo = calcState.type === 'app-landing';
+        switch (calcState.scope) {
+            case 'simple':  min = 4500; max = 7500; weeks = '4–6 Wochen'; break;
+            case 'medium':  min = 7500; max = 14000; weeks = '6–10 Wochen'; break;
+            case 'complex': min = 14000; max = 25000; weeks = '10–16 Wochen'; break;
+        }
+        // Feature additions
+        var appFeaturePrices = {
+            auth: [500, 900], push: [300, 600], payment: [900, 1800],
+            camera: [400, 800], gps: [400, 800], chat: [1200, 2500],
+            api: [1500, 3500], admin: [1500, 3000], stores: [300, 600]
+        };
+        for (var i = 0; i < calcState.features.length; i++) {
+            var ap = appFeaturePrices[calcState.features[i]];
+            if (ap) { min += ap[0]; max += ap[1]; }
+        }
+        // Add landing page cost for combo
+        if (isCombo) { min += 950; max += 2000; }
+    }
+
+    // Design cost
+    switch (calcState.design) {
+        case 'ready': break;
+        case 'idea': min += 300; max += 600; break;
+        case 'scratch': min += 600; max += 1500; break;
+    }
+
+    // AI cost
+    if (calcState.ai === 'yes') { min += 1500; max += 3500; }
+    if (calcState.ai === 'maybe') { min += 500; max += 1500; }
+
+    return { min: min, max: max, weeks: weeks };
+}
+
+function calcFormatCHF(n) {
+    return 'CHF ' + n.toLocaleString('de-CH');
+}
+
+function calcShowResult() {
+    var price = calcComputePrice();
+
+    // Summary tags
+    var summaryEl = document.getElementById('calcResultSummary');
+    var tags = [];
+    var typeLabel = { website: 'Website', app: 'Mobile App', 'app-landing': 'App + Landing' };
+    tags.push(typeLabel[calcState.type] || calcState.type);
+
+    var scopeLabels = {
+        landing: 'Landing Page', small: 'Klein (1–3 S.)', medium: 'Mittel',
+        large: 'Gross (8+ S.)', shop: 'Online-Shop',
+        simple: 'Einfach', complex: 'Komplex'
+    };
+    if (scopeLabels[calcState.scope]) tags.push(scopeLabels[calcState.scope]);
+    if (calcState.features.length > 0) tags.push(calcState.features.length + ' Features');
+    if (calcState.ai === 'yes') tags.push('Mit KI');
+    if (calcState.design === 'scratch') tags.push('Neues Design');
+
+    summaryEl.innerHTML = '';
+    for (var i = 0; i < tags.length; i++) {
+        summaryEl.innerHTML += '<span class="calc-result-tag">' + tags[i] + '</span>';
+    }
+
+    // Price
+    document.getElementById('calcResultPrice').textContent = calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max);
+
+    // Time
+    document.getElementById('calcResultTime').innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+        'Geschätzte Dauer: ' + price.weeks;
+}
