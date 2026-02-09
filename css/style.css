@@ -2053,10 +2053,33 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 }
 .chatbot-voice-text {
     font-size: 14px;
-    color: var(--gunpowder400);
+    color: var(--gunpowder300);
     text-align: center;
-    max-width: 280px;
+    max-width: 300px;
     min-height: 40px;
+    line-height: 1.6;
+    max-height: 120px;
+    overflow-y: auto;
+}
+.chatbot-voice-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 1000px;
+    border: 1px solid var(--gunpowder600);
+    background: transparent;
+    color: var(--gunpowder400);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 200ms ease;
+    margin-top: 16px;
+}
+.chatbot-voice-back:hover {
+    border-color: #fff;
+    color: #fff;
 }
 
 body.chatbot-open {

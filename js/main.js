@@ -589,7 +589,7 @@ var voiceCallActive = false;
 // --- Mic button (input area) ---
 function toggleMic() {
     if (!SpeechRecognition) {
-        alert('Ihr Browser unterstützt keine Spracherkennung.');
+        alert('Spracherkennung wird von diesem Browser nicht unterstützt. Bitte verwenden Sie Chrome oder Safari.');
         return;
     }
     if (micActive) {
@@ -600,7 +600,12 @@ function toggleMic() {
 }
 
 function startMic() {
-    micRecognition = new SpeechRecognition();
+    try {
+        micRecognition = new SpeechRecognition();
+    } catch(e) {
+        alert('Spracherkennung konnte nicht gestartet werden.');
+        return;
+    }
     micRecognition.lang = 'de-DE';
     micRecognition.interimResults = true;
     micRecognition.continuous = false;
@@ -619,9 +624,19 @@ function startMic() {
             sendChatMessage();
         }
     };
-    micRecognition.onerror = function() { stopMic(); };
-    micRecognition.onend = function() { stopMic(); };
-    micRecognition.start();
+    micRecognition.onerror = function(e) {
+        console.log('Mic error:', e.error);
+        stopMic();
+    };
+    micRecognition.onend = function() {
+        if (micActive) stopMic();
+    };
+    try {
+        micRecognition.start();
+    } catch(e) {
+        console.log('Mic start error:', e);
+        stopMic();
+    }
 }
 
 function stopMic() {
@@ -675,13 +690,18 @@ function voiceSetStatus(status, text) {
 
 function voiceListen() {
     if (!voiceCallActive) return;
-    voiceRecognition = new SpeechRecognition();
+    try {
+        voiceRecognition = new SpeechRecognition();
+    } catch(e) {
+        voiceSetStatus('Fehler', 'Spracherkennung nicht verfügbar');
+        return;
+    }
     voiceRecognition.lang = 'de-DE';
     voiceRecognition.interimResults = true;
     voiceRecognition.continuous = false;
 
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
-    voiceSetStatus('Zuhören...', '');
+    voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
 
     voiceRecognition.onresult = function(e) {
         var transcript = '';
@@ -690,19 +710,20 @@ function voiceListen() {
             transcript += e.results[i][0].transcript;
             if (e.results[i].isFinal) isFinal = true;
         }
-        voiceSetStatus('Zuhören...', transcript);
+        voiceSetStatus('Zuhören...', '«' + transcript + '»');
         if (isFinal && transcript.trim()) {
             document.getElementById('chatbotSuggestions').style.display = 'none';
             addChatMessage(transcript.trim(), 'user');
             chatbotMessages.push({ role: 'user', content: transcript.trim() });
             saveChatHistory();
-            voiceSetStatus('Verarbeiten...', transcript.trim());
+            voiceSetStatus('Verarbeiten...', '«' + transcript.trim() + '»');
             document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
             sendToChat();
         }
     };
     voiceRecognition.onerror = function(e) {
-        if (e.error === 'no-speech' && voiceCallActive) {
+        console.log('Voice error:', e.error);
+        if (voiceCallActive) {
             voiceListenAfterSpeak();
         }
     };
@@ -711,7 +732,12 @@ function voiceListen() {
             voiceListenAfterSpeak();
         }
     };
-    voiceRecognition.start();
+    try {
+        voiceRecognition.start();
+    } catch(e) {
+        console.log('Voice start error:', e);
+        if (voiceCallActive) voiceListenAfterSpeak();
+    }
 }
 
 function voiceListenAfterSpeak() {
@@ -734,7 +760,7 @@ function speakText(text) {
     utter.pitch = 1;
 
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle speaking';
-    voiceSetStatus('Antwort...', '');
+    voiceSetStatus('Antwort...', clean);
 
     utter.onend = function() {
         if (voiceCallActive) {
