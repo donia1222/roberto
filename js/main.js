@@ -529,7 +529,6 @@ function sendChatMessage() {
     var text = input.value.trim();
     if (!text) return;
     input.value = '';
-    input.style.height = 'auto';
     document.getElementById('chatbotSuggestions').style.display = 'none';
     addChatMessage(text, 'user');
     chatbotMessages.push({ role: 'user', content: text });
@@ -606,6 +605,7 @@ function sendToChat() {
             saveChatHistory();
             addChatMessage(data.botReply, 'bot');
             if (voiceCallActive) {
+                voiceWaitingResponse = false;
                 var clean = data.botReply.replace(/<[^>]*>/g, '').replace(/\*\*/g, '');
                 voiceSetStatus('Antwort', clean);
                 document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
@@ -621,6 +621,7 @@ function sendToChat() {
         hideTyping();
         addChatMessage('Verbindungsfehler. Bitte kontaktieren Sie uns direkt: <a href="mailto:info@lweb.ch">info@lweb.ch</a>', 'bot');
         if (voiceCallActive) {
+            voiceWaitingResponse = false;
             voiceSetStatus('Fehler', 'Verbindungsfehler');
             setTimeout(function() { if (voiceCallActive) voiceListen(); }, 3000);
         }
@@ -633,6 +634,7 @@ var micRecognition = null;
 var voiceRecognition = null;
 var micActive = false;
 var voiceCallActive = false;
+var voiceWaitingResponse = false;
 
 // --- Mic button (input area) ---
 function toggleMic() {
@@ -704,15 +706,67 @@ function toggleVoiceCall() {
 
 function startVoiceCall() {
     voiceCallActive = true;
+    voiceWaitingResponse = false;
     document.getElementById('chatbotMicBtn').classList.add('recording');
     document.getElementById('chatbotVoiceOverlay').classList.add('active');
     voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt');
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
-    voiceListen();
+
+    // Create recognition instance ONCE to avoid re-prompting for permission
+    try {
+        voiceRecognition = new SpeechRecognition();
+    } catch(e) {
+        voiceSetStatus('Fehler', 'Spracherkennung nicht verfügbar');
+        stopVoiceCall();
+        return;
+    }
+    voiceRecognition.lang = 'de-DE';
+    voiceRecognition.interimResults = true;
+    voiceRecognition.continuous = false;
+
+    voiceRecognition.onresult = function(e) {
+        var transcript = '';
+        var isFinal = false;
+        for (var i = e.resultIndex; i < e.results.length; i++) {
+            transcript += e.results[i][0].transcript;
+            if (e.results[i].isFinal) isFinal = true;
+        }
+        voiceSetStatus('Zuhören...', '«' + transcript + '»');
+        if (isFinal && transcript.trim()) {
+            voiceWaitingResponse = true;
+            document.getElementById('chatbotSuggestions').style.display = 'none';
+            addChatMessage(transcript.trim(), 'user');
+            chatbotMessages.push({ role: 'user', content: transcript.trim() });
+            document.querySelector('.chatbot-clear').style.display = 'inline-flex';
+            saveChatHistory();
+            voiceSetStatus('Verarbeiten...', '«' + transcript.trim() + '»');
+            document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
+            sendToChat();
+        }
+    };
+    voiceRecognition.onerror = function(e) {
+        console.log('Voice error:', e.error);
+        if (voiceCallActive && !voiceWaitingResponse) {
+            voiceRestart();
+        }
+    };
+    voiceRecognition.onend = function() {
+        if (voiceCallActive && !voiceWaitingResponse) {
+            voiceRestart();
+        }
+    };
+
+    try {
+        voiceRecognition.start();
+    } catch(e) {
+        console.log('Voice start error:', e);
+        voiceSetStatus('Fehler', 'Spracherkennung nicht verfügbar');
+    }
 }
 
 function stopVoiceCall() {
     voiceCallActive = false;
+    voiceWaitingResponse = false;
     document.getElementById('chatbotMicBtn').classList.remove('recording');
     document.getElementById('chatbotVoiceOverlay').classList.remove('active');
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
@@ -727,63 +781,30 @@ function voiceSetStatus(status, text) {
     document.getElementById('chatbotVoiceText').textContent = text || '';
 }
 
-function voiceListen() {
-    if (!voiceCallActive) return;
-    try {
-        voiceRecognition = new SpeechRecognition();
-    } catch(e) {
-        voiceSetStatus('Fehler', 'Spracherkennung nicht verfügbar');
-        return;
-    }
-    voiceRecognition.lang = 'de-DE';
-    voiceRecognition.interimResults = true;
-    voiceRecognition.continuous = false;
-
+function voiceRestart() {
+    if (!voiceCallActive || !voiceRecognition) return;
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
     voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
+    setTimeout(function() {
+        if (!voiceCallActive || !voiceRecognition) return;
+        try {
+            voiceRecognition.start();
+        } catch(e) {
+            console.log('Voice restart error:', e);
+        }
+    }, 300);
+}
 
-    voiceRecognition.onresult = function(e) {
-        var transcript = '';
-        var isFinal = false;
-        for (var i = e.resultIndex; i < e.results.length; i++) {
-            transcript += e.results[i][0].transcript;
-            if (e.results[i].isFinal) isFinal = true;
-        }
-        voiceSetStatus('Zuhören...', '«' + transcript + '»');
-        if (isFinal && transcript.trim()) {
-            document.getElementById('chatbotSuggestions').style.display = 'none';
-            addChatMessage(transcript.trim(), 'user');
-            chatbotMessages.push({ role: 'user', content: transcript.trim() });
-            saveChatHistory();
-            voiceSetStatus('Verarbeiten...', '«' + transcript.trim() + '»');
-            document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
-            sendToChat();
-        }
-    };
-    voiceRecognition.onerror = function(e) {
-        console.log('Voice error:', e.error);
-        if (voiceCallActive) {
-            voiceListenAfterSpeak();
-        }
-    };
-    voiceRecognition.onend = function() {
-        if (voiceCallActive) {
-            voiceListenAfterSpeak();
-        }
-    };
+function voiceListen() {
+    if (!voiceCallActive || !voiceRecognition) return;
+    document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
+    voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt...');
     try {
         voiceRecognition.start();
     } catch(e) {
-        console.log('Voice start error:', e);
-        if (voiceCallActive) voiceListenAfterSpeak();
+        console.log('Voice listen error:', e);
+        voiceRestart();
     }
-}
-
-function voiceListenAfterSpeak() {
-    if (!voiceCallActive) return;
-    setTimeout(function() {
-        if (voiceCallActive) voiceListen();
-    }, 500);
 }
 
 // vCard download
