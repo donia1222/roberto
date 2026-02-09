@@ -2085,11 +2085,12 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     z-index: 5;
     opacity: 0;
     pointer-events: none;
     transition: opacity 300ms ease;
+    padding: 16px;
 }
 .chatbot-voice-overlay.active {
     opacity: 1;
@@ -2104,6 +2105,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     align-items: center;
     justify-content: center;
     transition: all 300ms ease;
+    margin-top: 140px;
 }
 .chatbot-voice-circle svg {
     width: 48px;
@@ -2135,24 +2137,27 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     max-width: 300px;
     min-height: 40px;
     line-height: 1.6;
-    max-height: 120px;
+    flex: 1;
     overflow-y: auto;
+    padding-bottom: 24px;
 }
 .chatbot-voice-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 24px;
+    padding: 8px 16px;
     border-radius: 1000px;
     border: 1px solid var(--gunpowder600);
     background: transparent;
     color: var(--gunpowder400);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     font-family: 'Plus Jakarta Sans', Arial, sans-serif;
     cursor: pointer;
     transition: all 200ms ease;
-    margin-top: 16px;
 }
 .chatbot-voice-back:hover {
     border-color: #fff;
