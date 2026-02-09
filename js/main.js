@@ -590,7 +590,7 @@ function downloadVCard() {
                     'FN:Lweb Schweiz\n' +
                     'ORG:Lweb\n' +
                     'TITLE:App & Web Entwicklung\n' +
-                    'ADR:;;Buchs;Buchs;SG;9471;Switzerland\n' +
+                    'ADR:;;Sevelen;Sevelen;SG;9475;Switzerland\n' +
                     'TEL:+41765608645\n' +
                     'EMAIL:info@lweb.ch\n' +
                     'URL:https://lweb.ch\n' +
@@ -622,7 +622,7 @@ function downloadVCardNoImage() {
         'FN:Lweb Schweiz\n' +
         'ORG:Lweb\n' +
         'TITLE:App & Web Entwicklung\n' +
-        'ADR:;;Buchs;Buchs;SG;9471;Switzerland\n' +
+        'ADR:;;Sevelen;Sevelen;SG;9475;Switzerland\n' +
         'TEL:+41765608645\n' +
         'EMAIL:info@lweb.ch\n' +
         'URL:https://lweb.ch\n' +
