@@ -41,11 +41,15 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 // Smooth scroll for nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        try {
+            var target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } catch(err) {}
     });
 });
 
@@ -767,9 +771,7 @@ function calcRenderResultLabels() {
     var resultStep = document.querySelector('.calc-step[data-step="result"]');
     resultStep.querySelector('.calc-result h3').textContent = cT('calc.result.title');
     resultStep.querySelector('.calc-result-note').textContent = cT('calc.result.note');
-    resultStep.querySelector('.gbcta--primary').innerHTML =
-        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> ' +
-        cT('calc.result.cta');
+    document.getElementById('calcResultWhatsapp').textContent = cT('calc.result.whatsapp');
 }
 
 function calcGoToStep(step) {
@@ -1028,4 +1030,65 @@ function calcShowResult() {
     document.getElementById('calcResultTime').innerHTML =
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
         cT('calc.result.duration') + ': ' + price.weeksRange + ' ' + cT('calc.weeks');
+
+    // Build WhatsApp message with all selected data
+    var msg = calcBuildWhatsAppMsg(price, tags);
+    calcState.waUrl = 'https://wa.me/41765608645?text=' + encodeURIComponent(msg);
+}
+
+function calcOpenWhatsApp() {
+    if (calcState.waUrl) {
+        window.open(calcState.waUrl, '_blank');
+    }
+}
+
+function calcBuildWhatsAppMsg(price, tags) {
+    var typeLabels = { website: 'Website', app: 'Mobile App', 'app-landing': 'App + Landing Page' };
+    var scopeLabels = {
+        landing: 'Landing Page', small: 'Kleine Website (1-3 Seiten)',
+        medium: 'Mittlere Website (4-7 Seiten)', large: 'Grosse Website (8+ Seiten)',
+        shop: 'Online-Shop', simple: 'Einfache App', complex: 'Komplexe App'
+    };
+    if (calcState.scope === 'medium' && calcState.type !== 'website') scopeLabels.medium = 'Mittlere App';
+
+    var featureLabels = {
+        contact: 'Kontaktformular', cms: 'CMS', multilang: 'Mehrsprachig', blog: 'Blog',
+        booking: 'Buchungssystem', seo: 'SEO', analytics: 'Analytics',
+        auth: 'Login/Benutzer', push: 'Push-Benachrichtigungen', payment: 'In-App Zahlung',
+        camera: 'Kamera/Scanner', gps: 'GPS/Standort', chat: 'Chat/Messaging',
+        api: 'Backend/API', admin: 'Admin-Panel', stores: 'Store-Veröffentlichung'
+    };
+    var designLabels = { ready: 'Design vorhanden', idea: 'Ungefähre Vorstellung', scratch: 'Design von Grund auf' };
+    var aiLabels = { yes: 'Ja', no: 'Nein', maybe: 'Unsicher' };
+
+    var lines = [];
+    lines.push('Hallo! Ich habe den Preisrechner auf lweb.ch benutzt. Hier meine Angaben:');
+    lines.push('');
+    lines.push('Projekt: ' + (typeLabels[calcState.type] || calcState.type));
+    lines.push('Umfang: ' + (scopeLabels[calcState.scope] || calcState.scope));
+
+    if (calcState.features.length > 0) {
+        var fList = [];
+        for (var i = 0; i < calcState.features.length; i++) {
+            fList.push(featureLabels[calcState.features[i]] || calcState.features[i]);
+        }
+        lines.push('Funktionen: ' + fList.join(', '));
+    }
+
+    lines.push('Design: ' + (designLabels[calcState.design] || calcState.design));
+    lines.push('KI: ' + (aiLabels[calcState.ai] || calcState.ai));
+    lines.push('');
+    lines.push('Geschätztes Budget: ' + calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max));
+    lines.push('Geschätzte Dauer: ' + price.weeksRange + ' Wochen');
+    lines.push('');
+    lines.push('Ich freue mich auf Ihre Rückmeldung!');
+
+    return lines.join('\n');
+}
+
+function calcGoToContact() {
+    closePriceCalc();
+    setTimeout(function() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
 }

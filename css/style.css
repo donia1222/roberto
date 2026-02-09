@@ -2519,17 +2519,27 @@ body.svc-modal-open {
     align-items: center;
     gap: 12px;
 }
-.calc-result-phone {
+.calc-result-whatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--gunpowder400);
-    transition: color 200ms ease;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: #25D366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
 }
-.calc-result-phone:hover {
-    color: var(--cerulean500);
+.calc-result-whatsapp:hover {
+    background: #20bd5a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    color: #fff;
 }
 
 body.calc-open {

@@ -283,6 +283,7 @@ var translations = {
         'calc.scope.simpleLabel': 'Einfach',
         'calc.scope.complexLabel': 'Komplex',
         'calc.weeks': 'Wochen',
+        'calc.result.whatsapp': 'Per WhatsApp kontaktieren',
     },
     en: {
         'nav.services': 'Services',
@@ -552,6 +553,7 @@ var translations = {
         'calc.scope.simpleLabel': 'Simple',
         'calc.scope.complexLabel': 'Complex',
         'calc.weeks': 'weeks',
+        'calc.result.whatsapp': 'Contact via WhatsApp',
     },
     es: {
         'nav.services': 'Servicios',
@@ -821,6 +823,7 @@ var translations = {
         'calc.scope.simpleLabel': 'Sencilla',
         'calc.scope.complexLabel': 'Compleja',
         'calc.weeks': 'semanas',
+        'calc.result.whatsapp': 'Contactar por WhatsApp',
     },
     fr: {
         'nav.services': 'Services',
@@ -1090,6 +1093,7 @@ var translations = {
         'calc.scope.simpleLabel': 'Simple',
         'calc.scope.complexLabel': 'Complexe',
         'calc.weeks': 'semaines',
+        'calc.result.whatsapp': 'Contacter par WhatsApp',
     },
     it: {
         'nav.services': 'Servizi',
@@ -1359,5 +1363,6 @@ var translations = {
         'calc.scope.simpleLabel': 'Semplice',
         'calc.scope.complexLabel': 'Complessa',
         'calc.weeks': 'settimane',
+        'calc.result.whatsapp': 'Contattare via WhatsApp',
     }
 };
