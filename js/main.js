@@ -573,7 +573,7 @@ function sendToChat() {
 
 // vCard download
 function downloadVCard() {
-    var imageUrl = 'https://web.lweb.ch/logolweb.png';
+    var imageUrl = 'img/logolweb.png';
 
     fetch(imageUrl)
         .then(function(res) {
