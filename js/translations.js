@@ -286,6 +286,13 @@ var translations = {
         'calc.scope.complexLabel': 'Komplex',
         'calc.weeks': 'Wochen',
         'calc.result.whatsapp': 'Per WhatsApp kontaktieren',
+        // Chat Welcome
+        'chat.welcome.title': 'Hallo! Wie möchten Sie kommunizieren?',
+        'chat.welcome.desc': 'Wählen Sie Ihre bevorzugte Methode',
+        'chat.welcome.write': 'Schreiben',
+        'chat.welcome.writeDesc': 'Nachrichten tippen',
+        'chat.welcome.speak': 'Sprechen',
+        'chat.welcome.speakDesc': 'Per Stimme kommunizieren',
     },
     en: {
         'nav.services': 'Services',
@@ -558,6 +565,13 @@ var translations = {
         'calc.scope.complexLabel': 'Complex',
         'calc.weeks': 'weeks',
         'calc.result.whatsapp': 'Contact via WhatsApp',
+        // Chat Welcome
+        'chat.welcome.title': 'Hello! How would you like to communicate?',
+        'chat.welcome.desc': 'Choose your preferred method',
+        'chat.welcome.write': 'Write',
+        'chat.welcome.writeDesc': 'Type messages',
+        'chat.welcome.speak': 'Speak',
+        'chat.welcome.speakDesc': 'Communicate by voice',
     },
     es: {
         'nav.services': 'Servicios',
@@ -830,6 +844,13 @@ var translations = {
         'calc.scope.complexLabel': 'Compleja',
         'calc.weeks': 'semanas',
         'calc.result.whatsapp': 'Contactar por WhatsApp',
+        // Chat Welcome
+        'chat.welcome.title': '¡Hola! ¿Cómo desea comunicarse?',
+        'chat.welcome.desc': 'Elija su método preferido',
+        'chat.welcome.write': 'Escribir',
+        'chat.welcome.writeDesc': 'Escribir mensajes',
+        'chat.welcome.speak': 'Hablar',
+        'chat.welcome.speakDesc': 'Comunicarse por voz',
     },
     fr: {
         'nav.services': 'Services',
@@ -1102,6 +1123,13 @@ var translations = {
         'calc.scope.complexLabel': 'Complexe',
         'calc.weeks': 'semaines',
         'calc.result.whatsapp': 'Contacter par WhatsApp',
+        // Chat Welcome
+        'chat.welcome.title': 'Bonjour ! Comment souhaitez-vous communiquer ?',
+        'chat.welcome.desc': 'Choisissez votre méthode préférée',
+        'chat.welcome.write': 'Écrire',
+        'chat.welcome.writeDesc': 'Taper des messages',
+        'chat.welcome.speak': 'Parler',
+        'chat.welcome.speakDesc': 'Communiquer par la voix',
     },
     it: {
         'nav.services': 'Servizi',
@@ -1374,5 +1402,12 @@ var translations = {
         'calc.scope.complexLabel': 'Complessa',
         'calc.weeks': 'settimane',
         'calc.result.whatsapp': 'Contattare via WhatsApp',
+        // Chat Welcome
+        'chat.welcome.title': 'Ciao! Come desidera comunicare?',
+        'chat.welcome.desc': 'Scelga il metodo preferito',
+        'chat.welcome.write': 'Scrivere',
+        'chat.welcome.writeDesc': 'Digitare messaggi',
+        'chat.welcome.speak': 'Parlare',
+        'chat.welcome.speakDesc': 'Comunicare a voce',
     }
 };

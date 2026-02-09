@@ -441,11 +441,45 @@ function openChatFromMenu() {
     setTimeout(function() { openChatBot(); }, 350);
 }
 
+var chatModeChosen = false;
+
 function openChatBot() {
     document.getElementById('chatbotOverlay').classList.add('open');
     document.getElementById('chatbotModal').classList.add('open');
     document.body.classList.add('chatbot-open');
-    if (window.innerWidth > 768) document.getElementById('chatbotInput').focus();
+
+    // Show welcome if no mode chosen yet and no chat history
+    if (!chatModeChosen && chatbotMessages.length === 0) {
+        document.getElementById('chatbotWelcome').style.display = 'flex';
+        document.getElementById('chatbotMessages').style.display = 'none';
+        document.getElementById('chatbotSuggestions').style.display = 'none';
+        document.querySelector('.chatbot-input-area').style.display = 'none';
+        document.querySelector('.chatbot-clear').style.display = 'none';
+    } else {
+        showChatView();
+    }
+}
+
+function chooseChatMode(mode) {
+    chatModeChosen = true;
+    document.getElementById('chatbotWelcome').style.display = 'none';
+    if (mode === 'voice') {
+        showChatView();
+        startVoiceCall();
+    } else {
+        showChatView();
+        if (window.innerWidth > 768) document.getElementById('chatbotInput').focus();
+    }
+}
+
+function showChatView() {
+    document.getElementById('chatbotWelcome').style.display = 'none';
+    document.getElementById('chatbotMessages').style.display = 'flex';
+    document.querySelector('.chatbot-input-area').style.display = 'flex';
+    document.querySelector('.chatbot-clear').style.display = chatbotMessages.length > 0 ? 'inline-flex' : 'none';
+    if (chatbotMessages.length === 0) {
+        document.getElementById('chatbotSuggestions').style.display = 'flex';
+    }
     // Restore saved messages in UI
     var container = document.getElementById('chatbotMessages');
     if (container.children.length <= 1 && chatbotMessages.length > 0) {
@@ -468,16 +502,24 @@ function closeChatBot() {
 
 function clearChat() {
     chatbotMessages = [];
+    chatModeChosen = false;
     localStorage.removeItem('lweb_chat_history');
+    if (voiceCallActive) stopVoiceCall();
     var container = document.getElementById('chatbotMessages');
     container.innerHTML = '<div class="chatbot-msg chatbot-msg--bot"><p>Hallo! Wie kann ich Ihnen helfen? 👋</p></div>';
-    document.getElementById('chatbotSuggestions').style.display = 'flex';
+    // Show welcome screen again
+    document.getElementById('chatbotWelcome').style.display = 'flex';
+    document.getElementById('chatbotMessages').style.display = 'none';
+    document.getElementById('chatbotSuggestions').style.display = 'none';
+    document.querySelector('.chatbot-input-area').style.display = 'none';
+    document.querySelector('.chatbot-clear').style.display = 'none';
 }
 
 function sendSuggestion(text) {
     document.getElementById('chatbotSuggestions').style.display = 'none';
     addChatMessage(text, 'user');
     chatbotMessages.push({ role: 'user', content: text });
+    document.querySelector('.chatbot-clear').style.display = 'inline-flex';
     saveChatHistory();
     sendToChat();
 }
@@ -487,9 +529,11 @@ function sendChatMessage() {
     var text = input.value.trim();
     if (!text) return;
     input.value = '';
+    input.style.height = 'auto';
     document.getElementById('chatbotSuggestions').style.display = 'none';
     addChatMessage(text, 'user');
     chatbotMessages.push({ role: 'user', content: text });
+    document.querySelector('.chatbot-clear').style.display = 'inline-flex';
     saveChatHistory();
     sendToChat();
 }
@@ -561,7 +605,12 @@ function sendToChat() {
             chatbotMessages.push({ role: 'assistant', content: data.botReply });
             saveChatHistory();
             addChatMessage(data.botReply, 'bot');
-            if (voiceCallActive) speakText(data.botReply);
+            if (voiceCallActive) {
+                var clean = data.botReply.replace(/<[^>]*>/g, '').replace(/\*\*/g, '');
+                voiceSetStatus('Antwort', clean);
+                document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
+                setTimeout(function() { if (voiceCallActive) voiceListen(); }, 3000);
+            }
         } else if (data.message) {
             addChatMessage('Fehler: ' + data.message, 'bot');
         } else {
@@ -572,15 +621,14 @@ function sendToChat() {
         hideTyping();
         addChatMessage('Verbindungsfehler. Bitte kontaktieren Sie uns direkt: <a href="mailto:info@lweb.ch">info@lweb.ch</a>', 'bot');
         if (voiceCallActive) {
-            voiceSetStatus('Bereit', 'Tippen Sie erneut um zu sprechen');
-            voiceListenAfterSpeak();
+            voiceSetStatus('Fehler', 'Verbindungsfehler');
+            setTimeout(function() { if (voiceCallActive) voiceListen(); }, 3000);
         }
     });
 }
 
 // ===== VOICE / SPEECH =====
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-var speechSynth = window.speechSynthesis;
 var micRecognition = null;
 var voiceRecognition = null;
 var micActive = false;
@@ -588,15 +636,7 @@ var voiceCallActive = false;
 
 // --- Mic button (input area) ---
 function toggleMic() {
-    if (!SpeechRecognition) {
-        alert('Spracherkennung wird von diesem Browser nicht unterstützt. Bitte verwenden Sie Chrome oder Safari.');
-        return;
-    }
-    if (micActive) {
-        stopMic();
-    } else {
-        startMic();
-    }
+    toggleVoiceCall();
 }
 
 function startMic() {
@@ -664,7 +704,7 @@ function toggleVoiceCall() {
 
 function startVoiceCall() {
     voiceCallActive = true;
-    document.getElementById('chatbotCallBtn').classList.add('active');
+    document.getElementById('chatbotMicBtn').classList.add('recording');
     document.getElementById('chatbotVoiceOverlay').classList.add('active');
     voiceSetStatus('Zuhören...', 'Sprechen Sie jetzt');
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
@@ -673,10 +713,9 @@ function startVoiceCall() {
 
 function stopVoiceCall() {
     voiceCallActive = false;
-    document.getElementById('chatbotCallBtn').classList.remove('active');
+    document.getElementById('chatbotMicBtn').classList.remove('recording');
     document.getElementById('chatbotVoiceOverlay').classList.remove('active');
     document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle';
-    if (speechSynth) speechSynth.cancel();
     if (voiceRecognition) {
         try { voiceRecognition.stop(); } catch(e) {}
         voiceRecognition = null;
@@ -728,7 +767,7 @@ function voiceListen() {
         }
     };
     voiceRecognition.onend = function() {
-        if (voiceCallActive && !speechSynth.speaking) {
+        if (voiceCallActive) {
             voiceListenAfterSpeak();
         }
     };
@@ -745,33 +784,6 @@ function voiceListenAfterSpeak() {
     setTimeout(function() {
         if (voiceCallActive) voiceListen();
     }, 500);
-}
-
-function speakText(text) {
-    if (!speechSynth) return;
-    speechSynth.cancel();
-
-    // Strip HTML tags
-    var clean = text.replace(/<[^>]*>/g, '').replace(/\*\*/g, '');
-
-    var utter = new SpeechSynthesisUtterance(clean);
-    utter.lang = 'de-DE';
-    utter.rate = 1.05;
-    utter.pitch = 1;
-
-    document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle speaking';
-    voiceSetStatus('Antwort...', clean);
-
-    utter.onend = function() {
-        if (voiceCallActive) {
-            document.getElementById('chatbotVoiceCircle').className = 'chatbot-voice-circle listening';
-            voiceListenAfterSpeak();
-        }
-    };
-    utter.onerror = function() {
-        if (voiceCallActive) voiceListenAfterSpeak();
-    };
-    speechSynth.speak(utter);
 }
 
 // vCard download
