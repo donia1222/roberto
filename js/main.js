@@ -42,7 +42,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         var href = this.getAttribute('href');
-        if (!href || href === '#' || href.length < 2) return;
+        if (!href || !href.startsWith('#') || href === '#' || href.length < 2) return;
         e.preventDefault();
         try {
             var target = document.querySelector(href);
@@ -678,6 +678,7 @@ function closeServiceModal() {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeServiceModal();
+        closeWebModal();
         closePriceCalc();
     }
 });
@@ -1091,4 +1092,177 @@ function calcGoToContact() {
     setTimeout(function() {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 300);
+}
+
+// ===== WEB PROJECT MODAL =====
+var webProjects = {
+    hotbbq: {
+        title: 'HOT & BBQ',
+        url: 'https://hot-bbq.ch',
+        image: 'img/hotbbq.jpg',
+        complexity: 'complex',
+        desc: 'Online-Shop für BBQ-Produkte, Grills, Gewürze und Zubehör mit vollständigem E-Commerce, Warenkorb, Produktfiltern und Bestellsystem.',
+        techs: ['Next.js', 'React', 'eCommerce', 'Stripe', 'Admin Panel'],
+        features: ['Produktkatalog mit Kategorien & Filter', 'Warenkorb & Checkout', 'Online-Zahlung', 'Bestellverwaltung', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 2\'800 – 5\'000'
+    },
+    beauty: {
+        title: 'BeautyStyle',
+        url: 'https://beautystyles.vercel.app',
+        image: 'img/beautystyle.jpg',
+        complexity: 'medium',
+        desc: 'Moderne Website für ein Kosmetikstudio mit Dienstleistungen, Preisliste, Bildergalerie und Buchungsmöglichkeit.',
+        techs: ['Remix', 'React', 'Framer Motion', 'CSS Modules'],
+        features: ['Dienstleistungen & Preise', 'Animierte Bildergalerie', 'Online-Terminbuchung', 'Kontaktformular', 'Responsive Design', 'Smooth Animations'],
+        price: 'CHF 1\'800 – 3\'200'
+    },
+    ushuaia: {
+        title: 'Ushuaia Bar',
+        url: 'https://ushuaia-bar.ch',
+        image: 'img/ushuaia.png',
+        complexity: 'medium',
+        desc: 'Stilvolle Website für die Ushuaia Bar in Buchs SG mit Speise- und Getränkekarte, Events, Reservierungssystem und Galerie.',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+        features: ['Speise- & Getränkekarte', 'Event-Kalender', 'Tischreservierung', 'Bildergalerie', 'Google Maps Integration', 'Responsive Design'],
+        price: 'CHF 1\'800 – 3\'000'
+    },
+    cantina: {
+        title: 'Cantina Tex-Mex',
+        url: 'https://cantinatexmex.ch',
+        image: 'img/cantina.jpeg',
+        complexity: 'medium',
+        desc: 'Restaurant-Website für die Cantina Tex-Mex in Buchs SG mit Speisekarte, Online-Bestellung, Reservierungen und Fotogalerie.',
+        techs: ['Remix', 'React', 'CSS3', 'Vercel'],
+        features: ['Digitale Speisekarte', 'Tischreservierung', 'Fotogalerie', 'Öffnungszeiten & Standort', 'Kontaktformular', 'Responsive Design'],
+        price: 'CHF 1\'800 – 3\'000'
+    },
+    flinck: {
+        title: 'Flinck Sauber',
+        url: 'https://flink-sauber.li',
+        image: 'img/flinck.jpeg',
+        complexity: 'easy',
+        desc: 'Professionelle Website für einen Reinigungsservice in Liechtenstein mit Dienstleistungsübersicht, Preisen und Kontaktmöglichkeiten.',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+        features: ['Dienstleistungsübersicht', 'Preisübersicht', 'Kontaktformular', 'Google Maps', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 900 – 1\'800'
+    },
+    bouquet: {
+        title: 'Bouquet Mediterraneo',
+        url: 'https://bouquetmediterraneo.ch',
+        image: 'img/bouquet.jpeg',
+        complexity: 'medium',
+        desc: 'Elegante Restaurant-Website für das Bouquet Mediterraneo mit mediterraner Speisekarte, Reservierungssystem und Eventbereich.',
+        techs: ['Remix', 'React', 'CSS3', 'Vercel'],
+        features: ['Speisekarte mit Kategorien', 'Tischreservierung', 'Event-Bereich', 'Bildergalerie', 'Standort & Öffnungszeiten', 'Responsive Design'],
+        price: 'CHF 1\'800 – 3\'000'
+    },
+    crypto: {
+        title: 'Crypto Dashboard',
+        url: 'https://remix-crypto.vercel.app',
+        image: 'img/crypto.png',
+        complexity: 'complex',
+        desc: 'Echtzeit-Kryptowährungs-Dashboard mit Live-Kursen, Marktdaten, Charts und Portfolio-Übersicht über verschiedene Coins.',
+        techs: ['Remix', 'React', 'CoinGecko API', 'Charts.js', 'Web3'],
+        features: ['Echtzeit-Krypto-Kurse', 'Interaktive Charts', 'Portfolio-Übersicht', 'Marktdaten & Trends', 'API-Integration', 'Responsive Design'],
+        price: 'CHF 2\'500 – 4\'500'
+    },
+    renovation: {
+        title: 'Renovation',
+        url: 'https://renovation-tau.vercel.app',
+        image: 'img/renovation.jpg',
+        complexity: 'easy',
+        desc: 'Professionelle Unternehmenswebsite für einen Renovierungsbetrieb mit Projektgalerie, Dienstleistungen und Kontaktformular.',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+        features: ['Projektgalerie (Vorher/Nachher)', 'Dienstleistungsübersicht', 'Kontaktformular', 'Referenzen', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 900 – 1\'800'
+    },
+    webm: {
+        title: 'WebM Converter',
+        url: 'https://webm-converter.vercel.app',
+        image: 'img/webmconverter.jpg',
+        complexity: 'medium',
+        desc: 'Web-App zum Konvertieren von Videodateien ins WebM-Format direkt im Browser mit FFmpeg-Integration und Drag-and-Drop.',
+        techs: ['Next.js', 'React', 'FFmpeg.wasm', 'Web Workers'],
+        features: ['Drag & Drop Upload', 'Browser-basierte Konvertierung', 'Fortschrittsanzeige', 'Verschiedene Formate', 'Kein Server nötig', 'Responsive Design'],
+        price: 'CHF 1\'500 – 2\'800'
+    },
+    rrapi: {
+        title: 'Rrapi Immobilien',
+        url: 'https://rrapi.ch',
+        image: 'img/rrapi.jpg',
+        complexity: 'easy',
+        desc: 'Firmenwebsite für eine Immobilienverwaltung mit Objektübersicht, Kontaktformular und Unternehmensdarstellung.',
+        techs: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+        features: ['Immobilienübersicht', 'Kontaktformular', 'Über uns Seite', 'Standort & Kontaktdaten', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 900 – 1\'500'
+    }
+};
+
+var currentWebProject = '';
+
+function openWebModal(id) {
+    var project = webProjects[id];
+    if (!project) return;
+    currentWebProject = id;
+
+    // Image
+    var imgEl = document.getElementById('webModalImage');
+    imgEl.innerHTML = '<img src="' + project.image + '" alt="' + project.title + '">';
+
+    // Complexity badge
+    var badgeEl = document.getElementById('webModalBadge');
+    var badgeLabels = { easy: 'Einfach', medium: 'Mittel', complex: 'Komplex' };
+    badgeEl.textContent = badgeLabels[project.complexity] || project.complexity;
+    badgeEl.className = 'web-modal-badge web-modal-badge--' + project.complexity;
+
+    // Title & description
+    document.getElementById('webModalTitle').textContent = project.title;
+    document.getElementById('webModalDesc').textContent = project.desc;
+
+    // Technologies
+    var techsEl = document.getElementById('webModalTechs');
+    techsEl.innerHTML = '';
+    for (var i = 0; i < project.techs.length; i++) {
+        var span = document.createElement('span');
+        span.className = 'web-modal-tech';
+        span.textContent = project.techs[i];
+        techsEl.appendChild(span);
+    }
+
+    // Features
+    var featEl = document.getElementById('webModalFeatures');
+    featEl.innerHTML = '';
+    for (var j = 0; j < project.features.length; j++) {
+        var div = document.createElement('div');
+        div.className = 'svc-modal-feature';
+        div.innerHTML = '<span class="svc-modal-feature-icon">' + checkSvg + '</span><span>' + project.features[j] + '</span>';
+        featEl.appendChild(div);
+    }
+
+    // Price
+    document.getElementById('webModalPrice').textContent = project.price;
+
+    // Visit URL
+    var visitBtn = document.getElementById('webModalVisit');
+    visitBtn.href = project.url;
+
+    // Open modal
+    document.getElementById('webModalOverlay').classList.add('open');
+    document.getElementById('webModal').classList.add('open');
+    document.body.classList.add('svc-modal-open');
+}
+
+function closeWebModal() {
+    document.getElementById('webModalOverlay').classList.remove('open');
+    document.getElementById('webModal').classList.remove('open');
+    document.body.classList.remove('svc-modal-open');
+}
+
+function webModalWhatsApp() {
+    var project = webProjects[currentWebProject];
+    if (!project) return;
+    var msg = 'Hallo! Ich habe auf lweb.ch das Projekt «' + project.title + '» gesehen und hätte gerne ein ähnliches Projekt.\n\n' +
+              'Geschätzter Preis: ' + project.price + '\n\n' +
+              'Ich freue mich auf Ihre Rückmeldung!';
+    window.open('https://wa.me/41765608645?text=' + encodeURIComponent(msg), '_blank');
 }

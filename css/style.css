@@ -2002,7 +2002,7 @@ body.chatbot-open {
     height: 36px;
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.06);
+    background: #fff;
     color: var(--gunpowder600);
     display: flex;
     align-items: center;
@@ -2140,6 +2140,50 @@ body.svc-modal-open {
     .svc-modal-footer { padding: 16px 20px 24px; }
 }
 
+/* ===== WEB PROJECT MODAL ===== */
+.web-modal-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+.web-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.web-modal-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+.web-modal-badge--easy { background: #e8faf0; color: #10a37f; }
+.web-modal-badge--medium { background: #fef3e2; color: #d97706; }
+.web-modal-badge--complex { background: #fce8ec; color: var(--begonia400); }
+.web-modal-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+.web-modal-tech {
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--gunpowder50);
+    color: var(--gunpowder600);
+    font-size: 12px;
+    font-weight: 600;
+}
+.website-card { cursor: pointer; transition: transform 200ms ease, box-shadow 200ms ease; }
+.website-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+@media (max-width: 768px) {
+    .web-modal-image { height: 140px; }
+}
+
 /* ===== PRICE CALCULATOR MODAL ===== */
 .calc-overlay {
     position: fixed;
@@ -2188,7 +2232,7 @@ body.svc-modal-open {
     height: 36px;
     border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.06);
+    background: #fff;
     color: var(--gunpowder600);
     display: flex;
     align-items: center;
