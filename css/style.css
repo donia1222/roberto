@@ -1565,8 +1565,17 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     border-color: var(--begonia400);
     color: #fff;
 }
+.footer-legal { display: flex; gap: 24px; justify-content: center; padding-bottom: 24px; }
+.footer-legal a { font-size: 13px; color: var(--gunpowder500); transition: color 200ms; }
+.footer-legal a:hover { color: #fff; }
 .footer-bottom { border-top: 1px solid var(--gunpowder800); padding-top: 32px; display: flex; align-items: center; justify-content: space-between; }
 .footer-bottom p { font-size: 13px; color: var(--gunpowder500); }
+.legal-modal-body { font-size: 14px; color: var(--gunpowder600); line-height: 1.8; }
+.legal-modal-body h4 { font-size: 16px; font-weight: 700; color: var(--gunpowder900); margin: 24px 0 8px; }
+.legal-modal-body h4:first-child { margin-top: 0; }
+.legal-modal-body p { margin-bottom: 12px; }
+.legal-modal-body ul { padding-left: 20px; margin-bottom: 12px; }
+.legal-modal-body li { margin-bottom: 6px; }
 .footer-social { display: flex; gap: 12px; }
 .footer-social a { width: 40px; height: 40px; border-radius: 50%; background: var(--gunpowder800); display: flex; align-items: center; justify-content: center; transition: background 200ms; }
 .footer-social a:hover { background: var(--gunpowder700); }

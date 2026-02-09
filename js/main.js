@@ -727,6 +727,7 @@ document.addEventListener('keydown', function(e) {
         closeServiceModal();
         closeWebModal();
         closePriceCalc();
+        closeLegalModal();
     }
 });
 
@@ -1327,4 +1328,99 @@ function webModalWhatsApp() {
               'Geschätzter Preis: ' + project.price + '\n\n' +
               'Ich freue mich auf Ihre Rückmeldung!';
     window.open('https://wa.me/41765608645?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ===== LEGAL MODALS =====
+var legalContent = {
+    impressum: {
+        title: 'Impressum',
+        icon: 'svc-modal-icon--web',
+        html: '<h4>Angaben gemäss Schweizer Recht</h4>' +
+            '<p><strong>Lweb</strong><br>Roberto Salvador<br>9475 Sevelen<br>Schweiz</p>' +
+            '<h4>Kontakt</h4>' +
+            '<p>Telefon: +41 76 560 86 45<br>E-Mail: info@lweb.ch<br>Website: <a href="https://lweb.ch" style="color:var(--cerulean500)">lweb.ch</a></p>' +
+            '<h4>Unternehmensform</h4>' +
+            '<p>Einzelunternehmen</p>' +
+            '<h4>Verantwortlich für den Inhalt</h4>' +
+            '<p>Roberto Salvador, 9475 Sevelen, Schweiz</p>' +
+            '<h4>Haftungsausschluss</h4>' +
+            '<p>Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen auf dieser Website.</p>' +
+            '<p>Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen entstanden sind, werden ausgeschlossen.</p>' +
+            '<h4>Urheberrecht</h4>' +
+            '<p>Die auf dieser Website enthaltenen Inhalte und Werke sind urheberrechtlich geschützt. Jede Verwertung ausserhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung des Autors.</p>'
+    },
+    datenschutz: {
+        title: 'Datenschutzerklärung',
+        icon: 'svc-modal-icon--ai',
+        html: '<h4>Allgemeines</h4>' +
+            '<p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung Ihrer personenbezogenen Daten auf unserer Website lweb.ch.</p>' +
+            '<h4>Verantwortliche Stelle</h4>' +
+            '<p>Lweb — Roberto Salvador<br>9475 Sevelen, Schweiz<br>E-Mail: info@lweb.ch</p>' +
+            '<h4>Erhobene Daten</h4>' +
+            '<p>Beim Besuch unserer Website werden folgende Daten automatisch erfasst:</p>' +
+            '<ul><li>IP-Adresse (anonymisiert)</li><li>Datum und Uhrzeit des Zugriffs</li><li>Aufgerufene Seiten</li><li>Verwendeter Browser und Betriebssystem</li></ul>' +
+            '<h4>Kontaktformular & WhatsApp</h4>' +
+            '<p>Wenn Sie uns über das Kontaktformular oder WhatsApp kontaktieren, werden Ihre Angaben (Name, E-Mail, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert. Diese Daten werden nicht an Dritte weitergegeben.</p>' +
+            '<h4>Cookies</h4>' +
+            '<p>Diese Website verwendet keine Tracking-Cookies. Es werden lediglich technisch notwendige Cookies eingesetzt, die für die Funktionalität der Website erforderlich sind.</p>' +
+            '<h4>Externe Dienste</h4>' +
+            '<p>Unsere Website nutzt folgende externe Dienste:</p>' +
+            '<ul><li>Google Fonts — zum Laden von Schriftarten</li><li>Vercel — als Hosting-Plattform</li></ul>' +
+            '<h4>Ihre Rechte</h4>' +
+            '<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Kontaktieren Sie uns unter info@lweb.ch.</p>' +
+            '<h4>Änderungen</h4>' +
+            '<p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Die aktuelle Fassung gilt ab dem Zeitpunkt der Veröffentlichung auf der Website.</p>'
+    },
+    agb: {
+        title: 'Allgemeine Geschäftsbedingungen',
+        icon: 'svc-modal-icon--support',
+        html: '<h4>1. Geltungsbereich</h4>' +
+            '<p>Diese AGB gelten für alle Dienstleistungen von Lweb (Roberto Salvador, 9475 Sevelen, Schweiz) im Bereich App-Entwicklung, Webentwicklung und KI-Lösungen.</p>' +
+            '<h4>2. Angebote & Vertragsschluss</h4>' +
+            '<p>Alle Angebote sind freibleibend. Ein Vertrag kommt erst durch schriftliche Auftragsbestätigung (auch per E-Mail) zustande. Der Preiskalkulator auf der Website dient als unverbindliche Schätzung.</p>' +
+            '<h4>3. Leistungen</h4>' +
+            '<p>Der Umfang der Leistungen ergibt sich aus der jeweiligen Auftragsbestätigung. Änderungen oder Zusatzleistungen werden gesondert vereinbart und berechnet.</p>' +
+            '<h4>4. Preise & Zahlung</h4>' +
+            '<p>Alle Preise verstehen sich in Schweizer Franken (CHF) und sind Endpreise (kein MwSt-Ausweis bei Einzelunternehmen unter CHF 100\'000 Umsatz). Die Zahlung erfolgt gemäss Vereinbarung, in der Regel 50% bei Auftragserteilung und 50% bei Projektabschluss.</p>' +
+            '<h4>5. Lieferfristen</h4>' +
+            '<p>Liefertermine werden individuell vereinbart. Verzögerungen durch unvorhergesehene Umstände oder fehlende Zulieferungen des Kunden verlängern die Lieferfrist entsprechend.</p>' +
+            '<h4>6. Mitwirkungspflicht</h4>' +
+            '<p>Der Kunde stellt alle erforderlichen Inhalte (Texte, Bilder, Logos, Zugänge) rechtzeitig zur Verfügung. Verzögerungen durch fehlende Zulieferungen gehen nicht zu Lasten von Lweb.</p>' +
+            '<h4>7. Urheberrecht & Nutzungsrechte</h4>' +
+            '<p>Nach vollständiger Bezahlung gehen die Nutzungsrechte am erstellten Werk auf den Kunden über. Lweb behält das Recht, das Projekt als Referenz in seinem Portfolio zu zeigen.</p>' +
+            '<h4>8. Gewährleistung</h4>' +
+            '<p>Lweb gewährleistet, dass die gelieferten Arbeiten frei von wesentlichen Fehlern sind. Mängel werden innerhalb von 30 Tagen nach Abnahme kostenlos behoben.</p>' +
+            '<h4>9. Haftung</h4>' +
+            '<p>Die Haftung von Lweb ist auf den jeweiligen Auftragswert beschränkt. Ausgeschlossen sind Schäden durch höhere Gewalt, Fehler Dritter oder unsachgemässe Nutzung.</p>' +
+            '<h4>10. Anwendbares Recht & Gerichtsstand</h4>' +
+            '<p>Es gilt Schweizer Recht. Gerichtsstand ist Buchs SG, Schweiz.</p>'
+    }
+};
+
+function openLegalModal(type) {
+    var content = legalContent[type];
+    if (!content) return;
+
+    document.getElementById('legalModalIcon').className = 'svc-modal-icon ' + content.icon;
+    document.getElementById('legalModalTitle').textContent = content.title;
+
+    var body = document.getElementById('legalModalBody');
+    body.innerHTML = content.html;
+
+    // Stagger animation for h4 and p elements
+    var items = body.querySelectorAll('h4, p, ul');
+    for (var i = 0; i < items.length; i++) {
+        items[i].classList.add('web-modal-stagger');
+        items[i].style.animationDelay = (i * 50) + 'ms';
+    }
+
+    document.getElementById('legalModalOverlay').classList.add('open');
+    document.getElementById('legalModal').classList.add('open');
+    document.body.classList.add('svc-modal-open');
+}
+
+function closeLegalModal() {
+    document.getElementById('legalModalOverlay').classList.remove('open');
+    document.getElementById('legalModal').classList.remove('open');
+    document.body.classList.remove('svc-modal-open');
 }
