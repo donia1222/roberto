@@ -857,6 +857,9 @@
             </div>
         </div>
         <div class="chatbot-header-actions">
+            <button class="chatbot-call" id="chatbotCallBtn" onclick="toggleVoiceCall()" aria-label="Sprachmodus">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </button>
             <button class="chatbot-clear" onclick="clearChat()" aria-label="Chat löschen">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
             </button>
@@ -864,6 +867,13 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
+    </div>
+    <div class="chatbot-voice-overlay" id="chatbotVoiceOverlay">
+        <div class="chatbot-voice-circle" id="chatbotVoiceCircle">
+            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="chatbot-voice-status" id="chatbotVoiceStatus">Sprachmodus</div>
+        <div class="chatbot-voice-text" id="chatbotVoiceText">Drücken Sie den Anruf-Button um zu starten</div>
     </div>
     <div class="chatbot-messages" id="chatbotMessages">
         <div class="chatbot-msg chatbot-msg--bot">
@@ -878,6 +888,9 @@
     </div>
     <div class="chatbot-input-area">
         <input type="text" id="chatbotInput" placeholder="Ihre Frage eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()">
+        <button class="chatbot-mic" id="chatbotMicBtn" onclick="toggleMic()" aria-label="Spracheingabe">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
         <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Senden">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </button>
