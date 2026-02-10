@@ -1547,6 +1547,16 @@ var webProjects = {
         techs: ['HTML', 'CSS', 'JavaScript', 'PHP'],
         features: ['Immobilienübersicht', 'Kontaktformular', 'Über uns Seite', 'Standort & Kontaktdaten', 'Responsive Design', 'SEO-optimiert'],
         price: 'CHF 900 – 1\'500'
+    },
+    recipedigitizer: {
+        title: 'Recipe Digitizer',
+        url: 'https://recipe-digitalizer.vercel.app',
+        image: 'img/recipesamlun.jpeg',
+        complexity: 'complex',
+        desc: 'PWA zum Digitalisieren, Verwalten und Analysieren von Rezepten mittels KI. Entwickelt für das Altersheim Gärbi (Schweiz) mit Kamera-Erfassung, automatischer Rezeptanalyse und Mehrbenutzersystem.',
+        techs: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'OpenAI', 'PWA'],
+        features: ['KI-Rezeptanalyse (GPT-4.1)', 'Kamera & Scanner Erfassung', 'Portionenberechnung mit KI', 'Mehrbenutzersystem mit Rollen', 'Admin-Dashboard', 'Offline-Modus (PWA)'],
+        price: 'CHF 4\'500 – 8\'000'
     }
 };
 
