@@ -99,6 +99,27 @@ const metricsObserver = new IntersectionObserver((entries) => {
 const metricsGrid = document.querySelector('.metrics-grid');
 if (metricsGrid) metricsObserver.observe(metricsGrid);
 
+// Apps subtitle underline linked to scroll
+var appsSubtitle = document.querySelector('.apps-subtitle');
+if (appsSubtitle) {
+    window.addEventListener('scroll', function() {
+        var rect = appsSubtitle.getBoundingClientRect();
+        var vh = window.innerHeight;
+        // Start when element enters bottom, full at center, shrink as it leaves top
+        var center = rect.top + rect.height / 2;
+        var progress;
+        if (center > vh || center < 0) {
+            progress = 0;
+        } else if (center <= vh / 2) {
+            progress = center / (vh / 2);
+        } else {
+            progress = (vh - center) / (vh / 2);
+        }
+        progress = Math.max(0, Math.min(1, progress));
+        appsSubtitle.style.setProperty('--underline-scale', progress);
+    }, { passive: true });
+}
+
 // Workflow staggered reveal (repeats on every scroll)
 var workflowObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
