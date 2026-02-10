@@ -2035,6 +2035,19 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: var(--gunpowder400);
 }
 
+/* Voice option: only on mobile */
+@media (min-width: 769px) {
+    .chatbot-welcome-btn--voice {
+        display: none;
+    }
+    .chatbot-welcome-options {
+        max-width: 200px;
+    }
+    .chatbot-mic {
+        display: none;
+    }
+}
+
 /* Mic button */
 .chatbot-mic {
     width: 42px;

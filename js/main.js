@@ -475,11 +475,18 @@ function openChatBot() {
 
     // Show welcome if no mode chosen yet and no chat history
     if (!chatModeChosen && chatbotMessages.length === 0) {
-        document.getElementById('chatbotWelcome').style.display = 'flex';
-        document.getElementById('chatbotMessages').style.display = 'none';
-        document.getElementById('chatbotSuggestions').style.display = 'none';
-        document.querySelector('.chatbot-input-area').style.display = 'none';
-        document.querySelector('.chatbot-clear').style.display = 'none';
+        // On desktop (>768px), skip welcome and go straight to text mode (no voice option)
+        if (window.innerWidth > 768) {
+            chatModeChosen = true;
+            showChatView();
+            document.getElementById('chatbotInput').focus();
+        } else {
+            document.getElementById('chatbotWelcome').style.display = 'flex';
+            document.getElementById('chatbotMessages').style.display = 'none';
+            document.getElementById('chatbotSuggestions').style.display = 'none';
+            document.querySelector('.chatbot-input-area').style.display = 'none';
+            document.querySelector('.chatbot-clear').style.display = 'none';
+        }
     } else {
         showChatView();
     }
@@ -490,11 +497,41 @@ function chooseChatMode(mode) {
     document.getElementById('chatbotWelcome').style.display = 'none';
     if (mode === 'voice') {
         showChatView();
-        startVoiceCall();
+        // Check microphone permission before starting voice
+        if (navigator.permissions && navigator.permissions.query) {
+            navigator.permissions.query({ name: 'microphone' }).then(function(result) {
+                if (result.state === 'denied') {
+                    alert(getVoiceDeniedMessage());
+                    chatModeChosen = false;
+                    document.getElementById('chatbotWelcome').style.display = 'flex';
+                    document.getElementById('chatbotMessages').style.display = 'none';
+                    document.getElementById('chatbotSuggestions').style.display = 'none';
+                    document.querySelector('.chatbot-input-area').style.display = 'none';
+                    document.querySelector('.chatbot-clear').style.display = 'none';
+                } else {
+                    startVoiceCall();
+                }
+            }).catch(function() {
+                startVoiceCall();
+            });
+        } else {
+            startVoiceCall();
+        }
     } else {
         showChatView();
         if (window.innerWidth > 768) document.getElementById('chatbotInput').focus();
     }
+}
+
+function getVoiceDeniedMessage() {
+    var lang = document.documentElement.lang || 'de';
+    var messages = {
+        'de': 'Mikrofon-Zugriff wurde verweigert. Bitte erlauben Sie den Zugriff in Ihren Browser-Einstellungen und versuchen Sie es erneut.',
+        'es': 'El acceso al micrófono fue denegado. Por favor, permita el acceso en la configuración de su navegador e inténtelo de nuevo.',
+        'en': 'Microphone access was denied. Please allow access in your browser settings and try again.',
+        'fr': 'L\'accès au microphone a été refusé. Veuillez autoriser l\'accès dans les paramètres de votre navigateur et réessayer.'
+    };
+    return messages[lang] || messages['de'];
 }
 
 function showChatView() {
@@ -781,6 +818,16 @@ function startVoiceCall() {
     };
     voiceRecognition.onerror = function(e) {
         console.log('Voice error:', e.error);
+        if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+            stopVoiceCall();
+            alert(getVoiceDeniedMessage());
+            chatModeChosen = false;
+            document.getElementById('chatbotWelcome').style.display = 'flex';
+            document.getElementById('chatbotMessages').style.display = 'none';
+            document.getElementById('chatbotSuggestions').style.display = 'none';
+            document.querySelector('.chatbot-input-area').style.display = 'none';
+            document.querySelector('.chatbot-clear').style.display = 'none';
+        }
     };
     voiceRecognition.onend = function() {
         if (voiceCallActive) {
