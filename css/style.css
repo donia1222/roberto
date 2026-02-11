@@ -130,19 +130,28 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     flex-direction: column;
     line-height: 1;
 }
+.header-logo-countries {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 2px;
+}
 .header-logo-subtitle {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 13px;
+    gap: 4px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--gunpowder400);
-    letter-spacing: 0.08em;
-    margin-top: 3px;
+    letter-spacing: 0.07em;
 }
 .header-logo-subtitle svg {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+.header-logo-sep {
+    display: none;
 }
 .header-nav {
     display: flex;
@@ -2930,6 +2939,18 @@ body.calc-open {
     .header-nav { display: none; }
     .header-icon-btn { display: none; }
     .header-burger { display: flex; }
+    .header-logo-countries {
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+    .header-logo-sep {
+        display: inline;
+        color: var(--gunpowder300);
+        margin: 0 4px;
+        font-size: 9px;
+        font-weight: 400;
+    }
 }
 @media (max-width: 1200px) {
     h1 { font-size: 52px; }
