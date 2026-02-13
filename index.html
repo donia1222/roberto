@@ -12,6 +12,7 @@
     <meta name="keywords" content="Lweb, Lweb Schweiz, Lweb Buchs, lweb.ch, App Entwickler Buchs SG, App Entwicklung St. Gallen, Mobile App erstellen Schweiz, günstige App Entwicklung, Website erstellen Liechtenstein, React Native Entwickler Schweiz, iOS App Buchs, Android App St. Gallen, Web Entwickler Rheintal, App Programmierer günstig, Webseite erstellen Buchs, App Agentur Ostschweiz, KI Integration Schweiz">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="robots" content="index, follow">
+    <meta name="accessibility" content="WCAG 2.1 Level AA, adjustable font size, high contrast mode, reduced motion, adjustable line height, adjustable letter spacing">
     <meta name="geo.region" content="CH-SG">
     <meta name="geo.placename" content="Buchs SG">
     <meta name="geo.position" content="47.1667;9.4833">
@@ -81,6 +82,8 @@
             "jobTitle": "React Native Specialist & Full-Stack Developer",
             "knowsAbout": ["React Native", "iOS App Development", "Android App Development", "Next.js", "TypeScript", "OpenAI API", "Web Development"]
         },
+        "accessibilityFeature": ["alternativeText", "highContrastDisplay", "largePrint", "reducedMotion", "structuralNavigation"],
+        "accessibilityHazard": ["noFlashingHazard", "noMotionSimulationHazard", "noSoundHazard"],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Entwicklungsdienstleistungen",
@@ -187,9 +190,8 @@
             <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
         </nav>
         <div class="header-actions">
-            <button class="header-icon-btn dark-mode-toggle" id="darkModeToggle" aria-label="Dark Mode umschalten">
-                <svg class="dm-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-                <svg class="dm-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <button class="header-icon-btn" id="darkModeToggle" aria-label="Barrierefreiheit">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><path d="M8 11h8M12 11v4M10 19l2-4 2 4"/></svg>
             </button>
             <a href="https://github.com/donia1222" target="_blank" rel="noopener" class="header-icon-btn" aria-label="GitHub">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -227,11 +229,9 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                 <span>KI Chat</span>
             </button>
-            <button class="mobile-menu-action-btn" id="darkModeToggleMobile" aria-label="Dark Mode umschalten">
-                <svg class="dm-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-                <svg class="dm-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <span class="dm-label-dark">Modus</span>
-                <span class="dm-label-light" style="display:none">Modus</span>
+            <button class="mobile-menu-action-btn" id="darkModeToggleMobile" aria-label="Barrierefreiheit">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><path d="M8 11h8M12 11v4M10 19l2-4 2 4"/></svg>
+                <span data-i18n="nav.a11y">Barrierefreiheit</span>
             </button>
         </div>
     </div>
@@ -1139,6 +1139,10 @@
             <a href="javascript:void(0)" onclick="openLegalModal('impressum')">Impressum</a>
             <a href="javascript:void(0)" onclick="openLegalModal('datenschutz')">Datenschutz</a>
             <a href="javascript:void(0)" onclick="openLegalModal('agb')">AGB</a>
+            <button class="a11y-trigger" onclick="openA11yModal()" aria-label="Barrierefreiheit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><path d="M8 11h8M12 11v4M10 19l2-4 2 4"/></svg>
+                <span data-i18n="footer.a11y">Barrierefreiheit</span>
+            </button>
         </div>
         <div class="footer-bottom">
             <p data-i18n="footer.copy">&copy; 2026 Lweb — Roberto Salvador. App Entwickler in Buchs SG, Schweiz. Alle Rechte vorbehalten.</p>
@@ -1452,5 +1456,59 @@
   }
 })();
 </script>
+
+<!-- ACCESSIBILITY MODAL -->
+<div class="a11y-overlay" id="a11yOverlay" onclick="closeA11yModal()"></div>
+<div class="a11y-modal" id="a11yModal" role="dialog" aria-modal="true" aria-label="Barrierefreiheit Einstellungen">
+    <div class="a11y-modal-header">
+        <div class="a11y-modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><path d="M8 11h8M12 11v4M10 19l2-4 2 4"/></svg>
+            <span data-i18n="a11y.title">Barrierefreiheit</span>
+        </div>
+        <button class="a11y-modal-close" onclick="closeA11yModal()" aria-label="Schliessen">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <div class="a11y-modal-body">
+        <div class="a11y-option">
+            <label data-i18n="a11y.mode">Darstellung</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn" onclick="setA11yMode('light')" data-a11y-mode="light" data-i18n="a11y.day">Tag</button>
+                <button class="a11y-btn" onclick="setA11yMode('dark')" data-a11y-mode="dark" data-i18n="a11y.night">Nacht</button>
+            </div>
+        </div>
+        <div class="a11y-option">
+            <label data-i18n="a11y.textSize">Textgrösse</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn" onclick="setA11y('text','normal')" data-a11y-text="normal" data-i18n="a11y.normal">Normal</button>
+                <button class="a11y-btn" onclick="setA11y('text','lg')" data-a11y-text="lg" data-i18n="a11y.large">Gross</button>
+                <button class="a11y-btn" onclick="setA11y('text','xl')" data-a11y-text="xl" data-i18n="a11y.xlarge">Sehr gross</button>
+            </div>
+        </div>
+        <div class="a11y-option">
+            <label data-i18n="a11y.animations">Animationen</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn" onclick="setA11y('motion','normal')" data-a11y-motion="normal" data-i18n="a11y.normal">Normal</button>
+                <button class="a11y-btn" onclick="setA11y('motion','reduced')" data-a11y-motion="reduced" data-i18n="a11y.reduced">Reduziert</button>
+            </div>
+        </div>
+        <div class="a11y-option">
+            <label data-i18n="a11y.lineHeight">Zeilenabstand</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn" onclick="setA11y('lh','normal')" data-a11y-lh="normal" data-i18n="a11y.normal">Normal</button>
+                <button class="a11y-btn" onclick="setA11y('lh','wide')" data-a11y-lh="wide" data-i18n="a11y.wide">Weit</button>
+            </div>
+        </div>
+        <div class="a11y-option">
+            <label data-i18n="a11y.spacing">Buchstabenabstand</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn" onclick="setA11y('spacing','normal')" data-a11y-spacing="normal" data-i18n="a11y.normal">Normal</button>
+                <button class="a11y-btn" onclick="setA11y('spacing','wide')" data-a11y-spacing="wide" data-i18n="a11y.wide">Weit</button>
+            </div>
+        </div>
+        <button class="a11y-reset" onclick="resetA11y()" data-i18n="a11y.reset">Zurücksetzen</button>
+    </div>
+</div>
+
 </body>
 </html>

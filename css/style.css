@@ -3735,3 +3735,253 @@ body {
     transition: background 300ms ease, color 300ms ease;
 }
 
+/* ===== ACCESSIBILITY MODAL ===== */
+.a11y-trigger {
+    background: none;
+    border: none;
+    color: var(--gunpowder400);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 200ms ease, background 200ms ease;
+}
+.a11y-trigger:hover {
+    color: var(--begonia400);
+    background: rgba(254, 108, 117, 0.06);
+}
+body.dark-mode .a11y-trigger {
+    color: #8a95a8;
+}
+body.dark-mode .a11y-trigger:hover {
+    color: var(--begonia400);
+    background: rgba(254, 108, 117, 0.1);
+}
+
+.a11y-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 29, 44, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+.a11y-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.a11y-modal {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%) scale(0.95);
+    width: 420px;
+    max-width: 92vw;
+    max-height: 85vh;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    z-index: 1201;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+.a11y-modal.open {
+    opacity: 1;
+    transform: translate(-50%, 50%) scale(1);
+    pointer-events: all;
+}
+
+.a11y-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gunpowder100, #e8ecf1);
+}
+.a11y-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gunpowder800, #1a2332);
+}
+.a11y-modal-title svg {
+    color: var(--begonia400);
+}
+.a11y-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gunpowder50, #f4f6f8);
+    color: var(--gunpowder500, #728198);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.a11y-modal-close:hover {
+    background: var(--gunpowder100, #e8ecf1);
+    color: var(--gunpowder700, #3f4960);
+}
+
+.a11y-modal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: calc(85vh - 80px);
+}
+
+.a11y-option label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gunpowder500, #728198);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.a11y-btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.a11y-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--gunpowder150, #d5dbe3);
+    background: #fff;
+    color: var(--gunpowder600, #546178);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.a11y-btn:hover {
+    border-color: var(--begonia400);
+    color: var(--begonia400);
+    background: rgba(254, 108, 117, 0.05);
+}
+.a11y-btn.active {
+    background: var(--begonia400);
+    color: #fff;
+    border-color: var(--begonia400);
+}
+
+.a11y-reset {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid var(--gunpowder150, #d5dbe3);
+    background: var(--gunpowder50, #f4f6f8);
+    color: var(--gunpowder500, #728198);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 200ms ease;
+    margin-top: 4px;
+}
+.a11y-reset:hover {
+    border-color: var(--gunpowder300);
+    color: var(--gunpowder700);
+}
+
+/* Dark mode for a11y modal */
+body.dark-mode .a11y-modal {
+    background: #1e2436;
+}
+body.dark-mode .a11y-modal-header {
+    border-color: rgba(255,255,255,0.08);
+}
+body.dark-mode .a11y-modal-title {
+    color: #fff;
+}
+body.dark-mode .a11y-modal-close {
+    background: #232838;
+    color: #c8d5e3;
+}
+body.dark-mode .a11y-modal-close:hover {
+    background: #2d3348;
+}
+body.dark-mode .a11y-option label {
+    color: #8a95a8;
+}
+body.dark-mode .a11y-btn {
+    background: #232838;
+    border-color: rgba(255,255,255,0.1);
+    color: #c8d5e3;
+}
+body.dark-mode .a11y-btn:hover {
+    border-color: var(--begonia400);
+    color: var(--begonia400);
+    background: rgba(254, 108, 117, 0.1);
+}
+body.dark-mode .a11y-btn.active {
+    background: var(--begonia400);
+    color: #fff;
+    border-color: var(--begonia400);
+}
+body.dark-mode .a11y-reset {
+    background: #232838;
+    border-color: rgba(255,255,255,0.1);
+    color: #8a95a8;
+}
+body.dark-mode .a11y-reset:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #c8d5e3;
+}
+
+/* ===== ACCESSIBILITY MODE STYLES ===== */
+/* These ONLY apply when user activates them via the modal */
+
+/* Text size */
+body.a11y-text-lg { font-size: 20px !important; }
+body.a11y-text-lg h1 { font-size: 3rem !important; }
+body.a11y-text-lg h2 { font-size: 2.5rem !important; }
+body.a11y-text-lg h3 { font-size: 1.5rem !important; }
+
+body.a11y-text-xl { font-size: 24px !important; }
+body.a11y-text-xl h1 { font-size: 3.5rem !important; }
+body.a11y-text-xl h2 { font-size: 3rem !important; }
+body.a11y-text-xl h3 { font-size: 2rem !important; }
+
+/* Reduce motion */
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* Line height */
+body.a11y-lh-wide * {
+    line-height: 2 !important;
+}
+
+/* Letter spacing */
+body.a11y-spacing-wide * {
+    letter-spacing: 0.08em !important;
+    word-spacing: 0.16em !important;
+}
+

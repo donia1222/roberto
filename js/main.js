@@ -19,8 +19,8 @@
         updateIcons(isDark);
     }
 
-    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-    document.getElementById('darkModeToggleMobile').addEventListener('click', toggleDarkMode);
+    document.getElementById('darkModeToggle').addEventListener('click', function() { openA11yModal(); });
+    document.getElementById('darkModeToggleMobile').addEventListener('click', function() { openA11yModal(); });
 })();
 
 // FAQ Accordion
@@ -2086,3 +2086,94 @@ function analyzerGoToContact() {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 300);
 }
+
+// ===== ACCESSIBILITY MODAL =====
+function openA11yModal() {
+    document.getElementById('a11yOverlay').classList.add('open');
+    document.getElementById('a11yModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateA11yModeButtons();
+}
+
+function closeA11yModal() {
+    document.getElementById('a11yOverlay').classList.remove('open');
+    document.getElementById('a11yModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function setA11yMode(mode) {
+    var isDark = document.body.classList.contains('dark-mode');
+    if ((mode === 'dark' && !isDark) || (mode === 'light' && isDark)) {
+        document.body.classList.toggle('dark-mode');
+        var nowDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', nowDark);
+        document.querySelectorAll('.dm-icon-moon').forEach(function(el) { el.style.display = nowDark ? 'none' : 'block'; });
+        document.querySelectorAll('.dm-icon-sun').forEach(function(el) { el.style.display = nowDark ? 'block' : 'none'; });
+        document.querySelectorAll('.dm-label-dark').forEach(function(el) { el.style.display = nowDark ? 'none' : 'block'; });
+        document.querySelectorAll('.dm-label-light').forEach(function(el) { el.style.display = nowDark ? 'block' : 'none'; });
+    }
+    updateA11yModeButtons();
+}
+
+function updateA11yModeButtons() {
+    var isDark = document.body.classList.contains('dark-mode');
+    document.querySelectorAll('[data-a11y-mode]').forEach(function(btn) {
+        var val = btn.getAttribute('data-a11y-mode');
+        btn.classList.toggle('active', (val === 'dark' && isDark) || (val === 'light' && !isDark));
+    });
+}
+
+function setA11y(category, value) {
+    var b = document.body;
+    var prefix = 'a11y-' + category + '-';
+
+    // Remove all classes for this category
+    var classes = b.className.split(' ').filter(function(c) { return c.indexOf(prefix) !== 0; });
+    b.className = classes.join(' ');
+
+    // Add new class if not "normal"
+    if (value !== 'normal') {
+        b.classList.add(prefix + value);
+    }
+
+    // Update active buttons for this category
+    var attr = 'data-a11y-' + category;
+    document.querySelectorAll('[' + attr + ']').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute(attr) === value);
+    });
+}
+
+function resetA11y() {
+    var b = document.body;
+    var classes = b.className.split(' ').filter(function(c) { return c.indexOf('a11y-') !== 0; });
+    b.className = classes.join(' ');
+
+    // Reset all buttons: only "normal" ones active
+    document.querySelectorAll('.a11y-btn').forEach(function(btn) {
+        var isNormal = false;
+        for (var i = 0; i < btn.attributes.length; i++) {
+            var a = btn.attributes[i];
+            if (a.name.indexOf('data-a11y-') === 0 && a.value === 'normal') isNormal = true;
+        }
+        btn.classList.toggle('active', isNormal);
+    });
+}
+
+// Close a11y modal on Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('a11yModal').classList.contains('open')) {
+        closeA11yModal();
+    }
+});
+
+// Set default active buttons on load
+(function() {
+    document.querySelectorAll('.a11y-btn').forEach(function(btn) {
+        for (var i = 0; i < btn.attributes.length; i++) {
+            var a = btn.attributes[i];
+            if (a.name.indexOf('data-a11y-') === 0 && a.value === 'normal') {
+                btn.classList.add('active');
+            }
+        }
+    });
+})();
