@@ -1573,6 +1573,16 @@ var webProjects = {
         features: ['Immobilienübersicht', 'Kontaktformular', 'Über uns Seite', 'Standort & Kontaktdaten', 'Responsive Design', 'SEO-optimiert'],
         price: 'CHF 900 – 1\'500'
     },
+    kicreator: {
+        title: 'KI Creator Suite',
+        url: 'https://ai-generator-a5j5.vercel.app',
+        image: 'img/geenrador.jpeg',
+        complexity: 'complex',
+        desc: 'Websites, Videos und Musik — alles mit KI generiert. Eine All-in-One-Plattform für KI-gestützte Content-Erstellung mit OpenAI und Google GenAI Integration.',
+        techs: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'OpenAI', 'Google GenAI'],
+        features: ['KI-Website-Generierung', 'KI-Video-Erstellung', 'KI-Musik-Generierung', 'Multi-KI-Integration (OpenAI + Google)', 'Echtzeit-Vorschau', 'Responsive Design'],
+        price: 'CHF 3\'500 – 6\'000'
+    },
     recipedigitizer: {
         title: 'Recipe Digitizer',
         url: 'https://recipe-digitalizer.vercel.app',
