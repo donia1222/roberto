@@ -1667,6 +1667,28 @@ function webModalWhatsApp() {
     window.open('https://wa.me/41765608645?text=' + encodeURIComponent(msg), '_blank');
 }
 
+// ===== WEBSITE FILTER TABS =====
+function filterWebsites(complexity) {
+    var cards = document.querySelectorAll('.website-card');
+    var tabs = document.querySelectorAll('.website-filter-tab');
+
+    // Update active tab
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+    document.querySelector('.website-filter-tab[data-filter="' + complexity + '"]').classList.add('active');
+
+    // Filter cards
+    cards.forEach(function(card) {
+        if (complexity === 'all' || card.getAttribute('data-complexity') === complexity) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.5s ease';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
 // ===== LEGAL MODALS =====
 var legalContent = {
     impressum: {
@@ -2185,5 +2207,16 @@ document.addEventListener('keydown', function(e) {
                 btn.classList.add('active');
             }
         }
+    });
+})();
+
+// Initialize website filter tabs
+(function() {
+    var filterTabs = document.querySelectorAll('.website-filter-tab');
+    filterTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var filter = this.getAttribute('data-filter');
+            filterWebsites(filter);
+        });
     });
 })();

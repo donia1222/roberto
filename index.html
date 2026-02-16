@@ -556,8 +556,14 @@
             <h2 data-i18n-html="websites.title">Websites für <span style="color:var(--begonia400)">KMU &amp; Gewerbe</span></h2>
             <p data-i18n="websites.desc">Moderne, schnelle Websites für Unternehmen in Buchs SG, im Rheintal, St. Gallen und Liechtenstein. Von Restaurants bis Handwerker.</p>
         </div>
+        <div class="websites-filter-tabs">
+            <button class="website-filter-tab active" data-filter="all" data-i18n="websites.filter.all">Alle</button>
+            <button class="website-filter-tab" data-filter="easy" data-i18n="websites.filter.easy">Einfach</button>
+            <button class="website-filter-tab" data-filter="medium" data-i18n="websites.filter.medium">Mittel</button>
+            <button class="website-filter-tab" data-filter="complex" data-i18n="websites.filter.complex">Komplex</button>
+        </div>
         <div class="websites-grid">
-            <div class="website-card" onclick="openWebModal('recipedigitizer')">
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('recipedigitizer')">
                 <div class="website-card-image"><img src="img/recipesamlun.jpeg" alt="Recipe Digitizer Website"></div>
                 <div class="website-card-content">
                     <h4>Recipe Digitizer</h4>
@@ -566,7 +572,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span><span class="ai-tag">OpenAI</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('hotbbq')">
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('hotbbq')">
                 <div class="website-card-image"><img src="img/hotbbq.jpg" alt="HOT BBQ Website - eCommerce Buchs SG"></div>
                 <div class="website-card-content">
                     <h4>HOT &amp; BBQ</h4>
@@ -575,7 +581,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('beauty')">
+            <div class="website-card" data-complexity="medium" onclick="openWebModal('beauty')">
                 <div class="website-card-image"><img src="img/beautystyle.jpg" alt="BeautyStyle Website"></div>
                 <div class="website-card-content">
                     <h4>BeautyStyle</h4>
@@ -584,7 +590,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>Framer Motion</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('ushuaia')">
+            <div class="website-card" data-complexity="medium" onclick="openWebModal('ushuaia')">
                 <div class="website-card-image"><img src="img/ushuaia.png" alt="Ushuaia Bar Website Buchs SG"></div>
                 <div class="website-card-content">
                     <h4>Ushuaia Bar</h4>
@@ -593,7 +599,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('cantina')">
+            <div class="website-card" data-complexity="medium" onclick="openWebModal('cantina')">
                 <div class="website-card-image"><img src="img/cantina.jpeg" alt="Cantina Tex-Mex Restaurant Website"></div>
                 <div class="website-card-content">
                     <h4>Cantina Tex-Mex</h4>
@@ -602,7 +608,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('kicreator')">
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('kicreator')">
                 <div class="website-card-image"><img src="img/geenrador.jpeg" alt="KI Creator Suite Website"></div>
                 <div class="website-card-content">
                     <h4>KI Creator Suite</h4>
@@ -611,7 +617,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span class="ai-tag">OpenAI</span><span class="ai-tag">Google AI</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('flinck')">
+            <div class="website-card" data-complexity="easy" onclick="openWebModal('flinck')">
                 <div class="website-card-image"><img src="img/flinck.jpeg" alt="Flinck Sauber Website Liechtenstein"></div>
                 <div class="website-card-content">
                     <h4>Flinck Sauber</h4>
@@ -620,7 +626,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('bouquet')">
+            <div class="website-card" data-complexity="medium" onclick="openWebModal('bouquet')">
                 <div class="website-card-image"><img src="img/bouquet.jpeg" alt="Bouquet Mediterraneo Restaurant Website"></div>
                 <div class="website-card-content">
                     <h4>Bouquet Mediterraneo</h4>
@@ -629,7 +635,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('crypto')">
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('crypto')">
                 <div class="website-card-image"><img src="img/crypto.png" alt="Crypto Dashboard Website"></div>
                 <div class="website-card-content">
                     <h4>Crypto Dashboard</h4>
@@ -638,7 +644,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>Web3</span><span>API</span></div>
                 </div>
             </div>
-            <div class="website-card" onclick="openWebModal('renovation')">
+            <div class="website-card" data-complexity="easy" onclick="openWebModal('renovation')">
                 <div class="website-card-image"><img src="img/renovation.jpg" alt="Renovation Website"></div>
                 <div class="website-card-content">
                     <h4>Renovation</h4>
@@ -648,7 +654,7 @@
                 </div>
             </div>
      
-            <div class="website-card" onclick="openWebModal('rrapi')">
+            <div class="website-card" data-complexity="easy" onclick="openWebModal('rrapi')">
                 <div class="website-card-image"><img src="img/rrapi.jpg" alt="Rrapi Immobilien Website"></div>
                 <div class="website-card-content">
                     <h4>Rrapi Immobilien</h4>
