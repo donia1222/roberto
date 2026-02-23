@@ -97,6 +97,9 @@ var translations = {
         'webcta.title': 'Weitere Projekte in 2025',
         'webcta.desc': 'Ich habe noch viele weitere Websites realisiert. Lassen Sie uns über Ihr Projekt sprechen.',
         'webcta.btn': 'Kontakt aufnehmen',
+        // Clients Trust
+        'clients.title': 'Betriebe, die mir <span style="color:var(--begonia400)">vertrauen</span>',
+        'clients.desc': 'Lokale Unternehmen aus Buchs SG, Vaduz und Sevelen, die für ihren Webauftritt auf meine Arbeit setzen.',
         // Tech Stack
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Modernste Technologien',
         'tech.desc': 'Ich arbeite mit den neuesten Frameworks und Tools für maximale Performance und Zukunftssicherheit.',
@@ -417,6 +420,9 @@ var translations = {
         'webcta.title': 'More projects in 2025',
         'webcta.desc': 'I have built many more websites. Let\'s talk about your project.',
         'webcta.btn': 'Get in touch',
+        // Clients Trust
+        'clients.title': 'Businesses that <span style="color:var(--begonia400)">trust me</span>',
+        'clients.desc': 'Local companies from Buchs SG, Vaduz and Sevelen who rely on my work for their web presence.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Latest Technologies',
         'tech.desc': 'I work with the latest frameworks and tools for maximum performance and future-proofing.',
         'about.title': 'Roberto Salvador<br>Your <span class="typing-text" id="aboutTyping">Developer</span> on site',
@@ -729,6 +735,9 @@ var translations = {
         'webcta.title': 'Más proyectos en 2025',
         'webcta.desc': 'He creado muchos más sitios web. Hablemos de tu proyecto.',
         'webcta.btn': 'Contactar',
+        // Clients Trust
+        'clients.title': 'Empresas que <span style="color:var(--begonia400)">confían en mí</span>',
+        'clients.desc': 'Empresas locales de Buchs SG, Vaduz y Sevelen que confían en mi trabajo para su presencia web.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Tecnologías modernas',
         'tech.desc': 'Trabajo con los frameworks y herramientas más recientes para máximo rendimiento y preparación para el futuro.',
         'about.title': 'Roberto Salvador<br>Tu <span class="typing-text" id="aboutTyping">Desarrollador</span> local',
@@ -1041,6 +1050,9 @@ var translations = {
         'webcta.title': 'Plus de projets en 2025',
         'webcta.desc': 'J\'ai réalisé bien d\'autres sites web. Parlons de votre projet.',
         'webcta.btn': 'Nous contacter',
+        // Clients Trust
+        'clients.title': 'Entreprises qui me <span style="color:var(--begonia400)">font confiance</span>',
+        'clients.desc': 'Des entreprises locales de Buchs SG, Vaduz et Sevelen qui s\'appuient sur mon travail pour leur présence web.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Technologies modernes',
         'tech.desc': 'Je travaille avec les frameworks et outils les plus récents pour des performances maximales.',
         'about.title': 'Roberto Salvador<br>Votre <span class="typing-text" id="aboutTyping">Développeur</span> local',
@@ -1353,6 +1365,9 @@ var translations = {
         'webcta.title': 'Altri progetti nel 2025',
         'webcta.desc': 'Ho realizzato molti altri siti web. Parliamo del tuo progetto.',
         'webcta.btn': 'Contattaci',
+        // Clients Trust
+        'clients.title': 'Aziende che si <span style="color:var(--begonia400)">fidano di me</span>',
+        'clients.desc': 'Aziende locali da Buchs SG, Vaduz e Sevelen che affidano a me il loro sito web.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Tecnologie moderne',
         'tech.desc': 'Lavoro con i framework e gli strumenti più recenti per le massime prestazioni.',
         'about.title': 'Roberto Salvador<br>Il tuo <span class="typing-text" id="aboutTyping">Sviluppatore</span> locale',
