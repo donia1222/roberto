@@ -1327,6 +1327,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .website-card-content p { font-size: 14px; line-height: 1.6; color: var(--gunpowder500); margin-bottom: 14px; }
 .website-card-tech-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .website-card-tech-row span { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 1000px; background: var(--gunpowder50); color: var(--gunpowder500); border: 1px solid #e2e8f0; }
+.website-card-tech-row span.admin-tag { background: #dbeafe; color: #3b82f6; border-color: #bfdbfe; }
 .website-card--cta {
     background: linear-gradient(135deg, var(--begonia400) 0%, var(--begonia500) 100%);
     border: none;
@@ -2541,6 +2542,14 @@ body.svc-modal-open {
 .web-modal-badge--easy { background: #e8faf0; color: #10a37f; }
 .web-modal-badge--medium { background: #fef3e2; color: #d97706; }
 .web-modal-badge--complex { background: #fce8ec; color: var(--begonia400); }
+.web-modal-inprogress { background: #f1f5f9 !important; color: #64748b !important; border: 1.5px dashed #cbd5e1 !important; display: inline-flex; align-items: center; gap: 8px; }
+.web-modal-loader { display: inline-block; width: 14px; height: 14px; border: 2px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: webLoaderSpin 0.8s linear infinite; flex-shrink: 0; }
+.card-chip-loader { display: inline-block; width: 11px; height: 11px; min-width: 11px; aspect-ratio: 1; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: webLoaderSpin 1.6s linear infinite; flex-shrink: 0; }
+.card-chip-pulse { position: relative; display: inline-block; width: 8px; height: 8px; min-width: 8px; flex-shrink: 0; }
+.card-chip-pulse::before { content: ''; position: absolute; inset: 0; background: #fff; border-radius: 50%; animation: chipPulseRing 1.4s ease-out infinite; }
+.card-chip-pulse::after { content: ''; position: absolute; inset: 1px; background: #fff; border-radius: 50%; }
+@keyframes chipPulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes webLoaderSpin { to { transform: rotate(360deg); } }
 .web-modal-techs {
     display: flex;
     flex-wrap: wrap;

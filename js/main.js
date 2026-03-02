@@ -1473,6 +1473,26 @@ function calcGoToContact() {
 
 // ===== WEB PROJECT MODAL =====
 var webProjects = {
+    usfishing: {
+        title: 'US-Fishing & Huntingshop',
+        url: '',
+        image: 'img/usa.jpeg',
+        complexity: 'complex',
+        desc: 'Kompletter Online-Shop für Angeln & Jagd. Breites Sortiment an Ausrüstung, Zubehör und Bekleidung — mit Produktfiltern, Warenkorb und Bestellverwaltung.',
+        techs: ['Next.js', 'React', 'eCommerce', 'Stripe', 'Admin Panel'],
+        features: ['Produktkatalog mit Kategorien & Filter', 'Warenkorb & Checkout', 'Online-Zahlung', 'Bestellverwaltung', 'Kundenkonto', 'Responsive Design'],
+        price: 'CHF 2\'800 – 5\'000'
+    },
+    ledershop: {
+        title: 'Leder-Shop',
+        url: 'https://leder-shop.ch',
+        image: 'img/ledershop.jpeg',
+        complexity: 'complex',
+        desc: 'Premium Online-Shop für hochwertige Lederartikel. Exklusives eCommerce mit Produktkatalog, Warenkorb und Bestellsystem.',
+        techs: ['Next.js', 'React', 'eCommerce', 'Stripe', 'Admin Panel'],
+        features: ['Produktkatalog mit Kategorien', 'Warenkorb & Checkout', 'Online-Zahlung', 'Bestellverwaltung', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 2\'800 – 5\'000'
+    },
     hotbbq: {
         title: 'HOT & BBQ',
         url: 'https://hot-bbq.ch',
@@ -1644,7 +1664,22 @@ function openWebModal(id) {
 
     // Visit URL
     var visitBtn = document.getElementById('webModalVisit');
-    visitBtn.href = project.url;
+    var inProgressNote = document.getElementById('webModalInProgress');
+    if (project.url) {
+        visitBtn.href = project.url;
+        visitBtn.style.pointerEvents = '';
+        visitBtn.style.opacity = '';
+        visitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Website besuchen';
+        visitBtn.className = 'gbcta gbcta--primary gbcta--small';
+        inProgressNote.style.display = 'none';
+    } else {
+        visitBtn.href = '#';
+        visitBtn.style.pointerEvents = 'none';
+        visitBtn.style.opacity = '0.7';
+        visitBtn.innerHTML = '<span style="display:flex;flex-direction:column;align-items:center;gap:2px;width:100%"><span style="display:flex;align-items:center;gap:6px;"><span class="web-modal-loader"></span> In Bearbeitung</span><span style="font-size:12px;font-weight:700;color:var(--begonia400);">Aktuell wird an dieser Website gearbeitet.</span></span>';
+        visitBtn.className = 'gbcta gbcta--small web-modal-inprogress';
+        inProgressNote.style.display = 'none';
+    }
 
     // Open modal
     document.getElementById('webModalOverlay').classList.add('open');

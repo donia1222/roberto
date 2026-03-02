@@ -584,6 +584,10 @@
                     <div class="client-card-logo"><img src="empresas/flinksauber-vaduz.png" alt="Flinck Sauber"></div>
                     <div class="client-card-info"><span class="client-card-name">Flinck Sauber</span><div class="client-card-divider"></div><span class="client-card-location">Vaduz</span></div>
                 </div>
+                <div class="client-card">
+                    <div class="client-card-logo"><img src="img/lederlogo.png" alt="Leder-Shop"></div>
+                    <div class="client-card-info"><span class="client-card-name">Leder-Shop</span><div class="client-card-divider"></div><span class="client-card-location">Sax</span></div>
+                </div>
                 <!-- Duplikat für nahtlosen Loop -->
                 <div class="client-card">
                     <div class="client-card-logo"><img src="empresas/cantina-buchs.png" alt="Cantina Tex-Mex"></div>
@@ -605,7 +609,11 @@
                     <div class="client-card-logo"><img src="empresas/flinksauber-vaduz.png" alt="Flinck Sauber"></div>
                     <div class="client-card-info"><span class="client-card-name">Flinck Sauber</span><div class="client-card-divider"></div><span class="client-card-location">Vaduz</span></div>
                 </div>
-                
+                <div class="client-card">
+                    <div class="client-card-logo"><img src="img/lederlogo.png" alt="Leder-Shop"></div>
+                    <div class="client-card-info"><span class="client-card-name">Leder-Shop</span><div class="client-card-divider"></div><span class="client-card-location">Sax</span></div>
+                </div>
+
             </div>
             
         </div>
@@ -674,13 +682,31 @@
             <button class="website-filter-tab" data-filter="complex" data-i18n="websites.filter.complex">Komplex</button>
         </div>
         <div class="websites-grid">
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('ledershop')">
+                <div class="website-card-image"><img src="img/ledershop.jpeg" alt="Leder-Shop Website - Premium Lederartikel"></div>
+                <div class="website-card-content">
+                    <h4>Leder-Shop</h4>
+                    <span class="website-card-url">leder-shop.ch</span>
+                    <p>Premium Lederartikel – exklusiver Online-Shop für hochwertige Lederprodukte.</p>
+                    <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
+                </div>
+            </div>
+            <div class="website-card" data-complexity="complex" onclick="openWebModal('usfishing')">
+                <div class="website-card-image"><img src="img/usa.jpeg" alt="US-Fishing & Huntingshop Website"></div>
+                <div class="website-card-content">
+                    <h4>US-Fishing &amp; Huntingshop</h4>
+                    <div class="website-card-tech-row" style="margin-bottom:6px"><span style="background:var(--begonia400);color:#fff;font-weight:700;display:inline-flex;align-items:center;gap:6px;">In Bearbeitung <span class="card-chip-pulse"></span></span></div>
+                    <p>Vollständiger Online-Shop für Angeln &amp; Jagd — Ausrüstung, Zubehör und mehr.</p>
+                    <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
+                </div>
+            </div>
             <div class="website-card" data-complexity="complex" onclick="openWebModal('kicreator')">
                 <div class="website-card-image"><img src="img/geenrador.jpeg" alt="KI Creator Suite Website"></div>
                 <div class="website-card-content">
                     <h4>KI Creator Suite</h4>
                     <span class="website-card-url">ai-generator-a5j5.vercel.app</span>
                     <p>Websites, Videos und Musik — alles mit KI generiert.</p>
-                    <div class="website-card-tech-row"><span>Next.js</span><span class="ai-tag">OpenAI</span><span class="ai-tag">Google AI</span></div>
+                    <div class="website-card-tech-row"><span>Next.js</span><span class="ai-tag">KI Technologie</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card" data-complexity="complex" onclick="openWebModal('recipedigitizer')">
@@ -689,7 +715,7 @@
                     <h4>Recipe Digitizer</h4>
                     <span class="website-card-url">rezeptsammlung.net</span>
                     <p>KI-gestützte PWA zum Digitalisieren und Verwalten von Rezepten.</p>
-                    <div class="website-card-tech-row"><span>Next.js</span><span>React</span><span class="ai-tag">OpenAI</span></div>
+                    <div class="website-card-tech-row"><span>Next.js</span><span>React</span><span class="ai-tag">OpenAI</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card" data-complexity="complex" onclick="openWebModal('hotbbq')">
@@ -698,7 +724,7 @@
                     <h4>HOT &amp; BBQ</h4>
                     <span class="website-card-url">hot-bbq.ch</span>
                     <p>Premium Hot Sauce Online-Shop. eCommerce mit Next.js.</p>
-                    <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span></div>
+                    <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card" data-complexity="medium" onclick="openWebModal('beauty')">
@@ -725,7 +751,7 @@
                     <h4>Cantina Tex-Mex</h4>
                     <span class="website-card-url">cantinatexmex.ch</span>
                     <p>Restaurant mit Pub-Atmosphäre und mexikanischer Küche.</p>
-                    <div class="website-card-tech-row"><span>Remix</span><span>React</span></div>
+                    <div class="website-card-tech-row"><span>Remix</span><span>React</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card" data-complexity="easy" onclick="openWebModal('flinck')">
@@ -752,7 +778,7 @@
                     <h4>Crypto Dashboard</h4>
                     <span class="website-card-url">remix-crypto.vercel.app</span>
                     <p>Echtzeit-Preisdaten, Portfolio-Tracking und Marktanalysen.</p>
-                    <div class="website-card-tech-row"><span>Remix</span><span>Web3</span><span>API</span></div>
+                    <div class="website-card-tech-row"><span>Remix</span><span>Web3</span><span>API</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card" data-complexity="easy" onclick="openWebModal('renovation')">
@@ -771,7 +797,7 @@
                     <h4>Rrapi Immobilien</h4>
                     <span class="website-card-url">rrapi.ch</span>
                     <p>Immobilienagentur spezialisiert auf exklusive Immobilien.</p>
-                    <div class="website-card-tech-row"><span>HTML</span><span>CSS</span><span>PHP</span></div>
+                    <div class="website-card-tech-row"><span>HTML</span><span>CSS</span><span>PHP</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
             <div class="website-card website-card--cta">
@@ -1323,6 +1349,7 @@
             <span class="svc-modal-price-note">Geschätzter Preis für ein ähnliches Projekt</span>
         </div>
     </div>
+    <p id="webModalInProgress" style="display:none;text-align:center;font-size:12px;color:#94a3b8;margin:0 0 4px;"></p>
     <div class="svc-modal-footer" style="gap:10px;">
         <a href="#" target="_blank" rel="noopener" class="gbcta gbcta--primary gbcta--small" id="webModalVisit" style="width:100%;text-align:center;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
