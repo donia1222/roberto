@@ -388,133 +388,132 @@
             <h2>Meine veröffentlichten <span style="color:var(--begonia400)">Apps</span></h2>
             <p>Alle Apps im App Store und Google Play Store verfügbar. Entwickelt mit React Native für native Performance auf iOS und Android.</p>
         </div>
-
-        <div class="bento-grid">
-            <!-- KETO SCANNER — featured, col 1-2 × row 1-2 -->
-            <div class="bento-card bento-card--featured">
-                <div class="bento-featured-visual" id="appShowcase">
-                    <div class="app-featured-phone">
-                        <div class="app-featured-slider" id="phoneSlider">
-                            <img src="capturas/Captura 2026-01-19 a las 0.09.30.png" alt="Keto Scanner Home" class="app-featured-slide active">
-                            <img src="capturas/Captura 2026-01-19 a las 0.09.47.png" alt="Keto Scanner Explore" class="app-featured-slide">
-                            <img src="capturas/Captura 2026-01-19 a las 0.10.11.png" alt="Keto Scanner Analyse" class="app-featured-slide">
-                        </div>
-                    </div>
-                    <div class="app-featured-dots" id="phoneDots">
-                        <span class="app-featured-dot active"></span>
-                        <span class="app-featured-dot"></span>
-                        <span class="app-featured-dot"></span>
+        <!-- FEATURED: Keto Scanner (Neueste App) -->
+        <div class="app-featured">
+            <div class="app-featured-showcase" id="appShowcase">
+                <div class="app-featured-phone">
+                    <div class="app-featured-phone-notch"></div>
+                    <div class="app-featured-slider" id="phoneSlider">
+                        <img src="capturas/Captura 2026-01-19 a las 0.09.30.png" alt="Keto Scanner Home" class="app-featured-slide active">
+                        <img src="capturas/Captura 2026-01-19 a las 0.09.47.png" alt="Keto Scanner Explore" class="app-featured-slide">
+                        <img src="capturas/Captura 2026-01-19 a las 0.10.11.png" alt="Keto Scanner Analyse" class="app-featured-slide">
                     </div>
                 </div>
-                <div class="app-featured-content">
-                    <div class="app-card-tech">
-                        <span>React Native</span>
-                        <span class="ai-tag">Neu 2026</span>
-                    </div>
-                    <h3>Keto Scanner</h3>
-                    <p class="app-featured-tagline">Scannen. Analysieren. Keto entscheiden.</p>
-                    <p>Die ultimative Keto-App: Scannen Sie Produkt-Barcodes und erfahren Sie sofort, ob ein Lebensmittel keto-freundlich ist. Über 2,8 Millionen Produkte in der Datenbank.</p>
-                    <div class="app-featured-rating">
-                        <span class="app-featured-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                        <span>4.8/5</span>
-                    </div>
-                    <div class="bento-links">
-                        <a href="https://apps.apple.com/us/app/keto-barcode-scanner/id6757723290" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                        <a href="https://play.google.com/store/apps/details?id=com.lwebch.KetoScanner" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
-                        <a href="https://www.keto-scan.com" target="_blank" rel="noopener" class="app-link app-link--web">keto-scan.com</a>
-                    </div>
+                <div class="app-featured-dots" id="phoneDots">
+                    <span class="app-featured-dot active"></span>
+                    <span class="app-featured-dot"></span>
+                    <span class="app-featured-dot"></span>
                 </div>
             </div>
+            <div class="app-featured-content">
+                <div class="app-card-tech">
+                    <span>React Native</span>
+                    <span class="ai-tag">Neu 2026</span>
+                </div>
+                <h3>Keto Scanner</h3>
+                <p class="app-featured-tagline">Scannen. Analysieren. Keto entscheiden.</p>
+                <p>Die ultimative Keto-App: Scannen Sie Produkt-Barcodes und erfahren Sie sofort, ob ein Lebensmittel keto-freundlich ist. Komplette Nährwertanalyse mit 1-5 Sterne Keto-Bewertung. Über 2,8 Millionen Produkte in der Datenbank.</p>
+                <div class="app-featured-rating">
+                    <span class="app-featured-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    <span>4.8/5</span>
+                </div>
+                <div class="app-card-links" style="margin-top:24px;">
+                    <a href="https://apps.apple.com/us/app/keto-barcode-scanner/id6757723290" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.lwebch.KetoScanner" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
+                    <a href="https://www.keto-scan.com" target="_blank" rel="noopener" class="app-link app-link--web">keto-scan.com</a>
+                </div>
+            </div>
+        </div>
 
-            <!-- BUYVOICE — col 3, row 1-2 (tall) -->
-            <div class="bento-card bento-card--tall" style="--bento-bg:linear-gradient(145deg,#f0edf8 0%,#e5dff5 100%);">
-                <div class="bento-card-inner">
-                    <div class="bento-icon"><img src="img/buyvoice.png" alt="BuyVoice"></div>
+        <h3 class="apps-subtitle">Weitere Apps</h3>
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#f0edf8 0%,#f5f2e8 100%);">
+                    <img src="img/buyvoice.png" alt="BuyVoice App - Spracherkennung Einkaufsliste">
+                </div>
+                <div class="app-card-content">
                     <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
                     <h4>BuyVoice</h4>
-                    <p class="bento-app-desc">Sprechen Sie und die Einkaufsliste wird automatisch erstellt. KI-gestützte Spracherkennung.</p>
-                    <div class="bento-links">
+                    <p>Sprechen Sie und die Einkaufsliste wird automatisch erstellt. KI-gestützte Spracherkennung.</p>
+                    <div class="app-card-links">
                         <a href="https://apps.apple.com/app/id6505125372" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
                         <a href="https://play.google.com/store/apps/details?id=com.VoiceList" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
-                        <a href="https://www.buyvoice.app" target="_blank" rel="noopener" class="app-link app-link--web">Web</a>
+                        <a href="https://www.buyvoice.app" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
             </div>
-
-            <!-- SHELF: secondary cards — grid on desktop, horizontal scroll on mobile -->
-            <div class="bento-shelf">
-
-                <!-- FOODSCAN AI — col 1 -->
-                <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#fdf0e6 0%,#f5e4d0 100%);">
-                    <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/foodscan.png" alt="FoodScan AI"></div>
-                        <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
-                        <h4>FoodScan AI</h4>
-                        <p class="bento-app-desc">KI generiert Rezeptvorschläge aus Ihren Kühlschrankzutaten.</p>
-                        <div class="bento-links">
-                            <a href="https://apps.apple.com/app/id6472478688" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.foodmentoai" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
-                        </div>
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#e0f5f0 0%,#d4f1ec 100%);">
+                    <img src="img/hundezonen.png" alt="Hundezonen Schweiz App">
+                </div>
+                <div class="app-card-content">
+                    <div class="app-card-tech"><span>React Native</span></div>
+                    <h4>Hundezonen</h4>
+                    <p>Finden Sie Hundezonen in Ihrer Nähe in der ganzen Schweiz. Die App für Hundebesitzer.</p>
+                    <div class="app-card-links">
+                        <a href="https://apps.apple.com/app/id6745336299" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.HundezonenSchweiz" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
+                        <a href="https://www.hundezonen.ch" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
-
-                <!-- DOGMENTOR — col 2 -->
-                <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e8f0e4 0%,#d8e9d0 100%);">
-                    <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/dogmentor.jpg" alt="DogMentor KI"></div>
-                        <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
-                        <h4>DogMentor KI</h4>
-                        <p class="bento-app-desc">KI-gestütztes Wissen rund um Hundeerziehung.</p>
-                        <div class="bento-links">
-                            <a href="https://apps.apple.com/app/id6467635587" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                            <a href="https://dog-mentor.com" target="_blank" rel="noopener" class="app-link app-link--web">Web</a>
-                        </div>
+            </div>
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#fdf0e6 0%,#f0ebe4 100%);">
+                    <img src="img/foodscan.png" alt="FoodScan AI App - Rezepte aus dem Kühlschrank">
+                </div>
+                <div class="app-card-content">
+                    <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
+                    <h4>FoodScan AI</h4>
+                    <p>Verwandeln Sie Ihren Kühlschrank in Rezepte! KI generiert Rezeptvorschläge aus Ihren Zutaten.</p>
+                    <div class="app-card-links">
+                        <a href="https://apps.apple.com/app/id6472478688" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.foodmentoai" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
+                        <a href="https://www.foodscan-ai.com" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
-
-                <!-- HUNDEZONEN — col 3 -->
-                <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e0f5f0 0%,#cceee5 100%);">
-                    <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/hundezonen.png" alt="Hundezonen Schweiz"></div>
-                        <div class="app-card-tech"><span>React Native</span></div>
-                        <h4>Hundezonen</h4>
-                        <p class="bento-app-desc">Finden Sie Hundezonen in Ihrer Nähe in der ganzen Schweiz.</p>
-                        <div class="bento-links">
-                            <a href="https://apps.apple.com/app/id6745336299" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.HundezonenSchweiz" target="_blank" rel="noopener" class="app-link app-link--playstore">Play Store</a>
-                        </div>
+            </div>
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#e8f0e4 0%,#dfe9da 100%);">
+                    <img src="img/dogmentor.jpg" alt="DogMentor KI App - Hundeerziehung">
+                </div>
+                <div class="app-card-content">
+                    <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
+                    <h4>DogMentor KI</h4>
+                    <p>Alles über Hundeerziehung. KI-gestütztes Wissen rund um Ihren Hund.</p>
+                    <div class="app-card-links">
+                        <a href="https://apps.apple.com/app/id6467635587" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                        <a href="https://dog-mentor.com" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
-
-                <!-- KETORECIPELAB — col 1-2 wide -->
-                <div class="bento-card bento-card--wide" style="--bento-bg:linear-gradient(145deg,#fdf6e3 0%,#f5ecd4 100%);">
-                    <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/ketorecipe.png" alt="KetoRecipeLab"></div>
-                        <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
-                        <h4>KetoRecipeLab</h4>
-                        <p class="bento-app-desc">Einzigartige Keto- und Paleo-Rezepte mit künstlicher Intelligenz erstellen.</p>
-                        <div class="bento-links">
-                            <a href="https://apps.apple.com/app/id6757017200" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                            <a href="https://keto-recipe.app" target="_blank" rel="noopener" class="app-link app-link--web">Web</a>
-                        </div>
+            </div>
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#fdf6e3 0%,#f2eddf 100%);">
+                    <img src="img/ketorecipe.png" alt="KetoRecipeLab App - Keto Rezepte">
+                </div>
+                <div class="app-card-content">
+                    <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
+                    <h4>KetoRecipeLab</h4>
+                    <p>Einzigartige Keto- und Paleo-Rezepte mit künstlicher Intelligenz erstellen.</p>
+                    <div class="app-card-links">
+                        <a href="https://apps.apple.com/app/id6757017200" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                        <a href="https://keto-recipe.app" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
-
-                <!-- WORK TI — col 3 -->
-                <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e4eef8 0%,#d0e4f5 100%);">
-                    <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/workti.png" alt="Work Ti"></div>
-                        <div class="app-card-tech"><span>React Native</span></div>
-                        <h4>Work Ti</h4>
-                        <p class="bento-app-desc">Intelligente Zeiterfassung für Teams und Freelancer.</p>
-                        <div class="bento-links">
-                            <a href="https://apps.apple.com/app/id6745336262" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
-                            <a href="https://www.workti.app" target="_blank" rel="noopener" class="app-link app-link--web">Web</a>
-                        </div>
+            </div>
+            <div class="app-card">
+                <div class="app-card-image" style="background:linear-gradient(135deg,#e4eef8 0%,#dbe8f6 100%);">
+                    <img src="img/workti.png" alt="Work Ti App - Zeiterfassung">
+                </div>
+                <div class="app-card-content">
+                    <div class="app-card-tech"><span>React Native</span></div>
+                    <h4>Work Ti</h4>
+                    <p>Intelligente Zeiterfassung für Teams und Freelancer. Einfach und übersichtlich.</p>
+                    <div class="app-card-links">
+                        <a href="https://apps.apple.com/app/id6745336262" target="_blank" rel="noopener" class="app-link app-link--appstore">App Store</a>
+                        <a href="https://www.workti.app" target="_blank" rel="noopener" class="app-link app-link--web">Landing Page</a>
                     </div>
                 </div>
-
-            </div><!-- /bento-shelf -->
+            </div>
         </div>
     </div>
 </section>

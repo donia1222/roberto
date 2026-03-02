@@ -801,39 +801,23 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: var(--begonia400);
 }
 
-/* ===== BENTO GRID — Apps ===== */
-.bento-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-}
-.bento-card {
-    background: var(--bento-bg, #fff);
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.06);
-    transition: transform 300ms ease, box-shadow 300ms ease;
-}
-.bento-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 24px 64px rgba(0,0,0,0.13);
-}
-.bento-card--featured {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+/* ===== FEATURED APP (Keto Scanner) — GoodBarber-Style ===== */
+.app-featured {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 64px;
 }
-.bento-card--featured:hover { transform: none; box-shadow: none; }
-.bento-featured-visual {
+.app-featured-showcase {
     position: relative;
     background: linear-gradient(155deg, #dbeafe 0%, #bfdbfe 50%, #e0eafc 100%);
+    border-radius: var(--radius-L);
+    padding: 48px 32px 60px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px 32px 64px;
-    min-height: 440px;
+    min-height: 520px;
     transition: background 600ms ease;
 }
 .app-featured-phone {
@@ -920,13 +904,8 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     background: #fff;
     transform: scale(1.2);
 }
-/* Featured card content (right side) */
 .app-featured-content {
-    padding: 40px 40px 40px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #fff;
+    padding: 16px 0;
 }
 .app-featured-content .app-card-tech {
     margin-bottom: 16px;
@@ -948,7 +927,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: #d97706;
 }
 .app-featured-content h3 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 800;
     color: var(--gunpowder900);
     margin-bottom: 8px;
@@ -956,22 +935,22 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     line-height: 1.2;
 }
 .app-featured-tagline {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--cerulean400);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 .app-featured-content > p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.7;
     color: var(--gunpowder500);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 .app-featured-rating {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 4px;
 }
 .app-featured-stars {
     color: var(--accent-orange);
@@ -983,69 +962,10 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     color: var(--gunpowder400);
     font-weight: 500;
 }
-/* Bento card components */
-.bento-card--tall {
-    grid-column: 3;
-    grid-row: 1 / 3;
-}
-.bento-card--wide {
-    grid-column: 1 / 3;
-}
-.bento-card-inner {
-    padding: 28px;
-    height: 100%;
+.app-featured .app-card-links {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.bento-icon { flex-shrink: 0; }
-.bento-icon img {
-    width: 68px;
-    height: 68px;
-    border-radius: 18px;
-    object-fit: cover;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.14);
-}
-.bento-card--tall .bento-icon img {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-}
-.bento-card h4 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--gunpowder900);
-    margin: 0;
-    letter-spacing: -0.02em;
-}
-.bento-app-desc {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--gunpowder500);
-    margin: 0;
-    flex-grow: 1;
-}
-.bento-links {
-    display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-top: auto;
-}
-.bento-card .app-card-tech {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-/* Shelf — sub-grid for secondary cards (desktop/tablet) */
-.bento-shelf {
-    grid-column: 1 / 4;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-}
-.bento-shelf .bento-card--wide {
-    grid-column: 1 / 3;
 }
 
 /* ===== REACT NATIVE & EXPO BANNER ===== */
@@ -1275,9 +1195,41 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 
 /* ===== MOBILE APPS ===== */
 .apps { background: var(--gunpowder50); }
+.apps-subtitle {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gunpowder900);
+    text-align: center;
+    margin-bottom: 32px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.apps-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #fe6c75;
+    border-radius: 2px;
+    transform: scaleX(var(--underline-scale, 0));
+    transform-origin: center;
+}
+.apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.app-card { background: #fff; border-radius: var(--radius-M); overflow: hidden; transition: all 300ms ease; border: 1px solid transparent; }
+.app-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1); border-color: var(--cerulean100); }
+.app-card-image { width: 100%; height: 200px; overflow: hidden; background: var(--gunpowder50); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.app-card-image img { width: 120px; height: 120px; border-radius: 24px; object-fit: cover; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.app-card-content { padding: 28px; }
 .app-card-tech { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
 .app-card-tech span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 1000px; background: var(--cerulean50); color: var(--cerulean500); }
 .app-card-tech span.ai-tag { background: #fef3e2; color: #d97706; }
+.app-card-content h4 { margin-bottom: 10px; color: var(--gunpowder800); font-size: 20px; }
+.app-card-content p { font-size: 14px; line-height: 1.6; color: var(--gunpowder500); margin-bottom: 20px; }
+.app-card-links { display: flex; gap: 10px; flex-wrap: wrap; }
 .app-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 1000px; transition: all 200ms; }
 .app-link--appstore { background: var(--gunpowder900); color: #fff; }
 .app-link--appstore:hover { background: var(--gunpowder700); }
@@ -3132,14 +3084,13 @@ body.calc-open {
     .float-code { font-size: 9px; padding: 10px 12px; }
     .fc-top { right: -4%; }
     .fc-bottom { left: -6%; }
+    .app-featured { grid-template-columns: 1fr; gap: 40px; }
+    .app-featured-showcase { min-height: 420px; padding: 40px 24px 56px; }
     .app-featured-phone { width: 210px; }
-    .bento-grid { grid-template-columns: 1fr 1fr; }
-    .bento-card--featured { grid-column: 1 / 3; grid-row: auto; grid-template-columns: 1fr 1fr; }
-    .bento-card--tall { grid-column: 1 / 3; grid-row: auto; }
-    .bento-shelf { grid-column: 1 / 3; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .service-card--cta { grid-row: span 1; grid-column: span 2; }
     .techstack-scroll-wrapper { height: 420px; max-width: 600px; }
+    .apps-grid { grid-template-columns: repeat(2, 1fr); }
     .workflow-steps { grid-template-columns: repeat(2, 1fr); }
     .website-card { flex: 0 0 300px; }
     .why-cards { grid-template-columns: 1fr; }
@@ -3158,29 +3109,12 @@ body.calc-open {
     .float-code { display: none; }
     .app-featured-content h3 { font-size: 24px; }
     .app-featured-tagline { font-size: 14px; }
-    .bento-featured-visual { min-height: 320px; padding: 32px 16px 52px; }
-    .app-featured-content { padding: 28px 24px; }
+    .app-featured-showcase { min-height: 380px; padding: 32px 16px 52px; }
     .app-featured-phone { width: 180px; border-radius: 28px; border-width: 5px; }
     .app-featured-phone-notch { width: 80px; height: 20px; }
     .app-featured-arrow { width: 36px; height: 36px; }
     .app-featured-arrow svg { width: 16px; height: 16px; }
-    .bento-grid { grid-template-columns: 1fr; gap: 12px; }
-    .bento-card--featured { grid-column: 1; grid-row: auto; grid-template-columns: 1fr; }
-    .bento-card--tall { grid-column: 1; }
-    .bento-shelf {
-        grid-column: 1;
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 12px;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    .bento-shelf::-webkit-scrollbar { display: none; }
-    .bento-shelf .bento-card { flex: 0 0 240px; scroll-snap-align: start; }
-    .bento-shelf .bento-card--wide { flex: 0 0 300px; grid-column: auto; }
-    .services-grid, .workflow-steps, .metrics-grid { grid-template-columns: 1fr; }
+    .services-grid, .apps-grid, .workflow-steps, .metrics-grid { grid-template-columns: 1fr; }
     .techstack-scroll-wrapper { height: 380px; max-width: 100%; }
     .techstack-scroll-columns { gap: 12px; }
     .ts-card { padding: 14px 14px; gap: 10px; }
@@ -3573,25 +3507,30 @@ body.dark-mode .service-card p {
 body.dark-mode .apps {
     background: #1e2436;
 }
-body.dark-mode .bento-card {
+body.dark-mode .apps-subtitle {
+    color: #fff;
+}
+body.dark-mode .app-card {
+    background: #232838;
     border-color: rgba(255,255,255,0.06);
 }
-body.dark-mode .bento-card:hover {
-    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+body.dark-mode .app-card:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    border-color: rgba(21, 160, 218, 0.3);
 }
-body.dark-mode .app-featured-content {
-    background: #232838;
+body.dark-mode .app-card-image {
+    background: #1a1f2e;
+}
+body.dark-mode .app-card-content h4 {
+    color: #fff;
+}
+body.dark-mode .app-card-content p {
+    color: #8a9bb3;
 }
 body.dark-mode .app-featured-content h3 {
     color: #fff;
 }
 body.dark-mode .app-featured-content > p {
-    color: #8a9bb3;
-}
-body.dark-mode .bento-card h4 {
-    color: #fff;
-}
-body.dark-mode .bento-app-desc {
     color: #8a9bb3;
 }
 

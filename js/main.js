@@ -88,7 +88,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.section-header, .app-featured, .services-grid, .apps-grid, .websites-grid, .techstack-scroll-wrapper, .about-inner, .why-cards, .trust-grid, .faq-list').forEach(el => {
+document.querySelectorAll('.section-header, .bento-grid, .services-grid, .websites-grid, .techstack-scroll-wrapper, .about-inner, .why-cards, .trust-grid, .faq-list').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -288,13 +288,12 @@ var i18nMap = [
     {s: '.app-featured-tagline', k: 'apps.featured.tagline'},
     {s: '.app-featured-content > p', k: 'apps.featured.desc'},
     {s: '.app-featured-rating span:last-child', k: 'apps.featured.rating'},
-    {s: '.apps-subtitle', k: 'apps.subtitle'},
-    {s: '.app-card:nth-child(1) .app-card-content p', k: 'app1.desc'},
-    {s: '.app-card:nth-child(2) .app-card-content p', k: 'app2.desc'},
-    {s: '.app-card:nth-child(3) .app-card-content p', k: 'app3.desc'},
-    {s: '.app-card:nth-child(4) .app-card-content p', k: 'app4.desc'},
-    {s: '.app-card:nth-child(5) .app-card-content p', k: 'app5.desc'},
-    {s: '.app-card:nth-child(6) .app-card-content p', k: 'app6.desc'},
+    {s: '.bento-card:nth-child(2) .bento-app-desc', k: 'app1.desc'},
+    {s: '.bento-card:nth-child(3) .bento-app-desc', k: 'app2.desc'},
+    {s: '.bento-card:nth-child(4) .bento-app-desc', k: 'app3.desc'},
+    {s: '.bento-card:nth-child(5) .bento-app-desc', k: 'app4.desc'},
+    {s: '.bento-card:nth-child(6) .bento-app-desc', k: 'app5.desc'},
+    {s: '.bento-card:nth-child(7) .bento-app-desc', k: 'app6.desc'},
     // Workflow
     {s: '.workflow .section-header h2', k: 'workflow.title'},
     {s: '.workflow .section-header p', k: 'workflow.desc'},
