@@ -4196,3 +4196,178 @@ body.a11y-spacing-wide * {
     word-spacing: 0.16em !important;
 }
 
+/* =====================================================
+   BUYVOICE DEMO ANIMATION
+   ===================================================== */
+
+.buyvoice-demo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 16px;
+    background: rgba(255,255,255,0.52);
+    border-radius: 18px;
+    border: 1px solid rgba(123,94,167,0.13);
+    gap: 8px;
+    min-height: 150px;
+}
+
+/* ---- Mic side ---- */
+.bv-mic-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.bv-mic-wrap {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bv-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(123,94,167,0.5);
+    width: 44px;
+    height: 44px;
+    animation: bvRingExpand 2s ease-out infinite;
+}
+.bv-ring-1 { animation-delay: 0s; }
+.bv-ring-2 { animation-delay: 0.65s; }
+.bv-ring-3 { animation-delay: 1.3s; }
+
+@keyframes bvRingExpand {
+    0%   { transform: scale(1);   opacity: 0.8; }
+    100% { transform: scale(2.4); opacity: 0;   }
+}
+
+.bv-mic-icon {
+    font-size: 28px;
+    position: relative;
+    z-index: 2;
+    animation: bvMicPulse 2s ease-in-out infinite;
+}
+
+@keyframes bvMicPulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(123,94,167,0.5)); }
+}
+
+.bv-listening-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #7B5EA7;
+    margin: 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.bv-dots span {
+    opacity: 0;
+    animation: bvDotBlink 1.2s ease-in-out infinite;
+}
+.bv-dots span:nth-child(1) { animation-delay: 0s; }
+.bv-dots span:nth-child(2) { animation-delay: 0.25s; }
+.bv-dots span:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes bvDotBlink {
+    0%, 70%, 100% { opacity: 0; }
+    35%            { opacity: 1; }
+}
+
+/* ---- Center flow dots ---- */
+.bv-arrow-flow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bv-aflow {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9775D5;
+    opacity: 0;
+    animation: bvFlowDot 1.5s ease-in-out infinite;
+}
+.bv-aflow-1 { animation-delay: 0s; }
+.bv-aflow-2 { animation-delay: 0.3s; }
+.bv-aflow-3 { animation-delay: 0.6s; }
+
+@keyframes bvFlowDot {
+    0%   { opacity: 0; transform: translateX(-8px) scale(0.4); }
+    50%  { opacity: 1; transform: translateX(0)    scale(1);   }
+    100% { opacity: 0; transform: translateX(8px)  scale(0.4); }
+}
+
+/* ---- Cart side ---- */
+.bv-cart-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 0;
+}
+
+.bv-items-area {
+    position: relative;
+    height: 52px;
+    width: 50px;
+}
+
+.bv-item {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    animation: bvItemFall 6s ease-in-out infinite;
+}
+.bv-item-1 { animation-delay: 0s; }
+.bv-item-2 { animation-delay: 1.5s; }
+.bv-item-3 { animation-delay: 3s; }
+.bv-item-4 { animation-delay: 4.5s; }
+
+@keyframes bvItemFall {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(-32px) scale(0.3); }
+    8%   { opacity: 1; transform: translateX(-50%) translateY(-32px) scale(1.2); }
+    25%  { opacity: 1; transform: translateX(-50%) translateY(-4px)  scale(1);   }
+    36%  { opacity: 0; transform: translateX(-50%) translateY(16px)  scale(0.6); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(16px)  scale(0.6); }
+}
+
+.bv-cart-icon {
+    font-size: 38px;
+    display: block;
+    animation: bvCartBounce 1.5s ease-in-out infinite;
+    animation-delay: 0.55s;
+}
+
+@keyframes bvCartBounce {
+    0%, 55%, 100% { transform: translateY(0)  scale(1);          }
+    20%            { transform: translateY(-7px) scale(1.1, 0.9); }
+    40%            { transform: translateY(3px)  scale(0.95, 1.07); }
+}
+
+/* Dark mode */
+body.dark-mode .buyvoice-demo {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(160,120,220,0.18);
+}
+body.dark-mode .bv-listening-text { color: #b49ed4; }
+body.dark-mode .bv-ring           { border-color: rgba(160,120,220,0.4); }
+body.dark-mode .bv-aflow          { background: #b49ed4; }
+
+/* Mobile: ensure card is tall enough for the animation */
+@media (max-width: 768px) {
+    .buyvoice-demo { min-height: 200px; }
+}
+
