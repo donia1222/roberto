@@ -45,7 +45,7 @@
             border-radius: 50%; padding: 10px; width: 36px; height: 36px; justify-content: center;
             font-size: 13px; font-weight: 600;
             display: inline-flex; align-items: center; gap: 8px;
-            text-decoration: none; transition: background 0.2s, transform 0.2s;
+            text-decoration: none; transition: background 0.2s, transform 0.2s, opacity 0.3s ease;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .t-back:hover { background: rgba(255,255,255,0.12); transform: translateX(-2px); }
@@ -2150,14 +2150,29 @@ function adminGoTo(i) {
     obs.observe(document.getElementById('to-feat'));
 })();
 
-// ── BACK BUTTON — oscuro al salir del hero ──────────────────────
+// ── BACK BUTTON — hide on scroll down, show on scroll up ──────────────────────
 (function(){
     var hero = document.querySelector('.t-hero');
-    if (!hero) return;
+    var backBtn = document.querySelector('.t-back');
+    if (!hero || !backBtn) return;
+
     var obs = new IntersectionObserver(function(entries){
         document.body.classList.toggle('past-hero', !entries[0].isIntersecting);
     }, { threshold: 0 });
     obs.observe(hero);
+
+    var lastScroll = 0;
+    window.addEventListener('scroll', function(){
+        var current = window.pageYOffset;
+        if (current > lastScroll && current > 100) {
+            backBtn.style.opacity = '0';
+            backBtn.style.pointerEvents = 'none';
+        } else {
+            backBtn.style.opacity = '1';
+            backBtn.style.pointerEvents = 'auto';
+        }
+        lastScroll = current;
+    });
 })();
 </script>
 </body>
