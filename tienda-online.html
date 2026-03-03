@@ -2049,11 +2049,7 @@ function adminGoTo(i) {
         entries.forEach(function(e){
             if (e.isIntersecting) {
                 cards.forEach(function(c){ c.classList.add('ts-visible'); });
-            } else {
-                cards.forEach(function(c){
-                    c.classList.remove('ts-visible');
-                    c.style.transform = '';
-                });
+                obs.disconnect();
             }
         });
     }, { threshold: 0.12 });
