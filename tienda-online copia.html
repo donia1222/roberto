@@ -631,7 +631,7 @@
         .t-code-cursor { display:inline-block; width:2px; height:14px; background:#fe6c75; margin-left:2px; vertical-align:middle; opacity:0; }
         .t-code-body.play .t-code-line:nth-child(16) .t-code-cursor { animation:blink 1s step-end infinite 2.85s, codeLine 0.28s ease 2.6s forwards; }
 
-        /* ===================== PHONE SCREENS ===================== */
+        /* ===================== PHONE SCROLL ===================== */
         .t-phone-products-wrap { overflow:hidden; background:#f5f7fb; height:370px; }
         @keyframes phoneScroll { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
         .t-phone-products-inner {
@@ -639,74 +639,6 @@
             gap:6px; padding:8px;
             animation:phoneScroll 14s linear infinite;
         }
-        .t-phone-screens { position:relative; height:370px; background:#f5f7fb; overflow:hidden; }
-        .t-phone-scr { position:absolute; inset:0; opacity:0; transition:opacity 0.45s ease; pointer-events:none; padding:14px 12px; }
-        .t-phone-scr.active { opacity:1; pointer-events:auto; }
-        /* Login screen */
-        .tps-login-avatar { width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#fe6c75,#ffa8ad); margin:18px auto 10px; display:flex; align-items:center; justify-content:center; }
-        .tps-login-avatar svg { width:24px; height:24px; stroke:#fff; fill:none; stroke-width:2; }
-        .tps-login-title { text-align:center; font-size:11px; font-weight:800; color:#0f1d2c; margin-bottom:14px; }
-        .tps-input { display:block; width:100%; background:#fff; border:1.5px solid #e0e6ed; border-radius:8px; padding:8px 10px; font-size:9px; color:#0f1d2c; margin-bottom:8px; box-sizing:border-box; }
-        .tps-input.focus { border-color:#fe6c75; box-shadow:0 0 0 3px rgba(254,108,117,0.12); }
-        .tps-btn { display:block; width:100%; background:#fe6c75; color:#fff; border:none; border-radius:8px; padding:9px; font-size:10px; font-weight:800; text-align:center; margin-top:4px; }
-        .tps-link { text-align:center; font-size:8px; color:#6b7d99; margin-top:8px; }
-        .tps-link b { color:#fe6c75; }
-        /* Orders screen */
-        .tps-order { background:#fff; border-radius:10px; padding:9px 10px; margin-bottom:6px; display:flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-        .tps-order-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .tps-order-name { font-size:8px; font-weight:700; color:#0f1d2c; }
-        .tps-order-date { font-size:7px; color:#6b7d99; }
-        .tps-order-status { margin-left:auto; font-size:7px; font-weight:700; padding:2px 6px; border-radius:6px; white-space:nowrap; }
-        .tps-order-status.delivered { background:rgba(77,211,91,0.15); color:#2ea043; }
-        .tps-order-status.shipped { background:rgba(21,160,218,0.12); color:#15a0da; }
-        .tps-order-status.pending { background:rgba(255,180,33,0.15); color:#c88a00; }
-        /* PDF screen */
-        .tps-pdf { background:#fff; border-radius:10px; padding:12px; margin:0 auto; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
-        .tps-pdf-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; border-bottom:1.5px solid #f0f2f5; padding-bottom:8px; }
-        .tps-pdf-logo { font-size:10px; font-weight:800; color:#0f1d2c; }
-        .tps-pdf-badge { background:#fe6c75; color:#fff; font-size:7px; font-weight:800; padding:2px 6px; border-radius:4px; }
-        .tps-pdf-row { display:flex; justify-content:space-between; font-size:8px; padding:3px 0; }
-        .tps-pdf-row span:first-child { color:#6b7d99; }
-        .tps-pdf-row span:last-child { color:#0f1d2c; font-weight:600; }
-        .tps-pdf-total { display:flex; justify-content:space-between; font-size:10px; font-weight:800; border-top:1.5px solid #f0f2f5; padding-top:8px; margin-top:8px; color:#0f1d2c; }
-        .tps-pdf-dl { display:block; text-align:center; background:#0f1d2c; color:#fff; border-radius:8px; padding:7px; font-size:9px; font-weight:700; margin-top:10px; }
-        /* Dark mode screen */
-        .tps-dark-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; padding-top:20px; }
-        .tps-toggle-track { width:52px; height:28px; border-radius:14px; background:#0f1d2c; position:relative; cursor:pointer; transition:background 0.3s; }
-        .tps-toggle-track.on { background:#fe6c75; }
-        .tps-toggle-knob { width:22px; height:22px; border-radius:50%; background:#fff; position:absolute; top:3px; left:3px; transition:transform 0.3s; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
-        .tps-toggle-track.on .tps-toggle-knob { transform:translateX(24px); }
-        .tps-dark-preview { width:100%; border-radius:10px; overflow:hidden; transition:background 0.4s; }
-        .tps-dark-preview.light { background:#fff; }
-        .tps-dark-preview.dark { background:#0f1d2c; }
-        .tps-dp-bar { padding:7px 10px; display:flex; justify-content:space-between; align-items:center; transition:background 0.4s; }
-        .tps-dark-preview.light .tps-dp-bar { background:#f5f7fb; }
-        .tps-dark-preview.dark .tps-dp-bar { background:#162333; }
-        .tps-dp-logo { font-size:9px; font-weight:800; transition:color 0.4s; }
-        .tps-dark-preview.light .tps-dp-logo { color:#0f1d2c; }
-        .tps-dark-preview.dark .tps-dp-logo { color:#fff; }
-        .tps-dp-dots { display:flex; gap:3px; }
-        .tps-dp-dots span { width:5px; height:5px; border-radius:50%; transition:background 0.4s; }
-        .tps-dark-preview.light .tps-dp-dots span { background:#cbd5e1; }
-        .tps-dark-preview.dark .tps-dp-dots span { background:#2a3f55; }
-        .tps-dp-cards { padding:8px; display:flex; gap:6px; }
-        .tps-dp-card { flex:1; height:60px; border-radius:8px; transition:background 0.4s; }
-        .tps-dark-preview.light .tps-dp-card { background:#e8eef5; }
-        .tps-dark-preview.dark .tps-dp-card { background:#1c3049; }
-        .tps-dark-label { text-align:center; font-size:9px; font-weight:700; color:#0f1d2c; margin-top:2px; }
-        /* vCard screen */
-        .tps-vcard { background:#fff; border-radius:14px; padding:16px 14px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,0.08); margin-top:8px; }
-        .tps-vcard-avatar { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#0f1d2c,#1a3a5c); margin:0 auto 8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:800; }
-        .tps-vcard-name { font-size:11px; font-weight:800; color:#0f1d2c; }
-        .tps-vcard-role { font-size:8px; color:#6b7d99; margin-bottom:10px; }
-        .tps-vcard-row { display:flex; align-items:center; gap:6px; font-size:8px; color:#0f1d2c; margin-bottom:5px; justify-content:center; }
-        .tps-vcard-row svg { width:10px; height:10px; stroke:#fe6c75; fill:none; stroke-width:2; }
-        .tps-vcard-dl { display:inline-block; background:#0f1d2c; color:#fff; border-radius:8px; padding:6px 16px; font-size:9px; font-weight:700; margin-top:10px; }
-        /* Active feat row */
-        .t-feat-row { cursor:pointer; }
-        .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
-        #to-feat .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
-        .t-feat-row.active .t-feat-check { background:rgba(254,108,117,0.15); color:#fe6c75; }
 
         /* ===================== STRUKTUR FEATURE GRID ===================== */
         .ts-grid {
@@ -1035,111 +967,59 @@
                             <div class="t-phone-header-logo">MyShop ✦</div>
                             <div class="t-phone-header-cart">🛒 2</div>
                         </div>
-                        <div class="t-phone-screens" id="phoneScreens">
-                            <!-- Screen 1: Login -->
-                            <div class="t-phone-scr active" data-screen="0">
-                                <div class="tps-login-avatar">
-                                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                </div>
-                                <div class="tps-login-title">Willkommen zurück</div>
-                                <div class="tps-input focus">maria@email.com</div>
-                                <div class="tps-input">••••••••</div>
-                                <div class="tps-btn">Anmelden</div>
-                                <div class="tps-link">Noch kein Konto? <b>Registrieren</b></div>
+                        <div class="t-phone-products-wrap">
+                        <div class="t-phone-products-inner">
+                            <!-- Set 1 -->
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#fe6c75,#ffa8ad);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Crema Premium</div><div class="t-phone-pprice">CHF 49.90</div><div class="t-phone-pbtn">+ Add</div></div>
                             </div>
-                            <!-- Screen 2: Order History -->
-                            <div class="t-phone-scr" data-screen="1">
-                                <div style="font-size:10px;font-weight:800;color:#0f1d2c;margin-bottom:8px;">Meine Bestellungen</div>
-                                <div class="tps-order">
-                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#fe6c75,#ffa8ad);">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-                                    </div>
-                                    <div><div class="tps-order-name">Crema Premium</div><div class="tps-order-date">12. Feb 2026</div></div>
-                                    <div class="tps-order-status delivered">Geliefert</div>
-                                </div>
-                                <div class="tps-order">
-                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#15a0da,#74c0fc);">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-                                    </div>
-                                    <div><div class="tps-order-name">Sport Pro</div><div class="tps-order-date">28. Jan 2026</div></div>
-                                    <div class="tps-order-status shipped">Versandt</div>
-                                </div>
-                                <div class="tps-order">
-                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#ffb421,#ffd166);">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-                                    </div>
-                                    <div><div class="tps-order-name">Coffee Blend</div><div class="tps-order-date">15. Jan 2026</div></div>
-                                    <div class="tps-order-status delivered">Geliefert</div>
-                                </div>
-                                <div class="tps-order">
-                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#4dd35b,#95e89c);">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-                                    </div>
-                                    <div><div class="tps-order-name">Bio Oil</div><div class="tps-order-date">03. Jan 2026</div></div>
-                                    <div class="tps-order-status pending">In Bearbeitung</div>
-                                </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#15a0da,#74c0fc);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Sport Pro</div><div class="t-phone-pprice">CHF 89.90</div><div class="t-phone-pbtn">+ Add</div></div>
                             </div>
-                            <!-- Screen 3: PDF Invoice -->
-                            <div class="t-phone-scr" data-screen="2">
-                                <div class="tps-pdf">
-                                    <div class="tps-pdf-header">
-                                        <div>
-                                            <div class="tps-pdf-logo">MyShop ✦</div>
-                                            <div style="font-size:7px;color:#6b7d99;">Rechnung #2026-0042</div>
-                                        </div>
-                                        <div class="tps-pdf-badge">PDF</div>
-                                    </div>
-                                    <div class="tps-pdf-row"><span>Crema Premium</span><span>CHF 49.90</span></div>
-                                    <div class="tps-pdf-row"><span>Sport Pro</span><span>CHF 89.90</span></div>
-                                    <div class="tps-pdf-row"><span>Versand</span><span>CHF 5.90</span></div>
-                                    <div class="tps-pdf-total"><span>Total</span><span>CHF 145.70</span></div>
-                                    <div class="tps-pdf-dl">⬇ PDF herunterladen</div>
-                                </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#ffb421,#ffd166);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Coffee Blend</div><div class="t-phone-pprice">CHF 24.90</div><div class="t-phone-pbtn">+ Add</div></div>
                             </div>
-                            <!-- Screen 4: Dark/Light Mode -->
-                            <div class="t-phone-scr" data-screen="3">
-                                <div class="tps-dark-wrap">
-                                    <div class="tps-dark-label">Erscheinungsbild</div>
-                                    <div class="tps-toggle-track on" id="tpsDarkToggle">
-                                        <div class="tps-toggle-knob"></div>
-                                    </div>
-                                    <div class="tps-dark-preview dark" id="tpsDarkPreview">
-                                        <div class="tps-dp-bar">
-                                            <div class="tps-dp-logo">MyShop ✦</div>
-                                            <div class="tps-dp-dots"><span></span><span></span><span></span></div>
-                                        </div>
-                                        <div class="tps-dp-cards">
-                                            <div class="tps-dp-card"></div>
-                                            <div class="tps-dp-card"></div>
-                                        </div>
-                                        <div class="tps-dp-cards">
-                                            <div class="tps-dp-card"></div>
-                                            <div class="tps-dp-card"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#4dd35b,#95e89c);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Bio Oil</div><div class="t-phone-pprice">CHF 34.90</div><div class="t-phone-pbtn">+ Add</div></div>
                             </div>
-                            <!-- Screen 5: Digital Business Card -->
-                            <div class="t-phone-scr" data-screen="4">
-                                <div class="tps-vcard">
-                                    <div class="tps-vcard-avatar">M</div>
-                                    <div class="tps-vcard-name">Maria Müller</div>
-                                    <div class="tps-vcard-role">Geschäftsführerin · MyShop</div>
-                                    <div class="tps-vcard-row">
-                                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                        maria@myshop.ch
-                                    </div>
-                                    <div class="tps-vcard-row">
-                                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                                        +41 44 123 45 67
-                                    </div>
-                                    <div class="tps-vcard-row">
-                                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                                        www.myshop.ch
-                                    </div>
-                                    <div class="tps-vcard-dl">⬇ Kontakt speichern</div>
-                                </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#8264dc,#b09af5);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Serum Violet</div><div class="t-phone-pprice">CHF 64.90</div><div class="t-phone-pbtn">+ Add</div></div>
                             </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#0f1d2c,#1a3a5c);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Watch Dark</div><div class="t-phone-pprice">CHF 199</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <!-- Set 2 (duplicate for seamless loop) -->
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#fe6c75,#ffa8ad);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Crema Premium</div><div class="t-phone-pprice">CHF 49.90</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#15a0da,#74c0fc);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Sport Pro</div><div class="t-phone-pprice">CHF 89.90</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#ffb421,#ffd166);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Coffee Blend</div><div class="t-phone-pprice">CHF 24.90</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#4dd35b,#95e89c);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Bio Oil</div><div class="t-phone-pprice">CHF 34.90</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#8264dc,#b09af5);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Serum Violet</div><div class="t-phone-pprice">CHF 64.90</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                            <div class="t-phone-product">
+                                <div class="t-phone-pthumb" style="background:linear-gradient(135deg,#0f1d2c,#1a3a5c);"></div>
+                                <div class="t-phone-pinfo"><div class="t-phone-pname">Watch Dark</div><div class="t-phone-pprice">CHF 199</div><div class="t-phone-pbtn">+ Add</div></div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -1853,69 +1733,6 @@ function adminGoTo(i) {
         });
     }, { threshold: 0.1 });
     obs.observe(items[0]);
-})();
-
-// ── PHONE FEATURE SCREENS — auto-rotate synced with feat rows ───
-(function(){
-    var screens = document.querySelectorAll('#phoneScreens .t-phone-scr');
-    var rows = document.querySelectorAll('#to-feat .t-feat-row');
-    if (!screens.length || !rows.length) return;
-
-    var current = 0;
-    var total = screens.length;
-    var timer = null;
-    var darkToggling = null;
-
-    function goTo(i) {
-        current = i;
-        screens.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
-        rows.forEach(function(r, idx){ r.classList.toggle('active', idx === i); });
-        // Dark mode toggle animation on screen 3
-        if (i === 3) {
-            var toggle = document.getElementById('tpsDarkToggle');
-            var preview = document.getElementById('tpsDarkPreview');
-            if (toggle && preview) {
-                clearInterval(darkToggling);
-                var isDark = true;
-                toggle.classList.add('on');
-                preview.classList.add('dark');
-                preview.classList.remove('light');
-                darkToggling = setInterval(function(){
-                    isDark = !isDark;
-                    toggle.classList.toggle('on', isDark);
-                    preview.classList.toggle('dark', isDark);
-                    preview.classList.toggle('light', !isDark);
-                }, 1500);
-            }
-        } else {
-            clearInterval(darkToggling);
-            darkToggling = null;
-        }
-    }
-
-    function next() { goTo((current + 1) % total); }
-
-    function start() {
-        if (timer) return;
-        goTo(0);
-        timer = setInterval(next, 3000);
-    }
-    function stop() { clearInterval(timer); timer = null; clearInterval(darkToggling); darkToggling = null; }
-
-    rows.forEach(function(r, i){
-        r.addEventListener('click', function(){
-            stop();
-            goTo(i);
-            // Resume auto-rotate after 8s of inactivity
-            setTimeout(function(){ if (!timer) { timer = setInterval(next, 3000); } }, 8000);
-        });
-    });
-
-    if (!('IntersectionObserver' in window)) { start(); return; }
-    var obs = new IntersectionObserver(function(entries){
-        entries[0].isIntersecting ? start() : stop();
-    }, { threshold: 0.3 });
-    obs.observe(document.getElementById('to-feat'));
 })();
 
 // ── BACK BUTTON — oscuro al salir del hero ──────────────────────
