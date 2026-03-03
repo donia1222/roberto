@@ -891,8 +891,10 @@ function voiceSetStatus(status, text) {
 function openVCardModal() {
     // close mobile menu if open
     var mobileMenu = document.getElementById('mobileMenu');
+    var burgerBtn = document.getElementById('menuBurger');
     if (mobileMenu && mobileMenu.classList.contains('open')) {
         mobileMenu.classList.remove('open');
+        if (burgerBtn) burgerBtn.classList.remove('open');
         document.body.style.overflow = '';
     }
     document.getElementById('vcardModalOverlay').classList.add('active');
