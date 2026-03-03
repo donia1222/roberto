@@ -1940,9 +1940,18 @@ body.dark-mode .shop-banner-desc { color: #94a3b8; }
     background: linear-gradient(135deg, #f8f0ff 0%, #f0f4ff 100%);
     border: 1px solid #e8dff5;
 }
-.hire-banner-icon {
+.hire-handshake {
     flex-shrink: 0;
-    color: var(--begonia400);
+    font-size: 52px;
+    display: inline-block;
+    animation: hire-shake 2.5s ease-in-out infinite;
+}
+@keyframes hire-shake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(-12deg) scale(1.1); }
+    30% { transform: rotate(8deg) scale(1.15); }
+    45% { transform: rotate(-5deg) scale(1.1); }
+    60% { transform: rotate(0deg) scale(1); }
 }
 .hire-banner-text {
     flex: 1;
