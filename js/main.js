@@ -1738,15 +1738,30 @@ function filterWebsites(complexity) {
     });
     document.querySelector('.website-filter-tab[data-filter="' + complexity + '"]').classList.add('active');
 
-    // Filter cards
+    // Fade out all visible cards first
     cards.forEach(function(card) {
-        if (complexity === 'all' || card.getAttribute('data-complexity') === complexity) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeIn 0.5s ease';
-        } else {
-            card.style.display = 'none';
-        }
+        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(12px)';
     });
+
+    // After fade out, show/hide and fade in
+    setTimeout(function() {
+        var delay = 0;
+        cards.forEach(function(card) {
+            if (complexity === 'all' || card.getAttribute('data-complexity') === complexity) {
+                card.style.display = 'block';
+                setTimeout(function() {
+                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, delay);
+                delay += 60;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }, 250);
 }
 
 // ===== LEGAL MODALS =====
@@ -2285,4 +2300,22 @@ document.addEventListener('keydown', function(e) {
             filterWebsites(filter);
         });
     });
+
+    // Staggered entrance animation for tabs
+    var tabsContainer = document.querySelector('.websites-filter-tabs');
+    if (tabsContainer && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                filterTabs.forEach(function(tab, i) {
+                    setTimeout(function() {
+                        tab.classList.add('tab-visible');
+                    }, i * 120);
+                });
+                obs.disconnect();
+            }
+        }, { threshold: 0.3 });
+        obs.observe(tabsContainer);
+    } else {
+        filterTabs.forEach(function(tab) { tab.classList.add('tab-visible'); });
+    }
 })();
