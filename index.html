@@ -222,7 +222,7 @@
         <a href="mailto:info@lweb.ch">info@lweb.ch</a>
         <a href="tel:+41765608645">+41 76 560 86 45</a>
         <div class="mobile-menu-actions">
-            <button onclick="downloadVCard()" class="mobile-menu-action-btn" aria-label="Visitenkarte speichern">
+            <button onclick="openVCardModal()" class="mobile-menu-action-btn" aria-label="Visitenkarte speichern">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span>VCard</span>
             </button>
@@ -838,6 +838,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Online-Shop Banner -->
+        <div class="shop-banner">
+            <div class="shop-banner-content">
+                <div class="shop-banner-text">
+                    <h3 class="shop-banner-title" data-i18n="shop_banner.title">Der perfekte Online-Shop</h3>
+                    <p class="shop-banner-desc" data-i18n="shop_banner.desc">Professionelle E-Commerce-Lösungen, die verkaufen. Modern, schnell und für Ihr Unternehmen massgeschneidert.</p>
+                    <a href="tienda-online.html" class="shop-banner-btn">
+                        <span data-i18n="shop_banner.btn">Mehr erfahren</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="shop-banner-video">
+                    <video src="img/3d71d201-023e-4f6f-945d-cbb5246ac372.mp4" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -1272,7 +1290,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     9475 Sevelen, Schweiz
                 </div>
-                <button onclick="downloadVCard()" class="vcard-btn vcard-btn--footer">
+                <button onclick="openVCardModal()" class="vcard-btn vcard-btn--footer">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                     Visitenkarte speichern
                 </button>
@@ -1691,6 +1709,43 @@
             </div>
         </div>
         <button class="a11y-reset" onclick="resetA11y()" data-i18n="a11y.reset">Zurücksetzen</button>
+    </div>
+</div>
+
+<!-- VCARD MODAL -->
+<div class="vcard-modal-overlay" id="vcardModalOverlay" onclick="closeVCardModal()"></div>
+<div class="vcard-modal" id="vcardModal">
+    <button class="vcard-modal-close" onclick="closeVCardModal()" aria-label="Schliessen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="vcard-modal-card">
+        <div class="vcard-modal-logo">
+            <img src="img/logolweb.png" alt="Lweb Logo">
+        </div>
+        <h3 class="vcard-modal-name">Lweb Schweiz</h3>
+        <p class="vcard-modal-role">App & Web Entwicklung</p>
+        <div class="vcard-modal-info">
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>info@lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+41 76 560 86 45</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                <span>lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>9475 Sevelen, Schweiz</span>
+            </div>
+        </div>
+        <button class="vcard-modal-download" onclick="downloadVCard()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="footer.vcard">Kontakt speichern</span>
+        </button>
     </div>
 </div>
 

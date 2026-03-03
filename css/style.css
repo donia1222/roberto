@@ -450,6 +450,134 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     background: var(--begonia500);
 }
 
+/* ===== VCARD MODAL ===== */
+.vcard-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(15,29,44,0.6);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+}
+.vcard-modal-overlay.active { opacity: 1; pointer-events: auto; }
+.vcard-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.92);
+    z-index: 10001;
+    width: 380px; max-width: 92vw;
+    background: var(--gunpowder50);
+    border-radius: 24px;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.vcard-modal.active {
+    opacity: 1; pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+.vcard-modal-close {
+    position: absolute; top: 12px; right: 12px;
+    background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+    color: var(--gunpowder600);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s, transform 0.2s;
+}
+.vcard-modal-close:hover {
+    color: #fff;
+    background: var(--begonia400);
+    transform: scale(1.1);
+}
+.vcard-modal-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.vcard-modal-logo {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--gunpowder800);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(15,29,44,0.15);
+}
+.vcard-modal-logo img {
+    width: 54px; height: 54px;
+    object-fit: contain;
+}
+.vcard-modal-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gunpowder900);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+}
+.vcard-modal-role {
+    font-size: 14px;
+    color: var(--begonia400);
+    font-weight: 500;
+    margin-bottom: 28px;
+}
+.vcard-modal-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+.vcard-modal-info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--gunpowder700);
+}
+.vcard-modal-info-row svg {
+    flex-shrink: 0;
+    color: var(--gunpowder400);
+}
+.vcard-modal-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--begonia400);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+}
+.vcard-modal-download:hover {
+    background: var(--begonia500);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(254,108,117,0.35);
+}
+.vcard-modal-download svg { stroke: #fff; }
+
+/* dark mode vcard modal */
+body.dark-mode .vcard-modal { background: #1a1f2e; }
+body.dark-mode .vcard-modal-card { background: #232838; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+body.dark-mode .vcard-modal-name { color: #fff; }
+body.dark-mode .vcard-modal-info-row { color: #a8b8cc; }
+body.dark-mode .vcard-modal-info-row svg { color: #6b7d99; }
+body.dark-mode .vcard-modal-close { color: #8a9bb3; background: rgba(255,255,255,0.08); }
+body.dark-mode .vcard-modal-close:hover { color: #fff; background: var(--begonia400); }
+body.dark-mode .vcard-modal-download { background: var(--begonia400); }
+body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
+
 /* Header scroll state */
 .header.scrolled {
     box-shadow: 0 2px 20px rgba(0,0,0,0.08);
@@ -1419,6 +1547,89 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .website-card--cta .gbcta--primary:hover {
     background: rgba(255,255,255,0.9);
     transform: translateY(-2px);
+}
+
+/* ===== SHOP BANNER ===== */
+.shop-banner {
+    margin-top: 48px;
+    border-radius: var(--radius-M);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--gunpowder900) 0%, var(--gunpowder800) 50%, var(--begonia500) 100%);
+    background-size: 200% 200%;
+    animation: shopBannerGradient 6s ease infinite;
+    position: relative;
+}
+@keyframes shopBannerGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.shop-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 48px;
+}
+.shop-banner-text {
+    flex: 1;
+    min-width: 0;
+}
+.shop-banner-title {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+.shop-banner-desc {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+.shop-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--begonia400);
+    color: #fff;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 16px rgba(254,108,117,0.3);
+}
+.shop-banner-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(254,108,117,0.4);
+    background: var(--begonia500);
+}
+.shop-banner-video {
+    flex: 0 0 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.shop-banner-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+@media (max-width: 768px) {
+    .shop-banner-content {
+        flex-direction: column;
+        padding: 28px 24px;
+        gap: 24px;
+    }
+    .shop-banner-video {
+        flex: none;
+        width: 100%;
+    }
+    .shop-banner-title { font-size: 22px; }
 }
 
 /* ===== CLIENTS TRUST CAROUSEL ===== */

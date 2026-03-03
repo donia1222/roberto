@@ -887,6 +887,24 @@ function voiceSetStatus(status, text) {
     document.getElementById('chatbotVoiceText').textContent = text || '';
 }
 
+// vCard modal
+function openVCardModal() {
+    // close mobile menu if open
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.getElementById('vcardModalOverlay').classList.add('active');
+    document.getElementById('vcardModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeVCardModal() {
+    document.getElementById('vcardModalOverlay').classList.remove('active');
+    document.getElementById('vcardModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
 // vCard download
 function downloadVCard() {
     var imageUrl = 'img/logolweb.png';

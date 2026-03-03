@@ -155,6 +155,9 @@ var translations = {
         'footer.s3': 'KI-Integration',
         'footer.s4': 'Beratung & Support',
         'footer.s5': 'Perfekter Online-Shop',
+        'shop_banner.title': 'Der perfekte Online-Shop',
+        'shop_banner.desc': 'Professionelle E-Commerce-Lösungen, die verkaufen. Modern, schnell und für Ihr Unternehmen massgeschneidert.',
+        'shop_banner.btn': 'Mehr erfahren',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
         'to.h1': 'Der perfekte<br><span class="accent">Online-Shop</span>',
@@ -556,6 +559,9 @@ var translations = {
         'footer.s3': 'AI Integration',
         'footer.s4': 'Consulting & Support',
         'footer.s5': 'Perfect Online Shop',
+        'shop_banner.title': 'The Perfect Online Shop',
+        'shop_banner.desc': 'Professional e-commerce solutions that sell. Modern, fast and tailored to your business.',
+        'shop_banner.btn': 'Learn more',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
         'to.h1': 'The Perfect<br><span class="accent">Online Shop</span>',
@@ -956,6 +962,9 @@ var translations = {
         'footer.s3': 'Integración de IA',
         'footer.s4': 'Consultoría y Soporte',
         'footer.s5': 'Tienda online perfecta',
+        'shop_banner.title': 'La tienda online perfecta',
+        'shop_banner.desc': 'Soluciones profesionales de e-commerce que venden. Modernas, rápidas y adaptadas a tu negocio.',
+        'shop_banner.btn': 'Saber más',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
         'to.h1': 'La Tienda Online<br><span class="accent">Perfecta</span>',
@@ -1356,6 +1365,9 @@ var translations = {
         'footer.s3': 'Intégration IA',
         'footer.s4': 'Conseil et Support',
         'footer.s5': 'Boutique en ligne parfaite',
+        'shop_banner.title': 'La boutique en ligne parfaite',
+        'shop_banner.desc': 'Des solutions e-commerce professionnelles qui vendent. Modernes, rapides et adaptées à votre entreprise.',
+        'shop_banner.btn': 'En savoir plus',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
         'to.h1': 'La Boutique en Ligne<br><span class="accent">Parfaite</span>',
@@ -1756,6 +1768,9 @@ var translations = {
         'footer.s3': 'Integrazione IA',
         'footer.s4': 'Consulenza e Supporto',
         'footer.s5': 'Negozio online perfetto',
+        'shop_banner.title': 'Il negozio online perfetto',
+        'shop_banner.desc': 'Soluzioni e-commerce professionali che vendono. Moderne, veloci e su misura per la tua attività.',
+        'shop_banner.btn': 'Scopri di più',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
         'to.h1': 'Il Negozio Online<br><span class="accent">Perfetto</span>',
