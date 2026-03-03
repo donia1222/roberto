@@ -724,73 +724,133 @@
         #to-feat .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
         .t-feat-row.active .t-feat-check { background:rgba(254,108,117,0.15); color:#fe6c75; }
 
-        /* ===================== STRUKTUR FEATURE GRID ===================== */
+        /* ===================== STRUKTUR 3D INTERACTIVE CARDS ===================== */
+        .ts-section-wrap { position:relative; overflow:hidden; background:#f0f4fa; padding:100px 0; }
+        .ts-particles { position:absolute; inset:0; pointer-events:none; }
+        .ts-particle {
+            position:absolute; border-radius:50%; opacity:0;
+            animation:ts-float linear infinite;
+        }
+        @keyframes ts-float {
+            0% { opacity:0; transform:translateY(0) scale(0); }
+            10% { opacity:0.6; }
+            90% { opacity:0.6; }
+            100% { opacity:0; transform:translateY(-100vh) scale(1); }
+        }
         .ts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px 36px;
-            margin-top: 64px;
-            text-align: center;
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:32px; margin-top:64px; perspective:1200px;
         }
-        .ts-item {
-            display: flex; flex-direction: column; align-items: center;
-            opacity: 0; transform: translateY(28px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
+        .ts-card {
+            position:relative; border-radius:20px; padding:2px;
+            opacity:0; transform:translateY(60px) rotateX(15deg);
+            transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+            transform-style:preserve-3d; will-change:transform;
         }
-        .ts-item.bento-in { opacity: 1; transform: translateY(0); }
-        .ts-item.bento-in .ts-icon { animation-play-state:running; }
-        .ts-icon {
-            width: 120px; height: 120px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 24px; flex-shrink: 0;
-            animation-play-state:paused; animation-fill-mode:both;
+        .ts-card.ts-visible {
+            opacity:1; transform:translateY(0) rotateX(0);
         }
-        .ts-item:nth-child(1) .ts-icon { animation:ts-bounce 0.6s 0.1s ease both; }
-        .ts-item:nth-child(2) .ts-icon { animation:ts-spin-in 0.6s 0.2s ease both; }
-        .ts-item:nth-child(3) .ts-icon { animation:ts-flip 0.6s 0.3s ease both; }
-        .ts-item:nth-child(4) .ts-icon { animation:ts-drop 0.6s 0.4s ease both; }
-        .ts-item:nth-child(5) .ts-icon { animation:ts-zoom 0.6s 0.5s ease both; }
-        .ts-item:nth-child(6) .ts-icon { animation:ts-swing 0.6s 0.6s ease both; }
-        @keyframes ts-bounce {
-            0% { transform:scale(0.3) translateY(40px); opacity:0; }
-            60% { transform:scale(1.1) translateY(-8px); opacity:1; }
-            100% { transform:scale(1) translateY(0); }
+        /* Animated gradient border — ALWAYS visible, fades on hover */
+        .ts-card::before {
+            content:''; position:absolute; inset:-2px; border-radius:22px; z-index:0;
+            background:conic-gradient(from var(--ts-angle,0deg),#fdb5b9,#c4b5fd,#93c5fd,#86efac,#fde68a,#fdb5b9);
+            opacity:1; transition:opacity 0.4s;
+            animation:ts-border-spin 4s linear infinite;
         }
-        @keyframes ts-spin-in {
-            0% { transform:rotate(-180deg) scale(0.3); opacity:0; }
-            100% { transform:rotate(0) scale(1); opacity:1; }
+        @property --ts-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+        @keyframes ts-border-spin { to { --ts-angle:360deg; } }
+        .ts-card:hover::before { opacity:0; }
+        /* Pastel glassmorphism inner */
+        .ts-card-inner {
+            position:relative; z-index:1; border-radius:18px; padding:40px 28px 36px;
+            background:rgba(255,255,255,0.82); backdrop-filter:blur(20px);
+            display:flex; flex-direction:column; align-items:center; text-align:center;
+            overflow:hidden; min-height:280px;
+            transition:background 0.3s, box-shadow 0.3s;
+            border:1px solid rgba(255,255,255,0.5);
         }
-        @keyframes ts-flip {
-            0% { transform:rotateY(90deg) scale(0.5); opacity:0; }
-            100% { transform:rotateY(0) scale(1); opacity:1; }
+        .ts-card:hover .ts-card-inner {
+            background:rgba(255,255,255,0.95);
+            box-shadow:0 20px 60px rgba(167,139,250,0.18), 0 0 40px rgba(254,108,117,0.08);
         }
-        @keyframes ts-drop {
-            0% { transform:translateY(-60px) scale(0.5); opacity:0; }
-            70% { transform:translateY(6px) scale(1.05); opacity:1; }
-            100% { transform:translateY(0) scale(1); }
+        /* Holographic shimmer */
+        .ts-card-inner::after {
+            content:''; position:absolute; inset:0; border-radius:18px;
+            background:linear-gradient(105deg,transparent 40%,rgba(167,139,250,0.06) 45%,rgba(254,108,117,0.08) 50%,rgba(56,189,248,0.06) 55%,transparent 60%);
+            background-size:200% 200%; pointer-events:none;
+            transition:background-position 0.3s;
         }
-        @keyframes ts-zoom {
-            0% { transform:scale(0); opacity:0; }
-            70% { transform:scale(1.15); opacity:1; }
-            100% { transform:scale(1); }
+        .ts-card:hover .ts-card-inner::after {
+            animation:ts-shimmer 1.5s ease infinite;
         }
-        @keyframes ts-swing {
-            0% { transform:rotate(12deg) scale(0.3); opacity:0; }
-            50% { transform:rotate(-6deg) scale(1.05); opacity:1; }
-            100% { transform:rotate(0) scale(1); }
+        @keyframes ts-shimmer {
+            0% { background-position:200% 0; }
+            100% { background-position:-200% 0; }
         }
-        .ts-item h3 {
-            font-size: 18px; font-weight: 800; color: #0f1d2c;
-            margin-bottom: 10px; line-height: 1.2;
+        /* Icon container */
+        .ts-icon-3d {
+            width:80px; height:80px; border-radius:20px;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:24px; position:relative;
+            transition:transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+            animation:ts-icon-breathe 3s ease-in-out infinite;
         }
-        .ts-item p {
-            font-size: 14px; color: #6b7d99; line-height: 1.6; max-width: 240px;
+        .ts-card:hover .ts-icon-3d {
+            transform:translateY(-8px) scale(1.1);
+            box-shadow:0 12px 30px rgba(0,0,0,0.15);
         }
-        @media (max-width: 768px) {
-            .ts-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; }
+        @keyframes ts-icon-breathe {
+            0%,100% { transform:translateY(0); }
+            50% { transform:translateY(-4px); }
         }
-        @media (max-width: 480px) {
-            .ts-grid { grid-template-columns: 1fr; }
+        .ts-icon-3d svg { position:relative; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        /* Badge number */
+        .ts-badge {
+            position:absolute; top:-8px; right:-8px; width:28px; height:28px;
+            border-radius:50%; background:#fe6c75; color:#fff;
+            font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 12px rgba(254,108,117,0.3);
+            transform:scale(0); transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .ts-card.ts-visible .ts-badge { transform:scale(1); }
+        /* Text */
+        .ts-card h3 {
+            font-size:18px; font-weight:800; color:#0f1d2c;
+            margin-bottom:10px; line-height:1.3;
+        }
+        .ts-card p {
+            font-size:14px; color:#6b7d99; line-height:1.65;
+            max-width:260px; margin:0 auto;
+            transition:color 0.3s;
+        }
+        .ts-card:hover p { color:#3d4f6a; }
+        /* Tag pill */
+        .ts-tag {
+            margin-top:auto; padding-top:16px;
+        }
+        .ts-tag span {
+            display:inline-block; padding:5px 14px; border-radius:20px;
+            font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+            background:rgba(254,108,117,0.1); color:#fe6c75;
+            transition:background 0.3s, transform 0.3s;
+        }
+        .ts-card:hover .ts-tag span {
+            background:rgba(254,108,117,0.18); transform:scale(1.05);
+        }
+        /* Stagger delays */
+        .ts-card:nth-child(1) { transition-delay:0.05s; }
+        .ts-card:nth-child(2) { transition-delay:0.12s; }
+        .ts-card:nth-child(3) { transition-delay:0.19s; }
+        .ts-card:nth-child(4) { transition-delay:0.26s; }
+        .ts-card:nth-child(5) { transition-delay:0.33s; }
+        .ts-card:nth-child(6) { transition-delay:0.40s; }
+        /* Responsive */
+        @media (max-width:768px) {
+            .ts-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+            .ts-card-inner { padding:32px 20px 28px; min-height:240px; }
+        }
+        @media (max-width:480px) {
+            .ts-grid { grid-template-columns:1fr; max-width:360px; margin-left:auto; margin-right:auto; }
         }
 
         /* ===================== KUNDENERLEBNIS LIGHT OVERRIDES ===================== */
@@ -957,7 +1017,7 @@
                 </a>
                 <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span class="t-typing-url" style="font-size:10px;opacity:0.6;font-weight:400;"></span></span>
+                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
                 </a>
             </div>
         </div>
@@ -1232,62 +1292,88 @@
 </section>
 
 <!-- ===================== ESTRUCTURA BENTO ===================== -->
-<section class="t-section" style="background:#f4f7fb; color:#0f1d2c;">
-    <div class="t-wrap">
+<section class="t-section ts-section-wrap" id="ts-struktur">
+    <!-- Floating particles background -->
+    <div class="ts-particles" id="tsParticles"></div>
+    <div class="t-wrap" style="position:relative; z-index:1;">
         <div style="text-align:center;">
-            <div id="to-str-label" class="t-label">Páginas incluidas</div>
+            <div id="to-str-label" class="t-label" style="color:#fe6c75;">Páginas incluidas</div>
             <h2 class="t-h2" style="color:#0f1d2c;">Estructura Completa<br>de la Tienda</h2>
-            <p class="t-sub" style="margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
+            <p class="t-sub" style="color:#6b7d99; margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
         </div>
 
-        <div class="ts-grid">
+        <div class="ts-grid" id="tsGrid">
             <!-- HOME -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);">
+                        <span class="ts-badge">1</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc1">Página Principal</h3>
+                    <p data-i18n="to.bc1.desc">Presentación profesional con productos destacados, bloques personalizables y anuncios dinámicos.</p>
+                    <div class="ts-tag"><span>Landing</span></div>
                 </div>
-                <h3 data-i18n="to.bc1">Página Principal</h3>
-                <p data-i18n="to.bc1.desc">Presentación profesional con productos destacados, bloques personalizables y anuncios dinámicos.</p>
             </div>
             <!-- SHOP -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ffe4e6,#fda4af);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9f1239" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ffe4e6,#fda4af);">
+                        <span class="ts-badge">2</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9f1239" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc2">Online Shop</h3>
+                    <p data-i18n="to.bc2.desc">Categorías, subcategorías, filtros avanzados y proceso de compra optimizado.</p>
+                    <div class="ts-tag"><span>E-Commerce</span></div>
                 </div>
-                <h3 data-i18n="to.bc2">Online Shop</h3>
-                <p data-i18n="to.bc2.desc">Categorías, subcategorías, filtros avanzados y proceso de compra optimizado.</p>
             </div>
             <!-- BLOG -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b21b6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">
+                        <span class="ts-badge">3</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b21b6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc3">Blog Integrado</h3>
+                    <p data-i18n="to.bc3.desc">Artículos, novedades y contenido para SEO orgánico y posicionamiento.</p>
+                    <div class="ts-tag"><span>SEO + Content</span></div>
                 </div>
-                <h3 data-i18n="to.bc3">Blog Integrado</h3>
-                <p data-i18n="to.bc3.desc">Artículos, novedades y contenido para SEO orgánico y posicionamiento.</p>
             </div>
             <!-- GALLERY -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#fef9c3,#fde047);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#fef9c3,#fde68a);">
+                        <span class="ts-badge">4</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc4">Galería</h3>
+                    <p data-i18n="to.bc4.desc">Imágenes del negocio, instalaciones y equipo en un grid visual profesional.</p>
+                    <div class="ts-tag"><span>Visual</span></div>
                 </div>
-                <h3 data-i18n="to.bc4">Galería</h3>
-                <p data-i18n="to.bc4.desc">Imágenes del negocio, instalaciones y equipo en un grid visual profesional.</p>
             </div>
             <!-- CONTACT -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#dcfce7,#86efac);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#14532d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#dcfce7,#86efac);">
+                        <span class="ts-badge">5</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14532d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc5">Contacto + Reseñas</h3>
+                    <p data-i18n="to.bc5.desc">Formulario profesional e integración de reseñas Google Maps.</p>
+                    <div class="ts-tag"><span>Confianza</span></div>
                 </div>
-                <h3 data-i18n="to.bc5">Contacto + Reseñas</h3>
-                <p data-i18n="to.bc5.desc">Formulario profesional e integración de reseñas Google Maps.</p>
             </div>
             <!-- PWA -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ffedd5,#fdba74);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ffedd5,#fdba74);">
+                        <span class="ts-badge">6</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc.pwa">PWA — App instalable</h3>
+                    <p data-i18n="to.bc.pwa.desc">Tu tienda funciona como app nativa en iOS y Android. Sin App Store, sin coste extra.</p>
+                    <div class="ts-tag"><span>Mobile App</span></div>
                 </div>
-                <h3 data-i18n="to.bc.pwa">PWA — App instalable</h3>
-                <p data-i18n="to.bc.pwa.desc">Tu tienda funciona como app nativa en iOS y Android. Sin App Store, sin coste extra.</p>
             </div>
         </div>
     </div>
@@ -1712,7 +1798,7 @@
             </a>
             <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                <span data-i18n="to.cta2">Ver ejemplo</span>
+                <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
             </a>
         </div>
     </div>
@@ -1847,36 +1933,6 @@
     obs.observe(codeBody);
 })();
 
-// ── TYPING EFFECT — leder-shop.ch in buttons ─────────────
-(function(){
-    var spans = document.querySelectorAll('.t-typing-url');
-    var text = 'leder-shop.ch';
-    var speed = 100;
-    spans.forEach(function(span){
-        var i = 0;
-        function type(){
-            if(i <= text.length){
-                span.textContent = text.slice(0, i) + (i < text.length ? '|' : '');
-                i++;
-                setTimeout(type, speed);
-            } else {
-                // blink cursor then restart
-                var blinks = 0;
-                var blink = setInterval(function(){
-                    span.textContent = text + (blinks % 2 === 0 ? '' : '|');
-                    blinks++;
-                    if(blinks > 5){
-                        clearInterval(blink);
-                        span.textContent = '';
-                        i = 0;
-                        setTimeout(type, 800);
-                    }
-                }, 400);
-            }
-        }
-        type();
-    });
-})();
 
 // ── PAYMENT TABS — scroll-triggered show/hide + rotating checkmark ─────────────
 (function(){
@@ -1949,32 +2005,60 @@ function adminGoTo(i) {
     obs.observe(section);
 })();
 
-// ── STRUKTUR items entrance animation ───────────────────────
+// ── STRUKTUR 3D Interactive Cards ───────────────────────
 (function(){
-    var items = document.querySelectorAll('.ts-item');
-    var grid = document.querySelector('.ts-grid');
-    if (!items.length || !grid) return;
+    var cards = document.querySelectorAll('.ts-card');
+    var grid = document.getElementById('tsGrid');
+    var section = document.getElementById('ts-struktur');
+    if (!cards.length || !grid) return;
+
+    // ── Floating particles ──
+    var particleContainer = document.getElementById('tsParticles');
+    if (particleContainer && section) {
+        var colors = ['#fdb5b9','#c4b5fd','#93c5fd','#86efac','#fde68a','#fdba74'];
+        for (var i = 0; i < 30; i++) {
+            var p = document.createElement('div');
+            p.className = 'ts-particle';
+            var size = Math.random() * 4 + 2;
+            p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:-10px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*8+6)+'s;animation-delay:'+(Math.random()*10)+'s;';
+            particleContainer.appendChild(p);
+        }
+    }
+
+    // ── 3D Tilt effect on mouse move ──
+    cards.forEach(function(card){
+        card.addEventListener('mousemove', function(e){
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            var rotateX = ((y - centerY) / centerY) * -8;
+            var rotateY = ((x - centerX) / centerX) * 8;
+            card.style.transform = 'perspective(800px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', function(){
+            card.style.transform = '';
+        });
+    });
+
+    // ── Entrance animation via IntersectionObserver ──
     if (!('IntersectionObserver' in window)) {
-        items.forEach(function(c){ c.classList.add('bento-in'); });
+        cards.forEach(function(c){ c.classList.add('ts-visible'); });
         return;
     }
     var obs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
             if (e.isIntersecting) {
-                // Re-trigger animations by cloning icons
-                items.forEach(function(c, i){
-                    var icon = c.querySelector('.ts-icon');
-                    if (icon) {
-                        var clone = icon.cloneNode(true);
-                        icon.parentNode.replaceChild(clone, icon);
-                    }
-                    setTimeout(function(){ c.classList.add('bento-in'); }, i * 120);
-                });
+                cards.forEach(function(c){ c.classList.add('ts-visible'); });
             } else {
-                items.forEach(function(c){ c.classList.remove('bento-in'); });
+                cards.forEach(function(c){
+                    c.classList.remove('ts-visible');
+                    c.style.transform = '';
+                });
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     obs.observe(grid);
 })();
 

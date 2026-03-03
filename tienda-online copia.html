@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/translations.js"></script>
     <style>
-        body { padding-top: 0; overflow-x: hidden; }
+        body { padding-top: 0; overflow-x: hidden; background: #0a1520; }
 
         /* ANIMATIONS */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -42,7 +42,7 @@
             position: fixed; top: 20px; left: 20px; z-index: 9999;
             background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.12);; color: #fff;
-            border-radius: 100px; padding: 10px 18px;
+            border-radius: 50%; padding: 10px; width: 36px; height: 36px; justify-content: center;
             font-size: 13px; font-weight: 600;
             display: inline-flex; align-items: center; gap: 8px;
             text-decoration: none; transition: background 0.2s, transform 0.2s;
@@ -109,7 +109,7 @@
         .t-hero-h1 {
             font-size: clamp(40px, 5.5vw, 72px); font-weight: 800;
             line-height: 1.04; color: #fff; letter-spacing: -0.03em;
-            margin-bottom: 22px; margin-top:40px; animation: fadeUp 0.6s ease both 0.1s;
+            margin-bottom: 22px; animation: fadeUp 0.6s ease both 0.1s;
         }
         .t-hero-p {
             font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.58);
@@ -448,62 +448,74 @@
         /* ===================== PAYMENTS ===================== */
         /* ===================== PAYMENT PHONE ===================== */
         .t-pay-split { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-        .t-pay-phone-wrap { display:flex; justify-content:center; }
+        .t-pay-phone-wrap { display:flex; justify-content:center; position:relative; }
         .t-pay-phone {
-            width:240px;
-            background:#0a1520;
-            border-radius:38px;
-            border:7px solid #1c2d3e;
-            box-shadow:0 40px 80px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.05);
-            overflow:hidden;
+            width:250px;
+            border-radius:40px;
+            border:6px solid #c8e6c9;
+            background:#c8e6c9;
+            box-shadow:0 30px 60px rgba(0,0,0,0.13);
             position:relative;
+            overflow:visible;
         }
         .t-pay-dot {
-            position:absolute; top:0; left:50%; transform:translateX(-50%);
-            width:80px; height:22px; background:#0a1520;
-            border-radius:0 0 14px 14px; z-index:10;
+            position:absolute; top:10px; left:50%; transform:translateX(-50%);
+            width:10px; height:10px; background:#444;
+            border-radius:50%; z-index:10;
         }
-        .t-pay-screen { background:#fff; padding:28px 14px 24px; }
+        .t-pay-screen {
+            background:#f7f8fc; padding:28px 14px 22px;
+            border-radius:34px;
+            position:relative;
+        }
         .t-pay-header {
             display:flex; align-items:center; justify-content:space-between;
-            margin-bottom:18px;
+            margin-bottom:16px; padding-top:6px;
         }
         .t-pay-header-back { font-size:15px; color:#555; line-height:1; }
-        .t-pay-header-title { font-size:13px; font-weight:800; color:#111; }
+        .t-pay-header-title { font-size:14px; font-weight:800; color:#111; }
         .t-pay-header-icon { font-size:13px; color:#555; }
-        .t-pay-section-label { font-size:10px; font-weight:800; color:#111; margin-bottom:12px; }
+        .t-pay-section-label { font-size:10px; font-weight:800; color:#111; margin-bottom:10px; }
         .t-pay-option {
             display:flex; align-items:center; justify-content:space-between;
-            background:#fff; border-radius:14px; padding:15px 12px;
-            margin-bottom:12px;
-            box-shadow:0 2px 12px rgba(0,0,0,0.08);
+            background:#fff; border-radius:16px; padding:14px 14px;
+            margin-bottom:10px;
+            box-shadow:0 4px 20px rgba(0,0,0,0.07);
+            position:relative;
+            margin-right:-60px;
+            opacity:0; transform:translateX(40px);
+            transition:opacity 0.45s ease, transform 0.45s ease;
+        }
+        .t-pay-option:nth-child(2) { transition-delay:0.1s; }
+        .t-pay-option:nth-child(3) { transition-delay:0.2s; }
+        .t-pay-option:nth-child(4) { transition-delay:0.3s; }
+        .t-pay-option.visible {
+            opacity:1; transform:translateX(0);
         }
         .t-pay-option-left { display:flex; align-items:center; gap:9px; }
         .t-pay-radio {
-            width:16px; height:16px; border-radius:50%;
-            border:2px solid #ccc; flex-shrink:0; background:#fff;
+            width:18px; height:18px; border-radius:50%;
+            border:2.5px solid #d0d5dd; flex-shrink:0; background:#fff;
         }
         .t-pay-radio.selected {
             border-color:#22c55e; background:#fff;
-            box-shadow:inset 0 0 0 4px #22c55e;
+            box-shadow:inset 0 0 0 5px #22c55e;
         }
-        .t-pay-option-name { font-size:10px; font-weight:700; color:#111; }
-        .t-pay-logos { display:flex; align-items:center; gap:3px; }
+        .t-pay-option-name { font-size:11px; font-weight:700; color:#111; }
+        .t-pay-logos { display:flex; align-items:center; gap:5px; }
         .t-pay-detail-row {
             display:flex; align-items:center; gap:10px;
             margin-top:12px; padding-top:12px; border-top:1.5px solid #f0f0f0;
         }
         .t-pay-detail-img {
-            width:42px; height:42px; border-radius:10px;
-            background:linear-gradient(135deg,#fdba74,#fcd34d);
+            width:52px; height:52px; border-radius:10px;
             flex-shrink:0; overflow:hidden;
-            display:flex; align-items:center; justify-content:center;
-            font-size:20px;
         }
+        .t-pay-detail-img img { width:100%; height:100%; object-fit:cover; }
         .t-pay-detail-info { flex:1; }
-        .t-pay-detail-name { font-size:9px; font-weight:800; color:#111; }
+        .t-pay-detail-name { font-size:10px; font-weight:800; color:#111; }
         .t-pay-detail-sub { font-size:8px; color:#999; margin-top:2px; line-height:1.4; }
-        .t-pay-detail-price { font-size:10px; font-weight:800; color:#22c55e; white-space:nowrap; }
+        .t-pay-detail-price { font-size:11px; font-weight:800; color:#22c55e; white-space:nowrap; }
         @media (max-width:768px) { .t-pay-split { grid-template-columns:1fr; gap:48px; } }
 
         /* ===================== TARGET ===================== */
@@ -712,37 +724,133 @@
         #to-feat .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
         .t-feat-row.active .t-feat-check { background:rgba(254,108,117,0.15); color:#fe6c75; }
 
-        /* ===================== STRUKTUR FEATURE GRID ===================== */
+        /* ===================== STRUKTUR 3D INTERACTIVE CARDS ===================== */
+        .ts-section-wrap { position:relative; overflow:hidden; background:#0a0f1a; padding:100px 0; }
+        .ts-particles { position:absolute; inset:0; pointer-events:none; }
+        .ts-particle {
+            position:absolute; border-radius:50%; opacity:0;
+            animation:ts-float linear infinite;
+        }
+        @keyframes ts-float {
+            0% { opacity:0; transform:translateY(0) scale(0); }
+            10% { opacity:1; }
+            90% { opacity:1; }
+            100% { opacity:0; transform:translateY(-100vh) scale(1); }
+        }
         .ts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px 36px;
-            margin-top: 64px;
-            text-align: center;
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:32px; margin-top:64px; perspective:1200px;
         }
-        .ts-item {
-            display: flex; flex-direction: column; align-items: center;
-            opacity: 0; transform: translateY(28px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
+        .ts-card {
+            position:relative; border-radius:20px; padding:2px;
+            background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.02));
+            opacity:0; transform:translateY(60px) rotateX(15deg);
+            transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+            transform-style:preserve-3d; will-change:transform;
         }
-        .ts-item.bento-in { opacity: 1; transform: translateY(0); }
-        .ts-icon {
-            width: 120px; height: 120px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 24px; flex-shrink: 0;
+        .ts-card.ts-visible {
+            opacity:1; transform:translateY(0) rotateX(0);
         }
-        .ts-item h3 {
-            font-size: 18px; font-weight: 800; color: #0f1d2c;
-            margin-bottom: 10px; line-height: 1.2;
+        /* Animated gradient border */
+        .ts-card::before {
+            content:''; position:absolute; inset:-2px; border-radius:22px; z-index:0;
+            background:conic-gradient(from var(--ts-angle,0deg),#fe6c75,#a78bfa,#38bdf8,#34d399,#fbbf24,#fe6c75);
+            opacity:0; transition:opacity 0.4s;
+            animation:ts-border-spin 4s linear infinite;
         }
-        .ts-item p {
-            font-size: 14px; color: #6b7d99; line-height: 1.6; max-width: 240px;
+        @property --ts-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+        @keyframes ts-border-spin { to { --ts-angle:360deg; } }
+        .ts-card:hover::before { opacity:1; }
+        /* Glassmorphism inner */
+        .ts-card-inner {
+            position:relative; z-index:1; border-radius:18px; padding:40px 28px 36px;
+            background:rgba(15,20,35,0.85); backdrop-filter:blur(20px);
+            display:flex; flex-direction:column; align-items:center; text-align:center;
+            overflow:hidden; min-height:280px;
+            transition:background 0.3s, box-shadow 0.3s;
         }
-        @media (max-width: 768px) {
-            .ts-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; }
+        .ts-card:hover .ts-card-inner {
+            background:rgba(20,28,50,0.95);
+            box-shadow:0 20px 60px rgba(254,108,117,0.15), 0 0 40px rgba(254,108,117,0.05);
         }
-        @media (max-width: 480px) {
-            .ts-grid { grid-template-columns: 1fr; }
+        /* Holographic shimmer */
+        .ts-card-inner::after {
+            content:''; position:absolute; inset:0; border-radius:18px;
+            background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.06) 50%,rgba(255,255,255,0.03) 55%,transparent 60%);
+            background-size:200% 200%; pointer-events:none;
+            transition:background-position 0.3s;
+        }
+        .ts-card:hover .ts-card-inner::after {
+            animation:ts-shimmer 1.5s ease infinite;
+        }
+        @keyframes ts-shimmer {
+            0% { background-position:200% 0; }
+            100% { background-position:-200% 0; }
+        }
+        /* Icon container */
+        .ts-icon-3d {
+            width:80px; height:80px; border-radius:20px;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:24px; position:relative;
+            transition:transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+            animation:ts-icon-breathe 3s ease-in-out infinite;
+        }
+        .ts-card:hover .ts-icon-3d {
+            transform:translateY(-8px) scale(1.1);
+            box-shadow:0 12px 30px rgba(0,0,0,0.3);
+        }
+        @keyframes ts-icon-breathe {
+            0%,100% { transform:translateY(0); }
+            50% { transform:translateY(-4px); }
+        }
+        .ts-icon-3d svg { position:relative; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+        /* Badge number */
+        .ts-badge {
+            position:absolute; top:-8px; right:-8px; width:28px; height:28px;
+            border-radius:50%; background:#fe6c75; color:#fff;
+            font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 12px rgba(254,108,117,0.4);
+            transform:scale(0); transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .ts-card.ts-visible .ts-badge { transform:scale(1); }
+        /* Text */
+        .ts-card h3 {
+            font-size:18px; font-weight:800; color:#fff;
+            margin-bottom:10px; line-height:1.3;
+        }
+        .ts-card p {
+            font-size:14px; color:rgba(255,255,255,0.5); line-height:1.65;
+            max-width:260px; margin:0 auto;
+            transition:color 0.3s;
+        }
+        .ts-card:hover p { color:rgba(255,255,255,0.75); }
+        /* Tag pill */
+        .ts-tag {
+            margin-top:auto; padding-top:16px;
+        }
+        .ts-tag span {
+            display:inline-block; padding:5px 14px; border-radius:20px;
+            font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+            background:rgba(254,108,117,0.12); color:#fe6c75;
+            transition:background 0.3s, transform 0.3s;
+        }
+        .ts-card:hover .ts-tag span {
+            background:rgba(254,108,117,0.2); transform:scale(1.05);
+        }
+        /* Stagger delays */
+        .ts-card:nth-child(1) { transition-delay:0.05s; }
+        .ts-card:nth-child(2) { transition-delay:0.12s; }
+        .ts-card:nth-child(3) { transition-delay:0.19s; }
+        .ts-card:nth-child(4) { transition-delay:0.26s; }
+        .ts-card:nth-child(5) { transition-delay:0.33s; }
+        .ts-card:nth-child(6) { transition-delay:0.40s; }
+        /* Responsive */
+        @media (max-width:768px) {
+            .ts-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+            .ts-card-inner { padding:32px 20px 28px; min-height:240px; }
+        }
+        @media (max-width:480px) {
+            .ts-grid { grid-template-columns:1fr; max-width:360px; margin-left:auto; margin-right:auto; }
         }
 
         /* ===================== KUNDENERLEBNIS LIGHT OVERRIDES ===================== */
@@ -778,9 +886,60 @@
         body.dark-mode .t-hero .t-h2 { color:#fff !important; }
         body.dark-mode .t-chip { background:#fff !important; color:#0f1d2c !important; }
         body.dark-mode .t-cta { background:linear-gradient(160deg,#060e18 0%,#0f1d2c 100%) !important; }
+        body.dark-mode .t-nocode-section { background:#f0f4f8 !important; }
+        body.dark-mode .t-nocode-phone { background:#fff !important; }
         /* Code window — always dark regardless of mode */
         .t-code-window { overflow:hidden; }
         .t-code-body { overflow-x:auto; }
+
+        /* ===================== 100% ADMIN ===================== */
+        .t-nocode-section { position:relative; padding-bottom:10px !important; }
+        .t-nocode-inner {
+            position:relative; display:flex; align-items:center; justify-content:center;
+            min-height:240px; padding:10px 0;
+        }
+        .t-nocode-text {
+            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            display:flex; flex-direction:column; align-items:center;
+            font-family:'Inter',Arial,sans-serif;
+            font-size:clamp(50px,8vw,100px); font-weight:900; line-height:0.92;
+            color:#e8818a; letter-spacing:-2px;
+            user-select:none; pointer-events:none;
+            white-space:nowrap; z-index:1;
+        }
+        .t-nocode-phone {
+            position:relative; z-index:2;
+            width:140px; height:260px;
+            background:transparent;
+            border-radius:26px;
+            border:5px solid rgba(200,206,216,0.75);
+            box-shadow:0 16px 40px rgba(0,0,0,0.07), inset 0 0 0 2px rgba(255,255,255,0.5);
+            animation:t-nocode-float 6s ease-in-out infinite;
+        }
+        @keyframes t-nocode-float {
+            0%, 100% { transform:translateX(-30px); }
+            50% { transform:translateX(30px); }
+        }
+        .t-nocode-phone-status {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:8px 14px 0;
+            position:relative;
+        }
+        .t-nocode-phone-dot {
+            position:absolute; top:9px; left:50%; transform:translateX(-50%);
+            width:8px; height:8px; background:#333;
+            border-radius:50%;
+        }
+        @media (max-width:768px) {
+            .t-nocode-inner { min-height:320px; padding:30px 0; }
+            .t-nocode-text { font-size:clamp(50px,10vw,90px); }
+            .t-nocode-phone { width:150px; height:280px; border-radius:26px; }
+        }
+        @media (max-width:480px) {
+            .t-nocode-inner { min-height:260px; padding:24px 0; }
+            .t-nocode-text { font-size:48px; letter-spacing:-2px; }
+            .t-nocode-phone { width:120px; height:220px; border-radius:22px; border-width:5px; }
+        }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 960px) {
@@ -821,8 +980,7 @@
 
 <!-- BACK -->
 <a href="index.html" class="t-back">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Lweb
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
 </a>
 
 <!-- ===================== HERO ===================== -->
@@ -859,7 +1017,7 @@
                 </a>
                 <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    <span data-i18n="to.cta2">Ver ejemplo</span>
+                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span class="t-typing-url" style="font-size:10px;opacity:0.6;font-weight:400;"></span></span>
                 </a>
             </div>
         </div>
@@ -1134,62 +1292,109 @@
 </section>
 
 <!-- ===================== ESTRUCTURA BENTO ===================== -->
-<section class="t-section">
-    <div class="t-wrap">
+<section class="t-section t-dark ts-section-wrap" id="ts-struktur">
+    <!-- Floating particles background -->
+    <div class="ts-particles" id="tsParticles"></div>
+    <div class="t-wrap" style="position:relative; z-index:1;">
         <div style="text-align:center;">
-            <div id="to-str-label" class="t-label">Páginas incluidas</div>
-            <h2 class="t-h2" style="color:#0f1d2c;">Estructura Completa<br>de la Tienda</h2>
-            <p class="t-sub" style="margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
+            <div id="to-str-label" class="t-label" style="color:#fe6c75;">Páginas incluidas</div>
+            <h2 class="t-h2" style="color:#fff;">Estructura Completa<br>de la Tienda</h2>
+            <p class="t-sub" style="color:rgba(255,255,255,0.5); margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
         </div>
 
-        <div class="ts-grid">
+        <div class="ts-grid" id="tsGrid">
             <!-- HOME -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);">
+                        <span class="ts-badge">1</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc1">Página Principal</h3>
+                    <p data-i18n="to.bc1.desc">Presentación profesional con productos destacados, bloques personalizables y anuncios dinámicos.</p>
+                    <div class="ts-tag"><span>Landing</span></div>
                 </div>
-                <h3 data-i18n="to.bc1">Página Principal</h3>
-                <p data-i18n="to.bc1.desc">Presentación profesional con productos destacados, bloques personalizables y anuncios dinámicos.</p>
             </div>
             <!-- SHOP -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ffe4e6,#fda4af);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9f1239" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#9f1239,#fb7185);">
+                        <span class="ts-badge">2</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc2">Online Shop</h3>
+                    <p data-i18n="to.bc2.desc">Categorías, subcategorías, filtros avanzados y proceso de compra optimizado.</p>
+                    <div class="ts-tag"><span>E-Commerce</span></div>
                 </div>
-                <h3 data-i18n="to.bc2">Online Shop</h3>
-                <p data-i18n="to.bc2.desc">Categorías, subcategorías, filtros avanzados y proceso de compra optimizado.</p>
             </div>
             <!-- BLOG -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b21b6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#5b21b6,#a78bfa);">
+                        <span class="ts-badge">3</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc3">Blog Integrado</h3>
+                    <p data-i18n="to.bc3.desc">Artículos, novedades y contenido para SEO orgánico y posicionamiento.</p>
+                    <div class="ts-tag"><span>SEO + Content</span></div>
                 </div>
-                <h3 data-i18n="to.bc3">Blog Integrado</h3>
-                <p data-i18n="to.bc3.desc">Artículos, novedades y contenido para SEO orgánico y posicionamiento.</p>
             </div>
             <!-- GALLERY -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#fef9c3,#fde047);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#854d0e,#fbbf24);">
+                        <span class="ts-badge">4</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc4">Galería</h3>
+                    <p data-i18n="to.bc4.desc">Imágenes del negocio, instalaciones y equipo en un grid visual profesional.</p>
+                    <div class="ts-tag"><span>Visual</span></div>
                 </div>
-                <h3 data-i18n="to.bc4">Galería</h3>
-                <p data-i18n="to.bc4.desc">Imágenes del negocio, instalaciones y equipo en un grid visual profesional.</p>
             </div>
             <!-- CONTACT -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#dcfce7,#86efac);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#14532d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#14532d,#34d399);">
+                        <span class="ts-badge">5</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc5">Contacto + Reseñas</h3>
+                    <p data-i18n="to.bc5.desc">Formulario profesional e integración de reseñas Google Maps.</p>
+                    <div class="ts-tag"><span>Confianza</span></div>
                 </div>
-                <h3 data-i18n="to.bc5">Contacto + Reseñas</h3>
-                <p data-i18n="to.bc5.desc">Formulario profesional e integración de reseñas Google Maps.</p>
             </div>
             <!-- PWA -->
-            <div class="ts-item">
-                <div class="ts-icon" style="background:linear-gradient(135deg,#ffedd5,#fdba74);">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
+            <div class="ts-card">
+                <div class="ts-card-inner">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#9a3412,#f97316);">
+                        <span class="ts-badge">6</span>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
+                    </div>
+                    <h3 data-i18n="to.bc.pwa">PWA — App instalable</h3>
+                    <p data-i18n="to.bc.pwa.desc">Tu tienda funciona como app nativa en iOS y Android. Sin App Store, sin coste extra.</p>
+                    <div class="ts-tag"><span>Mobile App</span></div>
                 </div>
-                <h3 data-i18n="to.bc.pwa">PWA — App instalable</h3>
-                <p data-i18n="to.bc.pwa.desc">Tu tienda funciona como app nativa en iOS y Android. Sin App Store, sin coste extra.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== 100% ADMIN ===================== -->
+<section class="t-section t-nocode-section" style="background:#e8f5e9; overflow:hidden;">
+    <div class="t-wrap t-nocode-inner">
+        <div class="t-nocode-text" aria-hidden="true">
+            <span>100%</span>
+            <span>ADMIN</span>
+        </div>
+        <div class="t-nocode-phone">
+            <div class="t-nocode-phone-status">
+                <span style="font-size:9px;font-weight:600;color:#333;">12:30</span>
+                <div class="t-nocode-phone-dot"></div>
+                <div style="display:flex;align-items:center;gap:3px;">
+                    <svg width="12" height="10" viewBox="0 0 16 12" fill="#333"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="4.5" y="5" width="3" height="7" rx="0.5"/><rect x="9" y="2" width="3" height="10" rx="0.5"/><rect x="13.5" y="0" width="3" height="12" rx="0.5" opacity="0.3"/></svg>
+                    <svg width="12" height="10" viewBox="0 0 16 12" fill="#333"><path d="M8 3C10.7 3 13.1 4.2 14.7 6.1L16 4.8C14 2.5 11.2 1 8 1S2 2.5 0 4.8L1.3 6.1C2.9 4.2 5.3 3 8 3z" opacity="0.3"/><path d="M8 6C9.8 6 11.4 6.8 12.5 8L13.8 6.7C12.3 5.1 10.3 4 8 4S3.7 5.1 2.2 6.7L3.5 8C4.6 6.8 6.2 6 8 6z" opacity="0.5"/><path d="M8 9C9 9 9.9 9.4 10.6 10L8 12.7 5.4 10C6.1 9.4 7 9 8 9z"/></svg>
+                    <svg width="16" height="9" viewBox="0 0 22 12" fill="#333"><rect x="0" y="1" width="18" height="10" rx="2" stroke="#333" stroke-width="1.5" fill="none"/><rect x="2" y="3" width="12" height="6" rx="1" fill="#333"/><rect x="19.5" y="4" width="2" height="4" rx="1" fill="#333" opacity="0.4"/></svg>
+                </div>
             </div>
         </div>
     </div>
@@ -1497,41 +1702,50 @@
                         <div class="t-pay-logos">
                             <svg width="30" height="11" viewBox="0 0 56 20"><text x="0" y="16" font-family="Arial" font-weight="900" font-size="19" font-style="italic" fill="#1a1f71">VISA</text></svg>
                             <svg width="22" height="14" viewBox="0 0 52 32"><circle cx="18" cy="16" r="15" fill="#EB001B"/><circle cx="34" cy="16" r="15" fill="#F79E1B"/><path d="M26 4.7a15 15 0 000 22.6A15 15 0 0026 4.7z" fill="#FF5F00"/></svg>
+                            <svg width="24" height="14" viewBox="0 0 40 28"><rect width="40" height="28" rx="4" fill="#2E77BC"/><text x="20" y="18" text-anchor="middle" font-family="Arial" font-weight="900" font-size="9" fill="#fff">AMEX</text></svg>
                         </div>
                     </div>
                     <!-- PayPal -->
                     <div class="t-pay-option">
                         <div class="t-pay-option-left">
                             <div class="t-pay-radio"></div>
-                            <span class="t-pay-option-name">PayPal</span>
+                            <span class="t-pay-option-name">Paypal</span>
                         </div>
-                        <svg width="48" height="14" viewBox="0 0 90 22"><text x="0" y="17" font-family="Arial" font-weight="900" font-size="17" fill="#003087">Pay</text><text x="32" y="17" font-family="Arial" font-weight="900" font-size="17" fill="#009cde">Pal</text></svg>
+                        <div style="display:flex;align-items:center;">
+                            <svg width="14" height="16" viewBox="0 0 24 30"><path d="M20.1 7.7c.3-2 0-3.4-1.1-4.6C17.8 1.7 15.3 1 12.1 1H5.3c-.5 0-1 .4-1.1.9L1.5 20.3c-.1.4.2.7.6.7h4.5l1.1-7.2-.1.2c.1-.5.6-.9 1.1-.9h2.3c4.5 0 8-1.8 9-7.1 0-.2.1-.3.1-.3z" fill="#003087"/><path d="M20.1 7.7c-.3 1.8-1.6 3.4-3.6 4.4-1.4.7-3 1-4.8 1h-1.3c-.5 0-1 .4-1.1.9l-.9 5.9-.3 1.7c0 .3.2.6.5.6h3.5c.5 0 .9-.4 1-.8v-.2l.7-4.2v-.2c.1-.5.5-.8 1-.8h.6c3.9 0 7-1.6 7.9-6.2.4-1.9.2-3.5-.8-4.6-.3-.3-.7-.6-1.1-.8-.1.1-.2.2-.3.3z" fill="#009cde"/></svg>
+                            <span style="font-size:13px;font-weight:800;color:#003087;">Pay</span><span style="font-size:13px;font-weight:800;color:#009cde;">Pal</span>
+                        </div>
                     </div>
-                    <!-- TWINT -->
+                    <!-- Apple Pay -->
                     <div class="t-pay-option">
                         <div class="t-pay-option-left">
                             <div class="t-pay-radio"></div>
-                            <span class="t-pay-option-name">TWINT</span>
+                            <span class="t-pay-option-name">Apple Pay</span>
                         </div>
-                        <div style="background:#111;color:#fff;border-radius:5px;padding:3px 8px;font-size:8px;font-weight:900;letter-spacing:1px;">TWINT</div>
+                        <div style="display:flex;align-items:center;gap:1px;">
+                            <svg width="13" height="16" viewBox="0 0 17 20" fill="#000"><path d="M13.545 10.239c-.022-2.234 1.823-3.306 1.906-3.357-.037-.054-1.494-2.076-3.817-2.076-1.624 0-2.91.964-3.682.964-.802 0-1.975-.94-3.266-.914C2.707 4.885.873 6.19.873 8.982c0 1.752.682 3.608 1.52 4.81.829 1.2 1.942 2.544 3.328 2.496 1.338-.053 1.843-.864 3.46-.864 1.598 0 2.06.864 3.463.837 1.44-.024 2.4-1.219 3.222-2.424.517-.75.917-1.553 1.134-2.267-2.158-.83-2.455-3.33-2.455-3.33z"/><path d="M11.209 3.22c.646-.836 1.079-1.975.959-3.136-1.041.069-2.376.739-3.128 1.6-.67.773-1.269 2.043-1.11 3.238 1.166.091 2.392-.598 3.28-1.702z"/></svg>
+                            <span style="font-size:14px;font-weight:800;color:#000;">Pay</span>
+                        </div>
                     </div>
-                    <!-- Transferencia -->
+                    <!-- Offline payment -->
                     <div class="t-pay-option">
                         <div class="t-pay-option-left">
                             <div class="t-pay-radio"></div>
-                            <span class="t-pay-option-name">Transferencia</span>
+                            <span class="t-pay-option-name">Offline payment</span>
                         </div>
-                        <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                        <svg width="26" height="20" viewBox="0 0 32 26" fill="none"><rect x="1" y="1" width="30" height="20" rx="3" stroke="#22c55e" stroke-width="2"/><rect x="20" y="8" width="8" height="6" rx="1.5" fill="#e8f5e9" stroke="#22c55e" stroke-width="1.5"/><line x1="22" y1="11" x2="26" y2="11" stroke="#22c55e" stroke-width="1.5"/><rect x="4" y="22" width="10" height="3" rx="1" fill="#22c55e" opacity="0.3"/><rect x="6" y="17" width="6" height="3" rx="1" fill="#22c55e" opacity="0.5"/></svg>
                     </div>
                     <!-- Order details -->
                     <div class="t-pay-section-label" style="margin-top:14px;">Order details</div>
                     <div class="t-pay-detail-row">
-                        <div class="t-pay-detail-img">🛍️</div>
-                        <div class="t-pay-detail-info">
-                            <div class="t-pay-detail-name">Producto Premium</div>
-                            <div class="t-pay-detail-sub">Ref: PRD-001<br>x1</div>
+                        <div class="t-pay-detail-img">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=120&h=120&fit=crop&auto=format" alt="Margarita pizza">
                         </div>
-                        <div class="t-pay-detail-price">CHF 49.90</div>
+                        <div class="t-pay-detail-info">
+                            <div class="t-pay-detail-name">Margarita</div>
+                            <div class="t-pay-detail-sub">Size : 33cm<br><strong>x1</strong></div>
+                        </div>
+                        <div class="t-pay-detail-price">11.00 $</div>
                     </div>
                 </div>
             </div>
@@ -1719,6 +1933,67 @@
     obs.observe(codeBody);
 })();
 
+// ── TYPING EFFECT — leder-shop.ch in buttons ─────────────
+(function(){
+    var spans = document.querySelectorAll('.t-typing-url');
+    var text = 'leder-shop.ch';
+    var speed = 100;
+    spans.forEach(function(span){
+        var i = 0;
+        function type(){
+            if(i <= text.length){
+                span.textContent = text.slice(0, i) + (i < text.length ? '|' : '');
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // blink cursor then restart
+                var blinks = 0;
+                var blink = setInterval(function(){
+                    span.textContent = text + (blinks % 2 === 0 ? '' : '|');
+                    blinks++;
+                    if(blinks > 5){
+                        clearInterval(blink);
+                        span.textContent = '';
+                        i = 0;
+                        setTimeout(type, 800);
+                    }
+                }, 400);
+            }
+        }
+        type();
+    });
+})();
+
+// ── PAYMENT TABS — scroll-triggered show/hide + rotating checkmark ─────────────
+(function(){
+    var payOpts = document.querySelectorAll('.t-pay-option');
+    if(!payOpts.length) return;
+    var radios = document.querySelectorAll('.t-pay-radio');
+    var currentRadio = 0;
+    var radioInterval = null;
+
+    function cycleRadio(){
+        radios.forEach(function(r){ r.classList.remove('selected'); });
+        radios[currentRadio].classList.add('selected');
+        currentRadio = (currentRadio + 1) % radios.length;
+    }
+
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                payOpts.forEach(function(o){ o.classList.add('visible'); });
+                if(!radioInterval){
+                    radioInterval = setInterval(cycleRadio, 2000);
+                }
+            } else {
+                payOpts.forEach(function(o){ o.classList.remove('visible'); });
+                if(radioInterval){ clearInterval(radioInterval); radioInterval = null; }
+            }
+        });
+    }, { threshold: 0.3 });
+    obs.observe(document.querySelector('.t-pay-phone'));
+})();
+
 // ── ADMIN PANEL — scroll horizontal + auto-cycle ─────────────
 var adminTimer = null;
 var adminCurrent = 0;
@@ -1760,27 +2035,61 @@ function adminGoTo(i) {
     obs.observe(section);
 })();
 
-// ── STRUKTUR items entrance animation ───────────────────────
+// ── STRUKTUR 3D Interactive Cards ───────────────────────
 (function(){
-    var items = document.querySelectorAll('.ts-item');
-    if (!items.length) return;
+    var cards = document.querySelectorAll('.ts-card');
+    var grid = document.getElementById('tsGrid');
+    var section = document.getElementById('ts-struktur');
+    if (!cards.length || !grid) return;
+
+    // ── Floating particles ──
+    var particleContainer = document.getElementById('tsParticles');
+    if (particleContainer && section) {
+        var colors = ['#fe6c75','#a78bfa','#38bdf8','#34d399','#fbbf24','#f97316'];
+        for (var i = 0; i < 30; i++) {
+            var p = document.createElement('div');
+            p.className = 'ts-particle';
+            var size = Math.random() * 4 + 2;
+            p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:-10px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*8+6)+'s;animation-delay:'+(Math.random()*10)+'s;';
+            particleContainer.appendChild(p);
+        }
+    }
+
+    // ── 3D Tilt effect on mouse move ──
+    cards.forEach(function(card){
+        card.addEventListener('mousemove', function(e){
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            var rotateX = ((y - centerY) / centerY) * -8;
+            var rotateY = ((x - centerX) / centerX) * 8;
+            card.style.transform = 'perspective(800px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', function(){
+            card.style.transform = '';
+        });
+    });
+
+    // ── Entrance animation via IntersectionObserver ──
     if (!('IntersectionObserver' in window)) {
-        items.forEach(function(c){ c.classList.add('bento-in'); });
+        cards.forEach(function(c){ c.classList.add('ts-visible'); });
         return;
     }
-    var seen = false;
     var obs = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-            if (e.isIntersecting && !seen) {
-                seen = true;
-                obs.disconnect();
-                items.forEach(function(c, i){
-                    setTimeout(function(){ c.classList.add('bento-in'); }, i * 120);
+            if (e.isIntersecting) {
+                cards.forEach(function(c){ c.classList.add('ts-visible'); });
+            } else {
+                cards.forEach(function(c){
+                    c.classList.remove('ts-visible');
+                    c.style.transform = '';
                 });
             }
         });
-    }, { threshold: 0.1 });
-    obs.observe(items[0]);
+    }, { threshold: 0.12 });
+    obs.observe(grid);
 })();
 
 // ── PHONE FEATURE SCREENS — auto-rotate synced with feat rows ───
