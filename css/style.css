@@ -1926,6 +1926,57 @@ body.dark-mode .shop-banner-desc { color: #94a3b8; }
     inherits: false;
 }
 
+/* ===== HIRE BANNER ===== */
+.hire-banner {
+    padding: 40px 0 16px 0;
+    background: #fff;
+}
+.hire-banner-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f8f0ff 0%, #f0f4ff 100%);
+    border: 1px solid #e8dff5;
+}
+.hire-banner-icon {
+    flex-shrink: 0;
+    color: var(--begonia400);
+}
+.hire-banner-text {
+    flex: 1;
+    font-size: 14px;
+    color: var(--gunpowder600);
+    line-height: 1.5;
+    margin: 0;
+}
+.hire-banner-btn {
+    flex-shrink: 0;
+    padding: 8px 20px;
+    background: var(--begonia400);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+.hire-banner-btn:hover {
+    background: var(--begonia500);
+    transform: translateY(-1px);
+}
+body.dark-mode .hire-banner { background: #1a1f2e; }
+body.dark-mode .hire-banner-inner {
+    background: linear-gradient(135deg, #1e2236 0%, #1a2035 100%);
+    border-color: #2d3548;
+}
+body.dark-mode .hire-banner-text { color: #94a3b8; }
+@media (max-width: 640px) {
+    .hire-banner-inner { flex-direction: column; text-align: center; gap: 12px; padding: 20px; }
+    .hire-banner-icon { display: none; }
+}
+
 /* ===== WHY ME ===== */
 .why-me { background: #fff; }
 .why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
