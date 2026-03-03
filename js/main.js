@@ -63,16 +63,6 @@ mobileMenu.querySelectorAll('a').forEach(link => {
     });
 });
 
-// Auto-scroll to hash on page load (e.g. from tienda-online back button)
-if (window.location.hash) {
-    var hashTarget = document.querySelector(window.location.hash);
-    if (hashTarget) {
-        setTimeout(function() {
-            hashTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-    }
-}
-
 // Smooth scroll for nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
