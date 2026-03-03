@@ -1554,9 +1554,10 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     margin-top: 48px;
     border-radius: var(--radius-M);
     overflow: hidden;
-    background: linear-gradient(135deg, var(--gunpowder900) 0%, var(--gunpowder800) 50%, var(--begonia500) 100%);
+    background: linear-gradient(135deg, #f0f7ff 0%, #e3f0fc 50%, #d6eaff 100%);
     background-size: 200% 200%;
     animation: shopBannerGradient 6s ease infinite;
+    border: 1px solid #d6eaff;
     position: relative;
 }
 @keyframes shopBannerGradient {
@@ -1575,14 +1576,14 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     min-width: 0;
 }
 .shop-banner-title {
-    color: #fff;
+    color: var(--gunpowder900);
     font-size: 28px;
     font-weight: 800;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
 }
 .shop-banner-desc {
-    color: rgba(255,255,255,0.8);
+    color: var(--gunpowder600);
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 24px;
@@ -1601,6 +1602,13 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     box-shadow: 0 4px 16px rgba(254,108,117,0.3);
 }
+.shop-banner-btn svg {
+    animation: shopArrowBounce 1.5s ease-in-out infinite;
+}
+@keyframes shopArrowBounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
 .shop-banner-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(254,108,117,0.4);
@@ -1610,7 +1618,7 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     flex: 0 0 280px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 .shop-banner-video video {
     width: 100%;
