@@ -119,6 +119,10 @@
 
         /* HERO: BROWSER MOCKUP */
         .t-hero-visual { position: relative; animation: fadeUp 0.8s ease both 0.25s; }
+        .t-hero-carousel { position: relative; width:100%; border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+        .t-hero-carousel img { width:100%; display:block; border-radius:16px; position:absolute; top:0; left:0; opacity:0; transition: opacity 0.8s ease; }
+        .t-hero-carousel img:first-child { position:relative; }
+        .t-hero-carousel img.active { opacity:1; }
         .t-browser {
             background: #1c2d3e; border-radius: 16px; overflow: hidden;
             box-shadow: 0 48px 96px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.07);
@@ -818,7 +822,7 @@
 <!-- BACK -->
 <a href="index.html" class="t-back">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Lweb.ch
+    Lweb
 </a>
 
 <!-- ===================== HERO ===================== -->
@@ -862,63 +866,7 @@
 
         <!-- RIGHT: BROWSER MOCKUP -->
         <div class="t-hero-visual">
-            <div class="t-chip c1">
-                <div class="t-chip-dot" style="background:#4dd35b;"></div>
-                Next.js · TypeScript
-            </div>
-            <div class="t-browser">
-                <div class="t-browser-bar">
-                    <div class="t-browser-dots"><span></span><span></span><span></span></div>
-                    <div class="t-browser-url">myshop.lweb.ch/shop</div>
-                </div>
-                <div class="t-store">
-                    <div class="t-store-header">
-                        <div class="t-store-logo">MyShop ✦</div>
-                        <div class="t-store-nav">
-                            <span>Home</span><span>Shop</span><span>Blog</span>
-                        </div>
-                        <div class="t-store-cart">🛒 3</div>
-                    </div>
-                    <div class="t-store-products">
-                        <div class="t-mini-product">
-                            <div class="t-mini-thumb" style="background:linear-gradient(135deg,#fe6c75,#ffa8ad);">🧴</div>
-                            <div class="t-mini-info">
-                                <div class="t-mini-name">Crema Premium</div>
-                                <div class="t-mini-price">CHF 49.90</div>
-                                <div class="t-mini-btn">+ Carrito</div>
-                            </div>
-                        </div>
-                        <div class="t-mini-product">
-                            <div class="t-mini-thumb" style="background:linear-gradient(135deg,#15a0da,#74c0fc);">👟</div>
-                            <div class="t-mini-info">
-                                <div class="t-mini-name">Zapatillas Sport</div>
-                                <div class="t-mini-price">CHF 89.90</div>
-                                <div class="t-mini-btn">+ Carrito</div>
-                            </div>
-                        </div>
-                        <div class="t-mini-product">
-                            <div class="t-mini-thumb" style="background:linear-gradient(135deg,#ffb421,#ffd166);">☕</div>
-                            <div class="t-mini-info">
-                                <div class="t-mini-name">Café Especial</div>
-                                <div class="t-mini-price">CHF 24.90</div>
-                                <div class="t-mini-btn">+ Carrito</div>
-                            </div>
-                        </div>
-                        <div class="t-mini-product">
-                            <div class="t-mini-thumb" style="background:linear-gradient(135deg,#4dd35b,#95e89c);">🌿</div>
-                            <div class="t-mini-info">
-                                <div class="t-mini-name">Aceite Natural</div>
-                                <div class="t-mini-price">CHF 34.90</div>
-                                <div class="t-mini-btn">+ Carrito</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="t-chip c2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                Ultrarrápida · SEO Avanzado
-            </div>
+            <img src="img/shop.png" alt="Online Shop Example" style="width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
         </div>
     </div>
 </section>
