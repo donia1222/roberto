@@ -862,30 +862,48 @@
         #to-feat .t-feat-row p { color:rgba(15,29,44,0.55); }
 
         /* ===================== DARK MODE OVERRIDE ===================== */
-        /* Prevent the main site dark mode from breaking tienda-online.html light sections */
-        body.dark-mode .t-section:not(.t-dark) { background:#fff; color:#212529; }
-        body.dark-mode .t-gray { background:#f4f7fb !important; }
-        body.dark-mode .t-h2 { color:#0f1d2c !important; }
-        body.dark-mode .t-sub { color:#6b7d99 !important; }
+        body.dark-mode .t-section:not(.t-dark) { background:#1a1f2e !important; color:#e2e8f0; }
+        body.dark-mode .t-gray { background:#151a27 !important; }
+        body.dark-mode .t-h2 { color:#f1f5f9 !important; }
+        body.dark-mode .t-sub { color:#94a3b8 !important; }
         body.dark-mode .t-label { color:#fe6c75 !important; }
-        body.dark-mode .t-tech-pill { background:#fff !important; color:#0f1d2c !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-bento-card { background:#fff !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-bento-info h3 { color:#0f1d2c !important; }
-        body.dark-mode .t-bento-info p { color:#6b7d99 !important; }
-        body.dark-mode .t-bento-tag { background:#f4f7fb !important; color:#6b7d99 !important; }
-        body.dark-mode .t-payment-card { background:#fff !important; color:#0f1d2c !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-target-card { background:#fff !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-target-card p { color:#424e65 !important; }
-        body.dark-mode .t-back { background:rgba(10,21,32,0.92) !important; color:#fff !important; }
-        /* Dark sections keep white text in dark mode */
-        body.dark-mode .t-dark .t-h2 { color:#fff !important; }
-        body.dark-mode .t-dark .t-sub { color:rgba(255,255,255,0.55) !important; }
-        body.dark-mode .t-cta h2 { color:#fff !important; }
+        body.dark-mode .t-tech-pill { background:#1e2536 !important; color:#e2e8f0 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-bento-card { background:#1e2536 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-bento-info h3 { color:#f1f5f9 !important; }
+        body.dark-mode .t-bento-info p { color:#94a3b8 !important; }
+        body.dark-mode .t-bento-tag { background:#151a27 !important; color:#94a3b8 !important; }
+        body.dark-mode .t-payment-card { background:#1e2536 !important; color:#e2e8f0 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-target-card { background:#1e2536 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-target-card h3 { color:#f1f5f9 !important; }
+        body.dark-mode .t-target-card p { color:#94a3b8 !important; }
+        body.dark-mode .t-back { background:rgba(10,21,32,0.95) !important; color:#fff !important; }
+        body.dark-mode .t-feat-row { background:rgba(30,37,54,0.6) !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-feat-row:hover { background:rgba(30,37,54,0.9) !important; border-color:rgba(254,108,117,0.4) !important; }
+        body.dark-mode .t-feat-row h4 { color:#f1f5f9 !important; }
+        body.dark-mode .t-feat-row p { color:#94a3b8 !important; }
+        /* Hero keeps dark already */
         body.dark-mode .t-hero .t-h2 { color:#fff !important; }
-        body.dark-mode .t-chip { background:#fff !important; color:#0f1d2c !important; }
+        body.dark-mode .t-cta h2 { color:#fff !important; }
         body.dark-mode .t-cta { background:linear-gradient(160deg,#060e18 0%,#0f1d2c 100%) !important; }
-        body.dark-mode .t-nocode-section { background:#f0f4f8 !important; }
-        body.dark-mode .t-nocode-phone { background:#fff !important; }
+        body.dark-mode .t-chip { background:rgba(255,255,255,0.1) !important; color:#e2e8f0 !important; }
+        /* 100% ADMIN banner */
+        body.dark-mode .t-nocode-section { background:#151a27 !important; }
+        body.dark-mode .t-nocode-phone { background:transparent !important; }
+        body.dark-mode .t-nocode-text { color:#fe6c75 !important; }
+        /* INCLUDED PAGES section */
+        body.dark-mode .ts-section-wrap { background:#1a1f2e !important; }
+        body.dark-mode .ts-card-inner { background:rgba(30,37,54,0.85) !important; border-color:#2d3548 !important; }
+        body.dark-mode .ts-card:hover .ts-card-inner { background:rgba(35,44,62,0.95) !important; }
+        body.dark-mode .ts-card h3 { color:#f1f5f9 !important; }
+        body.dark-mode .ts-card p { color:#94a3b8 !important; }
+        body.dark-mode .ts-card:hover p { color:#cbd5e1 !important; }
+        /* Buttons */
+        body.dark-mode .t-btn-ghost { border-color:rgba(255,255,255,0.2) !important; color:#e2e8f0 !important; }
+        body.dark-mode .t-btn-ghost:hover { background:rgba(255,255,255,0.05) !important; border-color:rgba(255,255,255,0.4) !important; }
+        /* Admin panel */
+        body.dark-mode #to-adm { background:#151a27 !important; }
+        body.dark-mode .t-admin-nav-item { background:#1e2536 !important; border-color:#2d3548 !important; color:#e2e8f0 !important; }
+        body.dark-mode .t-admin-nav-item.active { border-color:#fe6c75 !important; }
         /* Code window — always dark regardless of mode */
         .t-code-window { overflow:hidden; }
         .t-code-body { overflow-x:auto; }
@@ -1808,6 +1826,12 @@
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
     }
+
+    // 2. ACCESSIBILITY — restore a11y settings from localStorage
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
 
     // 2. LANGUAGE — same localStorage key as main site
     var lang = localStorage.getItem('lweb_lang') || 'de';

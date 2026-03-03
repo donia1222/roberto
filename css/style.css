@@ -1640,6 +1640,14 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     .shop-banner-title { font-size: 22px; }
 }
 
+/* ===== SHOP BANNER DARK MODE ===== */
+body.dark-mode .shop-banner {
+    background: linear-gradient(135deg, #1a2235 0%, #1e2a3e 50%, #1a2540 100%);
+    border-color: #2d3548;
+}
+body.dark-mode .shop-banner-title { color: #f1f5f9; }
+body.dark-mode .shop-banner-desc { color: #94a3b8; }
+
 /* ===== CLIENTS TRUST CAROUSEL ===== */
 .clients-trust { background: #fff; padding-bottom: 100px; }
 .clients-trust .section-header { margin-bottom: 56px; }

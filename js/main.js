@@ -3,6 +3,12 @@
     var saved = localStorage.getItem('darkMode');
     if (saved === 'true') document.body.classList.add('dark-mode');
 
+    // Restore a11y settings from localStorage
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
+
     function updateIcons(isDark) {
         document.querySelectorAll('.dm-icon-moon').forEach(function(el) { el.style.display = isDark ? 'none' : 'block'; });
         document.querySelectorAll('.dm-icon-sun').forEach(function(el) { el.style.display = isDark ? 'block' : 'none'; });
@@ -2222,6 +2228,9 @@ function setA11y(category, value) {
         b.classList.add(prefix + value);
     }
 
+    // Persist to localStorage
+    localStorage.setItem('a11y-' + category, value);
+
     // Update active buttons for this category
     var attr = 'data-a11y-' + category;
     document.querySelectorAll('[' + attr + ']').forEach(function(btn) {
@@ -2233,6 +2242,9 @@ function resetA11y() {
     var b = document.body;
     var classes = b.className.split(' ').filter(function(c) { return c.indexOf('a11y-') !== 0; });
     b.className = classes.join(' ');
+
+    // Clear localStorage
+    ['text','motion','lh','spacing'].forEach(function(k){ localStorage.removeItem('a11y-' + k); });
 
     // Reset all buttons: only "normal" ones active
     document.querySelectorAll('.a11y-btn').forEach(function(btn) {
