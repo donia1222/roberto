@@ -2034,7 +2034,7 @@ body.dark-mode .hire-banner-text { color: #94a3b8; }
 .footer-contact-item svg { width: 16px; height: 16px; fill: var(--gunpowder500); flex-shrink: 0; }
 .footer-col h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gunpowder300); margin-bottom: 20px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
-.footer-col li a { font-size: 14px; color: var(--gunpowder400); transition: color 200ms; }
+.footer-col li a, .footer-col li span { font-size: 14px; color: var(--gunpowder400); transition: color 200ms; }
 .footer-col li a:hover { color: #fff; }
 /* Language selector */
 .footer-lang {

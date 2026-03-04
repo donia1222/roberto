@@ -2199,6 +2199,19 @@ function openA11yModal() {
     document.getElementById('a11yModal').classList.add('open');
     document.body.style.overflow = 'hidden';
     updateA11yModeButtons();
+    // Mark current state for all a11y categories
+    ['text','motion','lh','spacing'].forEach(function(cat) {
+        var val = localStorage.getItem('a11y-' + cat) || 'normal';
+        var attr = 'data-a11y-' + cat;
+        document.querySelectorAll('[' + attr + ']').forEach(function(btn) {
+            btn.classList.toggle('active', btn.getAttribute(attr) === val);
+        });
+    });
+    // Mark current language
+    var lang = localStorage.getItem('lweb_lang') || 'de';
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
 }
 
 function closeA11yModal() {
