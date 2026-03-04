@@ -45,6 +45,16 @@
         .header-logo-countries { display: none; }
         .header .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
         .header-inner { position: relative; }
+        .header-title {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            text-align: center; line-height: 1.1;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
+        .header-title .accent { display: block; font-size: 12px; font-weight: 700; }
+        .header.past-hero .header-title { opacity: 1; }
+        .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
+        .header .header-nav { transition: opacity 0.3s ease; }
         @media (max-width: 1024px) {
             .header-inner > .header-icon-btn { display: flex; }
         }
@@ -881,6 +891,7 @@
         body.dark-mode .t-feat-row h4 { color:#f1f5f9 !important; }
         body.dark-mode .t-feat-row p { color:#94a3b8 !important; }
         /* Hero keeps dark already */
+        body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
         body.dark-mode .t-hero { background: linear-gradient(160deg, #060e18 0%, #0a1a2e 50%, #0f1d2c 100%) !important; }
         body.dark-mode .t-hero .t-hero-h1 { color: #fff !important; }
         body.dark-mode .t-hero .t-hero-p { color: rgba(255,255,255,0.58) !important; }
@@ -1002,6 +1013,10 @@
         <a href="index.html" class="header-icon-btn" aria-label="Zurück zur Startseite">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </a>
+        <div class="header-title" id="headerTitle" data-i18n-html="to.header.title">
+            <span>Der perfekte</span>
+            <span class="accent">Online-Shop</span>
+        </div>
         <nav class="header-nav" aria-label="Navigation">
             <a href="#to-tech" class="header-nav-item"><span data-i18n="to.nav.tech">Technologie</span></a>
             <a href="#to-feat" class="header-nav-item"><span data-i18n="to.nav.feat">Features</span></a>
@@ -1958,6 +1973,25 @@
         if (item.html) el.innerHTML = t[item.k];
         else el.textContent = t[item.k];
     });
+
+    // Apply header title translation
+    var headerTitle = document.getElementById('headerTitle');
+    if (headerTitle && t['to.header.title']) {
+        headerTitle.innerHTML = t['to.header.title'];
+    }
+})();
+</script>
+
+<script>
+// Header title — show when hero h1 scrolls out of view
+(function(){
+    var heroH1 = document.querySelector('.t-hero-h1');
+    var header = document.querySelector('.header');
+    if (!heroH1 || !header || !('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function(entries) {
+        header.classList.toggle('past-hero', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    obs.observe(heroH1);
 })();
 </script>
 

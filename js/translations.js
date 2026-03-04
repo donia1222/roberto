@@ -166,6 +166,7 @@ var translations = {
         'shop_banner.btn': 'Mehr erfahren',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
+        'to.header.title': '<span>Der perfekte</span><span class="accent">Online-Shop</span>',
         'to.h1': 'Der perfekte<br><span class="accent">Online-Shop</span>',
         'to.sub': 'Dein modernes E-Commerce, schnell und verkaufsbereit.<br>Kein einfaches Template — eine vollst\u00e4ndige Plattform.',
         'to.cta1': 'Ich m\u00f6chte meinen Shop',
@@ -576,6 +577,7 @@ var translations = {
         'shop_banner.btn': 'Learn more',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
+        'to.header.title': '<span>The Perfect</span><span class="accent">Online Shop</span>',
         'to.h1': 'The Perfect<br><span class="accent">Online Shop</span>',
         'to.sub': 'Your modern e-commerce, fast and ready to sell.<br>Not a basic template \u2014 a complete platform.',
         'to.cta1': 'I want my shop',
@@ -985,6 +987,7 @@ var translations = {
         'shop_banner.btn': 'Saber más',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
+        'to.header.title': '<span>La Tienda Online</span><span class="accent">Perfecta</span>',
         'to.h1': 'La Tienda Online<br><span class="accent">Perfecta</span>',
         'to.sub': 'Tu e-commerce moderno, r\u00e1pido y preparado para vender.<br>No una plantilla b\u00e1sica \u2014 una plataforma completa.',
         'to.cta1': 'Quiero mi tienda',
@@ -1394,6 +1397,7 @@ var translations = {
         'shop_banner.btn': 'En savoir plus',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
+        'to.header.title': '<span>La Boutique en Ligne</span><span class="accent">Parfaite</span>',
         'to.h1': 'La Boutique en Ligne<br><span class="accent">Parfaite</span>',
         'to.sub': 'Ton e-commerce moderne, rapide et pr\u00eat \u00e0 vendre.<br>Pas un simple template \u2014 une plateforme compl\u00e8te.',
         'to.cta1': 'Je veux ma boutique',
@@ -1803,6 +1807,7 @@ var translations = {
         'shop_banner.btn': 'Scopri di più',
         // Tienda Online page
         'to.badge': 'Template E-Commerce · Next.js · TypeScript',
+        'to.header.title': '<span>Il Negozio Online</span><span class="accent">Perfetto</span>',
         'to.h1': 'Il Negozio Online<br><span class="accent">Perfetto</span>',
         'to.sub': 'Il tuo e-commerce moderno, veloce e pronto a vendere.<br>Non un semplice template \u2014 una piattaforma completa.',
         'to.cta1': 'Voglio il mio negozio',
