@@ -6,6 +6,7 @@
     <title>Tienda Online Perfecta | Template E-Commerce Profesional — Lweb</title>
     <meta name="description" content="Template profesional de tienda online con Next.js y TypeScript. Panel de administración completo, pagos integrados (PayPal, TWINT, tarjeta) y diseño moderno responsive.">
     <meta name="author" content="Roberto Salvador — Lweb">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/translations.js"></script>
@@ -975,7 +976,11 @@
             .t-hero-inner,
             .t-tech-split,
             .t-feat-split { grid-template-columns:1fr; gap:36px; }
+            .t-admin-split { grid-template-columns:1fr; gap:36px; }
             .t-admin-list { grid-template-columns:1fr; }
+            .t-admin-body { height:360px; }
+            .t-admin-sidebar { width:90px; padding:8px 5px; }
+            .t-admin-nav { font-size:10px; padding:5px 6px; }
             /* Show browser mockup on mobile, below text */
             .t-hero-visual { display:block; }
             .t-hero { min-height:auto; padding:90px 20px 60px; }
@@ -1120,7 +1125,7 @@
                         <span data-i18n="to.tech.p3">SEO Avanzado</span>
                     </div>
                
-                    <div class="t-tech-pill">
+                    <div class="t-tech-pilhayl">
                         <div class="t-tech-pill-dot" style="background:#8264dc;"></div>
                         <span data-i18n="to.tech.p5">Responsive Total</span>
                     </div>
@@ -1511,13 +1516,13 @@
                 </div>
                 <div class="t-admin-body">
                     <div class="t-admin-sidebar">
-                        <div class="t-admin-nav on" onclick="adminGoTo(0)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav1">Pedidos</span></div>
-                        <div class="t-admin-nav" onclick="adminGoTo(1)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav2">Productos</span></div>
-                        <div class="t-admin-nav" onclick="adminGoTo(2)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav3">Envíos</span></div>
-                        <div class="t-admin-nav" onclick="adminGoTo(3)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav4">Pagos</span></div>
+                        <div class="t-admin-nav on" onclick="adminGoTo(0)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav1">Bestellungen</span></div>
+                        <div class="t-admin-nav" onclick="adminGoTo(1)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav2">Produkte</span></div>
+                        <div class="t-admin-nav" onclick="adminGoTo(2)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav3">Versand</span></div>
+                        <div class="t-admin-nav" onclick="adminGoTo(3)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav4">Zahlungen</span></div>
                         <div class="t-admin-nav" onclick="adminGoTo(4)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav5">Blog</span></div>
-                        <div class="t-admin-nav" onclick="adminGoTo(5)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav6">Galería</span></div>
-                        <div class="t-admin-nav" onclick="adminGoTo(6)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav7">Anuncios</span></div>
+                        <div class="t-admin-nav" onclick="adminGoTo(5)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav6">Galerie</span></div>
+                        <div class="t-admin-nav" onclick="adminGoTo(6)"><div class="t-admin-nav-dot"></div> <span data-i18n="to.mock.nav7">Anzeigen</span></div>
                     </div>
                     <div class="t-admin-content">
                         <div class="t-admin-scroll" id="adminScroll">
@@ -1528,65 +1533,65 @@
                                 <div class="t-admin-stat-dot" style="background:#fe6c75;"></div>
                                 <div>
                                     <div class="t-admin-stat-num">12</div>
-                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.orders">pedidos</div>
+                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.orders">Bestellungen</div>
                                 </div>
                             </div>
                             <div class="t-admin-stat">
                                 <div class="t-admin-stat-dot" style="background:#4dd35b;"></div>
                                 <div>
                                     <div class="t-admin-stat-num">CHF 1,240</div>
-                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.revenue">ingresos</div>
+                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.revenue">Einnahmen</div>
                                 </div>
                             </div>
                             <div class="t-admin-stat">
                                 <div class="t-admin-stat-dot" style="background:#15a0da;"></div>
                                 <div>
                                     <div class="t-admin-stat-num">8</div>
-                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.shipped">enviados</div>
+                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.shipped">versendet</div>
                                 </div>
                             </div>
                             <div class="t-admin-stat">
                                 <div class="t-admin-stat-dot" style="background:#ffb421;"></div>
                                 <div>
                                     <div class="t-admin-stat-num">4</div>
-                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.pending">pendientes</div>
+                                    <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.pending">ausstehend</div>
                                 </div>
                             </div>
                         </div>
-                        <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:10px;" data-i18n="to.mock.orders.recent">Pedidos recientes</div>
+                        <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:10px;" data-i18n="to.mock.orders.recent">Neueste Bestellungen</div>
                         <div class="t-admin-th">
-                            <span data-i18n="to.mock.col.client">Cliente</span><span data-i18n="to.mock.col.total">Total</span><span data-i18n="to.mock.col.status">Estado</span>
+                            <span data-i18n="to.mock.col.client">Kunde</span><span data-i18n="to.mock.col.total">Total</span><span data-i18n="to.mock.col.status">Status</span>
                         </div>
                         <div class="t-admin-row">
                             <div class="t-admin-row-name">Anna Müller</div>
                             <div class="t-admin-row-price">CHF 89.90</div>
-                            <div><span class="t-badge ok" data-i18n="to.mock.badge.sent">Enviado</span></div>
+                            <div><span class="t-badge ok" data-i18n="to.mock.badge.sent">Versendet</span></div>
                         </div>
                         <div class="t-admin-row">
                             <div class="t-admin-row-name">Marc Huber</div>
                             <div class="t-admin-row-price">CHF 134.80</div>
-                            <div><span class="t-badge go" data-i18n="to.mock.badge.processing">Procesando</span></div>
+                            <div><span class="t-badge go" data-i18n="to.mock.badge.processing">In Bearbeitung</span></div>
                         </div>
                         <div class="t-admin-row">
                             <div class="t-admin-row-name">Sara Lopez</div>
                             <div class="t-admin-row-price">CHF 49.90</div>
-                            <div><span class="t-badge new" data-i18n="to.mock.badge.new">Nuevo</span></div>
+                            <div><span class="t-badge new" data-i18n="to.mock.badge.new">Neu</span></div>
                         </div>
                         <div class="t-admin-row">
                             <div class="t-admin-row-name">Klaus Bern</div>
                             <div class="t-admin-row-price">CHF 74.50</div>
-                            <div><span class="t-badge ok" data-i18n="to.mock.badge.done">Completado</span></div>
+                            <div><span class="t-badge ok" data-i18n="to.mock.badge.done">Abgeschlossen</span></div>
                         </div>
                         <div class="t-admin-row">
                             <div class="t-admin-row-name">Laura Meier</div>
                             <div class="t-admin-row-price">CHF 29.90</div>
-                            <div><span class="t-badge go" data-i18n="to.mock.badge.processing">Procesando</span></div>
+                            <div><span class="t-badge go" data-i18n="to.mock.badge.processing">In Bearbeitung</span></div>
                         </div>
                         <div style="margin-top:10px;padding:6px 8px;background:rgba(254,108,117,0.1);border-radius:6px;font-size:11px;color:#fe6c75;font-weight:700;" data-i18n="to.mock.orders.actions">
-                            + Descargar factura PDF · Cambiar estado · Enviar email
+                            + PDF-Rechnung · Status ändern · E-Mail senden
                         </div>
                         <div class="t-admin-barchart">
-                            <div class="t-admin-barchart-label" data-i18n="to.mock.chart.label">Ventas últimos 7 días</div>
+                            <div class="t-admin-barchart-label" data-i18n="to.mock.chart.label">Umsatz letzte 7 Tage</div>
                             <div class="t-admin-bars">
                                 <div class="t-admin-bar" style="height:40%;"></div>
                                 <div class="t-admin-bar" style="height:65%;"></div>
@@ -1601,7 +1606,7 @@
 
                         <!-- PANEL 2: PRODUCTOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#15a0da;margin-bottom:8px;" data-i18n="to.mock.catalog">Catálogo · 48 productos</div>
+                            <div style="font-size:12px;font-weight:700;color:#15a0da;margin-bottom:8px;" data-i18n="to.mock.catalog">Katalog · 48 Produkte</div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px;">
                                     <div style="height:28px;border-radius:4px;background:linear-gradient(135deg,#fe6c75,#ffa8ad);margin-bottom:5px;"></div>
@@ -1624,42 +1629,42 @@
                                     <div style="font-size:10px;color:#4dd35b;">CHF 34.90</div>
                                 </div>
                             </div>
-                            <div style="margin-top:8px;padding:5px 8px;background:rgba(21,160,218,0.1);border-radius:5px;font-size:10px;color:#15a0da;font-weight:700;" data-i18n="to.mock.catalog.actions">+ Añadir · Editar · Categorías · Variantes</div>
+                            <div style="margin-top:8px;padding:5px 8px;background:rgba(21,160,218,0.1);border-radius:5px;font-size:10px;color:#15a0da;font-weight:700;" data-i18n="to.mock.catalog.actions">+ Hinzufügen · Bearbeiten · Kategorien · Varianten</div>
                         </div><!-- /panel 2 -->
 
                         <!-- PANEL 3: ENVÍOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#4dd35b;margin-bottom:8px;" data-i18n="to.mock.ship.title">Zonas de Envío Activas</div>
+                            <div style="font-size:12px;font-weight:700;color:#4dd35b;margin-bottom:8px;" data-i18n="to.mock.ship.title">Aktive Versandzonen</div>
                             <div style="display:flex;flex-direction:column;gap:4px;">
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 9px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;">🇨🇭 Suiza</span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;" data-i18n="to.mock.ship.ch">🇨🇭 Schweiz</span>
                                     <span style="font-size:10px;color:#4dd35b;font-weight:700;">CHF 5.90</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 9px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;">🇩🇪 Alemania</span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;" data-i18n="to.mock.ship.de">🇩🇪 Deutschland</span>
                                     <span style="font-size:10px;color:#ffb421;font-weight:700;">CHF 9.90</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 9px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;">🇦🇹 Austria</span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;" data-i18n="to.mock.ship.at">🇦🇹 Österreich</span>
                                     <span style="font-size:10px;color:#ffb421;font-weight:700;">CHF 9.90</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 9px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;">🌍 Internacional</span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;" data-i18n="to.mock.ship.int">🌍 International</span>
                                     <span style="font-size:10px;color:#fe6c75;font-weight:700;">CHF 19.90</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(77,211,91,0.08);border-radius:6px;padding:7px 9px;">
-                                    <span style="font-size:11px;color:#4dd35b;font-weight:700;" data-i18n="to.mock.ship.free">✦ Gratis Suiza</span>
-                                    <span style="font-size:10px;color:#4dd35b;font-weight:700;" data-i18n="to.mock.ship.from">desde CHF 75</span>
+                                    <span style="font-size:11px;color:#4dd35b;font-weight:700;" data-i18n="to.mock.ship.free">✦ Gratis Schweiz</span>
+                                    <span style="font-size:10px;color:#4dd35b;font-weight:700;" data-i18n="to.mock.ship.from">ab CHF 75</span>
                                 </div>
                             </div>
                         </div><!-- /panel 3 -->
 
                         <!-- PANEL 4: PAGOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.pay.title">Métodos de Pago</div>
+                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.pay.title">Zahlungsmethoden</div>
                             <div style="display:flex;flex-direction:column;gap:5px;">
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;">💳 Tarjeta (Stripe)</span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;">💳 Mastercard / Visa</span>
                                     <span style="font-size:10px;background:#4dd35b;color:#000;border-radius:10px;padding:1px 7px;font-weight:700;">ON</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
@@ -1667,11 +1672,11 @@
                                     <span style="font-size:10px;background:#4dd35b;color:#000;border-radius:10px;padding:1px 7px;font-weight:700;">ON</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <span style="font-size:11px;color:#fff;font-weight:600;"><span style="background:#e8002d;border-radius:3px;padding:0 4px;">TWINT</span></span>
+                                    <span style="font-size:11px;color:#fff;font-weight:600;"><span style="background:#000;border-radius:3px;padding:0 4px;">TWINT</span></span>
                                     <span style="font-size:10px;background:#4dd35b;color:#000;border-radius:10px;padding:1px 7px;font-weight:700;">ON</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;" data-i18n="to.mock.pay.transfer">🏦 Transferencia</span>
+                                    <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;" data-i18n="to.mock.pay.transfer">🏦 Überweisung</span>
                                     <span style="font-size:10px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.3);border-radius:10px;padding:1px 7px;font-weight:700;">OFF</span>
                                 </div>
                             </div>
@@ -1679,27 +1684,27 @@
 
                         <!-- PANEL 5: BLOG -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#8264dc;margin-bottom:8px;" data-i18n="to.mock.blog.title">Blog · 12 artículos</div>
+                            <div style="font-size:12px;font-weight:700;color:#8264dc;margin-bottom:8px;" data-i18n="to.mock.blog.title">Blog · 12 Artikel</div>
                             <div style="display:flex;flex-direction:column;gap:4px;">
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;" data-i18n="to.mock.blog.post1">5 tendencias para tu tienda 2025</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);">28 Feb · <span style="color:#4dd35b;" data-i18n="to.mock.blog.published">Publicado</span></div>
+                                    <div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;" data-i18n="to.mock.blog.post1">5 Trends für deinen Shop 2025</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);">28 Feb · <span style="color:#4dd35b;" data-i18n="to.mock.blog.published">Veröffentlicht</span></div>
                                 </div>
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;" data-i18n="to.mock.blog.post2">Cómo mejorar el SEO de tu tienda</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);">22 Feb · <span style="color:#4dd35b;" data-i18n="to.mock.blog.published">Publicado</span></div>
+                                    <div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;" data-i18n="to.mock.blog.post2">Wie du die SEO deines Shops verbesserst</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);">22 Feb · <span style="color:#4dd35b;" data-i18n="to.mock.blog.published">Veröffentlicht</span></div>
                                 </div>
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:2px;" data-i18n="to.mock.blog.post3">Nueva colección primavera</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.3);" data-i18n="to.mock.blog.draft">Borrador · <span style="color:#ffb421;">Sin publicar</span></div>
+                                    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:2px;" data-i18n="to.mock.blog.post3">Neue Frühlingskollektion</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.3);" data-i18n="to.mock.blog.draft">Entwurf · <span style="color:#ffb421;">Unveröffentlicht</span></div>
                                 </div>
                             </div>
-                            <div style="margin-top:6px;padding:5px 8px;background:rgba(130,100,220,0.12);border-radius:5px;font-size:10px;color:#8264dc;font-weight:700;" data-i18n="to.mock.blog.actions">+ Nuevo artículo · Editor rico · SEO meta</div>
+                            <div style="margin-top:6px;padding:5px 8px;background:rgba(130,100,220,0.12);border-radius:5px;font-size:10px;color:#8264dc;font-weight:700;" data-i18n="to.mock.blog.actions">+ Neuer Artikel · Rich-Editor · SEO Meta</div>
                         </div><!-- /panel 5 -->
 
                         <!-- PANEL 6: GALERÍA -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#ffb421;margin-bottom:8px;" data-i18n="to.mock.gal.title">Galería · 24 imágenes</div>
+                            <div style="font-size:12px;font-weight:700;color:#ffb421;margin-bottom:8px;" data-i18n="to.mock.gal.title">Galerie · 24 Bilder</div>
                             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;">
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#fe6c75,#ffa8ad);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#15a0da,#74c0fc);"></div>
@@ -1710,24 +1715,24 @@
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#fe6c75,#8264dc);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#4dd35b,#15a0da);"></div>
                             </div>
-                            <div style="margin-top:8px;padding:5px 8px;background:rgba(255,180,33,0.1);border-radius:5px;font-size:10px;color:#ffb421;font-weight:700;" data-i18n="to.mock.gal.actions">+ Subir imágenes · Arrastrar para ordenar</div>
+                            <div style="margin-top:8px;padding:5px 8px;background:rgba(255,180,33,0.1);border-radius:5px;font-size:10px;color:#ffb421;font-weight:700;" data-i18n="to.mock.gal.actions">+ Bilder hochladen · Ziehen zum Sortieren</div>
                         </div><!-- /panel 6 -->
 
                         <!-- PANEL 7: ANUNCIOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.ann.title">Anuncios Activos</div>
+                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.ann.title">Aktive Anzeigen</div>
                             <div style="display:flex;flex-direction:column;gap:5px;">
                                 <div style="background:rgba(254,108,117,0.1);border:1px solid rgba(254,108,117,0.2);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:#fe6c75;margin-bottom:2px;" data-i18n="to.mock.ann.a1.title">🔥 Black Friday — 20% todo</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);" data-i18n="to.mock.ann.a1.sub">Hasta 5 Mar · Banner superior</div>
+                                    <div style="font-size:11px;font-weight:700;color:#fe6c75;margin-bottom:2px;" data-i18n="to.mock.ann.a1.title">🔥 Black Friday — 20% auf alles</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);" data-i18n="to.mock.ann.a1.sub">Bis 5. März · Oberes Banner</div>
                                 </div>
                                 <div style="background:rgba(77,211,91,0.08);border:1px solid rgba(77,211,91,0.15);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:#4dd35b;margin-bottom:2px;" data-i18n="to.mock.ann.a2.title">✦ Envío gratis desde CHF 75</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);" data-i18n="to.mock.ann.a2.sub">Permanente · Todas las páginas</div>
+                                    <div style="font-size:11px;font-weight:700;color:#4dd35b;margin-bottom:2px;" data-i18n="to.mock.ann.a2.title">✦ Gratis Versand ab CHF 75</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.4);" data-i18n="to.mock.ann.a2.sub">Dauerhaft · Alle Seiten</div>
                                 </div>
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;opacity:0.5;">
-                                    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:2px;" data-i18n="to.mock.ann.a3.title">🏖 Vacaciones 10–20 Mar</div>
-                                    <div style="font-size:10px;color:rgba(255,255,255,0.3);" data-i18n="to.mock.ann.a3.sub">Programado · Inactivo</div>
+                                    <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:2px;" data-i18n="to.mock.ann.a3.title">🏖 Urlaub 10–20 März</div>
+                                    <div style="font-size:10px;color:rgba(255,255,255,0.3);" data-i18n="to.mock.ann.a3.sub">Geplant · Inaktiv</div>
                                 </div>
                             </div>
                         </div><!-- /panel 7 -->
@@ -1872,6 +1877,7 @@
     // 1. DARK MODE — same localStorage key as main site
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
+        document.getElementById('themeColor').setAttribute('content', '#0a1520');
     }
 
     // 2. ACCESSIBILITY — restore a11y settings from localStorage
@@ -2062,7 +2068,10 @@ function adminGoTo(i) {
     if (!scroll) return;
     adminNavItems = document.querySelectorAll('#to-adm .t-admin-nav');
     adminNavItems.forEach(function(n,idx){ n.classList.toggle('on', idx === i); });
-    scroll.scrollTo({ left: i * scroll.offsetWidth, behavior: 'smooth' });
+    var panels = scroll.querySelectorAll('.t-admin-panel');
+    if (panels[i]) {
+        scroll.scrollTo({ left: panels[i].offsetLeft, behavior: 'smooth' });
+    }
     adminCurrent = i;
 }
 
