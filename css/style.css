@@ -377,6 +377,11 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     align-items: center;
     gap: 12px;
 }
+.mobile-menu-social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 .mobile-menu-footer a {
     font-size: 14px;
     font-weight: 500;
