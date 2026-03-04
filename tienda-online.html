@@ -1886,8 +1886,16 @@
         if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
     });
 
-    // 2. LANGUAGE — same localStorage key as main site
-    var lang = localStorage.getItem('lweb_lang') || 'de';
+    // 2. LANGUAGE — same localStorage key as main site, detect browser lang if not saved
+    var savedLang = localStorage.getItem('lweb_lang');
+    var lang;
+    if (savedLang) {
+        lang = savedLang;
+    } else {
+        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
+        var supported = ['de', 'en', 'es', 'fr', 'it'];
+        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    }
     if (typeof translations === 'undefined' || !translations[lang]) return;
     var t = translations[lang];
 

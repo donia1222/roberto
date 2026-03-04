@@ -440,9 +440,16 @@ function switchLang(lang) {
     document.documentElement.lang = lang === 'de' ? 'de-CH' : lang;
 }
 
-// Restore saved language
+// Restore saved language or detect from browser
 var savedLang = localStorage.getItem('lweb_lang');
-if (savedLang && savedLang !== 'de') {
+if (!savedLang) {
+    var browserLang = (navigator.language || navigator.userLanguage || 'de').slice(0, 2).toLowerCase();
+    var supported = ['de', 'en', 'es', 'fr', 'it'];
+    var detectedLang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    if (detectedLang !== 'de') {
+        switchLang(detectedLang);
+    }
+} else if (savedLang !== 'de') {
     switchLang(savedLang);
 }
 
