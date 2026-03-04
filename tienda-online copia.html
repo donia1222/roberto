@@ -45,12 +45,12 @@
             border-radius: 50%; padding: 10px; width: 36px; height: 36px; justify-content: center;
             font-size: 13px; font-weight: 600;
             display: inline-flex; align-items: center; gap: 8px;
-            text-decoration: none; transition: background 0.2s, transform 0.2s;
+            text-decoration: none; transition: background 0.2s, transform 0.2s, opacity 0.3s ease;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .t-back:hover { background: rgba(255,255,255,0.12); transform: translateX(-2px); }
-        body.past-hero .t-back { background: rgba(10,21,32,0.92); color: #fff; }
-        body.past-hero .t-back:hover { background: #fe6c75; }
+        body.past-hero .t-back { background: #fe6c75; color: #fff; }
+        body.past-hero .t-back:hover { background: rgba(10,21,32,0.92); }
 
         /* BUTTONS */
         .t-btn-red {
@@ -98,6 +98,8 @@
             gap: 80px; align-items: center;
             position: relative; z-index: 1; width: 100%;
         }
+        
+        
         .t-hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(254,108,117,0.12); border: 1px solid rgba(254,108,117,0.3);
@@ -589,6 +591,12 @@
             content:''; position:absolute; top:-100px; right:-100px;
             width:350px; height:350px; background:rgba(255,255,255,0.07); border-radius:50%;
         }
+        @keyframes t-adv-wave {
+            0%, 100% { transform:rotate(0deg) scale(1); }
+            25% { transform:rotate(-10deg) scale(1.15); }
+            50% { transform:rotate(5deg) scale(1.2); }
+            75% { transform:rotate(-5deg) scale(1.1); }
+        }
         .t-advantage h3 { font-size:clamp(22px,3vw,34px); font-weight:800; margin-bottom:14px; position:relative; z-index:1; }
         .t-advantage p { font-size:17px; opacity:0.9; max-width:540px; margin:0 auto 24px; line-height:1.65; position:relative; z-index:1; }
         .t-adv-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:30px; position:relative; z-index:1; }
@@ -725,7 +733,7 @@
         .t-feat-row.active .t-feat-check { background:rgba(254,108,117,0.15); color:#fe6c75; }
 
         /* ===================== STRUKTUR 3D INTERACTIVE CARDS ===================== */
-        .ts-section-wrap { position:relative; overflow:hidden; background:#0a0f1a; padding:100px 0; }
+        .ts-section-wrap { position:relative; overflow:hidden; background:#f0f4fa; padding:100px 0; }
         .ts-particles { position:absolute; inset:0; pointer-events:none; }
         .ts-particle {
             position:absolute; border-radius:50%; opacity:0;
@@ -733,8 +741,8 @@
         }
         @keyframes ts-float {
             0% { opacity:0; transform:translateY(0) scale(0); }
-            10% { opacity:1; }
-            90% { opacity:1; }
+            10% { opacity:0.6; }
+            90% { opacity:0.6; }
             100% { opacity:0; transform:translateY(-100vh) scale(1); }
         }
         .ts-grid {
@@ -743,40 +751,40 @@
         }
         .ts-card {
             position:relative; border-radius:20px; padding:2px;
-            background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.02));
-            opacity:0; transform:translateY(60px) rotateX(15deg);
-            transition:opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+            opacity:0; transform:translateY(40px);
+            transition:opacity 1s ease, transform 1s ease;
             transform-style:preserve-3d; will-change:transform;
         }
         .ts-card.ts-visible {
-            opacity:1; transform:translateY(0) rotateX(0);
+            opacity:1; transform:translateY(0);
         }
-        /* Animated gradient border */
+        /* Animated gradient border — ALWAYS visible, fades on hover */
         .ts-card::before {
             content:''; position:absolute; inset:-2px; border-radius:22px; z-index:0;
-            background:conic-gradient(from var(--ts-angle,0deg),#fe6c75,#a78bfa,#38bdf8,#34d399,#fbbf24,#fe6c75);
-            opacity:0; transition:opacity 0.4s;
+            background:conic-gradient(from var(--ts-angle,0deg),#fdb5b9,#c4b5fd,#93c5fd,#86efac,#fde68a,#fdb5b9);
+            opacity:1; transition:opacity 0.4s;
             animation:ts-border-spin 4s linear infinite;
         }
         @property --ts-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
         @keyframes ts-border-spin { to { --ts-angle:360deg; } }
-        .ts-card:hover::before { opacity:1; }
-        /* Glassmorphism inner */
+        .ts-card:hover::before { opacity:0; }
+        /* Pastel glassmorphism inner */
         .ts-card-inner {
             position:relative; z-index:1; border-radius:18px; padding:40px 28px 36px;
-            background:rgba(15,20,35,0.85); backdrop-filter:blur(20px);
+            background:rgba(255,255,255,0.82); backdrop-filter:blur(20px);
             display:flex; flex-direction:column; align-items:center; text-align:center;
             overflow:hidden; min-height:280px;
             transition:background 0.3s, box-shadow 0.3s;
+            border:1px solid rgba(255,255,255,0.5);
         }
         .ts-card:hover .ts-card-inner {
-            background:rgba(20,28,50,0.95);
-            box-shadow:0 20px 60px rgba(254,108,117,0.15), 0 0 40px rgba(254,108,117,0.05);
+            background:rgba(255,255,255,0.95);
+            box-shadow:0 20px 60px rgba(167,139,250,0.18), 0 0 40px rgba(254,108,117,0.08);
         }
         /* Holographic shimmer */
         .ts-card-inner::after {
             content:''; position:absolute; inset:0; border-radius:18px;
-            background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.06) 50%,rgba(255,255,255,0.03) 55%,transparent 60%);
+            background:linear-gradient(105deg,transparent 40%,rgba(167,139,250,0.06) 45%,rgba(254,108,117,0.08) 50%,rgba(56,189,248,0.06) 55%,transparent 60%);
             background-size:200% 200%; pointer-events:none;
             transition:background-position 0.3s;
         }
@@ -797,33 +805,31 @@
         }
         .ts-card:hover .ts-icon-3d {
             transform:translateY(-8px) scale(1.1);
-            box-shadow:0 12px 30px rgba(0,0,0,0.3);
+            box-shadow:0 12px 30px rgba(0,0,0,0.15);
         }
         @keyframes ts-icon-breathe {
             0%,100% { transform:translateY(0); }
             50% { transform:translateY(-4px); }
         }
-        .ts-icon-3d svg { position:relative; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
+        .ts-icon-3d svg { position:relative; z-index:1; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
         /* Badge number */
         .ts-badge {
             position:absolute; top:-8px; right:-8px; width:28px; height:28px;
             border-radius:50%; background:#fe6c75; color:#fff;
             font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 12px rgba(254,108,117,0.4);
-            transform:scale(0); transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow:0 4px 12px rgba(254,108,117,0.3);
         }
-        .ts-card.ts-visible .ts-badge { transform:scale(1); }
         /* Text */
         .ts-card h3 {
-            font-size:18px; font-weight:800; color:#fff;
+            font-size:18px; font-weight:800; color:#0f1d2c;
             margin-bottom:10px; line-height:1.3;
         }
         .ts-card p {
-            font-size:14px; color:rgba(255,255,255,0.5); line-height:1.65;
+            font-size:14px; color:#6b7d99; line-height:1.65;
             max-width:260px; margin:0 auto;
             transition:color 0.3s;
         }
-        .ts-card:hover p { color:rgba(255,255,255,0.75); }
+        .ts-card:hover p { color:#3d4f6a; }
         /* Tag pill */
         .ts-tag {
             margin-top:auto; padding-top:16px;
@@ -831,11 +837,11 @@
         .ts-tag span {
             display:inline-block; padding:5px 14px; border-radius:20px;
             font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
-            background:rgba(254,108,117,0.12); color:#fe6c75;
+            background:rgba(254,108,117,0.1); color:#fe6c75;
             transition:background 0.3s, transform 0.3s;
         }
         .ts-card:hover .ts-tag span {
-            background:rgba(254,108,117,0.2); transform:scale(1.05);
+            background:rgba(254,108,117,0.18); transform:scale(1.05);
         }
         /* Stagger delays */
         .ts-card:nth-child(1) { transition-delay:0.05s; }
@@ -864,30 +870,48 @@
         #to-feat .t-feat-row p { color:rgba(15,29,44,0.55); }
 
         /* ===================== DARK MODE OVERRIDE ===================== */
-        /* Prevent the main site dark mode from breaking tienda-online.html light sections */
-        body.dark-mode .t-section:not(.t-dark) { background:#fff; color:#212529; }
-        body.dark-mode .t-gray { background:#f4f7fb !important; }
-        body.dark-mode .t-h2 { color:#0f1d2c !important; }
-        body.dark-mode .t-sub { color:#6b7d99 !important; }
+        body.dark-mode .t-section:not(.t-dark) { background:#1a1f2e !important; color:#e2e8f0; }
+        body.dark-mode .t-gray { background:#151a27 !important; }
+        body.dark-mode .t-h2 { color:#f1f5f9 !important; }
+        body.dark-mode .t-sub { color:#94a3b8 !important; }
         body.dark-mode .t-label { color:#fe6c75 !important; }
-        body.dark-mode .t-tech-pill { background:#fff !important; color:#0f1d2c !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-bento-card { background:#fff !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-bento-info h3 { color:#0f1d2c !important; }
-        body.dark-mode .t-bento-info p { color:#6b7d99 !important; }
-        body.dark-mode .t-bento-tag { background:#f4f7fb !important; color:#6b7d99 !important; }
-        body.dark-mode .t-payment-card { background:#fff !important; color:#0f1d2c !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-target-card { background:#fff !important; border-color:#e8eef5 !important; }
-        body.dark-mode .t-target-card p { color:#424e65 !important; }
-        body.dark-mode .t-back { background:rgba(10,21,32,0.92) !important; color:#fff !important; }
-        /* Dark sections keep white text in dark mode */
-        body.dark-mode .t-dark .t-h2 { color:#fff !important; }
-        body.dark-mode .t-dark .t-sub { color:rgba(255,255,255,0.55) !important; }
-        body.dark-mode .t-cta h2 { color:#fff !important; }
+        body.dark-mode .t-tech-pill { background:#1e2536 !important; color:#e2e8f0 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-bento-card { background:#1e2536 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-bento-info h3 { color:#f1f5f9 !important; }
+        body.dark-mode .t-bento-info p { color:#94a3b8 !important; }
+        body.dark-mode .t-bento-tag { background:#151a27 !important; color:#94a3b8 !important; }
+        body.dark-mode .t-payment-card { background:#1e2536 !important; color:#e2e8f0 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-target-card { background:#1e2536 !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-target-card h3 { color:#f1f5f9 !important; }
+        body.dark-mode .t-target-card p { color:#94a3b8 !important; }
+        body.dark-mode .t-back { background:rgba(10,21,32,0.95) !important; color:#fff !important; }
+        body.dark-mode .t-feat-row { background:rgba(30,37,54,0.6) !important; border-color:#2d3548 !important; }
+        body.dark-mode .t-feat-row:hover { background:rgba(30,37,54,0.9) !important; border-color:rgba(254,108,117,0.4) !important; }
+        body.dark-mode .t-feat-row h4 { color:#f1f5f9 !important; }
+        body.dark-mode .t-feat-row p { color:#94a3b8 !important; }
+        /* Hero keeps dark already */
         body.dark-mode .t-hero .t-h2 { color:#fff !important; }
-        body.dark-mode .t-chip { background:#fff !important; color:#0f1d2c !important; }
+        body.dark-mode .t-cta h2 { color:#fff !important; }
         body.dark-mode .t-cta { background:linear-gradient(160deg,#060e18 0%,#0f1d2c 100%) !important; }
-        body.dark-mode .t-nocode-section { background:#f0f4f8 !important; }
-        body.dark-mode .t-nocode-phone { background:#fff !important; }
+        body.dark-mode .t-chip { background:rgba(255,255,255,0.1) !important; color:#e2e8f0 !important; }
+        /* 100% ADMIN banner */
+        body.dark-mode .t-nocode-section { background:#151a27 !important; }
+        body.dark-mode .t-nocode-phone { background:transparent !important; }
+        body.dark-mode .t-nocode-text { color:#fe6c75 !important; }
+        /* INCLUDED PAGES section */
+        body.dark-mode .ts-section-wrap { background:#1a1f2e !important; }
+        body.dark-mode .ts-card-inner { background:rgba(30,37,54,0.85) !important; border-color:#2d3548 !important; }
+        body.dark-mode .ts-card:hover .ts-card-inner { background:rgba(35,44,62,0.95) !important; }
+        body.dark-mode .ts-card h3 { color:#f1f5f9 !important; }
+        body.dark-mode .ts-card p { color:#94a3b8 !important; }
+        body.dark-mode .ts-card:hover p { color:#cbd5e1 !important; }
+        /* Buttons */
+        body.dark-mode .t-btn-ghost { border-color:rgba(255,255,255,0.2) !important; color:#e2e8f0 !important; }
+        body.dark-mode .t-btn-ghost:hover { background:rgba(255,255,255,0.05) !important; border-color:rgba(255,255,255,0.4) !important; }
+        /* Admin panel */
+        body.dark-mode #to-adm { background:#151a27 !important; }
+        body.dark-mode .t-admin-nav-item { background:#1e2536 !important; border-color:#2d3548 !important; color:#e2e8f0 !important; }
+        body.dark-mode .t-admin-nav-item.active { border-color:#fe6c75 !important; }
         /* Code window — always dark regardless of mode */
         .t-code-window { overflow:hidden; }
         .t-code-body { overflow-x:auto; }
@@ -1017,7 +1041,7 @@
                 </a>
                 <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span class="t-typing-url" style="font-size:10px;opacity:0.6;font-weight:400;"></span></span>
+                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
                 </a>
             </div>
         </div>
@@ -1292,23 +1316,23 @@
 </section>
 
 <!-- ===================== ESTRUCTURA BENTO ===================== -->
-<section class="t-section t-dark ts-section-wrap" id="ts-struktur">
+<section class="t-section ts-section-wrap" id="ts-struktur">
     <!-- Floating particles background -->
     <div class="ts-particles" id="tsParticles"></div>
     <div class="t-wrap" style="position:relative; z-index:1;">
         <div style="text-align:center;">
             <div id="to-str-label" class="t-label" style="color:#fe6c75;">Páginas incluidas</div>
-            <h2 class="t-h2" style="color:#fff;">Estructura Completa<br>de la Tienda</h2>
-            <p class="t-sub" style="color:rgba(255,255,255,0.5); margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
+            <h2 class="t-h2" style="color:#0f1d2c;">Estructura Completa<br>de la Tienda</h2>
+            <p class="t-sub" style="color:#6b7d99; margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
         </div>
 
         <div class="ts-grid" id="tsGrid">
             <!-- HOME -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);">
                         <span class="ts-badge">1</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
                     </div>
                     <h3 data-i18n="to.bc1">Página Principal</h3>
                     <p data-i18n="to.bc1.desc">Presentación profesional con productos destacados, bloques personalizables y anuncios dinámicos.</p>
@@ -1318,9 +1342,9 @@
             <!-- SHOP -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#9f1239,#fb7185);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ffe4e6,#fda4af);">
                         <span class="ts-badge">2</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9f1239" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
                     </div>
                     <h3 data-i18n="to.bc2">Online Shop</h3>
                     <p data-i18n="to.bc2.desc">Categorías, subcategorías, filtros avanzados y proceso de compra optimizado.</p>
@@ -1330,9 +1354,9 @@
             <!-- BLOG -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#5b21b6,#a78bfa);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">
                         <span class="ts-badge">3</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5b21b6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     </div>
                     <h3 data-i18n="to.bc3">Blog Integrado</h3>
                     <p data-i18n="to.bc3.desc">Artículos, novedades y contenido para SEO orgánico y posicionamiento.</p>
@@ -1342,9 +1366,9 @@
             <!-- GALLERY -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#854d0e,#fbbf24);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#fef9c3,#fde68a);">
                         <span class="ts-badge">4</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                     </div>
                     <h3 data-i18n="to.bc4">Galería</h3>
                     <p data-i18n="to.bc4.desc">Imágenes del negocio, instalaciones y equipo en un grid visual profesional.</p>
@@ -1354,9 +1378,9 @@
             <!-- CONTACT -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#14532d,#34d399);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#dcfce7,#86efac);">
                         <span class="ts-badge">5</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14532d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                     </div>
                     <h3 data-i18n="to.bc5">Contacto + Reseñas</h3>
                     <p data-i18n="to.bc5.desc">Formulario profesional e integración de reseñas Google Maps.</p>
@@ -1366,9 +1390,9 @@
             <!-- PWA -->
             <div class="ts-card">
                 <div class="ts-card-inner">
-                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#9a3412,#f97316);">
+                    <div class="ts-icon-3d" style="background:linear-gradient(135deg,#ffedd5,#fdba74);">
                         <span class="ts-badge">6</span>
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9a3412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7l2 2 4-4"/></svg>
                     </div>
                     <h3 data-i18n="to.bc.pwa">PWA — App instalable</h3>
                     <p data-i18n="to.bc.pwa.desc">Tu tienda funciona como app nativa en iOS y Android. Sin App Store, sin coste extra.</p>
@@ -1766,7 +1790,7 @@
 <section class="t-section" style="background:#e8f5e9;">
     <div class="t-wrap">
         <div id="to-adv-label" class="t-label">La diferencia</div>
-        <h2 class="t-h2" style="color:#0f1d2c;">Ventaja Principal</h2>
+        <h2 class="t-h2" style="color:#0f1d2c;">Ventaja Principal <span class="t-adv-emoji" style="display:inline-block;font-size:0.85em;animation:t-adv-wave 2s ease-in-out infinite;">🏆</span></h2>
         <div class="t-advantage">
             <h3>El cliente ve la tienda funcionando<br>antes de contratar.</h3>
             <p>No compra una idea. Ve una tienda real. Sobre esa base se adapta todo: diseño, colores, contenido, productos y marca.</p>
@@ -1798,7 +1822,7 @@
             </a>
             <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                <span data-i18n="to.cta2">Ver ejemplo</span>
+                <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
             </a>
         </div>
     </div>
@@ -1810,6 +1834,12 @@
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
     }
+
+    // 2. ACCESSIBILITY — restore a11y settings from localStorage
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
 
     // 2. LANGUAGE — same localStorage key as main site
     var lang = localStorage.getItem('lweb_lang') || 'de';
@@ -1883,7 +1913,7 @@
         {s: '.t-target-grid .t-target-card:nth-child(6) p', k: 'to.ti6'},
         // Advantage
         {s: '#to-adv-label',      k: 'to.adv.label'},
-        {s: '#to-adv-label ~ .t-h2', k: 'to.adv.h2'},
+        {s: '#to-adv-label ~ .t-h2', k: 'to.adv.h2', html: true},
         {s: '.t-advantage h3',    k: 'to.adv.h3', html: true},
         {s: '.t-advantage > p',   k: 'to.adv.p'},
         {s: '.t-adv-final',       k: 'to.adv.final'},
@@ -1933,36 +1963,6 @@
     obs.observe(codeBody);
 })();
 
-// ── TYPING EFFECT — leder-shop.ch in buttons ─────────────
-(function(){
-    var spans = document.querySelectorAll('.t-typing-url');
-    var text = 'leder-shop.ch';
-    var speed = 100;
-    spans.forEach(function(span){
-        var i = 0;
-        function type(){
-            if(i <= text.length){
-                span.textContent = text.slice(0, i) + (i < text.length ? '|' : '');
-                i++;
-                setTimeout(type, speed);
-            } else {
-                // blink cursor then restart
-                var blinks = 0;
-                var blink = setInterval(function(){
-                    span.textContent = text + (blinks % 2 === 0 ? '' : '|');
-                    blinks++;
-                    if(blinks > 5){
-                        clearInterval(blink);
-                        span.textContent = '';
-                        i = 0;
-                        setTimeout(type, 800);
-                    }
-                }, 400);
-            }
-        }
-        type();
-    });
-})();
 
 // ── PAYMENT TABS — scroll-triggered show/hide + rotating checkmark ─────────────
 (function(){
@@ -2045,7 +2045,7 @@ function adminGoTo(i) {
     // ── Floating particles ──
     var particleContainer = document.getElementById('tsParticles');
     if (particleContainer && section) {
-        var colors = ['#fe6c75','#a78bfa','#38bdf8','#34d399','#fbbf24','#f97316'];
+        var colors = ['#fdb5b9','#c4b5fd','#93c5fd','#86efac','#fde68a','#fdba74'];
         for (var i = 0; i < 30; i++) {
             var p = document.createElement('div');
             p.className = 'ts-particle';
@@ -2081,11 +2081,7 @@ function adminGoTo(i) {
         entries.forEach(function(e){
             if (e.isIntersecting) {
                 cards.forEach(function(c){ c.classList.add('ts-visible'); });
-            } else {
-                cards.forEach(function(c){
-                    c.classList.remove('ts-visible');
-                    c.style.transform = '';
-                });
+                obs.disconnect();
             }
         });
     }, { threshold: 0.12 });
@@ -2155,14 +2151,29 @@ function adminGoTo(i) {
     obs.observe(document.getElementById('to-feat'));
 })();
 
-// ── BACK BUTTON — oscuro al salir del hero ──────────────────────
+// ── BACK BUTTON — hide on scroll down, show on scroll up ──────────────────────
 (function(){
     var hero = document.querySelector('.t-hero');
-    if (!hero) return;
+    var backBtn = document.querySelector('.t-back');
+    if (!hero || !backBtn) return;
+
     var obs = new IntersectionObserver(function(entries){
         document.body.classList.toggle('past-hero', !entries[0].isIntersecting);
     }, { threshold: 0 });
     obs.observe(hero);
+
+    var lastScroll = 0;
+    window.addEventListener('scroll', function(){
+        var current = window.pageYOffset;
+        if (current > lastScroll && current > 100) {
+            backBtn.style.opacity = '0';
+            backBtn.style.pointerEvents = 'none';
+        } else {
+            backBtn.style.opacity = '1';
+            backBtn.style.pointerEvents = 'auto';
+        }
+        lastScroll = current;
+    });
 })();
 </script>
 </body>

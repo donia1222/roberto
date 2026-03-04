@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/translations.js"></script>
     <style>
-        body { padding-top: 0; overflow-x: hidden; background: #0a1520; }
+        body { padding-top: 60px; overflow-x: hidden; background: #0a1520; }
 
         /* ANIMATIONS */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -37,20 +37,37 @@
         .t-dark .t-label { color: #fe6c75; }
         .accent { color: #fe6c75; }
 
-        /* BACK BUTTON */
-        .t-back {
-            position: fixed; top: 20px; left: 20px; z-index: 9999;
-            background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.12);; color: #fff;
-            border-radius: 50%; padding: 10px; width: 36px; height: 36px; justify-content: center;
-            font-size: 13px; font-weight: 600;
-            display: inline-flex; align-items: center; gap: 8px;
-            text-decoration: none; transition: background 0.2s, transform 0.2s, opacity 0.3s ease;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        /* HEADER back button next to logo */
+        /* Header dark (on hero) */
+        .header.header-dark { background: rgba(10, 21, 32, 0.92); }
+        .header.header-dark .header-logo { color: #fff; }
+        .header.header-dark .header-logo-subtitle { color: rgba(255,255,255,0.5); }
+        .header.header-dark .header-logo-sep { color: rgba(255,255,255,0.2); }
+        .header.header-dark .header-nav-item { color: rgba(255,255,255,0.7); }
+        .header.header-dark .header-nav-item:hover { color: #fff; background: rgba(254,108,117,0.25); }
+        .header .header-nav-item:hover { background: rgba(254,108,117,0.12); }
+        .header.header-dark .header-icon-btn { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
+        .header.header-dark .header-icon-btn:hover { color: #fff; background: rgba(255,255,255,0.15); }
+        .header .header-burger { background: #fe6c75; }
+        .header .header-burger span { background: #fff; }
+        /* Dark mode always dark header */
+        body.dark-mode .header { background: rgba(10, 21, 32, 0.95); }
+        body.dark-mode .header .header-logo { color: #fff; }
+        body.dark-mode .header .header-logo-subtitle { color: rgba(255,255,255,0.5); }
+        body.dark-mode .header .header-logo-sep { color: rgba(255,255,255,0.2); }
+        body.dark-mode .header .header-nav-item { color: rgba(255,255,255,0.7); }
+        body.dark-mode .header .header-nav-item:hover { color: #fff; }
+        body.dark-mode .header .header-icon-btn { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
+        body.dark-mode .header .header-icon-btn:hover { color: #fff; background: rgba(255,255,255,0.15); }
+        .header-logo-group { display: flex; align-items: center; gap: 26px; }
+        .header .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+        .header-inner { position: relative; }
+        @media (max-width: 1024px) {
+            .header-logo-group .header-icon-btn { display: flex; }
         }
-        .t-back:hover { background: rgba(255,255,255,0.12); transform: translateX(-2px); }
-        body.past-hero .t-back { background: #fe6c75; color: #fff; }
-        body.past-hero .t-back:hover { background: rgba(10,21,32,0.92); }
+
+        /* HERO top padding adjustment for header */
+        .t-hero { margin-top: -60px; padding-top: 60px; }
 
         /* BUTTONS */
         .t-btn-red {
@@ -111,6 +128,7 @@
         .t-hero-h1 {
             font-size: clamp(40px, 5.5vw, 72px); font-weight: 800;
             line-height: 1.04; color: #fff; letter-spacing: -0.03em;
+            margin-top: 40px;
             margin-bottom: 22px; animation: fadeUp 0.6s ease both 0.1s;
         }
         .t-hero-p {
@@ -884,7 +902,6 @@
         body.dark-mode .t-target-card { background:#1e2536 !important; border-color:#2d3548 !important; }
         body.dark-mode .t-target-card h3 { color:#f1f5f9 !important; }
         body.dark-mode .t-target-card p { color:#94a3b8 !important; }
-        body.dark-mode .t-back { background:rgba(10,21,32,0.95) !important; color:#fff !important; }
         body.dark-mode .t-feat-row { background:rgba(30,37,54,0.6) !important; border-color:#2d3548 !important; }
         body.dark-mode .t-feat-row:hover { background:rgba(30,37,54,0.9) !important; border-color:rgba(254,108,117,0.4) !important; }
         body.dark-mode .t-feat-row h4 { color:#f1f5f9 !important; }
@@ -1002,10 +1019,48 @@
 </head>
 <body>
 
-<!-- BACK -->
-<a href="index.html" class="t-back">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-</a>
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-logo-group">
+        <a href="index.html" class="header-icon-btn" aria-label="Zurück zur Startseite">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </a>
+        <a href="index.html" class="header-logo">
+            <span class="header-logo-text">Lweb<span class="header-logo-countries"><span class="header-logo-subtitle domain-ch"><svg width="9" height="9" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#D52B1E"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span><span class="header-logo-sep domain-sep">|</span><span class="header-logo-subtitle domain-li"><svg width="9" height="6" viewBox="0 0 32 20"><rect width="32" height="10" rx="2" fill="#002B7F"/><rect y="10" width="32" height="10" rx="2" fill="#CE1126"/><path d="M5 2.5c0-.4.3-.7.7-.7h.6c.2 0 .3.1.4.2l.8 1.2.8-1.2c.1-.1.2-.2.4-.2h.6c.4 0 .7.3.7.7V5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V3.5l-.8 1.2c-.1.1-.2.2-.4.2s-.3-.1-.4-.2L7 3.5V5c0 .3-.2.5-.5.5S6 5.3 6 5V2.5z" fill="#FFD700"/></svg>Liechtenstein</span></span></span>
+        </a>
+        </div>
+        <nav class="header-nav" aria-label="Navigation">
+            <a href="#to-tech" class="header-nav-item"><span data-i18n="to.nav.tech">Technologie</span></a>
+            <a href="#to-feat" class="header-nav-item"><span data-i18n="to.nav.feat">Features</span></a>
+            <a href="#ts-struktur" class="header-nav-item"><span data-i18n="to.nav.pages">Seiten</span></a>
+            <a href="#to-adm" class="header-nav-item"><span data-i18n="to.nav.admin">Admin</span></a>
+            <a href="#to-pay" class="header-nav-item"><span data-i18n="to.nav.pay">Zahlungen</span></a>
+        </nav>
+        <div class="header-actions">
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU MODAL -->
+<div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu-nav">
+        <a href="#to-tech" class="mobile-menu-link" data-i18n="to.nav.tech">Technologie</a>
+        <a href="#to-feat" class="mobile-menu-link" data-i18n="to.nav.feat">Features</a>
+        <a href="#ts-struktur" class="mobile-menu-link" data-i18n="to.nav.pages">Seiten</a>
+        <a href="#to-adm" class="mobile-menu-link" data-i18n="to.nav.admin">Admin</a>
+        <a href="#to-pay" class="mobile-menu-link" data-i18n="to.nav.pay">Zahlungen</a>
+        <a href="#to-adv" class="mobile-menu-link" data-i18n="to.nav.adv">Vorteil</a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" data-i18n="to.nav.back">Zurück zur Startseite</a>
+    </nav>
+    <div class="mobile-menu-footer">
+        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    </div>
+</div>
 
 <!-- ===================== HERO ===================== -->
 <section class="t-hero">
@@ -1404,7 +1459,7 @@
 </section>
 
 <!-- ===================== 100% ADMIN ===================== -->
-<section class="t-section t-nocode-section" style="background:#e8f5e9; overflow:hidden;">
+<section id="to-nocode" class="t-section t-nocode-section" style="background:#e8f5e9; overflow:hidden;">
     <div class="t-wrap t-nocode-inner">
         <div class="t-nocode-text" aria-hidden="true">
             <span>100%</span>
@@ -1701,7 +1756,7 @@
 </section>
 
 <!-- ===================== PAYMENTS ===================== -->
-<section class="t-section" style="background:#e8f5e9;">
+<section id="to-pay" class="t-section" style="background:#e8f5e9;">
     <div class="t-wrap">
         <div class="t-pay-split">
             <!-- LEFT: PHONE MOCKUP -->
@@ -1787,7 +1842,7 @@
 
 
 <!-- ===================== ADVANTAGE ===================== -->
-<section class="t-section" style="background:#e8f5e9;">
+<section id="to-adv" class="t-section" style="background:#e8f5e9;">
     <div class="t-wrap">
         <div id="to-adv-label" class="t-label">La diferencia</div>
         <h2 class="t-h2" style="color:#0f1d2c;">Ventaja Principal <span class="t-adv-emoji" style="display:inline-block;font-size:0.85em;animation:t-adv-wave 2s ease-in-out infinite;">🏆</span></h2>
@@ -1807,7 +1862,7 @@
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="t-cta">
+<section id="to-cta" class="t-cta">
     <div class="t-wrap">
         <div class="t-label" style="justify-content:center;color:rgba(255,255,255,0.4);margin-bottom:20px;">
             <span style="background:rgba(255,255,255,0.1);"></span>
@@ -2151,28 +2206,49 @@ function adminGoTo(i) {
     obs.observe(document.getElementById('to-feat'));
 })();
 
-// ── BACK BUTTON — hide on scroll down, show on scroll up ──────────────────────
+// ── HEADER — dark on hero, light after ──────────────────────
 (function(){
+    var header = document.querySelector('.header');
     var hero = document.querySelector('.t-hero');
-    var backBtn = document.querySelector('.t-back');
-    if (!hero || !backBtn) return;
+    if (!header || !hero) return;
+
+    // Start dark
+    header.classList.add('header-dark');
 
     var obs = new IntersectionObserver(function(entries){
-        document.body.classList.toggle('past-hero', !entries[0].isIntersecting);
+        if (document.body.classList.contains('dark-mode')) return;
+        header.classList.toggle('header-dark', entries[0].isIntersecting);
     }, { threshold: 0 });
     obs.observe(hero);
 
-    var lastScroll = 0;
     window.addEventListener('scroll', function(){
-        var current = window.pageYOffset;
-        if (current > lastScroll && current > 100) {
-            backBtn.style.opacity = '0';
-            backBtn.style.pointerEvents = 'none';
-        } else {
-            backBtn.style.opacity = '1';
-            backBtn.style.pointerEvents = 'auto';
-        }
-        lastScroll = current;
+        header.classList.toggle('scrolled', window.pageYOffset > 50);
+    });
+})();
+</script>
+
+<script>
+// Mobile menu toggle
+(function(){
+    var burger = document.getElementById('menuBurger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (!burger || !mobileMenu) return;
+
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        var isOpen = mobileMenu.classList.contains('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        document.querySelector('.header').classList.toggle('menu-open', isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            burger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+            document.querySelector('.header').classList.remove('menu-open');
+        });
     });
 })();
 </script>
