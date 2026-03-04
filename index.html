@@ -210,12 +210,12 @@
 <!-- MOBILE MENU MODAL -->
 <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-menu-nav">
-        <a href="#services" class="mobile-menu-link">Leistungen</a>
-        <a href="#apps" class="mobile-menu-link">Mobile Apps</a>
-        <a href="#websites" class="mobile-menu-link">Websites</a>
-        <a href="#techstack" class="mobile-menu-link">Technologien</a>
-        <a href="#about" class="mobile-menu-link">Über mich</a>
-        <a href="#contact" class="mobile-menu-link mobile-menu-link--cta">Kontakt</a>
+        <a href="#services" class="mobile-menu-link" data-i18n="nav.services">Leistungen</a>
+        <a href="#apps" class="mobile-menu-link" data-i18n="nav.apps">Mobile Apps</a>
+        <a href="#websites" class="mobile-menu-link" data-i18n="nav.websites">Websites</a>
+        <a href="#techstack" class="mobile-menu-link" data-i18n="nav.tech">Technologien</a>
+        <a href="#about" class="mobile-menu-link" data-i18n="nav.about">Über mich</a>
+        <a href="#contact" class="mobile-menu-link mobile-menu-link--cta" data-i18n="nav.contact">Kontakt</a>
     </nav>
     <div class="mobile-menu-footer">
         <a href="https://github.com/donia1222" target="_blank" rel="noopener">GitHub</a>
@@ -228,7 +228,7 @@
             </button>
             <button onclick="openChatFromMenu()" class="mobile-menu-action-btn" aria-label="Chat öffnen">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                <span>KI Chat</span>
+                <span data-i18n="nav.chat">KI Chat</span>
             </button>
             <button class="mobile-menu-action-btn" id="darkModeToggleMobile" aria-label="Barrierefreiheit">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/><path d="M8 11h8M12 11v4M10 19l2-4 2 4"/></svg>
@@ -259,19 +259,19 @@
                 <ul class="hero-features">
                     <li class="hero-feature">
                         <span class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Native iOS &amp; Android Apps &mdash; eine Codebasis, zwei Plattformen
+                        <span data-i18n="hero.feature1">Native iOS &amp; Android Apps &mdash; eine Codebasis, zwei Plattformen</span>
                     </li>
                     <li class="hero-feature">
                         <span class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Moderne Websites mit Next.js, Remix &amp; TypeScript
+                        <span data-i18n="hero.feature2">Moderne Websites mit Next.js, Remix &amp; TypeScript</span>
                     </li>
                     <li class="hero-feature">
                         <span class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Faire Preise &mdash; direkt vom Entwickler, ohne Agenturaufschlag
+                        <span data-i18n="hero.feature3">Faire Preise &mdash; direkt vom Entwickler, ohne Agenturaufschlag</span>
                     </li>
-                         <li class="hero-feature">
+                    <li class="hero-feature">
                         <span class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Schweizer Hosting &mdash; Hostpoint.ch für alle Projekte
+                        <span data-i18n="hero.feature4">Schweizer Hosting &mdash; Hostpoint.ch für alle Projekte</span>
                     </li>
                 </ul>
             </div>
@@ -1717,6 +1717,16 @@
             <div class="a11y-btn-group">
                 <button class="a11y-btn" onclick="setA11y('spacing','normal')" data-a11y-spacing="normal" data-i18n="a11y.normal">Normal</button>
                 <button class="a11y-btn" onclick="setA11y('spacing','wide')" data-a11y-spacing="wide" data-i18n="a11y.wide">Weit</button>
+            </div>
+        </div>
+        <div class="a11y-option">
+            <label data-i18n="a11y.language">Sprache</label>
+            <div class="a11y-btn-group">
+                <button class="a11y-btn lang-btn" onclick="switchLang('de')" data-lang="de">DE</button>
+                <button class="a11y-btn lang-btn" onclick="switchLang('en')" data-lang="en">EN</button>
+                <button class="a11y-btn lang-btn" onclick="switchLang('es')" data-lang="es">ES</button>
+                <button class="a11y-btn lang-btn" onclick="switchLang('fr')" data-lang="fr">FR</button>
+                <button class="a11y-btn lang-btn" onclick="switchLang('it')" data-lang="it">IT</button>
             </div>
         </div>
         <button class="a11y-reset" onclick="resetA11y()" data-i18n="a11y.reset">Zurücksetzen</button>

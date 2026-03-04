@@ -433,8 +433,7 @@ function switchLang(lang) {
 
     // Update lang buttons
     document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
-    var activeBtn = document.querySelector('.lang-btn[onclick*="' + lang + '"]');
-    if (activeBtn) activeBtn.classList.add('active');
+    document.querySelectorAll('.lang-btn[onclick*="' + lang + '"]').forEach(function(btn) { btn.classList.add('active'); });
 
     // Save preference
     localStorage.setItem('lweb_lang', lang);
