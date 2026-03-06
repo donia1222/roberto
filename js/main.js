@@ -289,6 +289,18 @@ var i18nMap = [
     {s: '.service-card:nth-child(5) p', k: 'service4.desc'},
     {s: '.service-card:nth-child(5) .service-link', k: 'service4.link', suffix: ' →'},
     // Apps
+    // Pricing
+    {s: '[data-i18n-html="pricing.title"]', k: 'pricing.title', html: true},
+    {s: '[data-i18n="pricing.desc"]', k: 'pricing.desc'},
+    {s: '[data-i18n="pricing.starter.title"]', k: 'pricing.starter.title'},
+    {s: '[data-i18n="pricing.starter.price"]', k: 'pricing.starter.price'},
+    {s: '[data-i18n="pricing.starter.desc"]', k: 'pricing.starter.desc'},
+    {s: '[data-i18n="pricing.business.title"]', k: 'pricing.business.title'},
+    {s: '[data-i18n="pricing.business.price"]', k: 'pricing.business.price'},
+    {s: '[data-i18n="pricing.business.desc"]', k: 'pricing.business.desc'},
+    {s: '[data-i18n="pricing.shop.title"]', k: 'pricing.shop.title'},
+    {s: '[data-i18n="pricing.shop.price"]', k: 'pricing.shop.price'},
+    {s: '[data-i18n="pricing.shop.desc"]', k: 'pricing.shop.desc'},
     {s: '.apps .section-header h2', k: 'apps.title', html: true},
     {s: '.apps .section-header p', k: 'apps.desc'},
     {s: '.app-featured-tagline', k: 'apps.featured.tagline'},
