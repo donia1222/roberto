@@ -1409,14 +1409,14 @@
 <section class="cta-banner" id="contact">
     <div class="container">
         <h2>Jetzt unverbindlich anfragen</h2>
-        <p>Kostenlose Beratung (10 Minuten) &mdash; ich berate Sie gerne persönlich zu Ihrer Website oder App. Direkt, unkompliziert und ohne Verpflichtung.</p>
+        <p>Kostenlose Beratung (30 Minuten) &mdash; ich berate Sie gerne persönlich zu Ihrer Website oder App. Direkt, unkompliziert und ohne Verpflichtung.</p>
         <div class="cta-buttons">
             <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website.%20K%C3%B6nnten%20Sie%20mich%20bitte%20beraten%3F" target="_blank" rel="noopener" class="gbcta gbcta--primary" style="font-size:18px;height:58px;padding:0 36px;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 +41 76 560 86 45
             </a>
-            <a href="mailto:info@lweb.ch" class="gbcta gbcta--white-coral" style="font-size:18px;height:58px;padding:0 36px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="mailto:info@lweb.ch" class="gbcta" style="font-size:18px;height:58px;padding:0 36px;background:none !important;color:#fff !important;border:2px solid #fff !important;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 info@lweb.ch
             </a>
         </div>
@@ -1819,6 +1819,57 @@
     document.querySelectorAll('.domain-li, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
   } else if (h === 'webseite.li') {
     document.querySelectorAll('.domain-ch, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
+    // Replace Buchs references with Liechtenstein in marketing text
+    document.title = document.title.replace(/Buchs SG & St\. Gallen/g,'Liechtenstein').replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs/g,'Liechtenstein');
+    var meta = document.querySelector('meta[name="description"]');
+    if(meta) meta.content = meta.content.replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs/g,'Liechtenstein');
+    var ogT = document.querySelector('meta[property="og:title"]');
+    if(ogT) ogT.content = ogT.content.replace(/Buchs SG/g,'Liechtenstein');
+    var ogD = document.querySelector('meta[property="og:description"]');
+    if(ogD) ogD.content = ogD.content.replace(/Buchs SG/g,'Liechtenstein');
+    var twT = document.querySelector('meta[name="twitter:title"]');
+    if(twT) twT.content = twT.content.replace(/Buchs SG/g,'Liechtenstein');
+    var twD = document.querySelector('meta[name="twitter:description"]');
+    if(twD) twD.content = twD.content.replace(/Buchs SG/g,'Liechtenstein');
+    // Hero
+    var h1 = document.querySelector('[data-i18n-html="hero.title"]');
+    if(h1) h1.innerHTML = 'Webseiten für Unternehmen in<br><span>Liechtenstein</span>';
+    var sub = document.querySelector('[data-i18n="hero.subtitle"]');
+    if(sub) sub.textContent = 'Moderne Websites und Apps für lokale Unternehmen — schnell, professionell und zu fairen Preisen. Ihr persönlicher Ansprechpartner vor Ort in Liechtenstein, Vaduz und Umgebung.';
+    var f4 = document.querySelector('[data-i18n="hero.feature4"]');
+    if(f4) f4.textContent = 'Persönlicher Ansprechpartner vor Ort in Liechtenstein';
+    // Services
+    var sDesc = document.querySelector('#services .section-header p');
+    if(sDesc) sDesc.textContent = sDesc.textContent.replace(/Buchs SG/g,'Liechtenstein');
+    // About
+    var aboutP = document.querySelector('.about-content p');
+    if(aboutP) aboutP.innerHTML = aboutP.innerHTML.replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs/g,'Liechtenstein');
+    // Why me
+    var whyP = document.querySelector('.why-card:last-child p');
+    if(whyP) whyP.textContent = whyP.textContent.replace(/Buchs SG/g,'Liechtenstein');
+    // Footer
+    var footerP = document.querySelector('.footer-brand > p');
+    if(footerP) footerP.textContent = footerP.textContent.replace(/Buchs SG/g,'Liechtenstein');
+    var footerCopy = document.querySelector('[data-i18n="footer.copy"]');
+    if(footerCopy) footerCopy.textContent = footerCopy.textContent.replace(/Buchs SG/g,'Liechtenstein');
+    // Map pin
+    var pins = document.querySelectorAll('.region-pin-label');
+    pins.forEach(function(p){ if(p.textContent.trim()==='Buchs SG') p.textContent='Liechtenstein'; });
+    // Websites section
+    var webDesc = document.querySelector('[data-i18n="websites.desc"]');
+    if(webDesc) webDesc.textContent = webDesc.textContent.replace(/Buchs SG/g,'Liechtenstein');
+    // Override translations for language switching
+    if(typeof translations !== 'undefined'){
+      var langs = ['de','en','es','fr','it'];
+      langs.forEach(function(l){
+        if(!translations[l]) return;
+        Object.keys(translations[l]).forEach(function(k){
+          if(typeof translations[l][k]==='string'){
+            translations[l][k] = translations[l][k].replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs & St\. Gallen/g,'Liechtenstein').replace(/Buchs y St\. Gallen/g,'Liechtenstein').replace(/Buchs & St-Gall/g,'Liechtenstein').replace(/Buchs e San Gallo/g,'Liechtenstein');
+          }
+        });
+      });
+    }
   }
 })();
 </script>
