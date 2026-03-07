@@ -1636,6 +1636,16 @@ var webProjects = {
         features: ['Immobilienübersicht', 'Kontaktformular', 'Über uns Seite', 'Standort & Kontaktdaten', 'Responsive Design', 'SEO-optimiert'],
         price: 'CHF 900 – 1\'500'
     },
+    inotec: {
+        title: 'iNOTEC Engineering',
+        url: 'https://inotecengineering.ch',
+        image: 'img/inotec.jpeg',
+        complexity: 'easy',
+        desc: 'Von der Idee zum Produkt. Ganzheitliche Engineering-Prozesse von der ersten Konzeptidee bis hin zum fertigen Prototypen. Vakuumtechnik, Handlings-Systeme und innovative Gebrauchsgegenstände — realisiert mit 3D Autodesk Inventor und AutoCAD.',
+        techs: ['Next.js', 'PHP', 'Admin Panel'],
+        features: ['Unternehmensdarstellung', 'Projektübersicht', 'Admin Panel', 'Kontaktformular', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 900 – 1\'800'
+    },
     kicreator: {
         title: 'KI Creator Suite',
         url: 'https://ai-generator-a5j5.vercel.app',
