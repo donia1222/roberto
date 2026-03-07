@@ -64,7 +64,7 @@ var translations = {
         'service4.link': 'Beratung anfragen',
         // Apps
         // Pricing
-        'pricing.title': 'Transparente <span style="color:var(--begonia400)">Preise</span>',
+        'pricing.title': 'Transparente <span style="color:var(--begonia400)">Preise</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg>',
         'pricing.desc': 'Faire Preise, keine versteckten Kosten. Direkt vom Entwickler, ohne Agenturaufschlag.',
         'pricing.starter.title': 'Starter Website',
         'pricing.starter.price': 'ab 990 CHF',
@@ -501,7 +501,7 @@ var translations = {
         'service4.desc': 'Technical consulting, architecture planning and long-term support after launch. Personal and uncomplicated.',
         'service4.link': 'Request consultation',
         // Pricing
-        'pricing.title': 'Transparent <span style="color:var(--begonia400)">Pricing</span>',
+        'pricing.title': 'Transparent <span style="color:var(--begonia400)">Pricing</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg>',
         'pricing.desc': 'Fair prices, no hidden costs. Directly from the developer, no agency markup.',
         'pricing.starter.title': 'Starter Website',
         'pricing.starter.price': 'from 990 CHF',
@@ -927,7 +927,7 @@ var translations = {
         'service4.desc': 'Consultoría técnica, planificación de arquitectura y soporte a largo plazo después del lanzamiento.',
         'service4.link': 'Solicitar consultoría',
         // Pricing
-        'pricing.title': 'Precios <span style="color:var(--begonia400)">transparentes</span>',
+        'pricing.title': 'Precios <span style="color:var(--begonia400)">transparentes</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg>',
         'pricing.desc': 'Precios justos, sin costes ocultos. Directo del desarrollador, sin recargo de agencia.',
         'pricing.starter.title': 'Web Starter',
         'pricing.starter.price': 'desde 990 CHF',
@@ -1353,7 +1353,7 @@ var translations = {
         'service4.desc': 'Conseil technique, planification d\'architecture et support à long terme après le lancement.',
         'service4.link': 'Demander un conseil',
         // Pricing
-        'pricing.title': 'Prix <span style="color:var(--begonia400)">transparents</span>',
+        'pricing.title': 'Prix <span style="color:var(--begonia400)">transparents</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg>',
         'pricing.desc': 'Prix justes, pas de coûts cachés. Directement du développeur, sans supplément d\'agence.',
         'pricing.starter.title': 'Site Starter',
         'pricing.starter.price': 'dès 990 CHF',
@@ -1779,7 +1779,7 @@ var translations = {
         'service4.desc': 'Consulenza tecnica, pianificazione dell\'architettura e supporto a lungo termine dopo il lancio.',
         'service4.link': 'Richiedi consulenza',
         // Pricing
-        'pricing.title': 'Prezzi <span style="color:var(--begonia400)">trasparenti</span>',
+        'pricing.title': 'Prezzi <span style="color:var(--begonia400)">trasparenti</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg>',
         'pricing.desc': 'Prezzi giusti, nessun costo nascosto. Direttamente dallo sviluppatore, senza sovrapprezzo d\'agenzia.',
         'pricing.starter.title': 'Sito Starter',
         'pricing.starter.price': 'da 990 CHF',
