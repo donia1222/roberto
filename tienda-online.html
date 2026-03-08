@@ -7,6 +7,8 @@
     <meta name="description" content="Template profesional de tienda online con Next.js y TypeScript. Panel de administración completo, pagos integrados (PayPal, TWINT, tarjeta) y diseño moderno responsive.">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="theme-color" content="#ffffff" id="themeColor">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/translations.js"></script>
@@ -41,6 +43,7 @@
         /* Header style */
         .header .header-nav-item:hover { background: rgba(254,108,117,0.12); }
         .header .header-nav-item.active { background: rgba(180,210,240,0.15); }
+        @media (min-width:1025px) {
         .header .header-burger { background: #fe6c75; }
         .header .header-burger span { background: #fff; }
         .header-logo-group { display: flex; align-items: center; gap: 26px; }
@@ -149,6 +152,17 @@
             margin-bottom: 40px; animation: fadeUp 0.6s ease both 0.2s;
         }
         .t-hero-btns { display:flex; gap:14px; flex-wrap:wrap; animation: fadeUp 0.6s ease both 0.3s; }
+        /* Letter hover animation (desktop) */
+        .t-hero-h1 .t-letter {
+            display:inline-block; transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .t-hero-h1 .t-letter:hover {
+            transform: translateY(-6px) scale(1.1);
+            color: #fe6c75;
+        }
+        .t-hero-h1 .accent .t-letter:hover {
+            color: #0f1d2c;
+        }
 
         /* HERO: BROWSER MOCKUP */
         .t-hero-visual { position: relative; animation: fadeUp 0.8s ease both 0.25s; }
@@ -2394,6 +2408,35 @@ function adminGoTo(i) {
 </script>
 
 <script>
+// Hero h1 letter hover animation (desktop only)
+(function(){
+    if (window.innerWidth < 1025) return;
+    function wrapLetters(el) {
+        var nodes = Array.from(el.childNodes);
+        nodes.forEach(function(node) {
+            if (node.nodeType === 3) {
+                var text = node.textContent;
+                var frag = document.createDocumentFragment();
+                text.split('').forEach(function(ch) {
+                    if (ch === ' ') {
+                        frag.appendChild(document.createTextNode(' '));
+                    } else {
+                        var span = document.createElement('span');
+                        span.className = 't-letter';
+                        span.textContent = ch;
+                        frag.appendChild(span);
+                    }
+                });
+                node.parentNode.replaceChild(frag, node);
+            } else if (node.nodeName === 'SPAN' || node.nodeName === 'B' || node.nodeName === 'STRONG') {
+                wrapLetters(node);
+            }
+        });
+    }
+    var h1 = document.querySelector('.t-hero-h1');
+    if (h1) wrapLetters(h1);
+})();
+
 // Hero icons grow on scroll (desktop only)
 (function(){
     if (window.innerWidth < 1200) return;
