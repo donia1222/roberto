@@ -635,6 +635,7 @@
         /* ===================== HERO BG ICONS ===================== */
         .t-hero-bg-icons { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
         .t-hbi { position:absolute; animation-name:float; animation-timing-function:ease-in-out; animation-iteration-count:infinite; }
+        /* Original sizes for all screens */
         .t-hbi:nth-child(1){top:16%;right:18%;width:56px;height:56px;color:#ffb3ba;opacity:0.55;animation-duration:7s;animation-delay:0s;}
         .t-hbi:nth-child(2){top:18%;right:6%;width:44px;height:44px;color:#aed9f7;opacity:0.50;animation-duration:9s;animation-delay:1.5s;}
         .t-hbi:nth-child(3){bottom:22%;left:5%;width:48px;height:48px;color:#b8f0cc;opacity:0.48;animation-duration:8s;animation-delay:3s;}
@@ -647,6 +648,18 @@
         .t-hbi:nth-child(10){top:35%;right:22%;width:34px;height:34px;color:#c4e8d4;opacity:0.48;animation-duration:7.8s;animation-delay:3.5s;}
         .t-hbi:nth-child(11){top:82%;right:15%;width:42px;height:42px;color:#ffe0a0;opacity:0.14;animation-duration:6.5s;animation-delay:0.8s;}
         .t-hbi:nth-child(12){top:15%;left:32%;width:30px;height:30px;color:#e2c8f0;opacity:0.12;animation-duration:12s;animation-delay:5s;}
+        /* Extra icons — only visible on large desktop */
+        .t-hbi:nth-child(n+13){display:none;}
+        @media (min-width:1200px) {
+            .t-hbi:nth-child(13){display:block;top:20%;left:12%;width:52px;height:52px;color:#fe6c75;opacity:0.35;animation-duration:8s;animation-delay:0.3s;}
+            .t-hbi:nth-child(14){display:block;top:25%;left:55%;width:44px;height:44px;color:#ffb3ba;opacity:0.4;animation-duration:9s;animation-delay:2s;}
+            .t-hbi:nth-child(15){display:block;top:18%;right:30%;width:48px;height:48px;color:#aed9f7;opacity:0.35;animation-duration:7s;animation-delay:3.5s;}
+            .t-hbi:nth-child(16){display:block;bottom:20%;left:15%;width:46px;height:46px;color:#ffd4a8;opacity:0.4;animation-duration:10s;animation-delay:1s;}
+            .t-hbi:nth-child(17){display:block;bottom:22%;right:22%;width:40px;height:40px;color:#d4b8e8;opacity:0.35;animation-duration:8.5s;animation-delay:4s;}
+            .t-hbi:nth-child(18){display:block;top:42%;right:14%;width:36px;height:36px;color:#b8f0cc;opacity:0.4;animation-duration:11s;animation-delay:0.7s;}
+            .t-hbi:nth-child(19){display:block;bottom:30%;left:12%;width:42px;height:42px;color:#9fe7e7;opacity:0.4;animation-duration:6.5s;animation-delay:2.8s;}
+            .t-hbi:nth-child(20){display:block;top:28%;left:8%;width:38px;height:38px;color:#c5caf5;opacity:0.45;animation-duration:9s;animation-delay:1.5s;}
+        }
 
         /* ===================== CODE WINDOW ANIMATION ===================== */
         @keyframes codeLine { from{opacity:0;transform:translateX(-14px)} to{opacity:1;transform:translateX(0)} }
@@ -1087,6 +1100,15 @@
         <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
         <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <!-- Extra desktop icons -->
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        <svg class="t-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     </div>
     <div class="t-hero-inner">
         <!-- LEFT -->
