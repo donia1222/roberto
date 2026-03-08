@@ -53,6 +53,18 @@
         }
         .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
         .header-title .accent { display: block; font-size: 12px; font-weight: 700; }
+        .header-float-icon {
+            opacity: 0.35;
+            color: #fe6c75;
+            animation: float 4s ease-in-out infinite;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+        .header-float-icon--left { animation-delay: 0s; }
+        .header-float-icon--right { animation-delay: 2s; }
+        @media (max-width: 1024px) {
+            .header-float-icon { display: none; }
+        }
         .header.past-hero .header-title { opacity: 1; }
         .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
         .header .header-nav { transition: opacity 0.3s ease; }
@@ -1030,6 +1042,7 @@
             <a href="#ts-struktur" class="header-nav-item"><span data-i18n="to.nav.pages">Seiten</span></a>
             <a href="#to-adm" class="header-nav-item"><span data-i18n="to.nav.admin">Admin</span></a>
             <a href="#to-pay" class="header-nav-item"><span data-i18n="to.nav.pay">Zahlungen</span></a>
+            <a href="#to-cta" class="header-nav-item"><span data-i18n="to.nav.contact">Kontakt</span></a>
         </nav>
         <div class="header-actions">
             <a href="#to-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
