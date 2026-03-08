@@ -2301,5 +2301,25 @@ function adminGoTo(i) {
     });
 })();
 </script>
+
+<script>
+// Hero icons grow on scroll (desktop only)
+(function(){
+    if (window.innerWidth < 1200) return;
+    var icons = document.querySelectorAll('.t-hbi');
+    var hero = document.querySelector('.t-hero');
+    if (!icons.length || !hero) return;
+    var baseOpacities = [];
+    icons.forEach(function(icon){ baseOpacities.push(parseFloat(getComputedStyle(icon).opacity) || 0.5); });
+    window.addEventListener('scroll', function(){
+        var progress = Math.min(window.pageYOffset / (hero.offsetHeight * 0.35), 1);
+        var s = 1 + progress * 3.5;
+        icons.forEach(function(icon, i){
+            icon.style.scale = s;
+            icon.style.opacity = baseOpacities[i] * (1 - progress * 0.4);
+        });
+    });
+})();
+</script>
 </body>
 </html>
