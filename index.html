@@ -1985,5 +1985,35 @@
     </div>
 </div>
 
+<script>
+// Active nav tab on scroll (desktop only)
+(function(){
+    if (window.innerWidth < 1025) return;
+    var navItems = document.querySelectorAll('.header-nav .header-nav-item');
+    var sections = [];
+    navItems.forEach(function(item){
+        var href = item.getAttribute('href');
+        if (!href || href === '#') return;
+        var id = href.replace('#','');
+        var el = document.getElementById(id);
+        if (el) sections.push({el: el, link: item});
+    });
+    if (!sections.length) return;
+    window.addEventListener('scroll', function(){
+        var scrollY = window.pageYOffset + 120;
+        var atBottom = (window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 50;
+        var current = null;
+        if (atBottom) {
+            current = sections[sections.length - 1];
+        } else {
+            sections.forEach(function(s){
+                if (s.el.offsetTop <= scrollY) current = s;
+            });
+        }
+        navItems.forEach(function(item){ item.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    });
+})();
+</script>
 </body>
 </html>

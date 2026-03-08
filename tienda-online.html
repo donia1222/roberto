@@ -40,6 +40,7 @@
 
         /* Header style */
         .header .header-nav-item:hover { background: rgba(254,108,117,0.12); }
+        .header .header-nav-item.active { background: rgba(254,108,117,0.05); color: #d4949a; }
         .header .header-burger { background: #fe6c75; }
         .header .header-burger span { background: #fff; }
         .header-logo-group { display: flex; align-items: center; gap: 26px; }
@@ -72,6 +73,15 @@
         .header.past-hero .header-title { opacity: 1; }
         .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
         .header .header-nav { transition: opacity 0.3s ease; }
+        @media (min-width: 1025px) {
+            .header-title {
+                position: absolute; left: 90px; transform: none;
+                text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+            }
+            .header-title span:first-child { display: block; font-size: 17px; }
+            .header-title .accent { display: block; font-size: 12px; }
+            .header.past-hero .header-nav { opacity: 1; pointer-events: auto; }
+        }
         @media (max-width: 1024px) {
             .header-inner > .header-icon-btn { display: flex; }
         }
@@ -2350,6 +2360,35 @@ function adminGoTo(i) {
             document.body.style.overflow = '';
             document.querySelector('.header').classList.remove('menu-open');
         });
+    });
+})();
+</script>
+
+<script>
+// Active nav tab on scroll (desktop only)
+(function(){
+    if (window.innerWidth < 1025) return;
+    var navItems = document.querySelectorAll('.header-nav .header-nav-item');
+    var sections = [];
+    navItems.forEach(function(item){
+        var id = item.getAttribute('href').replace('#','');
+        var el = document.getElementById(id);
+        if (el) sections.push({el: el, link: item});
+    });
+    if (!sections.length) return;
+    window.addEventListener('scroll', function(){
+        var scrollY = window.pageYOffset + 120;
+        var atBottom = (window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 50;
+        var current = null;
+        if (atBottom) {
+            current = sections[sections.length - 1];
+        } else {
+            sections.forEach(function(s){
+                if (s.el.offsetTop <= scrollY) current = s;
+            });
+        }
+        navItems.forEach(function(item){ item.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
     });
 })();
 </script>

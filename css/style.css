@@ -233,6 +233,7 @@ body.dark-mode .header-nav-sub:hover {
     color: var(--begonia400);
 }
 .header-nav-item:hover { background: var(--gunpowder50); }
+.header-nav-item.active { background: rgba(180,210,240,0.15); }
 .header-nav-item:nth-child(1):hover svg { animation: navSpin 600ms ease; }
 .header-nav-item:nth-child(2):hover svg { animation: navWiggle 500ms ease; }
 .header-nav-item:nth-child(3):hover svg { animation: navPulse 500ms ease; }
