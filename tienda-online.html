@@ -43,6 +43,13 @@
         /* Header style */
         .header .header-nav-item:hover { background: rgba(254,108,117,0.12); }
         .header .header-nav-item.active { background: rgba(180,210,240,0.15); }
+        .header-title {
+            display: flex; flex-direction: column; gap: 3px; align-items: center;
+            text-align: center; line-height: 1.1;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
+        .header-title .accent { display: block; font-size: 12px; font-weight: 700; }
         @media (min-width:1025px) {
         .header .header-burger { background: #fe6c75; }
         .header .header-burger span { background: #fff; }
@@ -52,11 +59,8 @@
         .header-inner { position: relative; }
         .header-title {
             position: absolute; left: 50%; transform: translateX(-50%);
-            text-align: center; line-height: 1.1;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
-        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
-        .header-title .accent { display: block; font-size: 12px; font-weight: 700; }
+        }
         @media (min-width: 1025px) {
             .header-title span:first-child { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
             .header-title .accent { font-size: 15px; font-weight: 800; }
@@ -73,7 +77,7 @@
         @media (max-width: 1024px) {
             .header-float-icon { display: none; }
         }
-        .header.past-hero .header-title { opacity: 1; }
+        .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
         .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
         .header .header-nav { transition: opacity 0.3s ease; }
         @media (min-width: 1025px) {
@@ -975,6 +979,7 @@
         body.dark-mode .t-feat-row p { color:#94a3b8 !important; }
         /* Hero keeps dark already */
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
+        .header.menu-open .header-title span:first-child { color: #fff !important; }
         body.dark-mode .t-hero { background: linear-gradient(160deg, #060e18 0%, #0a1a2e 50%, #0f1d2c 100%) !important; }
         body.dark-mode .t-hero .t-hero-h1 { color: #fff !important; }
         body.dark-mode .t-hero .t-hero-p { color: rgba(255,255,255,0.58) !important; }
@@ -1097,9 +1102,6 @@
 <!-- HEADER -->
 <header class="header">
     <div class="header-inner">
-        <a href="index.html" class="header-icon-btn" aria-label="Zurück zur Startseite">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        </a>
         <div class="header-title" id="headerTitle" data-i18n-html="to.header.title">
             <span>Der perfekte</span>
             <span class="accent">Online-Shop</span>
@@ -1110,6 +1112,7 @@
             <a href="#ts-struktur" class="header-nav-item"><span data-i18n="to.nav.pages">Seiten</span></a>
             <a href="#to-adm" class="header-nav-item"><span data-i18n="to.nav.admin">Admin</span></a>
             <a href="#to-pay" class="header-nav-item"><span data-i18n="to.nav.pay">Zahlungen</span></a>
+            <a href="https://online-shop-seven-delta.vercel.app" target="_blank" rel="noopener" class="header-nav-item"><span data-i18n="to.nav.example">Beispiel</span></a>
             <a href="#to-cta" class="header-nav-item"><span data-i18n="to.nav.contact">Kontakt</span></a>
         </nav>
         <div class="header-actions">
@@ -1131,6 +1134,7 @@
         <a href="#ts-struktur" class="mobile-menu-link" data-i18n="to.nav.pages">Seiten</a>
         <a href="#to-adm" class="mobile-menu-link" data-i18n="to.nav.admin">Admin</a>
         <a href="#to-pay" class="mobile-menu-link" data-i18n="to.nav.pay">Zahlungen</a>
+        <a href="https://online-shop-seven-delta.vercel.app" target="_blank" rel="noopener" class="mobile-menu-link" data-i18n="to.nav.example">Beispiel</a>
         <a href="#to-adv" class="mobile-menu-link" data-i18n="to.nav.adv">Vorteil</a>
         <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" data-i18n="to.nav.back">Zurück zur Startseite</a>
     </nav>
@@ -1181,9 +1185,9 @@
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     <span data-i18n="to.cta1">Quiero mi tienda</span>
                 </a>
-                <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
+                <a href="https://online-shop-seven-delta.vercel.app" target="_blank" rel="noopener" class="t-btn-ghost">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
+                    <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">usfh.ch</span></span>
                 </a>
             </div>
         </div>
@@ -1980,9 +1984,9 @@
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 <span data-i18n="to.cta1">Quiero mi tienda</span>
             </a>
-            <a href="https://leder-shop.ch" target="_blank" rel="noopener" class="t-btn-ghost">
+            <a href="https://online-shop-seven-delta.vercel.app" target="_blank" rel="noopener" class="t-btn-ghost">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">leder-shop.ch</span></span>
+                <span style="display:flex;flex-direction:column;line-height:1.3;"><span data-i18n="to.cta2">Ver ejemplo</span><span style="font-size:10px;opacity:0.6;font-weight:400;">usfh.ch</span></span>
             </a>
         </div>
     </div>

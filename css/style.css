@@ -360,7 +360,7 @@ body.dark-mode .header-nav-sub:hover {
 }
 
 .header.menu-open {
-    background: rgba(15, 29, 44, 0.95);
+    background: rgb(15, 29, 44);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
@@ -369,6 +369,10 @@ body.dark-mode .header-nav-sub:hover {
 }
 .header.menu-open .header-logo-subtitle {
     color: rgba(255,255,255,0.6);
+}
+.header.menu-open .header-icon-btn {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
 }
 
 /* Mobile menu modal */
