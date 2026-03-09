@@ -1518,7 +1518,7 @@ function calcGoToContact() {
 var webProjects = {
     usfishing: {
         title: 'US-Fishing & Huntingshop',
-        url: '',
+        url: 'https://online-shop-seven-delta.vercel.app',
         image: 'img/usa.jpeg',
         complexity: 'complex',
         desc: 'Kompletter Online-Shop für Angeln & Jagd. Breites Sortiment an Ausrüstung, Zubehör und Bekleidung — mit Produktfiltern, Warenkorb und Bestellverwaltung.',
