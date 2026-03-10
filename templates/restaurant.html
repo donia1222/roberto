@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tavola — Restaurant Template | Lweb</title>
+    <meta name="description" content="Elegantes Restaurant-Template mit Speisekarte, Galerie, Reservierung und Kontakt. Professionelle Webseite ab 250 CHF.">
+    <meta name="theme-color" content="#1a1a1a" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Inter',sans-serif; color:#2c2c2c; background:#fff; overflow-x:hidden; }
+
+        /* ═══ VARIABLES ═══ */
+        :root {
+            --gold: #c8956c;
+            --gold-light: #e8c9a8;
+            --dark: #1a1a1a;
+            --cream: #faf6f1;
+            --text: #2c2c2c;
+            --text-light: #7a7a7a;
+            --serif: 'Playfair Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        /* ═══ ANIMATIONS ═══ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @keyframes scaleIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+        @keyframes slideLeft { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes lineGrow { from { width:0; } to { width:60px; } }
+        @keyframes parallaxFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+        .fade-up { opacity:0; transform:translateY(30px); transition:all 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ═══ NAV ═══ */
+        .r-nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:20px 40px; display:flex; align-items:center; justify-content:space-between;
+            transition:all 0.4s ease;
+        }
+        .r-nav.scrolled {
+            background:rgba(26,26,26,0.95); backdrop-filter:blur(20px);
+            padding:14px 40px; box-shadow:0 4px 30px rgba(0,0,0,0.15);
+        }
+        .r-nav-logo {
+            font-family:var(--serif); font-size:24px; font-weight:700;
+            color:#fff; text-decoration:none; letter-spacing:0.02em;
+        }
+        .r-nav-logo span { color:var(--gold); }
+        .r-nav-links { display:flex; gap:32px; align-items:center; }
+        .r-nav-links a {
+            color:rgba(255,255,255,0.8); text-decoration:none; font-size:14px;
+            font-weight:500; letter-spacing:0.03em; transition:color 0.3s;
+            text-transform:uppercase;
+        }
+        .r-nav-links a:hover { color:var(--gold); }
+        .r-nav-cta {
+            background:var(--gold); color:#fff !important; padding:10px 24px;
+            border-radius:4px; font-weight:600 !important; transition:all 0.3s !important;
+        }
+        .r-nav-cta:hover { background:#b8854e; transform:translateY(-1px); }
+        .r-nav-burger {
+            display:none; background:none; border:none; cursor:pointer;
+            width:28px; height:20px; position:relative; z-index:101;
+        }
+        .r-nav-burger span {
+            display:block; width:100%; height:2px; background:#fff;
+            position:absolute; left:0; transition:all 0.3s;
+        }
+        .r-nav-burger span:nth-child(1) { top:0; }
+        .r-nav-burger span:nth-child(2) { top:9px; }
+        .r-nav-burger span:nth-child(3) { top:18px; }
+        .r-nav-burger.open span:nth-child(1) { top:9px; transform:rotate(45deg); }
+        .r-nav-burger.open span:nth-child(2) { opacity:0; }
+        .r-nav-burger.open span:nth-child(3) { top:9px; transform:rotate(-45deg); }
+
+        /* ═══ HERO ═══ */
+        .r-hero {
+            height:100vh; min-height:600px; position:relative;
+            display:flex; align-items:center; justify-content:center;
+            text-align:center; overflow:hidden;
+        }
+        .r-hero-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80') center/cover no-repeat;
+        }
+        .r-hero-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.7) 100%);
+        }
+        .r-hero-content { position:relative; z-index:2; max-width:800px; padding:0 24px; }
+        .r-hero-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            color:var(--gold); font-size:13px; font-weight:600;
+            letter-spacing:0.15em; text-transform:uppercase; margin-bottom:24px;
+            animation:fadeUp 0.8s ease both;
+        }
+        .r-hero-tag::before, .r-hero-tag::after {
+            content:''; width:30px; height:1px; background:var(--gold);
+        }
+        .r-hero h1 {
+            font-family:var(--serif); font-size:72px; font-weight:700;
+            color:#fff; line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px;
+            animation:fadeUp 0.8s 0.2s ease both;
+        }
+        .r-hero-sub {
+            font-size:18px; color:rgba(255,255,255,0.8); line-height:1.7;
+            max-width:560px; margin:0 auto 36px;
+            animation:fadeUp 0.8s 0.4s ease both;
+        }
+        .r-hero-btns {
+            display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+            animation:fadeUp 0.8s 0.6s ease both;
+        }
+        .r-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:14px 32px; font-size:14px; font-weight:600;
+            text-decoration:none; text-transform:uppercase; letter-spacing:0.05em;
+            transition:all 0.3s ease; border:none; cursor:pointer;
+        }
+        .r-btn--primary {
+            background:var(--gold); color:#fff; border-radius:4px;
+        }
+        .r-btn--primary:hover { background:#b8854e; transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,149,108,0.35); }
+        .r-btn--outline {
+            background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.4);
+            border-radius:4px;
+        }
+        .r-btn--outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); }
+
+        /* Scroll indicator */
+        .r-hero-scroll {
+            position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+            color:rgba(255,255,255,0.5); animation:parallaxFloat 2s ease-in-out infinite;
+        }
+
+        /* ═══ SECTION COMMON ═══ */
+        .r-section { padding:100px 24px; }
+        .r-section-header { text-align:center; margin-bottom:64px; }
+        .r-section-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            color:var(--gold); font-size:12px; font-weight:600;
+            letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;
+        }
+        .r-section-tag::before {
+            content:''; width:8px; height:8px; border-radius:50%;
+            background:var(--gold); opacity:0.5;
+        }
+        .r-section-title {
+            font-family:var(--serif); font-size:44px; font-weight:700;
+            color:var(--dark); line-height:1.2; letter-spacing:-0.01em; margin-bottom:16px;
+        }
+        .r-section-desc {
+            font-size:17px; color:var(--text-light); line-height:1.7;
+            max-width:560px; margin:0 auto;
+        }
+        .r-divider {
+            width:60px; height:2px; background:var(--gold); margin:20px auto 0;
+            animation:lineGrow 0.8s ease both;
+        }
+
+        /* ═══ ABOUT ═══ */
+        .r-about { background:var(--cream); }
+        .r-about-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+        }
+        .r-about-img {
+            border-radius:12px; overflow:hidden; position:relative;
+            box-shadow:0 20px 60px rgba(0,0,0,0.1);
+        }
+        .r-about-img img { width:100%; height:400px; object-fit:cover; display:block; }
+        .r-about-img::after {
+            content:''; position:absolute; inset:0;
+            border:1px solid rgba(200,149,108,0.2); border-radius:12px;
+        }
+        .r-about-text h3 {
+            font-family:var(--serif); font-size:36px; font-weight:700;
+            color:var(--dark); margin-bottom:20px; line-height:1.2;
+        }
+        .r-about-text p { font-size:16px; color:var(--text-light); line-height:1.8; margin-bottom:16px; }
+        .r-about-stats { display:flex; gap:32px; margin-top:28px; }
+        .r-about-stat { text-align:center; }
+        .r-about-stat-n { font-family:var(--serif); font-size:36px; font-weight:700; color:var(--gold); }
+        .r-about-stat-l { font-size:12px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px; }
+
+        /* ═══ MENU / SPEISEKARTE ═══ */
+        .r-menu { background:#fff; }
+        .r-menu-tabs {
+            display:flex; gap:8px; justify-content:center; margin-bottom:48px; flex-wrap:wrap;
+        }
+        .r-menu-tab {
+            padding:10px 24px; border-radius:600px; border:1.5px solid #e0e0e0;
+            background:transparent; font-size:14px; font-weight:600; color:var(--text-light);
+            cursor:pointer; transition:all 0.3s ease;
+        }
+        .r-menu-tab.active, .r-menu-tab:hover {
+            background:var(--gold); color:#fff; border-color:var(--gold);
+        }
+        .r-menu-grid {
+            max-width:900px; margin:0 auto;
+            display:grid; grid-template-columns:1fr 1fr; gap:24px;
+        }
+        .r-menu-item {
+            display:flex; gap:16px; padding:20px; border-radius:12px;
+            border:1px solid #f0f0f0; transition:all 0.3s ease;
+        }
+        .r-menu-item:hover { border-color:var(--gold-light); box-shadow:0 8px 24px rgba(0,0,0,0.04); transform:translateY(-2px); }
+        .r-menu-item-img {
+            width:72px; height:72px; border-radius:10px; overflow:hidden; flex-shrink:0;
+        }
+        .r-menu-item-img img { width:100%; height:100%; object-fit:cover; }
+        .r-menu-item-info { flex:1; }
+        .r-menu-item-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+        .r-menu-item-name { font-size:16px; font-weight:700; color:var(--dark); }
+        .r-menu-item-price { font-family:var(--serif); font-size:18px; font-weight:700; color:var(--gold); white-space:nowrap; margin-left:12px; }
+        .r-menu-item-desc { font-size:13px; color:var(--text-light); line-height:1.5; }
+
+        /* ═══ GALLERY ═══ */
+        .r-gallery { background:var(--cream); overflow:hidden; }
+        .r-gallery-grid {
+            max-width:1200px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(4, 1fr); gap:12px;
+        }
+        .r-gallery-item {
+            border-radius:12px; overflow:hidden; position:relative; cursor:pointer;
+            transition:all 0.4s ease;
+        }
+        .r-gallery-item:hover { transform:scale(1.02); z-index:2; }
+        .r-gallery-item:hover img { transform:scale(1.08); }
+        .r-gallery-item img {
+            width:100%; height:220px; object-fit:cover; display:block;
+            transition:transform 0.5s ease;
+        }
+        .r-gallery-item--tall { grid-row:span 2; }
+        .r-gallery-item--tall img { height:100%; min-height:452px; }
+        .r-gallery-item--wide { grid-column:span 2; }
+        .r-gallery-item::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
+            opacity:0; transition:opacity 0.3s;
+        }
+        .r-gallery-item:hover::after { opacity:1; }
+
+        /* ═══ INFO BAR ═══ */
+        .r-info-bar {
+            background:var(--dark); padding:48px 24px;
+            display:flex; justify-content:center; gap:64px; flex-wrap:wrap;
+        }
+        .r-info-item { text-align:center; }
+        .r-info-icon { color:var(--gold); margin-bottom:12px; }
+        .r-info-item h4 { font-family:var(--serif); font-size:18px; color:#fff; margin-bottom:6px; }
+        .r-info-item p { font-size:14px; color:rgba(255,255,255,0.6); }
+
+        /* ═══ RESERVATION / KONTAKT ═══ */
+        .r-contact { background:#fff; }
+        .r-contact-grid {
+            max-width:1000px; margin:0 auto;
+            display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;
+        }
+        .r-form { display:flex; flex-direction:column; gap:16px; }
+        .r-form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .r-form label {
+            font-size:12px; font-weight:600; text-transform:uppercase;
+            letter-spacing:0.1em; color:var(--text-light); margin-bottom:6px; display:block;
+        }
+        .r-form input, .r-form select, .r-form textarea {
+            width:100%; padding:14px 16px; border:1.5px solid #e8e8e8;
+            border-radius:8px; font-size:14px; font-family:var(--sans);
+            color:var(--dark); background:#fff; transition:border-color 0.3s;
+            outline:none;
+        }
+        .r-form input:focus, .r-form select:focus, .r-form textarea:focus { border-color:var(--gold); }
+        .r-form textarea { height:100px; resize:vertical; }
+        .r-form-submit {
+            background:var(--gold); color:#fff; border:none; border-radius:8px;
+            padding:16px 32px; font-size:15px; font-weight:700; cursor:pointer;
+            transition:all 0.3s; text-transform:uppercase; letter-spacing:0.05em;
+        }
+        .r-form-submit:hover { background:#b8854e; transform:translateY(-2px); }
+        .r-contact-info { padding:32px; background:var(--cream); border-radius:16px; }
+        .r-contact-info h3 {
+            font-family:var(--serif); font-size:28px; font-weight:700;
+            color:var(--dark); margin-bottom:24px;
+        }
+        .r-contact-row {
+            display:flex; align-items:flex-start; gap:16px; margin-bottom:20px;
+        }
+        .r-contact-row svg { width:20px; height:20px; color:var(--gold); flex-shrink:0; margin-top:2px; }
+        .r-contact-row div h4 { font-size:14px; font-weight:700; color:var(--dark); margin-bottom:2px; }
+        .r-contact-row div p { font-size:14px; color:var(--text-light); line-height:1.5; }
+        .r-map {
+            width:100%; height:200px; border-radius:12px; margin-top:24px;
+            background:linear-gradient(135deg, #e8ddd0 0%, #d4c5b0 100%);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-light); font-size:14px; font-weight:600;
+            border:1px solid rgba(0,0,0,0.06);
+        }
+
+        /* ═══ FOOTER ═══ */
+        .r-footer {
+            background:var(--dark); padding:48px 24px 24px; text-align:center;
+        }
+        .r-footer-logo {
+            font-family:var(--serif); font-size:28px; font-weight:700;
+            color:#fff; margin-bottom:16px;
+        }
+        .r-footer-logo span { color:var(--gold); }
+        .r-footer-links { display:flex; gap:24px; justify-content:center; margin-bottom:24px; }
+        .r-footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:14px; transition:color 0.3s; }
+        .r-footer-links a:hover { color:var(--gold); }
+        .r-footer-social { display:flex; gap:16px; justify-content:center; margin-bottom:32px; }
+        .r-footer-social a {
+            width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,0.15);
+            display:flex; align-items:center; justify-content:center;
+            color:rgba(255,255,255,0.5); transition:all 0.3s;
+        }
+        .r-footer-social a:hover { border-color:var(--gold); color:var(--gold); }
+        .r-footer-copy { font-size:12px; color:rgba(255,255,255,0.3); padding-top:24px; border-top:1px solid rgba(255,255,255,0.06); }
+        .r-footer-copy a { color:var(--gold); text-decoration:none; }
+
+        /* ═══ BACK TO LWEB ═══ */
+        .r-back {
+            position:fixed; top:20px; left:20px; z-index:200;
+            width:40px; height:40px; border-radius:50%;
+            background:rgba(0,0,0,0.5); backdrop-filter:blur(10px);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .r-back:hover { background:var(--gold); }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width:1024px) {
+            .r-nav-links { display:none; }
+            .r-nav-burger { display:block; }
+            .r-hero h1 { font-size:48px; }
+            .r-about-grid { grid-template-columns:1fr; }
+            .r-menu-grid { grid-template-columns:1fr; }
+            .r-gallery-grid { grid-template-columns:1fr 1fr; }
+            .r-gallery-item--tall img { min-height:220px; }
+            .r-contact-grid { grid-template-columns:1fr; }
+            .r-info-bar { gap:32px; }
+        }
+        @media (max-width:600px) {
+            .r-hero h1 { font-size:36px; }
+            .r-hero-sub { font-size:15px; }
+            .r-section { padding:64px 20px; }
+            .r-section-title { font-size:32px; }
+            .r-about-text h3 { font-size:28px; }
+            .r-gallery-grid { grid-template-columns:1fr; }
+            .r-gallery-item--tall { grid-row:auto; }
+            .r-gallery-item--tall img { min-height:220px; }
+            .r-gallery-item--wide { grid-column:auto; }
+            .r-form-row { grid-template-columns:1fr; }
+            .r-about-stats { gap:20px; }
+            .r-nav { padding:16px 20px; }
+        }
+
+        /* ═══ MOBILE MENU ═══ */
+        .r-mobile-menu {
+            position:fixed; inset:0; z-index:99;
+            background:rgba(26,26,26,0.97); backdrop-filter:blur(20px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:32px; opacity:0; pointer-events:none; transition:opacity 0.3s;
+        }
+        .r-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .r-mobile-menu a {
+            font-family:var(--serif); font-size:28px; color:#fff;
+            text-decoration:none; transition:color 0.3s;
+        }
+        .r-mobile-menu a:hover { color:var(--gold); }
+    </style>
+</head>
+<body>
+
+<!-- Back to Lweb -->
+<a href="../templates-web.html" class="r-back" aria-label="Zurück">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+</a>
+
+<!-- NAV -->
+<nav class="r-nav" id="rNav">
+    <a href="#" class="r-nav-logo" style="margin-left:40px">La <span>Tavola</span></a>
+    <div class="r-nav-links">
+        <a href="#about">Über uns</a>
+        <a href="#menu">Speisekarte</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#contact" class="r-nav-cta">Reservieren</a>
+    </div>
+    <button class="r-nav-burger" id="rBurger" aria-label="Menü">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="r-mobile-menu" id="rMobileMenu">
+    <a href="#about">Über uns</a>
+    <a href="#menu">Speisekarte</a>
+    <a href="#gallery">Galerie</a>
+    <a href="#contact">Reservieren</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="r-hero">
+    <div class="r-hero-bg"></div>
+    <div class="r-hero-content">
+        <div class="r-hero-tag">Ristorante Italiano</div>
+        <h1>La Tavola</h1>
+        <p class="r-hero-sub">Authentische italienische Küche im Herzen der Stadt. Frische Zutaten, traditionelle Rezepte und ein Ambiente, das Sie verzaubert.</p>
+        <div class="r-hero-btns">
+            <a href="#menu" class="r-btn r-btn--primary">Speisekarte</a>
+            <a href="#contact" class="r-btn r-btn--outline">Tisch reservieren</a>
+        </div>
+    </div>
+    <div class="r-hero-scroll">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="r-section r-about" id="about">
+    <div class="r-about-grid">
+        <div class="r-about-img fade-up">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurant Interior" loading="lazy">
+        </div>
+        <div class="r-about-text fade-up">
+            <div class="r-section-tag">Unsere Geschichte</div>
+            <h3>Wo Tradition auf<br>Leidenschaft trifft</h3>
+            <p>Seit über 15 Jahren bringen wir die Aromen Italiens in die Schweiz. Unsere Küche verbindet traditionelle Rezepte aus der Toskana mit frischen, lokalen Zutaten.</p>
+            <p>Jedes Gericht erzählt eine Geschichte — von der handgemachten Pasta bis zum perfekt gereiften Tiramisu.</p>
+            <div class="r-about-stats">
+                <div class="r-about-stat">
+                    <div class="r-about-stat-n">15+</div>
+                    <div class="r-about-stat-l">Jahre</div>
+                </div>
+                <div class="r-about-stat">
+                    <div class="r-about-stat-n">200+</div>
+                    <div class="r-about-stat-l">Rezepte</div>
+                </div>
+                <div class="r-about-stat">
+                    <div class="r-about-stat-n">4.8</div>
+                    <div class="r-about-stat-l">Google ★</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ MENU ═══════════ -->
+<section class="r-section r-menu" id="menu">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag">Speisekarte</div>
+        <h2 class="r-section-title">Unsere Spezialitäten</h2>
+        <p class="r-section-desc">Frische Zutaten, authentische Rezepte und Gerichte, die mit Liebe zubereitet werden.</p>
+        <div class="r-divider"></div>
+    </div>
+
+    <div class="r-menu-tabs fade-up">
+        <button class="r-menu-tab active">Antipasti</button>
+        <button class="r-menu-tab">Pasta</button>
+        <button class="r-menu-tab">Pizza</button>
+        <button class="r-menu-tab">Desserts</button>
+    </div>
+
+    <div class="r-menu-grid">
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=200&q=80" alt="Bruschetta" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Bruschetta Classica</span><span class="r-menu-item-price">CHF 14</span></div>
+                <p class="r-menu-item-desc">Geröstetes Brot mit Tomaten, Basilikum und nativem Olivenöl</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=200&q=80" alt="Carpaccio" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Carpaccio di Manzo</span><span class="r-menu-item-price">CHF 22</span></div>
+                <p class="r-menu-item-desc">Hauchdünnes Rindfleisch mit Rucola, Parmesan und Trüffelöl</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=200&q=80" alt="Tagliatelle" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Tagliatelle al Ragù</span><span class="r-menu-item-price">CHF 28</span></div>
+                <p class="r-menu-item-desc">Handgemachte Tagliatelle mit klassischem Bolognese-Ragù</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=80" alt="Pizza" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Pizza Margherita</span><span class="r-menu-item-price">CHF 19</span></div>
+                <p class="r-menu-item-desc">San Marzano Tomaten, Mozzarella di Bufala und frisches Basilikum</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=200&q=80" alt="Risotto" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Risotto ai Funghi</span><span class="r-menu-item-price">CHF 32</span></div>
+                <p class="r-menu-item-desc">Cremiges Risotto mit Steinpilzen und Trüffel</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=200&q=80" alt="Tiramisu" loading="lazy"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name">Tiramisù della Casa</span><span class="r-menu-item-price">CHF 14</span></div>
+                <p class="r-menu-item-desc">Hausgemachtes Tiramisu nach Familienrezept</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section class="r-section r-gallery" id="gallery">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag">Impressionen</div>
+        <h2 class="r-section-title">Unser Restaurant</h2>
+        <p class="r-section-desc">Entdecken Sie unser Ambiente, unsere Küche und die Momente, die La Tavola besonders machen.</p>
+        <div class="r-divider"></div>
+    </div>
+
+    <div class="r-gallery-grid">
+        <div class="r-gallery-item r-gallery-item--tall fade-up">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant Atmosphere" loading="lazy">
+        </div>
+        <div class="r-gallery-item fade-up">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Dining Area" loading="lazy">
+        </div>
+        <div class="r-gallery-item r-gallery-item--wide fade-up">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Presentation" loading="lazy">
+        </div>
+        <div class="r-gallery-item fade-up">
+            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Kitchen" loading="lazy">
+        </div>
+        <div class="r-gallery-item fade-up">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Wine Selection" loading="lazy">
+        </div>
+        <div class="r-gallery-item fade-up">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=600&q=80" alt="Dessert" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ INFO BAR ═══════════ -->
+<div class="r-info-bar">
+    <div class="r-info-item">
+        <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Öffnungszeiten</h4>
+        <p>Di–Sa: 11:30–14:00 / 17:30–22:00<br>So: 11:30–15:00</p>
+    </div>
+    <div class="r-info-item">
+        <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>Standort</h4>
+        <p>Musterstrasse 42<br>9000 St. Gallen</p>
+    </div>
+    <div class="r-info-item">
+        <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <h4>Kontakt</h4>
+        <p>+41 71 123 45 67<br>info@latavola.ch</p>
+    </div>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="r-section r-contact" id="contact">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag">Reservierung</div>
+        <h2 class="r-section-title">Tisch reservieren</h2>
+        <p class="r-section-desc">Reservieren Sie Ihren Tisch ganz einfach online. Wir freuen uns auf Ihren Besuch.</p>
+        <div class="r-divider"></div>
+    </div>
+
+    <div class="r-contact-grid">
+        <form class="r-form fade-up" onsubmit="event.preventDefault()">
+            <div class="r-form-row">
+                <div><label>Vorname</label><input type="text" placeholder="Max"></div>
+                <div><label>Nachname</label><input type="text" placeholder="Mustermann"></div>
+            </div>
+            <div class="r-form-row">
+                <div><label>Datum</label><input type="date"></div>
+                <div><label>Uhrzeit</label>
+                    <select><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option></select>
+                </div>
+            </div>
+            <div class="r-form-row">
+                <div><label>Personen</label>
+                    <select><option>2 Personen</option><option>3 Personen</option><option>4 Personen</option><option>5 Personen</option><option>6+ Personen</option></select>
+                </div>
+                <div><label>Telefon</label><input type="tel" placeholder="+41 ..."></div>
+            </div>
+            <div><label>Besondere Wünsche</label><textarea placeholder="Allergien, Anlässe, spezielle Anfragen..."></textarea></div>
+            <button type="submit" class="r-form-submit">Reservierung anfragen</button>
+        </form>
+
+        <div class="r-contact-info fade-up">
+            <h3>Besuchen Sie uns</h3>
+            <div class="r-contact-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div><h4>Adresse</h4><p>Musterstrasse 42<br>9000 St. Gallen, Schweiz</p></div>
+            </div>
+            <div class="r-contact-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div><h4>Telefon</h4><p>+41 71 123 45 67</p></div>
+            </div>
+            <div class="r-contact-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div><h4>E-Mail</h4><p>info@latavola.ch</p></div>
+            </div>
+            <div class="r-contact-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div><h4>Öffnungszeiten</h4><p>Di–Sa: 11:30–14:00 / 17:30–22:00<br>Sonntag: 11:30–15:00<br>Montag: Geschlossen</p></div>
+            </div>
+            <div class="r-map">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Google Maps
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="r-footer">
+    <div class="r-footer-logo">La <span>Tavola</span></div>
+    <div class="r-footer-links">
+        <a href="#about">Über uns</a>
+        <a href="#menu">Speisekarte</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#contact">Reservieren</a>
+    </div>
+    <div class="r-footer-social">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="Tripadvisor"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
+    </div>
+    <div class="r-footer-copy">
+        © 2026 La Tavola — Template von <a href="../templates-web.html">Lweb</a>
+    </div>
+</footer>
+
+<script>
+// Nav scroll
+(function(){
+    var nav = document.getElementById('rNav');
+    window.addEventListener('scroll', function(){
+        nav.classList.toggle('scrolled', window.pageYOffset > 80);
+    });
+})();
+
+// Mobile menu
+(function(){
+    var burger = document.getElementById('rBurger');
+    var menu = document.getElementById('rMobileMenu');
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Scroll fade-up animations
+(function(){
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold:0.15 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+})();
+
+// Menu tabs (visual only - demo)
+(function(){
+    var tabs = document.querySelectorAll('.r-menu-tab');
+    tabs.forEach(function(tab){
+        tab.addEventListener('click', function(){
+            tabs.forEach(function(t){ t.classList.remove('active'); });
+            tab.classList.add('active');
+        });
+    });
+})();
+
+// Parallax hero background
+(function(){
+    var bg = document.querySelector('.r-hero-bg');
+    if (!bg || window.innerWidth < 1025) return;
+    window.addEventListener('scroll', function(){
+        bg.style.transform = 'translateY(' + (window.pageYOffset * 0.3) + 'px)';
+    });
+})();
+</script>
+
+</body>
+</html>
