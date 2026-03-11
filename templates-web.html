@@ -1194,7 +1194,7 @@
             </div>
         </div>
         <div class="tw-bundle-cta">
-            <button onclick="openOrderModal()" class="tw-bundle-btn">
+            <button onclick="openOrderModal(true)" class="tw-bundle-btn">
                 <span data-i18n="tw.bundle.btn">Komplettpaket sichern</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
@@ -1497,6 +1497,16 @@
 .om-own-domain.selected .om-own-domain-check{border-color:#fe6c75;background:#fe6c75}
 .om-own-domain-input{margin-top:12px;display:none}
 .om-own-domain.selected ~ .om-own-domain-input{display:block}
+.om-editor-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s;margin-top:16px}
+.om-editor-opt:hover{border-color:#cbd5e1}
+.om-editor-opt.selected{border-color:#fe6c75;background:rgba(254,108,117,0.03)}
+.om-editor-check{width:22px;height:22px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.om-editor-check svg{opacity:0;transition:opacity .2s}
+.om-editor-opt.selected .om-editor-check{border-color:#fe6c75;background:#fe6c75}
+.om-editor-opt.selected .om-editor-check svg{opacity:1}
+body.dark-mode .om-editor-opt{border-color:#334155}
+body.dark-mode .om-editor-opt .om-editor-check{border-color:#4b5563}
+body.dark-mode .om-editor-opt div[style*="color:#1a1a2e"]{color:#f1f5f9!important}
 
 /* ── Step 3: Contact ───────────────────────────── */
 .om-form-group{margin-bottom:16px}
@@ -1568,33 +1578,42 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
                 <div class="om-tpl" data-template="handwerker" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=70" alt="Handwerker"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl3.name">Handwerker & Technik</h4><span data-i18n="tw.tpl3.price">Ab 450 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl3.name">Handwerker & Technik</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="coiffeur" data-price="490" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="coiffeur" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70" alt="Coiffeur"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h4><span data-i18n="tw.tpl2.price">Ab 490 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="restaurant" data-price="590" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="restaurant" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=70" alt="Restaurant"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl1.name">Restaurant & Café</h4><span data-i18n="tw.tpl1.price">Ab 590 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl1.name">Restaurant & Café</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="berater" data-price="690" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="berater" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70" alt="Berater"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl4.name">Berater & Freelancer</h4><span data-i18n="tw.tpl4.price">Ab 690 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl4.name">Berater & Freelancer</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="fitness" data-price="750" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="fitness" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=70" alt="Fitness"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h4><span data-i18n="tw.tpl5.price">Ab 750 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="lokales-geschaeft" data-price="950" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="lokales-geschaeft" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&q=70" alt="Lokales Geschäft"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span data-i18n="tw.tpl6.price">Ab 950 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span>Ab 450 CHF</span></div>
                 </div>
+            </div>
+            <!-- Editor option -->
+            <div class="om-editor-opt" id="omEditorOpt" onclick="toggleEditor()">
+                <div class="om-editor-check" id="omEditorCheck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div style="flex:1">
+                    <div style="font-size:14px;font-weight:700;color:#1a1a2e" data-i18n="om.editor.title">Visueller Editor</div>
+                    <div style="font-size:12px;color:#64748b" data-i18n="om.editor.desc">Texte, Bilder und Logo selbst bearbeiten</div>
+                </div>
+                <span style="font-size:14px;font-weight:700;color:#fe6c75">+ 250 CHF</span>
             </div>
         </div>
 
@@ -1673,7 +1692,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 (function(){
     var API = 'https://web.lweb.ch/lowtemplattes';
     var step = 1;
-    var order = { template:'', price:0, domain:'', has_own_domain:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
+    var order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
 
     // ── Translation helper ──────────────────────────
     function t(key, fallback) {
@@ -1705,12 +1724,25 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     }
 
     // ── Open / Close ────────────────────────────────
-    window.openOrderModal = function() {
+    window.openOrderModal = function(withEditor) {
         translateModal();
+        var el = document.getElementById('omEditorOpt');
+        if (withEditor) {
+            el.classList.add('selected');
+            order.editor = true;
+        } else {
+            el.classList.remove('selected');
+            order.editor = false;
+        }
         var m = document.getElementById('orderModal');
         m.classList.add('om-open');
         document.body.style.overflow = 'hidden';
         showStep();
+    };
+    window.toggleEditor = function() {
+        var el = document.getElementById('omEditorOpt');
+        el.classList.toggle('selected');
+        order.editor = el.classList.contains('selected');
     };
     window.closeOrderModal = function() {
         var m = document.getElementById('orderModal');
@@ -1879,10 +1911,12 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         .then(function(data){
             if (data.success) {
                 var tplNames = { handwerker:'Handwerker & Technik', coiffeur:'Coiffeur & Beauty', restaurant:'Restaurant & Café', berater:'Berater & Freelancer', fitness:'Fitness & Gesundheit', 'lokales-geschaeft':'Lokales Geschäft' };
+                var totalPrice = order.price + (order.editor ? 250 : 0);
                 document.getElementById('omSummary').innerHTML =
                     '<div class="om-summary-row"><span>' + t('om.summary.template','Template') + '</span><span>' + (tplNames[order.template]||order.template) + '</span></div>' +
                     '<div class="om-summary-row"><span>' + t('om.summary.domain','Domain') + '</span><span>' + (order.domain || t('om.summary.tbd','TBD')) + '</span></div>' +
-                    '<div class="om-summary-row"><span>' + t('om.summary.price','Price') + '</span><span>Ab ' + order.price + ' CHF</span></div>' +
+                    (order.editor ? '<div class="om-summary-row"><span>' + t('om.summary.editor','Visual Editor') + '</span><span>+ 250 CHF</span></div>' : '') +
+                    '<div class="om-summary-row"><span>' + t('om.summary.price','Price') + '</span><span>Ab ' + totalPrice + ' CHF</span></div>' +
                     '<div class="om-summary-row"><span>' + t('om.summary.order','Order') + '</span><span>#' + data.order_id + '</span></div>';
                 step = 4;
                 showStep();
@@ -1901,8 +1935,9 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 
     // ── Reset ───────────────────────────────────────
     function resetForm() {
-        order = { template:'', price:0, domain:'', has_own_domain:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
+        order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
         document.querySelectorAll('.om-tpl').forEach(function(c){ c.classList.remove('selected'); });
+        document.getElementById('omEditorOpt').classList.remove('selected');
         document.getElementById('omDomainInput').value = '';
         document.getElementById('omDomainResult').style.display = 'none';
         document.getElementById('omOwnDomain').classList.remove('selected');
