@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Brunner — Berater & Freelancer Template | Lweb</title>
+    <meta name="description" content="Premium Berater-Template mit Portfolio, Testimonials und Kontakt. Professionelle Webseite ab 250 CHF.">
+    <meta name="theme-color" content="#0f172a" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Space Grotesk',sans-serif; color:#1e293b; background:#0f172a; overflow-x:hidden; }
+
+        :root {
+            --indigo: #4f46e5;
+            --indigo-light: #818cf8;
+            --dark: #0f172a;
+            --cream: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --serif: 'DM Serif Display', serif;
+            --sans: 'Space Grotesk', sans-serif;
+        }
+
+        /* ═══ KEYFRAMES ═══ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(79,70,229,0.2)} 50%{box-shadow:0 0 40px rgba(79,70,229,0.4)} }
+        @keyframes borderRotate { 0%{--angle:0deg} 100%{--angle:360deg} }
+        @keyframes countUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideInLeft { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes slideInRight { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+
+        .fade-up { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ═══ BACK BUTTON ═══ */
+        .b-back {
+            position:fixed; top:20px; left:20px; z-index:200;
+            width:42px; height:42px; border-radius:50%;
+            background:rgba(15,23,42,0.6); backdrop-filter:blur(12px);
+            border:1px solid rgba(129,140,248,0.2);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .b-back:hover { background:var(--indigo); border-color:var(--indigo); transform:scale(1.1); }
+
+        /* ═══ NAV ═══ */
+        .b-nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:18px 48px; display:flex; align-items:center; justify-content:space-between;
+            transition:all 0.4s ease;
+        }
+        .b-nav.scrolled {
+            background:rgba(15,23,42,0.85); backdrop-filter:blur(24px) saturate(180%);
+            padding:14px 48px; border-bottom:1px solid rgba(129,140,248,0.1);
+        }
+        .b-nav-logo {
+            font-family:var(--serif); font-size:26px; color:#fff;
+            text-decoration:none; letter-spacing:0.01em;
+        }
+        .b-nav-logo span { color:var(--indigo-light); }
+        .b-nav-links { display:flex; gap:36px; align-items:center; }
+        .b-nav-links a {
+            color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;
+            font-weight:500; letter-spacing:0.02em; transition:color 0.3s; position:relative;
+        }
+        .b-nav-links a::after {
+            content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+            background:var(--indigo-light); transition:width 0.3s;
+        }
+        .b-nav-links a:hover { color:#fff; }
+        .b-nav-links a:hover::after { width:100%; }
+        .b-nav-cta {
+            background:var(--indigo) !important; color:#fff !important; padding:10px 26px;
+            border-radius:8px; font-weight:600 !important; transition:all 0.3s !important;
+            border:1px solid transparent;
+        }
+        .b-nav-cta::after { display:none !important; }
+        .b-nav-cta:hover { background:#4338ca !important; transform:translateY(-1px); box-shadow:0 8px 25px rgba(79,70,229,0.4); }
+        .b-nav-burger {
+            display:none; background:none; border:none; cursor:pointer;
+            width:28px; height:20px; position:relative; z-index:101;
+        }
+        .b-nav-burger span {
+            display:block; width:100%; height:2px; background:#fff;
+            position:absolute; left:0; transition:all 0.3s; border-radius:2px;
+        }
+        .b-nav-burger span:nth-child(1) { top:0; }
+        .b-nav-burger span:nth-child(2) { top:9px; }
+        .b-nav-burger span:nth-child(3) { top:18px; }
+        .b-nav-burger.open span:nth-child(1) { top:9px; transform:rotate(45deg); }
+        .b-nav-burger.open span:nth-child(2) { opacity:0; }
+        .b-nav-burger.open span:nth-child(3) { top:9px; transform:rotate(-45deg); }
+
+        .b-mobile-menu {
+            position:fixed; top:0; left:0; right:0; bottom:0; z-index:99;
+            background:rgba(15,23,42,0.97); backdrop-filter:blur(24px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+            opacity:0; pointer-events:none; transition:opacity 0.3s;
+        }
+        .b-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .b-mobile-menu a {
+            color:#fff; text-decoration:none; font-size:22px; font-weight:500;
+            letter-spacing:0.02em; transition:color 0.3s;
+        }
+        .b-mobile-menu a:hover { color:var(--indigo-light); }
+
+        /* ═══ HERO ═══ */
+        .b-hero {
+            position:relative; min-height:100vh; display:flex; align-items:center;
+            background:linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #312e81 70%, #0f172a 100%);
+            background-size:200% 200%; animation:gradientShift 12s ease infinite;
+            overflow:hidden;
+        }
+        .b-hero::before {
+            content:''; position:absolute; top:-50%; right:-30%; width:80%; height:200%;
+            background:radial-gradient(ellipse, rgba(79,70,229,0.15) 0%, transparent 70%);
+            pointer-events:none;
+        }
+        .b-hero::after {
+            content:''; position:absolute; bottom:0; left:0; right:0; height:120px;
+            background:linear-gradient(to top, var(--cream), transparent);
+            pointer-events:none; z-index:2;
+        }
+        /* grid pattern overlay */
+        .b-hero-grid {
+            position:absolute; inset:0; opacity:0.03;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size:60px 60px;
+            pointer-events:none;
+        }
+        .b-hero-inner {
+            position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr;
+            gap:60px; align-items:center; max-width:1280px; margin:0 auto;
+            padding:120px 48px 100px; width:100%;
+        }
+        .b-hero-text { animation:slideInLeft 1s ease both; }
+        .b-hero-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            font-size:13px; letter-spacing:0.15em; text-transform:uppercase;
+            color:var(--indigo-light); font-weight:600; margin-bottom:20px;
+            background:rgba(79,70,229,0.1); padding:8px 16px; border-radius:6px;
+            border:1px solid rgba(79,70,229,0.2);
+        }
+        .b-hero-tag::before {
+            content:''; width:8px; height:8px; border-radius:50%;
+            background:var(--indigo-light); animation:pulseGlow 2s ease infinite;
+        }
+        .b-hero h1 {
+            font-family:var(--serif); font-size:64px; font-weight:400;
+            color:#fff; line-height:1.1; margin-bottom:24px;
+        }
+        .b-hero-name {
+            background:linear-gradient(135deg, #818cf8 0%, #c084fc 30%, #818cf8 60%, #6366f1 100%);
+            background-size:300% 300%; animation:gradientShift 4s ease infinite;
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .b-hero-sub {
+            font-size:18px; color:rgba(255,255,255,0.65); line-height:1.8;
+            max-width:480px; margin-bottom:36px;
+        }
+        .b-hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+        .b-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:14px 32px; font-size:14px; font-weight:600;
+            text-decoration:none; border-radius:10px; transition:all 0.3s;
+            letter-spacing:0.02em; font-family:var(--sans);
+        }
+        .b-btn--primary {
+            background:var(--indigo); color:#fff;
+            box-shadow:0 4px 15px rgba(79,70,229,0.3);
+        }
+        .b-btn--primary:hover { background:#4338ca; transform:translateY(-2px); box-shadow:0 8px 30px rgba(79,70,229,0.5); }
+        .b-btn--outline { border:1.5px solid rgba(255,255,255,0.25); color:#fff; }
+        .b-btn--outline:hover { border-color:var(--indigo-light); background:rgba(79,70,229,0.1); }
+        .b-btn--dark {
+            background:var(--indigo); color:#fff;
+            box-shadow:0 4px 15px rgba(79,70,229,0.3);
+        }
+        .b-btn--dark:hover { background:#4338ca; transform:translateY(-2px); box-shadow:0 8px 30px rgba(79,70,229,0.5); }
+
+        /* hero portrait */
+        .b-hero-portrait { animation:slideInRight 1s ease both; position:relative; display:flex; justify-content:center; }
+        .b-hero-img-wrap {
+            position:relative; width:380px; height:460px;
+        }
+        .b-hero-img-wrap img {
+            width:100%; height:100%; object-fit:cover; border-radius:20px;
+            position:relative; z-index:2;
+        }
+        /* geometric frame effect */
+        .b-hero-img-wrap::before {
+            content:''; position:absolute; top:-12px; right:-12px;
+            width:100%; height:100%; border:2px solid var(--indigo-light);
+            border-radius:20px; z-index:1; transition:all 0.5s;
+        }
+        .b-hero-img-wrap::after {
+            content:''; position:absolute; bottom:-12px; left:-12px;
+            width:100%; height:100%;
+            background:linear-gradient(135deg, var(--indigo), transparent 60%);
+            border-radius:20px; z-index:0; opacity:0.4;
+        }
+        .b-hero-img-wrap:hover::before { top:-16px; right:-16px; }
+        .b-hero-accent {
+            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            width:460px; height:460px; border-radius:50%;
+            background:radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%);
+            animation:float 6s ease-in-out infinite; pointer-events:none; z-index:0;
+        }
+
+        /* ═══ MARQUEE ═══ */
+        .b-marquee {
+            background:var(--cream); padding:24px 0; overflow:hidden; position:relative;
+            border-bottom:1px solid rgba(79,70,229,0.08);
+        }
+        .b-marquee-track {
+            display:flex; gap:0; width:max-content;
+            animation:marqueeScroll 30s linear infinite;
+        }
+        .b-marquee-item {
+            display:flex; align-items:center; gap:24px; padding:0 32px;
+            font-size:15px; font-weight:600; color:var(--text-light); letter-spacing:0.04em;
+            white-space:nowrap; text-transform:uppercase;
+        }
+        .b-marquee-dot {
+            width:6px; height:6px; border-radius:50%;
+            background:var(--indigo); flex-shrink:0; opacity:0.5;
+        }
+
+        /* ═══ SECTION COMMON ═══ */
+        .b-section { padding:100px 48px; max-width:1280px; margin:0 auto; }
+        .b-section-tag {
+            font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+            color:var(--indigo); font-weight:700; margin-bottom:12px;
+            display:inline-flex; align-items:center; gap:8px;
+        }
+        .b-section-tag::before {
+            content:''; width:24px; height:2px; background:var(--indigo);
+        }
+        .b-section-title {
+            font-family:var(--serif); font-size:46px; font-weight:400;
+            color:var(--dark); margin-bottom:14px; line-height:1.15;
+        }
+        .b-section-desc {
+            font-size:17px; color:var(--text-light); max-width:580px;
+            line-height:1.8; margin-bottom:8px;
+        }
+        .b-section-header { text-align:center; margin-bottom:64px; }
+        .b-section-header .b-section-tag { justify-content:center; }
+        .b-section-header .b-section-desc { margin:0 auto; }
+
+        /* ═══ ABOUT ═══ */
+        .b-about-wrap { background:var(--cream); }
+        .b-about-grid {
+            display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:center;
+        }
+        .b-about-img { position:relative; border-radius:20px; overflow:hidden; }
+        .b-about-img img { width:100%; height:520px; object-fit:cover; display:block; }
+        .b-about-img::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(79,70,229,0.1) 0%, transparent 60%);
+        }
+        .b-about-text p {
+            font-size:16px; color:var(--text-light); line-height:1.9; margin-bottom:16px;
+        }
+        .b-stats {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px;
+        }
+        .b-stat {
+            text-align:center; padding:24px 16px;
+            background:rgba(79,70,229,0.04); border-radius:16px;
+            border:1px solid rgba(79,70,229,0.08);
+            transition:all 0.4s;
+        }
+        .b-stat:hover { background:rgba(79,70,229,0.08); transform:translateY(-4px); border-color:rgba(79,70,229,0.15); }
+        .b-stat-num {
+            font-family:var(--serif); font-size:36px; color:var(--indigo);
+            margin-bottom:4px; line-height:1.2;
+        }
+        .b-stat-label { font-size:13px; color:var(--text-light); font-weight:500; }
+
+        /* ═══ EXPERTISE ═══ */
+        .b-expertise-wrap {
+            background:linear-gradient(180deg, var(--cream) 0%, #eef2ff 50%, var(--cream) 100%);
+            position:relative;
+        }
+        .b-expertise-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.2), transparent);
+        }
+        .b-expertise-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+        }
+        .b-expertise-card {
+            position:relative; padding:40px 32px; border-radius:20px;
+            background:rgba(255,255,255,0.6); backdrop-filter:blur(20px);
+            border:1px solid rgba(79,70,229,0.08);
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            overflow:hidden;
+        }
+        .b-expertise-card::before {
+            content:''; position:absolute; inset:-1px; border-radius:20px; padding:1px;
+            background:linear-gradient(135deg, var(--indigo), var(--indigo-light), #c084fc, var(--indigo));
+            background-size:300% 300%; -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite:xor; mask-composite:exclude;
+            opacity:0; transition:opacity 0.5s; animation:gradientShift 4s ease infinite;
+        }
+        .b-expertise-card:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(79,70,229,0.12); }
+        .b-expertise-card:hover::before { opacity:1; }
+        .b-expertise-icon {
+            width:56px; height:56px; border-radius:14px;
+            background:linear-gradient(135deg, rgba(79,70,229,0.1), rgba(129,140,248,0.1));
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:20px; color:var(--indigo); transition:all 0.4s;
+        }
+        .b-expertise-card:hover .b-expertise-icon {
+            background:var(--indigo); color:#fff; transform:scale(1.05);
+        }
+        .b-expertise-card h3 {
+            font-family:var(--serif); font-size:22px; font-weight:400;
+            color:var(--dark); margin-bottom:10px;
+        }
+        .b-expertise-card p { font-size:14px; color:var(--text-light); line-height:1.8; }
+
+        /* ═══ PROJECTS ═══ */
+        .b-projects-wrap { background:var(--cream); position:relative; }
+        .b-projects-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+        }
+        .b-projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+        .b-project-card {
+            border-radius:20px; overflow:hidden; background:#fff;
+            box-shadow:0 4px 20px rgba(0,0,0,0.04);
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            border:1px solid rgba(79,70,229,0.05);
+        }
+        .b-project-card:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(0,0,0,0.08); }
+        .b-project-img { height:240px; overflow:hidden; position:relative; }
+        .b-project-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+        .b-project-card:hover .b-project-img img { transform:scale(1.06); }
+        .b-project-tag {
+            position:absolute; top:16px; left:16px; z-index:2;
+            background:var(--indigo); color:#fff; font-size:11px; font-weight:700;
+            padding:6px 14px; border-radius:6px; letter-spacing:0.06em; text-transform:uppercase;
+        }
+        .b-project-body { padding:28px; }
+        .b-project-client {
+            font-size:12px; font-weight:700; letter-spacing:0.1em;
+            text-transform:uppercase; color:var(--indigo); margin-bottom:6px;
+        }
+        .b-project-body h3 {
+            font-family:var(--serif); font-size:22px; font-weight:400;
+            color:var(--dark); margin-bottom:10px; line-height:1.3;
+        }
+        .b-project-body p { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+        .b-project-result {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(79,70,229,0.06); color:var(--indigo); font-size:13px;
+            font-weight:600; padding:6px 14px; border-radius:6px;
+        }
+        .b-project-result svg { flex-shrink:0; }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .b-testimonials-wrap {
+            background:linear-gradient(180deg, var(--cream) 0%, #eef2ff 100%);
+            position:relative; overflow:hidden;
+        }
+        .b-testimonials-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+        }
+        .b-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+        .b-testimonial-card {
+            padding:36px; border-radius:20px;
+            background:rgba(255,255,255,0.7); backdrop-filter:blur(20px);
+            border:1px solid rgba(79,70,229,0.08);
+            transition:all 0.4s; position:relative;
+        }
+        .b-testimonial-card:hover { transform:translateY(-4px); box-shadow:0 15px 40px rgba(79,70,229,0.08); }
+        .b-testimonial-quote {
+            font-family:var(--serif); font-size:72px; color:var(--indigo-light);
+            line-height:1; margin-bottom:-16px; opacity:0.4;
+        }
+        .b-testimonial-card p {
+            font-size:15px; color:var(--text); line-height:1.8; margin-bottom:24px;
+            font-style:italic;
+        }
+        .b-testimonial-stars { display:flex; gap:3px; margin-bottom:16px; }
+        .b-testimonial-stars svg { color:#f59e0b; }
+        .b-testimonial-author { display:flex; align-items:center; gap:14px; }
+        .b-testimonial-avatar {
+            width:48px; height:48px; border-radius:50%; overflow:hidden;
+            border:2px solid rgba(79,70,229,0.15);
+        }
+        .b-testimonial-avatar img { width:100%; height:100%; object-fit:cover; }
+        .b-testimonial-name { font-weight:600; font-size:14px; color:var(--dark); }
+        .b-testimonial-role { font-size:13px; color:var(--text-light); margin-top:1px; }
+
+        /* ═══ CTA SECTION ═══ */
+        .b-cta-section {
+            position:relative; padding:120px 48px; text-align:center;
+            background:linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            overflow:hidden;
+        }
+        .b-cta-section::before {
+            content:''; position:absolute; inset:0; opacity:0.04;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size:60px 60px;
+        }
+        .b-cta-glow {
+            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            width:600px; height:600px; border-radius:50%;
+            background:radial-gradient(circle, rgba(79,70,229,0.2) 0%, transparent 70%);
+            pointer-events:none;
+        }
+        .b-cta-content { position:relative; z-index:1; max-width:640px; margin:0 auto; }
+        .b-cta-content h2 {
+            font-family:var(--serif); font-size:48px; font-weight:400;
+            color:#fff; margin-bottom:20px; line-height:1.15;
+        }
+        .b-cta-content p { color:rgba(255,255,255,0.65); font-size:17px; margin-bottom:36px; line-height:1.8; }
+
+        /* ═══ CONTACT ═══ */
+        .b-contact-wrap { background:var(--cream); position:relative; }
+        .b-contact-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+        }
+        .b-contact-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start;
+        }
+        .b-form label {
+            display:block; font-size:12px; font-weight:600; letter-spacing:0.08em;
+            text-transform:uppercase; color:var(--text-light); margin-bottom:6px;
+        }
+        .b-form input, .b-form textarea, .b-form select {
+            width:100%; padding:14px 18px; border:1px solid #e2e8f0;
+            border-radius:12px; font-family:var(--sans); font-size:14px;
+            color:var(--text); transition:all 0.3s; margin-bottom:20px;
+            background:#fff;
+        }
+        .b-form input:focus, .b-form textarea:focus, .b-form select:focus {
+            outline:none; border-color:var(--indigo); box-shadow:0 0 0 3px rgba(79,70,229,0.1);
+        }
+        .b-form textarea { height:120px; resize:vertical; }
+        .b-form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .b-form-submit {
+            width:100%; padding:16px; background:var(--indigo); color:#fff;
+            border:none; border-radius:10px; font-size:15px; font-weight:600;
+            cursor:pointer; transition:all 0.3s; font-family:var(--sans);
+            box-shadow:0 4px 15px rgba(79,70,229,0.3);
+        }
+        .b-form-submit:hover { background:#4338ca; transform:translateY(-1px); box-shadow:0 8px 25px rgba(79,70,229,0.4); }
+        .b-contact-info h3 {
+            font-family:var(--serif); font-size:30px; font-weight:400;
+            color:var(--dark); margin-bottom:8px;
+        }
+        .b-contact-info > p { font-size:15px; color:var(--text-light); line-height:1.7; margin-bottom:36px; }
+        .b-contact-row {
+            display:flex; gap:16px; margin-bottom:24px; align-items:flex-start;
+        }
+        .b-contact-icon {
+            width:44px; height:44px; border-radius:12px; flex-shrink:0;
+            background:rgba(79,70,229,0.06); display:flex;
+            align-items:center; justify-content:center; color:var(--indigo);
+        }
+        .b-contact-row h4 { font-size:14px; font-weight:600; color:var(--dark); margin-bottom:3px; }
+        .b-contact-row p { font-size:14px; color:var(--text-light); line-height:1.6; }
+        .b-calendar-hint {
+            margin-top:36px; padding:20px 24px; border-radius:14px;
+            background:rgba(79,70,229,0.04); border:1px solid rgba(79,70,229,0.1);
+            display:flex; align-items:center; gap:14px;
+        }
+        .b-calendar-hint svg { color:var(--indigo); flex-shrink:0; }
+        .b-calendar-hint p { font-size:14px; color:var(--text-light); line-height:1.6; }
+        .b-calendar-hint a { color:var(--indigo); font-weight:600; text-decoration:none; }
+        .b-calendar-hint a:hover { text-decoration:underline; }
+
+        /* ═══ WAVE DIVIDER ═══ */
+        .b-wave-divider { position:relative; margin-top:-1px; }
+        .b-wave-divider svg { display:block; width:100%; height:auto; }
+
+        /* ═══ FOOTER ═══ */
+        .b-footer {
+            background:var(--dark); padding:64px 48px 36px; position:relative;
+        }
+        .b-footer::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(129,140,248,0.2), transparent);
+        }
+        .b-footer-inner {
+            max-width:1280px; margin:0 auto;
+            display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:48px;
+            padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.06);
+        }
+        .b-footer-brand p { color:rgba(255,255,255,0.4); font-size:14px; line-height:1.8; max-width:320px; margin-top:12px; }
+        .b-footer-logo {
+            font-family:var(--serif); font-size:28px; color:#fff;
+        }
+        .b-footer-logo span { color:var(--indigo-light); }
+        .b-footer-col h4 {
+            font-size:13px; font-weight:700; letter-spacing:0.1em;
+            text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:20px;
+        }
+        .b-footer-col a {
+            display:block; color:rgba(255,255,255,0.5); text-decoration:none;
+            font-size:14px; padding:4px 0; transition:color 0.3s;
+        }
+        .b-footer-col a:hover { color:var(--indigo-light); }
+        .b-footer-social { display:flex; gap:12px; margin-top:24px; }
+        .b-footer-social a {
+            width:40px; height:40px; border-radius:10px;
+            border:1px solid rgba(255,255,255,0.08);
+            display:flex !important; align-items:center; justify-content:center; color:rgba(255,255,255,0.5);
+            transition:all 0.3s; padding:0 !important;
+        }
+        .b-footer-social a:hover { border-color:var(--indigo); color:var(--indigo-light); background:rgba(79,70,229,0.1); }
+        .b-footer-bottom {
+            max-width:1280px; margin:0 auto; padding-top:24px;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .b-footer-copy { font-size:13px; color:rgba(255,255,255,0.3); }
+        .b-footer-copy a { color:var(--indigo-light); text-decoration:none; }
+
+        /* ═══ RESPONSIVE 1024 ═══ */
+        @media (max-width:1024px) {
+            .b-nav { padding:16px 24px; }
+            .b-nav.scrolled { padding:12px 24px; }
+            .b-nav-links { display:none; }
+            .b-nav-burger { display:block; }
+            .b-hero-inner { grid-template-columns:1fr; gap:48px; padding:120px 24px 80px; text-align:center; }
+            .b-hero-sub { margin:0 auto 36px; }
+            .b-hero-btns { justify-content:center; }
+            .b-hero-portrait { order:-1; }
+            .b-hero-img-wrap { width:280px; height:340px; }
+            .b-hero-accent { width:340px; height:340px; }
+            .b-hero h1 { font-size:48px; }
+            .b-section { padding:80px 24px; }
+            .b-about-grid { grid-template-columns:1fr; gap:48px; }
+            .b-expertise-grid { grid-template-columns:1fr 1fr; }
+            .b-projects-grid { grid-template-columns:1fr 1fr; }
+            .b-testimonials-grid { grid-template-columns:1fr; max-width:600px; margin:0 auto; }
+            .b-contact-grid { grid-template-columns:1fr; }
+            .b-footer-inner { grid-template-columns:1fr; gap:32px; }
+            .b-footer-bottom { flex-direction:column; gap:12px; text-align:center; }
+            .b-section-title { font-size:36px; }
+        }
+
+        /* ═══ RESPONSIVE 600 ═══ */
+        @media (max-width:600px) {
+            .b-hero h1 { font-size:36px; }
+            .b-hero-sub { font-size:15px; }
+            .b-hero-img-wrap { width:220px; height:270px; }
+            .b-hero-accent { width:260px; height:260px; }
+            .b-hero-tag { font-size:11px; padding:6px 12px; }
+            .b-section { padding:64px 20px; }
+            .b-section-title { font-size:30px; }
+            .b-section-desc { font-size:15px; }
+            .b-stats { grid-template-columns:1fr; gap:16px; }
+            .b-stat-num { font-size:28px; }
+            .b-expertise-grid { grid-template-columns:1fr; }
+            .b-projects-grid { grid-template-columns:1fr; }
+            .b-form-row { grid-template-columns:1fr; }
+            .b-cta-content h2 { font-size:32px; }
+            .b-cta-section { padding:80px 20px; }
+            .b-marquee-item { font-size:13px; padding:0 20px; }
+            .b-footer { padding:48px 20px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back to Lweb -->
+<a href="../templates-web.html" class="b-back" aria-label="Zurück">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+</a>
+
+<!-- NAV -->
+<nav class="b-nav" id="bNav">
+    <a href="#" class="b-nav-logo" style="margin-left:40px">Marco <span>Brunner</span></a>
+    <div class="b-nav-links">
+        <a href="#about">Über mich</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projekte</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact" class="b-nav-cta">Kontakt</a>
+    </div>
+    <button class="b-nav-burger" id="bBurger" aria-label="Menü">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="b-mobile-menu" id="bMobileMenu">
+    <a href="#about">Über mich</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projekte</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Kontakt</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="b-hero">
+    <div class="b-hero-grid"></div>
+    <div class="b-hero-inner">
+        <div class="b-hero-text">
+            <div class="b-hero-tag" data-edit="text" data-edit-key="hero-tag">Berater & Freelancer</div>
+            <h1><span data-edit="text" data-edit-key="hero-title-line1">Strategie. Digital.</span><br><span class="b-hero-name" data-edit="text" data-edit-key="hero-title-line2">Erfolg.</span></h1>
+            <p class="b-hero-sub" data-edit="text" data-edit-key="hero-sub">Ich unterstütze Unternehmen bei der digitalen Transformation — von der Strategie bis zur Umsetzung. Pragmatisch, ergebnisorientiert und auf Augenhöhe.</p>
+            <div class="b-hero-btns">
+                <a href="#contact" class="b-btn b-btn--primary" data-edit="text" data-edit-key="hero-btn1">Gespräch vereinbaren</a>
+                <a href="#projects" class="b-btn b-btn--outline" data-edit="text" data-edit-key="hero-btn2">Projekte ansehen</a>
+            </div>
+        </div>
+        <div class="b-hero-portrait">
+            <div class="b-hero-accent"></div>
+            <div class="b-hero-img-wrap">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80" alt="Marco Brunner" data-edit="image" data-edit-key="hero-portrait">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="b-marquee">
+    <div class="b-marquee-track">
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Digitalstrategie</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> UX Consulting</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Business Development</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Agile Coaching</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Change Management</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Workshop Moderation</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Digitalstrategie</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> UX Consulting</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Business Development</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Agile Coaching</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Change Management</div>
+        <div class="b-marquee-item"><span class="b-marquee-dot"></span> Workshop Moderation</div>
+    </div>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<div class="b-about-wrap" id="about">
+    <section class="b-section">
+        <div class="b-about-grid">
+            <div class="b-about-img fade-up">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" alt="Marco Brunner bei der Arbeit" loading="lazy" data-edit="image" data-edit-key="about-img">
+            </div>
+            <div class="b-about-text fade-up">
+                <div class="b-section-tag" data-edit="text" data-edit-key="about-tag">Über mich</div>
+                <h2 class="b-section-title" data-edit="text" data-edit-key="about-title">Brücken bauen zwischen Strategie und Umsetzung</h2>
+                <p data-edit="text" data-edit-key="about-p1">Seit über 15 Jahren begleite ich Unternehmen bei ihrer digitalen Transformation. Mein Ansatz verbindet strategisches Denken mit pragmatischer Umsetzung — immer mit dem Ziel, nachhaltigen Mehrwert zu schaffen.</p>
+                <p data-edit="text" data-edit-key="about-p2">Als unabhängiger Berater arbeite ich branchenübergreifend mit KMUs und Konzernen zusammen. Von der Strategieentwicklung über agile Transformation bis hin zur Moderation komplexer Stakeholder-Prozesse.</p>
+                <div class="b-stats">
+                    <div class="b-stat fade-up">
+                        <div class="b-stat-num" data-edit="text" data-edit-key="stat1-num">15+</div>
+                        <div class="b-stat-label" data-edit="text" data-edit-key="stat1-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="b-stat fade-up">
+                        <div class="b-stat-num" data-edit="text" data-edit-key="stat2-num">200+</div>
+                        <div class="b-stat-label" data-edit="text" data-edit-key="stat2-label">Projekte</div>
+                    </div>
+                    <div class="b-stat fade-up">
+                        <div class="b-stat-num" data-edit="text" data-edit-key="stat3-num">50+</div>
+                        <div class="b-stat-label" data-edit="text" data-edit-key="stat3-label">Kunden</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ WAVE DIVIDER ═══════════ -->
+<div class="b-wave-divider">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#eef2ff"/>
+    </svg>
+</div>
+
+<!-- ═══════════ EXPERTISE ═══════════ -->
+<div class="b-expertise-wrap" id="expertise">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag" data-edit="text" data-edit-key="exp-tag">Expertise</div>
+            <h2 class="b-section-title" data-edit="text" data-edit-key="exp-title">Meine Kernkompetenzen</h2>
+            <p class="b-section-desc" data-edit="text" data-edit-key="exp-desc">Massgeschneiderte Lösungen für Ihre digitalen Herausforderungen — strategisch fundiert und praxiserprobt.</p>
+        </div>
+
+        <div class="b-expertise-grid">
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp1-title">Digitalstrategie</h3>
+                <p data-edit="text" data-edit-key="exp1-desc">Entwicklung ganzheitlicher Digitalstrategien, die Geschäftsziele mit technologischen Möglichkeiten verbinden.</p>
+            </div>
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp2-title">UX & Design Thinking</h3>
+                <p data-edit="text" data-edit-key="exp2-desc">Nutzerzentrierte Produktentwicklung mit Design Thinking Methodik — von der Idee bis zum fertigen Konzept.</p>
+            </div>
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp3-title">Agile Transformation</h3>
+                <p data-edit="text" data-edit-key="exp3-desc">Einführung agiler Arbeitsweisen und Strukturen — von Scrum über Kanban bis hin zu skalierten Frameworks.</p>
+            </div>
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp4-title">Business Development</h3>
+                <p data-edit="text" data-edit-key="exp4-desc">Identifikation neuer Geschäftsfelder und Entwicklung innovativer Geschäftsmodelle für nachhaltiges Wachstum.</p>
+            </div>
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp5-title">Workshop Facilitation</h3>
+                <p data-edit="text" data-edit-key="exp5-desc">Professionelle Moderation von Workshops, Offsites und Strategietagen mit kreativem Methodenmix.</p>
+            </div>
+            <div class="b-expertise-card fade-up">
+                <div class="b-expertise-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 data-edit="text" data-edit-key="exp6-title">Change Management</h3>
+                <p data-edit="text" data-edit-key="exp6-desc">Begleitung organisatorischer Veränderungsprozesse mit Fokus auf Kommunikation, Kultur und Mitarbeiterakzeptanz.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<div class="b-projects-wrap" id="projects">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag" data-edit="text" data-edit-key="proj-tag">Projekte</div>
+            <h2 class="b-section-title" data-edit="text" data-edit-key="proj-title">Ausgewählte Case Studies</h2>
+            <p class="b-section-desc" data-edit="text" data-edit-key="proj-desc">Ein Einblick in meine bisherige Arbeit — von der Strategieberatung bis zur operativen Umsetzung.</p>
+        </div>
+
+        <div class="b-projects-grid">
+            <div class="b-project-card fade-up">
+                <div class="b-project-img">
+                    <span class="b-project-tag" data-edit="text" data-edit-key="proj1-tag">Digitalstrategie</span>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Projekt TechStart" loading="lazy" data-edit="image" data-edit-key="proj1-img">
+                </div>
+                <div class="b-project-body">
+                    <div class="b-project-client" data-edit="text" data-edit-key="proj1-client">TechStart AG</div>
+                    <h3 data-edit="text" data-edit-key="proj1-title">Digitale Transformation im Mittelstand</h3>
+                    <p data-edit="text" data-edit-key="proj1-desc">Komplette Neuausrichtung der digitalen Strategie eines traditionsreichen KMU mit 200 Mitarbeitenden.</p>
+                    <span class="b-project-result">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        <span data-edit="text" data-edit-key="proj1-result">+40% Effizienz</span>
+                    </span>
+                </div>
+            </div>
+            <div class="b-project-card fade-up">
+                <div class="b-project-img">
+                    <span class="b-project-tag" data-edit="text" data-edit-key="proj2-tag">Agile Coaching</span>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Projekt FinServ" loading="lazy" data-edit="image" data-edit-key="proj2-img">
+                </div>
+                <div class="b-project-body">
+                    <div class="b-project-client" data-edit="text" data-edit-key="proj2-client">FinServ Group</div>
+                    <h3 data-edit="text" data-edit-key="proj2-title">Agile Transformation im Bankwesen</h3>
+                    <p data-edit="text" data-edit-key="proj2-desc">Einführung agiler Arbeitsweisen in einem regulierten Umfeld mit über 500 betroffenen Mitarbeitenden.</p>
+                    <span class="b-project-result">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        <span data-edit="text" data-edit-key="proj2-result">-30% Time-to-Market</span>
+                    </span>
+                </div>
+            </div>
+            <div class="b-project-card fade-up">
+                <div class="b-project-img">
+                    <span class="b-project-tag" data-edit="text" data-edit-key="proj3-tag">UX Consulting</span>
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="Projekt MedTech" loading="lazy" data-edit="image" data-edit-key="proj3-img">
+                </div>
+                <div class="b-project-body">
+                    <div class="b-project-client" data-edit="text" data-edit-key="proj3-client">MedTech Solutions</div>
+                    <h3 data-edit="text" data-edit-key="proj3-title">Plattform-Redesign im Gesundheitswesen</h3>
+                    <p data-edit="text" data-edit-key="proj3-desc">Nutzerzentriertes Redesign einer B2B-Plattform mit Design Thinking Workshops und Prototyping.</p>
+                    <span class="b-project-result">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        <span data-edit="text" data-edit-key="proj3-result">+65% Nutzerzufriedenheit</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<div class="b-testimonials-wrap" id="testimonials">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag" data-edit="text" data-edit-key="test-tag">Testimonials</div>
+            <h2 class="b-section-title" data-edit="text" data-edit-key="test-title">Was Kunden sagen</h2>
+            <p class="b-section-desc" data-edit="text" data-edit-key="test-desc">Vertrauen entsteht durch Ergebnisse. Hier teilen meine Kunden ihre Erfahrungen.</p>
+        </div>
+
+        <div class="b-testimonials-grid">
+            <div class="b-testimonial-card fade-up">
+                <div class="b-testimonial-quote">"</div>
+                <div class="b-testimonial-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p data-edit="text" data-edit-key="test1-text">Marco hat unsere digitale Strategie komplett transformiert. Sein strukturierter Ansatz und seine Fähigkeit, komplexe Themen verständlich zu machen, waren beeindruckend.</p>
+                <div class="b-testimonial-author">
+                    <div class="b-testimonial-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Thomas Keller" loading="lazy" data-edit="image" data-edit-key="test1-img"></div>
+                    <div>
+                        <div class="b-testimonial-name" data-edit="text" data-edit-key="test1-name">Thomas Keller</div>
+                        <div class="b-testimonial-role" data-edit="text" data-edit-key="test1-role">CEO, TechStart AG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="b-testimonial-card fade-up">
+                <div class="b-testimonial-quote">"</div>
+                <div class="b-testimonial-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p data-edit="text" data-edit-key="test2-text">Die agile Transformation mit Marco war ein Gamechanger für unsere Organisation. Er versteht es, Teams mitzunehmen und echte Veränderung zu bewirken.</p>
+                <div class="b-testimonial-author">
+                    <div class="b-testimonial-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Sarah Müller" loading="lazy" data-edit="image" data-edit-key="test2-img"></div>
+                    <div>
+                        <div class="b-testimonial-name" data-edit="text" data-edit-key="test2-name">Sarah Müller</div>
+                        <div class="b-testimonial-role" data-edit="text" data-edit-key="test2-role">COO, FinServ Group</div>
+                    </div>
+                </div>
+            </div>
+            <div class="b-testimonial-card fade-up">
+                <div class="b-testimonial-quote">"</div>
+                <div class="b-testimonial-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p data-edit="text" data-edit-key="test3-text">Marcos Workshop-Moderation war herausragend. In nur zwei Tagen hat er es geschafft, unser gesamtes Führungsteam auf eine gemeinsame Vision einzuschwören.</p>
+                <div class="b-testimonial-author">
+                    <div class="b-testimonial-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Daniel Weber" loading="lazy" data-edit="image" data-edit-key="test3-img"></div>
+                    <div>
+                        <div class="b-testimonial-name" data-edit="text" data-edit-key="test3-name">Daniel Weber</div>
+                        <div class="b-testimonial-role" data-edit="text" data-edit-key="test3-role">CTO, MedTech Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="b-cta-section">
+    <div class="b-cta-glow"></div>
+    <div class="b-cta-content fade-up">
+        <h2 data-edit="text" data-edit-key="cta-title">Lassen Sie uns zusammenarbeiten</h2>
+        <p data-edit="text" data-edit-key="cta-desc">Sie stehen vor einer digitalen Herausforderung? Lassen Sie uns in einem unverbindlichen Erstgespräch herausfinden, wie ich Sie unterstützen kann.</p>
+        <a href="#contact" class="b-btn b-btn--primary" data-edit="text" data-edit-key="cta-btn">Kostenloses Erstgespräch</a>
+    </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div class="b-contact-wrap" id="contact">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag" data-edit="text" data-edit-key="contact-tag">Kontakt</div>
+            <h2 class="b-section-title" data-edit="text" data-edit-key="contact-title">Lassen Sie uns sprechen</h2>
+            <p class="b-section-desc" data-edit="text" data-edit-key="contact-desc">Schreiben Sie mir oder buchen Sie direkt einen Termin für ein unverbindliches Erstgespräch.</p>
+        </div>
+
+        <div class="b-contact-grid">
+            <form class="b-form fade-up" onsubmit="event.preventDefault()">
+                <div class="b-form-row">
+                    <div><label>Vorname</label><input type="text" placeholder="Ihr Vorname"></div>
+                    <div><label>Nachname</label><input type="text" placeholder="Ihr Nachname"></div>
+                </div>
+                <div class="b-form-row">
+                    <div><label>E-Mail</label><input type="email" placeholder="ihre@email.ch"></div>
+                    <div><label>Unternehmen</label><input type="text" placeholder="Firma (optional)"></div>
+                </div>
+                <div><label>Thema</label>
+                    <select>
+                        <option>Digitalstrategie</option>
+                        <option>Agile Transformation</option>
+                        <option>UX Consulting</option>
+                        <option>Workshop Moderation</option>
+                        <option>Sonstiges</option>
+                    </select>
+                </div>
+                <div><label>Nachricht</label><textarea placeholder="Beschreiben Sie kurz Ihr Anliegen..."></textarea></div>
+                <button type="submit" class="b-form-submit">Nachricht senden</button>
+            </form>
+
+            <div class="b-contact-info fade-up">
+                <h3 data-edit="text" data-edit-key="contact-info-title">Direkt erreichen</h3>
+                <p data-edit="text" data-edit-key="contact-info-desc">Ich freue mich auf Ihre Anfrage und melde mich in der Regel innerhalb von 24 Stunden zurück.</p>
+                <div class="b-contact-row">
+                    <div class="b-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div><h4>E-Mail</h4><p data-edit="text" data-edit-key="contact-email">marco@brunner-consulting.ch</p></div>
+                </div>
+                <div class="b-contact-row">
+                    <div class="b-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div><h4>Telefon</h4><p data-edit="text" data-edit-key="contact-phone">+41 79 123 45 67</p></div>
+                </div>
+                <div class="b-contact-row">
+                    <div class="b-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div><h4>Standort</h4><p data-edit="text" data-edit-key="contact-location">Zürich, Schweiz — Remote & vor Ort</p></div>
+                </div>
+                <div class="b-calendar-hint">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <p data-edit="text" data-edit-key="contact-calendar">Buchen Sie direkt einen 30-minütigen Slot in meinem <a href="#">Online-Kalender</a> für ein unverbindliches Kennenlerngespräch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="b-footer">
+    <div class="b-footer-inner">
+        <div class="b-footer-brand">
+            <div class="b-footer-logo">Marco <span>Brunner</span></div>
+            <p data-edit="text" data-edit-key="footer-desc">Unabhängiger Berater für Digitalstrategie, agile Transformation und nutzerzentrierte Innovation. Basiert in Zürich, tätig in der gesamten DACH-Region.</p>
+            <div class="b-footer-social">
+                <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+            </div>
+        </div>
+        <div class="b-footer-col">
+            <h4>Navigation</h4>
+            <a href="#about">Über mich</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#projects">Projekte</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+        <div class="b-footer-col">
+            <h4>Expertise</h4>
+            <a href="#expertise">Digitalstrategie</a>
+            <a href="#expertise">UX & Design Thinking</a>
+            <a href="#expertise">Agile Transformation</a>
+            <a href="#expertise">Business Development</a>
+            <a href="#expertise">Change Management</a>
+        </div>
+    </div>
+    <div class="b-footer-bottom">
+        <div class="b-footer-copy">
+            &copy; 2026 Marco Brunner — Template von <a href="../templates-web.html">Lweb</a>
+        </div>
+        <div class="b-footer-copy">
+            Zürich, Schweiz
+        </div>
+    </div>
+</footer>
+
+<script>
+// Nav scroll
+(function(){
+    var nav = document.getElementById('bNav');
+    window.addEventListener('scroll', function(){
+        nav.classList.toggle('scrolled', window.pageYOffset > 60);
+    });
+})();
+
+// Mobile menu
+(function(){
+    var burger = document.getElementById('bBurger');
+    var menu = document.getElementById('bMobileMenu');
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Scroll fade-up animations
+(function(){
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+})();
+
+// Stat counter animation
+(function(){
+    if (!('IntersectionObserver' in window)) return;
+    var statObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) {
+                e.target.style.animation = 'countUp 0.6s ease both';
+                statObs.unobserve(e.target);
+            }
+        });
+    }, { threshold:0.5 });
+    document.querySelectorAll('.b-stat-num').forEach(function(el){ statObs.observe(el); });
+})();
+</script>
+
+<script>
+if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+    var s = document.createElement('script');
+    s.src = '../js/template-editor.js';
+    s.onload = function() {
+        TemplateEditor.init({ templateId: 'berater', clientId: 'demo' });
+    };
+    document.body.appendChild(s);
+}
+</script>
+</body>
+</html>

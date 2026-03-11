@@ -8,6 +8,7 @@
     <meta name="theme-color" content="#1a1a1a" id="themeColor">
     <link rel="icon" type="image/png" href="../img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
     <style>
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
         html { scroll-behavior:smooth; }
@@ -323,6 +324,68 @@
         .r-footer-copy { font-size:12px; color:rgba(255,255,255,0.3); padding-top:24px; border-top:1px solid rgba(255,255,255,0.06); }
         .r-footer-copy a { color:var(--gold); text-decoration:none; }
 
+        /* ═══ CHEF SPECIAL — parallax banner ═══ */
+        .r-chef {
+            position:relative; padding:120px 24px; text-align:center;
+            background:url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80') center/cover no-repeat fixed;
+            overflow:hidden;
+        }
+        .r-chef::after {
+            content:''; position:absolute; inset:0;
+            background:rgba(26,26,26,0.7);
+        }
+        .r-chef-content { position:relative; z-index:1; max-width:700px; margin:0 auto; }
+        .r-chef-content .r-section-tag { color:var(--gold-light); }
+        .r-chef-content .r-section-tag::before { background:var(--gold-light); }
+        .r-chef-content h2 {
+            font-family:var(--serif); font-size:48px; font-weight:700;
+            color:#fff; margin-bottom:16px; line-height:1.15;
+        }
+        .r-chef-content p { color:rgba(255,255,255,0.8); font-size:17px; line-height:1.8; margin-bottom:32px; }
+        .r-chef-quote {
+            font-family:var(--serif); font-size:22px; font-style:italic;
+            color:var(--gold-light); margin-top:24px; line-height:1.6;
+        }
+        .r-chef-quote cite {
+            display:block; font-style:normal; font-family:var(--sans);
+            font-size:14px; color:rgba(255,255,255,0.6); margin-top:12px;
+            letter-spacing:0.05em;
+        }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .r-testimonials { background:#fff; }
+        .r-test-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .r-test-card {
+            background:var(--cream); border-radius:16px; padding:32px;
+            border:1px solid rgba(200,149,108,0.1);
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+        .r-test-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.06); }
+        .r-test-stars { color:var(--gold); font-size:16px; margin-bottom:16px; letter-spacing:2px; }
+        .r-test-text { font-size:15px; color:var(--text); line-height:1.8; margin-bottom:20px; font-style:italic; }
+        .r-test-author { display:flex; align-items:center; gap:12px; }
+        .r-test-avatar {
+            width:44px; height:44px; border-radius:50%; overflow:hidden;
+            border:2px solid var(--gold-light);
+        }
+        .r-test-avatar img { width:100%; height:100%; object-fit:cover; }
+        .r-test-name { font-size:14px; font-weight:700; color:var(--dark); }
+        .r-test-date { font-size:12px; color:var(--text-light); }
+
+        /* ═══ SPECIALS MARQUEE ═══ */
+        .r-marquee-bar {
+            background:var(--gold); padding:14px 0; overflow:hidden; white-space:nowrap;
+        }
+        .r-marquee-track {
+            display:inline-flex; gap:48px; animation:r-marquee 30s linear infinite;
+        }
+        .r-marquee-item {
+            font-family:var(--serif); font-size:16px; font-weight:600;
+            color:#fff; display:flex; align-items:center; gap:12px;
+        }
+        .r-marquee-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); }
+        @keyframes r-marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
         /* ═══ BACK TO LWEB ═══ */
         .r-back {
             position:fixed; top:20px; left:20px; z-index:200;
@@ -344,6 +407,8 @@
             .r-gallery-item--tall img { min-height:220px; }
             .r-contact-grid { grid-template-columns:1fr; }
             .r-info-bar { gap:32px; }
+            .r-test-grid { grid-template-columns:1fr; max-width:500px; }
+            .r-chef h2 { font-size:36px; }
         }
         @media (max-width:600px) {
             .r-hero h1 { font-size:36px; }
@@ -358,6 +423,9 @@
             .r-form-row { grid-template-columns:1fr; }
             .r-about-stats { gap:20px; }
             .r-nav { padding:16px 20px; }
+            .r-chef { padding:80px 20px; }
+            .r-chef h2 { font-size:28px; }
+            .r-chef-quote { font-size:18px; }
         }
 
         /* ═══ MOBILE MENU ═══ */
@@ -384,12 +452,12 @@
 
 <!-- NAV -->
 <nav class="r-nav" id="rNav">
-    <a href="#" class="r-nav-logo" style="margin-left:40px">La <span>Tavola</span></a>
+    <a href="#" class="r-nav-logo" style="margin-left:40px" data-edit="logo" data-edit-key="nav-logo">La Tavola</a>
     <div class="r-nav-links">
-        <a href="#about">Über uns</a>
-        <a href="#menu">Speisekarte</a>
-        <a href="#gallery">Galerie</a>
-        <a href="#contact" class="r-nav-cta">Reservieren</a>
+        <a href="#about" data-edit="text" data-edit-key="nav-link1">Über uns</a>
+        <a href="#menu" data-edit="text" data-edit-key="nav-link2">Speisekarte</a>
+        <a href="#gallery" data-edit="text" data-edit-key="nav-link3">Galerie</a>
+        <a href="#contact" class="r-nav-cta" data-edit="text" data-edit-key="nav-cta">Reservieren</a>
     </div>
     <button class="r-nav-burger" id="rBurger" aria-label="Menü">
         <span></span><span></span><span></span>
@@ -406,14 +474,14 @@
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="r-hero">
-    <div class="r-hero-bg"></div>
+    <div class="r-hero-bg" data-edit="image" data-edit-key="hero-bg"></div>
     <div class="r-hero-content">
-        <div class="r-hero-tag">Ristorante Italiano</div>
-        <h1>La Tavola</h1>
-        <p class="r-hero-sub">Authentische italienische Küche im Herzen der Stadt. Frische Zutaten, traditionelle Rezepte und ein Ambiente, das Sie verzaubert.</p>
+        <div class="r-hero-tag" data-edit="text" data-edit-key="hero-tag">Ristorante Italiano</div>
+        <h1 data-edit="text" data-edit-key="hero-title">La Tavola</h1>
+        <p class="r-hero-sub" data-edit="text" data-edit-key="hero-sub">Authentische italienische Küche im Herzen der Stadt. Frische Zutaten, traditionelle Rezepte und ein Ambiente, das Sie verzaubert.</p>
         <div class="r-hero-btns">
-            <a href="#menu" class="r-btn r-btn--primary">Speisekarte</a>
-            <a href="#contact" class="r-btn r-btn--outline">Tisch reservieren</a>
+            <a href="#menu" class="r-btn r-btn--primary" data-edit="text" data-edit-key="hero-btn1">Speisekarte</a>
+            <a href="#contact" class="r-btn r-btn--outline" data-edit="text" data-edit-key="hero-btn2">Tisch reservieren</a>
         </div>
     </div>
     <div class="r-hero-scroll">
@@ -421,29 +489,47 @@
     </div>
 </section>
 
+<!-- ═══════════ MARQUEE BAR ═══════════ -->
+<div class="r-marquee-bar">
+    <div class="r-marquee-track">
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Frische Pasta täglich</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Reservierung online</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Private Events</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Weinkarte mit 80+ Sorten</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Terrasse im Sommer</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Catering Service</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Frische Pasta täglich</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Reservierung online</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Private Events</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Weinkarte mit 80+ Sorten</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Terrasse im Sommer</span>
+        <span class="r-marquee-item"><span class="r-marquee-dot"></span>Catering Service</span>
+    </div>
+</div>
+
 <!-- ═══════════ ABOUT ═══════════ -->
 <section class="r-section r-about" id="about">
     <div class="r-about-grid">
         <div class="r-about-img fade-up">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurant Interior" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurant Interior" loading="lazy" data-edit="image" data-edit-key="about-img">
         </div>
         <div class="r-about-text fade-up">
-            <div class="r-section-tag">Unsere Geschichte</div>
-            <h3>Wo Tradition auf<br>Leidenschaft trifft</h3>
-            <p>Seit über 15 Jahren bringen wir die Aromen Italiens in die Schweiz. Unsere Küche verbindet traditionelle Rezepte aus der Toskana mit frischen, lokalen Zutaten.</p>
-            <p>Jedes Gericht erzählt eine Geschichte — von der handgemachten Pasta bis zum perfekt gereiften Tiramisu.</p>
+            <div class="r-section-tag" data-edit="text" data-edit-key="about-tag">Unsere Geschichte</div>
+            <h3 data-edit="text" data-edit-key="about-title">Wo Tradition auf Leidenschaft trifft</h3>
+            <p data-edit="text" data-edit-key="about-p1">Seit über 15 Jahren bringen wir die Aromen Italiens in die Schweiz. Unsere Küche verbindet traditionelle Rezepte aus der Toskana mit frischen, lokalen Zutaten.</p>
+            <p data-edit="text" data-edit-key="about-p2">Jedes Gericht erzählt eine Geschichte — von der handgemachten Pasta bis zum perfekt gereiften Tiramisu.</p>
             <div class="r-about-stats">
                 <div class="r-about-stat">
-                    <div class="r-about-stat-n">15+</div>
-                    <div class="r-about-stat-l">Jahre</div>
+                    <div class="r-about-stat-n" data-edit="text" data-edit-key="about-stat1-n">15+</div>
+                    <div class="r-about-stat-l" data-edit="text" data-edit-key="about-stat1-l">Jahre</div>
                 </div>
                 <div class="r-about-stat">
-                    <div class="r-about-stat-n">200+</div>
-                    <div class="r-about-stat-l">Rezepte</div>
+                    <div class="r-about-stat-n" data-edit="text" data-edit-key="about-stat2-n">200+</div>
+                    <div class="r-about-stat-l" data-edit="text" data-edit-key="about-stat2-l">Rezepte</div>
                 </div>
                 <div class="r-about-stat">
-                    <div class="r-about-stat-n">4.8</div>
-                    <div class="r-about-stat-l">Google ★</div>
+                    <div class="r-about-stat-n" data-edit="text" data-edit-key="about-stat3-n">4.8</div>
+                    <div class="r-about-stat-l" data-edit="text" data-edit-key="about-stat3-l">Google ★</div>
                 </div>
             </div>
         </div>
@@ -453,60 +539,199 @@
 <!-- ═══════════ MENU ═══════════ -->
 <section class="r-section r-menu" id="menu">
     <div class="r-section-header fade-up">
-        <div class="r-section-tag">Speisekarte</div>
-        <h2 class="r-section-title">Unsere Spezialitäten</h2>
-        <p class="r-section-desc">Frische Zutaten, authentische Rezepte und Gerichte, die mit Liebe zubereitet werden.</p>
+        <div class="r-section-tag" data-edit="text" data-edit-key="menu-tag">Speisekarte</div>
+        <h2 class="r-section-title" data-edit="text" data-edit-key="menu-title">Unsere Spezialitäten</h2>
+        <p class="r-section-desc" data-edit="text" data-edit-key="menu-desc">Frische Zutaten, authentische Rezepte und Gerichte, die mit Liebe zubereitet werden.</p>
         <div class="r-divider"></div>
     </div>
 
     <div class="r-menu-tabs fade-up">
-        <button class="r-menu-tab active">Antipasti</button>
-        <button class="r-menu-tab">Pasta</button>
-        <button class="r-menu-tab">Pizza</button>
-        <button class="r-menu-tab">Desserts</button>
+        <button class="r-menu-tab active" data-tab="antipasti" data-edit="text" data-edit-key="tab-antipasti">Antipasti</button>
+        <button class="r-menu-tab" data-tab="pasta" data-edit="text" data-edit-key="tab-pasta">Pasta</button>
+        <button class="r-menu-tab" data-tab="pizza" data-edit="text" data-edit-key="tab-pizza">Pizza</button>
+        <button class="r-menu-tab" data-tab="desserts" data-edit="text" data-edit-key="tab-desserts">Desserts</button>
     </div>
 
-    <div class="r-menu-grid">
+    <!-- Antipasti -->
+    <div class="r-menu-grid" data-menu-panel="antipasti">
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=200&q=80" alt="Bruschetta" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=200&q=80" alt="Bruschetta" loading="lazy" data-edit="image" data-edit-key="menu-a1-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Bruschetta Classica</span><span class="r-menu-item-price">CHF 14</span></div>
-                <p class="r-menu-item-desc">Geröstetes Brot mit Tomaten, Basilikum und nativem Olivenöl</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a1-name">Bruschetta Classica</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a1-price">CHF 14</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a1-desc">Geröstetes Brot mit Tomaten, Basilikum und nativem Olivenöl</p>
             </div>
         </div>
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=200&q=80" alt="Carpaccio" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=200&q=80" alt="Carpaccio" loading="lazy" data-edit="image" data-edit-key="menu-a2-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Carpaccio di Manzo</span><span class="r-menu-item-price">CHF 22</span></div>
-                <p class="r-menu-item-desc">Hauchdünnes Rindfleisch mit Rucola, Parmesan und Trüffelöl</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a2-name">Carpaccio di Manzo</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a2-price">CHF 22</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a2-desc">Hauchdünnes Rindfleisch mit Rucola, Parmesan und Trüffelöl</p>
             </div>
         </div>
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=200&q=80" alt="Tagliatelle" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=200&q=80" alt="Caprese" loading="lazy" data-edit="image" data-edit-key="menu-a3-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Tagliatelle al Ragù</span><span class="r-menu-item-price">CHF 28</span></div>
-                <p class="r-menu-item-desc">Handgemachte Tagliatelle mit klassischem Bolognese-Ragù</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a3-name">Insalata Caprese</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a3-price">CHF 16</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a3-desc">Frische Tomaten, Mozzarella di Bufala, Basilikum und Olivenöl</p>
             </div>
         </div>
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=80" alt="Pizza" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=200&q=80" alt="Vitello" loading="lazy" data-edit="image" data-edit-key="menu-a4-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Pizza Margherita</span><span class="r-menu-item-price">CHF 19</span></div>
-                <p class="r-menu-item-desc">San Marzano Tomaten, Mozzarella di Bufala und frisches Basilikum</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a4-name">Vitello Tonnato</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a4-price">CHF 24</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a4-desc">Zartes Kalbfleisch mit cremiger Thunfischsauce und Kapern</p>
             </div>
         </div>
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=200&q=80" alt="Risotto" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1505575967455-40e256f73376?w=200&q=80" alt="Arancini" loading="lazy" data-edit="image" data-edit-key="menu-a5-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Risotto ai Funghi</span><span class="r-menu-item-price">CHF 32</span></div>
-                <p class="r-menu-item-desc">Cremiges Risotto mit Steinpilzen und Trüffel</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a5-name">Arancini Siciliani</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a5-price">CHF 15</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a5-desc">Frittierte Reisbällchen mit Ragù und Mozzarella</p>
             </div>
         </div>
         <div class="r-menu-item fade-up">
-            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=200&q=80" alt="Tiramisu" loading="lazy"></div>
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=200&q=80" alt="Antipasto Misto" loading="lazy" data-edit="image" data-edit-key="menu-a6-img"></div>
             <div class="r-menu-item-info">
-                <div class="r-menu-item-top"><span class="r-menu-item-name">Tiramisù della Casa</span><span class="r-menu-item-price">CHF 14</span></div>
-                <p class="r-menu-item-desc">Hausgemachtes Tiramisu nach Familienrezept</p>
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a6-name">Antipasto Misto</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a6-price">CHF 26</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a6-desc">Gemischte Vorspeisen mit Prosciutto, Salami, Oliven und gegrilltem Gemüse</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pasta -->
+    <div class="r-menu-grid" data-menu-panel="pasta" style="display:none">
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=200&q=80" alt="Tagliatelle" loading="lazy" data-edit="image" data-edit-key="menu-p1-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p1-name">Tagliatelle al Ragù</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p1-price">CHF 28</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p1-desc">Handgemachte Tagliatelle mit klassischem Bolognese-Ragù</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=200&q=80" alt="Risotto" loading="lazy" data-edit="image" data-edit-key="menu-p2-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p2-name">Risotto ai Funghi</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p2-price">CHF 32</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p2-desc">Cremiges Risotto mit Steinpilzen und Trüffel</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=200&q=80" alt="Penne" loading="lazy" data-edit="image" data-edit-key="menu-p3-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p3-name">Penne all'Arrabbiata</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p3-price">CHF 24</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p3-desc">Penne in feuriger Tomatensauce mit Knoblauch und Peperoncini</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=200&q=80" alt="Carbonara" loading="lazy" data-edit="image" data-edit-key="menu-p4-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p4-name">Spaghetti Carbonara</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p4-price">CHF 26</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p4-desc">Spaghetti mit Guanciale, Eigelb, Pecorino und schwarzem Pfeffer</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=200&q=80" alt="Gnocchi" loading="lazy" data-edit="image" data-edit-key="menu-p5-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p5-name">Gnocchi al Pesto</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p5-price">CHF 25</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p5-desc">Hausgemachte Kartoffelgnocchi mit frischem Basilikum-Pesto</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=200&q=80" alt="Lasagne" loading="lazy" data-edit="image" data-edit-key="menu-p6-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-p6-name">Lasagne della Nonna</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-p6-price">CHF 27</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-p6-desc">Klassische Lasagne mit Ragù, Béchamel und Parmigiano</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pizza -->
+    <div class="r-menu-grid" data-menu-panel="pizza" style="display:none">
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=80" alt="Margherita" loading="lazy" data-edit="image" data-edit-key="menu-z1-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z1-name">Pizza Margherita</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z1-price">CHF 19</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z1-desc">San Marzano Tomaten, Mozzarella di Bufala und frisches Basilikum</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=200&q=80" alt="Diavola" loading="lazy" data-edit="image" data-edit-key="menu-z2-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z2-name">Pizza Diavola</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z2-price">CHF 23</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z2-desc">Scharfe Salami, Mozzarella, Peperoncini und Tomatensauce</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&q=80" alt="Quattro Formaggi" loading="lazy" data-edit="image" data-edit-key="menu-z3-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z3-name">Quattro Formaggi</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z3-price">CHF 24</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z3-desc">Mozzarella, Gorgonzola, Fontina und Parmigiano Reggiano</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=200&q=80" alt="Prosciutto" loading="lazy" data-edit="image" data-edit-key="menu-z4-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z4-name">Pizza Prosciutto e Rucola</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z4-price">CHF 25</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z4-desc">Prosciutto di Parma, frischer Rucola, Parmesan und Olivenöl</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=200&q=80" alt="Calzone" loading="lazy" data-edit="image" data-edit-key="menu-z5-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z5-name">Calzone Ripieno</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z5-price">CHF 22</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z5-desc">Gefüllte Pizzatasche mit Ricotta, Schinken und Mozzarella</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=200&q=80" alt="Napoli" loading="lazy" data-edit="image" data-edit-key="menu-z6-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-z6-name">Pizza Napoli</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-z6-price">CHF 21</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-z6-desc">Sardellen, Kapern, Oliven, Mozzarella und Tomatensauce</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desserts -->
+    <div class="r-menu-grid" data-menu-panel="desserts" style="display:none">
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=200&q=80" alt="Tiramisu" loading="lazy" data-edit="image" data-edit-key="menu-d1-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d1-name">Tiramisù della Casa</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d1-price">CHF 14</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d1-desc">Hausgemachtes Tiramisu nach Familienrezept</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=200&q=80" alt="Panna Cotta" loading="lazy" data-edit="image" data-edit-key="menu-d2-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d2-name">Panna Cotta</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d2-price">CHF 12</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d2-desc">Vanille-Panna-Cotta mit frischen Waldbeeren</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=200&q=80" alt="Cannoli" loading="lazy" data-edit="image" data-edit-key="menu-d3-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d3-name">Cannoli Siciliani</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d3-price">CHF 13</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d3-desc">Knusprige Röllchen gefüllt mit süsser Ricotta und Pistazien</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&q=80" alt="Gelato" loading="lazy" data-edit="image" data-edit-key="menu-d4-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d4-name">Gelato Artigianale</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d4-price">CHF 10</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d4-desc">Drei Kugeln hausgemachtes Eis — Pistazie, Stracciatella, Zitrone</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=200&q=80" alt="Torta" loading="lazy" data-edit="image" data-edit-key="menu-d5-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d5-name">Torta al Cioccolato</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d5-price">CHF 15</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d5-desc">Warmer Schokoladenkuchen mit flüssigem Kern und Vanilleeis</p>
+            </div>
+        </div>
+        <div class="r-menu-item fade-up visible">
+            <div class="r-menu-item-img"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=200&q=80" alt="Affogato" loading="lazy" data-edit="image" data-edit-key="menu-d6-img"></div>
+            <div class="r-menu-item-info">
+                <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-d6-name">Affogato al Caffè</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-d6-price">CHF 9</span></div>
+                <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-d6-desc">Vanilleeis übergossen mit frischem Espresso</p>
             </div>
         </div>
     </div>
@@ -515,30 +740,87 @@
 <!-- ═══════════ GALLERY ═══════════ -->
 <section class="r-section r-gallery" id="gallery">
     <div class="r-section-header fade-up">
-        <div class="r-section-tag">Impressionen</div>
-        <h2 class="r-section-title">Unser Restaurant</h2>
-        <p class="r-section-desc">Entdecken Sie unser Ambiente, unsere Küche und die Momente, die La Tavola besonders machen.</p>
+        <div class="r-section-tag" data-edit="text" data-edit-key="gallery-tag">Impressionen</div>
+        <h2 class="r-section-title" data-edit="text" data-edit-key="gallery-title">Unser Restaurant</h2>
+        <p class="r-section-desc" data-edit="text" data-edit-key="gallery-desc">Entdecken Sie unser Ambiente, unsere Küche und die Momente, die La Tavola besonders machen.</p>
         <div class="r-divider"></div>
     </div>
 
     <div class="r-gallery-grid">
         <div class="r-gallery-item r-gallery-item--tall fade-up">
-            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant Atmosphere" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant Atmosphere" loading="lazy" data-edit="image" data-edit-key="gallery1">
         </div>
         <div class="r-gallery-item fade-up">
-            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Dining Area" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Dining Area" loading="lazy" data-edit="image" data-edit-key="gallery2">
         </div>
         <div class="r-gallery-item r-gallery-item--wide fade-up">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Presentation" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Presentation" loading="lazy" data-edit="image" data-edit-key="gallery3">
         </div>
         <div class="r-gallery-item fade-up">
-            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Kitchen" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Kitchen" loading="lazy" data-edit="image" data-edit-key="gallery4">
         </div>
         <div class="r-gallery-item fade-up">
-            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Wine Selection" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Wine Selection" loading="lazy" data-edit="image" data-edit-key="gallery5">
         </div>
         <div class="r-gallery-item fade-up">
-            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=600&q=80" alt="Dessert" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=600&q=80" alt="Dessert" loading="lazy" data-edit="image" data-edit-key="gallery6">
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CHEF SPECIAL ═══════════ -->
+<section class="r-chef" data-edit="image" data-edit-key="chef-bg">
+    <div class="r-chef-content fade-up">
+        <div class="r-section-tag" data-edit="text" data-edit-key="chef-tag">Unser Küchenchef</div>
+        <h2 data-edit="text" data-edit-key="chef-title">Leidenschaft auf jedem Teller</h2>
+        <p data-edit="text" data-edit-key="chef-desc">Marco Rossi bringt über 20 Jahre Erfahrung aus den besten Küchen Italiens mit. Seine Philosophie: Nur die besten Zutaten, mit Respekt und Liebe zubereitet.</p>
+        <blockquote class="r-chef-quote" data-edit="text" data-edit-key="chef-quote">
+            «Kochen ist keine Arbeit — es ist die schönste Art, Menschen glücklich zu machen.»
+            <cite data-edit="text" data-edit-key="chef-cite">— Marco Rossi, Küchenchef</cite>
+        </blockquote>
+    </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="r-section r-testimonials">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag" data-edit="text" data-edit-key="test-tag">Bewertungen</div>
+        <h2 class="r-section-title" data-edit="text" data-edit-key="test-title">Was unsere Gäste sagen</h2>
+        <div class="r-divider"></div>
+    </div>
+    <div class="r-test-grid">
+        <div class="r-test-card fade-up">
+            <div class="r-test-stars">★★★★★</div>
+            <p class="r-test-text" data-edit="text" data-edit-key="test1-text">«Fantastisches Essen und ein wunderbares Ambiente. Die Pasta war die beste, die ich ausserhalb Italiens je gegessen habe. Absolut empfehlenswert!»</p>
+            <div class="r-test-author">
+                <div class="r-test-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Review" data-edit="image" data-edit-key="test1-img"></div>
+                <div>
+                    <div class="r-test-name" data-edit="text" data-edit-key="test1-name">Thomas Brunner</div>
+                    <div class="r-test-date">Google Review</div>
+                </div>
+            </div>
+        </div>
+        <div class="r-test-card fade-up">
+            <div class="r-test-stars">★★★★★</div>
+            <p class="r-test-text" data-edit="text" data-edit-key="test2-text">«Perfekt für ein romantisches Abendessen. Der Service war aufmerksam und die Weinempfehlung des Sommeliers hervorragend. Wir kommen sicher wieder.»</p>
+            <div class="r-test-author">
+                <div class="r-test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Review" data-edit="image" data-edit-key="test2-img"></div>
+                <div>
+                    <div class="r-test-name" data-edit="text" data-edit-key="test2-name">Sarah Keller</div>
+                    <div class="r-test-date">Google Review</div>
+                </div>
+            </div>
+        </div>
+        <div class="r-test-card fade-up">
+            <div class="r-test-stars">★★★★★</div>
+            <p class="r-test-text" data-edit="text" data-edit-key="test3-text">«Wir haben unsere Firmenfeier hier gefeiert — alles war perfekt organisiert. Das Catering-Team hat alle Gäste begeistert. Vielen Dank!»</p>
+            <div class="r-test-author">
+                <div class="r-test-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Review" data-edit="image" data-edit-key="test3-img"></div>
+                <div>
+                    <div class="r-test-name" data-edit="text" data-edit-key="test3-name">Andreas Meier</div>
+                    <div class="r-test-date">Google Review</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -547,27 +829,27 @@
 <div class="r-info-bar">
     <div class="r-info-item">
         <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h4>Öffnungszeiten</h4>
-        <p>Di–Sa: 11:30–14:00 / 17:30–22:00<br>So: 11:30–15:00</p>
+        <h4 data-edit="text" data-edit-key="info-hours-title">Öffnungszeiten</h4>
+        <p data-edit="text" data-edit-key="info-hours">Di–Sa: 11:30–14:00 / 17:30–22:00 / So: 11:30–15:00</p>
     </div>
     <div class="r-info-item">
         <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>Standort</h4>
-        <p>Musterstrasse 42<br>9000 St. Gallen</p>
+        <h4 data-edit="text" data-edit-key="info-loc-title">Standort</h4>
+        <p data-edit="text" data-edit-key="info-loc">Musterstrasse 42, 9000 St. Gallen</p>
     </div>
     <div class="r-info-item">
         <div class="r-info-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-        <h4>Kontakt</h4>
-        <p>+41 71 123 45 67<br>info@latavola.ch</p>
+        <h4 data-edit="text" data-edit-key="info-contact-title">Kontakt</h4>
+        <p data-edit="text" data-edit-key="info-contact">+41 71 123 45 67 / info@latavola.ch</p>
     </div>
 </div>
 
 <!-- ═══════════ CONTACT ═══════════ -->
 <section class="r-section r-contact" id="contact">
     <div class="r-section-header fade-up">
-        <div class="r-section-tag">Reservierung</div>
-        <h2 class="r-section-title">Tisch reservieren</h2>
-        <p class="r-section-desc">Reservieren Sie Ihren Tisch ganz einfach online. Wir freuen uns auf Ihren Besuch.</p>
+        <div class="r-section-tag" data-edit="text" data-edit-key="contact-tag">Reservierung</div>
+        <h2 class="r-section-title" data-edit="text" data-edit-key="contact-title">Tisch reservieren</h2>
+        <p class="r-section-desc" data-edit="text" data-edit-key="contact-desc">Reservieren Sie Ihren Tisch ganz einfach online. Wir freuen uns auf Ihren Besuch.</p>
         <div class="r-divider"></div>
     </div>
 
@@ -594,22 +876,22 @@
         </form>
 
         <div class="r-contact-info fade-up">
-            <h3>Besuchen Sie uns</h3>
+            <h3 data-edit="text" data-edit-key="cinfo-title">Besuchen Sie uns</h3>
             <div class="r-contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div><h4>Adresse</h4><p>Musterstrasse 42<br>9000 St. Gallen, Schweiz</p></div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-addr-label">Adresse</h4><p data-edit="text" data-edit-key="cinfo-addr">Musterstrasse 42, 9000 St. Gallen, Schweiz</p></div>
             </div>
             <div class="r-contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div><h4>Telefon</h4><p>+41 71 123 45 67</p></div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-tel-label">Telefon</h4><p data-edit="text" data-edit-key="cinfo-tel">+41 71 123 45 67</p></div>
             </div>
             <div class="r-contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <div><h4>E-Mail</h4><p>info@latavola.ch</p></div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-email-label">E-Mail</h4><p data-edit="text" data-edit-key="cinfo-email">info@latavola.ch</p></div>
             </div>
             <div class="r-contact-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <div><h4>Öffnungszeiten</h4><p>Di–Sa: 11:30–14:00 / 17:30–22:00<br>Sonntag: 11:30–15:00<br>Montag: Geschlossen</p></div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-hours-label">Öffnungszeiten</h4><p data-edit="text" data-edit-key="cinfo-hours">Di–Sa: 11:30–14:00 / 17:30–22:00, Sonntag: 11:30–15:00, Montag: Geschlossen</p></div>
             </div>
             <div class="r-map">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -621,12 +903,12 @@
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="r-footer">
-    <div class="r-footer-logo">La <span>Tavola</span></div>
+    <div class="r-footer-logo" data-edit="logo" data-edit-key="footer-logo">La Tavola</div>
     <div class="r-footer-links">
-        <a href="#about">Über uns</a>
-        <a href="#menu">Speisekarte</a>
-        <a href="#gallery">Galerie</a>
-        <a href="#contact">Reservieren</a>
+        <a href="#about" data-edit="text" data-edit-key="footer-link1">Über uns</a>
+        <a href="#menu" data-edit="text" data-edit-key="footer-link2">Speisekarte</a>
+        <a href="#gallery" data-edit="text" data-edit-key="footer-link3">Galerie</a>
+        <a href="#contact" data-edit="text" data-edit-key="footer-link4">Reservieren</a>
     </div>
     <div class="r-footer-social">
         <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -679,13 +961,18 @@
     document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 })();
 
-// Menu tabs (visual only - demo)
+// Menu tabs — switch panels
 (function(){
     var tabs = document.querySelectorAll('.r-menu-tab');
+    var panels = document.querySelectorAll('[data-menu-panel]');
     tabs.forEach(function(tab){
         tab.addEventListener('click', function(){
             tabs.forEach(function(t){ t.classList.remove('active'); });
             tab.classList.add('active');
+            var target = tab.getAttribute('data-tab');
+            panels.forEach(function(p){
+                p.style.display = p.getAttribute('data-menu-panel') === target ? '' : 'none';
+            });
         });
     });
 })();
@@ -698,6 +985,17 @@
         bg.style.transform = 'translateY(' + (window.pageYOffset * 0.3) + 'px)';
     });
 })();
+</script>
+
+<script>
+if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+    var s = document.createElement('script');
+    s.src = '../js/template-editor.js';
+    s.onload = function() {
+        TemplateEditor.init({ templateId: 'restaurant', clientId: 'demo' });
+    };
+    document.body.appendChild(s);
+}
 </script>
 
 </body>

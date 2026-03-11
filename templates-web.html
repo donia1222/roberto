@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webseiten ab 250 CHF | Professionelle Templates — Lweb</title>
-    <meta name="description" content="Professionelle Webseiten-Templates ab 250 CHF. Moderne Designs für Restaurants, Coiffeure, Handwerker und mehr. Online in 48 Stunden.">
+    <title>Webseiten ab 450 CHF | Professionelle Templates — Lweb</title>
+    <meta name="description" content="Professionelle Webseiten-Templates ab 450 CHF. Moderne Designs für Restaurants, Coiffeure, Handwerker und mehr. Online in 48 Stunden.">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="theme-color" content="#ffffff" id="themeColor">
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -69,29 +69,15 @@
         }
         .tw-accent { color: #fe6c75; }
 
-        /* ═══ HERO — light gradient ═══════════════════════ */
+        /* ═══ HERO — centered + phone showcase ═══════════ */
         .tw-hero {
-            min-height: 100vh; display: flex; align-items: center;
-            background: linear-gradient(180deg, #fff 10%, #f0f4fa 60%, #eef2fb 100%);
-            padding: 80px 24px 60px; position: relative; overflow: hidden;
+            min-height: 10vh; display: flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            background: linear-gradient(180deg, #fff 15%, #e8faf3 100%);
+            padding: 80px 24px 80px; position: relative; overflow: hidden;
         }
-        .tw-hero-bg-icons { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-        .tw-hbi {
-            position:absolute; width:36px; height:36px; opacity:0.5;
-            animation:float 6s ease-in-out infinite;
-        }
-        .tw-hbi:nth-child(1) { top:12%; left:8%; color:#ffb3ba; animation-duration:7s; }
-        .tw-hbi:nth-child(2) { top:25%; right:12%; color:#aed9f7; animation-delay:1s; width:28px; height:28px; animation-duration:8s; }
-        .tw-hbi:nth-child(3) { bottom:30%; left:15%; color:#b8f0cc; animation-delay:2s; width:32px; height:32px; animation-duration:9s; }
-        .tw-hbi:nth-child(4) { top:60%; right:8%; color:#ffd4a8; animation-delay:0.5s; animation-duration:6.5s; }
-        .tw-hbi:nth-child(5) { bottom:15%; left:45%; color:#d4b8e8; animation-delay:1.5s; width:24px; height:24px; animation-duration:10s; }
-        .tw-hbi:nth-child(6) { top:8%; left:55%; color:#9fe7e7; animation-delay:3s; width:30px; height:30px; animation-duration:8.5s; }
-        .tw-hbi:nth-child(7) { top:40%; left:35%; color:#fff09e; animation-delay:2.5s; width:22px; height:22px; animation-duration:11s; }
-        .tw-hbi:nth-child(8) { bottom:25%; right:20%; color:#ffb3ba; animation-delay:0.8s; width:26px; height:26px; animation-duration:7.5s; }
-
-        .tw-hero-grid {
-            max-width:1140px; margin:0 auto; width:100%;
-            display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+        .tw-hero-center {
+            text-align:center; max-width:780px; margin:0 auto;
         }
         .tw-hero-badge {
             display:inline-flex; align-items:center; gap:8px;
@@ -112,12 +98,12 @@
         }
         .tw-hero-sub {
             font-size:17px; line-height:1.7; color:#6b7d99;
-            max-width:480px; margin-bottom:32px;
+            max-width:560px; margin:0 auto 32px;
             animation:fadeUp 0.6s 0.3s ease both;
         }
-        .tw-hero-ctas { display:flex; gap:14px; flex-wrap:wrap; animation:fadeUp 0.6s 0.45s ease both; }
+        .tw-hero-ctas { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.6s 0.45s ease both; }
         .tw-hero-pills {
-            display:flex; gap:10px; flex-wrap:wrap; margin-top:28px;
+            display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; justify-content:center;
             animation:fadeUp 0.6s 0.55s ease both;
         }
         .tw-hero-pill {
@@ -128,99 +114,43 @@
         }
         .tw-hero-pill svg { width:14px; height:14px; color:#4dd35b; }
 
-        /* ── Hero Visual: browser + phone ─────────────── */
-        .tw-hero-visual { animation:fadeUp 0.8s 0.3s ease both; position:relative; }
-        .tw-browser {
-            background:#1c2d3e; border-radius:16px; overflow:hidden;
-            box-shadow:0 30px 80px rgba(0,0,0,0.12);
+        /* ── Phone Showcase — fan arrangement ────────── */
+        .tw-phones-showcase {
+            width:100%; max-width:1000px; margin:36px auto 0;
+            display:flex; align-items:flex-end; justify-content:center;
+            position:relative; height:460px;
+            animation:fadeUp 0.8s 0.5s ease both;
         }
-        .tw-browser-bar {
-            display:flex; align-items:center; gap:8px;
-            padding:12px 16px; background:rgba(0,0,0,0.25);
+        .tw-phone-mock {
+            position:absolute; width:200px;
+            background:#0a1520; border-radius:28px; padding:6px;
+            box-shadow:0 25px 60px rgba(0,0,0,0.18);
+            transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+            bottom:0;
         }
-        .tw-dot { width:10px; height:10px; border-radius:50%; }
-        .tw-dot--r { background:#ff5f56; }
-        .tw-dot--y { background:#ffbd2e; }
-        .tw-dot--g { background:#27c93f; }
-        .tw-browser-url {
-            flex:1; margin-left:12px; background:rgba(255,255,255,0.08);
-            border-radius:6px; padding:5px 12px; font-size:12px;
-            color:#8a9bb3; font-family:'Plus Jakarta Sans',sans-serif;
+        .tw-phone-mock:hover { transform:translateY(-16px) !important; box-shadow:0 35px 80px rgba(0,0,0,0.25); z-index:10 !important; }
+        .tw-phone-inner {
+            background:#fff; border-radius:22px; overflow:hidden;
+            position:relative;
         }
-        .tw-browser-body {
-            padding:0; position:relative; min-height:300px;
-            background:#fff; overflow:hidden;
+        .tw-phone-notch {
+            position:absolute; top:8px; left:50%; transform:translateX(-50%);
+            width:60px; height:6px; background:rgba(0,0,0,0.15);
+            border-radius:10px; z-index:2;
         }
-        /* Template screens cycling inside browser */
-        .tw-screen { position:absolute; inset:0; opacity:0; transition:opacity 0.5s ease, transform 0.5s ease; transform:translateY(10px); }
-        .tw-screen.active { opacity:1; transform:translateY(0); }
-        .tw-screen:first-child { position:relative; }
-
-        /* Screen 1: Restaurant */
-        .tw-scr-restaurant { background:linear-gradient(180deg,#fff8f0 0%,#fff 100%); padding:20px; }
-        .tw-scr-restaurant .tw-scr-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-        .tw-scr-restaurant .tw-scr-logo { font-size:16px; font-weight:800; color:#c0392b; }
-        .tw-scr-restaurant .tw-scr-links { display:flex; gap:12px; }
-        .tw-scr-restaurant .tw-scr-links span { font-size:10px; color:#6b7d99; font-weight:600; }
-        .tw-scr-restaurant .tw-scr-hero-img { height:120px; background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; position:relative; overflow:hidden; }
-        .tw-scr-restaurant .tw-scr-hero-img span { font-size:32px; z-index:1; }
-        .tw-scr-restaurant .tw-scr-title { font-size:14px; font-weight:800; color:#0f1d2c; margin-bottom:4px; }
-        .tw-scr-restaurant .tw-scr-desc { font-size:10px; color:#6b7d99; margin-bottom:12px; }
-        .tw-scr-restaurant .tw-scr-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
-        .tw-scr-restaurant .tw-scr-card { background:#fff; border-radius:8px; padding:10px 8px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
-        .tw-scr-restaurant .tw-scr-card span:first-child { font-size:18px; display:block; margin-bottom:4px; }
-        .tw-scr-restaurant .tw-scr-card span:last-child { font-size:9px; font-weight:700; color:#0f1d2c; }
-
-        /* Screen 2: Coiffeur */
-        .tw-scr-coiffeur { background:linear-gradient(180deg,#f8f0ff 0%,#fff 100%); padding:20px; }
-        .tw-scr-coiffeur .tw-scr-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-        .tw-scr-coiffeur .tw-scr-logo { font-size:16px; font-weight:800; color:#8e44ad; }
-        .tw-scr-coiffeur .tw-scr-hero-img { height:120px; background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-        .tw-scr-coiffeur .tw-scr-hero-img span { font-size:32px; }
-        .tw-scr-coiffeur .tw-scr-title { font-size:14px; font-weight:800; color:#0f1d2c; margin-bottom:4px; }
-        .tw-scr-coiffeur .tw-scr-desc { font-size:10px; color:#6b7d99; margin-bottom:12px; }
-        .tw-scr-coiffeur .tw-scr-services { display:flex; flex-direction:column; gap:6px; }
-        .tw-scr-coiffeur .tw-scr-svc { display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:#fff; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
-        .tw-scr-coiffeur .tw-scr-svc-name { font-size:11px; font-weight:700; color:#0f1d2c; }
-        .tw-scr-coiffeur .tw-scr-svc-price { font-size:11px; font-weight:800; color:#8e44ad; }
-
-        /* Screen 3: Handwerker */
-        .tw-scr-handwerker { background:linear-gradient(180deg,#f0faf4 0%,#fff 100%); padding:20px; }
-        .tw-scr-handwerker .tw-scr-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-        .tw-scr-handwerker .tw-scr-logo { font-size:16px; font-weight:800; color:#27ae60; }
-        .tw-scr-handwerker .tw-scr-hero-img { height:120px; background:linear-gradient(135deg,#a8e6cf 0%,#dcedc1 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-        .tw-scr-handwerker .tw-scr-hero-img span { font-size:32px; }
-        .tw-scr-handwerker .tw-scr-title { font-size:14px; font-weight:800; color:#0f1d2c; margin-bottom:4px; }
-        .tw-scr-handwerker .tw-scr-desc { font-size:10px; color:#6b7d99; margin-bottom:12px; }
-        .tw-scr-handwerker .tw-scr-features { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-        .tw-scr-handwerker .tw-scr-feat { display:flex; align-items:center; gap:6px; padding:8px 10px; background:#fff; border-radius:8px; font-size:10px; font-weight:600; color:#0f1d2c; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
-        .tw-scr-handwerker .tw-scr-feat svg { width:14px; height:14px; color:#27ae60; flex-shrink:0; }
-
-        /* Floating phone mockup */
-        .tw-hero-phone {
-            position:absolute; bottom:-20px; right:-30px; width:140px;
-            background:#0a1520; border-radius:24px; padding:4px;
-            box-shadow:0 20px 60px rgba(0,0,0,0.18);
-            animation:float 5s 1s ease-in-out infinite; z-index:2;
+        .tw-phone-screen { width:100%; height:340px; object-fit:cover; display:block; }
+        .tw-phone-label {
+            position:absolute; bottom:-28px; left:50%; transform:translateX(-50%);
+            font-size:11px; font-weight:700; color:#6b7d99; white-space:nowrap;
+            text-transform:uppercase; letter-spacing:0.05em;
         }
-        .tw-hero-phone-inner {
-            background:#fff; border-radius:20px; overflow:hidden; padding:12px;
-        }
-        .tw-hero-phone-notch { width:40px; height:4px; background:#e2e8f0; border-radius:4px; margin:0 auto 8px; }
-        .tw-hero-phone-content { font-size:8px; color:#6b7d99; text-align:center; }
-        .tw-hero-phone-content .tw-phone-title { font-size:10px; font-weight:800; color:#0f1d2c; margin-bottom:4px; }
-        .tw-hero-phone-bar { display:flex; gap:3px; margin-top:6px; }
-        .tw-hero-phone-bar span { flex:1; height:16px; border-radius:4px; }
-
-        /* Floating bubbles */
-        .tw-bubble {
-            position:absolute; padding:8px 14px; border-radius:12px; font-size:11px;
-            font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,0.1); z-index:3;
-            animation:float 4s ease-in-out infinite;
-        }
-        .tw-bubble-1 { top:20px; right:-20px; background:#fff; color:#4dd35b; animation-delay:0.5s; }
-        .tw-bubble-1 svg { width:14px; height:14px; display:inline; vertical-align:-2px; margin-right:4px; }
-        .tw-bubble-2 { bottom:60px; left:-20px; background:#fe6c75; color:#fff; animation-delay:1.5s; animation-duration:5s; }
+        /* Fan positions — 6 phones, tighter overlap */
+        .tw-phone-mock:nth-child(1) { left:2%; transform:rotate(-14deg) translateY(-20px); z-index:1; width:170px; }
+        .tw-phone-mock:nth-child(2) { left:14%; transform:rotate(-8deg) translateY(-6px); z-index:2; width:185px; }
+        .tw-phone-mock:nth-child(3) { left:28%; transform:rotate(-3deg) translateY(0); z-index:4; width:200px; }
+        .tw-phone-mock:nth-child(4) { right:28%; transform:rotate(3deg) translateY(0); z-index:4; width:200px; }
+        .tw-phone-mock:nth-child(5) { right:14%; transform:rotate(8deg) translateY(-6px); z-index:2; width:185px; }
+        .tw-phone-mock:nth-child(6) { right:2%; transform:rotate(14deg) translateY(-20px); z-index:1; width:170px; }
 
         /* ═══ BUTTONS ═══════════════════════════════════════ */
         .tw-btn-red {
@@ -267,43 +197,52 @@
             background:#fe6c75; flex-shrink:0;
         }
 
-        /* ═══ HOW IT WORKS — timeline with images ═════════ */
-        .tw-how-section { background:#f4f7fb; }
-        .tw-timeline { max-width:1000px; margin:48px auto 0; position:relative; }
-        .tw-timeline::before {
-            content:''; position:absolute; left:50%; top:0; bottom:0; width:3px;
-            background:linear-gradient(180deg,#fe6c75 0%,#15a0da 50%,#4dd35b 100%);
-            transform:translateX(-50%); border-radius:3px;
-        }
-        .tw-tl-item {
+        /* ═══ HOW IT WORKS — card layout (goodbarber style) ═════ */
+        .tw-how-section { background:#e8faf3; }
+        .tw-how-card {
+            max-width:1140px; margin:48px auto 0;
+            background:#fff; border-radius:24px; padding:60px;
             display:grid; grid-template-columns:1fr 1fr; gap:60px;
-            align-items:center; margin-bottom:80px; position:relative;
+            align-items:start; border:1px solid rgba(0,0,0,0.05);
+            box-shadow:0 8px 40px rgba(0,0,0,0.04);
             opacity:0; transform:translateY(30px);
             transition:all 0.6s cubic-bezier(0.22,1,0.36,1);
         }
-        .tw-tl-item.tw-visible { opacity:1; transform:translateY(0); }
-        .tw-tl-item:last-child { margin-bottom:0; }
-        .tw-tl-item:nth-child(even) .tw-tl-img { order:2; }
-        .tw-tl-item:nth-child(even) .tw-tl-content { order:1; text-align:right; }
-        .tw-tl-dot {
-            position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-            width:48px; height:48px; border-radius:50%;
+        .tw-how-card.tw-visible { opacity:1; transform:translateY(0); }
+        .tw-how-left h3 {
+            font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.15; margin:0 0 32px;
+        }
+        .tw-how-dark-box {
+            background:#0f1d2c; border-radius:18px; padding:36px;
+            color:#fff;
+        }
+        .tw-how-dark-box .tw-how-stars { color:#4dd35b; font-size:18px; margin-bottom:16px; display:block; }
+        .tw-how-dark-box p {
+            font-size:18px; font-weight:700; line-height:1.5; color:#fff; margin:0 0 16px;
+        }
+        .tw-how-dark-box span { font-size:14px; color:#94a3b8; line-height:1.6; display:block; }
+        .tw-how-right { display:flex; flex-direction:column; gap:32px; }
+        .tw-how-feat {
+            display:flex; align-items:flex-start; gap:18px;
+            transition:transform 0.3s;
+        }
+        .tw-how-feat:hover { transform:translateX(4px); }
+        .tw-how-feat-icon {
+            width:52px; height:52px; border-radius:14px; flex-shrink:0;
             display:flex; align-items:center; justify-content:center;
-            font-size:18px; font-weight:800; color:#fff; z-index:2;
-            box-shadow:0 4px 16px rgba(0,0,0,0.15);
+            background:#e8faf3;
         }
-        .tw-tl-item:nth-child(1) .tw-tl-dot { background:linear-gradient(135deg,#fe6c75,#e1545d); }
-        .tw-tl-item:nth-child(2) .tw-tl-dot { background:linear-gradient(135deg,#15a0da,#0089c2); }
-        .tw-tl-item:nth-child(3) .tw-tl-dot { background:linear-gradient(135deg,#4dd35b,#2fb83e); }
-        .tw-tl-img {
-            border-radius:16px; overflow:hidden;
-            box-shadow:0 16px 48px rgba(0,0,0,0.1);
-            transition:transform 0.4s ease;
+        .tw-how-feat-icon svg { width:24px; height:24px; color:#4dd35b; }
+        .tw-how-feat-text h4 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 4px; }
+        .tw-how-feat-text p { font-size:14px; color:#6b7d99; line-height:1.6; margin:0; }
+        @media (max-width:1024px) {
+            .tw-how-card { grid-template-columns:1fr; padding:40px 28px; gap:40px; }
         }
-        .tw-tl-item:hover .tw-tl-img { transform:scale(1.02); }
-        .tw-tl-img img { width:100%; height:240px; object-fit:cover; display:block; }
-        .tw-tl-content h3 { font-size:24px; font-weight:800; color:#0f1d2c; margin:0 0 12px; }
-        .tw-tl-content p { font-size:15px; color:#6b7d99; line-height:1.7; margin:0; }
+        @media (max-width:600px) {
+            .tw-how-card { padding:28px 20px; border-radius:16px; }
+            .tw-how-left h3 { font-size:26px; }
+            .tw-how-dark-box { padding:24px; }
+        }
 
         /* ═══ TEMPLATE GALLERY — 3D cards + particles ════ */
         .tw-gallery-section { background:#f0f4fa; position:relative; overflow:hidden; }
@@ -470,6 +409,92 @@
             background:rgba(254,108,117,0.08); padding:6px 16px; border-radius:600px;
         }
 
+        /* ═══ EDITOR SHOWCASE — demo section ════════════════ */
+        .tw-editor-section { background:#fff; }
+        body.dark-mode .tw-editor-section { background:#0f1520; }
+        .tw-editor-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:60px;
+            align-items:center; max-width:1100px; margin:0 auto;
+        }
+        .tw-editor-visual {
+            position:relative; border-radius:20px; overflow:hidden;
+            box-shadow:0 20px 60px rgba(0,0,0,0.12);
+            border:1px solid rgba(0,0,0,0.06);
+        }
+        body.dark-mode .tw-editor-visual { box-shadow:0 20px 60px rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.06); }
+        .tw-editor-visual img { width:100%; display:block; }
+        .tw-editor-badge-demo {
+            position:absolute; top:16px; right:16px;
+            background:rgba(254,108,117,0.92); width:36px; height:36px;
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:tw-badge-pulse 2.5s ease infinite;
+        }
+        .tw-editor-badge-demo svg { width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2; }
+        @keyframes tw-badge-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+        .tw-editor-badge-demo--blue {
+            background:rgba(21,160,218,0.92); top:auto; bottom:80px; right:40px;
+            animation-delay:0.8s;
+        }
+        .tw-editor-content h3 {
+            font-size:14px; font-weight:700; text-transform:uppercase;
+            letter-spacing:0.08em; color:#fe6c75; margin:0 0 16px;
+        }
+        .tw-editor-content h2 {
+            font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.2; margin:0 0 20px;
+        }
+        body.dark-mode .tw-editor-content h2 { color:#f1f5f9; }
+        .tw-editor-content > p {
+            font-size:16px; color:#6b7d99; line-height:1.8; margin:0 0 28px;
+        }
+        body.dark-mode .tw-editor-content > p { color:#94a3b8; }
+        .tw-editor-features { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+        .tw-editor-feat {
+            display:flex; align-items:flex-start; gap:14px;
+            padding:14px 18px; border-radius:14px;
+            background:#f8fafc; border:1px solid rgba(0,0,0,0.04);
+            transition:all 0.3s;
+        }
+        .tw-editor-feat:hover { transform:translateX(4px); box-shadow:0 4px 16px rgba(0,0,0,0.04); }
+        body.dark-mode .tw-editor-feat { background:#1a2030; border-color:rgba(255,255,255,0.04); }
+        .tw-editor-feat-icon {
+            width:38px; height:38px; border-radius:10px; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .tw-editor-feat-icon svg { width:20px; height:20px; stroke-width:2; fill:none; }
+        .tw-editor-feat-icon--red { background:rgba(254,108,117,0.1); }
+        .tw-editor-feat-icon--red svg { stroke:#fe6c75; }
+        .tw-editor-feat-icon--blue { background:rgba(21,160,218,0.1); }
+        .tw-editor-feat-icon--blue svg { stroke:#15a0da; }
+        .tw-editor-feat-icon--green { background:rgba(77,211,91,0.1); }
+        .tw-editor-feat-icon--green svg { stroke:#4dd35b; }
+        .tw-editor-feat-icon--orange { background:rgba(255,165,0,0.1); }
+        .tw-editor-feat-icon--orange svg { stroke:#ffa500; }
+        .tw-editor-feat h4 { font-size:15px; font-weight:700; color:#0f1d2c; margin:0 0 3px; }
+        body.dark-mode .tw-editor-feat h4 { color:#f1f5f9; }
+        .tw-editor-feat p { font-size:13px; color:#6b7d99; margin:0; line-height:1.5; }
+        body.dark-mode .tw-editor-feat p { color:#94a3b8; }
+        .tw-editor-try {
+            display:inline-flex; align-items:center; gap:10px;
+            padding:14px 28px; border-radius:12px;
+            background:linear-gradient(135deg,#fe6c75,#e1545d);
+            color:#fff; font-size:15px; font-weight:700; text-decoration:none;
+            transition:all 0.3s; box-shadow:0 4px 16px rgba(254,108,117,0.3);
+        }
+        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.4); }
+        .tw-editor-try svg { width:18px; height:18px; }
+        .tw-editor-note {
+            margin-top:14px; font-size:13px; color:#94a3b8; display:flex;
+            align-items:center; gap:6px;
+        }
+        .tw-editor-note svg { width:14px; height:14px; color:#4dd35b; flex-shrink:0; }
+        @media (max-width:1024px) {
+            .tw-editor-grid { grid-template-columns:1fr; gap:40px; }
+            .tw-editor-visual { max-width:500px; margin:0 auto; }
+        }
+        @media (max-width:600px) {
+            .tw-editor-content h2 { font-size:28px; }
+        }
+
         /* ═══ ADVANTAGE — red gradient ════════════════════ */
         .tw-advantage {
             background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
@@ -508,40 +533,29 @@
         }
         .tw-cta-note svg { width:16px; height:16px; color:#4dd35b; }
 
-        /* ═══ NAVIGATION DOTS — template selector ═════════ */
-        .tw-nav-dots {
-            display:flex; gap:8px; justify-content:center; margin-top:16px;
-        }
-        .tw-nav-dot {
-            width:10px; height:10px; border-radius:50%;
-            background:rgba(0,0,0,0.12); cursor:pointer;
-            transition:all 0.3s ease; border:none; padding:0;
-        }
-        .tw-nav-dot.active { background:#fe6c75; transform:scale(1.3); }
+        /* (nav dots removed — phone showcase replaces browser) */
 
         /* ═══ DARK MODE ═══════════════════════════════════ */
         body.dark-mode { background:#1a1f2e; }
-        body.dark-mode .tw-hero { background:linear-gradient(180deg,#1a1f2e 10%,#151a27 60%,#121721 100%); }
+        body.dark-mode .tw-hero { background:linear-gradient(180deg,#1a1f2e 15%,#121f2a 100%); }
         body.dark-mode .tw-hero-h1 { color:#f1f5f9; }
         body.dark-mode .tw-hero-sub { color:#94a3b8; }
         body.dark-mode .tw-hero-pill { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:#c8d5e3; }
         body.dark-mode .tw-hero-badge { background:rgba(254,108,117,0.15); border-color:rgba(254,108,117,0.3); }
-        body.dark-mode .tw-browser { box-shadow:0 30px 80px rgba(0,0,0,0.4); }
-        body.dark-mode .tw-browser-body { background:#1e2536; }
-        body.dark-mode .tw-scr-restaurant, body.dark-mode .tw-scr-coiffeur, body.dark-mode .tw-scr-handwerker { background:#1e2536 !important; }
-        body.dark-mode .tw-scr-restaurant .tw-scr-title, body.dark-mode .tw-scr-coiffeur .tw-scr-title, body.dark-mode .tw-scr-handwerker .tw-scr-title { color:#f1f5f9; }
-        body.dark-mode .tw-scr-restaurant .tw-scr-card, body.dark-mode .tw-scr-coiffeur .tw-scr-svc, body.dark-mode .tw-scr-handwerker .tw-scr-feat { background:#283040; box-shadow:none; color:#e2e8f0; }
-        body.dark-mode .tw-hero-phone-inner { background:#1e2536; }
-        body.dark-mode .tw-bubble-1 { background:#1e2536; }
+        body.dark-mode .tw-phone-mock { box-shadow:0 25px 60px rgba(0,0,0,0.45); }
+        body.dark-mode .tw-phone-inner { background:#1e2536; }
+        body.dark-mode .tw-phone-label { color:#8a9bb3; }
         body.dark-mode .tw-marquee-wrap { background:#151a27; }
         body.dark-mode .tw-marquee-wrap::before { background:linear-gradient(90deg,#151a27,transparent); }
         body.dark-mode .tw-marquee-wrap::after { background:linear-gradient(270deg,#151a27,transparent); }
         body.dark-mode .tw-marquee-item { color:#8a9bb3; }
         body.dark-mode .tw-how-section { background:#1a1f2e; }
-        body.dark-mode .tw-timeline::before { opacity:0.6; }
-        body.dark-mode .tw-tl-content h3 { color:#f1f5f9; }
-        body.dark-mode .tw-tl-content p { color:#94a3b8; }
-        body.dark-mode .tw-tl-img { box-shadow:0 12px 40px rgba(0,0,0,0.3); }
+        body.dark-mode .tw-how-card { background:#1e2536; border-color:rgba(255,255,255,0.06); }
+        body.dark-mode .tw-how-card h3 { color:#f1f5f9; }
+        body.dark-mode .tw-how-card p { color:#94a3b8; }
+        body.dark-mode .tw-how-dark-box { background:#0f1520; }
+        body.dark-mode .tw-how-dark-box p { color:#c8d5e3; }
+        body.dark-mode .tw-how-dark-box span { color:#8a9bb3; }
         body.dark-mode .tw-gallery-section { background:#151a27; }
         body.dark-mode .tw-tpl-inner { background:rgba(30,37,54,0.9); border-color:#2d3548; }
         body.dark-mode .tw-tpl-card:hover .tw-tpl-inner { background:rgba(35,42,60,0.95); }
@@ -558,33 +572,18 @@
         body.dark-mode .tw-extra-card { background:#1e2536; border-color:#2d3548; }
         body.dark-mode .tw-extra-card h4 { color:#f1f5f9; }
         body.dark-mode .tw-extra-card p { color:#94a3b8; }
-        body.dark-mode .tw-nav-dot { background:rgba(255,255,255,0.15); }
         body.dark-mode .tw-btn-ghost { color:#c8d5e3; border-color:rgba(255,255,255,0.15); }
         body.dark-mode .tw-btn-ghost:hover { color:#fe6c75; border-color:#fe6c75; }
-        body.dark-mode .tw-hero-phone { box-shadow:0 20px 60px rgba(0,0,0,0.4); }
-        body.dark-mode .tw-scr-restaurant .tw-scr-desc, body.dark-mode .tw-scr-coiffeur .tw-scr-desc, body.dark-mode .tw-scr-handwerker .tw-scr-desc { color:#8a9bb3; }
-        body.dark-mode .tw-scr-restaurant .tw-scr-links span { color:#8a9bb3; }
-        body.dark-mode .tw-scr-restaurant .tw-scr-card span:last-child { color:#e2e8f0; }
-        body.dark-mode .tw-scr-coiffeur .tw-scr-svc-name { color:#e2e8f0; }
-        body.dark-mode .tw-scr-handwerker .tw-scr-feat { color:#e2e8f0; }
 
         /* ═══ RESPONSIVE ═══════════════════════════════════ */
         @media (max-width:1024px) {
-            .tw-hero-grid { grid-template-columns:1fr; text-align:center; }
-            .tw-hero-sub { margin-left:auto; margin-right:auto; }
-            .tw-hero-ctas { justify-content:center; }
-            .tw-hero-pills { justify-content:center; }
-            .tw-hero-visual { max-width:500px; margin:0 auto; }
-            .tw-hero-phone { display:none; }
-            .tw-bubble { display:none; }
             .tw-hero-h1 { font-size:40px; }
-            .tw-timeline::before { left:20px; }
-            .tw-tl-item { grid-template-columns:1fr; gap:20px; }
-            .tw-tl-item:nth-child(even) .tw-tl-img { order:0; }
-            .tw-tl-item:nth-child(even) .tw-tl-content { order:0; text-align:left; }
-            .tw-tl-dot { left:20px !important; top:0; }
-            .tw-tl-content { padding-left:50px; }
-            .tw-tl-img { padding-left:50px; }
+            .tw-phones-showcase { height:340px; margin-top:28px; max-width:800px; }
+            .tw-phone-mock { width:130px !important; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:145px !important; }
+            .tw-phone-screen { height:240px; }
+            .tw-how-grid { grid-template-columns:1fr; }
+            .tw-how-left { max-width:600px; }
             .tw-gallery-grid { grid-template-columns:1fr 1fr; }
             .tw-includes-grid { grid-template-columns:1fr; }
             .tw-stats { gap:40px; flex-wrap:wrap; }
@@ -592,10 +591,25 @@
             .tw-advantage { padding:40px 28px; margin:0 20px; }
             .tw-advantage h3 { font-size:22px; }
         }
+        @media (max-width:768px) {
+            .tw-phones-showcase { height:260px; overflow:hidden; margin-top:24px; max-width:600px; }
+            .tw-phone-mock { width:100px !important; border-radius:20px; padding:4px; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:115px !important; }
+            .tw-phone-inner { border-radius:16px; }
+            .tw-phone-screen { height:210px; }
+            .tw-phone-notch { width:40px; height:4px; top:5px; }
+            .tw-phone-label { display:none; }
+        }
         @media (max-width:600px) {
-            .tw-hero { padding:60px 20px 40px; min-height:auto; }
+            .tw-hero { padding:70px 20px 30px; min-height:auto; }
             .tw-hero-h1 { font-size:32px; }
             .tw-hero-sub { font-size:15px; }
+            .tw-phones-showcase { height:200px; margin-top:20px; max-width:100%; }
+            .tw-phone-mock { width:80px !important; border-radius:14px; padding:3px; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:92px !important; }
+            .tw-phone-inner { border-radius:13px; }
+            .tw-phone-screen { height:170px; }
+            .tw-phone-notch { width:30px; height:3px; top:4px; }
             .tw-section { padding:64px 20px; }
             .tw-gallery-grid { grid-template-columns:1fr; }
             .tw-extras-scroll { gap:16px; }
@@ -620,7 +634,7 @@
         </a>
         <div class="header-title" id="headerTitle" data-i18n-html="tw.header.title">
             <span>Webseiten ab</span>
-            <span class="accent">250 CHF</span>
+            <span class="accent">450 CHF</span>
         </div>
         <nav class="header-nav" aria-label="Navigation">
             <a href="#tw-how" class="header-nav-item"><span data-i18n="tw.nav.how">So funktioniert's</span></a>
@@ -658,87 +672,70 @@
 
 <!-- ═════════════════ HERO ═════════════════ -->
 <section class="tw-hero">
-    <div class="tw-hero-bg-icons" aria-hidden="true">
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
-        <svg class="tw-hbi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/></svg>
+    <div class="tw-hero-center">
+
+        <h1 class="tw-hero-h1" data-i18n-html="tw.h1">Professionelle Webseite<br><span class="tw-accent">ab 450 CHF</span></h1>
+        <p class="tw-hero-sub" data-i18n="tw.sub">Nicht jedes Unternehmen braucht eine grosse, teure Website. Für viele reicht eine moderne, professionelle Präsenz im Internet — und die gibt es jetzt zum kleinen Preis.</p>
+        <div class="tw-hero-ctas">
+            <a href="#tw-templates" class="tw-btn-red">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span data-i18n="tw.cta1">Templates ansehen</span>
+            </a>
+            <a href="#tw-cta" class="tw-btn-ghost">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span data-i18n="tw.cta2">Kontakt aufnehmen</span>
+            </a>
+        </div>
+        <div class="tw-hero-pills">
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill1">Online in 48h</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill2">Mobilfreundlich</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill3">Eigene Domain</span></span>
+        </div>
     </div>
 
-    <div class="tw-hero-grid">
-        <div class="tw-hero-text">
-            <div class="tw-hero-badge"><span class="blink"></span> <span data-i18n="tw.badge">Templates · Professionell · Ab 250 CHF</span></div>
-            <h1 class="tw-hero-h1" data-i18n-html="tw.h1">Professionelle Webseite<br><span class="tw-accent">ab 250 CHF</span></h1>
-            <p class="tw-hero-sub" data-i18n="tw.sub">Nicht jedes Unternehmen braucht eine grosse, teure Website. Für viele reicht eine moderne, professionelle Präsenz im Internet — und die gibt es jetzt zum kleinen Preis.</p>
-            <div class="tw-hero-ctas">
-                <a href="#tw-templates" class="tw-btn-red">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    <span data-i18n="tw.cta1">Templates ansehen</span>
-                </a>
-                <a href="#tw-cta" class="tw-btn-ghost">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                    <span data-i18n="tw.cta2">Kontakt aufnehmen</span>
-                </a>
+    <!-- Phone Showcase — 6 phones with template screenshots -->
+    <div class="tw-phones-showcase">
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Restaurant">
             </div>
-            <div class="tw-hero-pills">
-                <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill1">Online in 48h</span></span>
-                <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill2">Mobilfreundlich</span></span>
-                <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill3">Eigene Domain</span></span>
-            </div>
+            <div class="tw-phone-label">Restaurant</div>
         </div>
-
-        <!-- Visual: browser mockup with rotating template screens -->
-        <div class="tw-hero-visual">
-            <div class="tw-browser">
-                <div class="tw-browser-bar">
-                    <span class="tw-dot tw-dot--r"></span>
-                    <span class="tw-dot tw-dot--y"></span>
-                    <span class="tw-dot tw-dot--g"></span>
-                    <span class="tw-browser-url">www.ihr-unternehmen.ch</span>
-                </div>
-                <div class="tw-browser-body" id="twBrowserBody">
-                    <div class="tw-screen active">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant" style="width:100%;height:300px;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-screen">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Coiffeur" style="width:100%;height:300px;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-screen">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Handwerker" style="width:100%;height:300px;object-fit:cover;display:block">
-                    </div>
-                </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Coiffeur">
             </div>
-            <!-- Navigation dots -->
-            <div class="tw-nav-dots" id="twNavDots">
-                <button class="tw-nav-dot active" data-index="0" aria-label="Restaurant"></button>
-                <button class="tw-nav-dot" data-index="1" aria-label="Coiffeur"></button>
-                <button class="tw-nav-dot" data-index="2" aria-label="Handwerker"></button>
+            <div class="tw-phone-label">Coiffeur</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80" alt="Handwerker">
             </div>
-            <!-- Floating phone -->
-            <div class="tw-hero-phone">
-                <div class="tw-hero-phone-inner">
-                    <div class="tw-hero-phone-notch"></div>
-                    <div class="tw-hero-phone-content">
-                        <div class="tw-phone-title">Mobile</div>
-                        <div>100% responsive</div>
-                        <div class="tw-hero-phone-bar">
-                            <span style="background:#fe6c75"></span>
-                            <span style="background:#15a0da"></span>
-                            <span style="background:#4dd35b"></span>
-                        </div>
-                    </div>
-                </div>
+            <div class="tw-phone-label">Handwerker</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Berater">
             </div>
-            <!-- Floating bubbles -->
-            <div class="tw-bubble tw-bubble-1">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span data-i18n="tw.pill1">Online in 48h</span>
+            <div class="tw-phone-label">Berater</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80" alt="Fitness">
             </div>
-            <div class="tw-bubble tw-bubble-2" data-i18n="tw.price.from">ab 250 CHF</div>
+            <div class="tw-phone-label">Fitness</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&q=80" alt="Lokales Geschäft">
+            </div>
+            <div class="tw-phone-label">Shop</div>
         </div>
     </div>
 </section>
@@ -749,7 +746,7 @@
         <span class="tw-marquee-item" data-i18n="tw.mq1">Professionelles Design</span>
         <span class="tw-marquee-item" data-i18n="tw.mq2">Responsive</span>
         <span class="tw-marquee-item" data-i18n="tw.mq3">Online in 48h</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq4">Ab 250 CHF</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq4">Ab 450 CHF</span>
         <span class="tw-marquee-item" data-i18n="tw.mq5">Eigene Domain</span>
         <span class="tw-marquee-item" data-i18n="tw.mq6">Alle Branchen</span>
         <span class="tw-marquee-item" data-i18n="tw.mq7">SSL inklusive</span>
@@ -757,7 +754,7 @@
         <span class="tw-marquee-item">Professionelles Design</span>
         <span class="tw-marquee-item">Responsive</span>
         <span class="tw-marquee-item">Online in 48h</span>
-        <span class="tw-marquee-item">Ab 250 CHF</span>
+        <span class="tw-marquee-item">Ab 450 CHF</span>
         <span class="tw-marquee-item">Eigene Domain</span>
         <span class="tw-marquee-item">Alle Branchen</span>
         <span class="tw-marquee-item">SSL inklusive</span>
@@ -765,36 +762,49 @@
     </div>
 </div>
 
-<!-- ═════════════════ HOW IT WORKS — TIMELINE ═════════════════ -->
+<!-- ═════════════════ HOW IT WORKS — CARD LAYOUT ═════════════════ -->
 <section class="tw-section tw-how-section" id="tw-how">
     <div class="tw-wrap">
         <div class="tw-label" data-i18n="tw.how.label">So einfach geht's</div>
         <h2 class="tw-h2" data-i18n-html="tw.how.h2">In 3 Schritten<br><span class="tw-accent">online</span></h2>
         <p class="tw-sub" data-i18n="tw.how.sub">Wählen Sie ein Template, senden Sie Ihre Daten — wir erledigen den Rest. Schnell, unkompliziert, professionell.</p>
-        <div class="tw-timeline" id="twTimeline">
-            <div class="tw-tl-item">
-                <div class="tw-tl-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Template wählen" loading="lazy"></div>
-                <div class="tw-tl-content">
-                    <h3 data-i18n="tw.step1.title">Template wählen</h3>
-                    <p data-i18n="tw.step1.desc">Schauen Sie sich unsere Templates an und wählen Sie das passende Design für Ihr Unternehmen.</p>
+        <div class="tw-how-card" id="twHowCard">
+            <div class="tw-how-left">
+                <h3 data-i18n-html="tw.how.card.h3">Alles aus einer Hand<br>für Ihre <span class="tw-accent">Webseite</span></h3>
+                <div class="tw-how-dark-box">
+                    <span class="tw-how-stars">&#9733;&#9733;&#9733;</span>
+                    <p data-i18n="tw.how.card.quote">Template wählen, Daten senden, online gehen — in 48 Stunden ist Ihr Unternehmen professionell im Internet präsent.</p>
+                    <span data-i18n="tw.how.card.note">Über 6 Branchen-Templates, individuell anpassbar mit Ihren Texten, Bildern und Farben.</span>
                 </div>
-                <div class="tw-tl-dot">1</div>
             </div>
-            <div class="tw-tl-item">
-                <div class="tw-tl-img"><img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80" alt="Daten senden" loading="lazy"></div>
-                <div class="tw-tl-content">
-                    <h3 data-i18n="tw.step2.title">Daten senden</h3>
-                    <p data-i18n="tw.step2.desc">Senden Sie uns Ihre Texte, Bilder und Logo. Wir passen das Template individuell an Ihr Geschäft an.</p>
+            <div class="tw-how-right">
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step1.title">Template wählen</h4>
+                        <p data-i18n="tw.step1.desc">Schauen Sie sich unsere Templates an und wählen Sie das passende Design für Ihr Unternehmen.</p>
+                    </div>
                 </div>
-                <div class="tw-tl-dot">2</div>
-            </div>
-            <div class="tw-tl-item">
-                <div class="tw-tl-img"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80" alt="Online gehen" loading="lazy"></div>
-                <div class="tw-tl-content">
-                    <h3 data-i18n="tw.step3.title">Online gehen</h3>
-                    <p data-i18n="tw.step3.desc">Wir richten alles ein — Domain, Hosting, SSL. In 48 Stunden ist Ihre Webseite live.</p>
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step2.title">Daten senden</h4>
+                        <p data-i18n="tw.step2.desc">Senden Sie uns Ihre Texte, Bilder und Logo. Wir passen das Template individuell an Ihr Geschäft an.</p>
+                    </div>
                 </div>
-                <div class="tw-tl-dot">3</div>
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step3.title">Online gehen</h4>
+                        <p data-i18n="tw.step3.desc">Wir richten alles ein — Domain, Hosting, SSL. In 48 Stunden ist Ihre Webseite live.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -808,40 +818,11 @@
         <h2 class="tw-h2" data-i18n-html="tw.tpl.h2">Wählen Sie Ihr<br><span class="tw-accent">Design</span></h2>
         <p class="tw-sub" data-i18n="tw.tpl.sub">Professionelle Templates für verschiedene Branchen. Jedes Design wird individuell mit Ihren Daten, Bildern und Texten angepasst.</p>
         <div class="tw-gallery-grid" id="twGalleryGrid">
-            <!-- 1. Restaurant -->
-            <a href="templates/restaurant.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl1.name">Restaurant & Café</h3>
-                        <p data-i18n="tw.tpl1.desc">Speisekarte, Öffnungszeiten, Reservierung, Galerie und Standort auf einer eleganten Seite.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <!-- 2. Coiffeur -->
-            <div class="tw-tpl-card">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Coiffeur Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h3>
-                        <p data-i18n="tw.tpl2.desc">Dienstleistungen, Preise, Team-Vorstellung, Galerie und Kontakt für Ihren Salon.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(255,180,33,0.1);color:#ffb421">Bald verfügbar</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 3. Handwerker -->
-            <div class="tw-tpl-card">
+            <!-- 1. Restaurant — 450 CHF -->
+         
+
+            <!-- 1. Handwerker — 450 CHF -->
+            <a href="templates/handwerker.html" class="tw-tpl-card" style="text-decoration:none">
                 <div class="tw-tpl-inner">
                     <div class="tw-tpl-preview">
                         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Handwerker Template" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -850,14 +831,46 @@
                         <h3 data-i18n="tw.tpl3.name">Handwerker & Technik</h3>
                         <p data-i18n="tw.tpl3.desc">Leistungen, Referenzen, Einsatzgebiet und Kontaktformular für Handwerksbetriebe.</p>
                         <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(255,180,33,0.1);color:#ffb421">Bald verfügbar</span>
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- 4. Berater -->
-            <div class="tw-tpl-card">
+            </a>
+            
+            <!-- 2. Coiffeur — 390 CHF -->
+            <a href="templates/coiffeur.html" class="tw-tpl-card" style="text-decoration:none">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Coiffeur Template" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h3>
+                        <p data-i18n="tw.tpl2.desc">Dienstleistungen, Preise, Team-Vorstellung, Galerie und Kontakt für Ihren Salon.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+    
+            <!-- 1. Restaurant — 290 CHF -->
+               <a href="templates/restaurant.html" class="tw-tpl-card" style="text-decoration:none">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant Template" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl1.name">Restaurant & Café</h3>
+                        <p data-i18n="tw.tpl1.desc">Speisekarte, Öffnungszeiten, Reservierung, Galerie und Standort auf einer eleganten Seite.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 4. Berater — 590 CHF -->
+            <a href="templates/berater.html" class="tw-tpl-card" style="text-decoration:none">
                 <div class="tw-tpl-inner">
                     <div class="tw-tpl-preview">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Berater Template" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -866,14 +879,13 @@
                         <h3 data-i18n="tw.tpl4.name">Berater & Freelancer</h3>
                         <p data-i18n="tw.tpl4.desc">Profil, Kompetenzen, Portfolio und Referenzen für unabhängige Fachleute.</p>
                         <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(255,180,33,0.1);color:#ffb421">Bald verfügbar</span>
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- 5. Fitness -->
-            <div class="tw-tpl-card">
+            </a>
+            <!-- 5. Fitness — 750 CHF -->
+            <a href="templates/fitness.html" class="tw-tpl-card" style="text-decoration:none">
                 <div class="tw-tpl-inner">
                     <div class="tw-tpl-preview">
                         <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Fitness Template" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -882,14 +894,13 @@
                         <h3 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h3>
                         <p data-i18n="tw.tpl5.desc">Kurse, Trainer, Preise und Standort für Studios, Praxen und Therapeuten.</p>
                         <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(255,180,33,0.1);color:#ffb421">Bald verfügbar</span>
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- 6. Lokaler Laden -->
-            <div class="tw-tpl-card">
+            </a>
+            <!-- 6. Lokaler Laden — 950 CHF -->
+            <a href="templates/lokales-geschaeft.html" class="tw-tpl-card" style="text-decoration:none">
                 <div class="tw-tpl-inner">
                     <div class="tw-tpl-preview">
                         <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="Lokales Geschäft Template" style="width:100%;height:100%;object-fit:cover;display:block">
@@ -898,10 +909,77 @@
                         <h3 data-i18n="tw.tpl6.name">Lokales Geschäft</h3>
                         <p data-i18n="tw.tpl6.desc">Produkte, Öffnungszeiten, Anfahrt und Kontakt für Ihr lokales Geschäft oder Laden.</p>
                         <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" data-i18n="tw.tpl.tag">Ab 250 CHF</span>
-                            <span class="tw-tpl-tag" style="background:rgba(255,180,33,0.1);color:#ffb421">Bald verfügbar</span>
+                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
                         </div>
                     </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ EDITOR SHOWCASE ═════════════════ -->
+<section class="tw-section tw-editor-section" id="tw-editor">
+    <div class="tw-wrap">
+        <div class="tw-editor-grid">
+            <div class="tw-editor-visual">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant Template Editor" loading="lazy">
+                <div class="tw-editor-badge-demo">
+                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
+                <div class="tw-editor-badge-demo tw-editor-badge-demo--blue">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+            </div>
+            <div class="tw-editor-content">
+                <h3 data-i18n="tw.edt.label">Visueller Editor</h3>
+                <h2 data-i18n="tw.edt.h2">Ihre Webseite selbst bearbeiten — ohne Code.</h2>
+                <p data-i18n="tw.edt.desc">Jedes Template kommt mit einem eingebauten visuellen Editor. Klicken Sie auf Texte, Bilder oder Logos und ändern Sie alles direkt im Browser — Schriftart, Farbe, Grösse und mehr.</p>
+                <div class="tw-editor-features">
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--red">
+                            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f1.title">Texte bearbeiten</h4>
+                            <p data-i18n="tw.edt.f1.desc">Ändern Sie jeden Text — Inhalt, Farbe, Grösse und Schriftart mit einem Klick.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--blue">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f2.title">Bilder hochladen</h4>
+                            <p data-i18n="tw.edt.f2.desc">Ersetzen Sie jedes Bild — vom Hintergrund bis zur Galerie — mit Ihren eigenen Fotos.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--green">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f3.title">Logo anpassen</h4>
+                            <p data-i18n="tw.edt.f3.desc">Text-Logo bearbeiten oder Ihr eigenes Logo-Bild hochladen — für Header und Footer.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--orange">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f4.title">10 Schriftarten</h4>
+                            <p data-i18n="tw.edt.f4.desc">Wählen Sie aus 10 professionellen Google Fonts die perfekte Schrift für Ihr Unternehmen.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="templates/restaurant.html?editor=true" class="tw-editor-try">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
+                </a>
+                <div class="tw-editor-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span data-i18n="tw.edt.note">Änderungen werden nur in Ihrem Browser gespeichert — zum Testen.</span>
                 </div>
             </div>
         </div>
@@ -1015,7 +1093,7 @@
 <section class="tw-cta" id="tw-cta">
     <div class="tw-wrap">
         <div class="tw-label" data-i18n="tw.cta.label">Bereit zu starten?</div>
-        <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre professionelle Webseite<br><span class="tw-accent">ab 250 CHF.</span></h2>
+        <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre professionelle Webseite<br><span class="tw-accent">ab 450 CHF.</span></h2>
         <p class="tw-sub" data-i18n="tw.cta.p">Wählen Sie ein Template, senden Sie uns Ihre Daten — und in wenigen Tagen ist Ihr Unternehmen online. Einfach, schnell und professionell.</p>
         <div class="tw-cta-btns">
             <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Webseiten-Template.%20K%C3%B6nnen%20Sie%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener" class="tw-btn-red">
@@ -1068,35 +1146,6 @@
     });
     var headerTitle = document.getElementById('headerTitle');
     if (headerTitle && t['tw.header.title']) headerTitle.innerHTML = t['tw.header.title'];
-})();
-</script>
-
-<script>
-// ── Browser screen auto-cycling ──────────────────
-(function(){
-    var screens = document.querySelectorAll('#twBrowserBody .tw-screen');
-    var dots = document.querySelectorAll('#twNavDots .tw-nav-dot');
-    if (!screens.length) return;
-    var current = 0, total = screens.length, timer = null;
-
-    function goTo(i) {
-        current = i;
-        screens.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
-        dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
-    }
-    function next() { goTo((current + 1) % total); }
-    function start() { if (timer) return; timer = setInterval(next, 3500); }
-    function stop() { clearInterval(timer); timer = null; }
-
-    dots.forEach(function(d, i) {
-        d.addEventListener('click', function(){ stop(); goTo(i); setTimeout(function(){ if(!timer) start(); }, 8000); });
-    });
-
-    if (!('IntersectionObserver' in window)) { start(); return; }
-    var obs = new IntersectionObserver(function(entries){
-        entries[0].isIntersecting ? start() : stop();
-    }, { threshold: 0.3 });
-    obs.observe(document.querySelector('.tw-hero-visual'));
 })();
 </script>
 
@@ -1170,14 +1219,14 @@
 (function(){
     if (!('IntersectionObserver' in window)) return;
 
-    // Timeline items
-    var tlItems = document.querySelectorAll('.tw-tl-item');
-    var tlObs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-            if (e.isIntersecting) { e.target.classList.add('tw-visible'); tlObs.unobserve(e.target); }
-        });
-    }, { threshold: 0.2 });
-    tlItems.forEach(function(item){ tlObs.observe(item); });
+    // How-card
+    var howCard = document.getElementById('twHowCard');
+    if (howCard) {
+        var howObs = new IntersectionObserver(function(entries){
+            if (entries[0].isIntersecting) { howCard.classList.add('tw-visible'); howObs.disconnect(); }
+        }, { threshold: 0.15 });
+        howObs.observe(howCard);
+    }
 
     // Template cards
     var cards = document.querySelectorAll('.tw-tpl-card');
@@ -1250,27 +1299,6 @@
 })();
 </script>
 
-<script>
-// ── Hero icons grow on scroll ────────────────────
-(function(){
-    if (window.innerWidth < 1200) return;
-    var icons = document.querySelectorAll('.tw-hbi');
-    var hero = document.querySelector('.tw-hero');
-    if (!icons.length || !hero) return;
-    var baseOpacities = [];
-    icons.forEach(function(icon){ baseOpacities.push(parseFloat(getComputedStyle(icon).opacity) || 0.5); });
-    window.addEventListener('scroll', function(){
-        var progress = Math.min(window.pageYOffset / (hero.offsetHeight * 0.35), 1);
-        var s = 1 + progress * 3.5;
-        icons.forEach(function(icon, i){
-            icon.style.scale = s;
-            var fadeProgress = Math.max(0, (progress - 0.6) / 0.4);
-            icon.style.opacity = baseOpacities[i] * (1 - fadeProgress);
-            icon.style.filter = 'blur(' + (fadeProgress * 12) + 'px)';
-        });
-    });
-})();
-</script>
 
 </body>
 </html>

@@ -418,6 +418,50 @@
                 <a href="javascript:void(0)" onclick="openPriceCalc()" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
             </div>
         </div>
+        <!-- Banner templates -->
+        <a href="templates-web.html" class="tpl-banner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:32px;padding:20px 28px;border-radius:16px;background:linear-gradient(135deg,rgba(254,108,117,0.08) 0%,rgba(254,108,117,0.03) 100%);border:1.5px solid rgba(254,108,117,0.15);text-decoration:none;transition:all 0.3s ease;gap:16px;" onmouseover="this.style.borderColor='rgba(254,108,117,0.4)';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(254,108,117,0.1)'" onmouseout="this.style.borderColor='rgba(254,108,117,0.15)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:220px;">
+                <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#fe6c75,#e1545d);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </div>
+                <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:2px;" data-i18n="pricing.templates.title">Nur eine Internetpräsenz nötig?</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.4;" data-i18n="pricing.templates.desc">Fertige Webseiten-Templates ab 450 CHF — professionell und sofort einsatzbereit.</div>
+                </div>
+            </div>
+            <style>
+                .tpl-thumbs img{opacity:0;transform:scale(0.5) translateY(10px);transition:opacity 0.4s ease,transform 0.4s ease;}
+                .tpl-thumbs.visible img{opacity:1;transform:scale(1) translateY(0);}
+                .tpl-thumbs.visible img:nth-child(1){transition-delay:0s}
+                .tpl-thumbs.visible img:nth-child(2){transition-delay:0.1s}
+                .tpl-thumbs.visible img:nth-child(3){transition-delay:0.12s}
+                .tpl-thumbs.visible img:nth-child(4){transition-delay:0.18s}
+                .tpl-thumbs.visible img:nth-child(5){transition-delay:0.24s}
+                .tpl-thumbs.visible img:nth-child(6){transition-delay:0.3s}
+                .tpl-banner-cta{opacity:0;transform:translateX(-8px);transition:opacity 0.4s ease 0.4s,transform 0.4s ease 0.4s;}
+                .tpl-thumbs.visible ~ .tpl-banner-cta{opacity:1;transform:translateX(0);}
+            </style>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+                <div class="tpl-thumbs" style="display:flex;">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:6;">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:5;">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:4;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:3;">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:2;">
+                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative;z-index:1;">
+                </div>
+                <div class="tpl-banner-cta" style="font-size:13px;font-weight:700;color:#fe6c75;white-space:nowrap;display:flex;align-items:center;gap:4px;" data-i18n="pricing.templates.cta">Templates ansehen <span>&rarr;</span></div>
+            </div>
+        </a>
+        <script>
+        (function(){
+            var t=document.querySelector('.tpl-thumbs');
+            if(!t)return;
+            new IntersectionObserver(function(e,o){
+                if(e[0].isIntersecting){t.classList.add('visible');o.disconnect();}
+            },{threshold:0.3}).observe(t);
+        })();
+        </script>
     </div>
 </section>
 
@@ -1472,11 +1516,10 @@
                     <li><a href="#services" data-i18n="footer.s1">Mobile App Entwicklung</a></li>
                     <li><a href="#services" data-i18n="footer.s2">Website Entwicklung</a></li>
                     <li><a href="#services" data-i18n="footer.s3">KI-Integration</a></li>
-                    <li><a href="https://ai-generator-a5j5.vercel.app" target="_blank" rel="noopener">KI Generator</a></li>
                     <li><a href="#services" data-i18n="footer.s4">Beratung &amp; Support</a></li>
                     <li><a href="#about" data-i18n="footer.s6">Externer Entwickler</a></li>
                     <li><a href="tienda-online.html" data-i18n="footer.s5" >Perfekter Online-Shop</a></li>
-    
+                    <li><a href="templates-web.html" data-i18n="footer.s7">Webseiten ab 450 CHF</a></li>
                 </ul>
             </div>
             <div class="footer-col">

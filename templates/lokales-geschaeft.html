@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Fleur — Lokales Geschäft Template | Lweb</title>
+    <meta name="description" content="Premium Lokales-Geschäft-Template mit Sortiment, Über uns, Angeboten und Kontakt. Professionelle Webseite ab 950 CHF.">
+    <meta name="theme-color" content="#8b2252" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Manrope',sans-serif; color:#2d1f1f; background:#fdf8f4; overflow-x:hidden; }
+
+        /* ═══ VARIABLES ═══ */
+        :root {
+            --burgundy: #8b2252;
+            --gold: #d4a574;
+            --gold-light: #e8cca8;
+            --dark: #1a1218;
+            --cream: #fdf8f4;
+            --warm: #f5ede5;
+            --text: #2d1f1f;
+            --text-light: #8a7070;
+            --serif: 'Fraunces', serif;
+            --sans: 'Manrope', sans-serif;
+        }
+
+        /* ═══ KEYFRAMES ═══ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @keyframes scaleIn { from { opacity:0; transform:scale(0.92); } to { opacity:1; transform:scale(1); } }
+        @keyframes slideLeft { from { opacity:0; transform:translateX(-50px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes slideRight { from { opacity:0; transform:translateX(50px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes marqueeScroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+        @keyframes parallaxFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+        @keyframes ornamentDraw { from { stroke-dashoffset:200; } to { stroke-dashoffset:0; } }
+        @keyframes gentleRotate { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(3deg); } }
+        @keyframes shimmer { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
+
+        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+        .fade-up.visible.stagger-1 { transition-delay:0.1s; }
+        .fade-up.visible.stagger-2 { transition-delay:0.2s; }
+        .fade-up.visible.stagger-3 { transition-delay:0.3s; }
+        .fade-up.visible.stagger-4 { transition-delay:0.4s; }
+        .fade-up.visible.stagger-5 { transition-delay:0.5s; }
+        .fade-up.visible.stagger-6 { transition-delay:0.6s; }
+
+        /* ═══ BACK BUTTON ═══ */
+        .s-back {
+            position:fixed; top:20px; left:20px; z-index:200;
+            width:44px; height:44px; border-radius:50%;
+            background:rgba(139,34,82,0.7); backdrop-filter:blur(14px);
+            border:1px solid rgba(212,165,116,0.25);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .s-back:hover { background:var(--burgundy); border-color:var(--gold); transform:scale(1.1); }
+
+        /* ═══ NAV ═══ */
+        .s-nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:20px 48px; display:flex; align-items:center; justify-content:space-between;
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .s-nav.scrolled {
+            background:rgba(26,18,24,0.92); backdrop-filter:blur(24px) saturate(180%);
+            padding:14px 48px; box-shadow:0 8px 40px rgba(139,34,82,0.15);
+        }
+        .s-nav-logo {
+            font-family:var(--serif); font-size:26px; margin-left: 40px;  font-weight:600;
+            color:#fff; text-decoration:none; letter-spacing:0.01em;
+            font-style:italic;
+        }
+        .s-nav-logo span { color:var(--gold); font-style:normal; }
+        .s-nav-links { display:flex; gap:36px; align-items:center; }
+        .s-nav-links a {
+            color:rgba(255,255,255,0.75); text-decoration:none; font-size:13px;
+            font-weight:500; letter-spacing:0.08em; transition:all 0.3s;
+            text-transform:uppercase; position:relative;
+        }
+        .s-nav-links a::after {
+            content:''; position:absolute; bottom:-4px; left:50%; width:0; height:1.5px;
+            background:var(--gold); transition:all 0.3s; transform:translateX(-50%);
+        }
+        .s-nav-links a:hover { color:#fff; }
+        .s-nav-links a:hover::after { width:100%; }
+        .s-nav-cta {
+            background:var(--burgundy) !important; color:#fff !important; padding:10px 26px;
+            border-radius:600px; font-weight:600 !important; transition:all 0.3s !important;
+            border:1px solid rgba(212,165,116,0.3);
+        }
+        .s-nav-cta::after { display:none !important; }
+        .s-nav-cta:hover { background:#a02a64 !important; transform:translateY(-1px); box-shadow:0 8px 28px rgba(139,34,82,0.4); border-color:var(--gold); }
+        .s-nav-burger {
+            display:none; background:none; border:none; cursor:pointer;
+            width:30px; height:22px; position:relative; z-index:101;
+        }
+        .s-nav-burger span {
+            display:block; width:100%; height:2px; background:#fff;
+            position:absolute; left:0; transition:all 0.3s; border-radius:2px;
+        }
+        .s-nav-burger span:nth-child(1) { top:0; }
+        .s-nav-burger span:nth-child(2) { top:10px; }
+        .s-nav-burger span:nth-child(3) { top:20px; }
+        .s-nav-burger.open span:nth-child(1) { top:10px; transform:rotate(45deg); }
+        .s-nav-burger.open span:nth-child(2) { opacity:0; }
+        .s-nav-burger.open span:nth-child(3) { top:10px; transform:rotate(-45deg); }
+
+        .s-mobile-menu {
+            position:fixed; top:0; left:0; right:0; bottom:0; z-index:99;
+            background:rgba(26,18,24,0.97); backdrop-filter:blur(24px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px;
+            opacity:0; pointer-events:none; transition:opacity 0.4s;
+        }
+        .s-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .s-mobile-menu a {
+            color:#fff; text-decoration:none; font-family:var(--serif); font-size:28px;
+            font-weight:400; letter-spacing:0.02em; transition:color 0.3s;
+        }
+        .s-mobile-menu a:hover { color:var(--gold); }
+
+        /* ═══ HERO ═══ */
+        .s-hero {
+            height:100vh; min-height:700px; position:relative;
+            display:flex; align-items:center; justify-content:center;
+            text-align:center; overflow:hidden;
+        }
+        .s-hero-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1920&q=80') center/cover no-repeat;
+            transition:transform 0.1s linear;
+        }
+        .s-hero-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(180deg, rgba(26,18,24,0.35) 0%, rgba(139,34,82,0.25) 40%, rgba(26,18,24,0.7) 100%);
+        }
+        .s-hero-content { position:relative; z-index:2; max-width:860px; padding:0 24px; }
+        .s-hero-tag {
+            display:inline-flex; align-items:center; gap:10px;
+            color:var(--gold); font-size:12px; font-weight:600;
+            letter-spacing:0.2em; text-transform:uppercase; margin-bottom:28px;
+            animation:fadeUp 0.8s ease both;
+        }
+        .s-hero-tag::before, .s-hero-tag::after {
+            content:''; width:40px; height:1px; background:var(--gold-light);
+        }
+        .s-hero h1 {
+            font-family:var(--serif); font-size:76px; font-weight:600;
+            color:#fff; line-height:1.05; letter-spacing:-0.02em; margin-bottom:24px;
+            animation:fadeUp 0.9s 0.2s ease both;
+            font-variation-settings:'opsz' 144;
+        }
+        .s-hero h1 em {
+            font-style:italic; color:var(--gold-light);
+            font-variation-settings:'opsz' 40;
+        }
+        .s-hero-sub {
+            font-size:18px; color:rgba(255,255,255,0.8); line-height:1.8;
+            max-width:540px; margin:0 auto 40px; font-weight:300;
+            animation:fadeUp 0.9s 0.4s ease both;
+        }
+        .s-hero-btns {
+            display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+            animation:fadeUp 0.9s 0.6s ease both;
+        }
+        .s-btn {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:15px 36px; font-size:13px; font-weight:600;
+            text-decoration:none; letter-spacing:0.06em; text-transform:uppercase;
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1); border:none; cursor:pointer;
+            font-family:var(--sans);
+        }
+        .s-btn--primary {
+            background:var(--burgundy); color:#fff; border-radius:600px;
+            border:1px solid rgba(212,165,116,0.3);
+        }
+        .s-btn--primary:hover { background:#a02a64; transform:translateY(-2px); box-shadow:0 12px 32px rgba(139,34,82,0.4); border-color:var(--gold); }
+        .s-btn--outline {
+            background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.35);
+            border-radius:600px;
+        }
+        .s-btn--outline:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,165,116,0.08); }
+        .s-hero-scroll {
+            position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+            color:rgba(255,255,255,0.4); animation:parallaxFloat 2.5s ease-in-out infinite;
+        }
+
+        /* ═══ ORNAMENT DIVIDER ═══ */
+        .s-ornament {
+            display:flex; align-items:center; justify-content:center;
+            padding:32px 0; overflow:hidden;
+        }
+        .s-ornament svg { opacity:0.35; }
+
+        /* ═══ SECTION COMMON ═══ */
+        .s-section { padding:110px 24px; }
+        .s-section-header { text-align:center; margin-bottom:72px; }
+        .s-section-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            color:var(--burgundy); font-size:11px; font-weight:700;
+            letter-spacing:0.18em; text-transform:uppercase; margin-bottom:16px;
+        }
+        .s-section-tag::before {
+            content:''; width:6px; height:6px; border-radius:50%;
+            background:var(--gold); opacity:0.7;
+        }
+        .s-section-title {
+            font-family:var(--serif); font-size:48px; font-weight:600;
+            color:var(--dark); line-height:1.15; letter-spacing:-0.01em; margin-bottom:18px;
+            font-variation-settings:'opsz' 72;
+        }
+        .s-section-title em { font-style:italic; color:var(--burgundy); }
+        .s-section-desc {
+            font-size:17px; color:var(--text-light); line-height:1.8;
+            max-width:560px; margin:0 auto; font-weight:400;
+        }
+        .s-divider {
+            width:50px; height:2px; background:linear-gradient(90deg, var(--burgundy), var(--gold));
+            margin:22px auto 0; border-radius:2px;
+        }
+
+        /* ═══ MARQUEE ═══ */
+        .s-marquee {
+            background:var(--dark); padding:20px 0; overflow:hidden; position:relative;
+        }
+        .s-marquee-track {
+            display:flex; animation:marqueeScroll 30s linear infinite; width:max-content;
+        }
+        .s-marquee-item {
+            display:flex; align-items:center; gap:20px; padding:0 28px;
+            white-space:nowrap;
+        }
+        .s-marquee-item span {
+            font-family:var(--serif); font-size:16px; color:rgba(255,255,255,0.7);
+            font-weight:400; letter-spacing:0.04em; font-style:italic;
+        }
+        .s-marquee-dot {
+            width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:0.5;
+            flex-shrink:0;
+        }
+
+        /* ═══ PRODUCTS (Masonry Grid) ═══ */
+        .s-products { background:var(--cream); }
+        .s-products-grid {
+            max-width:1200px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3, 1fr);
+            gap:28px;
+        }
+        .s-product-card {
+            background:#fff; border-radius:16px; overflow:hidden;
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            box-shadow:0 4px 20px rgba(139,34,82,0.04);
+            border:1px solid rgba(212,165,116,0.12);
+        }
+        .s-product-card:nth-child(1) { grid-row:span 2; }
+        .s-product-card:nth-child(4) { grid-row:span 2; }
+        .s-product-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,34,82,0.1); border-color:var(--gold-light); }
+        .s-product-img {
+            position:relative; overflow:hidden; aspect-ratio:4/3;
+        }
+        .s-product-card:nth-child(1) .s-product-img,
+        .s-product-card:nth-child(4) .s-product-img { aspect-ratio:3/4; }
+        .s-product-img img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .s-product-card:hover .s-product-img img { transform:scale(1.08); }
+        .s-product-overlay {
+            position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(26,18,24,0.7) 100%);
+            display:flex; align-items:flex-end; padding:20px;
+            opacity:0; transition:opacity 0.4s;
+        }
+        .s-product-card:hover .s-product-overlay { opacity:1; }
+        .s-product-overlay-btn {
+            background:var(--burgundy); color:#fff; padding:8px 20px;
+            border-radius:600px; font-size:12px; font-weight:600;
+            letter-spacing:0.06em; text-transform:uppercase; text-decoration:none;
+            transition:background 0.3s;
+        }
+        .s-product-overlay-btn:hover { background:#a02a64; }
+        .s-product-body { padding:22px 24px 26px; }
+        .s-product-cat {
+            font-size:10px; font-weight:700; letter-spacing:0.15em;
+            text-transform:uppercase; color:var(--burgundy); margin-bottom:8px;
+            opacity:0.7;
+        }
+        .s-product-name {
+            font-family:var(--serif); font-size:20px; font-weight:500;
+            color:var(--dark); margin-bottom:6px;
+        }
+        .s-product-price {
+            font-family:var(--serif); font-size:18px; font-weight:600;
+            color:var(--burgundy);
+        }
+        .s-product-desc {
+            font-size:14px; color:var(--text-light); line-height:1.6;
+            margin-top:8px;
+        }
+
+        /* ═══ ABOUT (Asymmetric Overlap) ═══ */
+        .s-about { background:var(--warm); overflow:hidden; }
+        .s-about-grid {
+            max-width:1200px; margin:0 auto; position:relative;
+            display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;
+        }
+        .s-about-img-wrap {
+            position:relative; z-index:1;
+        }
+        .s-about-img-wrap::before {
+            content:''; position:absolute; top:-20px; left:-20px; right:20px; bottom:20px;
+            border:2px solid var(--gold-light); border-radius:20px; z-index:0;
+        }
+        .s-about-img {
+            border-radius:20px; overflow:hidden; position:relative; z-index:1;
+            box-shadow:0 30px 70px rgba(139,34,82,0.12);
+        }
+        .s-about-img img { width:100%; height:480px; object-fit:cover; display:block; }
+        .s-about-text-card {
+            background:#fff; border-radius:20px; padding:48px 44px;
+            box-shadow:0 20px 60px rgba(139,34,82,0.06);
+            position:relative; z-index:2; margin-left:-60px;
+            border:1px solid rgba(212,165,116,0.1);
+        }
+        .s-about-text-card h3 {
+            font-family:var(--serif); font-size:36px; font-weight:600;
+            color:var(--dark); margin-bottom:20px; line-height:1.2;
+        }
+        .s-about-text-card h3 em { font-style:italic; color:var(--burgundy); }
+        .s-about-text-card p {
+            font-size:16px; color:var(--text-light); line-height:1.9; margin-bottom:16px;
+        }
+        .s-about-stats {
+            display:flex; gap:36px; margin-top:32px; padding-top:28px;
+            border-top:1px solid rgba(212,165,116,0.2);
+        }
+        .s-about-stat { text-align:center; }
+        .s-about-stat-n {
+            font-family:var(--serif); font-size:38px; font-weight:700;
+            color:var(--burgundy); line-height:1;
+        }
+        .s-about-stat-l {
+            font-size:11px; color:var(--text-light); text-transform:uppercase;
+            letter-spacing:0.12em; margin-top:6px;
+        }
+
+        /* ═══ SPECIALS / ANGEBOTE ═══ */
+        .s-specials { background:var(--cream); }
+        .s-specials-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+        }
+        .s-special-card {
+            background:#fff; border-radius:20px; overflow:hidden;
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            box-shadow:0 4px 20px rgba(139,34,82,0.04);
+            border:1px solid rgba(212,165,116,0.12);
+            position:relative;
+        }
+        .s-special-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,34,82,0.1); }
+        .s-special-badge {
+            position:absolute; top:16px; right:16px; z-index:3;
+            background:var(--burgundy); color:#fff; padding:6px 14px;
+            border-radius:600px; font-size:11px; font-weight:700;
+            letter-spacing:0.08em; text-transform:uppercase;
+        }
+        .s-special-img { position:relative; overflow:hidden; aspect-ratio:4/3; }
+        .s-special-img img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .s-special-card:hover .s-special-img img { transform:scale(1.06); }
+        .s-special-body { padding:24px 28px 28px; }
+        .s-special-body h3 {
+            font-family:var(--serif); font-size:22px; font-weight:500;
+            color:var(--dark); margin-bottom:10px;
+        }
+        .s-special-body p {
+            font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:16px;
+        }
+        .s-special-price {
+            font-family:var(--serif); font-size:20px; font-weight:600;
+            color:var(--burgundy);
+        }
+        .s-special-price del {
+            color:var(--text-light); font-size:14px; font-weight:400; margin-left:8px;
+        }
+
+        /* ═══ TESTIMONIALS (Editorial) ═══ */
+        .s-testimonials { background:var(--warm); }
+        .s-test-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+        }
+        .s-test-card {
+            background:#fff; border-radius:20px; padding:40px 32px 36px;
+            position:relative; transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            box-shadow:0 4px 20px rgba(139,34,82,0.04);
+            border:1px solid rgba(212,165,116,0.1);
+        }
+        .s-test-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(139,34,82,0.08); }
+        .s-test-quote {
+            font-family:var(--serif); font-size:72px; line-height:1;
+            color:var(--gold-light); position:absolute; top:16px; left:28px;
+            opacity:0.6; pointer-events:none;
+        }
+        .s-test-stars {
+            display:flex; gap:3px; color:var(--gold); margin-bottom:16px;
+        }
+        .s-test-text {
+            font-size:15px; color:var(--text); line-height:1.8; margin-bottom:24px;
+            font-style:italic;
+        }
+        .s-test-author { display:flex; align-items:center; gap:14px; }
+        .s-test-avatar {
+            width:48px; height:48px; border-radius:50%; overflow:hidden;
+            border:2px solid var(--gold-light); flex-shrink:0;
+        }
+        .s-test-avatar img { width:100%; height:100%; object-fit:cover; }
+        .s-test-name {
+            font-weight:600; font-size:14px; color:var(--dark);
+        }
+        .s-test-role {
+            font-size:12px; color:var(--text-light); margin-top:2px;
+        }
+
+        /* ═══ OPENING HOURS ═══ */
+        .s-hours { background:var(--cream); }
+        .s-hours-card {
+            max-width:680px; margin:0 auto;
+            background:#fff; border-radius:24px; padding:52px 56px;
+            box-shadow:0 20px 60px rgba(139,34,82,0.06);
+            border:1px solid rgba(212,165,116,0.15);
+            position:relative; overflow:hidden;
+        }
+        .s-hours-card::before {
+            content:''; position:absolute; top:0; right:0; width:200px; height:200px;
+            background:radial-gradient(circle, rgba(212,165,116,0.1) 0%, transparent 70%);
+            pointer-events:none;
+        }
+        .s-hours-row {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:16px 0; border-bottom:1px solid rgba(212,165,116,0.12);
+        }
+        .s-hours-row:last-child { border-bottom:none; }
+        .s-hours-day {
+            font-family:var(--serif); font-size:18px; font-weight:500; color:var(--dark);
+        }
+        .s-hours-time {
+            font-size:16px; color:var(--text-light); font-weight:500;
+        }
+        .s-hours-closed {
+            color:var(--burgundy); font-style:italic; opacity:0.7;
+        }
+        .s-hours-icon {
+            text-align:center; margin-bottom:28px; color:var(--burgundy); opacity:0.6;
+        }
+
+        /* ═══ NEWSLETTER ═══ */
+        .s-newsletter {
+            background:linear-gradient(135deg, var(--dark) 0%, #2d1a24 50%, var(--dark) 100%);
+            padding:100px 24px; text-align:center; position:relative; overflow:hidden;
+        }
+        .s-newsletter::before {
+            content:''; position:absolute; inset:0;
+            background:radial-gradient(ellipse at 30% 50%, rgba(139,34,82,0.2) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(212,165,116,0.1) 0%, transparent 60%);
+            pointer-events:none;
+        }
+        .s-newsletter-content { position:relative; z-index:1; max-width:560px; margin:0 auto; }
+        .s-newsletter-tag {
+            display:inline-flex; align-items:center; gap:8px;
+            color:var(--gold); font-size:11px; font-weight:700;
+            letter-spacing:0.18em; text-transform:uppercase; margin-bottom:20px;
+        }
+        .s-newsletter-tag::before {
+            content:''; width:6px; height:6px; border-radius:50%;
+            background:var(--gold);
+        }
+        .s-newsletter h2 {
+            font-family:var(--serif); font-size:40px; font-weight:600;
+            color:#fff; line-height:1.2; margin-bottom:16px;
+        }
+        .s-newsletter p {
+            font-size:16px; color:rgba(255,255,255,0.6); line-height:1.8;
+            margin-bottom:36px;
+        }
+        .s-newsletter-form {
+            display:flex; gap:12px; max-width:460px; margin:0 auto;
+        }
+        .s-newsletter-form input {
+            flex:1; padding:15px 22px; border-radius:600px;
+            border:1.5px solid rgba(212,165,116,0.3); background:rgba(255,255,255,0.06);
+            color:#fff; font-size:14px; font-family:var(--sans);
+            outline:none; transition:border-color 0.3s;
+        }
+        .s-newsletter-form input::placeholder { color:rgba(255,255,255,0.35); }
+        .s-newsletter-form input:focus { border-color:var(--gold); }
+        .s-newsletter-form button {
+            padding:15px 32px; background:var(--burgundy); color:#fff;
+            border:1px solid rgba(212,165,116,0.3); border-radius:600px;
+            font-size:13px; font-weight:600; letter-spacing:0.06em;
+            text-transform:uppercase; cursor:pointer; font-family:var(--sans);
+            transition:all 0.3s;
+        }
+        .s-newsletter-form button:hover { background:#a02a64; border-color:var(--gold); }
+
+        /* ═══ CONTACT ═══ */
+        .s-contact { background:var(--warm); }
+        .s-contact-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:1fr 1fr; gap:48px;
+        }
+        .s-form {
+            background:#fff; border-radius:20px; padding:40px 36px;
+            box-shadow:0 12px 40px rgba(139,34,82,0.04);
+            border:1px solid rgba(212,165,116,0.1);
+        }
+        .s-form label {
+            display:block; font-size:12px; font-weight:600;
+            letter-spacing:0.08em; text-transform:uppercase;
+            color:var(--text-light); margin-bottom:8px;
+        }
+        .s-form input, .s-form textarea, .s-form select {
+            width:100%; padding:14px 18px; border-radius:12px;
+            border:1.5px solid rgba(212,165,116,0.2); background:var(--cream);
+            font-size:14px; color:var(--text); font-family:var(--sans);
+            outline:none; transition:border-color 0.3s; margin-bottom:20px;
+        }
+        .s-form input:focus, .s-form textarea:focus, .s-form select:focus {
+            border-color:var(--burgundy);
+        }
+        .s-form textarea { height:120px; resize:vertical; }
+        .s-form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .s-form-submit {
+            width:100%; padding:16px; background:var(--burgundy); color:#fff;
+            border:none; border-radius:600px; font-size:14px; font-weight:600;
+            letter-spacing:0.06em; text-transform:uppercase; cursor:pointer;
+            font-family:var(--sans); transition:all 0.3s;
+        }
+        .s-form-submit:hover { background:#a02a64; transform:translateY(-1px); box-shadow:0 8px 24px rgba(139,34,82,0.3); }
+        .s-contact-info { display:flex; flex-direction:column; gap:0; }
+        .s-contact-info h3 {
+            font-family:var(--serif); font-size:28px; font-weight:600;
+            color:var(--dark); margin-bottom:12px;
+        }
+        .s-contact-info > p {
+            font-size:15px; color:var(--text-light); line-height:1.7; margin-bottom:28px;
+        }
+        .s-contact-row {
+            display:flex; align-items:flex-start; gap:16px; padding:16px 0;
+            border-bottom:1px solid rgba(212,165,116,0.12);
+        }
+        .s-contact-row:last-of-type { border-bottom:none; }
+        .s-contact-icon {
+            width:44px; height:44px; border-radius:12px;
+            background:rgba(139,34,82,0.06); display:flex;
+            align-items:center; justify-content:center; flex-shrink:0;
+            color:var(--burgundy);
+        }
+        .s-contact-row h4 {
+            font-size:14px; font-weight:600; color:var(--dark); margin-bottom:4px;
+        }
+        .s-contact-row p { font-size:14px; color:var(--text-light); line-height:1.6; }
+        .s-map {
+            margin-top:28px; border-radius:16px; overflow:hidden;
+            border:2px solid rgba(212,165,116,0.15);
+            background:var(--cream); height:180px;
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-light); font-size:14px; font-weight:500;
+        }
+
+        /* ═══ FOOTER ═══ */
+        .s-footer {
+            background:var(--dark); padding:72px 48px 36px; color:rgba(255,255,255,0.6);
+        }
+        .s-footer-inner {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:48px;
+        }
+        .s-footer-brand {}
+        .s-footer-logo {
+            font-family:var(--serif); font-size:28px; font-weight:600;
+            color:#fff; margin-bottom:16px; font-style:italic;
+        }
+        .s-footer-logo span { color:var(--gold); font-style:normal; }
+        .s-footer-brand p { font-size:14px; line-height:1.8; margin-bottom:24px; }
+        .s-footer-social { display:flex; gap:14px; }
+        .s-footer-social a {
+            width:40px; height:40px; border-radius:50%;
+            border:1px solid rgba(212,165,116,0.2); display:flex;
+            align-items:center; justify-content:center;
+            color:rgba(255,255,255,0.5); transition:all 0.3s;
+        }
+        .s-footer-social a:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,165,116,0.08); }
+        .s-footer-col h4 {
+            color:#fff; font-size:14px; font-weight:600; letter-spacing:0.06em;
+            text-transform:uppercase; margin-bottom:20px;
+        }
+        .s-footer-col a {
+            display:block; color:rgba(255,255,255,0.5); text-decoration:none;
+            font-size:14px; padding:6px 0; transition:color 0.3s;
+        }
+        .s-footer-col a:hover { color:var(--gold); }
+        .s-footer-bottom {
+            max-width:1100px; margin:48px auto 0; padding-top:28px;
+            border-top:1px solid rgba(212,165,116,0.1);
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .s-footer-copy {
+            font-size:13px; color:rgba(255,255,255,0.35);
+        }
+        .s-footer-copy a { color:var(--gold); text-decoration:none; }
+        .s-footer-copy a:hover { text-decoration:underline; }
+
+        /* ═══ RESPONSIVE 1024px ═══ */
+        @media (max-width:1024px) {
+            .s-nav { padding:16px 28px; }
+            .s-nav.scrolled { padding:12px 28px; }
+            .s-nav-links { display:none; }
+            .s-nav-burger { display:block; }
+            .s-hero h1 { font-size:52px; }
+            .s-section-title { font-size:38px; }
+            .s-products-grid { grid-template-columns:repeat(2, 1fr); }
+            .s-product-card:nth-child(1),
+            .s-product-card:nth-child(4) { grid-row:auto; }
+            .s-product-card:nth-child(1) .s-product-img,
+            .s-product-card:nth-child(4) .s-product-img { aspect-ratio:4/3; }
+            .s-about-grid { grid-template-columns:1fr; gap:0; }
+            .s-about-text-card { margin-left:0; margin-top:-40px; }
+            .s-specials-grid { grid-template-columns:1fr 1fr; }
+            .s-specials-grid > :last-child { grid-column:span 2; }
+            .s-test-grid { grid-template-columns:1fr; max-width:560px; }
+            .s-contact-grid { grid-template-columns:1fr; }
+            .s-footer-inner { grid-template-columns:1fr 1fr; }
+            .s-footer-brand { grid-column:span 2; }
+        }
+
+        /* ═══ RESPONSIVE 600px ═══ */
+        @media (max-width:600px) {
+            .s-hero { min-height:600px; }
+            .s-hero h1 { font-size:36px; }
+            .s-hero-sub { font-size:16px; }
+            .s-section { padding:72px 16px; }
+            .s-section-title { font-size:30px; }
+            .s-products-grid { grid-template-columns:1fr; }
+            .s-specials-grid { grid-template-columns:1fr; }
+            .s-specials-grid > :last-child { grid-column:auto; }
+            .s-about-text-card { padding:32px 24px; }
+            .s-about-img img { height:320px; }
+            .s-hours-card { padding:36px 28px; }
+            .s-hours-day { font-size:16px; }
+            .s-newsletter h2 { font-size:30px; }
+            .s-newsletter-form { flex-direction:column; }
+            .s-form-row { grid-template-columns:1fr; }
+            .s-footer-inner { grid-template-columns:1fr; }
+            .s-footer-brand { grid-column:auto; }
+            .s-footer-bottom { flex-direction:column; gap:8px; text-align:center; }
+            .s-footer { padding:52px 24px 28px; }
+            .s-about-stats { gap:20px; }
+            .s-about-stat-n { font-size:28px; }
+            .s-btn { padding:13px 28px; font-size:12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ BACK BUTTON ═══════════ -->
+<a href="../templates-web.html" class="s-back" title="Zurück">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="s-nav" id="sNav">
+    <a href="#" class="s-nav-logo" data-edit="text" data-edit-key="nav-logo">Maison <span>Fleur</span></a>
+    <div class="s-nav-links">
+        <a href="#products" data-edit="text" data-edit-key="nav-link1">Sortiment</a>
+        <a href="#about" data-edit="text" data-edit-key="nav-link2">Über uns</a>
+        <a href="#specials" data-edit="text" data-edit-key="nav-link3">Angebote</a>
+        <a href="#hours" data-edit="text" data-edit-key="nav-link4">Öffnungszeiten</a>
+        <a href="#contact" class="s-nav-cta" data-edit="text" data-edit-key="nav-link5">Kontakt</a>
+    </div>
+    <button class="s-nav-burger" id="sBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="s-mobile-menu" id="sMobileMenu">
+    <a href="#products">Sortiment</a>
+    <a href="#about">Über uns</a>
+    <a href="#specials">Angebote</a>
+    <a href="#hours">Öffnungszeiten</a>
+    <a href="#contact">Kontakt</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="s-hero">
+    <div class="s-hero-bg" id="sHeroBg" data-edit="image" data-edit-key="hero-bg"></div>
+    <div class="s-hero-content">
+        <div class="s-hero-tag" data-edit="text" data-edit-key="hero-tag">Boutique in Zürich seit 2012</div>
+        <h1 data-edit="text" data-edit-key="hero-title">Handverlesene <em>Schätze</em> für Ihren Alltag</h1>
+        <p class="s-hero-sub" data-edit="text" data-edit-key="hero-sub">Entdecken Sie unser Sortiment an handgefertigten, lokalen und nachhaltigen Produkten — mit Liebe ausgewählt für besondere Menschen.</p>
+        <div class="s-hero-btns">
+            <a href="#products" class="s-btn s-btn--primary" data-edit="text" data-edit-key="hero-btn1">Sortiment entdecken</a>
+            <a href="#about" class="s-btn s-btn--outline" data-edit="text" data-edit-key="hero-btn2">Unsere Geschichte</a>
+        </div>
+    </div>
+    <div class="s-hero-scroll">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+</section>
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="s-marquee">
+    <div class="s-marquee-track">
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-1">Lokale Produkte</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-2">Handgemacht</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-3">Nachhaltig</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-4">Seit 2012</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-5">Familienbetrieb</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span data-edit="text" data-edit-key="marquee-6">Bio-Qualität</span><div class="s-marquee-dot"></div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="s-marquee-item"><span>Lokale Produkte</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span>Handgemacht</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span>Nachhaltig</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span>Seit 2012</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span>Familienbetrieb</span><div class="s-marquee-dot"></div></div>
+        <div class="s-marquee-item"><span>Bio-Qualität</span><div class="s-marquee-dot"></div></div>
+    </div>
+</div>
+
+<!-- ═══════════ ORNAMENT ═══════════ -->
+<div class="s-ornament">
+    <svg width="120" height="20" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 10 Q15 0 30 10 Q45 20 60 10 Q75 0 90 10 Q105 20 120 10" stroke="#d4a574" stroke-width="1.5" fill="none"/>
+    </svg>
+</div>
+
+<!-- ═══════════ FEATURED PRODUCTS ═══════════ -->
+<section class="s-section s-products" id="products">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag" data-edit="text" data-edit-key="products-tag">Unser Sortiment</div>
+        <h2 class="s-section-title" data-edit="text" data-edit-key="products-title">Handverlesen & <em>einzigartig</em></h2>
+        <p class="s-section-desc" data-edit="text" data-edit-key="products-desc">Jedes Produkt erzählt eine Geschichte. Von lokalen Produzenten handgefertigt, mit Sorgfalt für Sie ausgewählt.</p>
+        <div class="s-divider"></div>
+    </div>
+
+    <div class="s-products-grid">
+        <!-- Product 1 — Honig (tall) -->
+        <div class="s-product-card fade-up stagger-1">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Honig" loading="lazy" data-edit="image" data-edit-key="prod1-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod1-cat">Naturprodukt</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod1-name">Alpenhonig</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod1-price">CHF 18.90</div>
+                <p class="s-product-desc" data-edit="text" data-edit-key="prod1-desc">Cremiger Blütenhonig vom Imker aus dem Zürcher Oberland. 100% rein und ungefiltert.</p>
+            </div>
+        </div>
+        <!-- Product 2 — Seife -->
+        <div class="s-product-card fade-up stagger-2">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=600&q=80" alt="Seife" loading="lazy" data-edit="image" data-edit-key="prod2-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod2-cat">Pflege</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod2-name">Handgemachte Seife</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod2-price">CHF 12.50</div>
+            </div>
+        </div>
+        <!-- Product 3 — Kerzen -->
+        <div class="s-product-card fade-up stagger-3">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1602607167684-0fbb2b34d7ba?w=600&q=80" alt="Kerzen" loading="lazy" data-edit="image" data-edit-key="prod3-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod3-cat">Wohnen</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod3-name">Soja-Duftkerze</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod3-price">CHF 34.00</div>
+            </div>
+        </div>
+        <!-- Product 4 — Tee (tall) -->
+        <div class="s-product-card fade-up stagger-4">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Tee" loading="lazy" data-edit="image" data-edit-key="prod4-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod4-cat">Genuss</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod4-name">Kräutertee-Kollektion</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod4-price">CHF 16.00</div>
+                <p class="s-product-desc" data-edit="text" data-edit-key="prod4-desc">Handgepflückte Schweizer Bergkräuter, schonend getrocknet. Sechs Sorten im Set.</p>
+            </div>
+        </div>
+        <!-- Product 5 — Keramik -->
+        <div class="s-product-card fade-up stagger-5">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Keramik" loading="lazy" data-edit="image" data-edit-key="prod5-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod5-cat">Handwerk</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod5-name">Keramikschale</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod5-price">CHF 45.00</div>
+            </div>
+        </div>
+        <!-- Product 6 — Textilien -->
+        <div class="s-product-card fade-up stagger-6">
+            <div class="s-product-img">
+                <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=600&q=80" alt="Textilien" loading="lazy" data-edit="image" data-edit-key="prod6-img">
+                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat" data-edit="text" data-edit-key="prod6-cat">Textil</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod6-name">Leinen-Geschirrtuch</div>
+                <div class="s-product-price" data-edit="text" data-edit-key="prod6-price">CHF 28.00</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ORNAMENT ═══════════ -->
+<div class="s-ornament" style="background:var(--warm);">
+    <svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="3" stroke="#8b2252" stroke-width="1" fill="none" opacity="0.3"/>
+        <circle cx="40" cy="12" r="5" stroke="#d4a574" stroke-width="1" fill="none" opacity="0.4"/>
+        <circle cx="68" cy="12" r="3" stroke="#8b2252" stroke-width="1" fill="none" opacity="0.3"/>
+        <line x1="18" y1="12" x2="32" y2="12" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+        <line x1="48" y1="12" x2="62" y2="12" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+</div>
+
+<!-- ═══════════ ABOUT (Asymmetric) ═══════════ -->
+<section class="s-section s-about" id="about">
+    <div class="s-about-grid">
+        <div class="s-about-img-wrap fade-up">
+            <div class="s-about-img">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Unser Geschäft" loading="lazy" data-edit="image" data-edit-key="about-img">
+            </div>
+        </div>
+        <div class="s-about-text-card fade-up">
+            <div class="s-section-tag" data-edit="text" data-edit-key="about-tag">Unsere Geschichte</div>
+            <h3 data-edit="text" data-edit-key="about-title">Mit <em>Herzblut</em> seit über einem Jahrzehnt</h3>
+            <p data-edit="text" data-edit-key="about-text1">Was als kleiner Traum begann, ist heute ein Ort der Begegnung. In unserem Geschäft im Herzen von Zürich verbinden wir Tradition mit modernem Handwerk.</p>
+            <p data-edit="text" data-edit-key="about-text2">Jedes Produkt in unserem Sortiment stammt von Produzenten, die wir persönlich kennen. Wir glauben an Qualität, Nachhaltigkeit und die Kraft lokaler Gemeinschaften.</p>
+            <div class="s-about-stats">
+                <div class="s-about-stat">
+                    <div class="s-about-stat-n" data-edit="text" data-edit-key="about-stat1-n">12+</div>
+                    <div class="s-about-stat-l" data-edit="text" data-edit-key="about-stat1-l">Jahre</div>
+                </div>
+                <div class="s-about-stat">
+                    <div class="s-about-stat-n" data-edit="text" data-edit-key="about-stat2-n">200+</div>
+                    <div class="s-about-stat-l" data-edit="text" data-edit-key="about-stat2-l">Produkte</div>
+                </div>
+                <div class="s-about-stat">
+                    <div class="s-about-stat-n" data-edit="text" data-edit-key="about-stat3-n">40+</div>
+                    <div class="s-about-stat-l" data-edit="text" data-edit-key="about-stat3-l">Produzenten</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ORNAMENT ═══════════ -->
+<div class="s-ornament">
+    <svg width="120" height="20" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 10 Q15 0 30 10 Q45 20 60 10 Q75 0 90 10 Q105 20 120 10" stroke="#8b2252" stroke-width="1" fill="none" opacity="0.2"/>
+    </svg>
+</div>
+
+<!-- ═══════════ SPECIALS / ANGEBOTE ═══════════ -->
+<section class="s-section s-specials" id="specials">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag" data-edit="text" data-edit-key="specials-tag">Saisonale Highlights</div>
+        <h2 class="s-section-title" data-edit="text" data-edit-key="specials-title">Aktuelle <em>Angebote</em></h2>
+        <p class="s-section-desc" data-edit="text" data-edit-key="specials-desc">Entdecken Sie unsere saisonalen Favoriten und limitierten Editionen — solange der Vorrat reicht.</p>
+        <div class="s-divider"></div>
+    </div>
+
+    <div class="s-specials-grid">
+        <div class="s-special-card fade-up stagger-1">
+            <span class="s-special-badge" data-edit="text" data-edit-key="spec1-badge">Neu</span>
+            <div class="s-special-img">
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80" alt="Frühlings-Set" loading="lazy" data-edit="image" data-edit-key="spec1-img">
+            </div>
+            <div class="s-special-body">
+                <h3 data-edit="text" data-edit-key="spec1-title">Frühlings-Geschenkset</h3>
+                <p data-edit="text" data-edit-key="spec1-desc">Honig, Kräutertee und Lavendelseife — liebevoll verpackt im Leinenbeutel.</p>
+                <div class="s-special-price" data-edit="text" data-edit-key="spec1-price">CHF 49.90 <del>CHF 62.00</del></div>
+            </div>
+        </div>
+        <div class="s-special-card fade-up stagger-2">
+            <span class="s-special-badge" data-edit="text" data-edit-key="spec2-badge">Limitiert</span>
+            <div class="s-special-img">
+                <img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80" alt="Keramik-Kollektion" loading="lazy" data-edit="image" data-edit-key="spec2-img">
+            </div>
+            <div class="s-special-body">
+                <h3 data-edit="text" data-edit-key="spec2-title">Keramik-Kollektion 2026</h3>
+                <p data-edit="text" data-edit-key="spec2-desc">Handgedrehte Schalen und Tassen in limitierter Auflage von Atelier Zürich.</p>
+                <div class="s-special-price" data-edit="text" data-edit-key="spec2-price">Ab CHF 38.00</div>
+            </div>
+        </div>
+        <div class="s-special-card fade-up stagger-3">
+            <span class="s-special-badge" data-edit="text" data-edit-key="spec3-badge">-20%</span>
+            <div class="s-special-img">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Pflegeset" loading="lazy" data-edit="image" data-edit-key="spec3-img">
+            </div>
+            <div class="s-special-body">
+                <h3 data-edit="text" data-edit-key="spec3-title">Naturkosmetik-Set</h3>
+                <p data-edit="text" data-edit-key="spec3-desc">Bio-Lippenbalsam, Handcreme und Badekugeln — alles aus Schweizer Herstellung.</p>
+                <div class="s-special-price" data-edit="text" data-edit-key="spec3-price">CHF 35.00 <del>CHF 44.00</del></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="s-section s-testimonials" id="testimonials">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag" data-edit="text" data-edit-key="test-tag">Kundenstimmen</div>
+        <h2 class="s-section-title" data-edit="text" data-edit-key="test-title">Was unsere <em>Kunden</em> sagen</h2>
+        <p class="s-section-desc" data-edit="text" data-edit-key="test-desc">Unsere Kunden sind Teil unserer Geschichte. Ihre Worte bedeuten uns alles.</p>
+        <div class="s-divider"></div>
+    </div>
+
+    <div class="s-test-grid">
+        <div class="s-test-card fade-up stagger-1">
+            <div class="s-test-quote">&ldquo;</div>
+            <div class="s-test-stars">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="s-test-text" data-edit="text" data-edit-key="test1-text">Ein wunderbarer Laden mit so viel Herz. Jedes Mal entdecke ich etwas Neues. Die Beratung ist persönlich und liebevoll — wie bei Freunden einkaufen.</p>
+            <div class="s-test-author">
+                <div class="s-test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Kundin" loading="lazy" data-edit="image" data-edit-key="test1-img"></div>
+                <div>
+                    <div class="s-test-name" data-edit="text" data-edit-key="test1-name">Anna Keller</div>
+                    <div class="s-test-role" data-edit="text" data-edit-key="test1-role">Stammkundin seit 2015</div>
+                </div>
+            </div>
+        </div>
+        <div class="s-test-card fade-up stagger-2">
+            <div class="s-test-quote">&ldquo;</div>
+            <div class="s-test-stars">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="s-test-text" data-edit="text" data-edit-key="test2-text">Die besten Geschenke finde ich immer hier. Die Qualität ist herausragend und man merkt, dass alles mit Liebe ausgewählt wurde. Absolute Empfehlung!</p>
+            <div class="s-test-author">
+                <div class="s-test-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Kunde" loading="lazy" data-edit="image" data-edit-key="test2-img"></div>
+                <div>
+                    <div class="s-test-name" data-edit="text" data-edit-key="test2-name">Thomas Brunner</div>
+                    <div class="s-test-role" data-edit="text" data-edit-key="test2-role">Google Review</div>
+                </div>
+            </div>
+        </div>
+        <div class="s-test-card fade-up stagger-3">
+            <div class="s-test-quote">&ldquo;</div>
+            <div class="s-test-stars">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="s-test-text" data-edit="text" data-edit-key="test3-text">Ich bin begeistert vom Nachhaltigkeitskonzept. Endlich ein Geschäft, das zeigt, dass Qualität und Umweltbewusstsein zusammengehören. Weiter so!</p>
+            <div class="s-test-author">
+                <div class="s-test-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Kundin" loading="lazy" data-edit="image" data-edit-key="test3-img"></div>
+                <div>
+                    <div class="s-test-name" data-edit="text" data-edit-key="test3-name">Laura Meier</div>
+                    <div class="s-test-role" data-edit="text" data-edit-key="test3-role">Google Review</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ OPENING HOURS ═══════════ -->
+<section class="s-section s-hours" id="hours">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag" data-edit="text" data-edit-key="hours-tag">Besuchen Sie uns</div>
+        <h2 class="s-section-title" data-edit="text" data-edit-key="hours-title"><em>Öffnungszeiten</em></h2>
+        <div class="s-divider"></div>
+    </div>
+
+    <div class="s-hours-card fade-up">
+        <div class="s-hours-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="s-hours-row">
+            <span class="s-hours-day" data-edit="text" data-edit-key="hours-day1">Montag — Freitag</span>
+            <span class="s-hours-time" data-edit="text" data-edit-key="hours-time1">09:00 — 18:30</span>
+        </div>
+        <div class="s-hours-row">
+            <span class="s-hours-day" data-edit="text" data-edit-key="hours-day2">Samstag</span>
+            <span class="s-hours-time" data-edit="text" data-edit-key="hours-time2">09:00 — 17:00</span>
+        </div>
+        <div class="s-hours-row">
+            <span class="s-hours-day" data-edit="text" data-edit-key="hours-day3">Sonntag</span>
+            <span class="s-hours-time s-hours-closed" data-edit="text" data-edit-key="hours-time3">Geschlossen</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ NEWSLETTER ═══════════ -->
+<section class="s-newsletter" id="newsletter">
+    <div class="s-newsletter-content fade-up">
+        <div class="s-newsletter-tag" data-edit="text" data-edit-key="news-tag">Newsletter</div>
+        <h2 data-edit="text" data-edit-key="news-title">Immer auf dem Laufenden</h2>
+        <p data-edit="text" data-edit-key="news-desc">Erhalten Sie als Erste Neuigkeiten zu neuen Produkten, saisonalen Angeboten und exklusiven Events in Ihrem Postfach.</p>
+        <form class="s-newsletter-form" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+            <button type="submit">Anmelden</button>
+        </form>
+    </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="s-section s-contact" id="contact">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag" data-edit="text" data-edit-key="contact-tag">Kontakt</div>
+        <h2 class="s-section-title" data-edit="text" data-edit-key="contact-title">Wir freuen uns auf <em>Sie</em></h2>
+        <p class="s-section-desc" data-edit="text" data-edit-key="contact-desc">Haben Sie Fragen oder wünschen ein bestimmtes Produkt? Schreiben Sie uns — wir helfen gerne.</p>
+        <div class="s-divider"></div>
+    </div>
+
+    <div class="s-contact-grid">
+        <form class="s-form fade-up" onsubmit="event.preventDefault()">
+            <div class="s-form-row">
+                <div><label>Vorname</label><input type="text" placeholder="Ihr Vorname"></div>
+                <div><label>Nachname</label><input type="text" placeholder="Ihr Nachname"></div>
+            </div>
+            <div class="s-form-row">
+                <div><label>E-Mail</label><input type="email" placeholder="ihre@email.ch"></div>
+                <div><label>Telefon</label><input type="tel" placeholder="+41 ..."></div>
+            </div>
+            <div><label>Nachricht</label><textarea placeholder="Wie können wir Ihnen helfen?"></textarea></div>
+            <button type="submit" class="s-form-submit">Nachricht senden</button>
+        </form>
+
+        <div class="s-contact-info fade-up">
+            <h3 data-edit="text" data-edit-key="cinfo-title">Besuchen Sie uns</h3>
+            <p data-edit="text" data-edit-key="cinfo-desc">Unser Geschäft befindet sich im Herzen von Zürich. Kommen Sie vorbei und lassen Sie sich inspirieren.</p>
+            <div class="s-contact-row">
+                <div class="s-contact-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-addr-label">Adresse</h4><p data-edit="text" data-edit-key="cinfo-addr">Rennweg 15, 8001 Zürich</p></div>
+            </div>
+            <div class="s-contact-row">
+                <div class="s-contact-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-tel-label">Telefon</h4><p data-edit="text" data-edit-key="cinfo-tel">+41 44 123 45 67</p></div>
+            </div>
+            <div class="s-contact-row">
+                <div class="s-contact-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div><h4 data-edit="text" data-edit-key="cinfo-email-label">E-Mail</h4><p data-edit="text" data-edit-key="cinfo-email">hallo@maisonfleur.ch</p></div>
+            </div>
+            <div class="s-map">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Google Maps — Rennweg 15, Zürich
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="s-footer">
+    <div class="s-footer-inner">
+        <div class="s-footer-brand">
+            <div class="s-footer-logo" data-edit="text" data-edit-key="footer-logo">Maison <span>Fleur</span></div>
+            <p data-edit="text" data-edit-key="footer-desc">Handverlesene Produkte lokaler Produzenten. Seit 2012 im Herzen von Zürich — nachhaltig, handgemacht, mit Liebe.</p>
+            <div class="s-footer-social">
+                <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="#" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12a4 4 0 118 0c0 4-3 6-3 6"/><line x1="12" y1="12" x2="10" y2="22"/><circle cx="12" cy="12" r="10"/></svg></a>
+            </div>
+        </div>
+        <div class="s-footer-col">
+            <h4>Navigation</h4>
+            <a href="#products">Sortiment</a>
+            <a href="#about">Über uns</a>
+            <a href="#specials">Angebote</a>
+            <a href="#hours">Öffnungszeiten</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+        <div class="s-footer-col">
+            <h4>Sortiment</h4>
+            <a href="#products">Honig & Konfitüren</a>
+            <a href="#products">Naturkosmetik</a>
+            <a href="#products">Kerzen & Düfte</a>
+            <a href="#products">Keramik & Handwerk</a>
+            <a href="#products">Tee & Genuss</a>
+        </div>
+    </div>
+    <div class="s-footer-bottom">
+        <div class="s-footer-copy">
+            &copy; 2026 Maison Fleur — Template von <a href="../templates-web.html">Lweb</a>
+        </div>
+        <div class="s-footer-copy">
+            Zürich, Schweiz
+        </div>
+    </div>
+</footer>
+
+<script>
+// Nav scroll
+(function(){
+    var nav = document.getElementById('sNav');
+    window.addEventListener('scroll', function(){
+        nav.classList.toggle('scrolled', window.pageYOffset > 80);
+    });
+})();
+
+// Mobile menu
+(function(){
+    var burger = document.getElementById('sBurger');
+    var menu = document.getElementById('sMobileMenu');
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Scroll fade-up animations with stagger
+(function(){
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+})();
+
+// Parallax hero background
+(function(){
+    var bg = document.getElementById('sHeroBg');
+    if (!bg || window.innerWidth < 1025) return;
+    window.addEventListener('scroll', function(){
+        var y = window.pageYOffset;
+        if (y < window.innerHeight) {
+            bg.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+        }
+    });
+})();
+</script>
+
+<script>
+if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+    var s = document.createElement('script');
+    s.src = '../js/template-editor.js';
+    s.onload = function() {
+        TemplateEditor.init({ templateId: 'lokales-geschaeft', clientId: 'demo' });
+    };
+    document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>

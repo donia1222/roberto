@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Fitness — Fitness & Gesundheit Template | Lweb</title>
+    <meta name="description" content="Energetisches Fitness-Template mit Kursplan, Trainer, Preisen und Kontakt. Professionelle Webseite ab 250 CHF.">
+    <meta name="theme-color" content="#0a0a0a" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Rubik',sans-serif; color:#e0e0e0; background:#0a0a0a; overflow-x:hidden; }
+
+        /* ═══ VARIABLES ═══ */
+        :root {
+            --coral: #ff4d4d;
+            --cyan: #00e5ff;
+            --dark: #0a0a0a;
+            --dark2: #161616;
+            --light: #f5f5f5;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --display: 'Bebas Neue', sans-serif;
+            --sans: 'Rubik', sans-serif;
+        }
+
+        /* ═══ KEYFRAMES ═══ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @keyframes pulseGlow { 0%,100%{ box-shadow:0 0 20px rgba(255,77,77,0.3); } 50%{ box-shadow:0 0 40px rgba(255,77,77,0.6); } }
+        @keyframes slideIn { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes ringRotate { 0%{ transform:rotate(0deg); } 100%{ transform:rotate(360deg); } }
+        @keyframes diagonalSlide { from { transform:translateX(-100%) skewX(-15deg); } to { transform:translateX(0) skewX(-15deg); } }
+        @keyframes countPop { from { transform:scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ═══ BACK BUTTON ═══ */
+        .f-back {
+            position:fixed; top:20px; left:20px; z-index:200;
+            width:44px; height:44px; border-radius:50%;
+            background:rgba(22,22,22,0.8); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.1);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .f-back:hover { background:var(--coral); border-color:var(--coral); transform:scale(1.1); }
+
+        /* ═══ NAV ═══ */
+        .f-nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:22px 48px; display:flex; align-items:center; justify-content:space-between;
+            transition:all 0.4s ease;
+        }
+        .f-nav.scrolled {
+            background:rgba(10,10,10,0.95); backdrop-filter:blur(20px);
+            padding:14px 48px; box-shadow:0 4px 40px rgba(0,0,0,0.5);
+            border-bottom:1px solid rgba(255,255,255,0.05);
+        }
+        .f-nav-logo {
+            font-family:var(--display); font-size:28px; margin-left: 40px;  color:#fff;
+            text-decoration:none; letter-spacing:0.08em;
+        }
+        .f-nav-logo span { color:var(--coral); }
+        .f-nav-links { display:flex; gap:36px; align-items:center; }
+        .f-nav-links a {
+            color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px;
+            font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+            transition:color 0.3s; position:relative;
+        }
+        .f-nav-links a::after {
+            content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+            background:var(--coral); transition:width 0.3s;
+        }
+        .f-nav-links a:hover { color:#fff; }
+        .f-nav-links a:hover::after { width:100%; }
+        .f-nav-cta {
+            background:linear-gradient(135deg, var(--coral), #ff6b6b) !important;
+            color:#fff !important; padding:12px 28px; border-radius:50px;
+            font-weight:700 !important; letter-spacing:0.06em !important;
+            transition:all 0.3s !important; border:none;
+        }
+        .f-nav-cta:hover { transform:translateY(-2px) !important; box-shadow:0 8px 30px rgba(255,77,77,0.4) !important; }
+        .f-nav-cta::after { display:none !important; }
+
+        /* Burger */
+        .f-nav-burger {
+            display:none; background:none; border:none; cursor:pointer;
+            width:30px; height:22px; position:relative; z-index:101;
+        }
+        .f-nav-burger span {
+            display:block; width:100%; height:2px; background:#fff;
+            position:absolute; left:0; transition:all 0.3s; border-radius:2px;
+        }
+        .f-nav-burger span:nth-child(1) { top:0; }
+        .f-nav-burger span:nth-child(2) { top:10px; }
+        .f-nav-burger span:nth-child(3) { top:20px; }
+        .f-nav-burger.open span:nth-child(1) { top:10px; transform:rotate(45deg); background:var(--coral); }
+        .f-nav-burger.open span:nth-child(2) { opacity:0; }
+        .f-nav-burger.open span:nth-child(3) { top:10px; transform:rotate(-45deg); background:var(--coral); }
+
+        /* Mobile menu */
+        .f-mobile-menu {
+            position:fixed; inset:0; z-index:99;
+            background:rgba(10,10,10,0.98); backdrop-filter:blur(30px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+            opacity:0; pointer-events:none; transition:opacity 0.4s;
+        }
+        .f-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .f-mobile-menu a {
+            font-family:var(--display); font-size:36px; color:#fff;
+            text-decoration:none; letter-spacing:0.1em; transition:color 0.3s;
+        }
+        .f-mobile-menu a:hover { color:var(--coral); }
+
+        /* ═══ HERO ═══ */
+        .f-hero {
+            height:100vh; min-height:700px; position:relative;
+            display:flex; align-items:center; overflow:hidden;
+        }
+        .f-hero-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80') center/cover no-repeat;
+        }
+        .f-hero-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.7) 40%, rgba(10,10,10,0.5) 100%);
+        }
+        /* Diagonal accent stripe */
+        .f-hero-stripe {
+            position:absolute; top:0; right:-10%; width:40%; height:100%;
+            background:linear-gradient(135deg, var(--coral), var(--cyan));
+            opacity:0.07; transform:skewX(-15deg);
+            animation:diagonalSlide 1.2s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        .f-hero-content {
+            position:relative; z-index:2; max-width:900px; padding:0 48px;
+        }
+        .f-hero-tag {
+            display:inline-flex; align-items:center; gap:10px;
+            color:var(--coral); font-size:13px; font-weight:700;
+            letter-spacing:0.2em; text-transform:uppercase; margin-bottom:28px;
+            animation:fadeUp 0.8s 0.3s both;
+        }
+        .f-hero-tag::before {
+            content:''; width:40px; height:2px; background:var(--coral);
+        }
+        .f-hero-title {
+            font-family:var(--display); font-size:clamp(64px, 10vw, 120px);
+            color:#fff; line-height:0.95; letter-spacing:0.04em;
+            margin-bottom:24px; animation:fadeUp 0.8s 0.5s both;
+        }
+        .f-hero-title span {
+            background:linear-gradient(135deg, var(--coral), var(--cyan));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .f-hero-sub {
+            font-size:18px; color:var(--text-muted); max-width:520px;
+            line-height:1.7; margin-bottom:40px;
+            animation:fadeUp 0.8s 0.7s both;
+        }
+        .f-hero-cta {
+            display:inline-flex; align-items:center; gap:12px;
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            color:#fff; padding:18px 42px; border-radius:50px;
+            font-weight:700; font-size:15px; text-decoration:none;
+            letter-spacing:0.08em; text-transform:uppercase;
+            transition:all 0.4s; animation:fadeUp 0.8s 0.9s both;
+        }
+        .f-hero-cta:hover {
+            transform:translateY(-3px); box-shadow:0 15px 50px rgba(255,77,77,0.4);
+        }
+        .f-hero-cta svg { transition:transform 0.3s; }
+        .f-hero-cta:hover svg { transform:translateX(4px); }
+        .f-hero-scroll {
+            position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+            z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px;
+            color:var(--text-muted); font-size:11px; letter-spacing:0.15em;
+            text-transform:uppercase; animation:fadeIn 1s 1.2s both;
+        }
+        .f-hero-scroll-line {
+            width:1px; height:40px; background:linear-gradient(to bottom, var(--coral), transparent);
+            animation:pulseGlow 2s infinite;
+        }
+
+        /* ═══ STATS BAR ═══ */
+        .f-stats {
+            background:var(--dark2); border-top:1px solid rgba(255,255,255,0.05);
+            border-bottom:1px solid rgba(255,255,255,0.05);
+            padding:48px 0;
+        }
+        .f-stats-inner {
+            max-width:1200px; margin:0 auto; padding:0 24px;
+            display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+            text-align:center;
+        }
+        .f-stat { position:relative; }
+        .f-stat:not(:last-child)::after {
+            content:''; position:absolute; right:0; top:50%; transform:translateY(-50%);
+            width:1px; height:40px; background:rgba(255,255,255,0.1);
+        }
+        .f-stat-num {
+            font-family:var(--display); font-size:48px; color:#fff;
+            letter-spacing:0.04em; line-height:1;
+        }
+        .f-stat-num span { color:var(--coral); }
+        .f-stat-label {
+            font-size:13px; color:var(--text-muted); margin-top:8px;
+            letter-spacing:0.06em; text-transform:uppercase;
+        }
+
+        /* ═══ SECTION COMMON ═══ */
+        .f-section {
+            padding:120px 0; position:relative; overflow:hidden;
+        }
+        .f-container { max-width:1200px; margin:0 auto; padding:0 24px; }
+        .f-section-header { margin-bottom:64px; position:relative; }
+        .f-section-num {
+            font-family:var(--display); font-size:clamp(100px,15vw,200px);
+            color:rgba(255,255,255,0.03); position:absolute;
+            top:-40px; left:-10px; line-height:1; pointer-events:none;
+            letter-spacing:0.05em;
+        }
+        .f-section-tag {
+            display:inline-flex; align-items:center; gap:10px;
+            color:var(--coral); font-size:12px; font-weight:700;
+            letter-spacing:0.2em; text-transform:uppercase; margin-bottom:16px;
+        }
+        .f-section-tag::before { content:''; width:30px; height:2px; background:var(--coral); }
+        .f-section-title {
+            font-family:var(--display); font-size:clamp(36px,5vw,56px);
+            color:#fff; letter-spacing:0.04em; line-height:1.1;
+        }
+        .f-section-title span {
+            background:linear-gradient(135deg, var(--coral), var(--cyan));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+
+        /* ═══ ABOUT ═══ */
+        .f-about-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+        }
+        .f-about-img {
+            position:relative; border-radius:12px; overflow:hidden;
+            aspect-ratio:4/5;
+        }
+        .f-about-img img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform 0.6s;
+        }
+        .f-about-img:hover img { transform:scale(1.05); }
+        .f-about-img::after {
+            content:''; position:absolute; bottom:0; left:0; right:0; height:40%;
+            background:linear-gradient(to top, var(--dark), transparent);
+        }
+        .f-about-img-accent {
+            position:absolute; top:-20px; right:-20px; width:120px; height:120px;
+            border:2px solid var(--coral); border-radius:12px; opacity:0.3; z-index:-1;
+        }
+        .f-about-text p {
+            font-size:17px; line-height:1.8; color:var(--text-muted); margin-bottom:20px;
+        }
+        .f-about-features {
+            display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px;
+        }
+        .f-about-feat {
+            display:flex; align-items:center; gap:12px;
+            font-size:14px; font-weight:500; color:var(--text);
+        }
+        .f-about-feat-icon {
+            width:36px; height:36px; border-radius:8px;
+            background:rgba(255,77,77,0.1); border:1px solid rgba(255,77,77,0.2);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--coral); flex-shrink:0;
+        }
+
+        /* ═══ CLASSES ═══ */
+        .f-classes-wrap {
+            overflow-x:auto; overflow-y:hidden;
+            scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+            padding-bottom:20px; margin:0 -24px; padding-left:24px; padding-right:24px;
+        }
+        .f-classes-wrap::-webkit-scrollbar { height:4px; }
+        .f-classes-wrap::-webkit-scrollbar-track { background:var(--dark2); border-radius:4px; }
+        .f-classes-wrap::-webkit-scrollbar-thumb { background:var(--coral); border-radius:4px; }
+        .f-classes-track {
+            display:flex; gap:24px; width:max-content;
+        }
+        .f-class-card {
+            width:300px; flex-shrink:0; scroll-snap-align:start;
+            background:var(--dark2); border-radius:16px; overflow:hidden;
+            border:1px solid rgba(255,255,255,0.05);
+            transition:all 0.4s; position:relative;
+        }
+        .f-class-card:hover {
+            transform:translateY(-8px); border-color:rgba(255,77,77,0.2);
+            box-shadow:0 20px 60px rgba(0,0,0,0.4);
+        }
+        .f-class-img {
+            height:200px; overflow:hidden; position:relative;
+        }
+        .f-class-img img {
+            width:100%; height:100%; object-fit:cover; transition:transform 0.6s;
+        }
+        .f-class-card:hover .f-class-img img { transform:scale(1.1); }
+        .f-class-diff {
+            position:absolute; top:12px; right:12px;
+            padding:4px 12px; border-radius:20px; font-size:11px;
+            font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+        }
+        .f-class-diff.easy { background:rgba(0,229,255,0.15); color:var(--cyan); }
+        .f-class-diff.medium { background:rgba(255,193,7,0.15); color:#ffc107; }
+        .f-class-diff.hard { background:rgba(255,77,77,0.15); color:var(--coral); }
+        .f-class-body { padding:24px; }
+        .f-class-name {
+            font-family:var(--display); font-size:24px; color:#fff;
+            letter-spacing:0.06em; margin-bottom:8px;
+        }
+        .f-class-meta {
+            display:flex; align-items:center; gap:16px; font-size:13px; color:var(--text-muted);
+        }
+        .f-class-meta svg { color:var(--coral); flex-shrink:0; }
+        .f-class-meta-item { display:flex; align-items:center; gap:6px; }
+
+        /* ═══ TRAINERS ═══ */
+        .f-trainers-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:48px;
+        }
+        .f-trainer-card { text-align:center; }
+        .f-trainer-photo-wrap {
+            width:200px; height:200px; margin:0 auto 28px;
+            position:relative; border-radius:50%;
+        }
+        .f-trainer-ring {
+            position:absolute; inset:-6px; border-radius:50%;
+            border:2px solid transparent;
+            border-top-color:var(--coral); border-right-color:var(--cyan);
+            transition:all 0.6s; opacity:0;
+        }
+        .f-trainer-card:hover .f-trainer-ring {
+            opacity:1; animation:ringRotate 3s linear infinite;
+        }
+        .f-trainer-photo {
+            width:100%; height:100%; border-radius:50%; overflow:hidden;
+            border:3px solid var(--dark2);
+        }
+        .f-trainer-photo img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform 0.6s; filter:grayscale(30%);
+        }
+        .f-trainer-card:hover .f-trainer-photo img {
+            transform:scale(1.1); filter:grayscale(0);
+        }
+        .f-trainer-name {
+            font-family:var(--display); font-size:26px; color:#fff;
+            letter-spacing:0.06em; margin-bottom:4px;
+        }
+        .f-trainer-role {
+            font-size:13px; color:var(--coral); font-weight:600;
+            letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;
+        }
+        .f-trainer-desc {
+            font-size:14px; color:var(--text-muted); line-height:1.7; max-width:280px; margin:0 auto;
+        }
+
+        /* ═══ PRICING ═══ */
+        .f-pricing { background:var(--dark2); }
+        .f-pricing-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+            align-items:center;
+        }
+        .f-price-card {
+            background:var(--dark); border:1px solid rgba(255,255,255,0.06);
+            border-radius:20px; padding:48px 36px; text-align:center;
+            transition:all 0.4s; position:relative;
+        }
+        .f-price-card:hover {
+            transform:translateY(-6px);
+            box-shadow:0 20px 60px rgba(0,0,0,0.3);
+        }
+        .f-price-card.popular {
+            border-color:var(--coral);
+            box-shadow:0 0 40px rgba(255,77,77,0.15);
+            transform:scale(1.05);
+            z-index:2;
+        }
+        .f-price-card.popular:hover {
+            transform:scale(1.05) translateY(-6px);
+            box-shadow:0 0 60px rgba(255,77,77,0.25), 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .f-price-badge {
+            position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            color:#fff; padding:6px 24px; border-radius:50px;
+            font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+        }
+        .f-price-name {
+            font-family:var(--display); font-size:28px; color:#fff;
+            letter-spacing:0.08em; margin-bottom:8px;
+        }
+        .f-price-amount {
+            font-family:var(--display); font-size:56px; color:#fff;
+            letter-spacing:0.02em; line-height:1; margin-bottom:4px;
+        }
+        .f-price-amount span { font-size:20px; color:var(--text-muted); }
+        .f-price-period { font-size:13px; color:var(--text-muted); margin-bottom:32px; }
+        .f-price-features { list-style:none; margin-bottom:36px; text-align:left; }
+        .f-price-features li {
+            padding:10px 0; font-size:14px; color:var(--text);
+            display:flex; align-items:center; gap:12px;
+            border-bottom:1px solid rgba(255,255,255,0.05);
+        }
+        .f-price-features li:last-child { border-bottom:none; }
+        .f-price-features li svg { color:var(--coral); flex-shrink:0; }
+        .f-price-features li.disabled { color:var(--text-muted); opacity:0.4; }
+        .f-price-features li.disabled svg { color:var(--text-muted); }
+        .f-price-btn {
+            display:block; width:100%; padding:16px;
+            border-radius:50px; font-weight:700; font-size:14px;
+            letter-spacing:0.08em; text-transform:uppercase;
+            text-decoration:none; text-align:center; transition:all 0.3s;
+            border:2px solid rgba(255,255,255,0.15); color:#fff; background:transparent;
+            cursor:pointer;
+        }
+        .f-price-btn:hover {
+            border-color:var(--coral); color:var(--coral);
+        }
+        .f-price-card.popular .f-price-btn {
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            border-color:transparent; color:#fff;
+        }
+        .f-price-card.popular .f-price-btn:hover {
+            box-shadow:0 8px 30px rgba(255,77,77,0.4); transform:translateY(-2px);
+        }
+
+        /* ═══ CTA SECTION ═══ */
+        .f-cta-section {
+            position:relative; padding:160px 0; text-align:center; overflow:hidden;
+        }
+        .f-cta-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&q=80') center/cover no-repeat;
+        }
+        .f-cta-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(10,10,10,0.9), rgba(10,10,10,0.75));
+        }
+        .f-cta-content { position:relative; z-index:2; }
+        .f-cta-title {
+            font-family:var(--display); font-size:clamp(48px,8vw,96px);
+            color:#fff; letter-spacing:0.06em; line-height:1; margin-bottom:24px;
+        }
+        .f-cta-title span {
+            background:linear-gradient(135deg, var(--coral), var(--cyan));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .f-cta-sub {
+            font-size:18px; color:var(--text-muted); max-width:500px;
+            margin:0 auto 40px; line-height:1.7;
+        }
+        .f-cta-btn {
+            display:inline-flex; align-items:center; gap:12px;
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            color:#fff; padding:20px 48px; border-radius:50px;
+            font-weight:700; font-size:16px; text-decoration:none;
+            letter-spacing:0.08em; text-transform:uppercase; transition:all 0.4s;
+        }
+        .f-cta-btn:hover {
+            transform:translateY(-3px); box-shadow:0 15px 50px rgba(255,77,77,0.4);
+        }
+
+        /* ═══ CONTACT ═══ */
+        .f-contact-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:64px;
+        }
+        .f-form { display:flex; flex-direction:column; gap:20px; }
+        .f-form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .f-form label {
+            font-size:12px; font-weight:600; color:var(--text-muted);
+            letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px; display:block;
+        }
+        .f-form input, .f-form textarea, .f-form select {
+            width:100%; padding:14px 18px; background:var(--dark2);
+            border:1px solid rgba(255,255,255,0.08); border-radius:10px;
+            color:#fff; font-family:var(--sans); font-size:15px;
+            transition:border-color 0.3s; outline:none;
+        }
+        .f-form input:focus, .f-form textarea:focus, .f-form select:focus {
+            border-color:var(--coral);
+        }
+        .f-form textarea { min-height:120px; resize:vertical; }
+        .f-form select { cursor:pointer; appearance:none; }
+        .f-form-submit {
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            color:#fff; padding:16px 36px; border:none; border-radius:50px;
+            font-weight:700; font-size:15px; letter-spacing:0.08em;
+            text-transform:uppercase; cursor:pointer; transition:all 0.3s;
+            align-self:flex-start;
+        }
+        .f-form-submit:hover {
+            transform:translateY(-2px); box-shadow:0 10px 30px rgba(255,77,77,0.3);
+        }
+        .f-contact-info { display:flex; flex-direction:column; gap:24px; }
+        .f-contact-info h3 {
+            font-family:var(--display); font-size:32px; color:#fff; letter-spacing:0.06em;
+        }
+        .f-contact-info > p { font-size:15px; color:var(--text-muted); line-height:1.7; }
+        .f-contact-row {
+            display:flex; align-items:flex-start; gap:16px; padding:20px;
+            background:var(--dark2); border-radius:12px;
+            border:1px solid rgba(255,255,255,0.05); transition:border-color 0.3s;
+        }
+        .f-contact-row:hover { border-color:rgba(255,77,77,0.2); }
+        .f-contact-icon {
+            width:44px; height:44px; border-radius:10px;
+            background:rgba(255,77,77,0.1); border:1px solid rgba(255,77,77,0.2);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--coral); flex-shrink:0;
+        }
+        .f-contact-row h4 { font-size:14px; color:#fff; margin-bottom:4px; }
+        .f-contact-row p { font-size:14px; color:var(--text-muted); }
+        .f-contact-hours {
+            padding:24px; background:var(--dark2); border-radius:12px;
+            border:1px solid rgba(255,255,255,0.05); margin-top:auto;
+        }
+        .f-contact-hours h4 {
+            font-family:var(--display); font-size:20px; color:#fff;
+            letter-spacing:0.06em; margin-bottom:12px;
+        }
+        .f-contact-hours-row {
+            display:flex; justify-content:space-between;
+            padding:8px 0; font-size:14px; color:var(--text-muted);
+            border-bottom:1px solid rgba(255,255,255,0.04);
+        }
+        .f-contact-hours-row:last-child { border-bottom:none; }
+        .f-contact-hours-row span:last-child { color:var(--text); font-weight:500; }
+
+        /* ═══ FOOTER ═══ */
+        .f-footer {
+            background:var(--dark2); border-top:1px solid rgba(255,255,255,0.05);
+            padding:48px 0 32px; text-align:center;
+        }
+        .f-footer-logo {
+            font-family:var(--display); font-size:32px; color:#fff;
+            letter-spacing:0.1em; margin-bottom:20px;
+        }
+        .f-footer-logo span { color:var(--coral); }
+        .f-footer-links {
+            display:flex; justify-content:center; gap:32px; margin-bottom:24px;
+        }
+        .f-footer-links a {
+            color:var(--text-muted); text-decoration:none; font-size:14px;
+            transition:color 0.3s; letter-spacing:0.04em;
+        }
+        .f-footer-links a:hover { color:var(--coral); }
+        .f-footer-social { display:flex; justify-content:center; gap:16px; margin-bottom:28px; }
+        .f-footer-social a {
+            width:40px; height:40px; border-radius:50%;
+            background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-muted); transition:all 0.3s;
+        }
+        .f-footer-social a:hover {
+            background:var(--coral); color:#fff; border-color:var(--coral);
+            transform:translateY(-2px);
+        }
+        .f-footer-copy {
+            font-size:13px; color:var(--text-muted);
+        }
+        .f-footer-copy a { color:var(--coral); text-decoration:none; }
+
+        /* ═══ RESPONSIVE 1024px ═══ */
+        @media(max-width:1024px) {
+            .f-nav { padding:18px 24px; }
+            .f-nav.scrolled { padding:12px 24px; }
+            .f-nav-links { display:none; }
+            .f-nav-burger { display:block; }
+            .f-hero-content { padding:0 24px; }
+            .f-about-grid { grid-template-columns:1fr; gap:40px; }
+            .f-about-img { max-width:500px; }
+            .f-trainers-grid { grid-template-columns:repeat(3,1fr); gap:32px; }
+            .f-pricing-grid { grid-template-columns:1fr; max-width:420px; margin:0 auto; gap:24px; }
+            .f-price-card.popular { transform:scale(1); }
+            .f-price-card.popular:hover { transform:translateY(-6px); }
+            .f-contact-grid { grid-template-columns:1fr; gap:48px; }
+            .f-section { padding:80px 0; }
+        }
+
+        /* ═══ RESPONSIVE 600px ═══ */
+        @media(max-width:600px) {
+            .f-hero { min-height:600px; }
+            .f-hero-title { font-size:clamp(48px,12vw,72px); }
+            .f-hero-sub { font-size:15px; }
+            .f-hero-cta { padding:14px 32px; font-size:13px; }
+            .f-stats-inner { grid-template-columns:1fr 1fr; gap:24px; }
+            .f-stat:nth-child(2)::after { display:none; }
+            .f-stat-num { font-size:36px; }
+            .f-section-num { font-size:80px; }
+            .f-about-features { grid-template-columns:1fr; }
+            .f-class-card { width:260px; }
+            .f-trainers-grid { grid-template-columns:1fr; gap:40px; }
+            .f-trainer-photo-wrap { width:160px; height:160px; }
+            .f-pricing-grid { max-width:100%; }
+            .f-form-row { grid-template-columns:1fr; }
+            .f-cta-section { padding:100px 0; }
+            .f-footer-links { flex-wrap:wrap; gap:16px; }
+            .f-section { padding:60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ BACK BUTTON ═══════════ -->
+<a href="../templates-web.html" class="f-back" aria-label="Zurück">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="f-nav" id="fNav">
+    <a href="#" class="f-nav-logo" data-edit="text" data-edit-key="nav-logo">PEAK <span>FITNESS</span></a>
+    <div class="f-nav-links">
+        <a href="#classes" data-edit="text" data-edit-key="nav-link1">KLASSEN</a>
+        <a href="#trainers" data-edit="text" data-edit-key="nav-link2">TRAINER</a>
+        <a href="#pricing" data-edit="text" data-edit-key="nav-link3">PREISE</a>
+        <a href="#contact" data-edit="text" data-edit-key="nav-link4">KONTAKT</a>
+        <a href="#contact" class="f-nav-cta" data-edit="text" data-edit-key="nav-cta">Probetraining</a>
+    </div>
+    <button class="f-nav-burger" id="fBurger" aria-label="Menü">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="f-mobile-menu" id="fMobileMenu">
+    <a href="#classes">KLASSEN</a>
+    <a href="#trainers">TRAINER</a>
+    <a href="#pricing">PREISE</a>
+    <a href="#contact">KONTAKT</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="f-hero">
+    <div class="f-hero-bg" data-edit="image" data-edit-key="hero-bg"></div>
+    <div class="f-hero-stripe"></div>
+    <div class="f-hero-content">
+        <div class="f-hero-tag" data-edit="text" data-edit-key="hero-tag">Premium Fitness Studio in Zürich</div>
+        <h1 class="f-hero-title" data-edit="text" data-edit-key="hero-title">DEIN KÖRPER. <span>DEIN TEMPEL.</span></h1>
+        <p class="f-hero-sub" data-edit="text" data-edit-key="hero-sub">Entdecke dein volles Potenzial. Modernste Geräte, erstklassige Trainer und eine Community, die dich antreibt — jeden Tag.</p>
+        <a href="#contact" class="f-hero-cta" data-edit="text" data-edit-key="hero-cta">
+            Jetzt starten
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+    <div class="f-hero-scroll">
+        <span>Scroll</span>
+        <div class="f-hero-scroll-line"></div>
+    </div>
+</section>
+
+<!-- ═══════════ STATS BAR ═══════════ -->
+<section class="f-stats">
+    <div class="f-stats-inner">
+        <div class="f-stat fade-up">
+            <div class="f-stat-num" data-edit="text" data-edit-key="stat1-num">500<span>+</span></div>
+            <div class="f-stat-label" data-edit="text" data-edit-key="stat1-label">Mitglieder</div>
+        </div>
+        <div class="f-stat fade-up">
+            <div class="f-stat-num" data-edit="text" data-edit-key="stat2-num">30<span>+</span></div>
+            <div class="f-stat-label" data-edit="text" data-edit-key="stat2-label">Klassen / Woche</div>
+        </div>
+        <div class="f-stat fade-up">
+            <div class="f-stat-num" data-edit="text" data-edit-key="stat3-num">8</div>
+            <div class="f-stat-label" data-edit="text" data-edit-key="stat3-label">Zertifizierte Trainer</div>
+        </div>
+        <div class="f-stat fade-up">
+            <div class="f-stat-num" data-edit="text" data-edit-key="stat4-num">7</div>
+            <div class="f-stat-label" data-edit="text" data-edit-key="stat4-label">Tage offen</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="f-section" id="about">
+    <div class="f-container">
+        <div class="f-about-grid">
+            <div class="f-about-img fade-up">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Fitness Studio" data-edit="image" data-edit-key="about-img">
+                <div class="f-about-img-accent"></div>
+            </div>
+            <div class="f-about-text fade-up">
+                <div class="f-section-header">
+                    <div class="f-section-num">01</div>
+                    <div class="f-section-tag" data-edit="text" data-edit-key="about-tag">Über uns</div>
+                    <h2 class="f-section-title" data-edit="text" data-edit-key="about-title">MEHR ALS EIN <span>GYM</span></h2>
+                </div>
+                <p data-edit="text" data-edit-key="about-p1">Peak Fitness ist nicht nur ein Fitnessstudio — es ist eine Bewegung. Seit 2018 schaffen wir in Zürich einen Raum, in dem Athleten aller Levels ihr volles Potenzial entfalten können.</p>
+                <p data-edit="text" data-edit-key="about-p2">Mit über 1'500 m² Trainingsfläche, modernsten Geräten und einer einzigartigen Atmosphäre bieten wir dir alles, was du für deine Transformation brauchst.</p>
+                <div class="f-about-features">
+                    <div class="f-about-feat">
+                        <div class="f-about-feat-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <span data-edit="text" data-edit-key="about-feat1">Modernste Geräte</span>
+                    </div>
+                    <div class="f-about-feat">
+                        <div class="f-about-feat-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <span data-edit="text" data-edit-key="about-feat2">Personal Training</span>
+                    </div>
+                    <div class="f-about-feat">
+                        <div class="f-about-feat-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <span data-edit="text" data-edit-key="about-feat3">Ernährungsberatung</span>
+                    </div>
+                    <div class="f-about-feat">
+                        <div class="f-about-feat-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <span data-edit="text" data-edit-key="about-feat4">Sauna & Wellness</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CLASSES ═══════════ -->
+<section class="f-section f-pricing" id="classes">
+    <div class="f-container">
+        <div class="f-section-header fade-up">
+            <div class="f-section-num">02</div>
+            <div class="f-section-tag" data-edit="text" data-edit-key="classes-tag">Unsere Klassen</div>
+            <h2 class="f-section-title" data-edit="text" data-edit-key="classes-title">FINDE DEINEN <span>FLOW</span></h2>
+        </div>
+        <div class="f-classes-wrap">
+            <div class="f-classes-track">
+                <!-- Yoga -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Yoga" data-edit="image" data-edit-key="class1-img">
+                        <span class="f-class-diff easy" data-edit="text" data-edit-key="class1-diff">Leicht</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class1-name">YOGA</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class1-time">60 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class1-cap">Max. 20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- HIIT -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=600&q=80" alt="HIIT" data-edit="image" data-edit-key="class2-img">
+                        <span class="f-class-diff hard" data-edit="text" data-edit-key="class2-diff">Intensiv</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class2-name">HIIT</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class2-time">45 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class2-cap">Max. 15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CrossFit -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80" alt="CrossFit" data-edit="image" data-edit-key="class3-img">
+                        <span class="f-class-diff hard" data-edit="text" data-edit-key="class3-diff">Intensiv</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class3-name">CROSSFIT</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class3-time">50 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class3-cap">Max. 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Boxing -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80" alt="Boxing" data-edit="image" data-edit-key="class4-img">
+                        <span class="f-class-diff hard" data-edit="text" data-edit-key="class4-diff">Intensiv</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class4-name">BOXING</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class4-time">60 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class4-cap">Max. 16</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pilates -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Pilates" data-edit="image" data-edit-key="class5-img">
+                        <span class="f-class-diff medium" data-edit="text" data-edit-key="class5-diff">Mittel</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class5-name">PILATES</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class5-time">55 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class5-cap">Max. 18</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Spinning -->
+                <div class="f-class-card fade-up">
+                    <div class="f-class-img">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" alt="Spinning" data-edit="image" data-edit-key="class6-img">
+                        <span class="f-class-diff medium" data-edit="text" data-edit-key="class6-diff">Mittel</span>
+                    </div>
+                    <div class="f-class-body">
+                        <div class="f-class-name" data-edit="text" data-edit-key="class6-name">SPINNING</div>
+                        <div class="f-class-meta">
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span data-edit="text" data-edit-key="class6-time">45 Min</span>
+                            </div>
+                            <div class="f-class-meta-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <span data-edit="text" data-edit-key="class6-cap">Max. 25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ TRAINERS ═══════════ -->
+<section class="f-section" id="trainers">
+    <div class="f-container">
+        <div class="f-section-header fade-up" style="text-align:center;">
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">03</div>
+            <div class="f-section-tag" style="justify-content:center;" data-edit="text" data-edit-key="trainers-tag">Unser Team</div>
+            <h2 class="f-section-title" data-edit="text" data-edit-key="trainers-title">DEINE <span>TRAINER</span></h2>
+        </div>
+        <div class="f-trainers-grid">
+            <!-- Trainer 1 -->
+            <div class="f-trainer-card fade-up">
+                <div class="f-trainer-photo-wrap">
+                    <div class="f-trainer-ring"></div>
+                    <div class="f-trainer-photo">
+                        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80" alt="Trainer" data-edit="image" data-edit-key="trainer1-img">
+                    </div>
+                </div>
+                <div class="f-trainer-name" data-edit="text" data-edit-key="trainer1-name">ALEX MEIER</div>
+                <div class="f-trainer-role" data-edit="text" data-edit-key="trainer1-role">CrossFit & Strength</div>
+                <div class="f-trainer-desc" data-edit="text" data-edit-key="trainer1-desc">Zertifizierter CrossFit Level 3 Trainer mit 10+ Jahren Erfahrung. Spezialist für Kraftaufbau und funktionelles Training.</div>
+            </div>
+            <!-- Trainer 2 -->
+            <div class="f-trainer-card fade-up">
+                <div class="f-trainer-photo-wrap">
+                    <div class="f-trainer-ring"></div>
+                    <div class="f-trainer-photo">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Trainer" data-edit="image" data-edit-key="trainer2-img">
+                    </div>
+                </div>
+                <div class="f-trainer-name" data-edit="text" data-edit-key="trainer2-name">SARAH KOCH</div>
+                <div class="f-trainer-role" data-edit="text" data-edit-key="trainer2-role">Yoga & Pilates</div>
+                <div class="f-trainer-desc" data-edit="text" data-edit-key="trainer2-desc">Internationale Yoga-Zertifizierung (500h RYT). Verbindet traditionelle Techniken mit modernem Fitness-Ansatz.</div>
+            </div>
+            <!-- Trainer 3 -->
+            <div class="f-trainer-card fade-up">
+                <div class="f-trainer-photo-wrap">
+                    <div class="f-trainer-ring"></div>
+                    <div class="f-trainer-photo">
+                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80" alt="Trainer" data-edit="image" data-edit-key="trainer3-img">
+                    </div>
+                </div>
+                <div class="f-trainer-name" data-edit="text" data-edit-key="trainer3-name">MARCO SILVA</div>
+                <div class="f-trainer-role" data-edit="text" data-edit-key="trainer3-role">HIIT & Boxing</div>
+                <div class="f-trainer-desc" data-edit="text" data-edit-key="trainer3-desc">Ehemaliger Profi-Boxer und HIIT-Spezialist. Motiviert dich, über deine Grenzen hinauszugehen — mit Spass.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<section class="f-section f-pricing" id="pricing">
+    <div class="f-container">
+        <div class="f-section-header fade-up" style="text-align:center;">
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">04</div>
+            <div class="f-section-tag" style="justify-content:center;" data-edit="text" data-edit-key="pricing-tag">Mitgliedschaft</div>
+            <h2 class="f-section-title" data-edit="text" data-edit-key="pricing-title">UNSERE <span>PREISE</span></h2>
+        </div>
+        <div class="f-pricing-grid">
+            <!-- Basic -->
+            <div class="f-price-card fade-up">
+                <div class="f-price-name" data-edit="text" data-edit-key="price1-name">BASIC</div>
+                <div class="f-price-amount" data-edit="text" data-edit-key="price1-amount"><span>CHF </span>59</div>
+                <div class="f-price-period" data-edit="text" data-edit-key="price1-period">pro Monat</div>
+                <ul class="f-price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price1-f1">Zugang Gym-Fläche</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price1-f2">Cardio & Kraftbereich</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price1-f3">Umkleiden & Duschen</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price1-f4">App-Zugang</span></li>
+                    <li class="disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Gruppenkurse</span></li>
+                    <li class="disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Personal Training</span></li>
+                </ul>
+                <button class="f-price-btn" data-edit="text" data-edit-key="price1-btn">Abo wählen</button>
+            </div>
+            <!-- Premium -->
+            <div class="f-price-card popular fade-up">
+                <div class="f-price-badge" data-edit="text" data-edit-key="price2-badge">Beliebteste Wahl</div>
+                <div class="f-price-name" data-edit="text" data-edit-key="price2-name">PREMIUM</div>
+                <div class="f-price-amount" data-edit="text" data-edit-key="price2-amount"><span>CHF </span>89</div>
+                <div class="f-price-period" data-edit="text" data-edit-key="price2-period">pro Monat</div>
+                <ul class="f-price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price2-f1">Alles aus Basic</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price2-f2">Alle Gruppenkurse</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price2-f3">Sauna & Wellness</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price2-f4">Ernährungsplan</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price2-f5">1x Personal Training/Mo</span></li>
+                    <li class="disabled"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Unbegrenzt PT</span></li>
+                </ul>
+                <button class="f-price-btn" data-edit="text" data-edit-key="price2-btn">Abo wählen</button>
+            </div>
+            <!-- Elite -->
+            <div class="f-price-card fade-up">
+                <div class="f-price-name" data-edit="text" data-edit-key="price3-name">ELITE</div>
+                <div class="f-price-amount" data-edit="text" data-edit-key="price3-amount"><span>CHF </span>129</div>
+                <div class="f-price-period" data-edit="text" data-edit-key="price3-period">pro Monat</div>
+                <ul class="f-price-features">
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f1">Alles aus Premium</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f2">Unbegrenzt Personal Training</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f3">Individueller Trainingsplan</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f4">Körperanalyse monatlich</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f5">VIP Locker</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f6">Gästepass (2x/Mo)</span></li>
+                </ul>
+                <button class="f-price-btn" data-edit="text" data-edit-key="price3-btn">Abo wählen</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CTA SECTION ═══════════ -->
+<section class="f-cta-section">
+    <div class="f-cta-bg" data-edit="image" data-edit-key="cta-bg"></div>
+    <div class="f-cta-content fade-up">
+        <h2 class="f-cta-title" data-edit="text" data-edit-key="cta-title">STARTE <span>HEUTE</span></h2>
+        <p class="f-cta-sub" data-edit="text" data-edit-key="cta-sub">Dein erstes Probetraining ist kostenlos. Keine Verpflichtungen — nur pures Training.</p>
+        <a href="#contact" class="f-cta-btn" data-edit="text" data-edit-key="cta-btn">
+            Kostenloses Probetraining
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="f-section" id="contact">
+    <div class="f-container">
+        <div class="f-section-header fade-up" style="text-align:center;">
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">05</div>
+            <div class="f-section-tag" style="justify-content:center;" data-edit="text" data-edit-key="contact-tag">Kontakt</div>
+            <h2 class="f-section-title" data-edit="text" data-edit-key="contact-title">SCHREIB <span>UNS</span></h2>
+        </div>
+        <div class="f-contact-grid">
+            <form class="f-form fade-up" onsubmit="return false;">
+                <div class="f-form-row">
+                    <div><label>Vorname</label><input type="text" placeholder="Dein Vorname"></div>
+                    <div><label>Nachname</label><input type="text" placeholder="Dein Nachname"></div>
+                </div>
+                <div class="f-form-row">
+                    <div><label>E-Mail</label><input type="email" placeholder="deine@email.ch"></div>
+                    <div><label>Telefon</label><input type="tel" placeholder="+41 79 ..."></div>
+                </div>
+                <div>
+                    <label>Interesse</label>
+                    <select>
+                        <option>Probetraining</option>
+                        <option>Mitgliedschaft</option>
+                        <option>Personal Training</option>
+                        <option>Gruppenkurse</option>
+                        <option>Sonstiges</option>
+                    </select>
+                </div>
+                <div><label>Nachricht</label><textarea placeholder="Erzähl uns von deinen Zielen..."></textarea></div>
+                <button type="submit" class="f-form-submit">Nachricht senden</button>
+            </form>
+            <div class="f-contact-info fade-up">
+                <h3 data-edit="text" data-edit-key="contact-info-title">Besuch uns</h3>
+                <p data-edit="text" data-edit-key="contact-info-desc">Komm vorbei für ein unverbindliches Probetraining. Wir zeigen dir das Studio und finden gemeinsam den perfekten Plan für dich.</p>
+                <div class="f-contact-row">
+                    <div class="f-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div><h4>Adresse</h4><p data-edit="text" data-edit-key="contact-address">Limmatstrasse 78, 8005 Zürich</p></div>
+                </div>
+                <div class="f-contact-row">
+                    <div class="f-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div><h4>E-Mail</h4><p data-edit="text" data-edit-key="contact-email">info@peakfitness.ch</p></div>
+                </div>
+                <div class="f-contact-row">
+                    <div class="f-contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div><h4>Telefon</h4><p data-edit="text" data-edit-key="contact-phone">+41 44 123 45 67</p></div>
+                </div>
+                <div class="f-contact-hours">
+                    <h4 data-edit="text" data-edit-key="contact-hours-title">Öffnungszeiten</h4>
+                    <div class="f-contact-hours-row">
+                        <span>Montag – Freitag</span>
+                        <span data-edit="text" data-edit-key="hours-weekday">06:00 – 22:00</span>
+                    </div>
+                    <div class="f-contact-hours-row">
+                        <span>Samstag</span>
+                        <span data-edit="text" data-edit-key="hours-sat">08:00 – 20:00</span>
+                    </div>
+                    <div class="f-contact-hours-row">
+                        <span>Sonntag</span>
+                        <span data-edit="text" data-edit-key="hours-sun">09:00 – 18:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="f-footer">
+    <div class="f-footer-logo" data-edit="text" data-edit-key="footer-logo">PEAK <span>FITNESS</span></div>
+    <div class="f-footer-links">
+        <a href="#about" data-edit="text" data-edit-key="footer-link1">Über uns</a>
+        <a href="#classes" data-edit="text" data-edit-key="footer-link2">Klassen</a>
+        <a href="#trainers" data-edit="text" data-edit-key="footer-link3">Trainer</a>
+        <a href="#pricing" data-edit="text" data-edit-key="footer-link4">Preise</a>
+        <a href="#contact" data-edit="text" data-edit-key="footer-link5">Kontakt</a>
+    </div>
+    <div class="f-footer-social">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+    </div>
+    <div class="f-footer-copy">
+        &copy; 2026 Peak Fitness — Template von <a href="../templates-web.html">Lweb</a>
+    </div>
+</footer>
+
+<script>
+// Nav scroll
+(function(){
+    var nav = document.getElementById('fNav');
+    window.addEventListener('scroll', function(){
+        nav.classList.toggle('scrolled', window.pageYOffset > 80);
+    });
+})();
+
+// Mobile menu
+(function(){
+    var burger = document.getElementById('fBurger');
+    var menu = document.getElementById('fMobileMenu');
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Scroll fade-up animations
+(function(){
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+})();
+
+// Parallax hero background
+(function(){
+    var bg = document.querySelector('.f-hero-bg');
+    if (!bg || window.innerWidth < 1025) return;
+    window.addEventListener('scroll', function(){
+        bg.style.transform = 'translateY(' + (window.pageYOffset * 0.3) + 'px)';
+    });
+})();
+</script>
+
+<script>
+if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+    var s = document.createElement('script');
+    s.src = '../js/template-editor.js';
+    s.onload = function() {
+        TemplateEditor.init({ templateId: 'fitness', clientId: 'demo' });
+    };
+    document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
