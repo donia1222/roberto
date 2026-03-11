@@ -1640,6 +1640,21 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 
         <!-- Step 3: Contact -->
         <div class="om-body" data-step="3" id="omStep3">
+            <div class="om-form-group">
+                <label><span data-i18n="om.form.business">Geschäftsname</span> *</label>
+                <input type="text" id="omBusiness" data-i18n-placeholder="om.form.business.ph" placeholder="z.B. Muster GmbH" required>
+            </div>
+            <div class="om-form-row">
+                <div class="om-form-group">
+                    <label data-i18n="om.form.category">Branche / Kategorie</label>
+                    <input type="text" id="omCategory" data-i18n-placeholder="om.form.category.ph" placeholder="z.B. Restaurant, Coiffeur...">
+                </div>
+                <div class="om-form-group">
+                    <label data-i18n="om.form.colors">Wunschfarben</label>
+                    <input type="text" id="omColors" data-i18n-placeholder="om.form.colors.ph" placeholder="z.B. Blau, Weiss...">
+                </div>
+            </div>
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin:4px 0 16px">
             <div class="om-form-row">
                 <div class="om-form-group">
                     <label><span data-i18n="om.form.name">Name</span> *</label>
@@ -1692,7 +1707,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 (function(){
     var API = 'https://web.lweb.ch/lowtemplattes';
     var step = 1;
-    var order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
+    var order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
 
     // ── Translation helper ──────────────────────────
     function t(key, fallback) {
@@ -1872,9 +1887,10 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
             btn.disabled = !order.domain && !order.has_own_domain;
             if (order.has_own_domain) btn.disabled = !document.getElementById('omExistingDomain').value.trim();
         } else if (step === 3) {
+            var b = document.getElementById('omBusiness').value.trim();
             var n = document.getElementById('omName').value.trim();
             var e = document.getElementById('omEmail').value.trim();
-            btn.disabled = !n || !e || !/\S+@\S+\.\S+/.test(e);
+            btn.disabled = !b || !n || !e || !/\S+@\S+\.\S+/.test(e);
         }
     }
 
@@ -1887,7 +1903,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         if (step > 1) { step--; showStep(); }
     };
 
-    ['omName','omEmail','omPhone'].forEach(function(id){
+    ['omBusiness','omName','omEmail','omPhone'].forEach(function(id){
         document.getElementById(id).addEventListener('input', updateNextBtn);
     });
 
@@ -1897,6 +1913,9 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         btn.disabled = true;
         btn.innerHTML = '<span class="om-spinner"></span> ' + t('om.btn.sending','Sending...');
 
+        order.business_name = document.getElementById('omBusiness').value.trim();
+        order.business_category = document.getElementById('omCategory').value.trim();
+        order.colors = document.getElementById('omColors').value.trim();
         order.client_name = document.getElementById('omName').value.trim();
         order.client_email = document.getElementById('omEmail').value.trim();
         order.client_phone = document.getElementById('omPhone').value.trim();
@@ -1935,7 +1954,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 
     // ── Reset ───────────────────────────────────────
     function resetForm() {
-        order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, client_name:'', client_email:'', client_phone:'', client_message:'' };
+        order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
         document.querySelectorAll('.om-tpl').forEach(function(c){ c.classList.remove('selected'); });
         document.getElementById('omEditorOpt').classList.remove('selected');
         document.getElementById('omDomainInput').value = '';
@@ -1943,7 +1962,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         document.getElementById('omOwnDomain').classList.remove('selected');
         document.getElementById('omOwnDomainInput').style.display = 'none';
         document.getElementById('omExistingDomain').value = '';
-        ['omName','omEmail','omPhone','omMessage'].forEach(function(id){ document.getElementById(id).value=''; });
+        ['omBusiness','omCategory','omColors','omName','omEmail','omPhone','omMessage'].forEach(function(id){ document.getElementById(id).value=''; });
         document.getElementById('omFooter').innerHTML = '<button class="om-btn om-btn-back" id="omBack" onclick="omPrev()" style="display:none">' + t('om.btn.back','Back') + '</button><button class="om-btn om-btn-next" id="omNext" onclick="omNext()" disabled>' + t('om.btn.next','Next') + '</button>';
     }
 })();
