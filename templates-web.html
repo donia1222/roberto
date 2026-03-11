@@ -622,6 +622,36 @@
 
         /* Header back button visible on desktop */
         .header-back-desktop { display:flex !important; }
+        .header-title {
+            display: flex; flex-direction: column; gap: 3px; align-items: center;
+            text-align: center; line-height: 1.1;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
+        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #fe6c75; }
+        .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
+        .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
+        .header .header-nav { transition: opacity 0.3s ease; }
+        @media (min-width:1025px) {
+            .header-title {
+                position: absolute; left: 90px; transform: none;
+                text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+            }
+            .header-title span:first-child { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+            .header-title .accent { font-size: 13px; font-weight: 800; }
+            .header.past-hero .header-nav { opacity: 1; pointer-events: auto; }
+            .header .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+            .header-inner { position: relative; }
+        }
+        @media (max-width:1024px) {
+            .header-title {
+                position: absolute; left: 50%; transform: translateX(-50%);
+            }
+            .header-title span:first-child { font-size: 17px; }
+            .header-title .accent { font-size: 12px; }
+        }
+        body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
+        .header.menu-open .header-title span:first-child { color: #fff !important; }
     </style>
 </head>
 <body>
