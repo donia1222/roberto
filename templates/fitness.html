@@ -41,13 +41,14 @@
 
         /* ═══ BACK BUTTON ═══ */
         .f-back {
-            position:fixed; top:20px; left:20px; z-index:200;
-            width:44px; height:44px; border-radius:50%;
+            position:fixed; top:14px; left:14px; z-index:200;
+            width:32px; height:32px; border-radius:50%;
             background:rgba(22,22,22,0.8); backdrop-filter:blur(10px);
             border:1px solid rgba(255,255,255,0.1);
             display:flex; align-items:center; justify-content:center;
             color:#fff; text-decoration:none; transition:all 0.3s;
         }
+        .f-back svg { width:16px; height:16px; }
         .f-back:hover { background:var(--coral); border-color:var(--coral); transform:scale(1.1); }
 
         /* ═══ NAV ═══ */
@@ -618,7 +619,7 @@
 <body>
 
 <!-- ═══════════ BACK BUTTON ═══════════ -->
-<a href="../templates-web.html" class="f-back" aria-label="Zurück">
+<a href="../templates-web.html#tw-templates" class="f-back" aria-label="Zurück">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
 </a>
 

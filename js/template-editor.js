@@ -318,6 +318,41 @@
     //  TOGGLE EDITOR
     // ═══════════════════════════════════════════════════
 
+    // ── Onboarding modal ────────────────────────────
+    var onboardingShown = false;
+    var TE_LANG = (document.documentElement.lang || navigator.language || 'de').slice(0,2).toLowerCase();
+    var OB_TEXTS = {
+        de: { title:'Editor-Modus', text:'Klicke auf einen <b>Text</b>, um ihn zu bearbeiten.<br>Klicke auf das <b>Upload-Symbol</b> bei Bildern, um sie zu ersetzen.', btn:'Verstanden' },
+        en: { title:'Editor Mode', text:'Click on any <b>text</b> to edit it.<br>Click the <b>upload icon</b> on images to replace them.', btn:'Got it' },
+        es: { title:'Modo Editor', text:'Haz clic en un <b>texto</b> para editarlo.<br>Haz clic en el <b>icono de subir</b> en las imágenes para reemplazarlas.', btn:'Entendido' },
+        fr: { title:'Mode Éditeur', text:'Clique sur un <b>texte</b> pour le modifier.<br>Clique sur l\'<b>icône upload</b> des images pour les remplacer.', btn:'Compris' },
+        it: { title:'Modalità Editor', text:'Clicca su un <b>testo</b> per modificarlo.<br>Clicca sull\'<b>icona upload</b> delle immagini per sostituirle.', btn:'Capito' }
+    };
+
+    function showOnboarding(cb) {
+        var t = OB_TEXTS[TE_LANG] || OB_TEXTS.de;
+        var modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s';
+        modal.innerHTML =
+            '<div style="background:#fff;border-radius:20px;max-width:380px;width:100%;padding:32px;text-align:center;transform:translateY(16px) scale(0.97);transition:transform .3s;box-shadow:0 32px 80px rgba(0,0,0,0.2)">' +
+            '  <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#fe6c75,#e1545d);display:flex;align-items:center;justify-content:center;margin:0 auto 16px">' +
+            '    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>' +
+            '  </div>' +
+            '  <h3 style="font-size:20px;font-weight:800;margin:0 0 10px;color:#0f1d2c">' + t.title + '</h3>' +
+            '  <p style="font-size:14px;color:#6b7d99;line-height:1.6;margin:0 0 24px">' + t.text + '</p>' +
+            '  <button id="teOnboardBtn" style="width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#fe6c75,#e1545d);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s">' + t.btn + '</button>' +
+            '</div>';
+        document.body.appendChild(modal);
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){
+            modal.style.opacity = '1';
+            modal.firstElementChild.style.transform = 'translateY(0) scale(1)';
+        }); });
+        modal.querySelector('#teOnboardBtn').addEventListener('click', function(){
+            modal.style.opacity = '0';
+            setTimeout(function(){ modal.remove(); if(cb) cb(); }, 300);
+        });
+    }
+
     function toggleEditor() {
         isEditing = !isEditing;
         document.body.classList.toggle('te-editing', isEditing);
@@ -327,6 +362,14 @@
         if (isEditing) {
             toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Bearbeitung beenden</span>';
             toggleBtn.title = 'Editor schliessen';
+            if (!onboardingShown) {
+                onboardingShown = true;
+                showOnboarding(function() {
+                    injectBadges();
+                    bindEditableClicks();
+                });
+                return;
+            }
             injectBadges();
             bindEditableClicks();
         } else {

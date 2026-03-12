@@ -51,13 +51,14 @@
 
         /* ═══ BACK BUTTON ═══ */
         .s-back {
-            position:fixed; top:20px; left:20px; z-index:200;
-            width:44px; height:44px; border-radius:50%;
+            position:fixed; top:14px; left:14px; z-index:200;
+            width:32px; height:32px; border-radius:50%;
             background:rgba(139,34,82,0.7); backdrop-filter:blur(14px);
             border:1px solid rgba(212,165,116,0.25);
             display:flex; align-items:center; justify-content:center;
             color:#fff; text-decoration:none; transition:all 0.3s;
         }
+        .s-back svg { width:16px; height:16px; }
         .s-back:hover { background:var(--burgundy); border-color:var(--gold); transform:scale(1.1); }
 
         /* ═══ NAV ═══ */
@@ -669,7 +670,7 @@
 <body>
 
 <!-- ═══════════ BACK BUTTON ═══════════ -->
-<a href="../templates-web.html" class="s-back" title="Zurück">
+<a href="../templates-web.html#tw-templates" class="s-back" title="Zurück">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
 </a>
 

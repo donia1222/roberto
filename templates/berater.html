@@ -42,13 +42,14 @@
 
         /* ═══ BACK BUTTON ═══ */
         .b-back {
-            position:fixed; top:20px; left:20px; z-index:200;
-            width:42px; height:42px; border-radius:50%;
+            position:fixed; top:14px; left:14px; z-index:200;
+            width:32px; height:32px; border-radius:50%;
             background:rgba(15,23,42,0.6); backdrop-filter:blur(12px);
             border:1px solid rgba(129,140,248,0.2);
             display:flex; align-items:center; justify-content:center;
             color:#fff; text-decoration:none; transition:all 0.3s;
         }
+        .b-back svg { width:16px; height:16px; }
         .b-back:hover { background:var(--indigo); border-color:var(--indigo); transform:scale(1.1); }
 
         /* ═══ NAV ═══ */
@@ -584,7 +585,7 @@
 <body>
 
 <!-- Back to Lweb -->
-<a href="../templates-web.html" class="b-back" aria-label="Zurück">
+<a href="../templates-web.html#tw-templates" class="b-back" aria-label="Zurück">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
 </a>
 
