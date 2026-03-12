@@ -280,7 +280,7 @@ body.dark-mode .header-nav-sub:hover {
     align-items: center;
     gap: 8px;
     background: none;
-    border: none;
+    border: 1.5px solid var(--begonia400);
     color: var(--begonia400);
     font-size: 16px;
     font-weight: 600;
