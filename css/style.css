@@ -1900,8 +1900,8 @@ body.dark-mode .wt-panel-text p { color: #94a3b8; }
 body.dark-mode .wt-features li { color: #94a3b8; }
 /* Responsive */
 @media (max-width: 768px) {
-    .wt-tab-label { font-size: 12px; }
-    .wt-tab { padding: 12px 8px; gap: 5px; }
+    .wt-tab-label { display: none; }
+    .wt-tab { padding: 14px 8px; gap: 0; }
     .wt-panel-content { flex-direction: column; padding: 20px 18px; align-items: flex-start; }
     .wt-features { flex-wrap: wrap; gap: 8px 14px; }
     .wt-cta { width: 100%; justify-content: center; }
