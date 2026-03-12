@@ -298,6 +298,31 @@ body.dark-mode .header-nav-sub:hover {
     color: var(--begonia400);
     font-size: 10px;
 }
+/* Subtitle hints for submenu items */
+.header-nav-sub-hint {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gunpowder400);
+    margin-top: 1px;
+}
+.header-nav-sub--custom > span {
+    display: flex;
+    flex-direction: column;
+}
+.mobile-menu-link--custom {
+    flex-direction: column;
+    gap: 2px;
+}
+.mobile-menu-link-hint {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.5;
+}
+body.dark-mode .header-nav-sub-hint {
+    color: #8a9bb3;
+}
 .header-nav-item:hover { background: var(--gunpowder50); }
 .header-nav-item.active { background: rgba(180,210,240,0.15); }
 .header-nav-item:nth-child(1):hover svg { animation: navSpin 600ms ease; }
