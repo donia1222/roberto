@@ -1078,7 +1078,7 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n3">Buchungssystem / Terminplaner</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n4">Individuelle Programmierung</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n5">Domain-Registrierung (separat)</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n6">Visueller Editor (optional, + 250 CHF)</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n6">Visueller Editor (optional, + 200 CHF)</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n7">Professionelle E-Mail mit eigener Domain</span></li>
                 </ul>
                 <p style="margin-top:18px;font-size:14px;color:#8a9bb3;line-height:1.6" data-i18n="tw.inc.n.note">Diese Funktionen sind als separate Projekte verfügbar. Fragen Sie nach einem individuellen Angebot.</p>
@@ -1131,7 +1131,15 @@
                 <div class="tw-extra-body">
                     <h4 data-i18n="tw.ext5.title">Visueller Editor</h4>
                     <p data-i18n="tw.ext5.desc">Bearbeiten Sie Texte, Bilder und Logo selbst — direkt im Browser, ohne Code.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext5.price">+ 250 CHF</span>
+                    <span class="tw-extra-price" data-i18n="tw.ext5.price">+ 200 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=500&q=80" alt="E-Mail" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext6.title">Professionelle E-Mail</h4>
+                    <p data-i18n="tw.ext6.desc">Eigene E-Mail-Adresse mit Ihrem Domainnamen — z.B. info@ihrgeschaeft.ch.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext6.price">+ 120 CHF</span>
                 </div>
             </div>
         </div>
@@ -1139,17 +1147,21 @@
 </section>
 
 <!-- ═════════════════ BUNDLE ═════════════════ -->
-<section class="tw-section" style="background:#f4f7fb;padding:80px 0 90px;">
+<section class="tw-section" style="background:#f4f7fb;padding:80px 24px 90px;">
     <style>
-        .tw-bundle-h2{font-size:clamp(28px,4vw,46px);font-weight:900;color:#1a1a2e;text-align:center;line-height:1.15;margin:0 0 12px;}
+        .tw-bundle-h2{font-size:clamp(28px,4vw,46px);font-weight:900;color:#1a1a2e;line-height:1.15;margin:0 0 12px;}
         .tw-bundle-h2 .tw-bundle-price{color:#fe6c75;}
-        .tw-bundle-sub{text-align:center;font-size:16px;color:#64748b;max-width:560px;margin:0 auto 56px;line-height:1.6;}
+        .tw-bundle-sub{font-size:16px;color:#64748b;max-width:560px;margin:0 0 56px;line-height:1.6;}
         .tw-bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:960px;margin:0 auto 48px;}
         @media(max-width:700px){.tw-bundle-grid{grid-template-columns:1fr;gap:36px;max-width:340px;}}
         .tw-bundle-col{text-align:center;}
         .tw-bundle-icon{width:140px;height:140px;margin:0 auto 24px;position:relative;}
         .tw-bundle-icon-main{width:72px;height:72px;border-radius:20px;display:flex;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;}
-        .tw-bundle-icon-float{position:absolute;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.08);z-index:1;}
+        .tw-bundle-icon-float{position:absolute;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.08);z-index:1;animation:bundleFloat 3s ease-in-out infinite;}
+        .tw-bundle-icon-float:nth-child(2){animation-delay:0s;}
+        .tw-bundle-icon-float:nth-child(3){animation-delay:1s;}
+        .tw-bundle-icon-float:nth-child(4){animation-delay:2s;}
+        @keyframes bundleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         .tw-bundle-icon-float svg{width:18px;height:18px;}
         .tw-bundle-icon-main svg{width:28px;height:28px;color:#fff;}
         .tw-bundle-col h4{font-size:18px;font-weight:800;color:#1a1a2e;margin:0 0 8px;}
@@ -1163,7 +1175,7 @@
         body.dark-mode .tw-bundle-btn:hover{background:#e2e8f0;color:#1a1a2e}
     </style>
     <div class="tw-wrap">
-        <h2 class="tw-bundle-h2" data-i18n-html="tw.bundle.h2">Webseite + Domain + Editor<br><span class="tw-bundle-price">ab 600 CHF</span></h2>
+        <h2 class="tw-bundle-h2" data-i18n-html="tw.bundle.h2">Webseite + Domain + Editor<br><span class="tw-bundle-price">ab 650 CHF</span></h2>
         <p class="tw-bundle-sub" data-i18n="tw.bundle.sub">Alles was Sie brauchen, in einem Paket. Professionelle Webseite mit eigenem Domainnamen und visuellem Editor zum Selbstbearbeiten.</p>
         <div class="tw-bundle-grid">
             <!-- Col 1: Website -->
@@ -1255,7 +1267,7 @@
     <div class="tw-wrap">
         <div class="tw-label" data-i18n="tw.cta.label">Bereit zu starten?</div>
         <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre professionelle Webseite<br><span class="tw-accent">ab 450 CHF.</span></h2>
-        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="tw.cta.editor">Mit Editor ab 600 CHF</p>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="tw.cta.editor">Mit Editor ab 650 CHF</p>
         <p class="tw-sub" data-i18n="tw.cta.p">Wählen Sie ein Template, senden Sie uns Ihre Daten — und in wenigen Tagen ist Ihr Unternehmen online. Einfach, schnell und professionell.</p>
         <div class="tw-cta-btns">
             <button onclick="openOrderModal()" class="tw-btn-red" style="border:none;cursor:pointer;font-size:inherit;">
@@ -1471,6 +1483,7 @@
 
 /* ── Modal Box ─────────────────────────────────── */
 .om-box{background:#fff;border-radius:20px;width:100%;max-width:640px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;position:relative;transform:translateY(20px) scale(0.97);transition:transform .3s ease;box-shadow:0 32px 80px rgba(0,0,0,0.2)}
+@media(max-width:640px){.om-overlay{padding:0}.om-box{max-height:100vh;height:100vh;border-radius:0;max-width:100%}}
 .om-open .om-box{transform:translateY(0) scale(1)}
 .om-closing .om-box{transform:translateY(20px) scale(0.97)}
 
@@ -1539,7 +1552,33 @@ body.dark-mode .om-editor-opt{border-color:#334155}
 body.dark-mode .om-editor-opt .om-editor-check{border-color:#4b5563}
 body.dark-mode .om-editor-opt div[style*="color:#1a1a2e"]{color:#f1f5f9!important}
 
-/* ── Step 3: Contact ───────────────────────────── */
+/* ── Step 2: Extras ────────────────────────────── */
+.om-extras-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;min-height:0;padding-right:4px}
+.om-extras-list::-webkit-scrollbar{width:4px}
+.om-extras-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+#omStep2.om-active{display:flex;flex-direction:column}
+.om-extra-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.om-extra-item:hover{border-color:#cbd5e1}
+.om-extra-item.selected{border-color:#fe6c75;background:rgba(254,108,117,0.03)}
+.om-extra-check{width:22px;height:22px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.om-extra-check svg{opacity:0;transition:opacity .2s}
+.om-extra-item.selected .om-extra-check{border-color:#fe6c75;background:#fe6c75}
+.om-extra-item.selected .om-extra-check svg{opacity:1}
+.om-extra-thumb{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.om-extra-title{font-size:14px;font-weight:700;color:#1a1a2e}
+.om-extra-desc{font-size:11px;color:#64748b;line-height:1.4;margin-top:1px}
+.om-extra-price{font-size:14px;font-weight:700;color:#fe6c75;white-space:nowrap;flex-shrink:0}
+.om-extras-total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:14px 16px;background:#f0fdf4;border-radius:12px;font-weight:700;font-size:15px;color:#1a1a2e;flex-shrink:0}
+.om-extras-total span:last-child{color:#22963a;font-size:18px}
+body.dark-mode .om-extra-item{border-color:#334155}
+body.dark-mode .om-extra-item.selected{border-color:#fe6c75;background:rgba(254,108,117,0.05)}
+body.dark-mode .om-extra-check{border-color:#4b5563}
+body.dark-mode .om-extra-title{color:#f1f5f9}
+body.dark-mode .om-extra-desc{color:#94a3b8}
+body.dark-mode .om-extras-total{background:rgba(34,150,58,0.1);color:#f1f5f9}
+@media(max-width:480px){.om-extra-desc{display:none}.om-extra-thumb{width:36px;height:36px}}
+
+/* ── Step 4: Contact ───────────────────────────── */
 .om-form-group{margin-bottom:16px}
 .om-form-group label{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:6px}
 .om-form-group input,.om-form-group textarea{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;resize:none}
@@ -1547,7 +1586,7 @@ body.dark-mode .om-editor-opt div[style*="color:#1a1a2e"]{color:#f1f5f9!importan
 .om-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:480px){.om-form-row{grid-template-columns:1fr}}
 
-/* ── Step 4: Confirmation ──────────────────────── */
+/* ── Step 5: Confirmation ──────────────────────── */
 .om-confirm{text-align:center;padding:20px 0}
 .om-confirm-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#4dd35b,#2fb83e);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
 .om-confirm-icon svg{width:36px;height:36px;color:#fff}
@@ -1601,6 +1640,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
             <div class="om-step-dot active"></div>
             <div class="om-step-dot"></div>
             <div class="om-step-dot"></div>
+            <div class="om-step-dot"></div>
         </div>
 
         <!-- Step 1: Choose Template -->
@@ -1637,19 +1677,75 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
                     <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span>Ab 450 CHF</span></div>
                 </div>
             </div>
-            <!-- Editor option -->
-            <div class="om-editor-opt" id="omEditorOpt" onclick="toggleEditor()">
-                <div class="om-editor-check" id="omEditorCheck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                <div style="flex:1">
-                    <div style="font-size:14px;font-weight:700;color:#1a1a2e" data-i18n="om.editor.title">Visueller Editor</div>
-                    <div style="font-size:12px;color:#64748b" data-i18n="om.editor.desc">Texte, Bilder und Logo selbst bearbeiten</div>
+        </div>
+
+        <!-- Step 2: Extras -->
+        <div class="om-body" data-step="2" id="omStep2">
+            <p style="font-size:14px;color:#64748b;margin:0 0 16px" data-i18n="om.step2.extras.desc">Erweitern Sie Ihr Paket mit optionalen Extras.</p>
+            <div class="om-extras-list">
+                <div class="om-extra-item" data-extra="seo" data-extra-price="100" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=200&q=70" alt="SEO" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext1.title">SEO Basis</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext1.desc">Meta-Tags, Seitentitel und Google-Optimierung für bessere Sichtbarkeit.</div>
+                    </div>
+                    <span class="om-extra-price">+ 100 CHF</span>
                 </div>
-                <span style="font-size:14px;font-weight:700;color:#fe6c75">+ 250 CHF</span>
+                <div class="om-extra-item" data-extra="blog" data-extra-price="120" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=200&q=70" alt="Blog" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext2.title">Blog</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext2.desc">Einfacher Blog-Bereich für Neuigkeiten und Artikel auf Ihrer Seite.</div>
+                    </div>
+                    <span class="om-extra-price">+ 120 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="formular" data-extra-price="80" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&q=70" alt="Formular" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext3.title">Erweitertes Formular</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext3.desc">Zusätzliche Felder, Datei-Upload oder Anfrage-Formulare nach Mass.</div>
+                    </div>
+                    <span class="om-extra-price">+ 80 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="seite" data-extra-price="50" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&q=70" alt="Seite" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext4.title">Zusätzliche Seite</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext4.desc">Eine extra Unterseite für zusätzliche Inhalte oder Dienstleistungen.</div>
+                    </div>
+                    <span class="om-extra-price">+ 50 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="editor" data-extra-price="200" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=70" alt="Editor" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext5.title">Visueller Editor</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext5.desc">Bearbeiten Sie Texte, Bilder und Logo selbst — direkt im Browser, ohne Code.</div>
+                    </div>
+                    <span class="om-extra-price">+ 200 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="email" data-extra-price="120" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=200&q=70" alt="E-Mail" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext6.title">Professionelle E-Mail</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext6.desc">Eigene E-Mail-Adresse mit Ihrem Domainnamen — z.B. info@ihrgeschaeft.ch.</div>
+                    </div>
+                    <span class="om-extra-price">+ 120 CHF</span>
+                </div>
+            </div>
+            <div class="om-extras-total" id="omExtrasTotal">
+                <span data-i18n="om.extras.total">Gesamtpreis</span>
+                <span id="omTotalPrice">Ab 450 CHF</span>
             </div>
         </div>
 
-        <!-- Step 2: Domain -->
-        <div class="om-body" data-step="2" id="omStep2">
+        <!-- Step 3: Domain -->
+        <div class="om-body" data-step="3" id="omStep3">
             <p style="font-size:14px;color:#64748b;margin:0 0 16px" data-i18n="om.step2.desc">Suchen Sie einen freien Domainnamen für Ihre Webseite.</p>
             <div class="om-domain-search">
                 <input type="text" id="omDomainInput" placeholder="meingeschaeft.ch" autocomplete="off">
@@ -1669,8 +1765,8 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
             </div>
         </div>
 
-        <!-- Step 3: Contact -->
-        <div class="om-body" data-step="3" id="omStep3">
+        <!-- Step 4: Contact -->
+        <div class="om-body" data-step="4" id="omStep4">
             <div class="om-form-group">
                 <label><span data-i18n="om.form.business">Geschäftsname</span> *</label>
                 <input type="text" id="omBusiness" data-i18n-placeholder="om.form.business.ph" placeholder="z.B. Muster GmbH" required>
@@ -1710,8 +1806,8 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
             </div>
         </div>
 
-        <!-- Step 4: Success -->
-        <div class="om-body" data-step="4" id="omStep4">
+        <!-- Step 5: Success -->
+        <div class="om-body" data-step="5" id="omStep5">
             <div class="om-confirm">
                 <div class="om-confirm-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1738,7 +1834,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 (function(){
     var API = 'https://web.lweb.ch/lowtemplattes';
     var step = 1;
-    var order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
+    var order = { template:'', price:0, extras:[], extras_total:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
 
     // ── Translation helper ──────────────────────────
     function t(key, fallback) {
@@ -1755,9 +1851,10 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 
     var titleKeys = [
         { h:'om.step1.title', s:'1' },
-        { h:'om.step2.title', s:'2' },
+        { h:'om.step2.extras.title', s:'2' },
         { h:'om.step3.title', s:'3' },
-        { h:'om.step4.title', s:'4' }
+        { h:'om.step4.title', s:'4' },
+        { h:'om.step5.title', s:'5' }
     ];
 
     // ── Translate modal on open ─────────────────────
@@ -1772,29 +1869,46 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     // ── Open / Close ────────────────────────────────
     window.openOrderModal = function(withEditor) {
         translateModal();
-        var el = document.getElementById('omEditorOpt');
         if (withEditor) {
-            el.classList.add('selected');
-            order.editor = true;
-        } else {
-            el.classList.remove('selected');
-            order.editor = false;
+            // Pre-select editor extra
+            var editorEl = document.querySelector('.om-extra-item[data-extra="editor"]');
+            if (editorEl && !editorEl.classList.contains('selected')) {
+                editorEl.classList.add('selected');
+                order.extras.push('editor');
+                order.extras_total += 200;
+                order.editor = true;
+                updateExtrasTotal();
+            }
         }
         var m = document.getElementById('orderModal');
         m.classList.add('om-open');
         document.body.style.overflow = 'hidden';
         showStep();
     };
-    window.toggleEditor = function() {
-        var el = document.getElementById('omEditorOpt');
+    window.toggleExtra = function(el) {
         el.classList.toggle('selected');
-        order.editor = el.classList.contains('selected');
+        var extra = el.dataset.extra;
+        var price = parseInt(el.dataset.extraPrice);
+        if (el.classList.contains('selected')) {
+            order.extras.push(extra);
+            order.extras_total += price;
+        } else {
+            order.extras = order.extras.filter(function(e){ return e !== extra; });
+            order.extras_total -= price;
+        }
+        if (extra === 'editor') order.editor = el.classList.contains('selected');
+        updateExtrasTotal();
     };
+    function updateExtrasTotal() {
+        var total = order.price + order.extras_total;
+        var el = document.getElementById('omTotalPrice');
+        if (el) el.textContent = 'Ab ' + (total || 450) + ' CHF';
+    }
     window.closeOrderModal = function() {
         var m = document.getElementById('orderModal');
         m.classList.add('om-closing');
         setTimeout(function(){ m.classList.remove('om-open','om-closing'); document.body.style.overflow=''; }, 300);
-        if (step === 4) { step=1; showStep(); resetForm(); }
+        if (step === 5) { step=1; showStep(); resetForm(); }
     };
 
     document.getElementById('orderModal').addEventListener('click', function(e) {
@@ -1811,6 +1925,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         order.template = el.dataset.template;
         order.price = parseInt(el.dataset.price);
         document.getElementById('omNext').disabled = false;
+        updateExtrasTotal();
     };
 
     // ── Domain check ────────────────────────────────
@@ -1887,26 +2002,31 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         // Title
         document.getElementById('omTitle').textContent = t(titleKeys[step-1].h);
         var stepNum = titleKeys[step-1].s;
-        document.getElementById('omSubtitle').textContent = step < 4 ? t('om.step','Step') + ' ' + stepNum + ' ' + t('om.of','of') + ' 3' : t('om.thankyou','Thank you!');
+        document.getElementById('omSubtitle').textContent = step < 5 ? t('om.step','Step') + ' ' + stepNum + ' ' + t('om.of','of') + ' 4' : t('om.thankyou','Thank you!');
         // Step dots
         document.querySelectorAll('.om-step-dot').forEach(function(d,i){
             d.className = 'om-step-dot' + (i < step-1 ? ' done' : (i === step-1 ? ' active' : ''));
         });
         // Buttons
         var backBtn = document.getElementById('omBack');
-        if (backBtn) backBtn.style.display = step > 1 && step < 4 ? '' : 'none';
+        if (backBtn) backBtn.style.display = step > 1 && step < 5 ? '' : 'none';
         var footer = document.getElementById('omFooter');
         var nextBtn = document.getElementById('omNext');
-        if (step === 4) {
+        if (step === 5) {
             footer.innerHTML = '<button class="om-btn om-btn-next" onclick="closeOrderModal()" style="margin:0 auto">' + t('om.btn.close','Close') + '</button>';
-        } else if (step === 3) {
+        } else if (step === 4) {
             nextBtn.className = 'om-btn om-btn-submit';
             nextBtn.textContent = t('om.btn.submit','Submit order');
+        } else if (step === 2) {
+            var total = order.price + order.extras_total;
+            nextBtn.className = 'om-btn om-btn-next';
+            nextBtn.textContent = t('om.btn.next','Next') + ' — Ab ' + (total || 450) + ' CHF';
         } else {
             nextBtn.className = 'om-btn om-btn-next';
             nextBtn.textContent = t('om.btn.next','Next');
         }
         updateNextBtn();
+        if (step === 2) updateExtrasTotal();
     }
 
     function updateNextBtn() {
@@ -1915,9 +2035,11 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         if (step === 1) {
             btn.disabled = !order.template;
         } else if (step === 2) {
+            btn.disabled = false; // extras are optional
+        } else if (step === 3) {
             btn.disabled = !order.domain && !order.has_own_domain;
             if (order.has_own_domain) btn.disabled = !document.getElementById('omExistingDomain').value.trim();
-        } else if (step === 3) {
+        } else if (step === 4) {
             var b = document.getElementById('omBusiness').value.trim();
             var n = document.getElementById('omName').value.trim();
             var e = document.getElementById('omEmail').value.trim();
@@ -1926,7 +2048,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     }
 
     window.omNext = function() {
-        if (step === 3) { submitOrder(); return; }
+        if (step === 4) { submitOrder(); return; }
         step++;
         showStep();
     };
@@ -1961,14 +2083,20 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         .then(function(data){
             if (data.success) {
                 var tplNames = { handwerker:'Handwerker & Technik', coiffeur:'Coiffeur & Beauty', restaurant:'Restaurant & Café', berater:'Berater & Freelancer', fitness:'Fitness & Gesundheit', 'lokales-geschaeft':'Lokales Geschäft' };
-                var totalPrice = order.price + (order.editor ? 250 : 0);
+                var totalPrice = order.price + order.extras_total;
+                var extrasHtml = '';
+                var extraNames = {seo:'SEO Basis',blog:'Blog',formular:'Erweitertes Formular',seite:'Zusätzliche Seite',editor:'Visueller Editor',email:'Professionelle E-Mail'};
+                var extraPrices = {seo:100,blog:120,formular:80,seite:50,editor:200,email:120};
+                order.extras.forEach(function(ex){
+                    extrasHtml += '<div class="om-summary-row"><span>' + (extraNames[ex]||ex) + '</span><span>+ ' + extraPrices[ex] + ' CHF</span></div>';
+                });
                 document.getElementById('omSummary').innerHTML =
                     '<div class="om-summary-row"><span>' + t('om.summary.template','Template') + '</span><span>' + (tplNames[order.template]||order.template) + '</span></div>' +
                     '<div class="om-summary-row"><span>' + t('om.summary.domain','Domain') + '</span><span>' + (order.domain || t('om.summary.tbd','TBD')) + '</span></div>' +
-                    (order.editor ? '<div class="om-summary-row"><span>' + t('om.summary.editor','Visual Editor') + '</span><span>+ 250 CHF</span></div>' : '') +
-                    '<div class="om-summary-row"><span>' + t('om.summary.price','Price') + '</span><span>Ab ' + totalPrice + ' CHF</span></div>' +
+                    extrasHtml +
+                    '<div class="om-summary-row" style="border-top:1px solid #e2e8f0;padding-top:10px;margin-top:6px"><span>' + t('om.summary.price','Price') + '</span><span style="font-size:16px;color:#22963a">Ab ' + totalPrice + ' CHF</span></div>' +
                     '<div class="om-summary-row"><span>' + t('om.summary.order','Order') + '</span><span>#' + data.order_id + '</span></div>';
-                step = 4;
+                step = 5;
                 showStep();
             } else {
                 btn.disabled = false;
@@ -1985,9 +2113,9 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
 
     // ── Reset ───────────────────────────────────────
     function resetForm() {
-        order = { template:'', price:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
+        order = { template:'', price:0, extras:[], extras_total:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
         document.querySelectorAll('.om-tpl').forEach(function(c){ c.classList.remove('selected'); });
-        document.getElementById('omEditorOpt').classList.remove('selected');
+        document.querySelectorAll('.om-extra-item').forEach(function(c){ c.classList.remove('selected'); });
         document.getElementById('omDomainInput').value = '';
         document.getElementById('omDomainResult').style.display = 'none';
         document.getElementById('omOwnDomain').classList.remove('selected');
