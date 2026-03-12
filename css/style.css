@@ -304,7 +304,7 @@ body.dark-mode .header-nav-sub:hover {
     font-size: 11px;
     font-weight: 400;
     color: var(--gunpowder400);
-    margin-top: 1px;
+    margin-top: -1px;
 }
 .header-nav-sub--custom > span {
     display: flex;
@@ -312,13 +312,15 @@ body.dark-mode .header-nav-sub:hover {
 }
 .mobile-menu-link--custom {
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
 }
 .mobile-menu-link-hint {
     display: block;
     font-size: 12px;
     font-weight: 400;
     opacity: 0.5;
+    margin-top: -4px;
+    line-height: 1.1;
 }
 body.dark-mode .header-nav-sub-hint {
     color: #8a9bb3;
