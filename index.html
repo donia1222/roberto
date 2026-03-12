@@ -465,15 +465,21 @@
                 .tpl-thumbs.visible img:nth-child(6){transition-delay:0.3s}
                 .tpl-banner-cta{opacity:0;transform:translateX(-8px);transition:opacity 0.4s ease 0.4s,transform 0.4s ease 0.4s;}
                 .tpl-thumbs.visible ~ .tpl-banner-cta{opacity:1;transform:translateX(0);}
+                @media(max-width:768px){
+                    .tpl-thumbs{flex-wrap:wrap;justify-content:center;}
+                    .tpl-thumbs img{width:50px!important;height:50px!important;}
+                    .tpl-banner{flex-direction:column!important;align-items:flex-start!important;text-align:left;}
+                    .tpl-banner>div:last-child{width:100%;justify-content:center;}
+                }
             </style>
             <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
                 <div class="tpl-thumbs" style="display:flex;">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:6;">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:5;">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:4;">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:3;">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:2;">
-                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=120&q=70" alt="" style="width:40px;height:40px;border-radius:8px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative;z-index:1;">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:6;">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:5;">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:4;">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:3;">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;z-index:2;">
+                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=120&q=70" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative;z-index:1;">
                 </div>
                 <div class="tpl-banner-cta" style="font-size:13px;font-weight:700;color:#fe6c75;white-space:nowrap;display:flex;align-items:center;gap:4px;" data-i18n="pricing.templates.cta">Templates ansehen <span>&rarr;</span></div>
             </div>
@@ -1067,10 +1073,86 @@
             </div>
         </div>
 
-
     </div>
 </section>
 
+<!-- SCROLL PARALLAX CARDS -->
+<section class="wt-section" id="webTabs">
+    <div class="container">
+        <div class="wt-wrapper">
+            <!-- Tab buttons -->
+            <div class="wt-tabs" role="tablist">
+                <button class="wt-tab wt-tab--shop is-active" data-tab="shop" role="tab" aria-selected="true">
+                    <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></span>
+                    <span class="wt-tab-label" data-i18n="wb.shop.title">Perfekter Online-Shop</span>
+                </button>
+                <button class="wt-tab wt-tab--premade" data-tab="premade" role="tab" aria-selected="false">
+                    <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
+                    <span class="wt-tab-label" data-i18n="wb.premade.title">Premade Websites</span>
+                </button>
+                <button class="wt-tab wt-tab--custom" data-tab="custom" role="tab" aria-selected="false">
+                    <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                    <span class="wt-tab-label" data-i18n="wb.custom.title">Massgeschneidert</span>
+                </button>
+                <div class="wt-indicator"></div>
+            </div>
+            <!-- Tab panels -->
+            <div class="wt-panels">
+                <div class="wt-panel is-active" data-panel="shop" role="tabpanel">
+                    <div class="wt-panel-content">
+                        <div class="wt-panel-text">
+                            <h3 data-i18n="wb.shop.title">Perfekter Online-Shop</h3>
+                            <p data-i18n="wb.shop.panel.desc">Professionelle E-Commerce-Lösung mit Administrationspanel, Zahlungsintegration und responsivem Design.</p>
+                            <ul class="wt-features">
+                                <li data-i18n="wb.shop.f1">Administrationspanel</li>
+                                <li data-i18n="wb.shop.f2">Zahlungsintegration</li>
+                                <li data-i18n="wb.shop.f3">Produkt-Management</li>
+                            </ul>
+                        </div>
+                        <a href="tienda-online.html" class="wt-cta wt-cta--shop">
+                            <span data-i18n="wb.shop.cta">Mehr erfahren</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="wt-panel" data-panel="premade" role="tabpanel">
+                    <div class="wt-panel-content">
+                        <div class="wt-panel-text">
+                            <h3 data-i18n="wb.premade.title">Premade Websites</h3>
+                            <p data-i18n="wb.premade.panel.desc">Professionelle Vorlagen, sofort einsatzbereit. Domain, Hosting und Editor inklusive.</p>
+                            <ul class="wt-features">
+                                <li data-i18n="wb.premade.f1">Sofort online</li>
+                                <li data-i18n="wb.premade.f2">Domain inklusive</li>
+                                <li data-i18n="wb.premade.f3">ab 450 CHF</li>
+                            </ul>
+                        </div>
+                        <a href="templates-web.html" class="wt-cta wt-cta--premade">
+                            <span data-i18n="wb.premade.cta">Vorlagen ansehen</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="wt-panel" data-panel="custom" role="tabpanel">
+                    <div class="wt-panel-content">
+                        <div class="wt-panel-text">
+                            <h3 data-i18n="wb.custom.title">Massgeschneidert</h3>
+                            <p data-i18n="wb.custom.panel.desc">Einzigartiger Code, perfekt auf dein Projekt zugeschnitten. Keine Templates, keine Kompromisse.</p>
+                            <ul class="wt-features">
+                                <li data-i18n="wb.custom.f1">100% individuell</li>
+                                <li data-i18n="wb.custom.f2">Optimale Performance</li>
+                                <li data-i18n="wb.custom.f3">Unbegrenzte Möglichkeiten</li>
+                            </ul>
+                        </div>
+                        <button class="wt-cta wt-cta--custom" onclick="openPriceCalc()">
+                            <span data-i18n="wb.custom.cta">Preis berechnen</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- TECH STACK -->
 <section class="section techstack" id="techstack">

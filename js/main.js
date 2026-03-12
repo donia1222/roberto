@@ -2376,3 +2376,49 @@ document.addEventListener('keydown', function(e) {
         filterTabs.forEach(function(tab) { tab.classList.add('tab-visible'); });
     }
 })();
+
+// ===== WEB TABS =====
+(function() {
+    var wrapper = document.querySelector('.wt-wrapper');
+    if (!wrapper) return;
+
+    var tabs = wrapper.querySelectorAll('.wt-tab');
+    var panels = wrapper.querySelectorAll('.wt-panel');
+    var indicator = wrapper.querySelector('.wt-indicator');
+    var colors = { shop: '#fe6c75', premade: '#0891b2', custom: '#8b5cf6' };
+
+    function switchTab(tabName) {
+        tabs.forEach(function(t) {
+            t.classList.toggle('is-active', t.getAttribute('data-tab') === tabName);
+            t.setAttribute('aria-selected', t.getAttribute('data-tab') === tabName ? 'true' : 'false');
+        });
+        panels.forEach(function(p) {
+            p.classList.toggle('is-active', p.getAttribute('data-panel') === tabName);
+        });
+        // Move indicator
+        var activeTab = wrapper.querySelector('.wt-tab[data-tab="' + tabName + '"]');
+        if (activeTab && indicator) {
+            var idx = Array.prototype.indexOf.call(tabs, activeTab);
+            indicator.style.left = (idx * 100 / tabs.length) + '%';
+            indicator.style.width = (100 / tabs.length) + '%';
+            indicator.style.background = colors[tabName] || '#8b5cf6';
+        }
+    }
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            switchTab(this.getAttribute('data-tab'));
+        });
+    });
+
+    // Entrance animation
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                wrapper.classList.add('wt-visible');
+                obs.disconnect();
+            }
+        }, { threshold: 0.2 });
+        obs.observe(wrapper);
+    }
+})();
