@@ -59,8 +59,8 @@ burger.addEventListener('click', () => {
     document.querySelector('.header').classList.toggle('menu-open', isOpen);
 });
 
-// Close menu on link click
-mobileMenu.querySelectorAll('a').forEach(link => {
+// Close menu on link click (skip parent toggles)
+mobileMenu.querySelectorAll('a:not(.mobile-menu-link--parent)').forEach(link => {
     link.addEventListener('click', () => {
         burger.classList.remove('open');
         mobileMenu.classList.remove('open');
@@ -68,6 +68,22 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         document.querySelector('.header').classList.remove('menu-open');
     });
 });
+
+// Mobile websites subpanel
+function openMobileSubpanel() {
+    document.getElementById('mobileMenu').classList.add('sub-open');
+}
+function closeMobileSubpanel() {
+    document.getElementById('mobileMenu').classList.remove('sub-open');
+}
+function closeMobileMenu() {
+    var burger = document.getElementById('menuBurger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open', 'sub-open');
+    document.body.style.overflow = '';
+    document.querySelector('.header').classList.remove('menu-open');
+}
 
 // Smooth scroll for nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
