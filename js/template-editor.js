@@ -271,7 +271,7 @@
             if (isBgElement) {
                 // Place badge on the parent section instead
                 var parent = el.parentElement;
-                badge.style.cssText = 'position:absolute;top:16px;right:16px;z-index:60;opacity:1;pointer-events:auto;cursor:pointer;';
+                badge.style.cssText = 'position:absolute;top:16px;right:16px;z-index:9990;opacity:1;pointer-events:auto;cursor:pointer;';
                 badge.addEventListener('click', function(ev) {
                     ev.preventDefault();
                     ev.stopPropagation();
@@ -287,7 +287,7 @@
                 var imgParent = el.parentElement;
                 var imgParentPos = getComputedStyle(imgParent).position;
                 if (imgParentPos === 'static') imgParent.style.position = 'relative';
-                badge.style.cssText = 'position:absolute;top:8px;right:8px;z-index:60;opacity:0.7;pointer-events:auto;cursor:pointer;';
+                badge.style.cssText = 'position:absolute;top:8px;right:8px;z-index:9990;opacity:0.7;pointer-events:auto;cursor:pointer;';
                 badge.addEventListener('click', function(ev) {
                     ev.preventDefault();
                     ev.stopPropagation();

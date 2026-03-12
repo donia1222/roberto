@@ -39,7 +39,7 @@ body.te-editing a[data-edit]:hover {
 }
 /* Edit badge — injected via JS to avoid ::after conflicts */
 .te-badge {
-    position:absolute; top:6px; right:6px; z-index:60;
+    position:absolute; top:6px; right:6px; z-index:9990;
     width:32px; height:32px; border-radius:50%;
     background:rgba(254,108,117,0.92);
     display:flex; align-items:center; justify-content:center;
