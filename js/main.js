@@ -76,6 +76,13 @@ function openMobileSubpanel() {
 function closeMobileSubpanel() {
     document.getElementById('mobileMenu').classList.remove('sub-open');
 }
+// Mobile leistungen subpanel
+function openMobileLeistungenSubpanel() {
+    document.getElementById('mobileMenu').classList.add('sub-open-leistungen');
+}
+function closeMobileLeistungenSubpanel() {
+    document.getElementById('mobileMenu').classList.remove('sub-open-leistungen');
+}
 // Mobile apps subpanel
 function openMobileAppsSubpanel() {
     document.getElementById('mobileMenu').classList.add('sub-open-apps');
@@ -87,7 +94,7 @@ function closeMobileMenu() {
     var burger = document.getElementById('menuBurger');
     var mobileMenu = document.getElementById('mobileMenu');
     burger.classList.remove('open');
-    mobileMenu.classList.remove('open', 'sub-open', 'sub-open-apps');
+    mobileMenu.classList.remove('open', 'sub-open', 'sub-open-apps', 'sub-open-leistungen');
     document.body.style.overflow = '';
     document.querySelector('.header').classList.remove('menu-open');
 }

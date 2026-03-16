@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Beratung &amp; Support | Technische Begleitung | Lweb</title>
+    <meta name="description" content="Persönliche Tech-Beratung und langfristiger Support für Ihr digitales Projekt. Wartung, Updates und Weiterentwicklung aus einer Hand in Buchs SG.">
+    <meta name="author" content="Roberto Salvador — Lweb">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <link rel="canonical" href="https://www.lweb.ch/leistungen-support.html">
+    <meta property="og:url" content="https://www.lweb.ch/leistungen-support.html">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js"></script>
+    <style>
+        body { padding-top: 60px; overflow-x: hidden; background: #fff; }
+
+        /* ═══ ANIMATIONS ═══════════════════════════════════ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        @keyframes tw-shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        @keyframes tw-particle-rise {
+            0% { opacity:0; transform:translateY(0) scale(0.5); }
+            20% { opacity:1; }
+            80% { opacity:0.6; }
+            100% { opacity:0; transform:translateY(-600px) scale(1.2) rotate(180deg); }
+        }
+        @keyframes tw-pulse-ring {
+            0% { transform:scale(1); opacity:0.5; }
+            100% { transform:scale(2.2); opacity:0; }
+        }
+        @keyframes tw-icon-breathe { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+        @keyframes tw-rotate-gradient { to { --tw-angle: 360deg; } }
+        @keyframes tw-wave {
+            0%,100% { transform:rotate(0) scale(1); }
+            25% { transform:rotate(-10deg) scale(1.15); }
+            50% { transform:rotate(5deg) scale(1.2); }
+            75% { transform:rotate(-5deg) scale(1.1); }
+        }
+        @keyframes tw-marquee { to { transform:translateX(-50%); } }
+        @keyframes tw-code-line { from { opacity:0; transform:translateX(-12px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes tw-screen-slide-in { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes tw-check-pop {
+            0% { transform:scale(0); } 60% { transform:scale(1.2); } 100% { transform:scale(1); }
+        }
+
+        @property --tw-angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+
+        /* ═══ COMMON ═══════════════════════════════════════ */
+        .tw-section { padding: 96px 24px; }
+        .tw-wrap { max-width: 1140px; margin: 0 auto; }
+        .tw-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #fe6c75; margin-bottom: 18px;
+        }
+        .tw-label::before {
+            content:''; width:7px; height:7px; border-radius:50%;
+            background:#fe6c75; animation:blink 1.5s infinite;
+        }
+        .tw-h2 {
+            font-size: 44px; font-weight: 800; line-height: 1.15;
+            letter-spacing: -0.01em; margin-bottom: 16px; color: #0f1d2c;
+        }
+        .tw-sub {
+            font-size: 17px; line-height: 1.7; color: #6b7d99;
+            max-width: 600px; margin-bottom: 48px;
+        }
+        .tw-accent { color: #fe6c75; }
+
+        /* ═══ HERO — centered + phone showcase ═══════════ */
+        .tw-hero {
+            min-height: 10vh; display: flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            background: linear-gradient(180deg, #fff 15%, #f0faf4 100%);
+            padding: 80px 24px 80px; position: relative; overflow: hidden;
+        }
+        .tw-hero-center {
+            text-align:center; max-width:780px; margin:0 auto;
+        }
+        .tw-hero-badge {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(254,108,117,0.08); border:1px solid rgba(254,108,117,0.18);
+            border-radius:600px; padding:6px 16px; font-size:12px;
+            font-weight:700; color:#fe6c75; letter-spacing:0.05em;
+            text-transform:uppercase; margin-bottom:24px;
+            animation:fadeUp 0.6s ease both;
+        }
+        .tw-hero-badge .blink {
+            width:6px; height:6px; border-radius:50%;
+            background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
+        }
+        .tw-hero-h1 {
+            font-size:56px; font-weight:800; line-height:1.08;
+            letter-spacing:-0.025em; color:#0f1d2c; margin-bottom:20px;
+            animation:fadeUp 0.6s 0.15s ease both;
+        }
+        .tw-hero-sub {
+            font-size:17px; line-height:1.7; color:#6b7d99;
+            max-width:560px; margin:0 auto 32px;
+            animation:fadeUp 0.6s 0.3s ease both;
+        }
+        .tw-hero-ctas { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.6s 0.45s ease both; }
+        .tw-hero-pills {
+            display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; justify-content:center;
+            animation:fadeUp 0.6s 0.55s ease both;
+        }
+        .tw-hero-pill {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(254,108,117,0.06); border:1px solid rgba(254,108,117,0.12);
+            border-radius:600px; padding:6px 14px; font-size:13px;
+            font-weight:600; color:#3f4960;
+        }
+        .tw-hero-pill svg { width:14px; height:14px; color:#4dd35b; }
+
+        /* ── Phone Showcase — fan arrangement ────────── */
+        .tw-phones-showcase {
+            width:100%; max-width:1000px; margin:36px auto 0;
+            display:flex; align-items:flex-end; justify-content:center;
+            position:relative; height:460px;
+            animation:fadeUp 0.8s 0.5s ease both;
+        }
+        .tw-phone-mock {
+            position:absolute; width:200px;
+            background:#0a1520; border-radius:28px; padding:6px;
+            box-shadow:0 25px 60px rgba(0,0,0,0.18);
+            transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+            bottom:0;
+        }
+        .tw-phone-mock:hover { transform:translateY(-16px) !important; box-shadow:0 35px 80px rgba(0,0,0,0.25); z-index:10 !important; }
+        .tw-phone-inner {
+            background:#fff; border-radius:22px; overflow:hidden;
+            position:relative;
+        }
+        .tw-phone-notch {
+            position:absolute; top:8px; left:50%; transform:translateX(-50%);
+            width:60px; height:6px; background:rgba(0,0,0,0.15);
+            border-radius:10px; z-index:2;
+        }
+        .tw-phone-screen { width:100%; height:340px; object-fit:cover; display:block; }
+        .tw-phone-label {
+            position:absolute; bottom:-28px; left:50%; transform:translateX(-50%);
+            font-size:11px; font-weight:700; color:#6b7d99; white-space:nowrap;
+            text-transform:uppercase; letter-spacing:0.05em;
+        }
+        /* Fan positions — 6 phones, tighter overlap */
+        .tw-phone-mock:nth-child(1) { left:2%; transform:rotate(-14deg) translateY(-20px); z-index:1; width:170px; }
+        .tw-phone-mock:nth-child(2) { left:14%; transform:rotate(-8deg) translateY(-6px); z-index:2; width:185px; }
+        .tw-phone-mock:nth-child(3) { left:28%; transform:rotate(-3deg) translateY(0); z-index:4; width:200px; }
+        .tw-phone-mock:nth-child(4) { right:28%; transform:rotate(3deg) translateY(0); z-index:4; width:200px; }
+        .tw-phone-mock:nth-child(5) { right:14%; transform:rotate(8deg) translateY(-6px); z-index:2; width:185px; }
+        .tw-phone-mock:nth-child(6) { right:2%; transform:rotate(14deg) translateY(-20px); z-index:1; width:170px; }
+
+        /* ═══ BUTTONS ═══════════════════════════════════════ */
+        .tw-btn-red {
+            display:inline-flex; align-items:center; gap:8px;
+            background:#fe6c75; color:#fff; border:none;
+            border-radius:600px; padding:14px 28px;
+            font-size:15px; font-weight:700; cursor:pointer;
+            text-decoration:none; transition:all 0.25s ease;
+            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+        }
+        .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
+        .tw-btn-ghost {
+            display:inline-flex; align-items:center; gap:8px;
+            background:transparent; color:#3f4960;
+            border:1.5px solid rgba(15,29,44,0.15);
+            border-radius:600px; padding:13px 26px;
+            font-size:15px; font-weight:600; cursor:pointer;
+            text-decoration:none; transition:all 0.25s ease;
+        }
+        .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
+
+        /* ═══ MARQUEE ═══════════════════════════════════════ */
+        .tw-marquee-wrap {
+            overflow:hidden; padding:20px 0;
+            background:#eef3fc; position:relative;
+        }
+        .tw-marquee-wrap::before, .tw-marquee-wrap::after {
+            content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2;
+        }
+        .tw-marquee-wrap::before { left:0; background:linear-gradient(90deg,#eef3fc,transparent); }
+        .tw-marquee-wrap::after { right:0; background:linear-gradient(270deg,#eef3fc,transparent); }
+        .tw-marquee {
+            display:flex; gap:40px; width:max-content;
+            animation:tw-marquee 30s linear infinite;
+        }
+        .tw-marquee:hover { animation-play-state:paused; }
+        .tw-marquee-item {
+            display:flex; align-items:center; gap:12px;
+            font-size:15px; font-weight:700; color:#3f4960;
+            white-space:nowrap; text-transform:uppercase; letter-spacing:0.05em;
+        }
+        .tw-marquee-item::before {
+            content:''; width:6px; height:6px; border-radius:50%;
+            background:#fe6c75; flex-shrink:0;
+        }
+
+        /* ═══ HOW IT WORKS — card layout (goodbarber style) ═════ */
+        .tw-how-section { background:#e8faf3; }
+        .tw-how-card {
+            max-width:1140px; margin:48px auto 0;
+            background:#fff; border-radius:24px; padding:60px;
+            display:grid; grid-template-columns:1fr 1fr; gap:60px;
+            align-items:start; border:1px solid rgba(0,0,0,0.05);
+            box-shadow:0 8px 40px rgba(0,0,0,0.04);
+            opacity:0; transform:translateY(30px);
+            transition:all 0.6s cubic-bezier(0.22,1,0.36,1);
+        }
+        .tw-how-card.tw-visible { opacity:1; transform:translateY(0); }
+        .tw-how-left h3 {
+            font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.15; margin:0 0 32px;
+        }
+        .tw-how-dark-box {
+            background:#0f1d2c; border-radius:18px; padding:36px;
+            color:#fff;
+        }
+        .tw-how-dark-box .tw-how-stars { color:#4dd35b; font-size:18px; margin-bottom:16px; display:block; }
+        .tw-how-dark-box p {
+            font-size:18px; font-weight:700; line-height:1.5; color:#fff; margin:0 0 16px;
+        }
+        .tw-how-dark-box span { font-size:14px; color:#94a3b8; line-height:1.6; display:block; }
+        .tw-how-right { display:flex; flex-direction:column; gap:32px; }
+        .tw-how-feat {
+            display:flex; align-items:flex-start; gap:18px;
+            transition:transform 0.3s;
+        }
+        .tw-how-feat:hover { transform:translateX(4px); }
+        .tw-how-feat-icon {
+            width:52px; height:52px; border-radius:14px; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+            background:#e8faf3;
+        }
+        .tw-how-feat-icon svg { width:24px; height:24px; color:#4dd35b; }
+        .tw-how-feat-text h4 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 4px; }
+        .tw-how-feat-text p { font-size:14px; color:#6b7d99; line-height:1.6; margin:0; }
+        @media (max-width:1024px) {
+            .tw-how-card { grid-template-columns:1fr; padding:40px 28px; gap:40px; }
+        }
+        @media (max-width:600px) {
+            .tw-how-card { padding:28px 20px; border-radius:16px; }
+            .tw-how-left h3 { font-size:26px; }
+            .tw-how-dark-box { padding:24px; }
+        }
+
+        /* ═══ TEMPLATE GALLERY — 3D cards + particles ════ */
+        .tw-gallery-section { background:#f0f4fa; position:relative; overflow:hidden; }
+        .tw-particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+        .tw-particle {
+            position:absolute; border-radius:50%;
+            animation:tw-particle-rise linear infinite;
+            will-change:transform,opacity;
+        }
+        .tw-gallery-grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:24px; margin-top:48px; position:relative; z-index:1;
+            perspective:1200px;
+        }
+        .tw-tpl-card {
+            position:relative; border-radius:20px; overflow:visible;
+            transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+            cursor:pointer; opacity:0; transform:translateY(40px);
+        }
+        .tw-tpl-card.tw-visible { opacity:1; transform:translateY(0); }
+        /* Animated gradient border */
+        .tw-tpl-card::before {
+            content:''; position:absolute; inset:-2px; border-radius:22px;
+            background:conic-gradient(from var(--tw-angle), #fdb5b9, #c4b5fd, #93c5fd, #86efac, #fde68a, #fdb5b9);
+            animation:tw-rotate-gradient 4s linear infinite;
+            opacity:0; transition:opacity 0.4s;
+        }
+        .tw-tpl-card:hover::before { opacity:1; }
+        .tw-tpl-inner {
+            position:relative; background:rgba(255,255,255,0.88);
+            backdrop-filter:blur(20px); border-radius:20px;
+            overflow:hidden; transition:all 0.35s ease;
+            border:1px solid rgba(0,0,0,0.06);
+        }
+        .tw-tpl-card:hover .tw-tpl-inner {
+            background:rgba(255,255,255,0.96);
+            box-shadow:0 24px 64px rgba(0,0,0,0.1);
+        }
+        /* Holographic shimmer on hover */
+        .tw-tpl-inner::after {
+            content:''; position:absolute; inset:0; opacity:0;
+            background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.3) 50%, transparent 55%);
+            background-size:200% 100%; transition:opacity 0.3s;
+            pointer-events:none;
+        }
+        .tw-tpl-card:hover .tw-tpl-inner::after {
+            opacity:1; animation:tw-shimmer 1.5s ease infinite;
+        }
+        .tw-tpl-preview {
+            height:180px; position:relative; overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .tw-tpl-icon-wrap {
+            width:80px; height:80px; border-radius:22px;
+            display:flex; align-items:center; justify-content:center;
+            position:relative; z-index:1;
+            animation:tw-icon-breathe 3s ease-in-out infinite;
+            transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .tw-tpl-card:hover .tw-tpl-icon-wrap { transform:scale(1.1) translateY(-8px); }
+        .tw-tpl-icon-wrap svg { width:32px; height:32px; color:#fff; }
+        .tw-tpl-icon-wrap--red { background:linear-gradient(135deg,#fe6c75,#e1545d); box-shadow:0 8px 24px rgba(254,108,117,0.3); }
+        .tw-tpl-icon-wrap--blue { background:linear-gradient(135deg,#15a0da,#0089c2); box-shadow:0 8px 24px rgba(21,160,218,0.3); }
+        .tw-tpl-icon-wrap--green { background:linear-gradient(135deg,#4dd35b,#2fb83e); box-shadow:0 8px 24px rgba(77,211,91,0.3); }
+        .tw-tpl-icon-wrap--orange { background:linear-gradient(135deg,#ffb421,#e09a0e); box-shadow:0 8px 24px rgba(255,180,33,0.3); }
+        .tw-tpl-icon-wrap--purple { background:linear-gradient(135deg,#a882ff,#8b5cf6); box-shadow:0 8px 24px rgba(168,130,255,0.3); }
+        .tw-tpl-icon-wrap--cyan { background:linear-gradient(135deg,#00d2d3,#00b4d8); box-shadow:0 8px 24px rgba(0,210,211,0.3); }
+        /* Icon badge number */
+        .tw-tpl-badge-num {
+            position:absolute; top:8px; right:8px;
+            width:24px; height:24px; border-radius:50%;
+            background:#fe6c75; color:#fff; font-size:11px; font-weight:800;
+            display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 8px rgba(254,108,117,0.3);
+        }
+        .tw-tpl-info { padding:20px 24px; position:relative; z-index:1; }
+        .tw-tpl-info h3 { font-size:18px; font-weight:800; color:#0f1d2c; margin:0 0 6px; }
+        .tw-tpl-info p { font-size:14px; color:#6b7d99; line-height:1.5; margin:0 0 14px; }
+        .tw-tpl-tags { display:flex; gap:6px; flex-wrap:wrap; }
+        .tw-tpl-tag {
+            display:inline-flex; align-items:center; gap:4px;
+            background:rgba(254,108,117,0.08); color:#fe6c75;
+            font-size:11px; font-weight:700; padding:4px 10px;
+            border-radius:600px; transition:all 0.2s ease;
+        }
+        .tw-tpl-card:hover .tw-tpl-tag { transform:scale(1.05); }
+
+        /* ═══ STATS BAR ════════════════════════════════════ */
+        .tw-stats {
+            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            padding:40px 24px; display:flex; justify-content:center; gap:80px;
+            position:relative; overflow:hidden;
+        }
+        .tw-stats::before {
+            content:''; position:absolute; top:-40px; right:-40px;
+            width:300px; height:300px; border-radius:50%;
+            background:rgba(255,255,255,0.07);
+        }
+        .tw-stat { text-align:center; position:relative; z-index:1; }
+        .tw-stat-n { font-size:38px; font-weight:800; color:#fff; }
+        .tw-stat-l { font-size:13px; color:rgba(255,255,255,0.85); font-weight:600; margin-top:4px; }
+
+        /* ═══ INCLUDES — interactive ═══════════════════════ */
+        .tw-inc-section { background:#fff; }
+        .tw-includes-grid {
+            display:grid; grid-template-columns:1fr 1fr;
+            gap:40px; margin-top:48px;
+        }
+        .tw-inc-col { opacity:0; transform:translateY(30px); transition:all 0.5s ease; }
+        .tw-inc-col.tw-visible { opacity:1; transform:translateY(0); }
+        .tw-inc-col h3 {
+            font-size:22px; font-weight:800; margin:0 0 24px;
+            display:flex; align-items:center; gap:10px;
+        }
+        .tw-inc-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+        .tw-inc-list li {
+            display:flex; align-items:center; gap:12px;
+            font-size:15px; line-height:1.6; padding:12px 16px;
+            border-radius:12px; transition:all 0.25s ease;
+            border:1px solid transparent;
+        }
+        .tw-inc-list li:hover { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.04); }
+        .tw-inc-list li svg { width:20px; height:20px; flex-shrink:0; }
+        .tw-inc-yes li svg { color:#4dd35b; }
+        .tw-inc-no li svg { color:#ff5f56; }
+        /* Animated check appearance */
+        .tw-inc-yes li svg { opacity:0; transform:scale(0); }
+        .tw-inc-yes.tw-visible li svg { opacity:1; transform:scale(1); animation:tw-check-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+        .tw-inc-yes.tw-visible li:nth-child(1) svg { animation-delay:0.1s; }
+        .tw-inc-yes.tw-visible li:nth-child(2) svg { animation-delay:0.2s; }
+        .tw-inc-yes.tw-visible li:nth-child(3) svg { animation-delay:0.3s; }
+        .tw-inc-yes.tw-visible li:nth-child(4) svg { animation-delay:0.4s; }
+        .tw-inc-yes.tw-visible li:nth-child(5) svg { animation-delay:0.5s; }
+        .tw-inc-yes.tw-visible li:nth-child(6) svg { animation-delay:0.6s; }
+        .tw-inc-yes.tw-visible li:nth-child(7) svg { animation-delay:0.7s; }
+        .tw-inc-yes.tw-visible li:nth-child(8) svg { animation-delay:0.8s; }
+
+        /* ═══ EXTRAS — horizontal scroll cards ════════════ */
+        .tw-ext-section { background:#f4f7fb; }
+        .tw-extras-scroll {
+            display:flex; gap:24px; margin-top:48px;
+            overflow-x:auto; scroll-snap-type:x mandatory;
+            padding-bottom:16px; -webkit-overflow-scrolling:touch;
+            scrollbar-width:none;
+        }
+        .tw-extras-scroll::-webkit-scrollbar { display:none; }
+        .tw-extra-card {
+            flex:0 0 280px; scroll-snap-align:start;
+            background:#fff; border-radius:20px; overflow:hidden;
+            border:1px solid rgba(0,0,0,0.06);
+            transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            opacity:0; transform:translateY(20px);
+        }
+        .tw-extra-card.tw-visible { opacity:1; transform:translateY(0); }
+        .tw-extra-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.1); }
+        .tw-extra-img { height:160px; overflow:hidden; }
+        .tw-extra-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+        .tw-extra-card:hover .tw-extra-img img { transform:scale(1.06); }
+        .tw-extra-body { padding:24px; }
+        .tw-extra-card h4 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 8px; }
+        .tw-extra-card p { font-size:14px; color:#6b7d99; margin:0 0 16px; line-height:1.6; }
+        .tw-extra-price {
+            display:inline-block; font-size:18px; font-weight:800; color:#fe6c75;
+            background:rgba(254,108,117,0.08); padding:6px 16px; border-radius:600px;
+        }
+
+        /* ═══ EDITOR SHOWCASE — demo section ════════════════ */
+        .tw-editor-section { background:#fff; }
+        body.dark-mode .tw-editor-section { background:#0f1520; }
+        .tw-editor-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:60px;
+            align-items:center; max-width:1100px; margin:0 auto;
+        }
+        .tw-editor-visual {
+            position:relative; border-radius:20px; overflow:hidden;
+            box-shadow:0 20px 60px rgba(0,0,0,0.12);
+            border:1px solid rgba(0,0,0,0.06);
+        }
+        body.dark-mode .tw-editor-visual { box-shadow:0 20px 60px rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.06); }
+        .tw-editor-visual img { width:100%; display:block; }
+        .tw-editor-badge-demo {
+            position:absolute; top:16px; right:16px;
+            background:rgba(254,108,117,0.92); width:36px; height:36px;
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:tw-badge-pulse 2.5s ease infinite;
+        }
+        .tw-editor-badge-demo svg { width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2; }
+        @keyframes tw-badge-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+        .tw-editor-badge-demo--blue {
+            background:rgba(21,160,218,0.92); top:auto; bottom:80px; right:40px;
+            animation-delay:0.8s;
+        }
+        .tw-editor-content h3 {
+            font-size:14px; font-weight:700; text-transform:uppercase;
+            letter-spacing:0.08em; color:#fe6c75; margin:0 0 16px;
+        }
+        .tw-editor-content h2 {
+            font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.2; margin:0 0 20px;
+        }
+        body.dark-mode .tw-editor-content h2 { color:#f1f5f9; }
+        .tw-editor-content > p {
+            font-size:16px; color:#6b7d99; line-height:1.8; margin:0 0 28px;
+        }
+        body.dark-mode .tw-editor-content > p { color:#94a3b8; }
+        .tw-editor-features { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+        .tw-editor-feat {
+            display:flex; align-items:flex-start; gap:14px;
+            padding:14px 18px; border-radius:14px;
+            background:#f8fafc; border:1px solid rgba(0,0,0,0.04);
+            transition:all 0.3s;
+        }
+        .tw-editor-feat:hover { transform:translateX(4px); box-shadow:0 4px 16px rgba(0,0,0,0.04); }
+        body.dark-mode .tw-editor-feat { background:#1a2030; border-color:rgba(255,255,255,0.04); }
+        .tw-editor-feat-icon {
+            width:38px; height:38px; border-radius:10px; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .tw-editor-feat-icon svg { width:20px; height:20px; stroke-width:2; fill:none; }
+        .tw-editor-feat-icon--red { background:rgba(254,108,117,0.1); }
+        .tw-editor-feat-icon--red svg { stroke:#fe6c75; }
+        .tw-editor-feat-icon--blue { background:rgba(21,160,218,0.1); }
+        .tw-editor-feat-icon--blue svg { stroke:#15a0da; }
+        .tw-editor-feat-icon--green { background:rgba(77,211,91,0.1); }
+        .tw-editor-feat-icon--green svg { stroke:#4dd35b; }
+        .tw-editor-feat-icon--orange { background:rgba(255,165,0,0.1); }
+        .tw-editor-feat-icon--orange svg { stroke:#ffa500; }
+        .tw-editor-feat h4 { font-size:15px; font-weight:700; color:#0f1d2c; margin:0 0 3px; }
+        body.dark-mode .tw-editor-feat h4 { color:#f1f5f9; }
+        .tw-editor-feat p { font-size:13px; color:#6b7d99; margin:0; line-height:1.5; }
+        body.dark-mode .tw-editor-feat p { color:#94a3b8; }
+        .tw-editor-try {
+            display:inline-flex; align-items:center; gap:10px;
+            padding:14px 28px; border-radius:12px;
+            background:linear-gradient(135deg,#fe6c75,#e1545d);
+            color:#fff; font-size:15px; font-weight:700; text-decoration:none;
+            transition:all 0.3s; box-shadow:0 4px 16px rgba(254,108,117,0.3);
+        }
+        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.4); }
+        .tw-editor-try svg { width:18px; height:18px; }
+        .tw-editor-try--blue { background:linear-gradient(135deg,#93c5fd,#60a5fa); box-shadow:0 4px 16px rgba(147,197,253,0.4); color:#1e3a5f; }
+        .tw-editor-try--blue:hover { box-shadow:0 8px 24px rgba(147,197,253,0.5); }
+        .tw-editor-try-label { font-size:13px; color:#94a3b8; font-weight:500; margin:0 0 10px; }
+        .tw-editor-try-group { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
+        .tw-editor-try-item { display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
+        .tw-editor-try-sub { font-size:12px; color:#94a3b8; font-weight:500; padding-left:4px; }
+        .tw-editor-note {
+            margin-top:14px; font-size:13px; color:#94a3b8; display:flex;
+            align-items:center; gap:6px;
+        }
+        .tw-editor-note svg { width:14px; height:14px; color:#4dd35b; flex-shrink:0; }
+        @media (max-width:1024px) {
+            .tw-editor-grid { grid-template-columns:1fr; gap:40px; }
+            .tw-editor-visual { max-width:500px; margin:0 auto; }
+        }
+        @media (max-width:600px) {
+            .tw-editor-content h2 { font-size:28px; }
+        }
+
+        /* ═══ ADVANTAGE — red gradient ════════════════════ */
+        .tw-advantage {
+            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            padding:64px; border-radius:24px; margin:0 auto; max-width:900px;
+            color:#fff; text-align:center; position:relative; overflow:hidden;
+        }
+        .tw-advantage::before {
+            content:''; position:absolute; top:-50px; right:-50px;
+            width:350px; height:350px; border-radius:50%;
+            background:rgba(255,255,255,0.07);
+        }
+        .tw-advantage h3 { font-size:28px; font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
+        .tw-advantage p { font-size:16px; line-height:1.7; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
+        .tw-adv-emoji { display:inline-block; font-size:0.85em; animation:tw-wave 2s ease-in-out infinite; }
+        .tw-advantage-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; position:relative; }
+        .tw-advantage-tag {
+            background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3);
+            color:#fff; font-size:12px; font-weight:700; padding:6px 14px;
+            border-radius:600px; transition:all 0.2s ease;
+        }
+        .tw-advantage-tag:hover { background:rgba(255,255,255,0.3); transform:scale(1.05); }
+
+        /* ═══ CTA — dark gradient (only dark section in day mode) ═══ */
+        .tw-cta {
+            background:linear-gradient(165deg,#060e18 0%,#0f1d2c 100%);
+            text-align:center; padding:96px 24px;
+        }
+        .tw-cta .tw-h2 { color:#fff; max-width:700px; margin:0 auto 16px; }
+        .tw-cta .tw-sub { color:#8a9bb3; max-width:560px; margin:0 auto 36px; }
+        .tw-cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .tw-cta .tw-btn-ghost { color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.2); }
+        .tw-cta .tw-btn-ghost:hover { border-color:rgba(255,255,255,0.5); color:#fff; }
+        .tw-cta-note {
+            margin-top:24px; font-size:14px; color:#6b7d99;
+            display:flex; align-items:center; justify-content:center; gap:8px;
+        }
+        .tw-cta-note svg { width:16px; height:16px; color:#4dd35b; }
+
+        /* (nav dots removed — phone showcase replaces browser) */
+
+        /* ═══ DARK MODE ═══════════════════════════════════ */
+        body.dark-mode { background:#1a1f2e; }
+        body.dark-mode .tw-hero { background:linear-gradient(180deg,#1a1f2e 15%,#121f2a 100%); }
+        body.dark-mode .tw-hero-h1 { color:#f1f5f9; }
+        body.dark-mode .tw-hero-sub { color:#94a3b8; }
+        body.dark-mode .tw-hero-pill { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:#c8d5e3; }
+        body.dark-mode .tw-hero-badge { background:rgba(254,108,117,0.15); border-color:rgba(254,108,117,0.3); }
+        body.dark-mode .tw-phone-mock { box-shadow:0 25px 60px rgba(0,0,0,0.45); }
+        body.dark-mode .tw-phone-inner { background:#1e2536; }
+        body.dark-mode .tw-phone-label { color:#8a9bb3; }
+        body.dark-mode .tw-marquee-wrap { background:#151a27; }
+        body.dark-mode .tw-marquee-wrap::before { background:linear-gradient(90deg,#151a27,transparent); }
+        body.dark-mode .tw-marquee-wrap::after { background:linear-gradient(270deg,#151a27,transparent); }
+        body.dark-mode .tw-marquee-item { color:#8a9bb3; }
+        body.dark-mode .tw-how-section { background:#1a1f2e; }
+        body.dark-mode .tw-how-card { background:#1e2536; border-color:rgba(255,255,255,0.06); }
+        body.dark-mode .tw-how-card h3 { color:#f1f5f9; }
+        body.dark-mode .tw-how-card p { color:#94a3b8; }
+        body.dark-mode .tw-how-dark-box { background:#0f1520; }
+        body.dark-mode .tw-how-dark-box p { color:#c8d5e3; }
+        body.dark-mode .tw-how-dark-box span { color:#8a9bb3; }
+        body.dark-mode .tw-gallery-section { background:#151a27; }
+        body.dark-mode .tw-tpl-inner { background:rgba(30,37,54,0.9); border-color:#2d3548; }
+        body.dark-mode .tw-tpl-card:hover .tw-tpl-inner { background:rgba(35,42,60,0.95); }
+        body.dark-mode .tw-tpl-info h3 { color:#f1f5f9; }
+        body.dark-mode .tw-tpl-info p { color:#8a9bb3; }
+        body.dark-mode .tw-tpl-tag { background:rgba(254,108,117,0.15); }
+        body.dark-mode .tw-h2 { color:#f1f5f9; }
+        body.dark-mode .tw-sub { color:#94a3b8; }
+        body.dark-mode .tw-inc-section { background:#1a1f2e; }
+        body.dark-mode .tw-inc-col h3 { color:#f1f5f9; }
+        body.dark-mode .tw-inc-list li { color:#c8d5e3; }
+        body.dark-mode .tw-inc-list li:hover { background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.06); }
+        body.dark-mode .tw-ext-section { background:#151a27; }
+        body.dark-mode .tw-extra-card { background:#1e2536; border-color:#2d3548; }
+        body.dark-mode .tw-extra-card h4 { color:#f1f5f9; }
+        body.dark-mode .tw-extra-card p { color:#94a3b8; }
+        body.dark-mode .tw-btn-ghost { color:#c8d5e3; border-color:rgba(255,255,255,0.15); }
+        body.dark-mode .tw-btn-ghost:hover { color:#fe6c75; border-color:#fe6c75; }
+
+        /* ═══ RESPONSIVE ═══════════════════════════════════ */
+        @media (max-width:1024px) {
+            .tw-hero-h1 { font-size:40px; }
+            .tw-phones-showcase { height:340px; margin-top:28px; max-width:800px; }
+            .tw-phone-mock { width:130px !important; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:145px !important; }
+            .tw-phone-screen { height:240px; }
+            .tw-how-grid { grid-template-columns:1fr; }
+            .tw-how-left { max-width:600px; }
+            .tw-gallery-grid { grid-template-columns:1fr 1fr; }
+            .tw-includes-grid { grid-template-columns:1fr; }
+            .tw-stats { gap:40px; flex-wrap:wrap; }
+            .tw-h2 { font-size:32px; }
+            .tw-advantage { padding:40px 28px; margin:0 20px; }
+            .tw-advantage h3 { font-size:22px; }
+        }
+        @media (max-width:768px) {
+            .tw-phones-showcase { height:260px; overflow:hidden; margin-top:24px; max-width:600px; }
+            .tw-phone-mock { width:100px !important; border-radius:20px; padding:4px; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:115px !important; }
+            .tw-phone-inner { border-radius:16px; }
+            .tw-phone-screen { height:210px; }
+            .tw-phone-notch { width:40px; height:4px; top:5px; }
+            .tw-phone-label { display:none; }
+        }
+        @media (max-width:600px) {
+            .tw-hero { padding:70px 20px 30px; min-height:auto; }
+            .tw-hero-h1 { font-size:32px; }
+            .tw-hero-sub { font-size:15px; }
+            .tw-phones-showcase { height:200px; margin-top:20px; max-width:100%; }
+            .tw-phone-mock { width:80px !important; border-radius:14px; padding:3px; }
+            .tw-phone-mock:nth-child(3), .tw-phone-mock:nth-child(4) { width:92px !important; }
+            .tw-phone-inner { border-radius:13px; }
+            .tw-phone-screen { height:170px; }
+            .tw-phone-notch { width:30px; height:3px; top:4px; }
+            .tw-section { padding:64px 20px; }
+            .tw-gallery-grid { grid-template-columns:1fr; }
+            .tw-extras-scroll { gap:16px; }
+            .tw-extra-card { flex:0 0 240px; }
+            .tw-stats { gap:24px; padding:32px 20px; }
+            .tw-stat-n { font-size:28px; }
+            .tw-h2 { font-size:26px; }
+            .tw-advantage { padding:32px 20px; border-radius:16px; }
+        }
+
+        /* Header back button visible on desktop */
+        .header-back-desktop { display:flex !important; }
+        .header-title {
+            display: flex; flex-direction: column; gap: 3px; align-items: center;
+            text-align: center; line-height: 1.1;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
+        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #fe6c75; }
+        .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
+        .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
+        .header .header-nav { transition: opacity 0.3s ease; }
+        @media (min-width:1025px) {
+            .header-title {
+                position: absolute; left: 90px; transform: none;
+                text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+            }
+            .header-title span:first-child { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+            .header-title .accent { font-size: 13px; font-weight: 800; }
+            .header.past-hero .header-nav { opacity: 1; pointer-events: auto; }
+            .header .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+            .header-inner { position: relative; }
+        }
+        @media (max-width:1024px) {
+            .header-title {
+                position: absolute; left: 50%; transform: translateX(-50%);
+            }
+            .header-title span:first-child { font-size: 17px; }
+            .header-title .accent { font-size: 12px; }
+        }
+        body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
+        .header.menu-open .header-title span:first-child { color: #fff !important; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </a>
+        <div class="header-title" id="headerTitle" data-i18n-html="tw.header.title">
+            <span>Beratung &amp;</span>
+            <span class="accent">Support</span>
+        </div>
+        <nav class="header-nav" aria-label="Navigation">
+            <a href="#tw-how" class="header-nav-item"><span data-i18n="tw.nav.how">So funktioniert's</span></a>
+            <a href="#tw-templates" class="header-nav-item"><span data-i18n="tw.nav.templates">Templates</span></a>
+            <a href="#tw-includes" class="header-nav-item"><span data-i18n="tw.nav.includes">Leistungen</span></a>
+            <a href="#tw-extras" class="header-nav-item"><span data-i18n="tw.nav.extras">Extras</span></a>
+            <a href="#tw-cta" class="header-nav-item"><span data-i18n="tw.nav.contact">Kontakt</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="#tw-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu-nav">
+        <a href="#tw-how" class="mobile-menu-link" data-i18n="tw.nav.how">So funktioniert's</a>
+        <a href="#tw-templates" class="mobile-menu-link" data-i18n="tw.nav.templates">Templates</a>
+        <a href="#tw-includes" class="mobile-menu-link" data-i18n="tw.nav.includes">Leistungen</a>
+        <a href="#tw-extras" class="mobile-menu-link" data-i18n="tw.nav.extras">Extras</a>
+        <a href="#tw-cta" class="mobile-menu-link" data-i18n="tw.nav.contact">Kontakt</a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" data-i18n="tw.nav.back">Zurück zur Startseite</a>
+    </nav>
+    <div class="mobile-menu-footer">
+        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    </div>
+</div>
+
+<!-- ═════════════════ HERO ═════════════════ -->
+<section class="tw-hero">
+    <div class="tw-hero-center">
+
+        <h1 class="tw-hero-h1" data-i18n-html="tw.h1">Persönliche Beratung<br><span class="tw-accent">& zuverlässiger Support</span></h1>
+        <p class="tw-hero-sub" data-i18n="tw.sub">Ihr digitales Projekt in guten Händen — langfristig. Von der Erstberatung bis zum laufenden Support, Wartung und Weiterentwicklung.</p>
+        <div class="tw-hero-ctas">
+            <a href="#tw-templates" class="tw-btn-red">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span data-i18n="tw.cta1">Support-Pakete ansehen</span>
+            </a>
+            <button onclick="openOrderModal()" class="tw-btn-ghost" style="border:none;cursor:pointer;font-family:inherit;">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span data-i18n="tw.banner.btn">Jetzt beraten lassen</span>
+            </button>
+
+
+        </div>
+        <div class="tw-hero-pills">
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill1">Reaktionszeit &lt; 4h</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill2">Monatliche Wartung</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill3">Persönlich &amp; direkt</span></span>
+        </div>
+    </div>
+
+    <!-- Phone Showcase — 6 phones with support screenshots -->
+    <div class="tw-phones-showcase">
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80" alt="Beratung">
+            </div>
+            <div class="tw-phone-label">Beratung</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=400&q=80" alt="Support">
+            </div>
+            <div class="tw-phone-label">Support</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80" alt="Wartung">
+            </div>
+            <div class="tw-phone-label">Wartung</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Updates">
+            </div>
+            <div class="tw-phone-label">Updates</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Analyse">
+            </div>
+            <div class="tw-phone-label">Analyse</div>
+        </div>
+        <div class="tw-phone-mock">
+            <div class="tw-phone-inner">
+                <div class="tw-phone-notch"></div>
+                <img class="tw-phone-screen" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80" alt="Training">
+            </div>
+            <div class="tw-phone-label">Training</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ MARQUEE ═════════════════ -->
+<div class="tw-marquee-wrap">
+    <div class="tw-marquee">
+        <span class="tw-marquee-item" data-i18n="tw.mq1">Persönliche Beratung</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq2">Schnelle Reaktion</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq3">Monatliche Wartung</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq4">Updates inklusive</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq5">Direktkontakt</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq6">Kein Callcenter</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq7">Transparente Kosten</span>
+        <span class="tw-marquee-item" data-i18n="tw.mq8">Langfristig</span>
+        <span class="tw-marquee-item">Persönliche Beratung</span>
+        <span class="tw-marquee-item">Schnelle Reaktion</span>
+        <span class="tw-marquee-item">Monatliche Wartung</span>
+        <span class="tw-marquee-item">Updates inklusive</span>
+        <span class="tw-marquee-item">Direktkontakt</span>
+        <span class="tw-marquee-item">Kein Callcenter</span>
+        <span class="tw-marquee-item">Transparente Kosten</span>
+        <span class="tw-marquee-item">Langfristig</span>
+    </div>
+</div>
+
+<!-- ═════════════════ HOW IT WORKS — CARD LAYOUT ═════════════════ -->
+<section class="tw-section tw-how-section" id="tw-how">
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="tw.how.label">Support &amp; Beratung</div>
+        <h2 class="tw-h2" data-i18n-html="tw.how.h2">Ihr Projekt in<br><span class="tw-accent">guten Händen</span></h2>
+        <p class="tw-sub" data-i18n="tw.how.sub">Einfach, transparent und persönlich — so funktioniert unser Support.</p>
+        <div class="tw-how-card" id="twHowCard">
+            <div class="tw-how-left">
+                <h3 data-i18n-html="tw.how.card.h3">Direkter Kontakt — keine <span class="tw-accent">Warteschlangen</span></h3>
+                <div class="tw-how-dark-box">
+                    <span class="tw-how-stars">&#9733;&#9733;&#9733;</span>
+                    <p data-i18n="tw.how.card.quote">Sie schreiben, ich antworte. Kein Ticketsystem, kein Callcenter — persönlicher Kontakt per WhatsApp, E-Mail oder Telefon.</p>
+                    <span data-i18n="tw.how.card.note">Durchschnittliche Reaktionszeit unter 4 Stunden. Bei dringenden Problemen innerhalb von 1 Stunde.</span>
+                </div>
+            </div>
+            <div class="tw-how-right">
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step1.title">Support-Paket wählen</h4>
+                        <p data-i18n="tw.step1.desc">Wählen Sie das passende Paket für Ihr Projekt — monatlich kündbar, keine Bindung.</p>
+                    </div>
+                </div>
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step2.title">Direkt kontaktieren</h4>
+                        <p data-i18n="tw.step2.desc">Per WhatsApp, E-Mail oder Telefon — ich bin persönlich für Sie erreichbar.</p>
+                    </div>
+                </div>
+                <div class="tw-how-feat">
+                    <div class="tw-how-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="tw-how-feat-text">
+                        <h4 data-i18n="tw.step3.title">Problem gelöst</h4>
+                        <p data-i18n="tw.step3.desc">Schnelle Reaktion, klare Kommunikation und transparente Abrechnung bei jedem Auftrag.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ TEMPLATE GALLERY ═════════════════ -->
+<section class="tw-section tw-gallery-section" id="tw-templates">
+    <div class="tw-particles" id="twParticles"></div>
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="tw.tpl.label">Support-Pakete</div>
+        <h2 class="tw-h2" data-i18n-html="tw.tpl.h2">Das richtige Paket<br><span class="tw-accent">für Ihr Projekt</span></h2>
+        <p class="tw-sub" data-i18n="tw.tpl.sub">Monatliche Support-Pakete ohne Bindung — von der einfachen Wartung bis zum intensiven Betreuungspaket.</p>
+        <div class="tw-gallery-grid" id="twGalleryGrid">
+            <!-- 1. Basic Wartung -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80" alt="Basic Wartung" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl1.name">Basic Wartung</h3>
+                        <p data-i18n="tw.tpl1.desc">Monatliche Updates, Backups und Sicherheitscheck für Ihre Website oder App.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl1.tag">Ab 90 CHF/Mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Business Support -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=600&q=80" alt="Business Support" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl2.name">Business Support</h3>
+                        <p data-i18n="tw.tpl2.desc">Alles aus Basic plus 2h Änderungen und Priorität-Reaktion unter 4h.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl2.tag">Ab 190 CHF/Mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Tech-Beratung -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80" alt="Tech-Beratung" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl3.name">Tech-Beratung</h3>
+                        <p data-i18n="tw.tpl3.desc">Stündliche Beratung für Technologie-Entscheidungen, Konzepte und Strategie.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl3.tag">Ab 120 CHF/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Weiterentwicklung -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Weiterentwicklung" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl4.name">Weiterentwicklung</h3>
+                        <p data-i18n="tw.tpl4.desc">Neue Features, Seiten oder Funktionen für Ihr bestehendes Projekt.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl4.tag">Ab 90 CHF/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Performance-Audit -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Performance-Audit" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl5.name">Performance-Audit</h3>
+                        <p data-i18n="tw.tpl5.desc">Analyse Ihrer Website oder App — Geschwindigkeit, SEO und Sicherheit.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl5.tag">Ab 350 CHF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Team-Schulung -->
+            <div class="tw-tpl-card">
+                <div class="tw-tpl-inner">
+                    <div class="tw-tpl-preview">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80" alt="Team-Schulung" style="width:100%;height:100%;object-fit:cover;display:block">
+                    </div>
+                    <div class="tw-tpl-info">
+                        <h3 data-i18n="tw.tpl6.name">Team-Schulung</h3>
+                        <p data-i18n="tw.tpl6.desc">Ihr Team lernt Ihre Systeme selbst zu verwalten — individuelles Training.</p>
+                        <div class="tw-tpl-tags">
+                            <span class="tw-tpl-tag" data-i18n="tw.tpl6.tag">Ab 250 CHF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner compra -->
+        <div style="margin-top:40px;padding:32px 36px;border-radius:20px;background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 100%);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+            <div style="flex:1;min-width:260px;">
+                <h3 style="font-size:20px;font-weight:800;color:#fff;margin:0 0 10px;" data-i18n="tw.banner.title">Ihr Support — verlässlich und transparent</h3>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:28px;height:28px;border-radius:8px;background:rgba(254,108,117,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:800;color:#fe6c75;">1</span>
+                        <span style="font-size:14px;color:rgba(255,255,255,0.8);" data-i18n="tw.banner.step1">Paket wählen</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:28px;height:28px;border-radius:8px;background:rgba(254,108,117,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:800;color:#fe6c75;">2</span>
+                        <span style="font-size:14px;color:rgba(255,255,255,0.8);" data-i18n="tw.banner.step2">Aktivieren</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="width:28px;height:28px;border-radius:8px;background:rgba(254,108,117,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;font-weight:800;color:#fe6c75;">3</span>
+                        <span style="font-size:14px;color:rgba(255,255,255,0.8);" data-i18n="tw.banner.step3">Sorgenfrei arbeiten!</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="openOrderModal()" style="display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border:none;border-radius:12px;background:linear-gradient(135deg,#fe6c75,#e1545d);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .3s ease;box-shadow:0 8px 24px rgba(254,108,117,0.3);font-family:inherit;white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(254,108,117,0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 24px rgba(254,108,117,0.3)'">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span data-i18n="tw.banner.btn">Jetzt starten</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ EDITOR SHOWCASE ═════════════════ -->
+<section class="tw-section tw-editor-section" id="tw-editor">
+    <div class="tw-wrap">
+        <div class="tw-editor-grid">
+            <div class="tw-editor-visual">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Direkter Kontakt Support" loading="lazy">
+                <div class="tw-editor-badge-demo">
+                    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
+                <div class="tw-editor-badge-demo tw-editor-badge-demo--blue">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+            </div>
+            <div class="tw-editor-content">
+                <h3 data-i18n="tw.edt.label">Direkter Kontakt</h3>
+                <h2 data-i18n="tw.edt.h2">Kein Ticketsystem. Kein Callcenter. Direkt zu mir.</h2>
+                <p data-i18n="tw.edt.desc">Sie haben eine Frage, ein Problem oder eine neue Idee? Schreiben Sie mir auf WhatsApp, per E-Mail oder rufen Sie an. Ich antworte persönlich — ohne Weiterleitung, ohne Wartezeit.</p>
+                <div class="tw-editor-features">
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--red">
+                            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f1.title">WhatsApp Support</h4>
+                            <p data-i18n="tw.edt.f1.desc">Schnellste Kommunikation — schreiben Sie mir direkt auf WhatsApp.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--blue">
+                            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f2.title">E-Mail &amp; Telefon</h4>
+                            <p data-i18n="tw.edt.f2.desc">info@lweb.ch oder +41 76 560 86 45 — Reaktion unter 4 Stunden garantiert.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--green">
+                            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f3.title">Monatliche Reports</h4>
+                            <p data-i18n="tw.edt.f3.desc">Business-Kunden erhalten monatliche Reports über Updates, Wartung und Performance.</p>
+                        </div>
+                    </div>
+                    <div class="tw-editor-feat">
+                        <div class="tw-editor-feat-icon tw-editor-feat-icon--orange">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <div>
+                            <h4 data-i18n="tw.edt.f4.title">Transparente Kosten</h4>
+                            <p data-i18n="tw.edt.f4.desc">Feste Monatspauschalen oder Stundenabrechnung — keine Überraschungen.</p>
+                        </div>
+                    </div>
+                </div>
+                <p data-i18n="tw.edt.note" style="font-size:14px;color:#6b7d99;line-height:1.6;margin:0;">Über 15 aktive Kunden vertrauen auf unseren persönlichen Support-Service.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ STATS ═════════════════ -->
+<div class="tw-stats">
+    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat1.n">&lt;4h</div><div class="tw-stat-l" data-i18n="tw.stat1.l">Reaktionszeit</div></div>
+    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat2.n">90+</div><div class="tw-stat-l" data-i18n="tw.stat2.l">CHF/Monat ab</div></div>
+    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat3.n">15+</div><div class="tw-stat-l" data-i18n="tw.stat3.l">Aktive Kunden</div></div>
+    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat4.n">100%</div><div class="tw-stat-l" data-i18n="tw.stat4.l">Kundenzufriedenheit</div></div>
+</div>
+
+<!-- ═════════════════ INCLUDES ═════════════════ -->
+<section class="tw-section tw-inc-section" id="tw-includes">
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="tw.inc.label">Leistungen</div>
+        <h2 class="tw-h2" data-i18n-html="tw.inc.h2">Was ist<br><span class="tw-accent">inklusive?</span></h2>
+        <p class="tw-sub" data-i18n="tw.inc.sub">Klare Leistungen, keine versteckten Kosten. Sie wissen genau, was Sie bekommen.</p>
+        <div class="tw-includes-grid">
+            <div class="tw-inc-col tw-inc-yes">
+                <h3 style="color:#4dd35b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.yes.title">Inklusive</span></h3>
+                <ul class="tw-inc-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y1">Modernes, professionelles Design</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y2">Optimiert für Handy und Tablet</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y3">Ihre Texte und Bilder eingebaut</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y4">Einrichtung auf Ihrer Domain</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y5">SSL-Zertifikat (HTTPS)</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y6">Kontaktformular</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y7">Google Maps Integration</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y8">Online in 48 Stunden</span></li>
+                </ul>
+            </div>
+            <div class="tw-inc-col tw-inc-no">
+                <h3 style="color:#ff5f56"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.no.title">Nicht inklusive</span></h3>
+                <ul class="tw-inc-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n1">Komplexe Funktionen oder Systeme</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n2">Online-Shop / E-Commerce</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n3">Buchungssystem / Terminplaner</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n4">Individuelle Programmierung</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n5">Domain-Registrierung (separat)</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n6">Visueller Editor (optional, + 200 CHF)</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n7">Professionelle E-Mail mit eigener Domain</span></li>
+                </ul>
+                <p style="margin-top:18px;font-size:14px;color:#8a9bb3;line-height:1.6" data-i18n="tw.inc.n.note">Diese Funktionen sind als separate Projekte verfügbar. Fragen Sie nach einem individuellen Angebot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ EXTRAS ═════════════════ -->
+<section class="tw-section tw-ext-section" id="tw-extras">
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="tw.ext.label">Optionale Extras</div>
+        <h2 class="tw-h2" data-i18n-html="tw.ext.h2">Mehr Leistung<br><span class="tw-accent">für Ihre Seite</span></h2>
+        <p class="tw-sub" data-i18n="tw.ext.sub">Erweitern Sie Ihr Template mit optionalen Zusatzleistungen — einfach dazubuchen.</p>
+        <div class="tw-extras-scroll" id="twExtrasGrid">
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=500&q=80" alt="SEO" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext1.title">SEO Basis</h4>
+                    <p data-i18n="tw.ext1.desc">Meta-Tags, Seitentitel und Google-Optimierung für bessere Sichtbarkeit.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext1.price">+ 100 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500&q=80" alt="Blog" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext2.title">Blog</h4>
+                    <p data-i18n="tw.ext2.desc">Einfacher Blog-Bereich für Neuigkeiten und Artikel auf Ihrer Seite.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext2.price">+ 120 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80" alt="Formular" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext3.title">Erweitertes Formular</h4>
+                    <p data-i18n="tw.ext3.desc">Zusätzliche Felder, Datei-Upload oder Anfrage-Formulare nach Mass.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext3.price">+ 80 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&q=80" alt="Seite" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext4.title">Zusätzliche Seite</h4>
+                    <p data-i18n="tw.ext4.desc">Eine extra Unterseite für zusätzliche Inhalte oder Dienstleistungen.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext4.price">+ 50 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="Editor" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext5.title">Visueller Editor</h4>
+                    <p data-i18n="tw.ext5.desc">Bearbeiten Sie Texte, Bilder und Logo selbst — direkt im Browser, ohne Code.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext5.price">+ 200 CHF</span>
+                </div>
+            </div>
+            <div class="tw-extra-card">
+                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=500&q=80" alt="E-Mail" loading="lazy"></div>
+                <div class="tw-extra-body">
+                    <h4 data-i18n="tw.ext6.title">Professionelle E-Mail</h4>
+                    <p data-i18n="tw.ext6.desc">Eigene E-Mail-Adresse mit Ihrem Domainnamen — z.B. info@ihrgeschaeft.ch.</p>
+                    <span class="tw-extra-price" data-i18n="tw.ext6.price">+ 120 CHF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ BUNDLE ═════════════════ -->
+<section class="tw-section tw-bundle-section" style="background:#f4f7fb;padding:80px 24px 90px;">
+    <style>
+        body.dark-mode .tw-bundle-section{background:#0f1d2c !important;}
+        .tw-bundle-h2{font-size:clamp(28px,4vw,46px);font-weight:900;color:#1a1a2e;text-align:center;line-height:1.15;margin:0 0 12px;}
+        .tw-bundle-h2 .tw-bundle-price{color:#fe6c75;}
+        .tw-bundle-sub{font-size:16px;color:#64748b;max-width:560px;margin:0 auto 56px;line-height:1.6;text-align:center;}
+        .tw-bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:960px;margin:0 auto 48px;}
+        @media(max-width:700px){.tw-bundle-grid{grid-template-columns:1fr;gap:36px;max-width:340px;}}
+        .tw-bundle-col{text-align:center;}
+        .tw-bundle-icon{width:140px;height:140px;margin:0 auto 24px;position:relative;}
+        .tw-bundle-icon-main{width:72px;height:72px;border-radius:20px;display:flex;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;}
+        .tw-bundle-icon-float{position:absolute;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.08);z-index:1;animation:bundleFloat 3s ease-in-out infinite;}
+        .tw-bundle-icon-float:nth-child(2){animation-delay:0s;}
+        .tw-bundle-icon-float:nth-child(3){animation-delay:1s;}
+        .tw-bundle-icon-float:nth-child(4){animation-delay:2s;}
+        @keyframes bundleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .tw-bundle-icon-float svg{width:18px;height:18px;}
+        .tw-bundle-icon-main svg{width:28px;height:28px;color:#fff;}
+        .tw-bundle-col h4{font-size:18px;font-weight:800;color:#1a1a2e;margin:0 0 8px;}
+        .tw-bundle-col p{font-size:14px;color:#64748b;line-height:1.6;margin:0;max-width:280px;margin-inline:auto;}
+        .tw-bundle-cta{text-align:center;}
+        .tw-bundle-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:2px solid #1a1a2e;border-radius:60px;background:transparent;color:#1a1a2e;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s ease;font-family:inherit;text-decoration:none;}
+        .tw-bundle-btn:hover{background:#1a1a2e;color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,26,46,0.2);}
+        body.dark-mode .tw-bundle-h2,body.dark-mode .tw-bundle-col h4{color:#f1f5f9}
+        body.dark-mode .tw-bundle-sub,body.dark-mode .tw-bundle-col p{color:#94a3b8}
+        body.dark-mode .tw-bundle-btn{border-color:#e2e8f0;color:#e2e8f0}
+        body.dark-mode .tw-bundle-btn:hover{background:#e2e8f0;color:#1a1a2e}
+    </style>
+    <div class="tw-wrap">
+        <h2 class="tw-bundle-h2" data-i18n-html="tw.bundle.h2">Webseite + Domain + Editor<br><span class="tw-bundle-price">ab 650 CHF</span></h2>
+        <p class="tw-bundle-sub" data-i18n="tw.bundle.sub">Alles was Sie brauchen, in einem Paket. Professionelle Webseite mit eigenem Domainnamen und visuellem Editor zum Selbstbearbeiten.</p>
+        <div class="tw-bundle-grid">
+            <!-- Col 1: Website -->
+            <div class="tw-bundle-col">
+                <div class="tw-bundle-icon">
+                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#e0f2fe;top:8px;left:12px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#fef3c7;top:14px;right:8px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#fce7f3;bottom:4px;left:28px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    </div>
+                </div>
+                <h4 data-i18n="tw.bundle.c1.h">Professionelle Webseite</h4>
+                <p data-i18n="tw.bundle.c1.p">Modernes Design, responsive auf allen Geräten. Fertig in 48 Stunden.</p>
+            </div>
+            <!-- Col 2: Domain -->
+            <div class="tw-bundle-col">
+                <div class="tw-bundle-icon">
+                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#ede9fe;top:6px;right:14px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#d1fae5;top:18px;left:6px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#fee2e2;bottom:2px;right:22px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                    </div>
+                </div>
+                <h4 data-i18n="tw.bundle.c2.h">Eigene Domain</h4>
+                <p data-i18n="tw.bundle.c2.p">Ihr Wunschname im Internet, mit SSL-Zertifikat und professioneller E-Mail.</p>
+            </div>
+            <!-- Col 3: Editor -->
+            <div class="tw-bundle-col">
+                <div class="tw-bundle-icon">
+                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#f97316,#ea580c);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#ffedd5;top:10px;left:8px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#dbeafe;top:4px;right:18px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <div class="tw-bundle-icon-float" style="background:#dcfce7;bottom:6px;left:24px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                </div>
+                <h4 data-i18n="tw.bundle.c3.h">Visueller Editor</h4>
+                <p data-i18n="tw.bundle.c3.p">Texte, Bilder und Logo selbst ändern — direkt im Browser, ohne Programmierkenntnisse.</p>
+            </div>
+        </div>
+        <div class="tw-bundle-cta">
+            <button onclick="openOrderModal(true)" class="tw-bundle-btn">
+                <span data-i18n="tw.bundle.btn">Komplettpaket sichern</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ SHOWCASE — EL ESPAÑOL ═════════════════ -->
+<section class="tw-section tw-showcase-section">
+    <style>
+        .tw-showcase-section{background:#f4f7fb;padding:100px 24px 110px;position:relative;overflow:hidden;}
+        .tw-showcase-section::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(254,108,117,0.05) 0%,transparent 70%);pointer-events:none;}
+        .tw-showcase-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.04) 0%,transparent 70%);pointer-events:none;}
+
+        /* grid */
+        .tw-show-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;}
+
+        /* left — mockup frame */
+        .tw-show-frame{position:relative;}
+        .tw-show-browser{background:#1e293b;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.06);transition:transform .5s cubic-bezier(.25,.46,.45,.94);}
+        .tw-show-browser:hover{transform:translateY(-6px) scale(1.01);}
+        .tw-show-toolbar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#15202e;border-bottom:1px solid rgba(255,255,255,0.06);}
+        .tw-show-dot{width:10px;height:10px;border-radius:50%;}
+        .tw-show-dot:nth-child(1){background:#ff5f57;}
+        .tw-show-dot:nth-child(2){background:#febc2e;}
+        .tw-show-dot:nth-child(3){background:#28c840;}
+        .tw-show-urlbar{flex:1;margin-left:12px;background:rgba(255,255,255,0.06);border-radius:6px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,0.45);font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:6px;}
+        .tw-show-urlbar svg{width:12px;height:12px;opacity:0.4;}
+        .tw-show-screen{position:relative;overflow:hidden;aspect-ratio:16/10;}
+        .tw-show-screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 8s ease;}
+        .tw-show-browser:hover .tw-show-screen img{transform:translateY(-15%);}
+
+        /* floating badge — live */
+        .tw-show-live{position:absolute;bottom:20px;left:20px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.06);border-radius:40px;padding:8px 18px;font-size:12px;font-weight:700;color:#16a34a;letter-spacing:0.04em;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+        .tw-show-live::before{content:'';width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 8px rgba(22,163,74,0.4);animation:blink 1.5s infinite;}
+
+        /* floating decorative cards */
+        .tw-show-float{position:absolute;border-radius:12px;padding:12px 16px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:3;}
+        .tw-show-float-price{top:-16px;right:-20px;text-align:center;animation:float 4s ease-in-out infinite;}
+        .tw-show-float-price .price-val{font-size:24px;font-weight:900;color:#0f1d2c;line-height:1;}
+        .tw-show-float-price .price-lab{font-size:10px;color:#6b7d99;text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+        .tw-show-float-tech{bottom:-12px;right:40px;display:flex;gap:6px;animation:float 5s 1s ease-in-out infinite;}
+        .tw-show-float-tech span{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;}
+
+        /* right — content */
+        .tw-show-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fe6c75;margin-bottom:20px;}
+        .tw-show-eyebrow::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,#fe6c75,transparent);border-radius:2px;}
+        .tw-show-h3{font-size:clamp(28px,4vw,42px);font-weight:800;color:#0f1d2c;line-height:1.12;margin:0 0 8px;letter-spacing:-0.02em;}
+        .tw-show-h3 span{color:#fe6c75;}
+        .tw-show-sub{font-size:16px;line-height:1.7;color:#6b7d99;margin:0 0 32px;max-width:440px;}
+
+        /* feature mini-cards */
+        .tw-show-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;}
+        .tw-show-feat{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:all .3s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+        .tw-show-feat:hover{background:#fff;border-color:rgba(254,108,117,0.2);transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+        .tw-show-feat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .tw-show-feat-icon svg{width:16px;height:16px;color:#fff;}
+        .tw-show-feat span{font-size:13px;font-weight:600;color:#1a2d42;}
+
+        /* CTA row */
+        .tw-show-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+        .tw-show-cta{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;border-radius:14px;background:linear-gradient(135deg,#fe6c75,#e1545d);color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:all .35s ease;box-shadow:0 8px 28px rgba(254,108,117,0.35);position:relative;overflow:hidden;}
+        .tw-show-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left .5s ease;}
+        .tw-show-cta:hover::before{left:100%;}
+        .tw-show-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(254,108,117,0.45);}
+        .tw-show-url-hint{font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:6px;}
+        .tw-show-url-hint svg{width:14px;height:14px;}
+
+        /* separator line */
+        .tw-show-sep{width:48px;height:3px;border-radius:3px;background:linear-gradient(90deg,#fe6c75,transparent);margin:24px 0;}
+
+        /* responsive */
+        @media(max-width:860px){
+            .tw-show-grid{grid-template-columns:1fr;gap:40px;max-width:540px;}
+            .tw-show-content{text-align:center;}
+            .tw-show-sub{margin-inline:auto;}
+            .tw-show-features{max-width:400px;margin-inline:auto;margin-bottom:32px;}
+            .tw-show-cta-row{justify-content:center;}
+            .tw-show-eyebrow{justify-content:center;}
+            .tw-show-float-price{top:-12px;right:8px;}
+            .tw-show-float-tech{bottom:-8px;right:12px;}
+            .tw-show-sep{margin-inline:auto;}
+        }
+        @media(max-width:480px){
+            .tw-show-features{grid-template-columns:1fr;}
+            .tw-show-float-tech{display:none;}
+            .tw-show-screen{aspect-ratio:16/8;}
+            .tw-show-float-price{transform:scale(0.85);top:-10px;right:4px;}
+        }
+        body.dark-mode .tw-showcase-section{background:#0f1d2c;}
+        body.dark-mode .tw-show-h3{color:#f1f5f9;}
+        body.dark-mode .tw-show-sub{color:rgba(255,255,255,0.55);}
+        body.dark-mode .tw-show-feat{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06);box-shadow:none;}
+        body.dark-mode .tw-show-feat:hover{background:rgba(255,255,255,0.08);}
+        body.dark-mode .tw-show-feat span{color:rgba(255,255,255,0.85);}
+        body.dark-mode .tw-show-float{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.08);}
+        body.dark-mode .tw-show-float-price .price-val{color:#fff;}
+        body.dark-mode .tw-show-float-price .price-lab{color:rgba(255,255,255,0.5);}
+        body.dark-mode .tw-show-live{background:rgba(0,0,0,0.7);border-color:rgba(255,255,255,0.1);color:#4ade80;}
+        body.dark-mode .tw-show-live::before{background:#4ade80;box-shadow:0 0 8px #4ade80;}
+        body.dark-mode .tw-show-url-hint{color:rgba(255,255,255,0.35);}
+    </style>
+    <div class="tw-wrap">
+        <div class="tw-show-grid">
+            <!-- LEFT — Browser mockup -->
+            <div class="tw-show-frame">
+                <div class="tw-show-browser">
+                    <div class="tw-show-toolbar">
+                        <span class="tw-show-dot"></span>
+                        <span class="tw-show-dot"></span>
+                        <span class="tw-show-dot"></span>
+                        <div class="tw-show-urlbar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                            espanol-lac.vercel.app
+                        </div>
+                    </div>
+                    <div class="tw-show-screen">
+                        <a href="https://espanol-lac.vercel.app" target="_blank" rel="noopener">
+                            <img src="img/espanol.jpeg" alt="El Español — Restaurant Website" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <span class="tw-show-live" data-i18n="tw.show.badge">Kunden seit 2022</span>
+                <!-- Floating price -->
+                <div class="tw-show-float tw-show-float-price">
+                    <div class="price-val">CHF 750</div>
+                    <div class="price-lab" data-i18n="tw.show.pricelabel">Projektpreis</div>
+                </div>
+                <!-- Floating tech -->
+                <div class="tw-show-float tw-show-float-tech">
+                    <span style="background:rgba(6,182,212,0.12);color:#0891b2;">Next.js</span>
+                    <span style="background:rgba(139,92,246,0.12);color:#7c3aed;">React</span>
+                    <span style="background:rgba(254,108,117,0.12);color:#e1545d;">CSS3</span>
+                </div>
+            </div>
+            <!-- RIGHT — Content -->
+            <div class="tw-show-content">
+                <div class="tw-show-eyebrow" data-i18n="tw.show.label">Kundenprojekt</div>
+                <h3 class="tw-show-h3" data-i18n-html="tw.show.h3">El Español wählte<br><span>die beste Web zum besten Preis.</span></h3>
+                <div class="tw-show-sep"></div>
+                <p class="tw-show-sub" data-i18n="tw.show.desc">Spanisches Restaurant & Tapas Bar in Buchs SG. Digitale Speisekarte, Bildergalerie, Events und visueller Editor — alles inklusive, zum fairsten Preis.</p>
+                <div class="tw-show-features">
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t1">Template — 450 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t2">Editor — 200 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t3">SEO Basis — 100 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t4">Domain — 1. Jahr gratis</span>
+                    </div>
+                </div>
+                <div class="tw-show-cta-row">
+                    <a href="https://espanol-lac.vercel.app" target="_blank" rel="noopener" class="tw-show-cta">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        <span data-i18n="tw.show.btn">Website ansehen</span>
+                    </a>
+                    <span class="tw-show-url-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        espanol-lac.vercel.app
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ ADVANTAGE ═════════════════ -->
+<section class="tw-section tw-adv-section" style="background:#f4f7fb">
+    <style>body.dark-mode .tw-adv-section{background:#0f1d2c !important;}</style>
+    <div class="tw-wrap">
+        <div class="tw-advantage">
+            <h3 data-i18n-html="tw.adv.h3">Ihr Unternehmen online <span class="tw-adv-emoji">🚀</span><br>in nur 48 Stunden.</h3>
+            <p data-i18n="tw.adv.p">Sie kaufen keine Idee. Sie sehen ein echtes Template, das für Ihr Geschäft angepasst wird. Einfach, schnell und professionell.</p>
+            <div class="tw-advantage-tags">
+                <span class="tw-advantage-tag" data-i18n="tw.adv.tag1">Design</span>
+                <span class="tw-advantage-tag" data-i18n="tw.adv.tag2">Texte</span>
+                <span class="tw-advantage-tag" data-i18n="tw.adv.tag3">Bilder</span>
+                <span class="tw-advantage-tag" data-i18n="tw.adv.tag4">Domain</span>
+                <span class="tw-advantage-tag" data-i18n="tw.adv.tag5">SSL</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ CTA ═════════════════ -->
+<section class="tw-cta" id="tw-cta">
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="tw.cta.label">Bereit zu starten?</div>
+        <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre professionelle Webseite<br><span class="tw-accent">ab 450 CHF.</span></h2>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="tw.cta.editor">Mit Editor ab 650 CHF</p>
+        <p class="tw-sub" data-i18n="tw.cta.p">Wählen Sie ein Template, senden Sie uns Ihre Daten — und in wenigen Tagen ist Ihr Unternehmen online. Einfach, schnell und professionell.</p>
+        <div class="tw-cta-btns">
+            <button onclick="openOrderModal()" class="tw-btn-red" style="border:none;cursor:pointer;font-size:inherit;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span data-i18n="tw.banner.btn">Jetzt loslegen</span>
+            </button>
+            <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Webseiten-Template.%20K%C3%B6nnen%20Sie%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener" class="tw-btn-ghost">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.592-.822-6.328-2.198l-.442-.37-3.24 1.086 1.086-3.24-.37-.442A9.95 9.95 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                <span data-i18n="tw.cta.btn1">WhatsApp schreiben</span>
+            </a>
+        </div>
+        <div class="tw-cta-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="tw.cta.note">Unverbindliche Beratung — kostenlos und ohne Verpflichtung</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ SCRIPTS ═════════════════ -->
+<script>
+(function() {
+    // 1. DARK MODE
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeColor').setAttribute('content', '#0a1520');
+    }
+    // 2. ACCESSIBILITY
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
+    // 3. LANGUAGE
+    var savedLang = localStorage.getItem('lweb_lang');
+    var lang;
+    if (savedLang) { lang = savedLang; }
+    else {
+        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
+        var supported = ['de', 'en', 'es', 'fr', 'it'];
+        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    }
+    if (typeof translations === 'undefined' || !translations[lang]) return;
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key]) el.innerHTML = t[key];
+    });
+    var headerTitle = document.getElementById('headerTitle');
+    if (headerTitle && t['tw.header.title']) headerTitle.innerHTML = t['tw.header.title'];
+})();
+</script>
+
+<script>
+// ── Header shrink + title on scroll ──────────────
+(function(){
+    var heroH1 = document.querySelector('.tw-hero-h1');
+    var header = document.querySelector('.header');
+    if (!heroH1 || !header) return;
+    window.addEventListener('scroll', function(){
+        header.classList.toggle('scrolled', window.pageYOffset > 50);
+    });
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            header.classList.toggle('past-hero', !entries[0].isIntersecting);
+        }, { threshold: 0 });
+        obs.observe(heroH1);
+    }
+})();
+</script>
+
+<script>
+// ── Mobile menu ──────────────────────────────────
+(function(){
+    var burger = document.getElementById('menuBurger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (!burger || !mobileMenu) return;
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        var isOpen = mobileMenu.classList.contains('open');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        document.querySelector('.header').classList.toggle('menu-open', isOpen);
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            burger.classList.remove('open'); mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+            document.querySelector('.header').classList.remove('menu-open');
+        });
+    });
+})();
+</script>
+
+<script>
+// ── Active nav on scroll ─────────────────────────
+(function(){
+    if (window.innerWidth < 1025) return;
+    var navItems = document.querySelectorAll('.header-nav .header-nav-item');
+    var sections = [];
+    navItems.forEach(function(item){
+        var id = item.getAttribute('href').replace('#','');
+        var el = document.getElementById(id);
+        if (el) sections.push({el: el, link: item});
+    });
+    if (!sections.length) return;
+    window.addEventListener('scroll', function(){
+        var scrollY = window.pageYOffset + 120;
+        var atBottom = (window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 50;
+        var current = null;
+        if (atBottom) current = sections[sections.length - 1];
+        else sections.forEach(function(s){ if (s.el.offsetTop <= scrollY) current = s; });
+        navItems.forEach(function(item){ item.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    });
+})();
+</script>
+
+<script>
+// ── Scroll-triggered animations ──────────────────
+(function(){
+    if (!('IntersectionObserver' in window)) return;
+
+    // How-card
+    var howCard = document.getElementById('twHowCard');
+    if (howCard) {
+        var howObs = new IntersectionObserver(function(entries){
+            if (entries[0].isIntersecting) { howCard.classList.add('tw-visible'); howObs.disconnect(); }
+        }, { threshold: 0.15 });
+        howObs.observe(howCard);
+    }
+
+    // Template cards
+    var cards = document.querySelectorAll('.tw-tpl-card');
+    var cardsObs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) {
+            cards.forEach(function(c, i){
+                setTimeout(function(){ c.classList.add('tw-visible'); }, i * 100);
+            });
+            cardsObs.disconnect();
+        }
+    }, { threshold: 0.12 });
+    if (cards.length) cardsObs.observe(document.getElementById('twGalleryGrid'));
+
+    // Include columns
+    var incCols = document.querySelectorAll('.tw-inc-col');
+    var incObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('tw-visible'); incObs.unobserve(e.target); }
+        });
+    }, { threshold: 0.2 });
+    incCols.forEach(function(col){ incObs.observe(col); });
+
+    // Extra cards
+    var extras = document.querySelectorAll('.tw-extra-card');
+    var extObs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) {
+            extras.forEach(function(c, i){
+                setTimeout(function(){ c.classList.add('tw-visible'); }, i * 100);
+            });
+            extObs.disconnect();
+        }
+    }, { threshold: 0.15 });
+    if (extras.length) extObs.observe(document.getElementById('twExtrasGrid'));
+})();
+</script>
+
+<script>
+// ── Floating particles in gallery section ────────
+(function(){
+    var container = document.getElementById('twParticles');
+    if (!container) return;
+    var colors = ['#fdb5b9','#c4b5fd','#93c5fd','#86efac','#fde68a','#fdba74'];
+    for (var i = 0; i < 30; i++) {
+        var p = document.createElement('div');
+        p.className = 'tw-particle';
+        var size = Math.random() * 4 + 2;
+        p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:-10px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*8+6)+'s;animation-delay:'+(Math.random()*10)+'s;';
+        container.appendChild(p);
+    }
+})();
+</script>
+
+<script>
+// ── 3D tilt on template cards ────────────────────
+(function(){
+    if (window.innerWidth < 1025) return;
+    var cards = document.querySelectorAll('.tw-tpl-card');
+    cards.forEach(function(card){
+        card.addEventListener('mousemove', function(e){
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left, y = e.clientY - rect.top;
+            var cx = rect.width / 2, cy = rect.height / 2;
+            var rx = ((y - cy) / cy) * -6, ry = ((x - cx) / cx) * 6;
+            card.style.transform = 'perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';
+        });
+        card.addEventListener('mouseleave', function(){
+            card.style.transform = '';
+        });
+    });
+})();
+</script>
+
+
+<!-- ═════════════════ ORDER MODAL ═════════════════ -->
+<style>
+/* ── Modal Overlay ─────────────────────────────── */
+.om-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
+.om-overlay.om-open{display:flex;opacity:1}
+.om-overlay.om-closing{opacity:0}
+
+/* ── Modal Box ─────────────────────────────────── */
+.om-box{background:#fff;border-radius:20px;width:100%;max-width:640px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;position:relative;transform:translateY(20px) scale(0.97);transition:transform .3s ease;box-shadow:0 32px 80px rgba(0,0,0,0.2)}
+@media(max-width:640px){.om-overlay{padding:0}.om-box{max-height:100vh;height:100vh;border-radius:0;max-width:100%}}
+.om-open .om-box{transform:translateY(0) scale(1)}
+.om-closing .om-box{transform:translateY(20px) scale(0.97)}
+
+/* ── Header ────────────────────────────────────── */
+.om-header{padding:28px 32px 0;display:flex;justify-content:space-between;align-items:flex-start}
+.om-header h3{font-size:22px;font-weight:800;color:#1a1a2e;margin:0}
+.om-header p{font-size:13px;color:#64748b;margin:4px 0 0}
+.om-close{width:36px;height:36px;border-radius:10px;border:none;background:#f1f5f9;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.om-close:hover{background:#e2e8f0;transform:rotate(90deg)}
+.om-close svg{width:18px;height:18px;color:#64748b}
+
+/* ── Steps indicator ───────────────────────────── */
+.om-steps{display:flex;gap:8px;padding:20px 32px 0}
+.om-step-dot{height:4px;flex:1;border-radius:4px;background:#e2e8f0;transition:background .3s}
+.om-step-dot.active{background:#fe6c75}
+.om-step-dot.done{background:#4dd35b}
+
+/* ── Body ──────────────────────────────────────── */
+.om-body{padding:24px 32px 32px;overflow-y:auto;flex:1;min-height:0}
+.om-body[data-step]{display:none}
+.om-body.om-active{display:block}
+
+/* ── Step 1: Template cards ────────────────────── */
+.om-templates{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:560px){.om-templates{grid-template-columns:repeat(2,1fr)}}
+.om-tpl{border:2px solid #e2e8f0;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .2s;position:relative}
+.om-tpl:hover{border-color:#cbd5e1;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.om-tpl.selected{border-color:#fe6c75;box-shadow:0 0 0 3px rgba(254,108,117,0.2)}
+.om-tpl-img{height:100px;overflow:hidden}
+.om-tpl-img img{width:100%;height:100%;object-fit:cover;display:block}
+.om-tpl-info{padding:10px 12px}
+.om-tpl-info h4{font-size:13px;font-weight:700;color:#1a1a2e;margin:0}
+.om-tpl-info span{font-size:11px;color:#fe6c75;font-weight:600}
+.om-tpl-check{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:#fe6c75;display:none;align-items:center;justify-content:center}
+.om-tpl.selected .om-tpl-check{display:flex}
+
+/* ── Step 2: Domain ────────────────────────────── */
+.om-domain-search{display:flex;gap:8px;margin-bottom:16px}
+.om-domain-search input{flex:1;padding:10px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:14px;outline:none;transition:border-color .2s}
+.om-domain-search input:focus{border-color:#fe6c75}
+.om-domain-search button{padding:0 20px;border:none;border-radius:12px;background:#1a1a2e;color:#fff;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;transition:background .2s}
+.om-domain-search button:hover{background:#2a2a4e}
+.om-domain-result{padding:14px 16px;border-radius:12px;font-size:14px;font-weight:600;display:none;align-items:center;gap:8px}
+.om-domain-result.available{display:flex;background:rgba(77,211,91,0.1);color:#22963a}
+.om-domain-result.taken{display:flex;background:rgba(254,108,117,0.1);color:#d63031}
+.om-domain-result.checking{display:flex;background:#f8fafc;color:#64748b}
+.om-domain-or{text-align:center;color:#94a3b8;font-size:13px;margin:20px 0;position:relative}
+.om-domain-or::before,.om-domain-or::after{content:'';position:absolute;top:50%;width:calc(50% - 40px);height:1px;background:#e2e8f0}
+.om-domain-or::before{left:0}
+.om-domain-or::after{right:0}
+.om-own-domain{display:flex;align-items:center;gap:12px;padding:16px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s}
+.om-own-domain:hover{border-color:#cbd5e1}
+.om-own-domain.selected{border-color:#fe6c75;background:rgba(254,108,117,0.03)}
+.om-own-domain-check{width:22px;height:22px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.om-own-domain.selected .om-own-domain-check{border-color:#fe6c75;background:#fe6c75}
+.om-own-domain-input{margin-top:12px;display:none}
+.om-own-domain.selected ~ .om-own-domain-input{display:block}
+.om-editor-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s;margin-top:16px}
+.om-editor-opt:hover{border-color:#cbd5e1}
+.om-editor-opt.selected{border-color:#fe6c75;background:rgba(254,108,117,0.03)}
+.om-editor-check{width:22px;height:22px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.om-editor-check svg{opacity:0;transition:opacity .2s}
+.om-editor-opt.selected .om-editor-check{border-color:#fe6c75;background:#fe6c75}
+.om-editor-opt.selected .om-editor-check svg{opacity:1}
+body.dark-mode .om-editor-opt{border-color:#334155}
+body.dark-mode .om-editor-opt .om-editor-check{border-color:#4b5563}
+body.dark-mode .om-editor-opt div[style*="color:#1a1a2e"]{color:#f1f5f9!important}
+
+/* ── Step 2: Extras ────────────────────────────── */
+.om-extras-list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;min-height:0;padding-right:4px}
+.om-extras-list::-webkit-scrollbar{width:4px}
+.om-extras-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+#omStep2.om-active{display:flex;flex-direction:column}
+.om-extra-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:12px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.om-extra-item:hover{border-color:#cbd5e1}
+.om-extra-item.selected{border-color:#fe6c75;background:rgba(254,108,117,0.03)}
+.om-extra-check{width:22px;height:22px;border-radius:6px;border:2px solid #cbd5e1;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.om-extra-check svg{opacity:0;transition:opacity .2s}
+.om-extra-item.selected .om-extra-check{border-color:#fe6c75;background:#fe6c75}
+.om-extra-item.selected .om-extra-check svg{opacity:1}
+.om-extra-thumb{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.om-extra-title{font-size:14px;font-weight:700;color:#1a1a2e}
+.om-extra-desc{font-size:11px;color:#64748b;line-height:1.4;margin-top:1px}
+.om-extra-price{font-size:14px;font-weight:700;color:#fe6c75;white-space:nowrap;flex-shrink:0}
+.om-extras-total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:14px 16px;background:#f0fdf4;border-radius:12px;font-weight:700;font-size:15px;color:#1a1a2e;flex-shrink:0}
+.om-extras-total span:last-child{color:#22963a;font-size:18px}
+body.dark-mode .om-extra-item{border-color:#334155}
+body.dark-mode .om-extra-item.selected{border-color:#fe6c75;background:rgba(254,108,117,0.05)}
+body.dark-mode .om-extra-check{border-color:#4b5563}
+body.dark-mode .om-extra-title{color:#f1f5f9}
+body.dark-mode .om-extra-desc{color:#94a3b8}
+body.dark-mode .om-extras-total{background:rgba(34,150,58,0.1);color:#f1f5f9}
+@media(max-width:480px){.om-extra-desc{display:none}.om-extra-thumb{width:36px;height:36px}}
+
+/* ── Step 4: Contact ───────────────────────────── */
+.om-form-group{margin-bottom:16px}
+.om-form-group label{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:6px}
+.om-form-group input,.om-form-group textarea{width:100%;padding:10px 14px;border:2px solid #e2e8f0;border-radius:12px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;resize:none}
+.om-form-group input:focus,.om-form-group textarea:focus{border-color:#fe6c75}
+.om-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.om-form-row{grid-template-columns:1fr}}
+
+/* ── Step 5: Confirmation ──────────────────────── */
+.om-confirm{text-align:center;padding:20px 0}
+.om-confirm-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#4dd35b,#2fb83e);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.om-confirm-icon svg{width:36px;height:36px;color:#fff}
+.om-confirm h3{font-size:22px;font-weight:800;color:#1a1a2e;margin:0 0 8px}
+.om-confirm p{font-size:14px;color:#64748b;line-height:1.6;margin:0 0 8px}
+.om-summary{background:#f8fafc;border-radius:14px;padding:20px;margin:20px 0;text-align:left}
+.om-summary-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
+.om-summary-row span:first-child{color:#64748b}
+.om-summary-row span:last-child{font-weight:600;color:#1a1a2e}
+
+/* ── Footer buttons ────────────────────────────── */
+.om-footer{display:flex;justify-content:space-between;gap:12px;padding:16px 32px;border-top:1px solid #e2e8f0;flex-shrink:0;background:#fff}
+.om-btn{padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;font-family:inherit}
+.om-btn-back{background:#f1f5f9;color:#475569}
+.om-btn-back:hover{background:#e2e8f0}
+.om-btn-next{background:#1a1a2e;color:#fff;margin-left:auto}
+.om-btn-next:hover{background:#2a2a4e;transform:translateY(-1px)}
+.om-btn-next:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.om-btn-submit{background:linear-gradient(135deg,#fe6c75,#e1545d);color:#fff;margin-left:auto}
+.om-btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(254,108,117,0.3)}
+.om-btn-submit:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+
+/* ── Spinner ───────────────────────────────────── */
+.om-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:om-spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes om-spin{to{transform:rotate(360deg)}}
+
+/* Dark mode */
+body.dark-mode .om-box{background:#1a1f2e;color:#e2e8f0}
+body.dark-mode .om-header h3,body.dark-mode .om-tpl-info h4,body.dark-mode .om-confirm h3,body.dark-mode .om-summary-row span:last-child{color:#f1f5f9}
+body.dark-mode .om-close{background:#2a3040}
+body.dark-mode .om-tpl{border-color:#2a3040}
+body.dark-mode .om-domain-search input,body.dark-mode .om-form-group input,body.dark-mode .om-form-group textarea,body.dark-mode .om-own-domain{border-color:#2a3040;background:#111827;color:#e2e8f0}
+body.dark-mode .om-summary{background:#111827}
+body.dark-mode .om-btn-back{background:#2a3040;color:#e2e8f0}
+body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
+</style>
+
+<!-- Modal HTML -->
+<div class="om-overlay" id="orderModal">
+    <div class="om-box">
+        <div class="om-header">
+            <div>
+                <h3 id="omTitle" data-i18n="om.step1.title">Wählen Sie Ihr Template</h3>
+                <p id="omSubtitle"></p>
+            </div>
+            <button class="om-close" onclick="closeOrderModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="om-steps" id="omSteps">
+            <div class="om-step-dot active"></div>
+            <div class="om-step-dot"></div>
+            <div class="om-step-dot"></div>
+            <div class="om-step-dot"></div>
+        </div>
+
+        <!-- Step 1: Choose Template -->
+        <div class="om-body om-active" data-step="1" id="omStep1">
+            <div class="om-templates">
+                <div class="om-tpl" data-template="handwerker" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=70" alt="Handwerker"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl3.name">Handwerker & Technik</h4><span>Ab 450 CHF</span></div>
+                </div>
+                <div class="om-tpl" data-template="coiffeur" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70" alt="Coiffeur"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h4><span>Ab 450 CHF</span></div>
+                </div>
+                <div class="om-tpl" data-template="restaurant" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=70" alt="Restaurant"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl1.name">Restaurant & Café</h4><span>Ab 450 CHF</span></div>
+                </div>
+                <div class="om-tpl" data-template="berater" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70" alt="Berater"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl4.name">Berater & Freelancer</h4><span>Ab 450 CHF</span></div>
+                </div>
+                <div class="om-tpl" data-template="fitness" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=70" alt="Fitness"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h4><span>Ab 450 CHF</span></div>
+                </div>
+                <div class="om-tpl" data-template="lokales-geschaeft" data-price="450" onclick="selectTemplate(this)">
+                    <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&q=70" alt="Lokales Geschäft"></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span>Ab 450 CHF</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Extras -->
+        <div class="om-body" data-step="2" id="omStep2">
+            <p style="font-size:14px;color:#64748b;margin:0 0 16px" data-i18n="om.step2.extras.desc">Erweitern Sie Ihr Paket mit optionalen Extras.</p>
+            <div class="om-extras-list">
+                <div class="om-extra-item" data-extra="seo" data-extra-price="100" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=200&q=70" alt="SEO" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext1.title">SEO Basis</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext1.desc">Meta-Tags, Seitentitel und Google-Optimierung für bessere Sichtbarkeit.</div>
+                    </div>
+                    <span class="om-extra-price">+ 100 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="blog" data-extra-price="120" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=200&q=70" alt="Blog" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext2.title">Blog</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext2.desc">Einfacher Blog-Bereich für Neuigkeiten und Artikel auf Ihrer Seite.</div>
+                    </div>
+                    <span class="om-extra-price">+ 120 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="formular" data-extra-price="80" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&q=70" alt="Formular" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext3.title">Erweitertes Formular</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext3.desc">Zusätzliche Felder, Datei-Upload oder Anfrage-Formulare nach Mass.</div>
+                    </div>
+                    <span class="om-extra-price">+ 80 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="seite" data-extra-price="50" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=200&q=70" alt="Seite" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext4.title">Zusätzliche Seite</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext4.desc">Eine extra Unterseite für zusätzliche Inhalte oder Dienstleistungen.</div>
+                    </div>
+                    <span class="om-extra-price">+ 50 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="editor" data-extra-price="200" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=70" alt="Editor" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext5.title">Visueller Editor</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext5.desc">Bearbeiten Sie Texte, Bilder und Logo selbst — direkt im Browser, ohne Code.</div>
+                    </div>
+                    <span class="om-extra-price">+ 200 CHF</span>
+                </div>
+                <div class="om-extra-item" data-extra="email" data-extra-price="120" onclick="toggleExtra(this)">
+                    <div class="om-extra-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=200&q=70" alt="E-Mail" class="om-extra-thumb">
+                    <div style="flex:1">
+                        <div class="om-extra-title" data-i18n="tw.ext6.title">Professionelle E-Mail</div>
+                        <div class="om-extra-desc" data-i18n="tw.ext6.desc">Eigene E-Mail-Adresse mit Ihrem Domainnamen — z.B. info@ihrgeschaeft.ch.</div>
+                    </div>
+                    <span class="om-extra-price">+ 120 CHF</span>
+                </div>
+            </div>
+            <div class="om-extras-total" id="omExtrasTotal">
+                <span data-i18n="om.extras.total">Gesamtpreis</span>
+                <span id="omTotalPrice">Ab 450 CHF</span>
+            </div>
+        </div>
+
+        <!-- Step 3: Domain -->
+        <div class="om-body" data-step="3" id="omStep3">
+            <p style="font-size:14px;color:#64748b;margin:0 0 16px" data-i18n="om.step2.desc">Suchen Sie einen freien Domainnamen für Ihre Webseite.</p>
+            <div class="om-domain-search">
+                <input type="text" id="omDomainInput" placeholder="meingeschaeft.ch" autocomplete="off">
+                <button onclick="checkDomain()" id="omDomainBtn" data-i18n="om.domain.check">Prüfen</button>
+            </div>
+            <div class="om-domain-result" id="omDomainResult"></div>
+            <div class="om-domain-or" data-i18n="om.domain.or">oder</div>
+            <div class="om-own-domain" id="omOwnDomain" onclick="toggleOwnDomain()">
+                <div class="om-own-domain-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div>
+                    <div style="font-size:14px;font-weight:700;color:inherit" data-i18n="om.domain.own">Ich habe bereits einen Domainnamen</div>
+                    <div style="font-size:12px;color:#94a3b8;margin-top:2px" data-i18n="om.domain.own.desc">Geben Sie Ihren bestehenden Domainnamen ein</div>
+                </div>
+            </div>
+            <div class="om-own-domain-input" id="omOwnDomainInput" style="display:none;margin-top:12px">
+                <input type="text" placeholder="meine-domain.ch" id="omExistingDomain" style="width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;outline:none">
+            </div>
+        </div>
+
+        <!-- Step 4: Contact -->
+        <div class="om-body" data-step="4" id="omStep4">
+            <div class="om-form-group">
+                <label><span data-i18n="om.form.business">Geschäftsname</span> *</label>
+                <input type="text" id="omBusiness" data-i18n-placeholder="om.form.business.ph" placeholder="z.B. Muster GmbH" required>
+            </div>
+            <div class="om-form-row">
+                <div class="om-form-group">
+                    <label data-i18n="om.form.category">Branche / Kategorie</label>
+                    <input type="text" id="omCategory" data-i18n-placeholder="om.form.category.ph" placeholder="z.B. Restaurant, Coiffeur...">
+                </div>
+                <div class="om-form-group">
+                    <label data-i18n="om.form.colors">Wunschfarben</label>
+                    <input type="text" id="omColors" data-i18n-placeholder="om.form.colors.ph" placeholder="z.B. Blau, Weiss...">
+                </div>
+            </div>
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin:4px 0 16px">
+            <div class="om-form-row">
+                <div class="om-form-group">
+                    <label><span data-i18n="om.form.name">Name</span> *</label>
+                    <input type="text" id="omName" placeholder="Max Mustermann" required>
+                </div>
+                <div class="om-form-group">
+                    <label><span data-i18n="om.form.email">E-Mail</span> *</label>
+                    <input type="email" id="omEmail" placeholder="max@beispiel.ch" required>
+                </div>
+            </div>
+            <div class="om-form-group">
+                <label data-i18n="om.form.phone">Telefon</label>
+                <input type="tel" id="omPhone" placeholder="+41 76 000 00 00">
+            </div>
+            <div class="om-form-group">
+                <label data-i18n="om.form.message">Nachricht (optional)</label>
+                <textarea id="omMessage" rows="3" data-i18n-placeholder="om.form.msg.placeholder" placeholder="Spezielle Wünsche oder Anmerkungen..."></textarea>
+            </div>
+            <div style="background:#f0fdf4;border-radius:12px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22963a" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div style="font-size:12px;color:#22963a;line-height:1.5"><strong data-i18n="om.form.info.title">So geht's weiter:</strong> <span data-i18n="om.form.info.text">Sie erhalten einen Link, um Ihre Texte, Bilder und Ihr Logo selbst einzufügen. Danach veröffentlichen wir Ihre Webseite.</span></div>
+            </div>
+        </div>
+
+        <!-- Step 5: Success -->
+        <div class="om-body" data-step="5" id="omStep5">
+            <div class="om-confirm">
+                <div class="om-confirm-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3 data-i18n="om.success.title">Bestellung erfolgreich!</h3>
+                <p data-i18n="om.success.desc">Vielen Dank für Ihre Bestellung. Sie erhalten in Kürze eine Bestätigung per E-Mail.</p>
+                <div class="om-summary" id="omSummary"></div>
+                <p style="font-size:13px;color:#94a3b8" data-i18n="om.success.questions">Bei Fragen: info@lweb.ch</p>
+            </div>
+        </div>
+
+        <!-- Footer buttons -->
+        <div class="om-footer" id="omFooter">
+            <button class="om-btn om-btn-back" id="omBack" onclick="omPrev()" style="display:none" data-i18n="om.btn.back">Zurück</button>
+            <button class="om-btn om-btn-next" id="omNext" onclick="omNext()" disabled data-i18n="om.btn.next">Weiter</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═════════════════════════════════════════════════════
+// ORDER MODAL — Multi-step purchase flow (i18n)
+// ═════════════════════════════════════════════════════
+(function(){
+    var API = 'https://web.lweb.ch/lowtemplattes';
+    var step = 1;
+    var order = { template:'', price:0, extras:[], extras_total:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
+
+    // ── Translation helper ──────────────────────────
+    function t(key, fallback) {
+        var lang = localStorage.getItem('lweb_lang');
+        if (!lang) {
+            var bl = (navigator.language || 'de').slice(0,2).toLowerCase();
+            lang = ['de','en','es','fr','it'].indexOf(bl) !== -1 ? bl : 'de';
+        }
+        if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
+            return translations[lang][key];
+        }
+        return fallback || key;
+    }
+
+    var titleKeys = [
+        { h:'om.step1.title', s:'1' },
+        { h:'om.step2.extras.title', s:'2' },
+        { h:'om.step3.title', s:'3' },
+        { h:'om.step4.title', s:'4' },
+        { h:'om.step5.title', s:'5' }
+    ];
+
+    // ── Translate modal on open ─────────────────────
+    function translateModal() {
+        document.querySelectorAll('#orderModal [data-i18n]').forEach(function(el){
+            var key = el.getAttribute('data-i18n');
+            var val = t(key);
+            if (val && val !== key) el.textContent = val;
+        });
+    }
+
+    // ── Open / Close ────────────────────────────────
+    window.openOrderModal = function(withEditor) {
+        translateModal();
+        if (withEditor) {
+            // Pre-select editor extra
+            var editorEl = document.querySelector('.om-extra-item[data-extra="editor"]');
+            if (editorEl && !editorEl.classList.contains('selected')) {
+                editorEl.classList.add('selected');
+                order.extras.push('editor');
+                order.extras_total += 200;
+                order.editor = true;
+                updateExtrasTotal();
+            }
+        }
+        var m = document.getElementById('orderModal');
+        m.classList.add('om-open');
+        document.body.style.overflow = 'hidden';
+        showStep();
+    };
+    window.toggleExtra = function(el) {
+        el.classList.toggle('selected');
+        var extra = el.dataset.extra;
+        var price = parseInt(el.dataset.extraPrice);
+        if (el.classList.contains('selected')) {
+            order.extras.push(extra);
+            order.extras_total += price;
+        } else {
+            order.extras = order.extras.filter(function(e){ return e !== extra; });
+            order.extras_total -= price;
+        }
+        if (extra === 'editor') order.editor = el.classList.contains('selected');
+        updateExtrasTotal();
+    };
+    function updateExtrasTotal() {
+        var total = order.price + order.extras_total;
+        var el = document.getElementById('omTotalPrice');
+        if (el) el.textContent = 'Ab ' + (total || 450) + ' CHF';
+    }
+    window.closeOrderModal = function() {
+        var m = document.getElementById('orderModal');
+        m.classList.add('om-closing');
+        setTimeout(function(){ m.classList.remove('om-open','om-closing'); document.body.style.overflow=''; }, 300);
+        if (step === 5) { step=1; showStep(); resetForm(); }
+    };
+
+    document.getElementById('orderModal').addEventListener('click', function(e) {
+        if (e.target === this) closeOrderModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.getElementById('orderModal').classList.contains('om-open')) closeOrderModal();
+    });
+
+    // ── Template selection ──────────────────────────
+    window.selectTemplate = function(el) {
+        document.querySelectorAll('.om-tpl').forEach(function(c){ c.classList.remove('selected'); });
+        el.classList.add('selected');
+        order.template = el.dataset.template;
+        order.price = parseInt(el.dataset.price);
+        document.getElementById('omNext').disabled = false;
+        updateExtrasTotal();
+    };
+
+    // ── Domain check ────────────────────────────────
+    window.checkDomain = function() {
+        var input = document.getElementById('omDomainInput');
+        var domain = input.value.trim();
+        if (!domain) return;
+        if (domain.indexOf('.') === -1) domain += '.ch';
+        input.value = domain;
+
+        var result = document.getElementById('omDomainResult');
+        var btn = document.getElementById('omDomainBtn');
+        result.className = 'om-domain-result checking';
+        result.style.display = 'flex';
+        result.innerHTML = '<span class="om-spinner"></span> ' + t('om.domain.checking','Checking...');
+        btn.disabled = true;
+
+        fetch(API + '/domain-check.php?domain=' + encodeURIComponent(domain))
+            .then(function(r){ return r.json(); })
+            .then(function(data){
+                btn.disabled = false;
+                if (data.available === true) {
+                    result.className = 'om-domain-result available';
+                    result.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>' + data.domain + '</strong>&nbsp;' + t('om.domain.available','is available!');
+                    order.domain = data.domain;
+                    order.has_own_domain = false;
+                    updateNextBtn();
+                } else if (data.available === false) {
+                    result.className = 'om-domain-result taken';
+                    result.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> <strong>' + data.domain + '</strong>&nbsp;' + t('om.domain.taken','is already taken.');
+                    order.domain = '';
+                    updateNextBtn();
+                } else {
+                    result.className = 'om-domain-result checking';
+                    result.textContent = t('om.domain.error','Could not check availability.');
+                }
+            })
+            .catch(function(){
+                btn.disabled = false;
+                result.className = 'om-domain-result checking';
+                result.textContent = t('om.error.connection','Connection error.');
+            });
+    };
+
+    document.getElementById('omDomainInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); checkDomain(); }
+    });
+
+    // ── Own domain toggle ───────────────────────────
+    window.toggleOwnDomain = function() {
+        var el = document.getElementById('omOwnDomain');
+        var inp = document.getElementById('omOwnDomainInput');
+        var isSelected = el.classList.toggle('selected');
+        inp.style.display = isSelected ? 'block' : 'none';
+        order.has_own_domain = isSelected;
+        if (isSelected) {
+            order.domain = '';
+            document.getElementById('omDomainResult').style.display = 'none';
+            document.getElementById('omDomainInput').value = '';
+            document.getElementById('omExistingDomain').focus();
+        }
+        updateNextBtn();
+    };
+
+    document.getElementById('omExistingDomain').addEventListener('input', function() {
+        order.domain = this.value.trim();
+        updateNextBtn();
+    });
+
+    // ── Navigation ──────────────────────────────────
+    function showStep() {
+        document.querySelectorAll('.om-body').forEach(function(b){ b.classList.remove('om-active'); });
+        document.getElementById('omStep' + step).classList.add('om-active');
+        // Title
+        document.getElementById('omTitle').textContent = t(titleKeys[step-1].h);
+        var stepNum = titleKeys[step-1].s;
+        document.getElementById('omSubtitle').textContent = step < 5 ? t('om.step','Step') + ' ' + stepNum + ' ' + t('om.of','of') + ' 4' : t('om.thankyou','Thank you!');
+        // Step dots
+        document.querySelectorAll('.om-step-dot').forEach(function(d,i){
+            d.className = 'om-step-dot' + (i < step-1 ? ' done' : (i === step-1 ? ' active' : ''));
+        });
+        // Buttons
+        var backBtn = document.getElementById('omBack');
+        if (backBtn) backBtn.style.display = step > 1 && step < 5 ? '' : 'none';
+        var footer = document.getElementById('omFooter');
+        var nextBtn = document.getElementById('omNext');
+        if (step === 5) {
+            footer.innerHTML = '<button class="om-btn om-btn-next" onclick="closeOrderModal()" style="margin:0 auto">' + t('om.btn.close','Close') + '</button>';
+        } else if (step === 4) {
+            nextBtn.className = 'om-btn om-btn-submit';
+            nextBtn.textContent = t('om.btn.submit','Submit order');
+        } else if (step === 2) {
+            var total = order.price + order.extras_total;
+            nextBtn.className = 'om-btn om-btn-next';
+            nextBtn.textContent = t('om.btn.next','Next') + ' — Ab ' + (total || 450) + ' CHF';
+        } else {
+            nextBtn.className = 'om-btn om-btn-next';
+            nextBtn.textContent = t('om.btn.next','Next');
+        }
+        updateNextBtn();
+        if (step === 2) updateExtrasTotal();
+    }
+
+    function updateNextBtn() {
+        var btn = document.getElementById('omNext');
+        if (!btn) return;
+        if (step === 1) {
+            btn.disabled = !order.template;
+        } else if (step === 2) {
+            btn.disabled = false; // extras are optional
+        } else if (step === 3) {
+            btn.disabled = !order.domain && !order.has_own_domain;
+            if (order.has_own_domain) btn.disabled = !document.getElementById('omExistingDomain').value.trim();
+        } else if (step === 4) {
+            var b = document.getElementById('omBusiness').value.trim();
+            var n = document.getElementById('omName').value.trim();
+            var e = document.getElementById('omEmail').value.trim();
+            btn.disabled = !b || !n || !e || !/\S+@\S+\.\S+/.test(e);
+        }
+    }
+
+    window.omNext = function() {
+        if (step === 4) { submitOrder(); return; }
+        step++;
+        showStep();
+    };
+    window.omPrev = function() {
+        if (step > 1) { step--; showStep(); }
+    };
+
+    ['omBusiness','omName','omEmail','omPhone'].forEach(function(id){
+        document.getElementById(id).addEventListener('input', updateNextBtn);
+    });
+
+    // ── Submit order ────────────────────────────────
+    function submitOrder() {
+        var btn = document.getElementById('omNext');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="om-spinner"></span> ' + t('om.btn.sending','Sending...');
+
+        order.business_name = document.getElementById('omBusiness').value.trim();
+        order.business_category = document.getElementById('omCategory').value.trim();
+        order.colors = document.getElementById('omColors').value.trim();
+        order.client_name = document.getElementById('omName').value.trim();
+        order.client_email = document.getElementById('omEmail').value.trim();
+        order.client_phone = document.getElementById('omPhone').value.trim();
+        order.client_message = document.getElementById('omMessage').value.trim();
+
+        fetch(API + '/order.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(order)
+        })
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+            if (data.success) {
+                var tplNames = { handwerker:'Handwerker & Technik', coiffeur:'Coiffeur & Beauty', restaurant:'Restaurant & Café', berater:'Berater & Freelancer', fitness:'Fitness & Gesundheit', 'lokales-geschaeft':'Lokales Geschäft' };
+                var totalPrice = order.price + order.extras_total;
+                var extrasHtml = '';
+                var extraNames = {seo:'SEO Basis',blog:'Blog',formular:'Erweitertes Formular',seite:'Zusätzliche Seite',editor:'Visueller Editor',email:'Professionelle E-Mail'};
+                var extraPrices = {seo:100,blog:120,formular:80,seite:50,editor:200,email:120};
+                order.extras.forEach(function(ex){
+                    extrasHtml += '<div class="om-summary-row"><span>' + (extraNames[ex]||ex) + '</span><span>+ ' + extraPrices[ex] + ' CHF</span></div>';
+                });
+                document.getElementById('omSummary').innerHTML =
+                    '<div class="om-summary-row"><span>' + t('om.summary.template','Template') + '</span><span>' + (tplNames[order.template]||order.template) + '</span></div>' +
+                    '<div class="om-summary-row"><span>' + t('om.summary.domain','Domain') + '</span><span>' + (order.domain || t('om.summary.tbd','TBD')) + '</span></div>' +
+                    extrasHtml +
+                    '<div class="om-summary-row" style="border-top:1px solid #e2e8f0;padding-top:10px;margin-top:6px"><span>' + t('om.summary.price','Price') + '</span><span style="font-size:16px;color:#22963a">Ab ' + totalPrice + ' CHF</span></div>' +
+                    '<div class="om-summary-row"><span>' + t('om.summary.order','Order') + '</span><span>#' + data.order_id + '</span></div>';
+                step = 5;
+                showStep();
+            } else {
+                btn.disabled = false;
+                btn.textContent = t('om.btn.submit','Submit order');
+                alert(data.error || t('om.error.generic','Please try again.'));
+            }
+        })
+        .catch(function(){
+            btn.disabled = false;
+            btn.textContent = t('om.btn.submit','Submit order');
+            alert(t('om.error.connection','Connection error.'));
+        });
+    }
+
+    // ── Reset ───────────────────────────────────────
+    function resetForm() {
+        order = { template:'', price:0, extras:[], extras_total:0, domain:'', has_own_domain:false, editor:false, business_name:'', business_category:'', colors:'', client_name:'', client_email:'', client_phone:'', client_message:'' };
+        document.querySelectorAll('.om-tpl').forEach(function(c){ c.classList.remove('selected'); });
+        document.querySelectorAll('.om-extra-item').forEach(function(c){ c.classList.remove('selected'); });
+        document.getElementById('omDomainInput').value = '';
+        document.getElementById('omDomainResult').style.display = 'none';
+        document.getElementById('omOwnDomain').classList.remove('selected');
+        document.getElementById('omOwnDomainInput').style.display = 'none';
+        document.getElementById('omExistingDomain').value = '';
+        ['omBusiness','omCategory','omColors','omName','omEmail','omPhone','omMessage'].forEach(function(id){ document.getElementById(id).value=''; });
+        document.getElementById('omFooter').innerHTML = '<button class="om-btn om-btn-back" id="omBack" onclick="omPrev()" style="display:none">' + t('om.btn.back','Back') + '</button><button class="om-btn om-btn-next" id="omNext" onclick="omNext()" disabled>' + t('om.btn.next','Next') + '</button>';
+    }
+})();
+</script>
+
+</body>
+</html>

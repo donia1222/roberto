@@ -1604,6 +1604,15 @@
 
 <style>
 @media(max-width:768px){#preise .services-grid{grid-template-columns:1fr !important;}}
+/* Leistungen subpanel */
+.mobile-panel--leistungen{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  display:flex;justify-content:center;
+  transform:translateX(100%);opacity:0;pointer-events:none;
+  transition:transform .3s ease,opacity .3s ease;
+}
+.mobile-menu.sub-open-leistungen .mobile-panel--main{transform:translateX(-30%);opacity:0;pointer-events:none;transition:transform .3s ease,opacity .3s ease;}
+.mobile-menu.sub-open-leistungen .mobile-panel--leistungen{transform:translateX(0);opacity:1;pointer-events:all;}
 /* Apps subpanel */
 .mobile-panel--apps{
   position:absolute;top:0;left:0;width:100%;height:100%;

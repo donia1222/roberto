@@ -46,7 +46,7 @@ body.dark-mode .header-title span:first-child{color:#f1f5f9 !important}
   min-height:10vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   background:linear-gradient(180deg,#fff 15%,#f4f7fb 100%);
-  padding:80px 24px 80px;position:relative;overflow:hidden;
+  padding:80px 24px 80px;position:relative;overflow:hidden;margin-top:-20px;
 }
 .tw-accent{color:#fe6c75}
 .hero h1{
@@ -117,12 +117,12 @@ body.dark-mode .tw-btn-ghost:hover{background:#f1f5f9;color:#0f1d2c}
   text-transform:uppercase;letter-spacing:0.05em;
 }
 /* Fan positions — 6 phones */
-.phone-mock:nth-child(1){left:2%;transform:rotate(-14deg) translateY(-20px);z-index:1;width:170px}
-.phone-mock:nth-child(2){left:14%;transform:rotate(-8deg) translateY(-6px);z-index:2;width:185px}
-.phone-mock:nth-child(3){left:28%;transform:rotate(-3deg) translateY(0);z-index:4;width:200px}
-.phone-mock:nth-child(4){right:28%;transform:rotate(3deg) translateY(0);z-index:4;width:200px}
-.phone-mock:nth-child(5){right:14%;transform:rotate(8deg) translateY(-6px);z-index:2;width:185px}
-.phone-mock:nth-child(6){right:2%;transform:rotate(14deg) translateY(-20px);z-index:1;width:170px}
+.phone-mock:nth-child(1){left:2%;transform:rotate(-14deg) translateY(-20px);z-index:1;width:150px}
+.phone-mock:nth-child(2){left:14%;transform:rotate(-8deg) translateY(-6px);z-index:2;width:165px}
+.phone-mock:nth-child(3){left:28%;transform:rotate(-3deg) translateY(0);z-index:4;width:182px}
+.phone-mock:nth-child(4){right:28%;transform:rotate(3deg) translateY(0);z-index:4;width:182px}
+.phone-mock:nth-child(5){right:14%;transform:rotate(8deg) translateY(-6px);z-index:2;width:165px}
+.phone-mock:nth-child(6){right:2%;transform:rotate(14deg) translateY(-20px);z-index:1;width:150px}
 
 /* ── SEARCH BLOCK ────────────────────────────────────── */
 .search-block{
@@ -179,7 +179,7 @@ body.is-filtering .t-sub{display:none}
   transition:transform .25s ease,opacity .25s ease;
   box-shadow:0 4px 12px rgba(0,0,0,0.07);
 }
-.sticky-filter-bar{justify-content:flex-start;}
+@media(max-width:768px){.sticky-filter-bar{display:none!important}}
 @media(min-width:769px){.sticky-filter-bar{justify-content:center;}}
 .sticky-filter-bar::-webkit-scrollbar{display:none}
 .sticky-filter-bar.visible{transform:translateY(0);opacity:1}
@@ -510,7 +510,9 @@ body.dark-mode .tech-tag{background:#1e2a3a;color:#818cf8}
   .hero p{font-size:15px}
   .hero-ctas{flex-direction:column;align-items:center;gap:12px}
   .tw-btn-red,.tw-btn-ghost{width:100%;justify-content:center}
-  .cat-grid{grid-template-columns:1fr}
+  .cat-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;justify-content:flex-start;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cat-grid::-webkit-scrollbar{display:none}
+  .cat-grid .cat-btn{flex-shrink:0;width:auto}
   .pop-grid-top{grid-template-columns:1fr}
   .cms-grid{grid-template-columns:1fr}
   .mini-grid{grid-template-columns:1fr}
@@ -1843,12 +1845,12 @@ function applyLang(lang) {
 // ── SCROLL: past-hero toggle ──────────────────────────
 (function(){
   var header = document.getElementById('siteHeader');
-  var hero = document.querySelector('.hero');
-  if (!header || !hero) return;
+  var heroH1 = document.querySelector('.hero h1');
+  if (!header || !heroH1) return;
   var obs = new IntersectionObserver(function(entries) {
     header.classList.toggle('past-hero', !entries[0].isIntersecting);
-  }, { threshold: 0.1 });
-  obs.observe(hero);
+  }, { threshold: 0 });
+  obs.observe(heroH1);
 })();
 
 // ── CATEGORY FILTER ──────────────────────────────────
@@ -1926,10 +1928,10 @@ function updateMultiFeatures() {
   var stickyBar = document.getElementById('stickyFilterBar');
   if (!searchBlock || !stickyBar) return;
 
-  // Sentinel placed just before the search-block (top edge)
+  // Sentinel placed just after the search-block (bottom edge)
   var sentinel = document.createElement('div');
   sentinel.style.cssText = 'height:1px;width:1px;';
-  searchBlock.parentNode.insertBefore(sentinel, searchBlock);
+  searchBlock.parentNode.insertBefore(sentinel, searchBlock.nextSibling);
 
   var lastY = 0;
   var scrolled = false;
