@@ -1245,6 +1245,181 @@
     </div>
 </section>
 
+<!-- ═════════════════ SHOWCASE — EL ESPAÑOL ═════════════════ -->
+<section class="tw-section tw-showcase-section">
+    <style>
+        .tw-showcase-section{background:#f4f7fb;padding:100px 24px 110px;position:relative;overflow:hidden;}
+        .tw-showcase-section::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(254,108,117,0.05) 0%,transparent 70%);pointer-events:none;}
+        .tw-showcase-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.04) 0%,transparent 70%);pointer-events:none;}
+
+        /* grid */
+        .tw-show-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;}
+
+        /* left — mockup frame */
+        .tw-show-frame{position:relative;}
+        .tw-show-browser{background:#1e293b;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.06);transition:transform .5s cubic-bezier(.25,.46,.45,.94);}
+        .tw-show-browser:hover{transform:translateY(-6px) scale(1.01);}
+        .tw-show-toolbar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#15202e;border-bottom:1px solid rgba(255,255,255,0.06);}
+        .tw-show-dot{width:10px;height:10px;border-radius:50%;}
+        .tw-show-dot:nth-child(1){background:#ff5f57;}
+        .tw-show-dot:nth-child(2){background:#febc2e;}
+        .tw-show-dot:nth-child(3){background:#28c840;}
+        .tw-show-urlbar{flex:1;margin-left:12px;background:rgba(255,255,255,0.06);border-radius:6px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,0.45);font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:6px;}
+        .tw-show-urlbar svg{width:12px;height:12px;opacity:0.4;}
+        .tw-show-screen{position:relative;overflow:hidden;aspect-ratio:16/10;}
+        .tw-show-screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 8s ease;}
+        .tw-show-browser:hover .tw-show-screen img{transform:translateY(-15%);}
+
+        /* floating badge — live */
+        .tw-show-live{position:absolute;bottom:20px;left:20px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.06);border-radius:40px;padding:8px 18px;font-size:12px;font-weight:700;color:#16a34a;letter-spacing:0.04em;z-index:2;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+        .tw-show-live::before{content:'';width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 8px rgba(22,163,74,0.4);animation:blink 1.5s infinite;}
+
+        /* floating decorative cards */
+        .tw-show-float{position:absolute;border-radius:12px;padding:12px 16px;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:3;}
+        .tw-show-float-price{top:-16px;right:-20px;text-align:center;animation:float 4s ease-in-out infinite;}
+        .tw-show-float-price .price-val{font-size:24px;font-weight:900;color:#0f1d2c;line-height:1;}
+        .tw-show-float-price .price-lab{font-size:10px;color:#6b7d99;text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+        .tw-show-float-tech{bottom:-12px;right:40px;display:flex;gap:6px;animation:float 5s 1s ease-in-out infinite;}
+        .tw-show-float-tech span{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;}
+
+        /* right — content */
+        .tw-show-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fe6c75;margin-bottom:20px;}
+        .tw-show-eyebrow::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,#fe6c75,transparent);border-radius:2px;}
+        .tw-show-h3{font-size:clamp(28px,4vw,42px);font-weight:800;color:#0f1d2c;line-height:1.12;margin:0 0 8px;letter-spacing:-0.02em;}
+        .tw-show-h3 span{color:#fe6c75;}
+        .tw-show-sub{font-size:16px;line-height:1.7;color:#6b7d99;margin:0 0 32px;max-width:440px;}
+
+        /* feature mini-cards */
+        .tw-show-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;}
+        .tw-show-feat{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.06);transition:all .3s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+        .tw-show-feat:hover{background:#fff;border-color:rgba(254,108,117,0.2);transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+        .tw-show-feat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .tw-show-feat-icon svg{width:16px;height:16px;color:#fff;}
+        .tw-show-feat span{font-size:13px;font-weight:600;color:#1a2d42;}
+
+        /* CTA row */
+        .tw-show-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+        .tw-show-cta{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;border-radius:14px;background:linear-gradient(135deg,#fe6c75,#e1545d);color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:all .35s ease;box-shadow:0 8px 28px rgba(254,108,117,0.35);position:relative;overflow:hidden;}
+        .tw-show-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left .5s ease;}
+        .tw-show-cta:hover::before{left:100%;}
+        .tw-show-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(254,108,117,0.45);}
+        .tw-show-url-hint{font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:6px;}
+        .tw-show-url-hint svg{width:14px;height:14px;}
+
+        /* separator line */
+        .tw-show-sep{width:48px;height:3px;border-radius:3px;background:linear-gradient(90deg,#fe6c75,transparent);margin:24px 0;}
+
+        /* responsive */
+        @media(max-width:860px){
+            .tw-show-grid{grid-template-columns:1fr;gap:40px;max-width:540px;}
+            .tw-show-content{text-align:center;}
+            .tw-show-sub{margin-inline:auto;}
+            .tw-show-features{max-width:400px;margin-inline:auto;margin-bottom:32px;}
+            .tw-show-cta-row{justify-content:center;}
+            .tw-show-eyebrow{justify-content:center;}
+            .tw-show-float-price{top:-12px;right:8px;}
+            .tw-show-float-tech{bottom:-8px;right:12px;}
+            .tw-show-sep{margin-inline:auto;}
+        }
+        @media(max-width:480px){
+            .tw-show-features{grid-template-columns:1fr;}
+            .tw-show-float-tech{display:none;}
+            .tw-show-screen{aspect-ratio:16/8;}
+            .tw-show-float-price{transform:scale(0.85);top:-10px;right:4px;}
+        }
+        body.dark-mode .tw-showcase-section{background:#0f1d2c;}
+        body.dark-mode .tw-show-h3{color:#f1f5f9;}
+        body.dark-mode .tw-show-sub{color:rgba(255,255,255,0.55);}
+        body.dark-mode .tw-show-feat{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06);box-shadow:none;}
+        body.dark-mode .tw-show-feat:hover{background:rgba(255,255,255,0.08);}
+        body.dark-mode .tw-show-feat span{color:rgba(255,255,255,0.85);}
+        body.dark-mode .tw-show-float{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.08);}
+        body.dark-mode .tw-show-float-price .price-val{color:#fff;}
+        body.dark-mode .tw-show-float-price .price-lab{color:rgba(255,255,255,0.5);}
+        body.dark-mode .tw-show-live{background:rgba(0,0,0,0.7);border-color:rgba(255,255,255,0.1);color:#4ade80;}
+        body.dark-mode .tw-show-live::before{background:#4ade80;box-shadow:0 0 8px #4ade80;}
+        body.dark-mode .tw-show-url-hint{color:rgba(255,255,255,0.35);}
+    </style>
+    <div class="tw-wrap">
+        <div class="tw-show-grid">
+            <!-- LEFT — Browser mockup -->
+            <div class="tw-show-frame">
+                <div class="tw-show-browser">
+                    <div class="tw-show-toolbar">
+                        <span class="tw-show-dot"></span>
+                        <span class="tw-show-dot"></span>
+                        <span class="tw-show-dot"></span>
+                        <div class="tw-show-urlbar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                            espanol-lac.vercel.app
+                        </div>
+                    </div>
+                    <div class="tw-show-screen">
+                        <a href="https://espanol-lac.vercel.app" target="_blank" rel="noopener">
+                            <img src="img/espanol.jpeg" alt="El Español — Restaurant Website" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <span class="tw-show-live" data-i18n="tw.show.badge">Kunden seit 2022</span>
+                <!-- Floating price -->
+                <div class="tw-show-float tw-show-float-price">
+                    <div class="price-val">CHF 750</div>
+                    <div class="price-lab" data-i18n="tw.show.pricelabel">Projektpreis</div>
+                </div>
+                <!-- Floating tech -->
+                <div class="tw-show-float tw-show-float-tech">
+                    <span style="background:rgba(6,182,212,0.12);color:#0891b2;">Next.js</span>
+                    <span style="background:rgba(139,92,246,0.12);color:#7c3aed;">React</span>
+                    <span style="background:rgba(254,108,117,0.12);color:#e1545d;">CSS3</span>
+                </div>
+            </div>
+            <!-- RIGHT — Content -->
+            <div class="tw-show-content">
+                <div class="tw-show-eyebrow" data-i18n="tw.show.label">Kundenprojekt</div>
+                <h3 class="tw-show-h3" data-i18n-html="tw.show.h3">El Español wählte<br><span>die beste Web zum besten Preis.</span></h3>
+                <div class="tw-show-sep"></div>
+                <p class="tw-show-sub" data-i18n="tw.show.desc">Spanisches Restaurant & Tapas Bar in Buchs SG. Digitale Speisekarte, Bildergalerie, Events und visueller Editor — alles inklusive, zum fairsten Preis.</p>
+                <div class="tw-show-features">
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t1">Template — 450 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t2">Editor — 200 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t3">SEO Basis — 100 CHF</span>
+                    </div>
+                    <div class="tw-show-feat">
+                        <div class="tw-show-feat-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <span data-i18n="tw.show.t4">Domain — 1. Jahr gratis</span>
+                    </div>
+                </div>
+                <div class="tw-show-cta-row">
+                    <a href="https://espanol-lac.vercel.app" target="_blank" rel="noopener" class="tw-show-cta">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        <span data-i18n="tw.show.btn">Website ansehen</span>
+                    </a>
+                    <span class="tw-show-url-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        espanol-lac.vercel.app
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═════════════════ ADVANTAGE ═════════════════ -->
 <section class="tw-section" style="background:#f4f7fb">
     <div class="tw-wrap">

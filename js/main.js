@@ -1642,6 +1642,16 @@ var webProjects = {
         features: ['Drag & Drop Upload', 'Browser-basierte Konvertierung', 'Fortschrittsanzeige', 'Verschiedene Formate', 'Kein Server nötig', 'Responsive Design'],
         price: 'CHF 1\'500 – 2\'800'
     },
+    espanol: {
+        title: 'El Español',
+        url: 'https://espanol-lac.vercel.app',
+        image: 'img/espanol.jpeg',
+        complexity: 'easy',
+        desc: 'Elegante Website für das spanische Restaurant & Tapas Bar El Español in Buchs SG. Mit digitaler Speisekarte, visuellem Template-Editor, Bildergalerie, Event-Bereich und WhatsApp-Reservierung.',
+        techs: ['Next.js', 'React', 'CSS3', 'Vercel'],
+        features: ['Digitale Speisekarte', 'Template Editor (visuell)', 'Bildergalerie', 'Event-Bereich', 'WhatsApp-Reservierung', 'Responsive Design'],
+        price: 'CHF 750'
+    },
     rrapi: {
         title: 'Rrapi Immobilien',
         url: 'https://rrapi.ch',
