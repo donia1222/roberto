@@ -76,11 +76,18 @@ function openMobileSubpanel() {
 function closeMobileSubpanel() {
     document.getElementById('mobileMenu').classList.remove('sub-open');
 }
+// Mobile apps subpanel
+function openMobileAppsSubpanel() {
+    document.getElementById('mobileMenu').classList.add('sub-open-apps');
+}
+function closeMobileAppsSubpanel() {
+    document.getElementById('mobileMenu').classList.remove('sub-open-apps');
+}
 function closeMobileMenu() {
     var burger = document.getElementById('menuBurger');
     var mobileMenu = document.getElementById('mobileMenu');
     burger.classList.remove('open');
-    mobileMenu.classList.remove('open', 'sub-open');
+    mobileMenu.classList.remove('open', 'sub-open', 'sub-open-apps');
     document.body.style.overflow = '';
     document.querySelector('.header').classList.remove('menu-open');
 }
@@ -1121,6 +1128,19 @@ var calcTotalSteps = 5;
 var arrowSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 
 function cT(key) { return svcT(key); }
+
+function openAppPriceCalc() {
+    calcState = { step: 2, type: 'app-landing', scope: '', features: [], design: '', ai: '' };
+    var opts = document.querySelectorAll('#calcTypeOptions .calc-option');
+    for (var i = 0; i < opts.length; i++) {
+        opts[i].classList.toggle('selected', opts[i].getAttribute('data-value') === 'app-landing');
+    }
+    document.getElementById('calcOverlay').classList.add('open');
+    document.getElementById('calcModal').classList.add('open');
+    document.body.classList.add('calc-open');
+    document.getElementById('calcNextBtn').disabled = true;
+    calcGoToStep(2);
+}
 
 function openPriceCalc() {
     calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };

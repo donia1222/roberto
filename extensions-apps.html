@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App-Funktionen & Bibliotheken — Lweb</title>
+<meta name="description" content="Alle Funktionen und React Native Bibliotheken für Ihre professionelle App. Push-Benachrichtigungen, Zahlungen, KI, Karten und mehr.">
+<meta name="author" content="Roberto Salvador — Lweb">
+<meta name="theme-color" content="#ffffff" id="themeColor">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#0f1d2c;overflow-x:hidden;padding-top:72px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ── HEADER TITLE (identical to templates-web.html) ─── */
+.header-title{display:flex;flex-direction:column;gap:3px;align-items:center;text-align:center;line-height:1.1;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.header-title span:first-child{display:block;font-size:14px;font-weight:700;color:#0f1d2c}
+.header-title .accent{display:block;font-size:11px;font-weight:700;color:#fe6c75}
+.header.past-hero .header-title,.header.menu-open .header-title{opacity:1}
+.header.past-hero .header-nav{opacity:0;pointer-events:none}
+.header .header-nav{transition:opacity 0.3s ease}
+@media(min-width:1025px){
+  .header-title{position:absolute;left:90px;transform:none;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+  .header-title span:first-child{font-size:18px;font-weight:800;letter-spacing:-0.02em}
+  .header-title .accent{font-size:13px;font-weight:800}
+  .header.past-hero .header-nav{opacity:1;pointer-events:auto}
+  .header .header-nav{position:absolute;left:50%;transform:translateX(-50%)}
+  .header-inner{position:relative}
+}
+@media(max-width:1024px){
+  .header-title{position:absolute;left:50%;transform:translateX(-50%)}
+  .header-title span:first-child{font-size:17px}
+  .header-title .accent{font-size:12px}
+}
+body.dark-mode .header-title span:first-child{color:#f1f5f9 !important}
+.header.menu-open .header-title span:first-child{color:#fff !important}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  min-height:10vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#fff 15%,#f4f7fb 100%);
+  padding:80px 24px 80px;position:relative;overflow:hidden;
+}
+.tw-accent{color:#fe6c75}
+.hero h1{
+  font-size:56px;font-weight:800;line-height:1.08;
+  letter-spacing:-0.025em;color:#0f1d2c;margin-bottom:20px;
+  text-align:center;max-width:780px;
+}
+.hero p{
+  font-size:17px;line-height:1.7;color:#6b7d99;
+  max-width:560px;margin:0 auto 32px;text-align:center;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(254,108,117,0.06);border:1px solid rgba(254,108,117,0.12);
+  border-radius:600px;padding:6px 14px;font-size:13px;
+  font-weight:600;color:#3f4960;
+}
+.hero-pill svg{width:14px;height:14px;color:#4dd35b}
+
+/* ── CTA BUTTONS ──────────────────────────────── */
+.tw-btn-red{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fe6c75;color:#fff;border:none;
+  border-radius:600px;padding:14px 28px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  text-decoration:none;transition:all 0.25s ease;
+  box-shadow:0 4px 16px rgba(254,108,117,0.35);
+}
+.tw-btn-red:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(254,108,117,0.45)}
+.tw-btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:#0f1d2c;
+  border:2px solid #0f1d2c;border-radius:600px;padding:12px 26px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  text-decoration:none;transition:all 0.25s ease;
+}
+.tw-btn-ghost:hover{background:#0f1d2c;color:#fff}
+body.dark-mode .tw-btn-ghost{color:#f1f5f9;border-color:#f1f5f9}
+body.dark-mode .tw-btn-ghost:hover{background:#f1f5f9;color:#0f1d2c}
+
+/* ── Phone Showcase — fan arrangement ────────── */
+.phones-showcase{
+  width:100%;max-width:1000px;margin:36px auto 0;
+  display:flex;align-items:flex-end;justify-content:center;
+  position:relative;height:460px;
+}
+.phone-mock{
+  position:absolute;width:200px;
+  background:#0a1520;border-radius:28px;padding:6px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.18);
+  transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.4s;
+  bottom:0;
+}
+.phone-mock:hover{transform:translateY(-16px)!important;box-shadow:0 35px 80px rgba(0,0,0,0.25);z-index:10!important}
+.phone-inner{background:#fff;border-radius:22px;overflow:hidden;position:relative}
+.phone-notch{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:60px;height:6px;background:rgba(0,0,0,0.15);
+  border-radius:10px;z-index:2;
+}
+.phone-screen{width:100%;height:340px;object-fit:cover;display:block}
+.phone-app-icon{width:120px;height:120px;object-fit:contain;display:block}
+.phone-label{
+  position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);
+  font-size:11px;font-weight:700;color:#6b7d99;white-space:nowrap;
+  text-transform:uppercase;letter-spacing:0.05em;
+}
+/* Fan positions — 6 phones */
+.phone-mock:nth-child(1){left:2%;transform:rotate(-14deg) translateY(-20px);z-index:1;width:170px}
+.phone-mock:nth-child(2){left:14%;transform:rotate(-8deg) translateY(-6px);z-index:2;width:185px}
+.phone-mock:nth-child(3){left:28%;transform:rotate(-3deg) translateY(0);z-index:4;width:200px}
+.phone-mock:nth-child(4){right:28%;transform:rotate(3deg) translateY(0);z-index:4;width:200px}
+.phone-mock:nth-child(5){right:14%;transform:rotate(8deg) translateY(-6px);z-index:2;width:185px}
+.phone-mock:nth-child(6){right:2%;transform:rotate(14deg) translateY(-20px);z-index:1;width:170px}
+
+/* ── SEARCH BLOCK ────────────────────────────────────── */
+.search-block{
+  background:#f4f7fb;padding:96px 24px 48px;
+}
+.search-card{
+  max-width:1280px;margin:0 auto;
+  background:#fff;border-radius:24px;
+  box-shadow:0 8px 40px rgba(15,29,44,0.1);
+  padding:32px 32px 40px;
+  position:relative;margin-top:-40px;
+}
+.search-bar{
+  display:flex;align-items:center;gap:12px;
+  border:1.5px solid #eef0f3;border-radius:12px;
+  padding:0 20px;height:56px;margin-bottom:24px;
+  transition:border-color .2s;
+}
+.search-bar:focus-within{border-color:#fe6c75}
+.search-bar svg{color:#a8b8cc;flex-shrink:0}
+.search-bar input{
+  flex:1;border:none;outline:none;font-size:16px;
+  font-family:inherit;color:#0f1d2c;background:transparent;
+}
+.search-bar input::placeholder{color:#a8b8cc}
+.cat-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.cat-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 16px;border-radius:10px;
+  border:1.5px solid #e5e8ef;background:#fff;
+  color:#374151;font-size:14px;font-weight:500;
+  cursor:pointer;transition:all .2s ease;font-family:inherit;
+  box-shadow:0 1px 3px rgba(0,0,0,0.06);
+}
+.cat-btn svg{width:18px;height:18px;flex-shrink:0;stroke:#9aa5b8}
+.cat-btn:hover{border-color:#c0c8d8;box-shadow:0 3px 8px rgba(0,0,0,0.1);background:#f8f9fb}
+.cat-btn.active{border-color:#fe6c75;color:#fe6c75;background:#fff5f5;box-shadow:0 3px 10px rgba(254,108,117,0.15)}
+.cat-btn.active svg{stroke:#fe6c75}
+/* Cuando hay filtro activo, ocultar títulos de sección */
+body.is-filtering .t-label,
+body.is-filtering .t-h2,
+body.is-filtering .t-sub{display:none}
+
+/* ── Sticky filter bar ───────────────────────── */
+.sticky-filter-bar{
+  position:fixed;top:64px;left:0;right:0;z-index:999;
+  background:#fff;border-bottom:1px solid #e8edf3;
+  padding:8px 16px;
+  display:flex;gap:8px;overflow-x:auto;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  transform:translateY(-110%);opacity:0;
+  transition:transform .25s ease,opacity .25s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,0.07);
+}
+.sticky-filter-bar{justify-content:flex-start;}
+@media(min-width:769px){.sticky-filter-bar{justify-content:center;}}
+.sticky-filter-bar::-webkit-scrollbar{display:none}
+.sticky-filter-bar.visible{transform:translateY(0);opacity:1}
+.sticky-filter-bar .cat-btn{
+  flex-shrink:0;padding:7px 14px;font-size:13px;white-space:nowrap;
+}
+.sticky-filter-bar .cat-btn svg{width:14px;height:14px}
+body.dark-mode .sticky-filter-bar{background:#0f1d2c;border-color:#1e2a3a}
+/* FILTER TABS */
+.filter-tabs-block{padding:32px 24px 0;max-width:1140px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.filter-search-bar{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #e0e8f0;border-radius:14px;padding:12px 18px;width:100%;max-width:480px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.filter-search-bar input{border:none;outline:none;font-size:15px;font-family:inherit;color:#0f1d2c;width:100%;background:transparent}
+.filter-search-bar input::placeholder{color:#9aa5b8}
+.filter-search-bar svg{stroke:#9aa5b8;flex-shrink:0}
+.filter-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.ftab{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:24px;
+  border:1.5px solid transparent;
+  background:var(--fb);color:var(--fc);
+  font-size:14px;font-weight:600;cursor:pointer;
+  transition:all .2s ease;font-family:inherit;
+  box-shadow:0 1px 3px rgba(0,0,0,0.06);
+}
+.ftab svg{width:16px;height:16px;flex-shrink:0;stroke:var(--fc)}
+.ftab:hover{border-color:var(--fc);transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.ftab.active{background:var(--fc);color:#fff;border-color:var(--fc);box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+.ftab.active svg{stroke:#fff}
+
+/* ── SECTION COMMON ──────────────────────────────────── */
+.section{padding:96px 24px}
+.section--gray{background:#f4f7fb}
+.wrap{max-width:1140px;margin:0 auto}
+
+/* TIENDA TEMPLATE STYLES */
+.t-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fe6c75;margin-bottom:14px}
+.t-label::before{content:'';width:24px;height:2px;background:#fe6c75;border-radius:2px;display:block}
+.t-h2{font-size:clamp(30px,4vw,50px);font-weight:800;color:#0f1d2c;margin-bottom:16px;line-height:1.08;letter-spacing:-0.025em}
+.t-sub{font-size:18px;line-height:1.7;color:#6b7d99;max-width:600px;margin:0 auto}
+.accent{color:#fe6c75}
+
+.sec-title{font-size:clamp(30px,4vw,50px);font-weight:800;color:#0f1d2c;margin-bottom:16px;line-height:1.08;letter-spacing:-0.025em}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fe6c75;margin-bottom:14px}
+.sec-label::before{content:'';width:24px;height:2px;background:#fe6c75;border-radius:2px;display:block}
+.sec-subtitle{font-size:18px;line-height:1.7;color:#6b7d99;max-width:600px}
+
+/* ── POPULAR EXTENSIONS ──────────────────────────────── */
+.pop-grid-top{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:16px;
+  margin-bottom:16px;
+}
+/* Large colored card */
+.ext-card-lg{
+  border-radius:20px;padding:28px;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  min-height:220px;cursor:pointer;
+  transition:transform .25s;
+}
+.ext-card-lg:hover{transform:translateY(-4px)}
+.ext-card-lg .ext-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:auto;font-size:24px;
+  background:rgba(255,255,255,0.2);
+}
+.ext-card-lg h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;margin-top:16px}
+.ext-card-lg p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ext-card-lg .price{font-size:15px;font-weight:700;color:#fff}
+.ext-card-lg .price .old{text-decoration:line-through;opacity:.6;margin-right:6px}
+
+/* Card purple (Membresías) */
+.card-purple{background:linear-gradient(145deg,#8b6cf6,#6c3de8)}
+/* Card navy (Chatbot) */
+.card-navy{background:linear-gradient(145deg,#1e3a5f,#0d2240)}
+
+/* Small horizontal white card (right column) */
+.ext-card-sm{
+  background:#fff;border:1.5px solid #eef0f3;border-radius:16px;
+  padding:18px 20px;display:flex;align-items:flex-start;gap:14px;
+  cursor:pointer;transition:all .25s;
+}
+.ext-card-sm:hover{box-shadow:0 8px 30px rgba(15,29,44,0.1);border-color:transparent;transform:translateY(-2px)}
+.ext-sm-icon{
+  width:56px;height:56px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.ext-card-sm h4{font-size:15px;font-weight:700;color:#0f1d2c;margin-bottom:4px}
+.ext-card-sm p{font-size:13px;color:#6b7d99;line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ext-card-sm .price{font-size:13px;font-weight:600;color:#0f1d2c}
+.ext-card-sm .price.free{color:#22c55e}
+
+/* Bottom row: 3 horizontal cards */
+.pop-grid-bot{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* ── CMS SECTION ─────────────────────────────────────── */
+.cms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cms-card{
+  background:#fff;border:1.5px solid #eef0f3;border-radius:16px;
+  padding:20px 18px;display:flex;align-items:flex-start;gap:14px;
+  cursor:pointer;transition:all .25s;
+}
+.cms-card:hover{box-shadow:0 8px 30px rgba(15,29,44,0.08);border-color:transparent}
+.cms-icon{
+  width:52px;height:52px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.cms-card h4{font-size:15px;font-weight:700;color:#0f1d2c;margin-bottom:4px;line-height:1.3}
+.cms-card p{font-size:13px;color:#6b7d99;line-height:1.5;margin-bottom:8px}
+.cms-card .price{font-size:13px;font-weight:600;color:#22c55e}
+.tech-tag{display:inline-block;font-size:11px;font-weight:600;color:#6772e5;background:#f0f4ff;padding:3px 10px;border-radius:6px;margin-top:6px;letter-spacing:0.02em}
+body.dark-mode .tech-tag{background:#1e2a3a;color:#818cf8}
+
+/* ── COLLECTIONS ─────────────────────────────────────── */
+.coll-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.coll-card{
+  position:relative;border-radius:24px;overflow:hidden;
+  height:280px;cursor:pointer;transition:all .4s;
+}
+.coll-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(15,29,44,0.2)}
+.coll-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.coll-card:hover img{transform:scale(1.05)}
+.coll-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 28px;z-index:2;
+}
+.coll-overlay h3{font-size:24px;font-weight:800;color:#fff;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.coll-overlay span{font-size:14px;color:rgba(255,255,255,0.8);font-weight:500}
+.coll-overlay .coll-icon{
+  width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.coll-overlay .coll-icon svg{width:24px;height:24px}
+
+/* ── GENERIC MINI GRID ───────────────────────────────── */
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* ── MULTILINGUAL SECTION ────────────────────────── */
+.multi-section{
+  padding:96px 24px;background:#fff;
+}
+.multi-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-start}
+
+/* LEFT SIDE */
+.multi-left h2{font-size:clamp(32px,3vw,48px);font-weight:800;color:#0f1d2c;margin-bottom:16px;line-height:1.1}
+.multi-left p{font-size:16px;color:#6b7d99;line-height:1.7;margin-bottom:40px}
+
+/* SELECTOR PANEL - DROPDOWN + FLAGS TOGETHER */
+.multi-selector-panel{
+  background:#d6eef7;border-radius:20px;padding:32px;display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:flex-start;
+}
+
+.multi-selector-left{
+  display:flex;flex-direction:column;
+}
+
+.multi-lang-label{font-size:11px;font-weight:700;color:#5a6f7d;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:block}
+.multi-lang-select{
+  width:100%;padding:12px 14px;border:1.5px solid #c0d9e8;border-radius:8px;
+  font-size:14px;font-weight:600;color:#0f1d2c;background:#fff;cursor:pointer;
+  font-family:inherit;transition:all .2s;
+}
+.multi-lang-select:hover,.multi-lang-select:focus{outline:none;border-color:#1e88e5;box-shadow:0 2px 8px rgba(30,136,229,0.15)}
+
+/* LANGUAGE SELECTOR PILLS */
+.multi-lang-selector{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.lang-pill{
+  display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:20px;
+  background:#fff;border:1.5px solid #d0dce8;cursor:pointer;transition:all .2s ease;
+  font-size:14px;font-weight:500;color:#0f1d2c;
+}
+.lang-pill .lang-flag{font-size:20px;display:flex;align-items:center}
+.lang-pill .lang-name{white-space:nowrap}
+.lang-pill:hover{border-color:#1e88e5;background:#e3f2fd;box-shadow:0 4px 12px rgba(30,136,229,0.15)}
+.lang-pill.active{background:#1e88e5;color:#fff;border-color:#1e88e5;box-shadow:0 4px 16px rgba(30,136,229,0.3)}
+
+/* RIGHT SIDE */
+.multi-right{
+  background:linear-gradient(135deg,#d6eef7 0%,#cae8f2 100%);border-radius:24px;padding:48px;
+  position:relative;overflow:hidden;
+}
+
+.multi-top-section{
+  display:flex;align-items:center;gap:28px;margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(0,0,0,0.08);
+}
+
+.multi-check-icon{
+  width:56px;height:56px;border-radius:12px;background:#1e88e5;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;flex-shrink:0;
+}
+
+.multi-avatars{
+  display:flex;align-items:center;gap:-12px;
+}
+.multi-avatar{
+  width:56px;height:56px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.12);
+  margin-left:-12px;object-fit:cover;
+}
+.multi-avatar:first-child{margin-left:0}
+.multi-avatar-main{
+  width:72px;height:72px;border-color:#1e88e5;border-width:4px;box-shadow:0 4px 16px rgba(30,136,229,0.3);
+  z-index:2;
+}
+
+/* CHECKLIST */
+.multi-checklist{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;
+}
+
+.multi-check-group{
+  display:flex;flex-direction:column;gap:12px;
+}
+
+.multi-check-title{
+  display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#0f1d2c;
+  padding:8px 0;
+}
+.multi-check-title svg{color:#1e88e5;width:16px;height:16px}
+
+.multi-check-item{
+  font-size:13px;color:#5a7d99;padding-left:26px;position:relative;
+}
+.multi-check-item::before{
+  content:'✓';position:absolute;left:6px;color:#1e88e5;font-weight:700;font-size:12px;
+}
+
+.multi-check-label{
+  font-size:10px;font-weight:700;color:#8fa5b8;text-transform:uppercase;letter-spacing:0.05em;
+  padding-top:8px;padding-left:26px;
+}
+
+/* BOTTOM SECTION */
+.multi-bottom-section{
+  border-top:1px solid rgba(0,0,0,0.08);padding-top:28px;
+}
+.multi-bottom-section h3{font-size:16px;font-weight:700;color:#0f1d2c;margin-bottom:12px}
+.multi-bottom-section p{font-size:13px;color:#5a7d99;line-height:1.6}
+
+/* ── AI DARK BANNER ──────────────────────────────────── */
+.ai-banner{
+  border-radius:24px;
+  background:linear-gradient(135deg,#cce5f0 0%,#d6eef7 50%,#cae8f2 100%);
+  padding:56px 48px;display:flex;align-items:center;gap:40px;
+  position:relative;overflow:hidden;
+}
+.ai-banner::before{
+  content:'';position:absolute;
+  right:-80px;top:-80px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(49,188,246,0.15) 0%,transparent 70%);
+}
+.ai-text{flex:1;position:relative;z-index:2}
+.ai-text h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:#0f1d2c;margin-bottom:12px;line-height:1.15}
+.ai-text p{font-size:16px;color:#6b7d99;line-height:1.7;max-width:480px}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.footer{background:#1c2a39;padding:60px 40px 32px}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:48px}
+.footer h4{font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px}
+.footer a{display:block;font-size:14px;color:rgba(255,255,255,0.4);padding:3px 0;transition:color .2s}
+.footer a:hover{color:#fe6c75}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,0.25)}
+.footer-socials{display:flex;gap:10px}
+.footer-socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:background .2s}
+.footer-socials a:hover{background:#fe6c75}
+.footer-socials svg{width:15px;height:15px;fill:rgba(255,255,255,0.45)}
+
+/* ── FADE ANIM ───────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatLeft{0%,100%{transform:translateY(-50%) rotate(-6deg) translateY(0px)}50%{transform:translateY(-50%) rotate(-6deg) translateY(-14px)}}
+@keyframes floatRight{0%,100%{transform:translateY(-50%) rotate(6deg) translateY(0px)}50%{transform:translateY(-50%) rotate(6deg) translateY(-14px)}}
+.demo-phone-wrap{position:relative;width:600px;height:420px;display:flex;align-items:center;justify-content:center}
+.demo-store-left{position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(-6deg);height:130px;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,0.18));z-index:6;animation:floatLeft 3s ease-in-out infinite}
+.demo-store-right{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(6deg);height:130px;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,0.18));z-index:6;animation:floatRight 3s ease-in-out infinite 0.5s}
+@media(max-width:640px){
+  .demo-phone-wrap{width:100%;max-width:380px}
+  .demo-store-left{height:100px;left:-10px}
+  .demo-store-right{height:100px;right:-10px}
+}
+.fade{opacity:0}
+.fade.show{animation:fadeUp .5s ease forwards}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1024px){
+  .header-back-desktop{display:flex !important}
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .section{padding:64px 20px}
+  .search-block{padding:64px 20px 40px}
+  .search-card{padding:24px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .pop-grid-top{grid-template-columns:1fr 1fr}
+  .pop-grid-bot{grid-template-columns:1fr}
+  .cms-grid{grid-template-columns:repeat(2,1fr)}
+  .mini-grid{grid-template-columns:repeat(2,1fr)}
+  .coll-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .ai-banner{flex-direction:column;padding:40px 28px}
+  .hero{padding:60px 20px 30px}
+  .hero h1{font-size:40px}
+  .phones-showcase{height:340px;margin-top:28px;max-width:800px}
+}
+@media(max-width:768px){
+  .phones-showcase{height:260px;overflow:hidden;margin-top:24px;max-width:600px}
+  .phone-mock{width:100px!important;border-radius:20px;padding:4px}
+  .phone-mock:nth-child(3),.phone-mock:nth-child(4){width:115px!important}
+  .phone-inner{border-radius:16px}
+  .phone-screen{height:210px}
+  .phone-app-icon{width:80px;height:80px}
+  .phone-notch{width:40px;height:4px;top:5px}
+  .phone-label{display:none}
+  .multi-wrap{grid-template-columns:1fr;gap:40px}
+  .multi-selector-panel{grid-template-columns:1fr;gap:24px;padding:24px}
+  .multi-flags-grid{grid-template-columns:repeat(4,1fr);gap:12px}
+  .multi-flag-box{font-size:40px}
+}
+@media(max-width:640px){
+  .section{padding:60px 20px}
+  .hero{padding:50px 20px 20px}
+  .hero h1{font-size:32px}
+  .hero p{font-size:15px}
+  .hero-ctas{flex-direction:column;align-items:center;gap:12px}
+  .tw-btn-red,.tw-btn-ghost{width:100%;justify-content:center}
+  .cat-grid{grid-template-columns:1fr}
+  .pop-grid-top{grid-template-columns:1fr}
+  .cms-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .phones-showcase{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important;height:auto!important;position:static!important;margin-top:20px!important;padding:0!important}
+  .phone-mock{position:static!important;width:100%!important;background:transparent!important;border-radius:0!important;padding:0!important;box-shadow:none!important;display:flex!important;flex-direction:column!important;align-items:center!important;bottom:auto!important;left:auto!important;transform:none!important}
+  .phone-mock:nth-child(1),.phone-mock:nth-child(2),.phone-mock:nth-child(3),.phone-mock:nth-child(4),.phone-mock:nth-child(5),.phone-mock:nth-child(6){left:auto!important;transform:none!important;z-index:auto!important;width:100%!important}
+  .phone-inner{background:transparent!important;border:none!important;padding:0!important;height:auto!important;border-radius:0!important;overflow:visible!important}
+  .phone-screen{display:none!important}
+  .phone-app-icon{width:60px!important;height:60px!important;border-radius:12px;display:block!important}
+  .phone-label{position:static!important;bottom:auto!important;left:auto!important;transform:none!important;font-size:13px;font-weight:600;color:#0f1d2c;text-transform:capitalize!important;letter-spacing:0!important;margin-top:8px!important;white-space:normal!important}
+  .phone-notch{display:none!important}
+  .multi-section{padding:64px 20px}
+  .multi-left h2{font-size:26px}
+  .multi-left p{font-size:15px}
+  .multi-flags-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .multi-flag-box{font-size:32px}
+  .multi-right{padding:24px 20px}
+}
+
+/* ── DARK MODE ─────────────────────────────────────── */
+body.dark-mode{background:#0f1520;color:#e2e8f0}
+body.dark-mode .hero{background:linear-gradient(180deg,#1a1f2e 15%,#121f2a 100%)}
+body.dark-mode .hero h1{color:#f1f5f9}
+body.dark-mode .hero p{color:#94a3b8}
+body.dark-mode .hero-pill{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);color:#c8d5e3}
+body.dark-mode .nav{background:#0f1520;border-color:#1e2a3a}
+body.dark-mode .nav-links a{color:#94a3b8}
+body.dark-mode .nav-links a:hover{background:#1e2a3a;color:#e2e8f0}
+body.dark-mode .nav-mis{color:#94a3b8}
+body.dark-mode .search-block{background:#0a1018}
+body.dark-mode .search-card{background:#141d2b;box-shadow:0 8px 40px rgba(0,0,0,0.4)}
+body.dark-mode .search-bar{border-color:#1e2a3a;background:#0f1520}
+body.dark-mode .search-bar input{color:#e2e8f0;background:transparent}
+body.dark-mode .cat-btn{background:#141d2b;border-color:#1e2a3a;color:#94a3b8}
+body.dark-mode .cat-btn:hover{border-color:#fe6c75;color:#fe6c75;background:#1a1020}
+body.dark-mode .cat-btn.active{background:#0f1d2c;color:#fff;border-color:#0f1d2c}
+body.dark-mode .section--gray{background:#0a1018}
+body.dark-mode .sec-title{color:#f1f5f9}
+body.dark-mode .ext-card-sm{background:#141d2b;border-color:#1e2a3a}
+body.dark-mode .ext-card-sm h4{color:#f1f5f9}
+body.dark-mode .ext-card-sm p{color:#64748b}
+body.dark-mode .ext-card-sm:hover{border-color:transparent;box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+body.dark-mode .cms-card{background:#141d2b;border-color:#1e2a3a}
+body.dark-mode .cms-card h4{color:#f1f5f9}
+body.dark-mode .cms-card p{color:#64748b}
+body.dark-mode .coll-card{border:1px solid #1e2a3a}
+body.dark-mode .mini-grid .ext-card-sm{background:#141d2b;border-color:#1e2a3a}
+body.dark-mode .multi-section{background:#0f1520}
+body.dark-mode .multi-left h2{color:#f1f5f9}
+body.dark-mode .multi-left p{color:#94a3b8}
+body.dark-mode .multi-selector{background:#1a2a35}
+body.dark-mode .multi-lang-label{color:#7a8fa0}
+body.dark-mode .multi-lang-select{background:#121f2a;color:#f1f5f9}
+body.dark-mode .multi-lang-select:hover{box-shadow:0 2px 8px rgba(30,136,229,0.2)}
+body.dark-mode .multi-flag-box{background:#1a2630;border-color:#2a3a47;box-shadow:0 1px 3px rgba(0,0,0,0.3)}
+body.dark-mode .multi-flag-box:hover{background:#232d35;border-color:#1e88e5;box-shadow:0 6px 16px rgba(30,136,229,0.2)}
+body.dark-mode .multi-flag-box.active{border-color:#1e88e5;background:#1e3a4a;box-shadow:0 6px 20px rgba(30,136,229,0.2)}
+body.dark-mode .multi-right{background:linear-gradient(135deg,#1a2f3a 0%,#142536 100%)}
+body.dark-mode .multi-bottom-section h3{color:#f1f5f9}
+body.dark-mode .multi-bottom-section p{color:#7a8fa0}
+body.dark-mode .multi-check-title{color:#f1f5f9}
+body.dark-mode .multi-check-item{color:#94a3b8}
+
+/* ── LANG / DARK TOGGLE BUTTON ─────────────────────── */
+.nav-tools{display:flex;align-items:center;gap:8px;margin-left:4px}
+.lang-selector{
+  position:relative;
+}
+.lang-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:#fff;border:1.5px solid #eef0f3;border-radius:12px;
+  padding:6px;min-width:140px;display:none;z-index:300;
+  box-shadow:0 8px 32px rgba(15,29,44,0.12);
+}
+body.dark-mode .lang-dropdown{background:#141d2b;border-color:#1e2a3a}
+.lang-dropdown.open{display:block}
+.lang-opt{
+  display:flex;align-items:center;gap:8px;width:100%;
+  padding:8px 12px;border-radius:8px;border:none;background:transparent;
+  font-family:inherit;font-size:14px;font-weight:500;color:#3f4960;
+  cursor:pointer;transition:background .15s;text-align:left;
+}
+body.dark-mode .lang-opt{color:#94a3b8}
+.lang-opt:hover{background:#f5f7f8;color:#0f1d2c}
+body.dark-mode .lang-opt:hover{background:#1e2a3a;color:#f1f5f9}
+.lang-opt.active{color:#fe6c75;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- HEADER — identical structure to templates-web.html -->
+<!-- ══════════════════════════════════════════════════ -->
+<header class="header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    </a>
+    <div class="header-title" id="headerTitle" data-i18n-html="ext.header.title">
+      <span>Extension</span>
+      <span class="accent">Store</span>
+    </div>
+    <nav class="header-nav" aria-label="Navigation">
+      <a href="#popular" class="header-nav-item"><span data-i18n="ext.nav.popular">Extensiones</span></a>
+      <a href="#cms" class="header-nav-item"><span data-i18n="ext.nav.cms">CMS</span></a>
+      <a href="#collections" class="header-nav-item"><span data-i18n="ext.nav.collections">Colecciones</span></a>
+      <a href="#multilingual" class="header-nav-item"><span data-i18n="ext.nav.multi">Idiomas</span></a>
+      <a href="#ext-cta" class="header-nav-item"><span data-i18n="ext.nav.start">Empezar</span></a>
+    </nav>
+    <div class="header-actions">
+      <a href="#ext-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+
+      </div>
+      <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY FILTER BAR -->
+<div class="sticky-filter-bar" id="stickyFilterBar">
+  <button class="cat-btn active" data-cat="all">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span data-i18n="ext.cat.all">Alle Kategorien</span>
+  </button>
+  <button class="cat-btn" data-cat="notifications">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+    <span data-i18n="ext.cat.notifications">Benachrichtigungen</span>
+  </button>
+  <button class="cat-btn" data-cat="payments">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span data-i18n="ext.cat.payments">Zahlungen</span>
+  </button>
+  <button class="cat-btn" data-cat="auth">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    <span data-i18n="ext.cat.auth">Authentifizierung</span>
+  </button>
+  <button class="cat-btn" data-cat="maps">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span data-i18n="ext.cat.maps">Karten & Standort</span>
+  </button>
+  <button class="cat-btn" data-cat="ai">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+    <span data-i18n="ext.cat.ai">KI & ML</span>
+  </button>
+  <button class="cat-btn" data-cat="media">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span data-i18n="ext.cat.media">Medien</span>
+  </button>
+  <button class="cat-btn" data-cat="analytics">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span data-i18n="ext.cat.analytics">Analyse</span>
+  </button>
+  <button class="cat-btn" data-cat="ui">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <span data-i18n="ext.cat.ui">UI & Animation</span>
+  </button>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu-nav">
+    <a href="#popular" class="mobile-menu-link" data-i18n="ext.nav.popular">Extensiones</a>
+    <a href="#cms" class="mobile-menu-link" data-i18n="ext.nav.cms">CMS</a>
+    <a href="#collections" class="mobile-menu-link" data-i18n="ext.nav.collections">Colecciones</a>
+    <a href="#multilingual" class="mobile-menu-link" data-i18n="ext.nav.multi">Idiomas</a>
+    <a href="#ext-cta" class="mobile-menu-link" data-i18n="ext.nav.start">Empezar</a>
+    <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" data-i18n="ext.nav.back">Zurück zur Startseite</a>
+  </nav>
+  <div class="mobile-menu-footer">
+    <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+    <a href="tel:+41765608645">+41 76 560 86 45</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- HERO — Apps Showcase with 6 Phones -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="hero">
+  <h1 data-i18n-html="ext.hero.h1">Alles, was Ihre App braucht<br><span class="tw-accent">an einem Ort</span></h1>
+  <p data-i18n-html="ext.hero.p">Nicht jede App braucht alles von Grund auf zu bauen. Mit über 60 vorkonfigurierten Funktionen und React Native Bibliotheken können Sie Ihre App schneller, smarter und kostengünstiger entwickeln — genau das, was Sie brauchen.</p>
+
+  <div class="hero-ctas">
+    <a href="#popular" class="tw-btn-red">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span data-i18n="ext.cta1">Funktionen ansehen</span>
+    </a>
+    <button onclick="document.getElementById('ext-cta').scrollIntoView({behavior:'smooth'})" class="tw-btn-ghost" style="border:none;cursor:pointer;font-family:inherit;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span data-i18n="ext.cta2">App entwickeln</span>
+    </button>
+  </div>
+
+  <div class="hero-pills">
+    <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ext.pill1">60+ Funktionen</span></span>
+    <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ext.pill2">iOS & Android</span></span>
+    <span class="hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ext.pill3">React Native</span></span>
+  </div>
+
+  <!-- Hero Phone + Store Badges -->
+  <div class="demo-phone-wrap" style="margin:40px auto 0">
+    <!-- Apple App Store — izquierda -->
+    <img src="img/apple-app-store--v3.png" alt="App Store" class="demo-store-left">
+
+    <!-- Phone frame — centro -->
+    <div style="width:220px;height:380px;background:#1a1a2e;border-radius:36px;padding:7px;box-shadow:0 30px 80px rgba(0,0,0,0.25);z-index:5;position:relative">
+      <div style="width:100%;height:100%;background:#d6eef7;border-radius:29px;overflow:hidden;position:relative">
+        <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);width:50px;height:5px;background:rgba(0,0,0,0.15);border-radius:4px;z-index:2"></div>
+        <div style="padding:26px 14px 14px;display:flex;flex-direction:column;gap:9px">
+          <div style="height:9px;background:rgba(255,255,255,0.8);border-radius:4px;width:60%"></div>
+          <div style="height:65px;background:rgba(255,255,255,0.6);border-radius:12px"></div>
+          <div style="height:7px;background:rgba(255,255,255,0.5);border-radius:4px;width:80%"></div>
+          <div style="height:7px;background:rgba(255,255,255,0.5);border-radius:4px;width:65%"></div>
+          <div style="height:34px;background:rgba(255,255,255,0.6);border-radius:10px"></div>
+          <div style="display:flex;gap:7px">
+            <div style="flex:1;height:30px;background:#1e88e5;border-radius:8px"></div>
+            <div style="flex:1;height:30px;background:rgba(255,255,255,0.5);border-radius:8px"></div>
+          </div>
+          <div style="height:7px;background:rgba(255,255,255,0.5);border-radius:4px;width:50%"></div>
+          <div style="height:44px;background:rgba(255,255,255,0.6);border-radius:10px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Play — derecha -->
+    <img src="img/2504916.png" alt="Google Play" class="demo-store-right">
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- SEARCH + CATEGORIES -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="search-block">
+  <div class="search-card">
+    <div class="cat-grid">
+      <button class="cat-btn active" data-cat="all">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span data-i18n="ext.cat.all">Alle Kategorien</span>
+      </button>
+      <button class="cat-btn" data-cat="notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span data-i18n="ext.cat.notifications">Benachrichtigungen</span>
+      </button>
+      <button class="cat-btn" data-cat="payments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        <span data-i18n="ext.cat.payments">Zahlungen</span>
+      </button>
+      <button class="cat-btn" data-cat="auth">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span data-i18n="ext.cat.auth">Authentifizierung</span>
+      </button>
+      <button class="cat-btn" data-cat="maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-i18n="ext.cat.maps">Karten & Standort</span>
+      </button>
+      <button class="cat-btn" data-cat="ai">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        <span data-i18n="ext.cat.ai">KI & ML</span>
+      </button>
+      <button class="cat-btn" data-cat="media">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span data-i18n="ext.cat.media">Medien</span>
+      </button>
+      <button class="cat-btn" data-cat="analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span data-i18n="ext.cat.analytics">Analyse</span>
+      </button>
+      <button class="cat-btn" data-cat="ui">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span data-i18n="ext.cat.ui">UI & Animation</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- BELIEBTE FUNKTIONEN -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section section--gray" id="popular">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.popular.label">Funktionen</div>
+      <h2 class="t-h2" data-i18n-html="ext.popular.h2">Was Ihre App <span class="accent">braucht</span></h2>
+      <p class="t-sub" data-i18n="ext.popular.sub">Über 60 vorkonfigurierte Funktionen und React Native Bibliotheken — alles was Sie brauchen.</p>
+    </div>
+
+    <!-- TOP ROW: 2 large + 2 small -->
+    <div class="pop-grid-top fade">
+      <!-- Push Notifications — large purple -->
+      <div class="ext-card-lg card-purple" data-cat="notifications" data-name="Push Notifications">
+        <div class="ext-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <h3 data-i18n="ext.pop.push.title">Push-Benachrichtigungen</h3>
+        <p data-i18n="ext.pop.push.desc">Firebase Cloud Messaging & Expo Notifications — halten Sie Ihre Nutzer in Echtzeit informiert</p>
+     
+      </div>
+
+      <!-- KI-Integration — large navy -->
+      <div class="ext-card-lg card-navy" data-cat="ai" data-name="KI-Integration">
+        <div class="ext-icon" style="background:rgba(140,131,240,0.3);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3 data-i18n="ext.pop.ai.title">KI-Integration</h3>
+        <p data-i18n="ext.pop.ai.desc">OpenAI GPT-4, Bildanalyse, Spracherkennung — KI-Funktionen direkt in Ihrer App</p>
+  
+      </div>
+
+      <!-- Right column: 2 small cards -->
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="ext-card-sm" data-cat="payments" data-name="In-App Käufe">
+          <div class="ext-sm-icon" style="background:#fce8ec">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="ext.pop.iap.title">In-App Käufe</h4>
+            <p data-i18n="ext.pop.iap.desc">Subscriptions & einmalige Käufe mit RevenueCat — für iOS und Android</p>
+            <span class="tech-tag">RevenueCat</span>
+          </div>
+        </div>
+        <div class="ext-card-sm" data-cat="maps" data-name="Karten">
+          <div class="ext-sm-icon" style="background:#e0f8f4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00b894" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="ext.pop.maps.title">Karten & Standort</h4>
+            <p data-i18n="ext.pop.maps.desc">Interaktive Karten, GPS-Tracking und Geofencing mit nativer Performance</p>
+            <span class="tech-tag">React Native Maps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROW: 3 horizontal cards -->
+    <div class="pop-grid-bot fade">
+      <div class="ext-card-sm" data-cat="media" data-name="Kamera">
+        <div class="ext-sm-icon" style="background:#eafaf1;width:60px;height:60px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="ext.pop.camera.title">Kamera & Medien</h4>
+          <p data-i18n="ext.pop.camera.desc">Barcode-Scanner, Foto-Upload, Bildbearbeitung und Galerie</p>
+          <span class="tech-tag">Expo Camera</span>
+        </div>
+      </div>
+      <div class="ext-card-sm" data-cat="ui" data-name="Offline Storage">
+        <div class="ext-sm-icon" style="background:#fff3eb;width:60px;height:60px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="ext.pop.storage.title">Offline-Speicher</h4>
+          <p data-i18n="ext.pop.storage.desc">Schneller lokaler Speicher — Ihre App funktioniert auch ohne Internet</p>
+          <span class="tech-tag">MMKV + SQLite</span>
+        </div>
+      </div>
+      <div class="ext-card-sm" data-cat="analytics" data-name="Analytics">
+        <div class="ext-sm-icon" style="background:#eef4ff;width:60px;height:60px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="ext.pop.analytics.title">Analytics & Tracking</h4>
+          <p data-i18n="ext.pop.analytics.desc">Verstehen Sie, wie Ihre Nutzer die App verwenden</p>
+          <span class="tech-tag">Firebase Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- AI BANNER -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.ai.label">KI & ML</div>
+      <h2 class="t-h2">KI-Funktionen</h2>
+      <p class="t-sub" data-i18n="ext.ai.p">Chatbots, Bildanalyse, Sprachsteuerung, Texterkennung — ich integriere KI-Funktionen, die Ihre App wirklich smarter machen.</p>
+    </div>
+    <div class="ai-banner fade">
+      <div class="ai-text">
+        <h2>KI-Funktionen — <span style="color:#1e88e5">powered by OpenAI</span></h2>
+        <p data-i18n="ext.ai.p">Chatbots, Bildanalyse, Sprachsteuerung, Texterkennung — ich integriere KI-Funktionen, die Ihre App wirklich smarter machen.</p>
+      </div>
+      <div style="flex-shrink:0">
+        <img src="img/open-ai-logo-png_seeklogo-428036.png" alt="OpenAI Logo" style="width:80px;height:auto;display:block"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- CORE LIBRARIES -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section section--gray" id="cms">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.core.label">Bibliotheken</div>
+      <h2 class="t-h2" data-i18n-html="ext.core.h2">Kern-<br><span class="accent">Bibliotheken</span></h2>
+      <p class="t-sub" data-i18n="ext.core.sub">Navigation, State Management, Animations und mehr — alles, was moderne Apps brauchen.</p>
+    </div>
+    <div class="cms-grid fade">
+
+      <div class="cms-card" data-cat="ui" data-name="React Navigation">
+        <div class="cms-icon" style="background:#e0f8f4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00b894" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l3 3-3 3"/></svg>
+        </div>
+        <div>
+          <h4>React Navigation</h4>
+          <p data-i18n="ext.lib.navigation.desc">Screen-Navigation mit Tabs, Stack, Drawer und Deep Linking</p>
+          <span class="tech-tag">@react-navigation</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="Zustand">
+        <div class="cms-icon" style="background:#fff3eb">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <h4>Zustand</h4>
+          <p data-i18n="ext.lib.zustand.desc">Leichtgewichtiges State Management — einfach, schnell und typsicher</p>
+          <span class="tech-tag">zustand</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="Reanimated">
+        <div class="cms-icon" style="background:#f3f0ff">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <h4>Reanimated</h4>
+          <p data-i18n="ext.lib.reanimated.desc">Flüssige 60fps-Animationen direkt auf dem UI-Thread</p>
+          <span class="tech-tag">react-native-reanimated</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="NativeWind">
+        <div class="cms-icon" style="background:#e0f8f4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <h4>NativeWind</h4>
+          <p data-i18n="ext.lib.nativewind.desc">Tailwind CSS für React Native — konsistentes und responsives Design</p>
+          <span class="tech-tag">nativewind</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="Expo Router">
+        <div class="cms-icon" style="background:#fce8ec">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <h4>Expo Router</h4>
+          <p data-i18n="ext.lib.exporouter.desc">File-basiertes Routing — wie Next.js, aber für React Native</p>
+          <span class="tech-tag">expo-router</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="React Query">
+        <div class="cms-icon" style="background:#fff3eb">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>React Query</h4>
+          <p data-i18n="ext.lib.reactquery.desc">Server State Management mit automatischem Caching und Refetching</p>
+          <span class="tech-tag">@tanstack/react-query</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="i18n">
+        <div class="cms-icon" style="background:#eafaf1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <h4 data-i18n="ext.lib.i18n.title">Mehrsprachigkeit</h4>
+          <p data-i18n="ext.lib.i18n.desc">Ihre App in beliebig vielen Sprachen — automatisch oder manuell</p>
+          <span class="tech-tag">i18next</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="Lottie">
+        <div class="cms-icon" style="background:#f3f0ff">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div>
+          <h4>Lottie</h4>
+          <p data-i18n="ext.lib.lottie.desc">Animierte Icons und Micro-Interactions aus After Effects</p>
+          <span class="tech-tag">lottie-react-native</span>
+        </div>
+      </div>
+
+      <div class="cms-card" data-cat="ui" data-name="Expo Updates">
+        <div class="cms-icon" style="background:#d4edda">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/></svg>
+        </div>
+        <div>
+          <h4>OTA Updates</h4>
+          <p data-i18n="ext.lib.ota.desc">Updates ohne App Store — sofortige Bugfixes und neue Features</p>
+          <span class="tech-tag">expo-updates</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- APP-TYPEN -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section" id="collections">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.coll.label">App-Typen</div>
+      <h2 class="t-h2" data-i18n-html="ext.coll.h2">App-Typen die<br>ich <span class="accent">entwickle</span></h2>
+      <p class="t-sub" data-i18n="ext.coll.sub">Von E-Commerce bis Social Apps — cada tipo de aplicación con soluciones completas.</p>
+    </div>
+    <div class="coll-grid fade">
+
+<!-- eCommerce -->
+<div class="coll-card" data-cat="payments" data-name="eCommerce">
+  <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="eCommerce" loading="lazy">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(167,139,250,0.3) 0%,rgba(15,29,44,0.85) 60%)"></div>
+  <div class="coll-overlay">
+    <div class="coll-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+    <h3 data-i18n="ext.coll.ecommerce">eCommerce</h3>
+    <span data-i18n="ext.coll.ecommerce.desc">Stripe, Warenkorb, Bestellungen</span>
+  </div>
+</div>
+
+<!-- Gesundheit & Fitness -->
+<div class="coll-card" data-cat="analytics" data-name="Health & Fitness">
+  <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80" alt="Health & Fitness" loading="lazy">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(52,211,153,0.3) 0%,rgba(15,29,44,0.85) 60%)"></div>
+  <div class="coll-overlay">
+    <div class="coll-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+    <h3 data-i18n="ext.coll.health">Gesundheit & Fitness</h3>
+    <span data-i18n="ext.coll.health.desc">Scanner, Tracking, KI-Analyse</span>
+  </div>
+</div>
+
+<!-- Restaurant & Delivery -->
+<div class="coll-card" data-cat="maps" data-name="Restaurant & Delivery">
+  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Restaurant & Delivery" loading="lazy">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,191,36,0.3) 0%,rgba(15,29,44,0.85) 60%)"></div>
+  <div class="coll-overlay">
+    <div class="coll-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+    <h3 data-i18n="ext.coll.restaurants">Restaurant & Lieferung</h3>
+    <span data-i18n="ext.coll.restaurants.desc">Bestellung, Karten, Echtzeit</span>
+  </div>
+</div>
+
+<!-- Social & Community -->
+<div class="coll-card" data-cat="auth" data-name="Social & Community">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Social & Community" loading="lazy">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(99,102,241,0.3) 0%,rgba(15,29,44,0.85) 60%)"></div>
+  <div class="coll-overlay">
+    <div class="coll-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+    <h3 data-i18n="ext.coll.social">Social & Community</h3>
+    <span data-i18n="ext.coll.social.desc">Chat, Profile, Feed, Auth</span>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ZAHLUNGEN & MONETARISIERUNG -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section section--gray">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.pay.label">Zahlungen</div>
+      <h2 class="t-h2" data-i18n-html="ext.pay.h2">Zahlungen &<br><span class="accent">Monetarisierung</span></h2>
+      <p class="t-sub" data-i18n="ext.pay.sub">Stripe, RevenueCat, Apple Pay, Google Pay — alles integriert und sofort einsatzbereit.</p>
+    </div>
+    <div class="mini-grid fade">
+
+      <div class="ext-card-sm" data-cat="payments" data-name="Stripe">
+        <div class="ext-sm-icon" style="background:#f0f4ff;width:52px;height:52px;border-radius:12px;font-size:22px;font-weight:900;color:#6772e5">S</div>
+        <div><h4>Stripe</h4><p data-i18n="ext.pay.stripe.desc">Kreditkarten, SEPA, Apple Pay, Google Pay — alles in einem SDK</p><span class="tech-tag">@stripe/stripe-react-native</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="payments" data-name="RevenueCat">
+        <div class="ext-sm-icon" style="background:#fce8ec;width:52px;height:52px;border-radius:12px;font-size:18px;font-weight:900;color:#f43f5e">RC</div>
+        <div><h4>RevenueCat</h4><p data-i18n="ext.pay.revenuecat.desc">Subscriptions und In-App Käufe einfach verwalten — iOS & Android</p><span class="tech-tag">react-native-purchases</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="payments" data-name="Apple Pay">
+        <div class="ext-sm-icon" style="background:#000;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        </div>
+        <div><h4>Apple Pay</h4><p data-i18n="ext.pay.applepay.desc">Nativer Zahlungsflow mit einem Tap — für iOS-Nutzer</p><span class="tech-tag">Native iOS</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="payments" data-name="Google Pay">
+        <div class="ext-sm-icon" style="background:#e8f5e9;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3ddc84" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div><h4>Google Pay</h4><p data-i18n="ext.pay.googlepay.desc">Schneller Checkout auf Android-Geräten</p><span class="tech-tag">Native Android</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="payments" data-name="In-App Purchases">
+        <div class="ext-sm-icon" style="background:#fff3eb;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div><h4>In-App Purchases</h4><p data-i18n="ext.pay.iap.desc">Einmalige Käufe und Consumables über den App Store</p><span class="tech-tag">expo-in-app-purchases</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="payments" data-name="AdMob">
+        <div class="ext-sm-icon" style="background:#eafaf1;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div><h4>AdMob</h4><p data-i18n="ext.pay.admob.desc">Werbeeinnahmen mit Banner-, Interstitial- und Rewarded Ads</p><span class="tech-tag">react-native-google-mobile-ads</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ENGAGEMENT -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.engage.label">Engagement</div>
+      <h2 class="t-h2" data-i18n-html="ext.engage.h2">Nutzer-<br><span class="accent">Engagement</span></h2>
+      <p class="t-sub" data-i18n="ext.engage.sub">Push-Benachrichtigungen, Deep Linking, App Reviews — halten Sie Ihre Nutzer aktiv und zufrieden.</p>
+    </div>
+    <div class="mini-grid fade">
+
+      <div class="ext-card-sm" data-cat="notifications" data-name="OneSignal">
+        <div class="ext-sm-icon" style="background:#fce8ec;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <div><h4>OneSignal</h4><p data-i18n="ext.engage.onesignal.desc">Gezielte Push-Kampagnen mit Segmentierung und A/B-Tests</p><span class="tech-tag">react-native-onesignal</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="notifications" data-name="Deep Linking">
+        <div class="ext-sm-icon" style="background:#f3f0ff;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div><h4>Deep Linking</h4><p data-i18n="ext.engage.deeplink.desc">Nutzer direkt zum richtigen Screen per Link oder QR-Code</p><span class="tech-tag">expo-linking</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="analytics" data-name="In-App Review">
+        <div class="ext-sm-icon" style="background:#fffbe6;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div><h4 data-i18n="ext.engage.review.title">App-Bewertung</h4><p data-i18n="ext.engage.review.desc">Nutzer bitten im richtigen Moment eine Bewertung abzugeben</p><span class="tech-tag">expo-store-review</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="media" data-name="Share">
+        <div class="ext-sm-icon" style="background:#e0f8f4;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00b894" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <div><h4 data-i18n="ext.engage.share.title">Social Sharing</h4><p data-i18n="ext.engage.share.desc">Inhalte direkt aus der App auf Social Media teilen</p><span class="tech-tag">expo-sharing</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Biometrie">
+        <div class="ext-sm-icon" style="background:#fff3eb;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M12 11c0 1.66-1.34 3-3 3"/><path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10"/><path d="M12 2a10 10 0 0110 10"/><path d="M7 12a5 5 0 015-5"/></svg>
+        </div>
+        <div><h4 data-i18n="ext.engage.biometric.title">Biometrische Auth</h4><p data-i18n="ext.engage.biometric.desc">Face ID und Fingerabdruck für sichere Authentifizierung</p><span class="tech-tag">expo-local-authentication</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- AUTH & SOCIAL -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="section section--gray">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="t-label" data-i18n="ext.auth.label">Authentifizierung</div>
+      <h2 class="t-h2" data-i18n-html="ext.auth.h2">Authentifizierung &<br><span class="accent">Backend</span></h2>
+      <p class="t-sub" data-i18n="ext.auth.sub">Firebase, Social Login, Supabase — sichere Authentifizierung mit allen modernen Optionen.</p>
+    </div>
+    <div class="mini-grid fade">
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Firebase Auth">
+        <div class="ext-sm-icon" style="background:#fff3eb;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div><h4>Firebase Auth</h4><p data-i18n="ext.auth.firebase.desc">E-Mail, Telefon, Social Login — mit Google, Apple, Facebook</p><span class="tech-tag">@react-native-firebase/auth</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Google Sign-In">
+        <div class="ext-sm-icon" style="background:#fff8f6;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div><h4>Google Sign-In</h4><p data-i18n="ext.auth.google.desc">Login mit Google-Konto — schnell, sicher und weit verbreitet</p><span class="tech-tag">@react-native-google-signin/google-signin</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Apple Sign-In">
+        <div class="ext-sm-icon" style="background:#000;width:52px;height:52px;border-radius:12px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        </div>
+        <div><h4>Apple Sign-In</h4><p data-i18n="ext.auth.apple.desc">Pflicht für iOS-Apps mit Login — schnell und datenschutzfreundlich</p><span class="tech-tag">@invertase/react-native-apple-authentication</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Supabase">
+        <div class="ext-sm-icon" style="background:#e0f8f4;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00b894" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        </div>
+        <div><h4>Supabase</h4><p data-i18n="ext.auth.supabase.desc">Open-Source Backend mit Auth, Datenbank und Echtzeit-Sync</p><span class="tech-tag">@supabase/supabase-js</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="auth" data-name="Echtzeit-Chat">
+        <div class="ext-sm-icon" style="background:#f3f0ff;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div><h4 data-i18n="ext.auth.chat.title">Echtzeit-Chat</h4><p data-i18n="ext.auth.chat.desc">Messaging in Ihrer App mit Firebase oder Stream Chat</p><span class="tech-tag">Firebase / Stream</span></div>
+      </div>
+
+      <div class="ext-card-sm" data-cat="analytics" data-name="Crashlytics">
+        <div class="ext-sm-icon" style="background:#fce8ec;width:52px;height:52px;border-radius:12px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div><h4>Crashlytics</h4><p data-i18n="ext.auth.crash.desc">Crash-Reports in Echtzeit — Fehler finden, bevor Nutzer sich beschweren</p><span class="tech-tag">@react-native-firebase/crashlytics</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- MULTILINGUAL INTERFACE SECTION -->
+<!-- ══════════════════════════════════════════════════ -->
+<section class="multi-section" id="multilingual">
+  <div class="multi-wrap">
+    <!-- LEFT SIDE -->
+    <div class="multi-left">
+      <h2 data-i18n-html="ext.multi.h2">Interfaz <span class="accent">multilingüe</span></h2>
+      <p data-i18n="ext.multi.p">Disponible en 13 idiomas nativos para una gestión fluida, sea cual sea el usuario.</p>
+
+      <!-- LANGUAGE SELECTOR -->
+      <div class="multi-lang-selector">
+        <div class="lang-pill active" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></div>
+        <div class="lang-pill" data-lang="de" onclick="selectLang('de')"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span></div>
+        <div class="lang-pill" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></div>
+        <div class="lang-pill" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></div>
+        <div class="lang-pill" data-lang="it" onclick="selectLang('it')"><span class="lang-flag">🇮🇹</span><span class="lang-name">Italiano</span></div>
+        <div class="lang-pill" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇵🇹</span><span class="lang-name">Português</span></div>
+        <div class="lang-pill" data-lang="nl" onclick="selectLang('nl')"><span class="lang-flag">🇳🇱</span><span class="lang-name">Nederlands</span></div>
+        <div class="lang-pill" data-lang="tr" onclick="selectLang('tr')"><span class="lang-flag">🇹🇷</span><span class="lang-name">Türkçe</span></div>
+        <div class="lang-pill" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span></div>
+        <div class="lang-pill" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></div>
+        <div class="lang-pill" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span></div>
+        <div class="lang-pill" data-lang="ar" onclick="selectLang('ar')"><span class="lang-flag">🇸🇦</span><span class="lang-name">العربية</span></div>
+        <div class="lang-pill" data-lang="hi" onclick="selectLang('hi')"><span class="lang-flag">🇮🇳</span><span class="lang-name">हिंदी</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="multi-right">
+      <!-- TOP SECTION with avatars -->
+      <div class="multi-top-section">
+        <div class="multi-check-icon">✓</div>
+
+        <div class="multi-avatars">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="User" class="multi-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="User" class="multi-avatar">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" alt="User" class="multi-avatar multi-avatar-main">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop" alt="User" class="multi-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="User" class="multi-avatar">
+        </div>
+      </div>
+
+      <!-- CHECKLIST SECTION -->
+      <div class="multi-checklist">
+        <div class="multi-check-group">
+          <div class="multi-check-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span data-i18n="ext.multi.myapp">My App</span>
+          </div>
+          <div class="multi-check-item">
+            <span data-i18n="ext.multi.preview">Preview & Structure</span>
+          </div>
+          <div class="multi-check-item">
+            <span data-i18n="ext.multi.f1">Design settings</span>
+          </div>
+          <div class="multi-check-item">
+            <span data-i18n="ext.multi.f2">Section management</span>
+          </div>
+        </div>
+
+        <div class="multi-check-group">
+          <div class="multi-check-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span data-i18n="ext.multi.f3">Publish</span>
+          </div>
+          <div class="multi-check-label" data-i18n="ext.multi.dist">DISTRIBUTION CHANNELS</div>
+          <div class="multi-check-item">
+            <span>List</span>
+          </div>
+          <div class="multi-check-label" data-i18n="ext.multi.loyalty">LOYALTY</div>
+          <div class="multi-check-item">
+            <span data-i18n="ext.multi.cards">The cards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM SECTION -->
+      <div class="multi-bottom-section">
+        <h3 data-i18n="ext.multi.permissions">Acceso y permisos personalizados</h3>
+        <p data-i18n="ext.multi.perm-desc">Defina con precisión qué secciones y funciones son accesibles para cada miembro del equipo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════ -->
+<!-- CTA BANNER (style like templates-web.html) -->
+<!-- ══════════════════════════════════════════════════ -->
+<section id="ext-cta" style="background:linear-gradient(165deg,#060e18 0%,#0f1d2c 100%);text-align:center;padding:96px 24px;">
+  <div style="max-width:1140px;margin:0 auto;">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:1000px;background:rgba(254,108,117,0.1);border:1px solid rgba(254,108,117,0.2);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fe6c75;margin-bottom:24px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#fe6c75;display:inline-block;animation:blink 1.5s infinite"></span>
+      <span data-i18n="ext.cta.label">¿Listo para empezar?</span>
+    </div>
+    <h2 style="font-size:clamp(28px,4vw,52px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-0.025em;margin-bottom:12px;" data-i18n-html="ext.cta.h2">Tu app profesional<br><span style="color:#fe6c75">en pocos días.</span></h2>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:16px;letter-spacing:.5px;" data-i18n="ext.cta.sub2">Diseño · Contenido · Extensiones · Publicación</p>
+    <p style="font-size:17px;color:#8a9bb3;max-width:520px;margin:0 auto 40px;line-height:1.7;" data-i18n="ext.cta.p">Elige tus extensiones, envíanos los datos — y en pocos días tu app está disponible. Fácil, rápido y profesional.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <button onclick="openAppPriceCalc()" style="display:inline-flex;align-items:center;gap:8px;background:#fe6c75;color:#fff;border-radius:1000px;padding:0 32px;height:56px;font-size:16px;font-weight:700;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(254,108,117,0.35);transition:all .2s;" data-i18n="ext.cta.btn1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Calcular precio
+      </button>
+      <a href="https://wa.me/41765608645" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.8);border-radius:1000px;padding:0 32px;height:56px;font-size:16px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.2);transition:all .2s;" data-i18n="ext.cta.btn2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <div style="margin-top:24px;font-size:14px;color:#4b5a6e;display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      <span data-i18n="ext.cta.note">Asesoramiento gratuito y sin compromiso</span>
+    </div>
+  </div>
+</section>
+
+
+<script>
+// ── TRANSLATIONS ─────────────────────────────────────
+var extTrans = {
+  de: {
+    'ext.header.title':'<span>App</span><span class="accent">Funktionen</span>',
+    'ext.nav.popular':'Funktionen','ext.nav.cms':'Bibliotheken','ext.nav.collections':'App-Typen','ext.nav.multi':'Sprachen','ext.nav.start':'Loslegen','ext.nav.back':'Zur Startseite',
+    'ext.nav.myapps':'MEINE APPS','ext.nav.cta':'App erstellen',
+    'ext.hero.h1':'Alles, was Ihre App braucht<br><span class="tw-accent">an einem Ort</span>',
+    'ext.hero.p':'Nicht jede App braucht alles von Grund auf zu bauen. Mit über 60 vorkonfigurierten Funktionen und React Native Bibliotheken können Sie Ihre App schneller, smarter und kostengünstiger entwickeln — genau das, was Sie brauchen.',
+    'ext.search.placeholder':'Suche',
+    'ext.cat.notifications':'Benachrichtigungen','ext.cat.payments':'Zahlungen','ext.cat.auth':'Authentifizierung',
+    'ext.cat.maps':'Karten & Standort','ext.cat.ai':'KI & ML','ext.cat.media':'Medien',
+    'ext.cat.analytics':'Analyse','ext.cat.ui':'UI & Animation','ext.cat.all':'Alle Kategorien',
+    'ext.popular.label':'Funktionen','ext.popular.h2':'Was Ihre App<br><span class="accent">braucht</span>','ext.popular.sub':'Über 60 vorkonfigurierte Funktionen und React Native Bibliotheken — alles was Sie brauchen.',
+    'ext.ai.label':'KI & ML','ext.ai.h2':'KI-Funktionen<br><span style="color:#1e88e5">powered by OpenAI</span>',
+    'ext.core.h2':'Kern-<br><span class="accent">Bibliotheken</span>',
+    'ext.coll.label':'App-Typen','ext.coll.h2':'App-Typen die<br>ich <span class="accent">entwickle</span>','ext.coll.sub':'Von E-Commerce bis Social Apps — jede App mit kompletten Lösungen.',
+    'ext.pay.label':'Zahlungen','ext.pay.h2':'Zahlungen &<br><span class="accent">Monetarisierung</span>','ext.pay.sub':'Stripe, RevenueCat, Apple Pay, Google Pay — alles integriert und sofort einsatzbereit.',
+    'ext.engage.label':'Engagement','ext.engage.h2':'Nutzer-<br><span class="accent">Engagement</span>','ext.engage.sub':'Push-Benachrichtigungen, Deep Linking, App Reviews — halten Sie Ihre Nutzer aktiv und zufrieden.',
+    'ext.auth.label':'Authentifizierung','ext.auth.h2':'Authentifizierung &<br><span class="accent">Backend</span>','ext.auth.sub':'Firebase, Social Login, Supabase — sichere Authentifizierung mit allen modernen Optionen.',
+    'ext.pop.push.title':'Push-Benachrichtigungen','ext.pop.push.desc':'Firebase Cloud Messaging & Expo Notifications — halten Sie Ihre Nutzer in Echtzeit informiert',
+    'ext.pop.ai.title':'KI-Integration','ext.pop.ai.desc':'OpenAI GPT-4, Bildanalyse, Spracherkennung — KI-Funktionen direkt in Ihrer App',
+    'ext.pop.iap.title':'In-App Käufe','ext.pop.iap.desc':'Subscriptions & einmalige Käufe mit RevenueCat — für iOS und Android',
+    'ext.pop.maps.title':'Karten & Standort','ext.pop.maps.desc':'Interaktive Karten, GPS-Tracking und Geofencing mit nativer Performance',
+    'ext.pop.camera.title':'Kamera & Medien','ext.pop.camera.desc':'Barcode-Scanner, Foto-Upload, Bildbearbeitung und Galerie',
+    'ext.pop.storage.title':'Offline-Speicher','ext.pop.storage.desc':'Schneller lokaler Speicher — Ihre App funktioniert auch ohne Internet',
+    'ext.pop.analytics.title':'Analytics & Tracking','ext.pop.analytics.desc':'Verstehen Sie, wie Ihre Nutzer die App verwenden',
+    'ext.ai.h2':'KI-Funktionen — powered by OpenAI','ext.ai.p':'Chatbots, Bildanalyse, Sprachsteuerung, Texterkennung — ich integriere KI-Funktionen, die Ihre App wirklich smarter machen.',
+    'ext.core.label':'Bibliotheken','ext.core.h2':'Kern-Bibliotheken für<br><span class="accent">jede App</span>','ext.core.sub':'Navigation, State Management, Animations und mehr — alles, was moderne Apps brauchen.',
+    'ext.lib.navigation.desc':'Screen-Navigation mit Tabs, Stack, Drawer und Deep Linking',
+    'ext.lib.zustand.desc':'Leichtgewichtiges State Management — einfach, schnell und typsicher',
+    'ext.lib.reanimated.desc':'Flüssige 60fps-Animationen direkt auf dem UI-Thread',
+    'ext.lib.nativewind.desc':'Tailwind CSS für React Native — konsistentes und responsives Design',
+    'ext.lib.exporouter.desc':'File-basiertes Routing — wie Next.js, aber für React Native',
+    'ext.lib.reactquery.desc':'Server State Management mit automatischem Caching und Refetching',
+    'ext.lib.i18n.title':'Mehrsprachigkeit','ext.lib.i18n.desc':'Ihre App in beliebig vielen Sprachen — automatisch oder manuell',
+    'ext.lib.lottie.desc':'Animierte Icons und Micro-Interactions aus After Effects',
+    'ext.lib.ota.desc':'Updates ohne App Store — sofortige Bugfixes und neue Features',
+    'ext.coll.title':'App-Typen die ich <span class="accent">entwickle</span>',
+    'ext.coll.ecommerce':'eCommerce','ext.coll.ecommerce.desc':'Stripe, Warenkorb, Bestellungen',
+    'ext.coll.health':'Gesundheit & Fitness','ext.coll.health.desc':'Scanner, Tracking, KI-Analyse',
+    'ext.coll.restaurants':'Restaurant & Lieferung','ext.coll.restaurants.desc':'Bestellung, Karten, Echtzeit',
+    'ext.coll.social':'Social & Community','ext.coll.social.desc':'Chat, Profile, Feed, Auth',
+    'ext.pay.title':'Zahlungen & <span class="accent">Monetarisierung</span>',
+    'ext.pay.stripe.desc':'Kreditkarten, SEPA, Apple Pay, Google Pay — alles in einem SDK',
+    'ext.pay.revenuecat.desc':'Subscriptions und In-App Käufe einfach verwalten — iOS & Android',
+    'ext.pay.applepay.desc':'Nativer Zahlungsflow mit einem Tap — für iOS-Nutzer',
+    'ext.pay.googlepay.desc':'Schneller Checkout auf Android-Geräten',
+    'ext.pay.iap.desc':'Einmalige Käufe und Consumables über den App Store',
+    'ext.pay.admob.desc':'Werbeeinnahmen mit Banner-, Interstitial- und Rewarded Ads',
+    'ext.engage.title':'Nutzer-<span class="accent">Engagement</span>',
+    'ext.engage.onesignal.desc':'Gezielte Push-Kampagnen mit Segmentierung und A/B-Tests',
+    'ext.engage.deeplink.desc':'Nutzer direkt zum richtigen Screen per Link oder QR-Code',
+    'ext.engage.review.title':'App-Bewertung','ext.engage.review.desc':'Nutzer bitten im richtigen Moment eine Bewertung abzugeben',
+    'ext.engage.share.title':'Social Sharing','ext.engage.share.desc':'Inhalte direkt aus der App auf Social Media teilen',
+    'ext.engage.biometric.title':'Biometrische Auth','ext.engage.biometric.desc':'Face ID und Fingerabdruck für sichere Authentifizierung',
+    'ext.auth.title':'Authentifizierung & <span class="accent">Backend</span>',
+    'ext.auth.firebase.desc':'E-Mail, Telefon, Social Login — mit Google, Apple, Facebook',
+    'ext.auth.google.desc':'Login mit Google-Konto — schnell, sicher und weit verbreitet',
+    'ext.auth.apple.desc':'Pflicht für iOS-Apps mit Login — schnell und datenschutzfreundlich',
+    'ext.auth.supabase.desc':'Open-Source Backend mit Auth, Datenbank und Echtzeit-Sync',
+    'ext.auth.chat.title':'Echtzeit-Chat','ext.auth.chat.desc':'Messaging in Ihrer App mit Firebase oder Stream Chat',
+    'ext.auth.crash.desc':'Crash-Reports in Echtzeit — Fehler finden, bevor Nutzer sich beschweren',
+    'ext.cta1':'Funktionen ansehen','ext.cta2':'App entwickeln',
+    'ext.pill1':'60+ Funktionen','ext.pill2':'iOS & Android','ext.pill3':'React Native',
+    'ext.multi.h2':'Multilinguale Schnittstelle','ext.multi.p':'In 13 nativen Sprachen für reibungslose Verwaltung verfügbar, unabhängig vom Benutzer.',
+    'ext.multi.language':'Backend-Sprache','ext.multi.myapp':'Meine App','ext.multi.preview':'Vorschau & Struktur',
+    'ext.multi.f1':'Design-Einstellungen','ext.multi.f2':'Abschnittsverwaltung','ext.multi.f3':'Veröffentlichen',
+    'ext.multi.dist':'VERTEILUNGSKANÄLE','ext.multi.loyalty':'TREUEPROGRAMM','ext.multi.cards':'Die Karten',
+    'ext.multi.permissions':'Personalisierte Zugriffsrechte','ext.multi.perm-desc':'Definieren Sie präzise, welche Abschnitte und Funktionen für jedes Teamitglied zugänglich sind.',
+    'ext.cta.label':'Bereit zum Starten?',
+    'ext.cta.h2':'Ihre professionelle App<br><span style="color:#fe6c75">in wenigen Tagen.</span>',
+    'ext.cta.sub2':'Design · Funktionen · Bibliotheken · Veröffentlichung',
+    'ext.cta.p':'Wählen Sie Ihre Funktionen, schicken Sie uns Ihre Daten — und Ihre App ist in wenigen Tagen bereit.',
+    'ext.cta.btn1':'Preis berechnen','ext.cta.btn2':'WhatsApp',
+    'ext.cta.note':'Kostenlose Beratung — unverbindlich',
+    'ext.footer.company':'Unternehmen','ext.footer.about':'Über uns','ext.footer.support':'Support',
+    'ext.footer.jobs':'Jobs','ext.footer.contact':'Kontakt','ext.footer.product':'Produkt',
+    'ext.footer.createapp':'App erstellen','ext.footer.extensions':'Funktionen',
+    'ext.footer.pricing':'Preise','ext.footer.reseller':'Partner','ext.footer.legal':'Rechtliches',
+    'ext.footer.terms':'AGB','ext.footer.privacy':'Datenschutz','ext.footer.resources':'Ressourcen',
+    'ext.footer.docs':'Dokumentation','ext.footer.dev':'Entwickler','ext.footer.blog':'Blog'
+  },
+  en: {
+    'ext.header.title':'<span>App</span><span class="accent">Features</span>',
+    'ext.nav.popular':'Features','ext.nav.cms':'Libraries','ext.nav.collections':'App Types','ext.nav.multi':'Languages','ext.nav.start':'Get started','ext.nav.back':'Back to home',
+    'ext.nav.myapps':'MY APPS','ext.nav.cta':'Create an app',
+    'ext.hero.h1':'Everything your app needs<br><span class="tw-accent">in one place</span>',
+    'ext.hero.p':'Over <strong>60 features & libraries</strong> for your React Native app',
+    'ext.search.placeholder':'Search',
+    'ext.cat.notifications':'Notifications','ext.cat.payments':'Payments','ext.cat.auth':'Authentication',
+    'ext.cat.maps':'Maps & Location','ext.cat.ai':'AI & ML','ext.cat.media':'Media',
+    'ext.cat.analytics':'Analytics','ext.cat.ui':'UI & Animation','ext.cat.all':'All categories',
+    'ext.popular.label':'Features','ext.popular.h2':'What Your App<br><span class="accent">Needs</span>','ext.popular.sub':'Over 60 pre-configured features and React Native libraries — everything you need.',
+    'ext.ai.label':'AI & ML','ext.ai.h2':'AI Features<br><span style="color:#1e88e5">powered by OpenAI</span>',
+    'ext.core.h2':'Core<br><span class="accent">Libraries</span>',
+    'ext.coll.label':'App Types','ext.coll.h2':'App Types I<br><span class="accent">Build</span>','ext.coll.sub':'From eCommerce to social apps — every app with complete solutions.',
+    'ext.pay.label':'Payments','ext.pay.h2':'Payments &<br><span class="accent">Monetization</span>','ext.pay.sub':'Stripe, RevenueCat, Apple Pay, Google Pay — everything integrated and ready to use.',
+    'ext.engage.label':'Engagement','ext.engage.h2':'User<br><span class="accent">Engagement</span>','ext.engage.sub':'Push notifications, deep linking, app reviews — keep your users active and satisfied.',
+    'ext.auth.label':'Authentication','ext.auth.h2':'Authentication &<br><span class="accent">Backend</span>','ext.auth.sub':'Firebase, social login, Supabase — secure authentication with all modern options.',
+    'ext.pop.push.title':'Push Notifications','ext.pop.push.desc':'Firebase Cloud Messaging & Expo Notifications — keep your users informed in real time',
+    'ext.pop.ai.title':'AI Integration','ext.pop.ai.desc':'OpenAI GPT-4, image analysis, speech recognition — AI features right in your app',
+    'ext.pop.iap.title':'In-App Purchases','ext.pop.iap.desc':'Subscriptions & one-time purchases with RevenueCat — for iOS and Android',
+    'ext.pop.maps.title':'Maps & Location','ext.pop.maps.desc':'Interactive maps, GPS tracking and geofencing with native performance',
+    'ext.pop.camera.title':'Camera & Media','ext.pop.camera.desc':'Barcode scanner, photo upload, image editing and gallery',
+    'ext.pop.storage.title':'Offline Storage','ext.pop.storage.desc':'Fast local storage — your app works even without internet',
+    'ext.pop.analytics.title':'Analytics & Tracking','ext.pop.analytics.desc':'Understand how your users are using the app',
+    'ext.ai.h2':'AI Features — powered by OpenAI','ext.ai.p':'Chatbots, image analysis, voice control, text recognition — I integrate AI features that actually make your app smarter.',
+    'ext.core.title':'Core Libraries for Every <span class="accent">App</span>',
+    'ext.lib.navigation.desc':'Screen navigation with tabs, stack, drawer and deep linking',
+    'ext.lib.zustand.desc':'Lightweight state management — simple, fast and type-safe',
+    'ext.lib.reanimated.desc':'Smooth 60fps animations directly on the UI thread',
+    'ext.lib.nativewind.desc':'Tailwind CSS for React Native — consistent and responsive design',
+    'ext.lib.exporouter.desc':'File-based routing — like Next.js, but for React Native',
+    'ext.lib.reactquery.desc':'Server state management with automatic caching and refetching',
+    'ext.lib.i18n.title':'Multilingual','ext.lib.i18n.desc':'Your app in any number of languages — automatic or manual',
+    'ext.lib.lottie.desc':'Animated icons and micro-interactions from After Effects',
+    'ext.lib.ota.desc':'Updates without the App Store — instant bugfixes and new features',
+    'ext.coll.title':'App Types I Build',
+    'ext.coll.ecommerce':'eCommerce','ext.coll.ecommerce.desc':'Stripe, cart, orders',
+    'ext.coll.health':'Health & Fitness','ext.coll.health.desc':'Scanner, tracking, AI analysis',
+    'ext.coll.restaurants':'Restaurant & Delivery','ext.coll.restaurants.desc':'Orders, maps, real-time',
+    'ext.coll.social':'Social & Community','ext.coll.social.desc':'Chat, profiles, feed, auth',
+    'ext.pay.title':'Payments & Monetization',
+    'ext.pay.stripe.desc':'Credit cards, SEPA, Apple Pay, Google Pay — all in one SDK',
+    'ext.pay.revenuecat.desc':'Manage subscriptions and in-app purchases easily — iOS & Android',
+    'ext.pay.applepay.desc':'Native payment flow with one tap — for iOS users',
+    'ext.pay.googlepay.desc':'Fast checkout on Android devices',
+    'ext.pay.iap.desc':'One-time purchases and consumables via the App Store',
+    'ext.pay.admob.desc':'Ad revenue with banner, interstitial and rewarded ads',
+    'ext.engage.title':'User Engagement',
+    'ext.engage.onesignal.desc':'Targeted push campaigns with segmentation and A/B testing',
+    'ext.engage.deeplink.desc':'Send users directly to the right screen via link or QR code',
+    'ext.engage.review.title':'App Rating','ext.engage.review.desc':'Ask users to rate at the right moment',
+    'ext.engage.share.title':'Social Sharing','ext.engage.share.desc':'Share content from your app directly to social media',
+    'ext.engage.biometric.title':'Biometric Auth','ext.engage.biometric.desc':'Face ID and fingerprint for secure authentication',
+    'ext.auth.title':'Authentication & Backend',
+    'ext.auth.firebase.desc':'Email, phone, social login — with Google, Apple, Facebook',
+    'ext.auth.google.desc':'Sign in with Google — fast, secure and widely trusted',
+    'ext.auth.apple.desc':'Required for iOS apps with login — fast and privacy-friendly',
+    'ext.auth.supabase.desc':'Open-source backend with auth, database and real-time sync',
+    'ext.auth.chat.title':'Real-time Chat','ext.auth.chat.desc':'Messaging in your app with Firebase or Stream Chat',
+    'ext.auth.crash.desc':'Crash reports in real time — find bugs before users complain',
+    'ext.cta1':'View Features','ext.cta2':'Build App',
+    'ext.pill1':'60+ Features','ext.pill2':'iOS & Android','ext.pill3':'React Native',
+    'ext.multi.h2':'Multilingual Interface','ext.multi.p':'Available in 13 native languages for seamless management, regardless of the user.',
+    'ext.multi.language':'Backend language','ext.multi.myapp':'My App','ext.multi.preview':'Preview & Structure',
+    'ext.multi.f1':'Design settings','ext.multi.f2':'Section management','ext.multi.f3':'Publish',
+    'ext.multi.dist':'DISTRIBUTION CHANNELS','ext.multi.loyalty':'LOYALTY','ext.multi.cards':'The cards',
+    'ext.multi.permissions':'Personalized access & permissions','ext.multi.perm-desc':'Define precisely which sections and functions are accessible for each team member.',
+    'ext.cta.label':'Ready to start?',
+    'ext.cta.h2':'Your professional app<br><span style="color:#fe6c75">in just a few days.</span>',
+    'ext.cta.sub2':'Design · Features · Libraries · Publishing',
+    'ext.cta.p':'Choose your features, send us your data — and your app is live in days. Simple, fast and professional.',
+    'ext.cta.btn1':'Calculate price','ext.cta.btn2':'WhatsApp',
+    'ext.cta.note':'Free consultation — no obligation',
+    'ext.footer.company':'Company','ext.footer.about':'About us','ext.footer.support':'Support',
+    'ext.footer.jobs':'Jobs','ext.footer.contact':'Contact','ext.footer.product':'Product',
+    'ext.footer.createapp':'Create an app','ext.footer.extensions':'Features',
+    'ext.footer.pricing':'Pricing','ext.footer.reseller':'Partners','ext.footer.legal':'Legal',
+    'ext.footer.terms':'Terms & Conditions','ext.footer.privacy':'Privacy & GDPR',
+    'ext.footer.resources':'Resources','ext.footer.docs':'Documentation',
+    'ext.footer.dev':'Developers','ext.footer.blog':'Blog'
+  },
+  es: {
+    'ext.header.title':'<span>App</span><span class="accent">Funciones</span>',
+    'ext.nav.popular':'Funciones','ext.nav.cms':'Bibliotecas','ext.nav.collections':'Tipos de app','ext.nav.multi':'Idiomas','ext.nav.start':'Empezar','ext.nav.back':'Volver al inicio',
+    'ext.nav.myapps':'MIS APPS','ext.nav.cta':'Crear una app',
+    'ext.hero.h1':'Todo lo que tu app necesita<br><span class="tw-accent">en un solo lugar</span>',
+    'ext.hero.p':'Más de <strong>60 funciones y bibliotecas</strong> para tu app React Native',
+    'ext.search.placeholder':'Buscar',
+    'ext.cat.notifications':'Notificaciones','ext.cat.payments':'Pagos','ext.cat.auth':'Autenticación',
+    'ext.cat.maps':'Mapas y ubicación','ext.cat.ai':'IA & ML','ext.cat.media':'Medios',
+    'ext.cat.analytics':'Análisis','ext.cat.ui':'UI y animación','ext.cat.all':'Todas las categorías',
+    'ext.popular.label':'Funciones','ext.popular.h2':'Lo que tu<br><span class="accent">App Necesita</span>','ext.popular.sub':'Más de 60 funciones y librerías React Native preconfiguradas — todo lo que necesitas.',
+    'ext.ai.label':'IA & ML','ext.ai.h2':'Funciones IA<br><span style="color:#1e88e5">powered by OpenAI</span>',
+    'ext.core.h2':'Librerías<br><span class="accent">Principales</span>',
+    'ext.coll.label':'Tipos de App','ext.coll.h2':'Tipos de app que<br><span class="accent">desarrollo</span>','ext.coll.sub':'Desde eCommerce hasta apps sociales — cada app con soluciones completas.',
+    'ext.pay.label':'Pagos','ext.pay.h2':'Pagos &<br><span class="accent">Monetización</span>','ext.pay.sub':'Stripe, RevenueCat, Apple Pay, Google Pay — todo integrado y listo para usar.',
+    'ext.engage.label':'Engagement','ext.engage.h2':'Engagement de<br><span class="accent">Usuarios</span>','ext.engage.sub':'Notificaciones push, deep linking, reseñas — mantén tus usuarios activos y satisfechos.',
+    'ext.auth.label':'Autenticación','ext.auth.h2':'Autenticación &<br><span class="accent">Backend</span>','ext.auth.sub':'Firebase, login social, Supabase — autenticación segura con todas las opciones modernas.',
+    'ext.pop.push.title':'Notificaciones push','ext.pop.push.desc':'Firebase Cloud Messaging y Expo Notifications — mantén a tus usuarios informados en tiempo real',
+    'ext.pop.ai.title':'Integración IA','ext.pop.ai.desc':'OpenAI GPT-4, análisis de imágenes, reconocimiento de voz — funciones de IA directamente en tu app',
+    'ext.pop.iap.title':'Compras in-app','ext.pop.iap.desc':'Suscripciones y compras únicas con RevenueCat — para iOS y Android',
+    'ext.pop.maps.title':'Mapas y ubicación','ext.pop.maps.desc':'Mapas interactivos, seguimiento GPS y geofencing con rendimiento nativo',
+    'ext.pop.camera.title':'Cámara y medios','ext.pop.camera.desc':'Escáner de códigos de barras, carga de fotos, edición de imágenes y galería',
+    'ext.pop.storage.title':'Almacenamiento offline','ext.pop.storage.desc':'Almacenamiento local rápido — tu app funciona incluso sin internet',
+    'ext.pop.analytics.title':'Analytics y seguimiento','ext.pop.analytics.desc':'Comprende cómo tus usuarios usan la app',
+    'ext.ai.h2':'Funciones IA — powered by OpenAI','ext.ai.p':'Chatbots, análisis de imágenes, control por voz, reconocimiento de texto — integro funciones de IA que realmente hacen tu app más inteligente.',
+    'ext.core.title':'Bibliotecas principales para cada app',
+    'ext.lib.navigation.desc':'Navegación de pantallas con tabs, stack, drawer y deep linking',
+    'ext.lib.zustand.desc':'Gestión de estado ligera — simple, rápida y con tipos seguros',
+    'ext.lib.reanimated.desc':'Animaciones fluidas a 60fps directamente en el hilo de UI',
+    'ext.lib.nativewind.desc':'Tailwind CSS para React Native — diseño consistente y responsivo',
+    'ext.lib.exporouter.desc':'Routing basado en archivos — como Next.js, pero para React Native',
+    'ext.lib.reactquery.desc':'Gestión de estado del servidor con caché automático y refetching',
+    'ext.lib.i18n.title':'Multilingüe','ext.lib.i18n.desc':'Tu app en tantos idiomas como necesites — automático o manual',
+    'ext.lib.lottie.desc':'Iconos animados y micro-interacciones desde After Effects',
+    'ext.lib.ota.desc':'Actualizaciones sin App Store — correcciones y nuevas funciones al instante',
+    'ext.coll.title':'Tipos de app que desarrollo',
+    'ext.coll.ecommerce':'eCommerce','ext.coll.ecommerce.desc':'Stripe, carrito, pedidos',
+    'ext.coll.health':'Salud y fitness','ext.coll.health.desc':'Escáner, seguimiento, análisis IA',
+    'ext.coll.restaurants':'Restaurante y delivery','ext.coll.restaurants.desc':'Pedidos, mapas, tiempo real',
+    'ext.coll.social':'Social y comunidad','ext.coll.social.desc':'Chat, perfiles, feed, auth',
+    'ext.pay.title':'Pagos y monetización',
+    'ext.pay.stripe.desc':'Tarjetas de crédito, SEPA, Apple Pay, Google Pay — todo en un SDK',
+    'ext.pay.revenuecat.desc':'Gestiona suscripciones y compras in-app fácilmente — iOS y Android',
+    'ext.pay.applepay.desc':'Flujo de pago nativo con un toque — para usuarios de iOS',
+    'ext.pay.googlepay.desc':'Checkout rápido en dispositivos Android',
+    'ext.pay.iap.desc':'Compras únicas y consumibles a través del App Store',
+    'ext.pay.admob.desc':'Ingresos publicitarios con banners, intersticiales y rewarded ads',
+    'ext.engage.title':'Engagement de usuarios',
+    'ext.engage.onesignal.desc':'Campañas push dirigidas con segmentación y pruebas A/B',
+    'ext.engage.deeplink.desc':'Envía usuarios directamente a la pantalla correcta por enlace o QR',
+    'ext.engage.review.title':'Valoración de app','ext.engage.review.desc':'Pide a los usuarios que valoren en el momento adecuado',
+    'ext.engage.share.title':'Compartir social','ext.engage.share.desc':'Comparte contenido de tu app directamente en redes sociales',
+    'ext.engage.biometric.title':'Auth biométrica','ext.engage.biometric.desc':'Face ID y huella dactilar para autenticación segura',
+    'ext.auth.title':'Autenticación y backend',
+    'ext.auth.firebase.desc':'Email, teléfono, login social — con Google, Apple, Facebook',
+    'ext.auth.google.desc':'Iniciar sesión con Google — rápido, seguro y muy extendido',
+    'ext.auth.apple.desc':'Obligatorio para apps iOS con login — rápido y respetuoso con la privacidad',
+    'ext.auth.supabase.desc':'Backend open-source con auth, base de datos y sincronización en tiempo real',
+    'ext.auth.chat.title':'Chat en tiempo real','ext.auth.chat.desc':'Mensajería en tu app con Firebase o Stream Chat',
+    'ext.auth.crash.desc':'Informes de errores en tiempo real — encuentra bugs antes de que los usuarios se quejen',
+    'ext.cta1':'Ver funciones','ext.cta2':'Crear app',
+    'ext.pill1':'60+ funciones','ext.pill2':'iOS & Android','ext.pill3':'React Native',
+    'ext.multi.h2':'Interfaz multilingüe','ext.multi.p':'Disponible en 13 idiomas nativos para una gestión fluida, sea cual sea el usuario.',
+    'ext.multi.language':'Idioma del backend','ext.multi.myapp':'Mi App','ext.multi.preview':'Vista previa y Estructura',
+    'ext.multi.f1':'Configuración de diseño','ext.multi.f2':'Gestión de secciones','ext.multi.f3':'Publicar',
+    'ext.multi.dist':'CANALES DE DISTRIBUCIÓN','ext.multi.loyalty':'LEALTAD','ext.multi.cards':'Las tarjetas',
+    'ext.multi.permissions':'Acceso y permisos personalizados','ext.multi.perm-desc':'Defina con precisión qué secciones y funciones son accesibles para cada miembro del equipo.',
+    'ext.cta.label':'¿Listo para empezar?',
+    'ext.cta.h2':'Tu app profesional<br><span style="color:#fe6c75">en pocos días.</span>',
+    'ext.cta.sub2':'Diseño · Funciones · Bibliotecas · Publicación',
+    'ext.cta.p':'Elige tus funciones, envíanos los datos — y en pocos días tu app está disponible. Fácil, rápido y profesional.',
+    'ext.cta.btn1':'Calcular precio','ext.cta.btn2':'WhatsApp',
+    'ext.cta.note':'Asesoramiento gratuito y sin compromiso',
+    'ext.footer.company':'Empresa','ext.footer.about':'Sobre Nosotros','ext.footer.support':'Soporte',
+    'ext.footer.jobs':'Empleos','ext.footer.contact':'Contacto','ext.footer.product':'Producto',
+    'ext.footer.createapp':'Crear una app','ext.footer.extensions':'Funciones',
+    'ext.footer.pricing':'Precios','ext.footer.reseller':'Partners','ext.footer.legal':'Legal',
+    'ext.footer.terms':'Términos y Condiciones','ext.footer.privacy':'Privacidad & RGPD',
+    'ext.footer.resources':'Recursos','ext.footer.docs':'Documentación',
+    'ext.footer.dev':'Desarrolladores','ext.footer.blog':'Blog'
+  },
+  fr: {
+    'ext.header.title':'<span>App</span><span class="accent">Fonctionnalités</span>',
+    'ext.nav.popular':'Fonctionnalités','ext.nav.cms':'Bibliothèques','ext.nav.collections':'Types d\'app','ext.nav.multi':'Langues','ext.nav.start':'Commencer','ext.nav.back':'Retour à l\'accueil',
+    'ext.nav.myapps':'MES APPS','ext.nav.cta':'Créer une app',
+    'ext.hero.h1':'Tout ce dont votre app a besoin<br><span class="tw-accent">au même endroit</span>',
+    'ext.hero.p':'Plus de <strong>60 fonctionnalités et bibliothèques</strong> pour votre app React Native',
+    'ext.search.placeholder':'Rechercher',
+    'ext.cat.notifications':'Notifications','ext.cat.payments':'Paiements','ext.cat.auth':'Authentification',
+    'ext.cat.maps':'Cartes et localisation','ext.cat.ai':'IA & ML','ext.cat.media':'Médias',
+    'ext.cat.analytics':'Analytique','ext.cat.ui':'UI et animation','ext.cat.all':'Toutes les catégories',
+    'ext.popular.label':'Fonctionnalités','ext.popular.h2':'Tout ce dont<br><span class="accent">votre App a besoin</span>','ext.popular.sub':'Plus de 60 fonctionnalités et bibliothèques React Native préconfigurées — tout ce dont vous avez besoin.',
+    'ext.ai.label':'IA & ML','ext.ai.h2':'Fonctions IA<br><span style="color:#1e88e5">powered by OpenAI</span>',
+    'ext.core.h2':'Bibliothèques<br><span class="accent">essentielles</span>',
+    'ext.coll.label':'Types d\'app','ext.coll.h2':'Types d\'app que je<br><span class="accent">développe</span>','ext.coll.sub':'De l\'eCommerce aux apps sociales — chaque app avec des solutions complètes.',
+    'ext.pay.label':'Paiements','ext.pay.h2':'Paiements &<br><span class="accent">Monétisation</span>','ext.pay.sub':'Stripe, RevenueCat, Apple Pay, Google Pay — tout intégré et prêt à l\'emploi.',
+    'ext.engage.label':'Engagement','ext.engage.h2':'Engagement<br><span class="accent">Utilisateurs</span>','ext.engage.sub':'Notifications push, deep linking, avis app — gardez vos utilisateurs actifs et satisfaits.',
+    'ext.auth.label':'Authentification','ext.auth.h2':'Authentification &<br><span class="accent">Backend</span>','ext.auth.sub':'Firebase, login social, Supabase — authentification sécurisée avec toutes les options modernes.',
+    'ext.pop.push.title':'Notifications push','ext.pop.push.desc':'Firebase Cloud Messaging et Expo Notifications — gardez vos utilisateurs informés en temps réel',
+    'ext.pop.ai.title':'Intégration IA','ext.pop.ai.desc':'OpenAI GPT-4, analyse d\'images, reconnaissance vocale — des fonctions IA directement dans votre app',
+    'ext.pop.iap.title':'Achats in-app','ext.pop.iap.desc':'Abonnements et achats uniques avec RevenueCat — pour iOS et Android',
+    'ext.pop.maps.title':'Cartes et localisation','ext.pop.maps.desc':'Cartes interactives, suivi GPS et geofencing avec des performances natives',
+    'ext.pop.camera.title':'Caméra et médias','ext.pop.camera.desc':'Scanner de codes-barres, téléchargement de photos, édition d\'images et galerie',
+    'ext.pop.storage.title':'Stockage hors ligne','ext.pop.storage.desc':'Stockage local rapide — votre app fonctionne même sans internet',
+    'ext.pop.analytics.title':'Analytique et suivi','ext.pop.analytics.desc':'Comprenez comment vos utilisateurs utilisent l\'app',
+    'ext.ai.h2':'Fonctions IA — powered by OpenAI','ext.ai.p':'Chatbots, analyse d\'images, commande vocale, reconnaissance de texte — j\'intègre des fonctions IA qui rendent votre app vraiment plus intelligente.',
+    'ext.core.title':'Bibliothèques essentielles pour chaque app',
+    'ext.lib.navigation.desc':'Navigation d\'écrans avec tabs, stack, drawer et deep linking',
+    'ext.lib.zustand.desc':'Gestion d\'état légère — simple, rapide et typée',
+    'ext.lib.reanimated.desc':'Animations fluides à 60fps directement sur le thread UI',
+    'ext.lib.nativewind.desc':'Tailwind CSS pour React Native — design cohérent et responsive',
+    'ext.lib.exporouter.desc':'Routing basé sur les fichiers — comme Next.js, mais pour React Native',
+    'ext.lib.reactquery.desc':'Gestion d\'état serveur avec cache automatique et refetching',
+    'ext.lib.i18n.title':'Multilingue','ext.lib.i18n.desc':'Votre app dans autant de langues que vous le souhaitez',
+    'ext.lib.lottie.desc':'Icônes animées et micro-interactions depuis After Effects',
+    'ext.lib.ota.desc':'Mises à jour sans App Store — corrections et nouvelles fonctionnalités instantanées',
+    'ext.coll.title':'Types d\'app que je développe',
+    'ext.coll.ecommerce':'eCommerce','ext.coll.ecommerce.desc':'Stripe, panier, commandes',
+    'ext.coll.health':'Santé et fitness','ext.coll.health.desc':'Scanner, suivi, analyse IA',
+    'ext.coll.restaurants':'Restaurant et livraison','ext.coll.restaurants.desc':'Commandes, cartes, temps réel',
+    'ext.coll.social':'Social et communauté','ext.coll.social.desc':'Chat, profils, feed, auth',
+    'ext.pay.title':'Paiements et monétisation',
+    'ext.pay.stripe.desc':'Cartes de crédit, SEPA, Apple Pay, Google Pay — tout dans un SDK',
+    'ext.pay.revenuecat.desc':'Gérez les abonnements et achats in-app facilement — iOS et Android',
+    'ext.pay.applepay.desc':'Flux de paiement natif en un tap — pour les utilisateurs iOS',
+    'ext.pay.googlepay.desc':'Checkout rapide sur les appareils Android',
+    'ext.pay.iap.desc':'Achats uniques et consommables via l\'App Store',
+    'ext.pay.admob.desc':'Revenus publicitaires avec bannières, interstitiels et rewarded ads',
+    'ext.engage.title':'Engagement utilisateur',
+    'ext.engage.onesignal.desc':'Campagnes push ciblées avec segmentation et tests A/B',
+    'ext.engage.deeplink.desc':'Envoyez les utilisateurs directement au bon écran par lien ou QR code',
+    'ext.engage.review.title':'Évaluation de l\'app','ext.engage.review.desc':'Demandez aux utilisateurs de noter au bon moment',
+    'ext.engage.share.title':'Partage social','ext.engage.share.desc':'Partagez du contenu depuis l\'app directement sur les réseaux sociaux',
+    'ext.engage.biometric.title':'Auth biométrique','ext.engage.biometric.desc':'Face ID et empreinte digitale pour une authentification sécurisée',
+    'ext.auth.title':'Authentification et backend',
+    'ext.auth.firebase.desc':'Email, téléphone, login social — avec Google, Apple, Facebook',
+    'ext.auth.google.desc':'Connexion avec Google — rapide, sécurisée et très répandue',
+    'ext.auth.apple.desc':'Obligatoire pour les apps iOS avec login — rapide et respectueux de la vie privée',
+    'ext.auth.supabase.desc':'Backend open-source avec auth, base de données et sync en temps réel',
+    'ext.auth.chat.title':'Chat en temps réel','ext.auth.chat.desc':'Messagerie dans votre app avec Firebase ou Stream Chat',
+    'ext.auth.crash.desc':'Rapports de crash en temps réel — trouvez les bugs avant que les utilisateurs ne se plaignent',
+    'ext.cta1':'Voir les fonctionnalités','ext.cta2':'Créer une app',
+    'ext.pill1':'60+ fonctionnalités','ext.pill2':'iOS & Android','ext.pill3':'React Native',
+    'ext.multi.h2':'Interface multilingue','ext.multi.p':'Disponible en 13 langues natives pour une gestion fluide, quel que soit l\'utilisateur.',
+    'ext.multi.language':'Langue du backend','ext.multi.myapp':'Mon App','ext.multi.preview':'Aperçu et Structure',
+    'ext.multi.f1':'Paramètres de conception','ext.multi.f2':'Gestion des sections','ext.multi.f3':'Publier',
+    'ext.multi.dist':'CANAUX DE DISTRIBUTION','ext.multi.loyalty':'FIDÉLITÉ','ext.multi.cards':'Les cartes',
+    'ext.multi.permissions':'Accès et autorisations personnalisés','ext.multi.perm-desc':'Définissez précisément quelles sections et fonctions sont accessibles à chaque membre de l\'équipe.',
+    'ext.cta.label':'Prêt à commencer?',
+    'ext.cta.h2':'Votre app professionnelle<br><span style="color:#fe6c75">en quelques jours.</span>',
+    'ext.cta.sub2':'Design · Fonctionnalités · Bibliothèques · Publication',
+    'ext.cta.p':'Choisissez vos fonctionnalités, envoyez-nous vos données — et votre app est en ligne en quelques jours.',
+    'ext.cta.btn1':'Calculer le prix','ext.cta.btn2':'WhatsApp',
+    'ext.cta.note':'Conseil gratuit — sans engagement',
+    'ext.footer.company':'Entreprise','ext.footer.about':'À propos','ext.footer.support':'Support',
+    'ext.footer.jobs':'Emplois','ext.footer.contact':'Contact','ext.footer.product':'Produit',
+    'ext.footer.createapp':'Créer une app','ext.footer.extensions':'Fonctionnalités',
+    'ext.footer.pricing':'Tarifs','ext.footer.reseller':'Partenaires','ext.footer.legal':'Mentions légales',
+    'ext.footer.terms':'CGU','ext.footer.privacy':'Confidentialité','ext.footer.resources':'Ressources',
+    'ext.footer.docs':'Documentation','ext.footer.dev':'Développeurs','ext.footer.blog':'Blog'
+  },
+  it: {
+    'ext.header.title':'<span>App</span><span class="accent">Funzionalità</span>',
+    'ext.nav.popular':'Funzionalità','ext.nav.cms':'Librerie','ext.nav.collections':'Tipi di app','ext.nav.multi':'Lingue','ext.nav.start':'Inizia','ext.nav.back':'Torna alla home',
+    'ext.nav.myapps':'LE MIE APP','ext.nav.cta':'Crea un\'app',
+    'ext.hero.h1':'Tutto ciò di cui la tua app ha bisogno<br><span class="tw-accent">in un unico posto</span>',
+    'ext.hero.p':'Oltre <strong>60 funzionalità e librerie</strong> per la tua app React Native',
+    'ext.search.placeholder':'Cerca',
+    'ext.cat.notifications':'Notifiche','ext.cat.payments':'Pagamenti','ext.cat.auth':'Autenticazione',
+    'ext.cat.maps':'Mappe e posizione','ext.cat.ai':'IA & ML','ext.cat.media':'Media',
+    'ext.cat.analytics':'Analisi','ext.cat.ui':'UI e animazione','ext.cat.all':'Tutte le categorie',
+    'ext.popular.label':'Funzionalità','ext.popular.h2':'Tutto ciò di cui<br><span class="accent">la tua App ha bisogno</span>','ext.popular.sub':'Oltre 60 funzionalità e librerie React Native preconfigurate — tutto quello che ti serve.',
+    'ext.ai.label':'IA & ML','ext.ai.h2':'Funzioni IA<br><span style="color:#1e88e5">powered by OpenAI</span>',
+    'ext.core.h2':'Librerie<br><span class="accent">Essenziali</span>',
+    'ext.coll.label':'Tipi di app','ext.coll.h2':'Tipi di app che<br><span class="accent">sviluppo</span>','ext.coll.sub':'Da eCommerce alle app social — ogni app con soluzioni complete.',
+    'ext.pay.label':'Pagamenti','ext.pay.h2':'Pagamenti &<br><span class="accent">Monetizzazione</span>','ext.pay.sub':'Stripe, RevenueCat, Apple Pay, Google Pay — tutto integrato e pronto all\'uso.',
+    'ext.engage.label':'Engagement','ext.engage.h2':'Engagement<br><span class="accent">Utenti</span>','ext.engage.sub':'Notifiche push, deep linking, recensioni app — mantieni i tuoi utenti attivi e soddisfatti.',
+    'ext.auth.label':'Autenticazione','ext.auth.h2':'Autenticazione &<br><span class="accent">Backend</span>','ext.auth.sub':'Firebase, login social, Supabase — autenticazione sicura con tutte le opzioni moderne.',
+    'ext.pop.push.title':'Notifiche push','ext.pop.push.desc':'Firebase Cloud Messaging ed Expo Notifications — mantieni i tuoi utenti informati in tempo reale',
+    'ext.pop.ai.title':'Integrazione IA','ext.pop.ai.desc':'OpenAI GPT-4, analisi immagini, riconoscimento vocale — funzioni IA direttamente nella tua app',
+    'ext.pop.iap.title':'Acquisti in-app','ext.pop.iap.desc':'Abbonamenti e acquisti singoli con RevenueCat — per iOS e Android',
+    'ext.pop.maps.title':'Mappe e posizione','ext.pop.maps.desc':'Mappe interattive, tracciamento GPS e geofencing con prestazioni native',
+    'ext.pop.camera.title':'Fotocamera e media','ext.pop.camera.desc':'Scanner di codici a barre, caricamento foto, modifica immagini e galleria',
+    'ext.pop.storage.title':'Storage offline','ext.pop.storage.desc':'Storage locale veloce — la tua app funziona anche senza internet',
+    'ext.pop.analytics.title':'Analytics e tracking','ext.pop.analytics.desc':'Comprendi come i tuoi utenti usano l\'app',
+    'ext.ai.h2':'Funzioni IA — powered by OpenAI','ext.ai.p':'Chatbot, analisi immagini, controllo vocale, riconoscimento testo — integro funzioni IA che rendono la tua app veramente più intelligente.',
+    'ext.core.title':'Librerie principali per ogni app',
+    'ext.lib.navigation.desc':'Navigazione schermate con tab, stack, drawer e deep linking',
+    'ext.lib.zustand.desc':'Gestione stato leggera — semplice, veloce e type-safe',
+    'ext.lib.reanimated.desc':'Animazioni fluide a 60fps direttamente sul thread UI',
+    'ext.lib.nativewind.desc':'Tailwind CSS per React Native — design coerente e responsive',
+    'ext.lib.exporouter.desc':'Routing basato su file — come Next.js, ma per React Native',
+    'ext.lib.reactquery.desc':'Gestione stato server con cache automatica e refetching',
+    'ext.lib.i18n.title':'Multilingue','ext.lib.i18n.desc':'La tua app in quante lingue vuoi — automatico o manuale',
+    'ext.lib.lottie.desc':'Icone animate e micro-interazioni da After Effects',
+    'ext.lib.ota.desc':'Aggiornamenti senza App Store — bugfix e nuove funzionalità istantanee',
+    'ext.coll.title':'Tipi di app che sviluppo',
+    'ext.coll.ecommerce':'eCommerce','ext.coll.ecommerce.desc':'Stripe, carrello, ordini',
+    'ext.coll.health':'Salute e fitness','ext.coll.health.desc':'Scanner, tracking, analisi IA',
+    'ext.coll.restaurants':'Ristorante e consegna','ext.coll.restaurants.desc':'Ordini, mappe, tempo reale',
+    'ext.coll.social':'Social e community','ext.coll.social.desc':'Chat, profili, feed, auth',
+    'ext.pay.title':'Pagamenti e monetizzazione',
+    'ext.pay.stripe.desc':'Carte di credito, SEPA, Apple Pay, Google Pay — tutto in un SDK',
+    'ext.pay.revenuecat.desc':'Gestisci abbonamenti e acquisti in-app facilmente — iOS e Android',
+    'ext.pay.applepay.desc':'Flusso di pagamento nativo con un tap — per utenti iOS',
+    'ext.pay.googlepay.desc':'Checkout rapido su dispositivi Android',
+    'ext.pay.iap.desc':'Acquisti singoli e consumabili tramite l\'App Store',
+    'ext.pay.admob.desc':'Entrate pubblicitarie con banner, interstitial e rewarded ads',
+    'ext.engage.title':'Engagement utenti',
+    'ext.engage.onesignal.desc':'Campagne push mirate con segmentazione e test A/B',
+    'ext.engage.deeplink.desc':'Porta gli utenti direttamente alla schermata giusta tramite link o QR code',
+    'ext.engage.review.title':'Valutazione app','ext.engage.review.desc':'Chiedi agli utenti di valutare al momento giusto',
+    'ext.engage.share.title':'Condivisione social','ext.engage.share.desc':'Condividi contenuti dall\'app direttamente sui social media',
+    'ext.engage.biometric.title':'Auth biometrica','ext.engage.biometric.desc':'Face ID e impronta digitale per un\'autenticazione sicura',
+    'ext.auth.title':'Autenticazione e backend',
+    'ext.auth.firebase.desc':'Email, telefono, login social — con Google, Apple, Facebook',
+    'ext.auth.google.desc':'Accesso con Google — veloce, sicuro e molto diffuso',
+    'ext.auth.apple.desc':'Obbligatorio per app iOS con login — veloce e rispettoso della privacy',
+    'ext.auth.supabase.desc':'Backend open-source con auth, database e sincronizzazione in tempo reale',
+    'ext.auth.chat.title':'Chat in tempo reale','ext.auth.chat.desc':'Messaggistica nella tua app con Firebase o Stream Chat',
+    'ext.auth.crash.desc':'Report di crash in tempo reale — trova i bug prima che gli utenti si lamentino',
+    'ext.cta1':'Visualizza funzionalità','ext.cta2':'Crea app',
+    'ext.pill1':'60+ funzionalità','ext.pill2':'iOS & Android','ext.pill3':'React Native',
+    'ext.multi.h2':'Interfaccia multilingue','ext.multi.p':'Disponibile in 13 lingue native per una gestione fluida, indipendentemente dall\'utente.',
+    'ext.multi.language':'Lingua del backend','ext.multi.myapp':'La mia App','ext.multi.preview':'Anteprima e Struttura',
+    'ext.multi.f1':'Impostazioni di design','ext.multi.f2':'Gestione delle sezioni','ext.multi.f3':'Pubblica',
+    'ext.multi.dist':'CANALI DI DISTRIBUZIONE','ext.multi.loyalty':'LEALTÀ','ext.multi.cards':'Le carte',
+    'ext.multi.permissions':'Accesso e autorizzazioni personalizzati','ext.multi.perm-desc':'Definisci precisamente quali sezioni e funzioni sono accessibili per ogni membro del team.',
+    'ext.cta.label':'Pronto a iniziare?',
+    'ext.cta.h2':'La tua app professionale<br><span style="color:#fe6c75">in pochi giorni.</span>',
+    'ext.cta.sub2':'Design · Funzionalità · Librerie · Pubblicazione',
+    'ext.cta.p':'Scegli le tue funzionalità, inviaci i dati — e la tua app è disponibile in pochi giorni.',
+    'ext.cta.btn1':'Calcola il prezzo','ext.cta.btn2':'WhatsApp',
+    'ext.cta.note':'Consulenza gratuita — senza impegno',
+    'ext.footer.company':'Azienda','ext.footer.about':'Chi siamo','ext.footer.support':'Supporto',
+    'ext.footer.jobs':'Lavoro','ext.footer.contact':'Contatto','ext.footer.product':'Prodotto',
+    'ext.footer.createapp':'Crea un\'app','ext.footer.extensions':'Funzionalità',
+    'ext.footer.pricing':'Prezzi','ext.footer.reseller':'Partner','ext.footer.legal':'Legale',
+    'ext.footer.terms':'Termini e Condizioni','ext.footer.privacy':'Privacy & GDPR',
+    'ext.footer.resources':'Risorse','ext.footer.docs':'Documentazione',
+    'ext.footer.dev':'Sviluppatori','ext.footer.blog':'Blog'
+  }
+};
+
+function applyLang(lang) {
+  var t = extTrans[lang] || extTrans.de;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (t[key]) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) el.placeholder = t[key];
+  });
+  document.querySelectorAll('.lang-opt').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  localStorage.setItem('lweb_lang', lang);
+  document.documentElement.lang = lang;
+}
+
+// Init lang from localStorage or browser
+(function(){
+  var saved = localStorage.getItem('lweb_lang');
+  var lang = (saved && extTrans[saved]) ? saved : ((extTrans[(navigator.language||'de').slice(0,2)]) ? (navigator.language||'de').slice(0,2) : 'de');
+  applyLang(lang);
+})();
+
+// ── DARK MODE ────────────────────────────────────────
+(function(){
+  if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark-mode');
+  var btn = document.getElementById('darkToggle');
+  if (btn) btn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  });
+})();
+
+// ── LANG DROPDOWN ────────────────────────────────────
+(function(){
+  var langBtn = document.getElementById('langBtn');
+  var langDrop = document.getElementById('langDropdown');
+  if (!langBtn || !langDrop) return;
+  langBtn.addEventListener('click', function(e) { e.stopPropagation(); langDrop.classList.toggle('open'); });
+  document.addEventListener('click', function() { langDrop.classList.remove('open'); });
+  langDrop.querySelectorAll('.lang-opt').forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.stopPropagation(); applyLang(btn.dataset.lang); langDrop.classList.remove('open'); });
+  });
+})();
+
+// ── BURGER / MOBILE MENU ─────────────────────────────
+(function(){
+  var burger = document.getElementById('menuBurger');
+  var menu = document.getElementById('mobileMenu');
+  var header = document.getElementById('siteHeader');
+  if (!burger || !menu) return;
+  burger.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    if (header) header.classList.toggle('menu-open', open);
+  });
+  menu.querySelectorAll('.mobile-menu-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      if (header) header.classList.remove('menu-open');
+    });
+  });
+})();
+
+// ── SCROLL: past-hero toggle ──────────────────────────
+(function(){
+  var header = document.getElementById('siteHeader');
+  var hero = document.querySelector('.hero');
+  if (!header || !hero) return;
+  var obs = new IntersectionObserver(function(entries) {
+    header.classList.toggle('past-hero', !entries[0].isIntersecting);
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+})();
+
+// ── CATEGORY FILTER ──────────────────────────────────
+var CARD_SEL = '.ext-card-lg, .ext-card-sm, .cms-card, .coll-card';
+
+var ALWAYS_VISIBLE = ['hero','ext-cta']; // secciones que nunca se ocultan
+
+function applyFilter(cat) {
+  var filtering = cat !== 'all';
+  document.body.classList.toggle('is-filtering', filtering);
+
+  // 1. Mostrar/ocultar tarjetas
+  document.querySelectorAll(CARD_SEL).forEach(function(el) {
+    el.style.display = (!filtering || el.dataset.cat === cat) ? '' : 'none';
+  });
+
+  // 2. Mostrar/ocultar secciones
+  document.querySelectorAll('section').forEach(function(sec) {
+    sec.style.display = '';
+    if (!filtering) return;
+    var id = sec.id || '';
+    if (ALWAYS_VISIBLE.some(function(v){ return id.includes(v); })) return;
+    var cards = Array.from(sec.querySelectorAll(CARD_SEL));
+    if (!cards.length) { sec.style.display = 'none'; return; }
+    var anyVisible = cards.some(function(c) { return c.dataset.cat === cat; });
+    sec.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+document.querySelectorAll('.cat-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    applyFilter(btn.dataset.cat);
+  });
+});
+
+// ── SEARCH ───────────────────────────────────────────
+var searchInput = document.getElementById('searchInput');
+if (searchInput) searchInput.addEventListener('input', function() {
+  var q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelector('.cat-btn[data-cat="all"]').classList.add('active');
+
+  document.querySelectorAll(CARD_SEL + ', .ext-card-sm[data-name]').forEach(function(el) {
+    var name = (el.dataset.name || '').toLowerCase();
+    var text = el.textContent.toLowerCase();
+    el.style.display = (!q || name.includes(q) || text.includes(q)) ? '' : 'none';
+  });
+
+  document.querySelectorAll('section').forEach(function(sec) {
+    sec.style.display = '';
+    if (!q) return;
+    var cards = Array.from(sec.querySelectorAll(CARD_SEL));
+    if (!cards.length) return;
+    var anyVisible = cards.some(function(c) { return c.style.display !== 'none'; });
+    sec.style.display = anyVisible ? '' : 'none';
+  });
+});
+
+// ── MULTILINGUAL SELECTOR ────────────────────────────
+function selectLang(lang) {
+  document.querySelectorAll('.multi-flag').forEach(f => f.classList.remove('active'));
+  document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+  document.getElementById('langSelector').value = lang;
+}
+function updateMultiFeatures() {
+  var lang = document.getElementById('langSelector').value;
+  selectLang(lang);
+}
+
+// ── STICKY FILTER BAR ────────────────────────────────
+(function() {
+  var searchBlock = document.querySelector('.search-block');
+  var stickyBar = document.getElementById('stickyFilterBar');
+  if (!searchBlock || !stickyBar) return;
+
+  // Sentinel placed just before the search-block (top edge)
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'height:1px;width:1px;';
+  searchBlock.parentNode.insertBefore(sentinel, searchBlock);
+
+  var lastY = 0;
+  var scrolled = false;
+  window.addEventListener('scroll', function() {
+    scrolled = true;
+    lastY = window.scrollY;
+  }, { passive: true });
+
+  var io = new IntersectionObserver(function(entries) {
+    if (!scrolled) return;
+    var scrollingDown = window.scrollY > lastY || !entries[0].isIntersecting;
+    if (!entries[0].isIntersecting && window.scrollY > 0) {
+      // Only show if scrolled past (sentinel above viewport = scrolled down)
+      if (entries[0].boundingClientRect.top < 0) {
+        stickyBar.classList.add('visible');
+      }
+    } else {
+      stickyBar.classList.remove('visible');
+    }
+  }, { threshold: 0 });
+  io.observe(sentinel);
+
+  // Sync sticky bar clicks with main filter
+  stickyBar.querySelectorAll('.cat-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Update sticky bar active state
+      stickyBar.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      // Update main filter bar active state
+      var cat = btn.dataset.cat;
+      document.querySelectorAll('.search-block .cat-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.cat === cat);
+      });
+      applyFilter(cat);
+    });
+  });
+
+  // Keep sticky bar in sync when main filter is clicked
+  document.querySelectorAll('.search-block .cat-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.dataset.cat;
+      stickyBar.querySelectorAll('.cat-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.cat === cat);
+      });
+    });
+  });
+})();
+
+// ── SCROLL ANIMATIONS ────────────────────────────────
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(function(el) { obs.observe(el); });
+</script>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- PRICE CALCULATOR MODAL -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="calc-overlay" id="calcOverlay" onclick="closePriceCalc()"></div>
+<div class="calc-modal" id="calcModal">
+  <button class="calc-close" onclick="closePriceCalc()" aria-label="Schliessen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="calc-progress"><div class="calc-progress-bar" id="calcProgressBar"></div></div>
+  <div class="calc-steps" id="calcSteps">
+
+    <!-- STEP 1: Project type (hidden when opened from app page) -->
+    <div class="calc-step" data-step="1">
+      <div class="calc-step-header">
+        <span class="calc-step-badge">Schritt 1 von 5</span>
+        <h3>Was möchten Sie erstellen?</h3>
+        <p>Wählen Sie den Projekttyp, der am besten zu Ihnen passt.</p>
+      </div>
+      <div class="calc-options" id="calcTypeOptions">
+        <button class="calc-option" data-value="website" onclick="calcSelectType(this)">
+          <div class="calc-option-icon calc-option-icon--web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div class="calc-option-text"><strong>Website</strong><span>Professionelle Webseite für Ihr Unternehmen</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="app" onclick="calcSelectType(this)">
+          <div class="calc-option-icon calc-option-icon--mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="calc-option-text"><strong>Mobile App</strong><span>Native iOS &amp; Android App mit React Native</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="app-landing" onclick="calcSelectType(this)">
+          <div class="calc-option-icon calc-option-icon--combo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="calc-combo-plus"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div class="calc-option-text"><strong>App + Landing Page</strong><span>Mobile App mit professioneller Webpräsenz</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="calc-step" data-step="2">
+      <div class="calc-step-header">
+        <span class="calc-step-badge">Schritt 2 von 5</span>
+        <h3 id="calcStep2Title">Wie komplex ist Ihre App?</h3>
+        <p id="calcStep2Desc">Schätzen Sie den ungefähren Umfang.</p>
+      </div>
+      <div class="calc-options" id="calcScopeOptions"></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="calc-step" data-step="3">
+      <div class="calc-step-header">
+        <span class="calc-step-badge">Schritt 3 von 5</span>
+        <h3 id="calcStep3Title">Welche App-Funktionen brauchen Sie?</h3>
+        <p>Wählen Sie alle gewünschten Funktionen aus.</p>
+      </div>
+      <div class="calc-options calc-options--multi" id="calcFeatureOptions"></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="calc-step" data-step="4">
+      <div class="calc-step-header">
+        <span class="calc-step-badge">Schritt 4 von 5</span>
+        <h3>Haben Sie bereits ein Design?</h3>
+        <p>Das beeinflusst den Aufwand und die Kosten.</p>
+      </div>
+      <div class="calc-options" id="calcDesignOptions">
+        <button class="calc-option" data-value="ready" onclick="calcSelectSingle(this,'design')">
+          <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <div class="calc-option-text"><strong>Design vorhanden</strong><span>Figma, Sketch, PSD oder ähnliches</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="idea" onclick="calcSelectSingle(this,'design')">
+          <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+          <div class="calc-option-text"><strong>Ungefähre Vorstellung</strong><span>Ich habe Ideen, aber kein fertiges Design</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="scratch" onclick="calcSelectSingle(this,'design')">
+          <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="calc-option-text"><strong>Design von Grund auf</strong><span>Komplettes UI/UX Design benötigt</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="calc-step" data-step="5">
+      <div class="calc-step-header">
+        <span class="calc-step-badge">Schritt 5 von 5</span>
+        <h3>Brauchen Sie KI-Funktionen?</h3>
+        <p>Chatbots, Texterkennung, automatisierte Prozesse und mehr.</p>
+      </div>
+      <div class="calc-options" id="calcAiOptions">
+        <button class="calc-option" data-value="yes" onclick="calcSelectSingle(this,'ai')">
+          <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="calc-option-text"><strong>Ja, KI integrieren</strong><span>Chatbot, GPT, Bilderkennung etc.</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="no" onclick="calcSelectSingle(this,'ai')">
+          <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+          <div class="calc-option-text"><strong>Nein, nicht nötig</strong><span>Keine KI-Funktionen benötigt</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+        <button class="calc-option" data-value="maybe" onclick="calcSelectSingle(this,'ai')">
+          <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="calc-option-text"><strong>Bin mir unsicher</strong><span>Möchte mich beraten lassen</span></div>
+          <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="calc-step" data-step="result">
+      <div class="calc-result" id="calcResult">
+        <div class="calc-result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3>Ihr geschätztes Budget</h3>
+        <div class="calc-result-summary" id="calcResultSummary"></div>
+        <div class="calc-result-price" id="calcResultPrice"></div>
+        <div class="calc-result-time" id="calcResultTime"></div>
+        <p class="calc-result-note">* Unverbindliche Schätzung. Der endgültige Preis hängt vom konkreten Projektumfang ab.</p>
+        <div class="calc-result-actions">
+          <button class="calc-result-whatsapp" id="calcWhatsappBtn" onclick="calcOpenWhatsApp()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span id="calcResultWhatsapp">Per WhatsApp kontaktieren</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="calc-nav" id="calcNav">
+    <button class="calc-nav-back" id="calcBackBtn" onclick="calcBack()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Zurück
+    </button>
+    <button class="calc-nav-next" id="calcNextBtn" onclick="calcNext()" disabled>
+      Weiter
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ── PRICE CALCULATOR ──────────────────────────────────
+var calcTr = {'calc.step':'Schritt','calc.of':'von','calc.s1.title':'Was möchten Sie erstellen?','calc.s1.desc':'Wählen Sie den Projekttyp, der am besten zu Ihnen passt.','calc.s1.website':'Website','calc.s1.website.desc':'Professionelle Webseite für Ihr Unternehmen','calc.s1.app':'Mobile App','calc.s1.app.desc':'Native iOS & Android App mit React Native','calc.s1.combo':'App + Landing Page','calc.s1.combo.desc':'Mobile App mit professioneller Webpräsenz','calc.s2w.title':'Welchen Typ Website brauchen Sie?','calc.s2w.desc':'Wählen Sie den Typ, der am besten passt.','calc.s2a.title':'Wie komplex ist Ihre App?','calc.s2a.desc':'Schätzen Sie den ungefähren Umfang.','calc.scope.landing':'Landing Page','calc.scope.landing.desc':'Eine einzelne Seite, z.B. für Kampagnen','calc.scope.small':'Kleine Website','calc.scope.small.desc':'1–3 Seiten, z.B. Portfolio oder Restaurant','calc.scope.medium':'Mittlere Website','calc.scope.medium.desc':'4–7 Seiten mit mehreren Bereichen','calc.scope.large':'Grosse Website','calc.scope.large.desc':'8+ Seiten, umfangreich mit vielen Inhalten','calc.scope.shop':'Online-Shop','calc.scope.shop.desc':'E-Commerce mit Produkten und Zahlung','calc.scope.simple':'Einfache App','calc.scope.simple.desc':'Wenige Screens, grundlegende Funktionen','calc.scope.appmedium':'Mittlere App','calc.scope.appmedium.desc':'Mehrere Screens, Benutzerkonten, API','calc.scope.complex':'Komplexe App','calc.scope.complex.desc':'Viele Features, Backend, Echtzeit-Daten','calc.s3.title':'Welche Funktionen brauchen Sie?','calc.s3.titleApp':'Welche App-Funktionen brauchen Sie?','calc.s3.desc':'Wählen Sie alle gewünschten Funktionen aus.','calc.feat.contact':'Kontaktformular','calc.feat.contact.desc':'Anfragen direkt per E-Mail erhalten','calc.feat.cms':'CMS / Admin-Panel','calc.feat.cms.desc':'Inhalte selbst verwalten und bearbeiten','calc.feat.multilang':'Mehrsprachig','calc.feat.multilang.desc':'Website in mehreren Sprachen','calc.feat.blog':'Blog','calc.feat.blog.desc':'Regelmässige Beiträge und Artikel','calc.feat.booking':'Buchungssystem','calc.feat.booking.desc':'Termine oder Reservierungen online','calc.feat.seo':'SEO-Paket','calc.feat.seo.desc':'Erweiterte Suchmaschinen-Optimierung','calc.feat.analytics':'Analytics','calc.feat.analytics.desc':'Besucherstatistiken und Tracking','calc.feat.vcard':'Digitale Visitenkarte','calc.feat.vcard.desc':'Kontaktdaten als vCard zum Speichern und Teilen','calc.feat.auth':'Login & Benutzerkonten','calc.feat.auth.desc':'Registrierung, Anmeldung, Profile','calc.feat.push':'Push-Benachrichtigungen','calc.feat.push.desc':'Mitteilungen direkt aufs Handy','calc.feat.payment':'In-App Bezahlung','calc.feat.payment.desc':'Stripe, Apple Pay, Google Pay','calc.feat.camera':'Kamera / Scanner','calc.feat.camera.desc':'Fotos, QR-Codes, Barcode-Scanner','calc.feat.gps':'GPS / Standort','calc.feat.gps.desc':'Karten, Navigation, Geolocation','calc.feat.chat':'Chat / Messaging','calc.feat.chat.desc':'Echtzeit-Kommunikation zwischen Nutzern','calc.feat.api':'Backend / API','calc.feat.api.desc':'Server, Datenbank, REST-API','calc.feat.admin':'Admin-Panel (Web)','calc.feat.admin.desc':'Web-Dashboard zur Verwaltung','calc.feat.stores':'Store-Veröffentlichung','calc.feat.stores.desc':'App Store & Play Store Einreichung','calc.s4.title':'Haben Sie bereits ein Design?','calc.s4.desc':'Das beeinflusst den Aufwand und die Kosten.','calc.design.ready':'Design vorhanden','calc.design.ready.desc':'Figma, Sketch, PSD oder ähnliches','calc.design.idea':'Ungefähre Vorstellung','calc.design.idea.desc':'Ich habe Ideen, aber kein fertiges Design','calc.design.scratch':'Design von Grund auf','calc.design.scratch.desc':'Komplettes UI/UX Design benötigt','calc.s5.title':'Brauchen Sie KI-Funktionen?','calc.s5.desc':'Chatbots, Texterkennung, automatisierte Prozesse und mehr.','calc.ai.yes':'Ja, KI integrieren','calc.ai.yes.desc':'Chatbot, GPT, Bilderkennung etc.','calc.ai.no':'Nein, nicht nötig','calc.ai.no.desc':'Keine KI-Funktionen benötigt','calc.ai.maybe':'Bin mir unsicher','calc.ai.maybe.desc':'Möchte mich beraten lassen','calc.result.title':'Ihr geschätztes Budget','calc.result.note':'* Unverbindliche Schätzung. Der endgültige Preis hängt vom konkreten Projektumfang ab.','calc.result.duration':'Geschätzte Dauer','calc.result.features':'Features','calc.result.withAI':'Mit KI','calc.result.newDesign':'Neues Design','calc.nav.back':'Zurück','calc.nav.next':'Weiter','calc.nav.calculate':'Berechnen','calc.type.website':'Website','calc.type.app':'Mobile App','calc.type.combo':'App + Landing','calc.scope.smallLabel':'Klein (1–3 S.)','calc.scope.mediumLabel':'Mittel','calc.scope.largeLabel':'Gross (8+ S.)','calc.scope.shopLabel':'Online-Shop','calc.scope.simpleLabel':'Einfach','calc.scope.complexLabel':'Komplex','calc.weeks':'Wochen','calc.result.whatsapp':'Per WhatsApp kontaktieren'};
+function cT(key) { return calcTr[key] || key; }
+
+var calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+var calcTotalSteps = 5;
+var arrowSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+function openAppPriceCalc() {
+  // Pre-select "App + Landing Page" and jump straight to step 2
+  calcState = { step: 2, type: 'app-landing', scope: '', features: [], design: '', ai: '' };
+  // Mark app-landing as selected in step 1
+  var opts = document.querySelectorAll('#calcTypeOptions .calc-option');
+  for (var i = 0; i < opts.length; i++) {
+    opts[i].classList.toggle('selected', opts[i].getAttribute('data-value') === 'app-landing');
+  }
+  document.getElementById('calcOverlay').classList.add('open');
+  document.getElementById('calcModal').classList.add('open');
+  document.body.classList.add('calc-open');
+  calcGoToStep(2);
+}
+
+function openPriceCalc() {
+  calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+  var opts = document.querySelectorAll('.calc-option');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+  document.getElementById('calcOverlay').classList.add('open');
+  document.getElementById('calcModal').classList.add('open');
+  document.body.classList.add('calc-open');
+  calcGoToStep(1);
+}
+
+function closePriceCalc() {
+  document.getElementById('calcOverlay').classList.remove('open');
+  document.getElementById('calcModal').classList.remove('open');
+  document.body.classList.remove('calc-open');
+}
+
+function calcGoToStep(step) {
+  calcState.step = step;
+  var steps = document.querySelectorAll('.calc-step');
+  for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
+  var isResult = step > calcTotalSteps;
+  var targetStep = isResult ? 'result' : String(step);
+  var target = document.querySelector('.calc-step[data-step="' + targetStep + '"]');
+  if (target) {
+    target.classList.add('active');
+    var opts = target.querySelectorAll('.calc-option');
+    for (var j = 0; j < opts.length; j++) {
+      opts[j].classList.remove('web-modal-stagger');
+      void opts[j].offsetWidth;
+      opts[j].classList.add('web-modal-stagger');
+      opts[j].style.animationDelay = (j * 70) + 'ms';
+    }
+  }
+  var pct = isResult ? 100 : (step / calcTotalSteps) * 100;
+  document.getElementById('calcProgressBar').style.width = pct + '%';
+  var backBtn = document.getElementById('calcBackBtn');
+  var nextBtn = document.getElementById('calcNextBtn');
+  var navEl = document.getElementById('calcNav');
+  if (isResult) {
+    navEl.style.display = 'none';
+    document.querySelector('.calc-step[data-step="result"] h3').textContent = cT('calc.result.title');
+    document.querySelector('.calc-result-note').textContent = cT('calc.result.note');
+    document.getElementById('calcResultWhatsapp').textContent = cT('calc.result.whatsapp');
+    calcShowResult();
+  } else {
+    navEl.style.display = 'flex';
+    backBtn.classList.toggle('visible', step > 1);
+    backBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> ' + cT('calc.nav.back');
+    nextBtn.disabled = !calcStepValid(step);
+    nextBtn.innerHTML = (step === calcTotalSteps ? cT('calc.nav.calculate') : cT('calc.nav.next')) + ' ' + arrowSvg;
+  }
+  if (step === 2) calcBuildScopeStep();
+  if (step === 3) calcBuildFeatureStep();
+}
+
+function calcStepValid(step) {
+  switch (step) {
+    case 1: return calcState.type !== '';
+    case 2: return calcState.scope !== '';
+    case 3: return true;
+    case 4: return calcState.design !== '';
+    case 5: return calcState.ai !== '';
+    default: return true;
+  }
+}
+
+function calcNext() {
+  if (!calcStepValid(calcState.step)) return;
+  calcGoToStep(calcState.step + 1);
+}
+
+function calcBack() {
+  if (calcState.step > 1) calcGoToStep(calcState.step - 1);
+}
+
+function calcSelectType(el) {
+  var siblings = el.parentNode.querySelectorAll('.calc-option');
+  for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
+  el.classList.add('selected');
+  calcState.type = el.getAttribute('data-value');
+  calcState.scope = '';
+  calcState.features = [];
+  document.getElementById('calcNextBtn').disabled = false;
+}
+
+function calcSelectSingle(el, field) {
+  var siblings = el.parentNode.querySelectorAll('.calc-option');
+  for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
+  el.classList.add('selected');
+  calcState[field] = el.getAttribute('data-value');
+  document.getElementById('calcNextBtn').disabled = false;
+}
+
+function calcToggleFeature(el) {
+  el.classList.toggle('selected');
+  var val = el.getAttribute('data-value');
+  var idx = calcState.features.indexOf(val);
+  if (idx > -1) { calcState.features.splice(idx, 1); } else { calcState.features.push(val); }
+  document.getElementById('calcNextBtn').disabled = false;
+}
+
+function calcBuildScopeStep() {
+  var container = document.getElementById('calcScopeOptions');
+  container.innerHTML = '';
+  var options = calcState.type === 'website'
+    ? [{value:'landing',key:'landing'},{value:'small',key:'small'},{value:'medium',key:'medium'},{value:'large',key:'large'},{value:'shop',key:'shop'}]
+    : [{value:'simple',key:'simple'},{value:'medium',key:'appmedium'},{value:'complex',key:'complex'}];
+  document.getElementById('calcStep2Title').textContent = calcState.type === 'website' ? cT('calc.s2w.title') : cT('calc.s2a.title');
+  document.getElementById('calcStep2Desc').textContent = calcState.type === 'website' ? cT('calc.s2w.desc') : cT('calc.s2a.desc');
+  for (var i = 0; i < options.length; i++) {
+    var o = options[i];
+    var btn = document.createElement('button');
+    btn.className = 'calc-option web-modal-stagger';
+    btn.style.animationDelay = (i * 70) + 'ms';
+    btn.setAttribute('data-value', o.value);
+    if (calcState.scope === o.value) btn.classList.add('selected');
+    btn.innerHTML = '<div class="calc-option-icon calc-option-icon--scope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><div class="calc-option-text"><strong>' + cT('calc.scope.' + o.key) + '</strong><span>' + cT('calc.scope.' + o.key + '.desc') + '</span></div><div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
+    btn.onclick = (function(b) { return function() { calcSelectSingle(b, 'scope'); }; })(btn);
+    container.appendChild(btn);
+  }
+}
+
+function calcBuildFeatureStep() {
+  var container = document.getElementById('calcFeatureOptions');
+  container.innerHTML = '';
+  var featureKeys = calcState.type === 'website'
+    ? ['contact','cms','multilang','blog','booking','seo','analytics','vcard']
+    : ['auth','push','payment','camera','gps','chat','api','admin','stores'];
+  document.getElementById('calcStep3Title').textContent = calcState.type === 'website' ? cT('calc.s3.title') : cT('calc.s3.titleApp');
+  for (var i = 0; i < featureKeys.length; i++) {
+    var k = featureKeys[i];
+    var btn = document.createElement('button');
+    btn.className = 'calc-option web-modal-stagger';
+    btn.style.animationDelay = (i * 70) + 'ms';
+    btn.setAttribute('data-value', k);
+    if (calcState.features.indexOf(k) > -1) btn.classList.add('selected');
+    btn.innerHTML = '<div class="calc-option-icon calc-option-icon--feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><div class="calc-option-text"><strong>' + cT('calc.feat.' + k) + '</strong><span>' + cT('calc.feat.' + k + '.desc') + '</span></div><div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
+    btn.onclick = (function(b) { return function() { calcToggleFeature(b); }; })(btn);
+    container.appendChild(btn);
+  }
+}
+
+function calcComputePrice() {
+  var min = 0, max = 0, weeksRange = '';
+  if (calcState.type === 'website') {
+    var wMap = {landing:[700,1200,'1–2'],small:[900,1800,'2–3'],medium:[1800,3200,'3–5'],large:[3200,5500,'5–8'],shop:[2800,6000,'5–9']};
+    var w = wMap[calcState.scope] || [0,0,''];
+    min=w[0]; max=w[1]; weeksRange=w[2];
+    var wfp = {contact:[100,200],cms:[400,700],multilang:[400,900],blog:[250,500],booking:[500,1000],seo:[300,600],analytics:[100,200],vcard:[150,300]};
+    for (var i=0;i<calcState.features.length;i++){var fp=wfp[calcState.features[i]];if(fp){min+=fp[0];max+=fp[1];}}
+  } else {
+    var aMap = {simple:[4500,7500,'4–6'],medium:[7500,14000,'6–10'],complex:[14000,25000,'10–16']};
+    var a = aMap[calcState.scope] || [0,0,''];
+    min=a[0]; max=a[1]; weeksRange=a[2];
+    var afp = {auth:[500,900],push:[300,600],payment:[900,1800],camera:[400,800],gps:[400,800],chat:[1200,2500],api:[1500,3500],admin:[1500,3000],stores:[300,600]};
+    for (var i=0;i<calcState.features.length;i++){var ap=afp[calcState.features[i]];if(ap){min+=ap[0];max+=ap[1];}}
+    if (calcState.type === 'app-landing') { min+=950; max+=2000; }
+  }
+  if (calcState.design==='idea'){min+=300;max+=600;}
+  if (calcState.design==='scratch'){min+=600;max+=1500;}
+  if (calcState.ai==='yes'){min+=1500;max+=3500;}
+  if (calcState.ai==='maybe'){min+=500;max+=1500;}
+  return {min:min, max:max, weeksRange:weeksRange};
+}
+
+function calcShowResult() {
+  var price = calcComputePrice();
+  var tags = [];
+  tags.push(cT('calc.type.' + (calcState.type === 'app-landing' ? 'combo' : calcState.type)));
+  var skMap = {landing:'landing',small:'smallLabel',medium:'mediumLabel',large:'largeLabel',shop:'shopLabel',simple:'simpleLabel',complex:'complexLabel'};
+  var sk = skMap[calcState.scope];
+  if (sk) tags.push(cT('calc.scope.' + sk));
+  if (calcState.features.length > 0) tags.push(calcState.features.length + ' ' + cT('calc.result.features'));
+  if (calcState.ai === 'yes') tags.push(cT('calc.result.withAI'));
+  if (calcState.design === 'scratch') tags.push(cT('calc.result.newDesign'));
+  var summaryEl = document.getElementById('calcResultSummary');
+  summaryEl.innerHTML = '';
+  for (var i=0;i<tags.length;i++) summaryEl.innerHTML += '<span class="calc-result-tag web-modal-stagger" style="animation-delay:' + (i*70) + 'ms">' + tags[i] + '</span>';
+  document.getElementById('calcResultPrice').textContent = 'CHF ' + price.min.toLocaleString('de-CH') + ' – CHF ' + price.max.toLocaleString('de-CH');
+  document.getElementById('calcResultTime').innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + cT('calc.result.duration') + ': ' + price.weeksRange + ' ' + cT('calc.weeks');
+  var msg = 'Hallo! Ich habe den Preisrechner auf lweb.ch benutzt.\n\nProjekt: ' + (calcState.type==='app-landing'?'App + Landing Page':calcState.type) + '\nUmfang: ' + calcState.scope + '\nFeatures: ' + calcState.features.join(', ') + '\nDesign: ' + calcState.design + '\nKI: ' + calcState.ai + '\n\nGeschätztes Budget: CHF ' + price.min.toLocaleString('de-CH') + ' – CHF ' + price.max.toLocaleString('de-CH') + '\nGeschätzte Dauer: ' + price.weeksRange + ' Wochen\n\nIch freue mich auf Ihre Rückmeldung!';
+  calcState.waUrl = 'https://wa.me/41765608645?text=' + encodeURIComponent(msg);
+}
+
+function calcOpenWhatsApp() {
+  if (calcState.waUrl) window.open(calcState.waUrl, '_blank');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePriceCalc();
+});
+</script>
+
+</body>
+</html>

@@ -482,6 +482,12 @@
         }
         .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.4); }
         .tw-editor-try svg { width:18px; height:18px; }
+        .tw-editor-try--blue { background:linear-gradient(135deg,#93c5fd,#60a5fa); box-shadow:0 4px 16px rgba(147,197,253,0.4); color:#1e3a5f; }
+        .tw-editor-try--blue:hover { box-shadow:0 8px 24px rgba(147,197,253,0.5); }
+        .tw-editor-try-label { font-size:13px; color:#94a3b8; font-weight:500; margin:0 0 10px; }
+        .tw-editor-try-group { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
+        .tw-editor-try-item { display:flex; flex-direction:column; align-items:flex-start; gap:6px; }
+        .tw-editor-try-sub { font-size:12px; color:#94a3b8; font-weight:500; padding-left:4px; }
         .tw-editor-note {
             margin-top:14px; font-size:13px; color:#94a3b8; display:flex;
             align-items:center; gap:6px;
@@ -1029,10 +1035,23 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://templattelocal.vercel.app" target="_blank" class="tw-editor-try">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
-                </a>
+                <p class="tw-editor-try-label" data-i18n="tw.edt.trylabel">2 Beispiele zum Testen des Editors</p>
+                <div class="tw-editor-try-group">
+                    <div class="tw-editor-try-item">
+                        <a href="https://templattelocal2.vercel.app" target="_blank" class="tw-editor-try">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
+                        </a>
+                        <span class="tw-editor-try-sub">Bella Vista Restaurant</span>
+                    </div>
+                    <div class="tw-editor-try-item">
+                        <a href="https://templattelocal.vercel.app" target="_blank" class="tw-editor-try tw-editor-try--blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
+                        </a>
+                        <span class="tw-editor-try-sub">Belle Coiffure</span>
+                    </div>
+                </div>
                 <div class="tw-editor-note">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="tw.edt.note">Änderungen werden nur in Ihrem Browser gespeichert — zum Testen.</span>
