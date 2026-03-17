@@ -257,9 +257,9 @@ body.dark-mode .header-nav-sub:hover {
         transition: background 150ms, box-shadow 150ms, border-color 150ms;
     }
     .header-nav-sub--custom:hover {
-        background: #fff;
-        border-color: #ffd6d9;
-        box-shadow: 0 4px 14px rgba(254,108,117,0.10);
+        background: #ffe4e6;
+        border-color: #fe6c75;
+        box-shadow: 0 4px 14px rgba(254,108,117,0.18);
         color: var(--begonia500);
     }
     .nav-banner-icon {
@@ -307,9 +307,9 @@ body.dark-mode .header-nav-sub:hover {
         border-color: #1e2d42;
     }
     body.dark-mode .header-nav-sub--custom:hover {
-        background: #1e2d42;
+        background: #3d1f22;
         border-color: #fe6c75;
-        box-shadow: 0 4px 14px rgba(254,108,117,0.12);
+        box-shadow: 0 4px 14px rgba(254,108,117,0.20);
     }
     body.dark-mode .nav-banner-text > span:first-child { color: #e2e8f0; }
     body.dark-mode .nav-banner-icon { background: linear-gradient(135deg,#2d1417,#3d1f22); }
