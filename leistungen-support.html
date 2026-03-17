@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Beratung & Support | Technische Beratung | Lweb</title>
     <meta name="description" content="Technische Beratung, Architektur-Planung und langfristiger Support — persönlich beraten aus Buchs SG.">
@@ -77,6 +78,7 @@
             align-items:center; justify-content:center;
             background: linear-gradient(180deg, #fff 15%, #f5f0ff 100%);
             padding: 80px 24px 80px; position: relative; overflow: hidden;
+            margin-top:-20px; 
         }
         .tw-hero-center {
             text-align:center; max-width:780px; margin:0 auto;
@@ -94,7 +96,7 @@
             background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
-            font-size:56px; font-weight:800; line-height:1.08;
+            font-size:56px;  font-weight:800; line-height:1.08;
             letter-spacing:-0.025em; color:#0f1d2c; margin-bottom:20px;
             animation:fadeUp 0.6s 0.15s ease both;
         }
@@ -630,7 +632,7 @@
 
         /* Header back button visible on desktop */
         .header-back-desktop { display:flex !important; }
-        .header-title {
+.header-title {
             display: flex; flex-direction: column; gap: 3px; align-items: center;
             text-align: center; line-height: 1.1;
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
@@ -661,15 +663,16 @@
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
         .header.menu-open .header-title span:first-child { color: #fff !important; }
         /* ── Support page blue accent override ── */
-        .tw-accent { color: #0891b2 !important; }
-        .tw-label { color: #0891b2 !important; background: rgba(8,145,178,0.08) !important; border-color: rgba(8,145,178,0.20) !important; }
-        .tw-btn-red { background: #0891b2 !important; }
-        .tw-btn-red:hover { background: #0e7490 !important; }
-        .tw-stats { background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%) !important; }
-        .header-nav-item--bot { color: #0891b2 !important; }
+        .tw-accent { color: #fe6c75 !important; }
+        .tw-label { color: #fe6c75 !important; background: rgba(254,108,117,0.08) !important; border-color: rgba(254,108,117,0.20) !important; }
+        .tw-btn-red { background: #fe6c75 !important; }
+        .tw-btn-red:hover { background: #e1545d !important; }
+        .tw-stats { background: linear-gradient(135deg, #fe6c75 0%, #e1545d 100%) !important; }
+        .header-nav-item--bot { color: #fe6c75 !important; }
     </style>
 </head>
 <body>
+<script>if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode');</script>
 
 <!-- HEADER -->
 <header class="header">
@@ -678,14 +681,14 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </a>
         <div class="header-title" id="headerTitle">
-            <span>Beratung</span>
-            <span class="accent">& Support</span>
+            <span>Support ab</span>
+            <span class="accent">85 CHF/Std.</span>
         </div>
         <nav class="header-nav" aria-label="Navigation">
-            <a href="#tw-includes" class="header-nav-item"><span data-i18n="supp.nav.includes">Was ich biete</span></a>
-            <a href="#supp-steps" class="header-nav-item"><span data-i18n="supp.nav.steps">Ablauf</span></a>
-            <a href="#tw-cta" class="header-nav-item"><span>Kontakt</span></a>
-            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span>Frag den Bot</span></a>
+            <a href="#tw-includes" class="header-nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="supp.nav.includes">Was ich biete</span></a>
+            <a href="#supp-steps" class="header-nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span data-i18n="supp.nav.steps">Ablauf</span></a>
+            <a href="#tw-cta" class="header-nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Kontakt</span></a>
+
         </nav>
         <div class="header-actions">
             <a href="#tw-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
@@ -705,8 +708,7 @@
         <a href="#tw-includes" class="mobile-menu-link" data-i18n="supp.nav.includes">Was ich biete</a>
         <a href="#supp-steps" class="mobile-menu-link">Ablauf</a>
         <a href="#tw-cta" class="mobile-menu-link">Kontakt</a>
-        <button class="mobile-menu-link" style="background:none;border:none;text-align:left;width:100%;font-family:inherit;font-size:inherit;cursor:pointer;" onclick="document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';openChatBot()">Frag den Bot</button>
-        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta">Zurück zur Startseite</a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" onclick="sessionStorage.setItem('openMobileMenu','sub-open-leistungen');">Zurück zu Leistungen</a>
     </nav>
     <div class="mobile-menu-footer">
         <a href="mailto:info@lweb.ch">info@lweb.ch</a>
@@ -746,7 +748,7 @@
                 <div class="supp-hero-ring supp-hero-ring--2"></div>
                 <div class="supp-hero-icon">
                     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="url(#sg1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <defs><linearGradient id="sg1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#0891b2"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+                        <defs><linearGradient id="sg1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#fe6c75"/><stop offset="1" stop-color="#6c63ff"/></linearGradient></defs>
                         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
                     </svg>
                 </div>
@@ -758,7 +760,7 @@
                 <span class="supp-float-badge supp-float-badge--green">✓</span>
             </div>
             <div class="supp-float-card supp-float-card--2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                 <span>Mo–Fr 9–18 Uhr</span>
             </div>
             <div class="supp-float-card supp-float-card--3">
@@ -775,11 +777,11 @@
         .supp-hero-wrap{width:100%;display:flex;justify-content:center;margin-top:44px;animation:fadeUp .8s .5s ease both;}
         .supp-hero-scene{position:relative;width:380px;height:220px;display:flex;align-items:center;justify-content:center;}
         .supp-hero-center{position:relative;display:flex;align-items:center;justify-content:center;z-index:3;}
-        .supp-hero-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(8,145,178,.2);}
+        .supp-hero-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(254,108,117,.2);}
         .supp-hero-ring--1{width:110px;height:110px;animation:suppRingPulse 3s ease-in-out infinite;}
         .supp-hero-ring--2{width:155px;height:155px;animation:suppRingPulse 3s ease-in-out infinite .6s;}
         @keyframes suppRingPulse{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.08);opacity:.15;}}
-        .supp-hero-icon{width:86px;height:86px;border-radius:22px;background:#fff;box-shadow:0 12px 40px rgba(8,145,178,.25);display:flex;align-items:center;justify-content:center;animation:suppIconFloat 3.5s ease-in-out infinite;}
+        .supp-hero-icon{width:86px;height:86px;border-radius:22px;background:#fff;box-shadow:0 12px 40px rgba(254,108,117,.25);display:flex;align-items:center;justify-content:center;animation:suppIconFloat 3.5s ease-in-out infinite;}
         body.dark-mode .supp-hero-icon{background:#1e2d3d;}
         @keyframes suppIconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
         /* Floating cards */
@@ -831,7 +833,7 @@
 @media(max-width:900px){.supp-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:580px){.supp-grid{grid-template-columns:1fr;}}
 .supp-card{background:#fff;border:1.5px solid #eef2f7;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s,transform .25s,border-color .25s;}
-.supp-card:hover{box-shadow:0 12px 40px rgba(8,145,178,.12);transform:translateY(-4px);border-color:rgba(8,145,178,.25);}
+.supp-card:hover{box-shadow:0 12px 40px rgba(254,108,117,.12);transform:translateY(-4px);border-color:rgba(254,108,117,.25);}
 body.dark-mode .supp-card{background:#111827;border-color:#1e2d3d;}
 .supp-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .supp-card-icon svg{width:24px;height:24px;}
@@ -848,8 +850,8 @@ body.dark-mode .supp-card p{color:#94a3b8;}
         <p class="tw-sub" data-i18n="supp.inc.sub">Technische Expertise, langfristige Begleitung und faire Preise — ab CHF 85 / Std. oder als Pauschalpaket.</p>
         <div class="supp-grid">
             <div class="supp-card">
-                <div class="supp-card-icon" style="background:rgba(8,145,178,.1);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="supp-card-icon" style="background:rgba(254,108,117,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
                 <h3 data-i18n="supp.inc.c1.h">Technische Beratung & Consulting</h3>
                 <p data-i18n="supp.inc.c1.p">Individuelle Beratung zu Technologie-Entscheidungen, Stack-Wahl und digitaler Strategie für Ihr Unternehmen.</p>
@@ -899,23 +901,23 @@ body.dark-mode .supp-card p{color:#94a3b8;}
     body.dark-mode #supp-steps{background:#0a1018!important;}
     .supp-tl-h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:#0f1d2c;text-align:center;line-height:1.15;margin:0 0 12px;}
     body.dark-mode .supp-tl-h2{color:#f1f5f9!important;-webkit-text-fill-color:#f1f5f9!important;}
-    .supp-tl-h2 em{font-style:normal;background:linear-gradient(90deg,#0891b2,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .supp-tl-h2 em{font-style:normal;background:linear-gradient(90deg,#fe6c75,#6c63ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     body.dark-mode .supp-tl-h2 em{-webkit-text-fill-color:transparent!important;}
     .supp-tl-sub{font-size:16px;color:#64748b;max-width:500px;margin:0 auto 64px;line-height:1.6;text-align:center;}
     body.dark-mode .supp-tl-sub{color:#8a9bb3!important;}
     .supp-tl{max-width:720px;margin:0 auto 52px;display:flex;flex-direction:column;position:relative;}
-    .supp-tl::before{content:"";position:absolute;left:31px;top:16px;bottom:16px;width:2px;background:linear-gradient(180deg,#0891b2,#3b82f6,#8b5cf6);border-radius:2px;}
+    .supp-tl::before{content:"";position:absolute;left:31px;top:16px;bottom:16px;width:2px;background:linear-gradient(180deg,#fe6c75,#6c63ff,#8b5cf6);border-radius:2px;}
     .supp-tl-item{display:flex;gap:28px;align-items:flex-start;padding:0 0 48px 0;position:relative;}
     .supp-tl-item:last-child{padding-bottom:0;}
     .supp-tl-dot{width:64px;height:64px;border-radius:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
     .supp-tl-dot span{font-size:22px;font-weight:900;color:#fff;}
-    .supp-tl-item--1 .supp-tl-dot{background:linear-gradient(135deg,#0891b2,#3b82f6);box-shadow:0 8px 24px rgba(8,145,178,.35);}
-    .supp-tl-item--2 .supp-tl-dot{background:linear-gradient(135deg,#3b82f6,#8b5cf6);box-shadow:0 8px 24px rgba(59,130,246,.35);}
-    .supp-tl-item--3 .supp-tl-dot{background:linear-gradient(135deg,#8b5cf6,#06b6d4);box-shadow:0 8px 24px rgba(139,92,246,.35);}
+    .supp-tl-item--1 .supp-tl-dot{background:linear-gradient(135deg,#fe6c75,#6c63ff);box-shadow:0 8px 24px rgba(254,108,117,.35);}
+    .supp-tl-item--2 .supp-tl-dot{background:linear-gradient(135deg,#6c63ff,#8b5cf6);box-shadow:0 8px 24px rgba(108,99,255,.35);}
+    .supp-tl-item--3 .supp-tl-dot{background:linear-gradient(135deg,#8b5cf6,#fe6c75);box-shadow:0 8px 24px rgba(139,92,246,.35);}
     .supp-tl-body{background:#f8fafc;border:1.5px solid #eef2f7;border-radius:18px;padding:24px 28px;flex:1;transition:box-shadow .25s,border-color .25s;}
-    .supp-tl-body:hover{box-shadow:0 8px 32px rgba(8,145,178,.1);border-color:rgba(8,145,178,.2);}
+    .supp-tl-body:hover{box-shadow:0 8px 32px rgba(254,108,117,.1);border-color:rgba(254,108,117,.2);}
     body.dark-mode .supp-tl-body{background:#111827;border-color:#1e2d3d;}
-    .supp-tl-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;color:#0891b2;background:rgba(8,145,178,.08);border:1px solid rgba(8,145,178,.18);border-radius:20px;padding:3px 10px;margin-bottom:10px;text-transform:uppercase;}
+    .supp-tl-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;color:#fe6c75;background:rgba(254,108,117,.08);border:1px solid rgba(254,108,117,.18);border-radius:20px;padding:3px 10px;margin-bottom:10px;text-transform:uppercase;}
     .supp-tl-body h4{font-size:18px;font-weight:800;color:#0f1d2c;margin:0 0 8px;}
     body.dark-mode .supp-tl-body h4{color:#f1f5f9;}
     .supp-tl-body p{font-size:14px;color:#64748b;line-height:1.7;margin:0;}
@@ -923,9 +925,6 @@ body.dark-mode .supp-card p{color:#94a3b8;}
     .supp-tl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
     .supp-tl-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;background:#f1f5f9;color:#475569;}
     body.dark-mode .supp-tl-chip{background:#1e2d3d;color:#94a3b8;}
-    .supp-tl-cta{text-align:center;}
-    .supp-tl-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border-radius:60px;background:linear-gradient(135deg,#0891b2,#3b82f6);color:#fff;font-size:16px;font-weight:700;cursor:pointer;border:none;font-family:inherit;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 8px 28px rgba(8,145,178,.35);}
-    .supp-tl-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(8,145,178,.5);}
     @media(max-width:580px){.supp-tl::before{left:23px;}.supp-tl-dot{width:48px;height:48px;border-radius:14px;}.supp-tl-dot span{font-size:17px;}}
 </style>
     <div class="tw-wrap">
@@ -971,12 +970,6 @@ body.dark-mode .supp-card p{color:#94a3b8;}
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="supp-tl-cta">
-            <button onclick="openOrderModal(true)" class="supp-tl-btn">
-                <span data-i18n="supp.tl.btn">Jetzt anfragen</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
         </div>
     </div>
 </section>
@@ -1045,8 +1038,6 @@ body.dark-mode .supp-card p{color:#94a3b8;}
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
-    var headerTitle = document.getElementById('headerTitle');
-    if (headerTitle && t['tw.header.title']) headerTitle.innerHTML = t['tw.header.title'];
 })();
 </script>
 
@@ -2057,7 +2048,7 @@ body.dark-mode .bk-progress{background:#2a3040}
       <div class="bk-topics">
         <div class="bk-topic" data-topic="KI-Integration &amp; Chatbot" onclick="bkSelectTopic(this)">
           <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(59,130,246,.15))">🤖</div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(108,99,255,.15))">🤖</div>
           <div class="bk-topic-text"><h4>KI-Integration</h4><p>OpenAI, Chatbot, Automatisierung</p></div>
         </div>
         <div class="bk-topic" data-topic="Webseite / App Entwicklung" onclick="bkSelectTopic(this)">
@@ -2067,7 +2058,7 @@ body.dark-mode .bk-progress{background:#2a3040}
         </div>
         <div class="bk-topic" data-topic="Beratung &amp; Support" onclick="bkSelectTopic(this)">
           <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(8,145,178,.15),rgba(139,92,246,.15))">💬</div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(254,108,117,.15),rgba(139,92,246,.15))">💬</div>
           <div class="bk-topic-text"><h4>Beratung &amp; Support</h4><p>Code-Review, Architektur, Wartung</p></div>
         </div>
         <div class="bk-topic" data-topic="Anderes Thema" onclick="bkSelectTopic(this)">

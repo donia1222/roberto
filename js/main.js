@@ -2459,3 +2459,19 @@ document.addEventListener('keydown', function(e) {
         obs.observe(wrapper);
     }
 })();
+// Open mobile menu + subpanel when returning from subpages
+window.addEventListener("pageshow", function() {
+    var sub = sessionStorage.getItem('openMobileMenu');
+    if (sub) {
+        sessionStorage.removeItem('openMobileMenu');
+        var burger = document.getElementById('menuBurger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (burger && mobileMenu) {
+            burger.classList.add('open');
+            mobileMenu.classList.add('open', sub);
+            document.body.style.overflow = 'hidden';
+            var header = document.querySelector('.header');
+            if (header) header.classList.add('menu-open');
+        }
+    }
+});
