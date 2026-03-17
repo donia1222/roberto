@@ -661,6 +661,104 @@
         }
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
         .header.menu-open .header-title span:first-child { color: #fff !important; }
+
+        /* ═══ AI MODELS SECTION ══════════════════════════ */
+        .ki-models-section {
+            background: linear-gradient(165deg,#060e18 0%,#0f1d2c 60%,#1a0a0d 100%);
+            padding: 90px 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ki-models-section::before {
+            content:''; position:absolute; top:-120px; left:-80px;
+            width:520px; height:520px;
+            background:radial-gradient(circle,rgba(254,108,117,0.13) 0%,transparent 70%);
+            pointer-events:none;
+        }
+        .ki-models-section::after {
+            content:''; position:absolute; bottom:-80px; right:-60px;
+            width:420px; height:420px;
+            background:radial-gradient(circle,rgba(108,99,255,0.10) 0%,transparent 70%);
+            pointer-events:none;
+        }
+        .ki-models-section .tw-label { color:rgba(255,255,255,0.45); }
+        .ki-models-section .tw-h2   { color:#fff; }
+        .ki-models-section .tw-sub  { color:#8a9bb3; }
+        .ki-models-grid {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:14px;
+            margin-top:48px;
+        }
+        .ki-model-card {
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.07);
+            border-radius:18px;
+            padding:22px 18px 20px;
+            transition:transform 280ms ease,box-shadow 280ms ease,border-color 280ms ease;
+            opacity:0;
+            transform:translateY(28px);
+            animation:ki-model-in 0.55s ease forwards;
+        }
+        .ki-model-card:nth-child(1){animation-delay:.05s}
+        .ki-model-card:nth-child(2){animation-delay:.12s}
+        .ki-model-card:nth-child(3){animation-delay:.19s}
+        .ki-model-card:nth-child(4){animation-delay:.26s}
+        .ki-model-card:nth-child(5){animation-delay:.33s}
+        .ki-model-card:nth-child(6){animation-delay:.40s}
+        .ki-model-card:nth-child(7){animation-delay:.47s}
+        .ki-model-card:nth-child(8){animation-delay:.54s}
+        @keyframes ki-model-in { to{opacity:1;transform:translateY(0)} }
+        .ki-model-card:hover {
+            transform:translateY(-6px);
+            border-color:rgba(254,108,117,0.3);
+            box-shadow:0 20px 40px rgba(0,0,0,0.35),0 0 0 1px rgba(254,108,117,0.08);
+        }
+        .ki-model-logo {
+            width:48px; height:48px; border-radius:14px;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:14px;
+            animation:ki-logo-float 4s ease-in-out infinite;
+        }
+        .ki-model-card:nth-child(2n)  .ki-model-logo{animation-duration:5s;animation-delay:-1.5s}
+        .ki-model-card:nth-child(3n)  .ki-model-logo{animation-duration:6s;animation-delay:-3s}
+        .ki-model-card:nth-child(5n)  .ki-model-logo{animation-duration:4.5s;animation-delay:-2s}
+        @keyframes ki-logo-float {
+            0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)}
+        }
+        .ki-model-logo svg{width:26px;height:26px}
+        .ki-model-logo--openai{background:linear-gradient(135deg,#0d2b1e,#1a4832)}
+        .ki-model-logo--claude{background:linear-gradient(135deg,#2d1800,#4a2d00)}
+        .ki-model-logo--gemini{background:linear-gradient(135deg,#071d3d,#0d3470)}
+        .ki-model-logo--grok  {background:linear-gradient(135deg,#111318,#1e2028)}
+        .ki-model-logo--dalle {background:linear-gradient(135deg,#200a35,#3d1460)}
+        .ki-model-logo--midj  {background:linear-gradient(135deg,#080818,#151535)}
+        .ki-model-logo--suno  {background:linear-gradient(135deg,#1a0a2d,#2e1250)}
+        .ki-model-logo--sd    {background:linear-gradient(135deg,#271000,#3f1c00)}
+        .ki-model-name {
+            font-size:15px; font-weight:800; color:#f1f5f9;
+            margin-bottom:2px; letter-spacing:-0.01em;
+        }
+        .ki-model-provider {
+            font-size:10.5px; color:rgba(255,255,255,0.38);
+            font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
+            margin-bottom:12px;
+        }
+        .ki-model-tags{display:flex;flex-wrap:wrap;gap:5px}
+        .ki-model-tag {
+            font-size:10px; font-weight:700;
+            padding:3px 8px; border-radius:20px;
+            color:rgba(255,255,255,0.65);
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.09);
+            text-transform:uppercase; letter-spacing:0.04em;
+        }
+        @media(max-width:900px){ .ki-models-grid{grid-template-columns:repeat(2,1fr)} }
+        @media(max-width:480px){
+            .ki-models-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+            .ki-model-card{padding:16px 14px}
+            .ki-model-name{font-size:13px}
+        }
     </style>
 </head>
 <body>
@@ -891,6 +989,117 @@ body.dark-mode .ki-feat-card h4{color:#f1f5f9;}
 </section>
 
 
+<!-- ═════════════════ AI MODELS ═════════════════ -->
+<section class="ki-models-section">
+    <div class="tw-wrap">
+        <div class="tw-label" data-i18n="ki.models.label">KI-MODELLE</div>
+        <h2 class="tw-h2" data-i18n-html="ki.models.h2">Die führenden<br><span class="tw-accent">KI-Modelle</span></h2>
+        <p class="tw-sub" data-i18n="ki.models.sub">Ich integriere die mächtigsten KI-Modelle der Welt — individuell abgestimmt auf Ihren Use Case.</p>
+        <div class="ki-models-grid">
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--openai">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M22.28 9.13a5.96 5.96 0 00-.51-4.89 6.02 6.02 0 00-6.47-2.88A5.96 5.96 0 0010.85 0a6.02 6.02 0 00-5.74 4.17 5.96 5.96 0 00-3.98 2.89 6.02 6.02 0 00.74 7.04 5.96 5.96 0 00.5 4.88 6.02 6.02 0 006.47 2.89A5.96 5.96 0 0013.15 24a6.02 6.02 0 005.75-4.17 5.96 5.96 0 003.97-2.89 6.02 6.02 0 00-.59-7.81z" fill="#10a37f"/></svg>
+                </div>
+                <div class="ki-model-name">ChatGPT</div>
+                <div class="ki-model-provider">OpenAI</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Text</span>
+                    <span class="ki-model-tag">Code</span>
+                    <span class="ki-model-tag">Vision</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--claude">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M13.827 3.52l8.17 16.95H18.06l-1.702-3.625H8.543l-1.701 3.625H2.003l8.17-16.95h3.654zm-1.827 4.29l-2.812 5.989h5.624l-2.812-5.99z" fill="#d4a574"/></svg>
+                </div>
+                <div class="ki-model-name">Claude</div>
+                <div class="ki-model-provider">Anthropic</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Analyse</span>
+                    <span class="ki-model-tag">Code</span>
+                    <span class="ki-model-tag">Reasoning</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--gemini">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 24C12 18.29 7.71 14 2 12c5.71-2 10-6.29 10-12 0 5.71 4.29 10 10 12-5.71 2-10 6.29-10 12z" fill="url(#gem-grad)"/><defs><linearGradient id="gem-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs></svg>
+                </div>
+                <div class="ki-model-name">Gemini</div>
+                <div class="ki-model-provider">Google</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Multimodal</span>
+                    <span class="ki-model-tag">Vision</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--grok">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M13.346 10.932L19.862 3h-1.538L12.644 9.89 7.66 3H2.5l6.836 9.938L2.5 21h1.538l5.98-6.954L15.34 21H20.5l-7.154-10.068zm-2.115 2.455l-.693-.99-5.516-7.89H6.93l4.449 6.365.693.99 5.785 8.29H15.95l-4.718-6.765z" fill="#ffffff"/></svg>
+                </div>
+                <div class="ki-model-name">Grok</div>
+                <div class="ki-model-provider">xAI</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Text</span>
+                    <span class="ki-model-tag">Reasoning</span>
+                    <span class="ki-model-tag">Real-time</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--dalle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5" fill="#c084fc" stroke="none"/><polyline points="21 15 16 10 5 21"/><path d="M17 2l.5 2M20.5 5l-1.7 1" stroke="#c084fc" stroke-width="1.5"/></svg>
+                </div>
+                <div class="ki-model-name">DALL-E 3</div>
+                <div class="ki-model-provider">OpenAI</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Bilder</span>
+                    <span class="ki-model-tag">Generativ</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--midj">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7c9fd4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 19h3l1.5-3h7L17 19h3L12 3z"/><path d="M9.5 13.5L12 8l2.5 5.5"/></svg>
+                </div>
+                <div class="ki-model-name">Midjourney</div>
+                <div class="ki-model-provider">Midjourney Inc.</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Art</span>
+                    <span class="ki-model-tag">Design</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--suno">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                </div>
+                <div class="ki-model-name">Suno</div>
+                <div class="ki-model-provider">Suno AI</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Musik</span>
+                    <span class="ki-model-tag">Audio</span>
+                </div>
+            </div>
+
+            <div class="ki-model-card">
+                <div class="ki-model-logo ki-model-logo--sd">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="#f59e0b" stroke="none"/><line x1="12" y1="3" x2="12" y2="1"/><line x1="12" y1="23" x2="12" y2="21"/><line x1="3" y1="12" x2="1" y2="12"/><line x1="23" y1="12" x2="21" y2="12"/></svg>
+                </div>
+                <div class="ki-model-name">Stable Diffusion</div>
+                <div class="ki-model-provider">Stability AI</div>
+                <div class="ki-model-tags">
+                    <span class="ki-model-tag">Bilder</span>
+                    <span class="ki-model-tag">Open Source</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- ═════════════════ STEPS ═════════════════ -->
 <section class="ki-steps-section" id="ki-steps" style="padding:80px 24px 90px;">
 <style>
@@ -947,12 +1156,19 @@ body.dark-mode .ki-feat-card h4{color:#f1f5f9;}
 
 
 
+<!-- ═════════════════ STATS ═════════════════ -->
+<div class="tw-stats">
+    <div class="tw-stat"><div class="tw-stat-n">10+</div><div class="tw-stat-l">KI-Projekte</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">6+</div><div class="tw-stat-l">Jahre Erfahrung</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">GPT-4o</div><div class="tw-stat-l">& mehr APIs</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">100%</div><div class="tw-stat-l">Persönlich beraten</div></div>
+</div>
+
 <!-- ═════════════════ CTA ═════════════════ -->
 <section class="tw-cta" id="tw-cta">
     <div class="tw-wrap">
         <div class="tw-label" data-i18n="ki.cta.label">BEREIT ZU STARTEN?</div>
         <h2 class="tw-h2" data-i18n-html="ki.cta.h2">Ihre intelligente KI-Lösung<br><span class="tw-accent">ab 800 CHF.</span></h2>
-        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="ki.cta.price">Komplettpaket ab 1500 CHF</p>
         <p class="tw-sub" data-i18n="ki.cta.sub">Von der Prozessanalyse bis zur fertigen Integration. Messbare Effizienzgewinne — persönlich beraten aus Buchs SG.</p>
         <div class="tw-cta-btns">
             <button onclick="openChatBot()" class="tw-btn-red" style="border:none;cursor:pointer;font-size:inherit;">
@@ -2255,6 +2471,28 @@ body.dark-mode .bk-progress{background:#2a3040}
 </script>
 
 <script src="js/translations.js"></script>
+<script>
+(function(){
+    var savedLang = localStorage.getItem('lweb_lang');
+    var lang;
+    if (savedLang) { lang = savedLang; }
+    else {
+        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
+        var supported = ['de', 'en', 'es', 'fr', 'it'];
+        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    }
+    if (typeof translations === 'undefined' || !translations[lang] || lang === 'de') return;
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key]) el.innerHTML = t[key];
+    });
+})();
+</script>
 <script src="js/chatbot.js"></script>
 
 </body>
