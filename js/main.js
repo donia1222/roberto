@@ -2459,6 +2459,17 @@ document.addEventListener('keydown', function(e) {
         obs.observe(wrapper);
     }
 })();
+// Scroll to saved anchor when returning from subpages
+window.addEventListener("pageshow", function() {
+    var anchor = sessionStorage.getItem('scrollTo');
+    if (anchor) {
+        sessionStorage.removeItem('scrollTo');
+        setTimeout(function() {
+            var el = document.getElementById(anchor);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+    }
+});
 // Open mobile menu + subpanel when returning from subpages
 window.addEventListener("pageshow", function() {
     var sub = sessionStorage.getItem('openMobileMenu');
