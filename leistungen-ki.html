@@ -62,11 +62,11 @@
             background:#fe6c75; animation:blink 1.5s infinite;
         }
         .tw-h2 {
-            font-size: 44px; font-weight: 800; line-height: 1.15;
-            letter-spacing: -0.01em; margin-bottom: 16px; color: #0f1d2c;
+            font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.08;
+            letter-spacing: -0.025em; margin-bottom: 16px; color: #0f1d2c;
         }
         .tw-sub {
-            font-size: 17px; line-height: 1.7; color: #6b7d99;
+            font-size: 18px; line-height: 1.7; color: #6b7d99;
             max-width: 600px; margin-bottom: 48px;
         }
         .tw-accent { color: #fe6c75; }
@@ -95,12 +95,12 @@
             background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
-            font-size:56px; font-weight:800; line-height:1.08;
-            letter-spacing:-0.025em; color:#0f1d2c; margin-bottom:20px;
+            font-size:clamp(40px, 5.5vw, 72px); font-weight:800; line-height:1.04;
+            letter-spacing:-0.03em; color:#0f1d2c; margin-bottom:20px;
             animation:fadeUp 0.6s 0.15s ease both;
         }
         .tw-hero-sub {
-            font-size:17px; line-height:1.7; color:#6b7d99;
+            font-size:18px; line-height:1.7; color:#6b7d99;
             max-width:560px; margin:0 auto 32px;
             animation:fadeUp 0.6s 0.3s ease both;
         }
@@ -160,9 +160,10 @@
             display:inline-flex; align-items:center; gap:8px;
             background:#fe6c75; color:#fff; border:none;
             border-radius:600px; padding:14px 28px;
-            font-size:15px; font-weight:700; cursor:pointer;
+            font-size:16px; font-weight:700; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
-            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+            box-shadow:0 6px 30px rgba(254,108,117,0.4);
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
         .tw-btn-ghost {
@@ -170,8 +171,9 @@
             background:transparent; color:#3f4960;
             border:1.5px solid rgba(15,29,44,0.15);
             border-radius:600px; padding:13px 26px;
-            font-size:15px; font-weight:600; cursor:pointer;
+            font-size:16px; font-weight:600; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
 
@@ -515,8 +517,8 @@
             width:350px; height:350px; border-radius:50%;
             background:rgba(255,255,255,0.07);
         }
-        .tw-advantage h3 { font-size:28px; font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
-        .tw-advantage p { font-size:16px; line-height:1.7; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
+        .tw-advantage h3 { font-size:clamp(22px, 3vw, 34px); font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
+        .tw-advantage p { font-size:17px; line-height:1.65; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
         .tw-adv-emoji { display:inline-block; font-size:0.85em; animation:tw-wave 2s ease-in-out infinite; }
         .tw-advantage-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; position:relative; }
         .tw-advantage-tag {
@@ -823,6 +825,63 @@
 
 <!-- ═════════════════ HERO ═════════════════ -->
 <section class="tw-hero">
+
+    <!-- Background floating AI chips -->
+    <div class="ki-bg-chips" aria-hidden="true">
+        <span class="ki-chip ki-chip--purple ki-chip--c1">GPT-4o</span>
+        <span class="ki-chip ki-chip--blue ki-chip--c2">Neural Network</span>
+        <span class="ki-chip ki-chip--cyan ki-chip--c3">Claude 3.5</span>
+        <span class="ki-chip ki-chip--red ki-chip--c4">Automatisierung</span>
+        <span class="ki-chip ki-chip--purple ki-chip--c5">Machine Learning</span>
+        <span class="ki-chip ki-chip--blue ki-chip--c6">OpenAI API</span>
+        <span class="ki-chip ki-chip--cyan ki-chip--c7">Gemini 2.0</span>
+        <span class="ki-chip ki-chip--red ki-chip--c8">Prompt Engineering</span>
+        <span class="ki-chip ki-chip--purple ki-chip--c9">Computer Vision</span>
+        <span class="ki-chip ki-chip--blue ki-chip--c10">DALL-E 3</span>
+        <span class="ki-chip ki-chip--cyan ki-chip--c11">NLP</span>
+        <span class="ki-chip ki-chip--red ki-chip--c12">Deep Learning</span>
+        <span class="ki-chip ki-chip--purple ki-chip--c13">Chatbot</span>
+        <span class="ki-chip ki-chip--blue ki-chip--c14">RAG Pipeline</span>
+    </div>
+    <style>
+        .ki-bg-chips{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+        .ki-chip{position:absolute;display:inline-block;padding:5px 13px;border-radius:100px;font-size:11.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap;opacity:0;animation:chipFadeIn .6s ease forwards, chipDrift 0s ease-in-out infinite;}
+        .ki-chip--purple{background:rgba(108,99,255,.08);border:1px solid rgba(108,99,255,.18);color:rgba(108,99,255,.7);}
+        .ki-chip--blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.18);color:rgba(59,130,246,.7);}
+        .ki-chip--cyan{background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);color:rgba(6,182,212,.75);}
+        .ki-chip--red{background:rgba(254,108,117,.08);border:1px solid rgba(254,108,117,.2);color:rgba(254,108,117,.75);}
+        body.dark-mode .ki-chip--purple{background:rgba(108,99,255,.12);border-color:rgba(108,99,255,.25);color:rgba(150,140,255,.8);}
+        body.dark-mode .ki-chip--blue{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);color:rgba(100,160,255,.8);}
+        body.dark-mode .ki-chip--cyan{background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.25);color:rgba(50,210,240,.8);}
+        body.dark-mode .ki-chip--red{background:rgba(254,108,117,.12);border-color:rgba(254,108,117,.25);color:rgba(255,140,148,.8);}
+        @keyframes chipFadeIn{from{opacity:0;}to{opacity:1;}}
+        /* Drift animations */
+        @keyframes chipDrift1{0%,100%{transform:translateY(0) translateX(0);}40%{transform:translateY(-16px) translateX(7px);}70%{transform:translateY(-6px) translateX(-5px);}}
+        @keyframes chipDrift2{0%,100%{transform:translateY(0) translateX(0);}35%{transform:translateY(12px) translateX(-9px);}65%{transform:translateY(-10px) translateX(5px);}}
+        @keyframes chipDrift3{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-18px) translateX(3px);}}
+        @keyframes chipDrift4{0%,100%{transform:translateY(0) translateX(0);}45%{transform:translateY(10px) translateX(10px);}75%{transform:translateY(-8px) translateX(-4px);}}
+        /* Positions — spread across bottom area around the AI visual */
+        .ki-chip--c1 {bottom:46%;left:6%;animation:chipFadeIn .6s .3s ease forwards,chipDrift1 5.8s 1s ease-in-out infinite;}
+        .ki-chip--c2 {bottom:30%;left:4%;animation:chipFadeIn .6s .5s ease forwards,chipDrift2 7.2s 1.2s ease-in-out infinite;}
+        .ki-chip--c3 {bottom:12%;left:6%;animation:chipFadeIn .6s .7s ease forwards,chipDrift3 6.4s 1.4s ease-in-out infinite;}
+        .ki-chip--c4 {bottom:46%;right:6%;animation:chipFadeIn .6s .4s ease forwards,chipDrift1 6.8s 0.8s ease-in-out infinite;}
+        .ki-chip--c5 {bottom:30%;right:4%;animation:chipFadeIn .6s .6s ease forwards,chipDrift2 5.5s 1.6s ease-in-out infinite;}
+        .ki-chip--c6 {bottom:12%;right:6%;animation:chipFadeIn .6s .8s ease forwards,chipDrift4 7.6s 1s ease-in-out infinite;}
+        .ki-chip--c7 {bottom:42%;left:22%;animation:chipFadeIn .6s .9s ease forwards,chipDrift3 6.2s 1.3s ease-in-out infinite;}
+        .ki-chip--c8 {bottom:42%;right:22%;animation:chipFadeIn .6s 1.1s ease forwards,chipDrift1 7s 0.6s ease-in-out infinite;}
+        .ki-chip--c9 {bottom:5%;left:20%;animation:chipFadeIn .6s 1s ease forwards,chipDrift2 5.9s 1.5s ease-in-out infinite;}
+        .ki-chip--c10{bottom:5%;right:20%;animation:chipFadeIn .6s .6s ease forwards,chipDrift4 6.5s 1.8s ease-in-out infinite;}
+        .ki-chip--c11{bottom:22%;left:18%;animation:chipFadeIn .6s .8s ease forwards,chipDrift1 7.4s 0.9s ease-in-out infinite;}
+        .ki-chip--c12{bottom:22%;right:18%;animation:chipFadeIn .6s 1.2s ease forwards,chipDrift3 5.6s 1.1s ease-in-out infinite;}
+        .ki-chip--c13{bottom:52%;left:1%;display:none;}
+        .ki-chip--c14{bottom:52%;right:1%;display:none;}
+        @media(max-width:1024px){
+            .ki-bg-chips{display:none;}
+        }
+        .tw-hero-center{position:relative;z-index:1;}
+        .ki-spark-wrap{position:relative;z-index:1;}
+    </style>
+
     <div class="tw-hero-center">
 
         <h1 class="tw-hero-h1" data-i18n-html="ki.hero.h1">KI-Integration<br><span class="tw-accent">für Ihre App & Website</span></h1>

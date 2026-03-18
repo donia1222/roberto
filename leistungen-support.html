@@ -63,11 +63,11 @@
             background:#fe6c75; animation:blink 1.5s infinite;
         }
         .tw-h2 {
-            font-size: 44px; font-weight: 800; line-height: 1.15;
-            letter-spacing: -0.01em; margin-bottom: 16px; color: #0f1d2c;
+            font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.08;
+            letter-spacing: -0.025em; margin-bottom: 16px; color: #0f1d2c;
         }
         .tw-sub {
-            font-size: 17px; line-height: 1.7; color: #6b7d99;
+            font-size: 18px; line-height: 1.7; color: #6b7d99;
             max-width: 600px; margin-bottom: 48px;
         }
         .tw-accent { color: #fe6c75; }
@@ -96,12 +96,12 @@
             background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
-            font-size:56px;  font-weight:800; line-height:1.08;
-            letter-spacing:-0.025em; color:#0f1d2c; margin-bottom:20px;
+            font-size:clamp(40px, 5.5vw, 72px); font-weight:800; line-height:1.04;
+            letter-spacing:-0.03em; color:#0f1d2c; margin-bottom:20px;
             animation:fadeUp 0.6s 0.15s ease both;
         }
         .tw-hero-sub {
-            font-size:17px; line-height:1.7; color:#6b7d99;
+            font-size:18px; line-height:1.7; color:#6b7d99;
             max-width:560px; margin:0 auto 32px;
             animation:fadeUp 0.6s 0.3s ease both;
         }
@@ -161,9 +161,10 @@
             display:inline-flex; align-items:center; gap:8px;
             background:#fe6c75; color:#fff; border:none;
             border-radius:600px; padding:14px 28px;
-            font-size:15px; font-weight:700; cursor:pointer;
+            font-size:16px; font-weight:700; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
-            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+            box-shadow:0 6px 30px rgba(254,108,117,0.4);
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
         .tw-btn-ghost {
@@ -171,8 +172,9 @@
             background:transparent; color:#3f4960;
             border:1.5px solid rgba(15,29,44,0.15);
             border-radius:600px; padding:13px 26px;
-            font-size:15px; font-weight:600; cursor:pointer;
+            font-size:16px; font-weight:600; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
 
@@ -516,8 +518,8 @@
             width:350px; height:350px; border-radius:50%;
             background:rgba(255,255,255,0.07);
         }
-        .tw-advantage h3 { font-size:28px; font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
-        .tw-advantage p { font-size:16px; line-height:1.7; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
+        .tw-advantage h3 { font-size:clamp(22px, 3vw, 34px); font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
+        .tw-advantage p { font-size:17px; line-height:1.65; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
         .tw-adv-emoji { display:inline-block; font-size:0.85em; animation:tw-wave 2s ease-in-out infinite; }
         .tw-advantage-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; position:relative; }
         .tw-advantage-tag {
@@ -687,7 +689,7 @@
         <nav class="header-nav" aria-label="Navigation">
             <a href="#tw-includes" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="supp.nav.includes">Was ich biete</span></a>
             <a href="#supp-steps" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span data-i18n="supp.nav.steps">Ablauf</span></a>
-            <a href="#" onclick="event.preventDefault();openTerminModal()" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-i18n="supp.hero.cta2">Beratung anfragen</span></a>
+            <a href="#" onclick="event.preventDefault();openVCardModal()" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-i18n="footer.vcard">Kontakt speichern</span></a>
 
         </nav>
         <div class="header-actions">
@@ -739,63 +741,117 @@
         </div>
     </div>
 
-    <!-- Support Visual -->
+    <!-- Support Hero Visual — dashboard mockup -->
     <div class="supp-hero-wrap">
-        <div class="supp-hero-scene">
-            <!-- Central icon -->
-            <div class="supp-hero-center">
-                <div class="supp-hero-ring supp-hero-ring--1"></div>
-                <div class="supp-hero-ring supp-hero-ring--2"></div>
-                <div class="supp-hero-icon">
-                    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="url(#sg1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <defs><linearGradient id="sg1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#fe6c75"/><stop offset="1" stop-color="#6c63ff"/></linearGradient></defs>
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                    </svg>
+        <div class="supp-dash">
+            <!-- Window bar -->
+            <div class="supp-dash-bar">
+                <div class="supp-dash-dots">
+                    <span class="sd-dot sd-dot--r"></span>
+                    <span class="sd-dot sd-dot--y"></span>
+                    <span class="sd-dot sd-dot--g"></span>
                 </div>
+                <span class="supp-dash-bar-title">Lweb · Beratung & Support</span>
+                <span class="supp-dash-live-wrap"><span class="supp-dash-live-dot"></span>Live</span>
             </div>
-            <!-- Floating cards -->
-            <div class="supp-float-card supp-float-card--1">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <span>Anruf möglich</span>
-                <span class="supp-float-badge supp-float-badge--green">✓</span>
-            </div>
-            <div class="supp-float-card supp-float-card--2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                <span>Mo–Fr 9–18 Uhr</span>
-            </div>
-            <div class="supp-float-card supp-float-card--3">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                <span>+41 76 560 86 45</span>
-            </div>
-            <div class="supp-float-card supp-float-card--4">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.592-.822-6.328-2.198l-.442-.37-3.24 1.086 1.086-3.24-.37-.442A9.95 9.95 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                <span>WhatsApp 24/7</span>
+            <!-- Body: chat + stats -->
+            <div class="supp-dash-body">
+                <div class="supp-dash-chat">
+                    <div class="supp-chat-row supp-chat-row--in">
+                        <div class="supp-chat-av">R</div>
+                        <div class="supp-chat-bub supp-chat-bub--in">Ich habe Probleme mit meiner App-Performance. Können Sie helfen?</div>
+                    </div>
+                    <div class="supp-chat-row supp-chat-row--out supp-anim-d1">
+                        <div class="supp-chat-bub supp-chat-bub--out">Natürlich! Schicken Sie mir kurz den Fehlerbericht und wir schauen es zusammen an 👍</div>
+                        <div class="supp-chat-av supp-chat-av--l">L</div>
+                    </div>
+                    <div class="supp-chat-row supp-chat-row--in supp-anim-d2">
+                        <div class="supp-chat-av">R</div>
+                        <div class="supp-chat-bub supp-chat-bub--in">Super, danke! Wann haben Sie Zeit?</div>
+                    </div>
+                    <div class="supp-chat-typing supp-anim-d3">
+                        <div class="supp-chat-av supp-chat-av--l">L</div>
+                        <div class="supp-typing-dots"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+                <div class="supp-dash-stats">
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">&lt; 2h</div>
+                        <div class="supp-ds-l">Antwortzeit</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">6+</div>
+                        <div class="supp-ds-l">Jahre</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">100%</div>
+                        <div class="supp-ds-l">Persönlich</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">85 CHF</div>
+                        <div class="supp-ds-l">Ab / Std.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <style>
-        .supp-hero-wrap{width:100%;display:flex;justify-content:center;margin-top:44px;animation:fadeUp .8s .5s ease both;}
-        .supp-hero-scene{position:relative;width:380px;height:220px;display:flex;align-items:center;justify-content:center;}
-        .supp-hero-center{position:relative;display:flex;align-items:center;justify-content:center;z-index:3;}
-        .supp-hero-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(254,108,117,.2);}
-        .supp-hero-ring--1{width:110px;height:110px;animation:suppRingPulse 3s ease-in-out infinite;}
-        .supp-hero-ring--2{width:155px;height:155px;animation:suppRingPulse 3s ease-in-out infinite .6s;}
-        @keyframes suppRingPulse{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.08);opacity:.15;}}
-        .supp-hero-icon{width:86px;height:86px;border-radius:22px;background:#fff;box-shadow:0 12px 40px rgba(254,108,117,.25);display:flex;align-items:center;justify-content:center;animation:suppIconFloat 3.5s ease-in-out infinite;}
-        body.dark-mode .supp-hero-icon{background:#1e2d3d;}
-        @keyframes suppIconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-        /* Floating cards */
-        .supp-float-card{position:absolute;display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:12px;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.1);font-size:12px;font-weight:700;color:#0f1d2c;white-space:nowrap;pointer-events:none;}
-        body.dark-mode .supp-float-card{background:#1e2d3d;color:#f1f5f9;box-shadow:0 4px 20px rgba(0,0,0,.3);}
-        .supp-float-badge{font-size:11px;font-weight:800;padding:2px 6px;border-radius:6px;}
-        .supp-float-badge--green{background:#d1fae5;color:#059669;}
-        .supp-float-card--1{top:5px;left:30px;animation:suppFloat1 3.2s ease-in-out infinite;}
-        .supp-float-card--2{top:10px;right:20px;animation:suppFloat2 2.8s ease-in-out infinite .4s;}
-        .supp-float-card--3{bottom:20px;left:10px;animation:suppFloat1 3.6s ease-in-out infinite .8s;}
-        .supp-float-card--4{bottom:22px;right:10px;animation:suppFloat2 3s ease-in-out infinite 1.2s;}
-        @keyframes suppFloat1{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-10px) rotate(-2deg);}}
-        @keyframes suppFloat2{0%,100%{transform:translateY(0) rotate(2deg);}50%{transform:translateY(-8px) rotate(2deg);}}
-        @media(max-width:640px){.supp-hero-scene{width:320px;height:200px;}.supp-hero-icon{width:70px;height:70px;}.supp-hero-ring--1{width:90px;height:90px;}.supp-hero-ring--2{width:126px;height:126px;}.supp-float-card{font-size:11px;padding:6px 9px;}.supp-float-card--1{top:2px;left:10px;}.supp-float-card--2{top:5px;right:5px;}.supp-float-card--3{bottom:12px;left:2px;}.supp-float-card--4{bottom:14px;right:2px;}}
+        /* ── Support Hero Dashboard ───────────────── */
+        .supp-hero-wrap{width:100%;display:flex;justify-content:center;margin-top:52px;animation:fadeUp .8s .5s ease both;}
+        .supp-dash{width:100%;max-width:580px;border-radius:18px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.16);border:1px solid rgba(0,0,0,.07);}
+        body.dark-mode .supp-dash{border-color:rgba(255,255,255,.07);box-shadow:0 32px 80px rgba(0,0,0,.55);}
+        /* Title bar */
+        .supp-dash-bar{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#0f1d2c;}
+        body.dark-mode .supp-dash-bar{background:#07101a;}
+        .supp-dash-dots{display:flex;gap:6px;flex-shrink:0;}
+        .sd-dot{width:12px;height:12px;border-radius:50%;display:block;}
+        .sd-dot--r{background:#ff5f57;}.sd-dot--y{background:#febc2e;}.sd-dot--g{background:#28c840;}
+        .supp-dash-bar-title{flex:1;text-align:center;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.02em;}
+        .supp-dash-live-wrap{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#28c840;flex-shrink:0;}
+        .supp-dash-live-dot{width:7px;height:7px;border-radius:50%;background:#28c840;animation:suppLivePulse 1.5s ease-in-out infinite;}
+        @keyframes suppLivePulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+        /* Body */
+        .supp-dash-body{display:flex;background:#fff;}
+        body.dark-mode .supp-dash-body{background:#111827;}
+        /* Chat pane */
+        .supp-dash-chat{flex:1;padding:18px 16px;display:flex;flex-direction:column;gap:11px;border-right:1px solid #f1f5f9;min-height:220px;}
+        body.dark-mode .supp-dash-chat{border-right-color:#1e2d3d;}
+        .supp-chat-row{display:flex;align-items:flex-end;gap:8px;animation:suppChatIn .45s ease both;opacity:0;}
+        .supp-chat-row--in{flex-direction:row;}
+        .supp-chat-row--out{flex-direction:row-reverse;}
+        .supp-chat-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;background:#eef2f7;color:#0f1d2c;}
+        .supp-chat-av--l{background:#fe6c75;color:#fff;}
+        body.dark-mode .supp-chat-av{background:#1e2d3d;color:#f1f5f9;}
+        .supp-chat-bub{font-size:12.5px;line-height:1.55;padding:9px 13px;border-radius:16px;max-width:82%;}
+        .supp-chat-bub--in{background:#f1f5f9;color:#0f1d2c;border-bottom-left-radius:4px;}
+        .supp-chat-bub--out{background:#fe6c75;color:#fff;border-bottom-right-radius:4px;}
+        body.dark-mode .supp-chat-bub--in{background:#1e2d3d;color:#f1f5f9;}
+        .supp-chat-typing{display:flex;align-items:center;gap:8px;animation:suppChatIn .45s ease both;opacity:0;}
+        .supp-typing-dots{display:flex;gap:4px;background:#f1f5f9;padding:10px 13px;border-radius:16px;border-bottom-left-radius:4px;}
+        body.dark-mode .supp-typing-dots{background:#1e2d3d;}
+        .supp-typing-dots span{width:6px;height:6px;border-radius:50%;background:#94a3b8;display:block;animation:suppDotBounce 1.3s ease-in-out infinite;}
+        .supp-typing-dots span:nth-child(2){animation-delay:.22s;}
+        .supp-typing-dots span:nth-child(3){animation-delay:.44s;}
+        @keyframes suppDotBounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-7px);}}
+        @keyframes suppChatIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+        .supp-chat-row:first-child{animation-delay:.6s;}
+        .supp-anim-d1{animation-delay:1.2s;}
+        .supp-anim-d2{animation-delay:2s;}
+        .supp-anim-d3{animation-delay:2.9s;}
+        /* Stats panel */
+        .supp-dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f1f5f9;flex-shrink:0;width:168px;}
+        body.dark-mode .supp-dash-stats{background:#1e2d3d;}
+        .supp-ds-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 8px;background:#fff;gap:5px;text-align:center;}
+        body.dark-mode .supp-ds-stat{background:#111827;}
+        .supp-ds-n{font-size:17px;font-weight:800;color:#0f1d2c;line-height:1;}
+        body.dark-mode .supp-ds-n{color:#f1f5f9;}
+        .supp-ds-l{font-size:10px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;}
+        @media(max-width:540px){
+            .supp-dash-stats{width:130px;}
+            .supp-ds-n{font-size:14px;}
+            .supp-ds-stat{padding:16px 6px;}
+            .supp-chat-bub{font-size:11.5px;}
+        }
     </style>
 </section>
 
@@ -970,6 +1026,12 @@ body.dark-mode .supp-card p{color:#94a3b8;}
                     </div>
                 </div>
             </div>
+        </div>
+        <div style="text-align:center;margin-top:8px;">
+            <button onclick="openVCardModal()" class="tw-btn-ghost" style="border:1.5px solid rgba(15,29,44,0.15);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span data-i18n="footer.vcard">Kontakt speichern</span>
+            </button>
         </div>
     </div>
 </section>
@@ -2288,6 +2350,85 @@ body.dark-mode .bk-progress{background:#2a3040}
 </script>
 
 <script src="js/chatbot.js"></script>
+
+<!-- VCard Modal -->
+<div class="vcard-modal-overlay" id="vcardModalOverlay" onclick="closeVCardModal()"></div>
+<div class="vcard-modal" id="vcardModal">
+    <button class="vcard-modal-close" onclick="closeVCardModal()" aria-label="Schliessen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="vcard-modal-card">
+        <div class="vcard-modal-logo">
+            <img src="img/logolweb.png" alt="Lweb Logo">
+        </div>
+        <h3 class="vcard-modal-name">Lweb Schweiz</h3>
+        <p class="vcard-modal-role">App & Web Entwicklung</p>
+        <div class="vcard-modal-info">
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>info@lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+41 76 560 86 45</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                <span>lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>9475 Sevelen, Schweiz</span>
+            </div>
+        </div>
+        <button class="vcard-modal-download" onclick="downloadVCard()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="footer.vcard">Kontakt speichern</span>
+        </button>
+    </div>
+</div>
+
+<script>
+function openVCardModal() {
+    document.getElementById('vcardModalOverlay').classList.add('active');
+    document.getElementById('vcardModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeVCardModal() {
+    document.getElementById('vcardModalOverlay').classList.remove('active');
+    document.getElementById('vcardModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function downloadVCard() {
+    fetch('img/logolweb.png')
+        .then(function(res) { if (!res.ok) throw new Error(); return res.blob(); })
+        .then(function(blob) {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                var base64data = reader.result.split(',')[1];
+                var vCardContent = 'BEGIN:VCARD\nVERSION:3.0\nFN:Lweb Schweiz\nORG:Lweb\nTITLE:App & Web Entwicklung\nADR:;;Sevelen;Sevelen;SG;9475;Switzerland\nTEL:+41765608645\nEMAIL:info@lweb.ch\nURL:https://lweb.ch\nNOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\nPHOTO;ENCODING=b;TYPE=PNG:' + base64data + '\nEND:VCARD';
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' }));
+                link.download = 'Lweb_Visitenkarte.vcf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+            reader.onerror = function() { downloadVCardFallback(); };
+            reader.readAsDataURL(blob);
+        })
+        .catch(function() { downloadVCardFallback(); });
+}
+function downloadVCardFallback() {
+    var vCardContent = 'BEGIN:VCARD\nVERSION:3.0\nFN:Lweb Schweiz\nORG:Lweb\nTITLE:App & Web Entwicklung\nADR:;;Sevelen;Sevelen;SG;9475;Switzerland\nTEL:+41765608645\nEMAIL:info@lweb.ch\nURL:https://lweb.ch\nNOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\nEND:VCARD';
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' }));
+    link.download = 'Lweb_Visitenkarte.vcf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
 
 </body>
 </html>
