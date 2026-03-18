@@ -664,7 +664,7 @@
             </div>
 
             <!-- SHELF: secondary cards — grid on desktop, horizontal scroll on mobile -->
-            <div class="bento-shelf">
+            <div class="bento-shelf bento-shelf--collapsed" id="bentoShelf">
 
                 <!-- FOODSCAN AI — col 1 -->
                 <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#fdf0e6 0%,#f5e4d0 100%);">
@@ -738,6 +738,82 @@
 
             </div><!-- /bento-shelf -->
         </div>
+
+        <!-- More apps toggle — desktop only -->
+        <div class="bento-more-wrap" id="bentoMoreWrap">
+            <button class="bento-more-btn" id="bentoMoreBtn" onclick="toggleBentoShelf()">
+                <div class="bento-more-stack" id="bentoMoreSub">
+                    <img src="img/foodscan.png" alt="FoodScan AI">
+                    <img src="img/dogmentor.jpg" alt="DogMentor KI">
+                    <img src="img/hundezonen.png" alt="Hundezonen">
+                    <img src="img/ketorecipe.png" alt="KetoRecipeLab">
+                    <img src="img/workti.png" alt="Work Ti">
+                </div>
+                <div class="bento-more-text">
+                    <span id="bentoMoreLabel" data-i18n="apps.more">Weitere Apps anzeigen</span>
+                    <span class="bento-more-count">5 Apps</span>
+                </div>
+                <svg id="bentoMoreIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+        </div>
+        <style>
+            /* Desktop-only collapse */
+            @media(min-width:1025px){
+                .bento-shelf{overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1),opacity .4s ease;}
+                .bento-shelf--collapsed{max-height:0!important;opacity:0;pointer-events:none;}
+                .bento-shelf:not(.bento-shelf--collapsed){max-height:1600px;opacity:1;pointer-events:auto;}
+                .bento-more-wrap{display:flex;justify-content:center;margin-top:32px;}
+                .bento-more-btn{display:inline-flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #eef2f7;border-radius:18px;padding:14px 22px 14px 14px;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s,border-color .2s;}
+                .bento-more-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(254,108,117,.15);border-color:rgba(254,108,117,.3);}
+                body.dark-mode .bento-more-btn{background:#111827;border-color:#1e2d3d;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+                .bento-more-stack{display:flex;align-items:center;}
+                .bento-more-stack img{width:38px;height:38px;border-radius:10px;object-fit:cover;border:2px solid #fff;margin-left:-10px;transition:transform .2s;}
+                .bento-more-stack img:first-child{margin-left:0;}
+                .bento-more-btn:hover .bento-more-stack img{transform:translateY(-2px);}
+                body.dark-mode .bento-more-stack img{border-color:#111827;}
+                .bento-more-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex:1;}
+                .bento-more-text #bentoMoreLabel{font-size:15px;font-weight:700;color:var(--gunpowder900);}
+                body.dark-mode .bento-more-text #bentoMoreLabel{color:#f1f5f9;}
+                .bento-more-count{font-size:12px;font-weight:500;color:var(--begonia400);}
+                #bentoMoreIcon{color:var(--gunpowder400);flex-shrink:0;transition:transform .35s ease;}
+                #bentoMoreIcon.is-open{transform:rotate(180deg);}
+                .bento-more-btn.is-open .bento-more-stack{display:none;}
+                #bentoMoreIcon{transition:transform .35s ease;}
+                .bento-shelf--open #bentoMoreIcon,#bentoMoreIcon.is-open{transform:rotate(180deg);}
+            }
+            @media(max-width:1024px){
+                .bento-more-wrap{display:none!important;}
+                .bento-shelf--collapsed{max-height:none!important;opacity:1!important;pointer-events:auto!important;}
+            }
+        </style>
+        <script>
+        function toggleBentoShelf(){
+            var shelf=document.getElementById('bentoShelf');
+            var btn=document.getElementById('bentoMoreBtn');
+            var icon=document.getElementById('bentoMoreIcon');
+            var label=document.getElementById('bentoMoreLabel');
+            var isOpen=!shelf.classList.contains('bento-shelf--collapsed');
+            var count=document.querySelector('.bento-more-count');
+            if(isOpen){
+                shelf.classList.add('bento-shelf--collapsed');
+                btn.classList.remove('is-open');
+                icon.classList.remove('is-open');
+                var t=window.__translations&&window.__translations['apps.more']?window.__translations['apps.more']:'Weitere Apps anzeigen';
+                label.textContent=t;
+                label.setAttribute('data-i18n','apps.more');
+                if(count)count.style.display='';
+            } else {
+                shelf.classList.remove('bento-shelf--collapsed');
+                btn.classList.add('is-open');
+                icon.classList.add('is-open');
+                var t2=window.__translations&&window.__translations['apps.less']?window.__translations['apps.less']:'Weniger anzeigen';
+                label.textContent=t2;
+                label.setAttribute('data-i18n','apps.less');
+                if(count)count.style.display='none';
+            }
+        }
+        </script>
+
         <!-- App CTA Banner -->
         <div class="apps-cta-banner" id="apps-cta">
             <div class="apps-cta-glow"></div>
