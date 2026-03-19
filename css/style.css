@@ -368,8 +368,8 @@ body.dark-mode .header-nav-sub:hover {
     align-items: center;
     gap: 8px;
     background: none;
-    border: 1.5px solid var(--begonia400);
-    color: var(--begonia400);
+    border: 1.5px solid #7eb8f7;
+    color: #7eb8f7;
     font-size: 16px;
     font-weight: 600;
     font-family: 'Plus Jakarta Sans', Arial, sans-serif;
