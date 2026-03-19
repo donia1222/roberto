@@ -2470,6 +2470,20 @@ window.addEventListener("pageshow", function() {
         }, 100);
     }
 });
+// Open price calculator when returning from subpages
+(function() {
+    var calc = sessionStorage.getItem('openCalc');
+    if (calc) {
+        sessionStorage.removeItem('openCalc');
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                if (calc === 'app' && typeof openAppPriceCalc === 'function') openAppPriceCalc();
+                if (calc === 'web' && typeof openPriceCalc === 'function') openPriceCalc();
+            }, 400);
+        });
+    }
+})();
+
 // Open mobile menu + subpanel when returning from subpages
 window.addEventListener("pageshow", function() {
     var sub = sessionStorage.getItem('openMobileMenu');
