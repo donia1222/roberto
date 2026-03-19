@@ -2,18 +2,18 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>KI-Integration | ChatGPT & OpenAI | Lweb</title>
-    <meta name="description" content="KI-Lösungen für Ihr Unternehmen — ChatGPT, automatische Prozesse und intelligente Datenanalyse. Persönlich beraten aus Buchs SG.">
-    <link rel="canonical" href="https://www.lweb.ch/leistungen-ki.html">
-    <meta property="og:url" content="https://www.lweb.ch/leistungen-ki.html">
+    <title>App & Web Entwicklung | React Native · Next.js | Lweb</title>
+    <meta name="description" content="App- und Web-Entwicklung von Roberto Salvador — React Native, Next.js, Remix. Persönliche Beratung aus Buchs SG.">
+    <link rel="canonical" href="https://www.lweb.ch/desarrollo.html">
+    <meta property="og:url" content="https://www.lweb.ch/desarrollo.html">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="theme-color" content="#ffffff" id="themeColor">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/translations.js"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
 
@@ -62,11 +62,11 @@
             background:#fe6c75; animation:blink 1.5s infinite;
         }
         .tw-h2 {
-            font-size: 44px; font-weight: 800; line-height: 1.15;
-            letter-spacing: -0.01em; margin-bottom: 16px; color: #0f1d2c;
+            font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.08;
+            letter-spacing: -0.025em; margin-bottom: 16px; color: #0f1d2c;
         }
         .tw-sub {
-            font-size: 17px; line-height: 1.7; color: #6b7d99;
+            font-size: 18px; line-height: 1.7; color: #6b7d99;
             max-width: 600px; margin-bottom: 48px;
         }
         .tw-accent { color: #fe6c75; }
@@ -75,8 +75,9 @@
         .tw-hero {
             min-height: 10vh; display: flex; flex-direction:column;
             align-items:center; justify-content:center;
-            background: linear-gradient(180deg, #fff 15%, #f5f0ff 100%);
+            background: #fff;
             padding: 80px 24px 80px; position: relative; overflow: hidden;
+             margin-top:-20px; 
         }
         .tw-hero-center {
             text-align:center; max-width:780px; margin:0 auto;
@@ -94,12 +95,12 @@
             background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
-            font-size:56px; font-weight:800; line-height:1.08;
-            letter-spacing:-0.025em; color:#0f1d2c; margin-bottom:20px;
+            font-size:clamp(40px, 5.5vw, 72px); font-weight:800; line-height:1.04;
+            letter-spacing:-0.03em; color:#0f1d2c; margin-bottom:20px;
             animation:fadeUp 0.6s 0.15s ease both;
         }
         .tw-hero-sub {
-            font-size:17px; line-height:1.7; color:#6b7d99;
+            font-size:18px; line-height:1.7; color:#6b7d99;
             max-width:560px; margin:0 auto 32px;
             animation:fadeUp 0.6s 0.3s ease both;
         }
@@ -159,9 +160,10 @@
             display:inline-flex; align-items:center; gap:8px;
             background:#fe6c75; color:#fff; border:none;
             border-radius:600px; padding:14px 28px;
-            font-size:15px; font-weight:700; cursor:pointer;
+            font-size:16px; font-weight:700; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
-            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+            box-shadow:0 6px 30px rgba(254,108,117,0.4);
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
         .tw-btn-ghost {
@@ -169,8 +171,9 @@
             background:transparent; color:#3f4960;
             border:1.5px solid rgba(15,29,44,0.15);
             border-radius:600px; padding:13px 26px;
-            font-size:15px; font-weight:600; cursor:pointer;
+            font-size:16px; font-weight:600; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
+            font-family:'Plus Jakarta Sans', sans-serif;
         }
         .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
 
@@ -514,8 +517,8 @@
             width:350px; height:350px; border-radius:50%;
             background:rgba(255,255,255,0.07);
         }
-        .tw-advantage h3 { font-size:28px; font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
-        .tw-advantage p { font-size:16px; line-height:1.7; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
+        .tw-advantage h3 { font-size:clamp(22px, 3vw, 34px); font-weight:800; line-height:1.3; margin:0 0 16px; position:relative; }
+        .tw-advantage p { font-size:17px; line-height:1.65; opacity:0.9; max-width:600px; margin:0 auto 24px; position:relative; }
         .tw-adv-emoji { display:inline-block; font-size:0.85em; animation:tw-wave 2s ease-in-out infinite; }
         .tw-advantage-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; position:relative; }
         .tw-advantage-tag {
@@ -629,7 +632,10 @@
         }
 
         /* Header back button visible on desktop */
-        .header-back-desktop { display:flex !important; }
+        .header-back-desktop { display:flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
+        .header-back-desktop svg { transition: transform 0.2s ease; }
+        .header-back-desktop:hover { background:#8ecce8 !important; }
+        .header-back-desktop:hover svg { transform: translateX(-4px); }
         .header-title {
             display: flex; flex-direction: column; gap: 3px; align-items: center;
             text-align: center; line-height: 1.1;
@@ -659,10 +665,124 @@
             .header-title .accent { font-size: 12px; }
         }
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
+        .header-nav-item { white-space: nowrap; }
         .header.menu-open .header-title span:first-child { color: #fff !important; }
+
+        /* ═══ AI MODELS SECTION ══════════════════════════ */
+        .ki-models-section {
+            background: #f1f5f9;
+            padding: 90px 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        body.dark-mode .ki-models-section {
+            background: linear-gradient(165deg,#060e18 0%,#0f1d2c 60%,#1a0a0d 100%);
+        }
+        .ki-models-section .tw-label { color: #fe6c75; }
+        .ki-models-section .tw-h2   { color: #0f1d2c; }
+        .ki-models-section .tw-sub  { color: #6b7d99; }
+        body.dark-mode .ki-models-section .tw-label { color: rgba(255,255,255,0.45); }
+        body.dark-mode .ki-models-section .tw-h2   { color: #fff; }
+        body.dark-mode .ki-models-section .tw-sub  { color: #8a9bb3; }
+        .ki-models-grid {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:14px;
+            margin-top:48px;
+        }
+        .ki-model-card {
+            background: #fff;
+            border: 1px solid #e2eaf4;
+            border-radius: 18px;
+            padding: 22px 18px 20px;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+            transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+            opacity: 0;
+            transform: translateY(28px);
+            animation: ki-model-in 0.55s ease forwards;
+        }
+        body.dark-mode .ki-model-card {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.07);
+            box-shadow: none;
+        }
+        .ki-model-card:nth-child(1){animation-delay:.05s}
+        .ki-model-card:nth-child(2){animation-delay:.12s}
+        .ki-model-card:nth-child(3){animation-delay:.19s}
+        .ki-model-card:nth-child(4){animation-delay:.26s}
+        .ki-model-card:nth-child(5){animation-delay:.33s}
+        .ki-model-card:nth-child(6){animation-delay:.40s}
+        .ki-model-card:nth-child(7){animation-delay:.47s}
+        .ki-model-card:nth-child(8){animation-delay:.54s}
+        @keyframes ki-model-in { to{opacity:1;transform:translateY(0)} }
+        .ki-model-card:hover {
+            transform: translateY(-6px);
+            border-color: #fe6c75;
+            box-shadow: 0 16px 40px rgba(254,108,117,0.14);
+        }
+        body.dark-mode .ki-model-card:hover {
+            border-color: rgba(254,108,117,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(254,108,117,0.08);
+        }
+        .ki-model-logo {
+            width: 52px; height: 52px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 14px;
+            animation: ki-logo-float 4s ease-in-out infinite;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .ki-model-card:nth-child(2n) .ki-model-logo{animation-duration:5s;animation-delay:-1.5s}
+        .ki-model-card:nth-child(3n) .ki-model-logo{animation-duration:6s;animation-delay:-3s}
+        .ki-model-card:nth-child(5n) .ki-model-logo{animation-duration:4.5s;animation-delay:-2s}
+        @keyframes ki-logo-float {
+            0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)}
+        }
+        .ki-model-logo img { width:30px; height:30px; object-fit:contain; display:block; }
+        .ki-model-logo svg { width:30px; height:30px; }
+        .ki-model-logo--openai { background:#10a37f; }
+        .ki-model-logo--claude { background:#D97757; }
+        .ki-model-logo--gemini { background:linear-gradient(135deg,#4285F4,#34A853); }
+        .ki-model-logo--grok   { background:#111; }
+        .ki-model-logo--dalle  { background:#ab68ff; }
+        .ki-model-logo--midj   { background:#1A222D; }
+        .ki-model-logo--suno   { background:#000; }
+        .ki-model-logo--sd     { background:linear-gradient(135deg,#9D39FF,#A380FF); }
+        .ki-model-name {
+            font-size: 15px; font-weight: 800; color: #0f1d2c;
+            margin-bottom: 2px; letter-spacing: -0.01em;
+        }
+        body.dark-mode .ki-model-name { color: #f1f5f9; }
+        .ki-model-provider {
+            font-size: 10.5px; color: #8a9bb3;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+        body.dark-mode .ki-model-provider { color: rgba(255,255,255,0.38); }
+        .ki-model-tags { display:flex; flex-wrap:wrap; gap:5px; }
+        .ki-model-tag {
+            font-size: 10px; font-weight: 700;
+            padding: 3px 8px; border-radius: 20px;
+            color: #6b7d99;
+            background: #f1f5f9;
+            border: 1px solid #dde6f0;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        body.dark-mode .ki-model-tag {
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.09);
+        }
+        @media(max-width:900px){ .ki-models-grid{grid-template-columns:repeat(2,1fr)} }
+        @media(max-width:480px){
+            .ki-models-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+            .ki-model-card{padding:16px 14px}
+            .ki-model-name{font-size:13px}
+        }
     </style>
 </head>
 <body>
+<script>if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode');</script>
 
 <!-- HEADER -->
 <header class="header">
@@ -670,15 +790,14 @@
         <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </a>
-        <div class="header-title" id="headerTitle" data-i18n-html="tw.header.title">
-            <span>KI-Integration</span>
-            <span class="accent">& Automatisierung</span>
+        <div class="header-title" id="headerTitle">
+            <span>App & Web</span>
+            <span class="accent">Entwicklung</span>
         </div>
         <nav class="header-nav" aria-label="Navigation">
-
-            <a href="#tw-includes" class="header-nav-item"><span data-i18n="tw.nav.includes">Leistungen</span></a>
-            <a href="#tw-extras" class="header-nav-item"><span data-i18n="tw.nav.extras">Extras</span></a>
-            <a href="#tw-cta" class="header-nav-item"><span data-i18n="tw.nav.contact">Kontakt</span></a>
+            <a href="#dev-apps" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><span data-i18n="dev.nav.apps">Apps Móviles</span></a>
+            <a href="#dev-web" class="header-nav-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span data-i18n="dev.nav.web">Web</span></a>
+            <a href="#" onclick="event.preventDefault();openPriceCalc()" class="header-nav-item" style="color:#fe6c75;font-weight:700;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span data-i18n="dev.nav.calc">Preis berechnen</span></a>
         </nav>
         <div class="header-actions">
             <a href="#tw-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
@@ -695,10 +814,10 @@
 <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-menu-nav">
 
-        <a href="#tw-includes" class="mobile-menu-link" data-i18n="tw.nav.includes">Leistungen</a>
-        <a href="#tw-extras" class="mobile-menu-link" data-i18n="tw.nav.extras">Extras</a>
-        <a href="#tw-cta" class="mobile-menu-link" data-i18n="tw.nav.contact">Kontakt</a>
-        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" data-i18n="tw.nav.back">Zurück zur Startseite</a>
+        <a href="#dev-apps" class="mobile-menu-link" onclick="closeMobileMenu()" data-i18n="dev.nav.apps">Apps Móviles</a>
+        <a href="#dev-web" class="mobile-menu-link" onclick="closeMobileMenu()" data-i18n="dev.nav.web">Web</a>
+        <a href="#" class="mobile-menu-link mobile-menu-link--custom" onclick="event.preventDefault();closeMobileMenu();openPriceCalc()" data-i18n="dev.nav.calc">Preis berechnen</a>
+        <a href="index.html" class="mobile-menu-link mobile-menu-link--cta">Zurück zur Startseite</a>
     </nav>
     <div class="mobile-menu-footer">
         <a href="mailto:info@lweb.ch">info@lweb.ch</a>
@@ -707,289 +826,274 @@
 </div>
 
 <!-- ═════════════════ HERO ═════════════════ -->
-<section class="tw-hero">
-    <div class="tw-hero-center">
+<section class="dev-hero">
+<style>
+/* ═══ HERO ═══════════════════════════════════════ */
+.dev-hero{background:#fff;padding:90px 24px 80px;text-align:center;position:relative;overflow:hidden;margin-top:-20px;}
+.dev-hero::before{content:'';position:absolute;inset:0;}
+.dev-wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.dev-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(254,108,117,0.12);border:1px solid rgba(254,108,117,0.3);border-radius:600px;padding:7px 20px;font-size:12px;font-weight:700;color:#fe6c75;letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .6s ease both;}
+.dev-hero-badge .blink{width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:blink 1.5s infinite;display:inline-block;}
+.dev-hero-h1{font-size:clamp(36px,5vw,68px);font-weight:800;line-height:1.06;letter-spacing:-.035em;color:#0f1d2c;margin:0 0 22px;animation:fadeUp .6s .1s ease both;}
+.dev-hero-h1 span{color:#fe6c75;}
+.dev-hero-sub{font-size:18px;line-height:1.7;color:#6b7d99;max-width:560px;margin:0 auto 44px;animation:fadeUp .6s .2s ease both;}
+.dev-hero-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both;}
+.dev-hero-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.dev-hero-btn--red{background:#fe6c75;color:#fff;box-shadow:0 6px 24px rgba(254,108,117,.4);}
+.dev-hero-btn--red:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(254,108,117,.55);}
+.dev-hero-btn--ghost{background:rgba(15,29,44,.06);color:#0f1d2c;border:1.5px solid rgba(15,29,44,.15);}
+.dev-hero-btn--ghost:hover{background:rgba(15,29,44,.1);transform:translateY(-2px);}
+/* Floating chips */
+.dev-chip{position:absolute;border-radius:50px;padding:6px 14px;font-size:11px;font-weight:700;backdrop-filter:blur(8px);animation:float 4s ease-in-out infinite;white-space:nowrap;}
+.dev-chip--1{top:12%;left:4%;background:rgba(108,99,255,.1);color:#6c63ff;border:1px solid rgba(108,99,255,.25);animation-delay:0s;}
+.dev-chip--2{top:20%;right:5%;background:rgba(77,211,91,.12);color:#16a34a;border:1px solid rgba(77,211,91,.3);animation-delay:.8s;}
+.dev-chip--3{bottom:22%;left:6%;background:rgba(254,108,117,.1);color:#e1545d;border:1px solid rgba(254,108,117,.3);animation-delay:1.4s;}
+.dev-chip--4{bottom:30%;right:4%;background:rgba(21,160,218,.1);color:#0284c7;border:1px solid rgba(21,160,218,.3);animation-delay:.5s;}
+.dev-chip--5{top:55%;left:2%;background:rgba(255,180,33,.1);color:#b45309;border:1px solid rgba(255,180,33,.3);animation-delay:1.8s;}
+@media(max-width:640px){.dev-chip{display:none;}}
+body.dark-mode .dev-hero{background:linear-gradient(135deg,#080d14 0%,#0f1d2c 50%,#080d14 100%);}
 
-        <h1 class="tw-hero-h1" data-i18n-html="tw.h1">Intelligente KI<br><span class="tw-accent">für Ihr Business</span></h1>
-        <p class="tw-hero-sub" data-i18n="tw.sub">ChatGPT, automatische Prozesse und smarte Datenanalyse — individuell für Ihr Unternehmen integriert. Sparen Sie Zeit und steigern Sie die Effizienz.</p>
-        <div class="tw-hero-ctas">
-            <a href="#tw-templates" class="tw-btn-red">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                <span data-i18n="tw.cta1">KI-Lösungen ansehen</span>
+/* ═══ SECTION LAYOUT ═══════════════════════════════ */
+.dev-section{padding:80px 24px 80px;}
+
+/* ═══ BLOCK ═══════════════════════════════════════ */
+.dev-block{max-width:1100px;margin:0 auto 64px;display:grid;grid-template-columns:1fr 1fr;border-radius:28px;overflow:hidden;box-shadow:0 16px 64px rgba(0,0,0,.12);min-height:480px;}
+.dev-block:last-of-type{margin-bottom:0;}
+body.dark-mode .dev-block{box-shadow:0 16px 64px rgba(0,0,0,.35);}
+@media(max-width:820px){.dev-block{grid-template-columns:1fr;}}
+
+/* ═══ VISUAL PANEL ═══════════════════════════════ */
+.dev-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:48px 32px;min-height:360px;}
+/* ── App visual (dark) ── */
+.dev-visual--app{background:linear-gradient(135deg,#0f1d2c 0%,#1a3050 100%);}
+.dev-visual--app::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(254,108,117,.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+/* ── Web visual (light) ── */
+.dev-visual--web{background:linear-gradient(135deg,#f0f6ff 0%,#e8f0fe 100%);}
+body.dark-mode .dev-visual--web{background:linear-gradient(135deg,#141d2b 0%,#1a2840 100%);}
+
+/* ═══ PHONE MOCKUP ═══════════════════════════════ */
+.dev-phone-wrap{position:relative;display:flex;gap:-20px;align-items:center;justify-content:center;}
+.dev-phone{position:relative;width:150px;flex-shrink:0;filter:drop-shadow(0 20px 40px rgba(0,0,0,.4));}
+.dev-phone-2{width:130px;position:absolute;right:-50px;top:24px;opacity:.8;}
+.dev-phone-frame{background:#0a1520;border-radius:26px;padding:7px;}
+.dev-phone-screen{border-radius:20px;overflow:hidden;background:#fff;aspect-ratio:9/19.5;}
+.dev-phone-screen img{width:100%;height:100%;object-fit:cover;display:block;}
+.dev-phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:55px;height:5px;background:rgba(0,0,0,.5);border-radius:3px;z-index:1;}
+/* Tech floating badges */
+.dev-float-badge{position:absolute;background:#fff;border-radius:12px;padding:8px 14px;font-size:12px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.15);display:flex;align-items:center;gap:6px;animation:float 3.5s ease-in-out infinite;}
+.dev-float-badge--1{bottom:18%;left:0;animation-delay:0s;}
+.dev-float-badge--2{top:16%;right:0;animation-delay:.9s;}
+.dev-float-badge--3{bottom:36%;right:-4px;animation-delay:1.6s;}
+
+/* ═══ BROWSER MOCKUP ═══════════════════════════════ */
+.dev-browser{width:100%;max-width:440px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.06);}
+body.dark-mode .dev-browser{background:#1e2d3d;border-color:rgba(255,255,255,.06);}
+.dev-browser-bar{background:#f0f4fa;padding:10px 14px;display:flex;align-items:center;gap:6px;}
+body.dark-mode .dev-browser-bar{background:#141d2b;}
+.dev-browser-dot{width:10px;height:10px;border-radius:50%;}
+.dev-browser-dot--r{background:#ff5f57;}
+.dev-browser-dot--y{background:#ffbd2e;}
+.dev-browser-dot--g{background:#28c840;}
+.dev-browser-url{flex:1;background:rgba(0,0,0,.06);border-radius:6px;height:18px;margin-left:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:#64748b;font-family:monospace;}
+body.dark-mode .dev-browser-url{background:rgba(255,255,255,.06);color:#8a9bb3;}
+.dev-browser-body{aspect-ratio:16/10;overflow:hidden;position:relative;}
+.dev-browser-body img{width:100%;height:100%;object-fit:cover;display:block;}
+/* Web floating badges */
+.dev-web-badge{position:absolute;background:#fff;border-radius:10px;padding:7px 12px;font-size:11px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.1);display:flex;align-items:center;gap:5px;animation:float 4s ease-in-out infinite;white-space:nowrap;}
+body.dark-mode .dev-web-badge{background:#1e2d3d;color:#c8d5e3;}
+.dev-web-badge--1{bottom:14%;left:4%;animation-delay:0s;color:#22c55e;}
+.dev-web-badge--2{top:12%;right:2%;animation-delay:1s;color:#3b82f6;}
+.dev-web-badge--3{bottom:28%;right:1%;animation-delay:1.8s;color:#fe6c75;}
+
+/* ═══ CONTENT PANEL ═══════════════════════════════ */
+.dev-content{background:#fff;padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:0;}
+body.dark-mode .dev-content{background:#141d2b;}
+@media(max-width:820px){.dev-content{padding:36px 28px;}}
+.dev-content--dark{background:#0f1d2c;}
+body.dark-mode .dev-content--dark{background:#0a1018;}
+.dev-category{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fe6c75;margin-bottom:12px;}
+.dev-category-dot{width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:blink 1.5s infinite;}
+.dev-h2{font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:#0f1d2c;margin:0 0 10px;}
+body.dark-mode .dev-h2{color:#f1f5f9;}
+.dev-h2--light{color:#fff;}
+.dev-tagline{font-size:15px;line-height:1.6;color:#6b7d99;margin:0 0 28px;}
+.dev-tagline--light{color:rgba(255,255,255,.6);}
+
+/* ── Feature list ── */
+.dev-features{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:10px;}
+.dev-feature{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:#3f4960;}
+body.dark-mode .dev-feature{color:#c8d5e3;}
+.dev-feature--light{color:rgba(255,255,255,.85);}
+.dev-feature-check{width:22px;height:22px;border-radius:50%;background:#4dd35b;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.dev-feature-check svg{color:#fff;}
+
+/* ── Price box ── */
+.dev-price{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:14px;background:rgba(254,108,117,.06);border:1px solid rgba(254,108,117,.15);margin-bottom:28px;}
+.dev-price--dark{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+.dev-price-amount{font-size:28px;font-weight:900;color:#0f1d2c;letter-spacing:-.03em;}
+.dev-price-amount--light{color:#fff;}
+body.dark-mode .dev-price-amount{color:#f1f5f9;}
+.dev-price-note{font-size:12px;color:#6b7d99;line-height:1.4;}
+.dev-price-note--light{color:rgba(255,255,255,.5);}
+
+/* ── CTA Button ── */
+.dev-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;width:fit-content;}
+.dev-btn--red{background:#fe6c75;color:#fff;box-shadow:0 6px 20px rgba(254,108,117,.35);}
+.dev-btn--red:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(254,108,117,.5);}
+.dev-btn--white{background:#fff;color:#0f1d2c;box-shadow:0 6px 20px rgba(0,0,0,.12);}
+.dev-btn--white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.2);}
+
+/* ═══ CTA SECTION ═══════════════════════════════ */
+.dev-cta-wrap{max-width:1100px;margin:64px auto 0;}
+</style>
+
+    <div class="dev-wrap">
+        <!-- Floating chips -->
+        <span class="dev-chip dev-chip--1">React Native</span>
+        <span class="dev-chip dev-chip--2">✓ App Store</span>
+        <span class="dev-chip dev-chip--3">Next.js</span>
+        <span class="dev-chip dev-chip--4">Google Play</span>
+        <span class="dev-chip dev-chip--5">Remix</span>
+
+        <div class="dev-hero-badge"><span class="blink"></span><span data-i18n="dev.hero.badge">Entwicklung & Design</span></div>
+        <h1 class="dev-hero-h1 tw-hero-h1"><span style="color:#0f1d2c;" data-i18n="dev.hero.h1.line1">Apps &amp; Websites</span><br><span style="color:#fe6c75;" data-i18n="dev.hero.h1.line2">die begeistern.</span></h1>
+        <p class="dev-hero-sub" data-i18n="dev.hero.sub">Maßgeschneiderte App- und Web-Entwicklung — von der Idee bis zum Launch. Persönlich beraten, nativ entwickelt, dauerhaft unterstützt.</p>
+        <div class="dev-hero-btns">
+            <a href="#dev-apps" class="dev-hero-btn dev-hero-btn--red" data-i18n="dev.hero.btn1">Apps entwickeln →</a>
+            <a href="#dev-web" class="dev-hero-btn dev-hero-btn--ghost" data-i18n="dev.hero.btn2">Website erstellen →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═════════════════ BLOCKS ═════════════════ -->
+<div class="dev-section">
+
+    <!-- ── BLOCK 1: APPS ── -->
+    <div class="dev-block" id="dev-apps">
+
+        <!-- Visual: dark with phone -->
+        <div class="dev-visual dev-visual--app">
+            <div class="dev-phone-wrap">
+                <div class="dev-phone">
+                    <div class="dev-phone-frame">
+                        <div class="dev-phone-notch"></div>
+                        <div class="dev-phone-screen"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&q=80" alt="App Screenshot"></div>
+                    </div>
+                </div>
+                <div class="dev-phone dev-phone-2">
+                    <div class="dev-phone-frame">
+                        <div class="dev-phone-notch"></div>
+                        <div class="dev-phone-screen"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&q=80" alt="App Screenshot"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dev-float-badge dev-float-badge--1" style="color:#4dd35b;">✓ <span data-i18n="dev.app.badge1">App Store publiziert</span></div>
+            <div class="dev-float-badge dev-float-badge--2" style="color:#3b82f6;">📱 React Native</div>
+            <div class="dev-float-badge dev-float-badge--3" style="color:#fe6c75;">⭐ 4.8 Rating</div>
+        </div>
+
+        <!-- Content: white -->
+        <div class="dev-content">
+            <div class="dev-category"><span class="dev-category-dot"></span><span data-i18n="dev.app.category">Mobile Apps</span></div>
+            <h2 class="dev-h2" data-i18n="dev.app.h2">Mobile App Entwicklung</h2>
+            <p class="dev-tagline" data-i18n="dev.app.tagline">Native iOS- und Android-Apps mit React Native — ein Code, zwei Plattformen.</p>
+            <ul class="dev-features">
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f1">Native Performance auf iOS und Android</span></li>
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f2">Ein Code für beide Plattformen</span></li>
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f3">Individuelles UI/UX-Design</span></li>
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f4">Veröffentlichung im App Store und Play Store</span></li>
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f5">Push-Benachrichtigungen und API-Integration</span></li>
+                <li class="dev-feature"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.app.f6">Persönlicher Support nach dem Launch</span></li>
+            </ul>
+            <div class="dev-price">
+                <div>
+                    <div class="dev-price-amount" data-i18n="dev.app.price">ab CHF 3.500</div>
+                    <div class="dev-price-note" data-i18n="dev.app.price.note">Endpreis je nach Projektumfang</div>
+                </div>
+            </div>
+            <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20App%20entwickeln%20lassen." target="_blank" rel="noopener" class="dev-btn dev-btn--red">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span data-i18n="dev.app.cta">Projekt starten</span>
             </a>
-            <button onclick="openOrderModal()" class="tw-btn-ghost" style="border:none;cursor:pointer;font-family:inherit;">
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                <span data-i18n="tw.banner.btn">Beratung anfragen</span>
-            </button>
-
-
         </div>
-        <div class="tw-hero-pills">
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill1">ChatGPT & OpenAI</span></span>
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill2">Automatisierung</span></span>
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.pill3">Datenanalyse</span></span>
-        </div>
+
     </div>
 
-    <!-- Phone Showcase — 6 phones with template screenshots -->
+    <!-- ── BLOCK 2: WEB ── -->
+    <div class="dev-block" id="dev-web">
 
-</section>
-
-<!-- ═════════════════ MARQUEE ═════════════════ -->
-<div class="tw-marquee-wrap">
-    <div class="tw-marquee">
-        <span class="tw-marquee-item" data-i18n="tw.mq1">ChatGPT Integration</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq2">OpenAI API</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq3">Automatisierung</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq4">Datenanalyse</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq5">NLP</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq6">Computer Vision</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq7">Machine Learning</span>
-        <span class="tw-marquee-item" data-i18n="tw.mq8">Effizienz steigern</span>
-        <span class="tw-marquee-item">ChatGPT Integration</span>
-        <span class="tw-marquee-item">OpenAI API</span>
-        <span class="tw-marquee-item">Automatisierung</span>
-        <span class="tw-marquee-item">Datenanalyse</span>
-        <span class="tw-marquee-item">NLP</span>
-        <span class="tw-marquee-item">Computer Vision</span>
-        <span class="tw-marquee-item">Machine Learning</span>
-        <span class="tw-marquee-item">Effizienz steigern</span>
-    </div>
-</div>
-
-
-
-
-
-<!-- ═════════════════ INCLUDES ═════════════════ -->
-<section class="tw-section tw-inc-section" id="tw-includes">
-    <div class="tw-wrap">
-        <div class="tw-label" data-i18n="tw.inc.label">LEISTUNGEN</div>
-        <h2 class="tw-h2" data-i18n-html="tw.inc.h2">Was ist<br><span class="tw-accent">inklusive?</span></h2>
-        <p class="tw-sub" data-i18n="tw.inc.sub">Klare Leistungen, keine versteckten Kosten. Sie wissen genau, was Sie bekommen.</p>
-        <div class="tw-includes-grid">
-            <div class="tw-inc-col tw-inc-yes">
-                <h3 style="color:#4dd35b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.yes.title">Inklusive</span></h3>
-                <ul class="tw-inc-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y1">Modernes, professionelles Design</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y2">Optimiert für Handy und Tablet</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y3">Ihre Texte und Bilder eingebaut</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y4">Einrichtung auf Ihrer Domain</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y5">SSL-Zertifikat (HTTPS)</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y6">Kontaktformular</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y7">Google Maps Integration</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="tw.inc.y8">Online in 48 Stunden</span></li>
-                </ul>
+        <!-- Content: dark -->
+        <div class="dev-content dev-content--dark">
+            <div class="dev-category"><span class="dev-category-dot"></span><span data-i18n="dev.web.category">Web Development</span></div>
+            <h2 class="dev-h2 dev-h2--light" data-i18n="dev.web.h2">Webentwicklung</h2>
+            <p class="dev-tagline dev-tagline--light" data-i18n="dev.web.tagline">Moderne, schnelle Websites mit Next.js und Remix — ideal für KMU und Startups.</p>
+            <ul class="dev-features">
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f1">Responsives Design für alle Geräte</span></li>
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f2">SEO- und Google-optimiert</span></li>
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f3">Ultraschnelle Ladezeiten</span></li>
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f4">Individuelle CMS-Integration</span></li>
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f5">SSL-Zertifikat und Hosting-Beratung</span></li>
+                <li class="dev-feature dev-feature--light"><span class="dev-feature-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="dev.web.f6">Wartung und Updates</span></li>
+            </ul>
+            <div class="dev-price dev-price--dark">
+                <div>
+                    <div class="dev-price-amount dev-price-amount--light" data-i18n="dev.web.price">ab CHF 950</div>
+                    <div class="dev-price-note dev-price-note--light" data-i18n="dev.web.price.note">Endpreis je nach Projektumfang</div>
+                </div>
             </div>
-            <div class="tw-inc-col tw-inc-no">
-                <h3 style="color:#ff5f56"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.no.title">Nicht inklusive</span></h3>
-                <ul class="tw-inc-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n1">Komplexe Funktionen oder Systeme</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n2">Online-Shop / E-Commerce</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n3">Buchungssystem / Terminplaner</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n4">Individuelle Programmierung</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n5">Domain-Registrierung (separat)</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n6">Visueller Editor (optional, + 200 CHF)</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="tw.inc.n7">Professionelle E-Mail mit eigener Domain</span></li>
-                </ul>
-                <p style="margin-top:18px;font-size:14px;color:#8a9bb3;line-height:1.6" data-i18n="tw.inc.n.note">Diese Funktionen sind als separate Projekte verfügbar. Fragen Sie nach einem individuellen Angebot.</p>
+            <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Website%20erstellen%20lassen." target="_blank" rel="noopener" class="dev-btn dev-btn--white">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span data-i18n="dev.web.cta">Website erstellen</span>
+            </a>
+        </div>
+
+        <!-- Visual: light with browser -->
+        <div class="dev-visual dev-visual--web">
+            <div style="position:relative;width:100%;max-width:420px;">
+                <div class="dev-browser">
+                    <div class="dev-browser-bar">
+                        <span class="dev-browser-dot dev-browser-dot--r"></span>
+                        <span class="dev-browser-dot dev-browser-dot--y"></span>
+                        <span class="dev-browser-dot dev-browser-dot--g"></span>
+                        <span class="dev-browser-url">lweb.ch</span>
+                    </div>
+                    <div class="dev-browser-body">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&q=80" alt="Website Screenshot">
+                    </div>
+                </div>
+                <div class="dev-web-badge dev-web-badge--1">✓ <span data-i18n="dev.web.badge1">SEO optimiert</span></div>
+                <div class="dev-web-badge dev-web-badge--2">⚡ <span data-i18n="dev.web.badge2">Ultraschnell</span></div>
+                <div class="dev-web-badge dev-web-badge--3">📱 <span data-i18n="dev.web.badge3">Responsive</span></div>
             </div>
         </div>
+
     </div>
-</section>
 
-<!-- ═════════════════ EXTRAS ═════════════════ -->
-<section class="tw-section tw-ext-section" id="tw-extras">
-    <div class="tw-wrap">
-        <div class="tw-label" data-i18n="tw.ext.label">OPTIONALE EXTRAS</div>
-        <h2 class="tw-h2" data-i18n-html="tw.ext.h2">Mehr Leistung<br><span class="tw-accent">für Ihre Seite</span></h2>
-        <p class="tw-sub" data-i18n="tw.ext.sub">Erweitern Sie Ihr Template mit optionalen Zusatzleistungen — einfach dazubuchen.</p>
-        <div class="tw-extras-scroll" id="twExtrasGrid">
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=500&q=80" alt="Sprachsteuerung" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext1.title">Sprachsteuerung</h4>
-                    <p data-i18n="tw.ext1.desc">Voice-to-text und Sprachbefehle für Ihre KI-Anwendung.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext1.price">+ 600 CHF</span>
-                </div>
-            </div>
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=500&q=80" alt="Bildgenerierung" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext2.title">Bildgenerierung</h4>
-                    <p data-i18n="tw.ext2.desc">DALL-E oder Stable Diffusion — automatische Bilderstellung.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext2.price">+ 500 CHF</span>
-                </div>
-            </div>
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80" alt="Mehrsprachigkeit" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext3.title">Mehrsprachigkeit</h4>
-                    <p data-i18n="tw.ext3.desc">KI-Antworten in DE, EN, FR, IT — automatisch erkannt.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext3.price">+ 400 CHF</span>
-                </div>
-            </div>
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&q=80" alt="Analytics Dashboard" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext4.title">Analytics Dashboard</h4>
-                    <p data-i18n="tw.ext4.desc">KI-Nutzungsstatistiken, Kosten und Performance in Echtzeit.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext4.price">+ 350 CHF</span>
-                </div>
-            </div>
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" alt="Custom Training" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext5.title">Custom Training</h4>
-                    <p data-i18n="tw.ext5.desc">Eigenes Modell mit Ihren Daten trainieren und fine-tunen.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext5.price">+ 1200 CHF</span>
-                </div>
-            </div>
-            <div class="tw-extra-card">
-                <div class="tw-extra-img"><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=500&q=80" alt="RAG-System" loading="lazy"></div>
-                <div class="tw-extra-body">
-                    <h4 data-i18n="tw.ext6.title">RAG-System</h4>
-                    <p data-i18n="tw.ext6.desc">KI lernt Ihre Dokumente und beantwortet Fragen dazu.</p>
-                    <span class="tw-extra-price" data-i18n="tw.ext6.price">+ 800 CHF</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═════════════════ BUNDLE ═════════════════ -->
-<section class="tw-section tw-bundle-section" style="background:#f4f7fb;padding:80px 24px 90px;">
-    <style>
-        body.dark-mode .tw-bundle-section{background:#0f1d2c !important;}
-        .tw-bundle-h2{font-size:clamp(28px,4vw,46px);font-weight:900;color:#1a1a2e;text-align:center;line-height:1.15;margin:0 0 12px;}
-        .tw-bundle-h2 .tw-bundle-price{color:#fe6c75;}
-        .tw-bundle-sub{font-size:16px;color:#64748b;max-width:560px;margin:0 auto 56px;line-height:1.6;text-align:center;}
-        .tw-bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:960px;margin:0 auto 48px;}
-        @media(max-width:700px){.tw-bundle-grid{grid-template-columns:1fr;gap:36px;max-width:340px;}}
-        .tw-bundle-col{text-align:center;}
-        .tw-bundle-icon{width:140px;height:140px;margin:0 auto 24px;position:relative;}
-        .tw-bundle-icon-main{width:72px;height:72px;border-radius:20px;display:flex;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;}
-        .tw-bundle-icon-float{position:absolute;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.08);z-index:1;animation:bundleFloat 3s ease-in-out infinite;}
-        .tw-bundle-icon-float:nth-child(2){animation-delay:0s;}
-        .tw-bundle-icon-float:nth-child(3){animation-delay:1s;}
-        .tw-bundle-icon-float:nth-child(4){animation-delay:2s;}
-        @keyframes bundleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-        .tw-bundle-icon-float svg{width:18px;height:18px;}
-        .tw-bundle-icon-main svg{width:28px;height:28px;color:#fff;}
-        .tw-bundle-col h4{font-size:18px;font-weight:800;color:#1a1a2e;margin:0 0 8px;}
-        .tw-bundle-col p{font-size:14px;color:#64748b;line-height:1.6;margin:0;max-width:280px;margin-inline:auto;}
-        .tw-bundle-cta{text-align:center;}
-        .tw-bundle-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:2px solid #1a1a2e;border-radius:60px;background:transparent;color:#1a1a2e;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s ease;font-family:inherit;text-decoration:none;}
-        .tw-bundle-btn:hover{background:#1a1a2e;color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,26,46,0.2);}
-        body.dark-mode .tw-bundle-h2,body.dark-mode .tw-bundle-col h4{color:#f1f5f9}
-        body.dark-mode .tw-bundle-sub,body.dark-mode .tw-bundle-col p{color:#94a3b8}
-        body.dark-mode .tw-bundle-btn{border-color:#e2e8f0;color:#e2e8f0}
-        body.dark-mode .tw-bundle-btn:hover{background:#e2e8f0;color:#1a1a2e}
-    </style>
-    <div class="tw-wrap">
-        <h2 class="tw-bundle-h2" data-i18n-html="tw.bundle.h2">Webseite + Domain + Editor<br><span class="tw-bundle-price">ab 650 CHF</span></h2>
-        <p class="tw-bundle-sub" data-i18n="tw.bundle.sub">Alles, was Sie brauchen — in einem Paket.</p>
-        <div class="tw-bundle-grid">
-            <!-- Col 1: Website -->
-            <div class="tw-bundle-col">
-                <div class="tw-bundle-icon">
-                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#e0f2fe;top:8px;left:12px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#fef3c7;top:14px;right:8px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#fce7f3;bottom:4px;left:28px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                    </div>
-                </div>
-                <h4 data-i18n="tw.bundle.c1.h">Prozess-Analyse</h4>
-                <p data-i18n="tw.bundle.c1.p">Wir analysieren Ihre Abläufe und finden das grösste Effizienzpotenzial.</p>
-            </div>
-            <!-- Col 2: Domain -->
-            <div class="tw-bundle-col">
-                <div class="tw-bundle-icon">
-                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#ede9fe;top:6px;right:14px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#d1fae5;top:18px;left:6px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#fee2e2;bottom:2px;right:22px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-                    </div>
-                </div>
-                <h4 data-i18n="tw.bundle.c2.h">KI-Integration</h4>
-                <p data-i18n="tw.bundle.c2.p">API-Anbindung, Prompt-Engineering und sichere DSGVO-konforme Implementierung.</p>
-            </div>
-            <!-- Col 3: Editor -->
-            <div class="tw-bundle-col">
-                <div class="tw-bundle-icon">
-                    <div class="tw-bundle-icon-main" style="background:linear-gradient(135deg,#f97316,#ea580c);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#ffedd5;top:10px;left:8px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#dbeafe;top:4px;right:18px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    </div>
-                    <div class="tw-bundle-icon-float" style="background:#dcfce7;bottom:6px;left:24px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    </div>
-                </div>
-                <h4 data-i18n="tw.bundle.c3.h">30 Tage Support</h4>
-                <p data-i18n="tw.bundle.c3.p">Monitoring, Anpassungen und Schulung nach dem Launch inklusive.</p>
-            </div>
-        </div>
-        <div class="tw-bundle-cta">
-            <button onclick="openOrderModal(true)" class="tw-bundle-btn">
-                <span data-i18n="tw.bundle.btn">KI-Projekt anfragen</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- ═════════════════ STATS ═════════════════ -->
-<div class="tw-stats">
-    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat1.n">48h</div><div class="tw-stat-l" data-i18n="tw.stat1.l">Online-Zeit</div></div>
-    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat2.n">250+</div><div class="tw-stat-l" data-i18n="tw.stat2.l">CHF Startpreis</div></div>
-    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat3.n">100%</div><div class="tw-stat-l" data-i18n="tw.stat3.l">Responsive</div></div>
-    <div class="tw-stat"><div class="tw-stat-n" data-i18n="tw.stat4.n">5+</div><div class="tw-stat-l" data-i18n="tw.stat4.l">Seiten inklusive</div></div>
 </div>
 
 <!-- ═════════════════ CTA ═════════════════ -->
-<section class="tw-cta" id="tw-cta">
+<section class="tw-cta" id="tw-cta" style="margin-top:80px;">
     <div class="tw-wrap">
-        <div class="tw-label" data-i18n="tw.cta.label">KI-Projekt starten</div>
-        <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre intelligente KI-Lösung<br><span class="tw-accent">ab 800 CHF.</span></h2>
-        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="tw.cta.editor">Komplettpaket ab 1500 CHF</p>
-        <p class="tw-sub" data-i18n="tw.cta.p">Von der Prozessanalyse bis zur fertigen Integration. Messbare Effizienzgewinne — persönlich beraten aus Buchs SG.</p>
+        <div class="tw-label" data-i18n="dev.cta.label">BEREIT ZU STARTEN?</div>
+        <h2 class="tw-h2" data-i18n-html="dev.cta.h2">Ihr Projekt<br><span class="tw-accent">persönlich beraten.</span></h2>
+        <p class="tw-sub" data-i18n="dev.cta.sub">Kostenlose Erstberatung, transparente Preise und persönliche Begleitung von der Idee bis zum Launch — aus Buchs SG.</p>
         <div class="tw-cta-btns">
-            <button onclick="openOrderModal()" class="tw-btn-red" style="border:none;cursor:pointer;font-size:inherit;">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                <span data-i18n="tw.banner.btn">Beratung anfragen</span>
-            </button>
-            <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20KI-Integration.%20K%C3%B6nnen%20Sie%20mir%20mehr%20Infos%20geben%3F" target="_blank" rel="noopener" class="tw-btn-ghost">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.592-.822-6.328-2.198l-.442-.37-3.24 1.086 1.086-3.24-.37-.442A9.95 9.95 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                <span data-i18n="tw.cta.btn1">WhatsApp schreiben</span>
+            <a href="https://wa.me/41765608645" target="_blank" rel="noopener" class="tw-btn-red">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                +41 76 560 86 45
+            </a>
+            <a href="mailto:info@lweb.ch" class="tw-btn-ghost">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@lweb.ch
             </a>
         </div>
         <div class="tw-cta-note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-i18n="tw.cta.note">Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung</span>
+            <span data-i18n="dev.cta.note">Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung</span>
         </div>
     </div>
 </section>
+
 
 <!-- ═════════════════ SCRIPTS ═════════════════ -->
 <script>
@@ -1023,8 +1127,7 @@
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
-    var headerTitle = document.getElementById('headerTitle');
-    if (headerTitle && t['tw.header.title']) headerTitle.innerHTML = t['tw.header.title'];
+    // header title fixed for KI page — not overridden by translations
 })();
 </script>
 
@@ -1831,6 +1934,594 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     }
 })();
 </script>
+
+<!-- ═════════════════ CHATBOT MODAL ═════════════════ -->
+<div class="chatbot-overlay" id="chatbotOverlay" onclick="closeChatBot()"></div>
+<div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-header">
+        <div class="chatbot-header-info">
+            <div class="chatbot-avatar">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div>
+                <strong>Lweb Bot</strong>
+                <span class="chatbot-status">Online</span>
+            </div>
+        </div>
+        <div class="chatbot-header-actions">
+            <button class="chatbot-clear" onclick="clearChat()" aria-label="Chat löschen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+            </button>
+            <button class="chatbot-close" onclick="closeChatBot()" aria-label="Schliessen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+    <div class="chatbot-welcome" id="chatbotWelcome">
+        <div class="chatbot-welcome-avatar">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Hallo! Wie möchten Sie kommunizieren?</h3>
+        <p>Wählen Sie Ihre bevorzugte Methode</p>
+        <div class="chatbot-welcome-options">
+            <button class="chatbot-welcome-btn" onclick="chooseChatMode('text')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="12" y2="13"/></svg>
+                <strong>Schreiben</strong>
+                <span>Nachrichten tippen</span>
+            </button>
+            <button class="chatbot-welcome-btn chatbot-welcome-btn--voice" onclick="chooseChatMode('voice')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                <strong>Sprechen</strong>
+                <span>Per Stimme kommunizieren</span>
+            </button>
+        </div>
+    </div>
+    <div class="chatbot-voice-overlay" id="chatbotVoiceOverlay">
+        <button class="chatbot-voice-back" onclick="stopVoiceCall()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Zurück zum Chat
+        </button>
+        <div class="chatbot-voice-circle" id="chatbotVoiceCircle">
+            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="chatbot-voice-status" id="chatbotVoiceStatus">Sprachmodus</div>
+        <div class="chatbot-voice-text" id="chatbotVoiceText"></div>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chatbot-msg chatbot-msg--bot">
+            <p>Hallo! Ich bin der Lweb Bot. Wie kann ich Ihnen helfen?</p>
+        </div>
+    </div>
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <button onclick="sendSuggestion('Was kostet eine App?')">Was kostet eine App?</button>
+        <button onclick="sendSuggestion('Welche Apps habt ihr?')">Welche Apps habt ihr?</button>
+        <button onclick="sendSuggestion('Welche Technologien nutzt ihr?')">Welche Technologien?</button>
+        <button onclick="sendSuggestion('Kontaktdaten')">Kontaktdaten</button>
+    </div>
+    <div class="chatbot-input-area">
+        <input type="text" id="chatbotInput" placeholder="Ihre Frage eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()">
+        <button class="chatbot-mic" id="chatbotMicBtn" onclick="toggleMic()" aria-label="Spracheingabe">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Senden">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+    </div>
+</div>
+
+
+<!-- ═════════════════ BOOKING MODAL ═════════════════ -->
+<style>
+.bk-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
+.bk-overlay.bk-open{display:flex;opacity:1}
+.bk-overlay.bk-closing{opacity:0}
+.bk-box{background:#fff;border-radius:24px;width:100%;max-width:560px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;position:relative;transform:translateY(24px) scale(0.97);transition:transform .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,0.25)}
+@media(max-width:600px){.bk-overlay{padding:0}.bk-box{max-height:100vh;height:100vh;border-radius:0;max-width:100%}}
+.bk-open .bk-box{transform:translateY(0) scale(1)}
+.bk-closing .bk-box{transform:translateY(24px) scale(0.97)}
+.bk-header{padding:26px 28px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.bk-header-text h3{font-size:20px;font-weight:800;color:#0f1d2c;margin:0;line-height:1.2}
+.bk-header-text p{font-size:13px;color:#64748b;margin:4px 0 0}
+.bk-close{width:36px;height:36px;border-radius:10px;border:none;background:#f1f5f9;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.bk-close:hover{background:#e2e8f0;transform:rotate(90deg)}
+.bk-progress{height:3px;background:#f1f5f9;margin:16px 28px 0}
+.bk-progress-bar{height:100%;background:linear-gradient(90deg,#6c63ff,#fe6c75);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.bk-step-label{padding:9px 28px 0;font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c63ff;text-transform:uppercase}
+.bk-body{padding:18px 28px 22px;overflow-y:auto;flex:1}
+.bk-body[data-step]{display:none}
+.bk-body.bk-active{display:block}
+/* Topics */
+.bk-topics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:400px){.bk-topics{grid-template-columns:1fr}}
+.bk-topic{border:2px solid #eef2f7;border-radius:16px;padding:15px 13px;cursor:pointer;transition:all .22s;display:flex;align-items:flex-start;gap:11px;position:relative}
+.bk-topic:hover{border-color:#c4b5fd;background:#faf9ff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,99,255,.08)}
+.bk-topic.bk-sel{border-color:#6c63ff;background:linear-gradient(135deg,rgba(108,99,255,.07),rgba(254,108,117,.04));box-shadow:0 0 0 3px rgba(108,99,255,.15)}
+.bk-topic-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.bk-topic-text h4{font-size:14px;font-weight:800;color:#0f1d2c;margin:0 0 3px}
+.bk-topic-text p{font-size:12px;color:#64748b;margin:0;line-height:1.4}
+.bk-topic-check{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#fe6c75);display:none;align-items:center;justify-content:center}
+.bk-topic.bk-sel .bk-topic-check{display:flex}
+/* Calendar */
+.bk-cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.bk-cal-month{font-size:17px;font-weight:800;background:linear-gradient(90deg,#6c63ff,#fe6c75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.bk-cal-arr{width:34px;height:34px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;color:#475569}
+.bk-cal-arr:hover{border-color:#6c63ff;color:#6c63ff;background:#faf9ff}
+.bk-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.bk-cal-dow{text-align:center;font-size:11px;font-weight:700;color:#94a3b8;padding-bottom:7px;text-transform:uppercase;letter-spacing:.04em}
+.bk-cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;color:#0f1d2c}
+.bk-cal-day:hover:not(.bk-day-past):not(.bk-day-empty){background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(254,108,117,.08));color:#6c63ff;transform:scale(1.08)}
+.bk-cal-day.bk-day-past{color:#cbd5e1;cursor:not-allowed}
+.bk-cal-day.bk-day-empty{cursor:default}
+.bk-cal-day.bk-day-today{border:1.5px solid #6c63ff;color:#6c63ff;font-weight:800}
+.bk-cal-day.bk-day-sel{background:linear-gradient(135deg,#6c63ff,#fe6c75)!important;color:#fff!important;border:none!important;box-shadow:0 4px 14px rgba(108,99,255,.4);transform:scale(1.1);font-weight:800}
+/* Time */
+.bk-time-label{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.07em;text-transform:uppercase;margin:0 0 9px}
+.bk-time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+@media(max-width:400px){.bk-time-grid{grid-template-columns:repeat(3,1fr)}}
+.bk-slot{padding:11px 4px;border:2px solid #eef2f7;border-radius:12px;text-align:center;cursor:pointer;transition:all .18s;font-size:14px;font-weight:700;color:#475569;background:#fff}
+.bk-slot:hover{border-color:#c4b5fd;color:#6c63ff;background:#faf9ff;transform:translateY(-2px)}
+.bk-slot.bk-sel{background:linear-gradient(135deg,#6c63ff,#8b5cf6);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(108,99,255,.35);transform:translateY(-2px)}
+/* Form */
+.bk-form-group{margin-bottom:13px}
+.bk-form-group label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:5px;letter-spacing:.02em}
+.bk-form-group input,.bk-form-group textarea{width:100%;padding:10px 13px;border:2px solid #eef2f7;border-radius:12px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s;color:#0f1d2c;box-sizing:border-box;background:#fff}
+.bk-form-group input:focus,.bk-form-group textarea:focus{border-color:#6c63ff;box-shadow:0 0 0 3px rgba(108,99,255,.1)}
+.bk-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.bk-form-row{grid-template-columns:1fr}}
+.bk-meet-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.bk-meet-opt{border:2px solid #eef2f7;border-radius:14px;padding:12px 13px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px}
+.bk-meet-opt:hover{border-color:#c4b5fd;background:#faf9ff}
+.bk-meet-opt.bk-sel{border-color:#6c63ff;background:rgba(108,99,255,.05)}
+.bk-meet-opt-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bk-meet-opt-text{font-size:13px;font-weight:700;color:#0f1d2c}
+.bk-meet-opt-sub{font-size:11px;color:#94a3b8;margin-top:1px}
+/* Confirm */
+.bk-confirm{text-align:center;padding:8px 0 16px}
+.bk-confirm-icon{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#fe6c75);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 32px rgba(108,99,255,.35)}
+.bk-confirm-icon svg{width:32px;height:32px;color:#fff}
+.bk-confirm h3{font-size:21px;font-weight:800;color:#0f1d2c;margin:0 0 8px}
+.bk-confirm p{font-size:14px;color:#64748b;line-height:1.6;margin:0 0 16px}
+.bk-summary{background:#f8fafc;border-radius:16px;padding:16px 18px;text-align:left}
+.bk-sum-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid #eef2f7}
+.bk-sum-row:last-child{border-bottom:none}
+.bk-sum-row span:first-child{color:#64748b}
+.bk-sum-row span:last-child{font-weight:700;color:#0f1d2c}
+/* Footer */
+.bk-footer{display:flex;justify-content:space-between;gap:12px;padding:14px 28px;border-top:1px solid #f1f5f9;flex-shrink:0;background:#fff}
+.bk-btn{padding:13px 24px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .22s;font-family:inherit}
+.bk-btn-back{background:#f1f5f9;color:#475569}
+.bk-btn-back:hover{background:#e2e8f0}
+.bk-btn-next{background:linear-gradient(135deg,#6c63ff,#8b5cf6);color:#fff;margin-left:auto;box-shadow:0 4px 14px rgba(108,99,255,.28)}
+.bk-btn-next:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(108,99,255,.38)}
+.bk-btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.bk-btn-submit{background:linear-gradient(135deg,#6c63ff,#fe6c75);color:#fff;margin-left:auto;box-shadow:0 4px 14px rgba(108,99,255,.28)}
+.bk-btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(108,99,255,.38)}
+.bk-btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+/* Dark mode */
+body.dark-mode .bk-box{background:#1a1f2e}
+body.dark-mode .bk-header-text h3,body.dark-mode .bk-confirm h3{color:#f1f5f9}
+body.dark-mode .bk-close{background:#2a3040;color:#94a3b8}
+body.dark-mode .bk-topic{border-color:#2a3040}
+body.dark-mode .bk-topic:hover{background:#1e2a3a}
+body.dark-mode .bk-topic.bk-sel{background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(254,108,117,.08))}
+body.dark-mode .bk-topic-text h4,body.dark-mode .bk-meet-opt-text{color:#f1f5f9}
+body.dark-mode .bk-cal-arr{border-color:#2a3040;background:#1e2a3a;color:#94a3b8}
+body.dark-mode .bk-cal-day{color:#e2e8f0}
+body.dark-mode .bk-cal-day.bk-day-past{color:#374151}
+body.dark-mode .bk-slot{border-color:#2a3040;color:#94a3b8;background:#111827}
+body.dark-mode .bk-slot:hover{background:#1e2a3a}
+body.dark-mode .bk-form-group input,body.dark-mode .bk-form-group textarea{border-color:#2a3040;background:#111827;color:#e2e8f0}
+body.dark-mode .bk-meet-opt{border-color:#2a3040}
+body.dark-mode .bk-meet-opt.bk-sel{background:rgba(108,99,255,.1)}
+body.dark-mode .bk-summary{background:#111827}
+body.dark-mode .bk-sum-row{border-bottom-color:#1e2a3a}
+body.dark-mode .bk-sum-row span:last-child{color:#f1f5f9}
+body.dark-mode .bk-footer{background:#1a1f2e;border-top-color:#2a3040}
+body.dark-mode .bk-btn-back{background:#2a3040;color:#e2e8f0}
+body.dark-mode .bk-progress{background:#2a3040}
+</style>
+
+<div class="bk-overlay" id="bookingModal">
+  <div class="bk-box">
+    <div class="bk-header">
+      <div class="bk-header-text">
+        <h3 id="bkTitle">Thema wählen</h3>
+        <p id="bkSub">Kostenlos &amp; unverbindlich</p>
+      </div>
+      <button class="bk-close" onclick="closeBookingModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="bk-progress"><div class="bk-progress-bar" id="bkBar" style="width:25%"></div></div>
+    <div class="bk-step-label" id="bkStepLabel">Schritt 1 von 4</div>
+
+    <div class="bk-body bk-active" data-step="1" id="bkStep1">
+      <div class="bk-topics">
+        <div class="bk-topic" data-topic="KI-Integration &amp; Chatbot" onclick="bkSelectTopic(this)">
+          <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(59,130,246,.15))">🤖</div>
+          <div class="bk-topic-text"><h4>KI-Integration</h4><p>OpenAI, Chatbot, Automatisierung</p></div>
+        </div>
+        <div class="bk-topic" data-topic="Webseite / App Entwicklung" onclick="bkSelectTopic(this)">
+          <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(6,182,212,.15))">🌐</div>
+          <div class="bk-topic-text"><h4>Webseite / App</h4><p>Design, Entwicklung, Launch</p></div>
+        </div>
+        <div class="bk-topic" data-topic="Beratung &amp; Support" onclick="bkSelectTopic(this)">
+          <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(8,145,178,.15),rgba(139,92,246,.15))">💬</div>
+          <div class="bk-topic-text"><h4>Beratung &amp; Support</h4><p>Code-Review, Architektur, Wartung</p></div>
+        </div>
+        <div class="bk-topic" data-topic="Anderes Thema" onclick="bkSelectTopic(this)">
+          <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(239,68,68,.15))">✨</div>
+          <div class="bk-topic-text"><h4>Anderes Thema</h4><p>Allgemeine Anfrage / Idee</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bk-body" data-step="2" id="bkStep2">
+      <div class="bk-cal-nav">
+        <button class="bk-cal-arr" onclick="bkCalPrev()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span class="bk-cal-month" id="bkCalMonth"></span>
+        <button class="bk-cal-arr" onclick="bkCalNext()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="bk-cal-grid" id="bkCalGrid"></div>
+    </div>
+
+    <div class="bk-body" data-step="3" id="bkStep3">
+      <div class="bk-time-label">Vormittag</div>
+      <div class="bk-time-grid">
+        <div class="bk-slot" onclick="bkSelectSlot(this)">09:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">09:30</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">10:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">10:30</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">11:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">11:30</div>
+      </div>
+      <div class="bk-time-label">Nachmittag</div>
+      <div class="bk-time-grid">
+        <div class="bk-slot" onclick="bkSelectSlot(this)">13:30</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">14:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">14:30</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">15:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">15:30</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">16:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">17:00</div>
+        <div class="bk-slot" onclick="bkSelectSlot(this)">18:00</div>
+      </div>
+    </div>
+
+    <div class="bk-body" data-step="4" id="bkStep4">
+      <div class="bk-meet-opts">
+        <div class="bk-meet-opt bk-sel" id="bkMeetOrt" onclick="bkSelectMeet('ort')">
+          <div class="bk-meet-opt-icon" style="background:rgba(108,99,255,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="bk-meet-opt-text">Vor Ort</div><div class="bk-meet-opt-sub">Ich komme zu Ihnen</div></div>
+        </div>
+        <div class="bk-meet-opt" id="bkMeetVideo" onclick="bkSelectMeet('video')">
+          <div class="bk-meet-opt-icon" style="background:rgba(16,185,129,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div><div class="bk-meet-opt-text">Video-Call</div><div class="bk-meet-opt-sub">Zoom / Teams / Meet</div></div>
+        </div>
+      </div>
+      <div class="bk-form-row">
+        <div class="bk-form-group"><label>Name *</label><input type="text" id="bkName" placeholder="Max Mustermann"></div>
+        <div class="bk-form-group"><label>Telefon / WhatsApp *</label><input type="tel" id="bkPhone" placeholder="+41 76 000 00 00"></div>
+      </div>
+      <div class="bk-form-group"><label>E-Mail *</label><input type="email" id="bkEmail" placeholder="max@beispiel.ch"></div>
+      <div class="bk-form-group" id="bkAddressGroup"><label>Ihre Adresse <span style="font-weight:400;color:#94a3b8">(ich komme zu Ihnen)</span></label><input type="text" id="bkAddress" placeholder="Musterstrasse 1, 9470 Buchs SG"></div>
+      <div class="bk-form-group" id="bkLinkGroup" style="display:none"><label>Video-Link <span style="font-weight:400;color:#94a3b8">(falls vorhanden)</span></label><input type="text" id="bkLink" placeholder="https://zoom.us/j/..."></div>
+      <div class="bk-form-group"><label>Nachricht <span style="font-weight:400;color:#94a3b8">(optional)</span></label><textarea id="bkMsg" rows="2" placeholder="Kurze Beschreibung Ihres Projekts..."></textarea></div>
+    </div>
+
+    <div class="bk-body" data-step="5" id="bkStep5">
+      <div class="bk-confirm">
+        <div class="bk-confirm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Anfrage gesendet!</h3>
+        <p>Ich melde mich innerhalb von 24 Stunden zur Bestätigung. Bis dann!</p>
+        <div class="bk-summary" id="bkSummary"></div>
+      </div>
+    </div>
+
+    <div class="bk-footer" id="bkFooter">
+      <button class="bk-btn bk-btn-back" id="bkBack" onclick="bkPrev()" style="display:none">&#8592; Zurück</button>
+      <button class="bk-btn bk-btn-next" id="bkNext" onclick="bkNext()" disabled>Weiter &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var step=1,totalSteps=4;
+  var data={topic:'',date:'',dateLabel:'',time:'',meetType:'ort'};
+  var calDate=new Date();
+  function pad(n){return n<10?'0'+n:n;}
+  function toYMD(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  var todayStr=toYMD(new Date());
+  var MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  var DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
+
+  window.openTerminModal=function(){
+    step=1;data={topic:'',date:'',dateLabel:'',time:'',meetType:'ort'};
+    calDate=new Date();
+    // reset topic selection
+    document.querySelectorAll('#bkStep1 .bk-topic').forEach(function(t){t.classList.remove('bk-sel');});
+    // reset slots
+    document.querySelectorAll('#bkStep3 .bk-slot').forEach(function(s){s.classList.remove('bk-sel');});
+    // reset meet
+    document.getElementById('bkMeetOrt').classList.add('bk-sel');
+    document.getElementById('bkMeetVideo').classList.remove('bk-sel');
+    document.getElementById('bkAddressGroup').style.display='';
+    document.getElementById('bkLinkGroup').style.display='none';
+    ['bkName','bkPhone','bkEmail','bkAddress','bkLink','bkMsg'].forEach(function(id){
+      var el=document.getElementById(id);if(el)el.value='';
+    });
+    document.getElementById('bkFooter').style.display='';
+    renderCal();goStep(1);
+    var m=document.getElementById('bookingModal');
+    m.style.display='flex';
+    requestAnimationFrame(function(){m.classList.add('bk-open');});
+    document.body.style.overflow='hidden';
+  };
+  window.closeBookingModal=function(){
+    var m=document.getElementById('bookingModal');
+    m.classList.add('bk-closing');
+    setTimeout(function(){m.classList.remove('bk-open','bk-closing');m.style.display='';document.body.style.overflow='';},300);
+  };
+  document.getElementById('bookingModal').addEventListener('click',function(e){if(e.target===this)closeBookingModal();});
+
+  function goStep(s){
+    step=s;
+    document.querySelectorAll('#bookingModal .bk-body').forEach(function(b){b.classList.remove('bk-active');});
+    var active=document.querySelector('#bookingModal .bk-body[data-step="'+s+'"]');
+    if(active)active.classList.add('bk-active');
+    document.getElementById('bkBar').style.width=((s/totalSteps)*100)+'%';
+    document.getElementById('bkStepLabel').textContent='Schritt '+s+' von '+totalSteps;
+    document.getElementById('bkBack').style.display=(s>1&&s<=totalSteps)?'':'none';
+    var next=document.getElementById('bkNext');
+    if(s===totalSteps){next.textContent='Anfrage senden ✓';next.className='bk-btn bk-btn-submit';}
+    else if(s>totalSteps){document.getElementById('bkFooter').style.display='none';}
+    else{next.textContent='Weiter →';next.className='bk-btn bk-btn-next';}
+    updateNext();
+    var titles=['Thema wählen','Datum wählen','Uhrzeit wählen','Kontakt & Ort'];
+    var subs=['Worum geht es?','Wann passt es Ihnen?','Welche Zeit passt?','Fast fertig!'];
+    document.getElementById('bkTitle').textContent=titles[s-1]||'Fertig';
+    document.getElementById('bkSub').textContent=subs[s-1]||'Kostenlos & unverbindlich';
+  }
+  window.bkNext=function(){if(step<totalSteps){goStep(step+1);}else{submitBooking();}};
+  window.bkPrev=function(){if(step>1)goStep(step-1);};
+  function updateNext(){
+    var btn=document.getElementById('bkNext');
+    var ok=false;
+    if(step===1)ok=!!data.topic;
+    else if(step===2)ok=!!data.date;
+    else if(step===3)ok=!!data.time;
+    else if(step===4)ok=true;
+    btn.disabled=!ok;
+  }
+  window.bkSelectTopic=function(el){
+    document.querySelectorAll('#bkStep1 .bk-topic').forEach(function(t){t.classList.remove('bk-sel');});
+    el.classList.add('bk-sel');
+    data.topic=el.getAttribute('data-topic');
+    updateNext();
+  };
+  function renderCal(){
+    var m=calDate.getMonth(),y=calDate.getFullYear();
+    document.getElementById('bkCalMonth').textContent=MONTHS[m]+' '+y;
+    var grid=document.getElementById('bkCalGrid');
+    grid.innerHTML='';
+    DAYS.forEach(function(d){var h=document.createElement('div');h.className='bk-cal-dow';h.textContent=d;grid.appendChild(h);});
+    var startDow=(new Date(y,m,1).getDay()+6)%7;
+    for(var i=0;i<startDow;i++){var e=document.createElement('div');e.className='bk-cal-day bk-day-empty';grid.appendChild(e);}
+    var days=new Date(y,m+1,0).getDate();
+    for(var d2=1;d2<=days;d2++){
+      var el=document.createElement('div');
+      el.className='bk-cal-day';el.textContent=d2;
+      var ymd=y+'-'+pad(m+1)+'-'+pad(d2);
+      el.setAttribute('data-date',ymd);
+      el.setAttribute('data-label',d2+'. '+MONTHS[m]+' '+y);
+      if(ymd<todayStr){el.classList.add('bk-day-past');}
+      else{
+        if(ymd===todayStr)el.classList.add('bk-day-today');
+        if(ymd===data.date)el.classList.add('bk-day-sel');
+        (function(elem){elem.addEventListener('click',function(){
+          document.querySelectorAll('#bkCalGrid .bk-cal-day').forEach(function(x){x.classList.remove('bk-day-sel');});
+          elem.classList.add('bk-day-sel');
+          data.date=elem.getAttribute('data-date');
+          data.dateLabel=elem.getAttribute('data-label');
+          updateNext();
+        });})(el);
+      }
+      grid.appendChild(el);
+    }
+  }
+  window.bkCalPrev=function(){calDate.setMonth(calDate.getMonth()-1);renderCal();};
+  window.bkCalNext=function(){calDate.setMonth(calDate.getMonth()+1);renderCal();};
+  window.bkSelectSlot=function(el){
+    document.querySelectorAll('#bkStep3 .bk-slot').forEach(function(s){s.classList.remove('bk-sel');});
+    el.classList.add('bk-sel');data.time=el.textContent.trim();updateNext();
+  };
+  window.bkSelectMeet=function(type){
+    data.meetType=type;
+    document.getElementById('bkMeetOrt').classList.toggle('bk-sel',type==='ort');
+    document.getElementById('bkMeetVideo').classList.toggle('bk-sel',type==='video');
+    document.getElementById('bkAddressGroup').style.display=type==='ort'?'':'none';
+    document.getElementById('bkLinkGroup').style.display=type==='video'?'':'none';
+  };
+  function submitBooking(){
+    var name=document.getElementById('bkName').value.trim();
+    var phone=document.getElementById('bkPhone').value.trim();
+    var email=document.getElementById('bkEmail').value.trim();
+    if(!name||!phone||!email){alert('Bitte Name, Telefon und E-Mail ausfüllen.');return;}
+    var address=document.getElementById('bkAddress').value.trim();
+    var link=document.getElementById('bkLink').value.trim();
+    var msg=document.getElementById('bkMsg').value.trim();
+    var meetLabel=data.meetType==='ort'?'Vor Ort (ich komme zu Ihnen)':'Video-Call';
+    var locDetail=data.meetType==='ort'?(address||'Adresse folgt'):(link||'Link folgt');
+    var summary='Thema: '+data.topic+'\nDatum: '+data.dateLabel+'\nUhrzeit: '+data.time+' Uhr\nTreffen: '+meetLabel+'\n'+(data.meetType==='ort'?'Adresse: ':'Link: ')+locDetail+'\nName: '+name+'\nTelefon: '+phone+'\nE-Mail: '+email+(msg?'\nNachricht: '+msg:'');
+    var isMobile=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)||('ontouchstart' in window&&window.innerWidth<900);
+    if(isMobile){
+      var waText='Hallo Roberto! Ich möchte einen Termin buchen:\n\n'+summary;
+      window.open('https://wa.me/41765608645?text='+encodeURIComponent(waText),'_blank');
+    } else {
+      var subj='Terminanfrage: '+data.topic+' — '+data.dateLabel+' '+data.time;
+      var body='Hallo Roberto,\n\nIch möchte einen Termin buchen:\n\n'+summary+'\n\nVielen Dank!';
+      window.location.href='mailto:info@lweb.ch?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    }
+    var rows=[['Thema',data.topic],['Datum',data.dateLabel],['Uhrzeit',data.time+' Uhr'],['Treffen',meetLabel]];
+    document.getElementById('bkSummary').innerHTML=rows.map(function(r){return '<div class="bk-sum-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';}).join('');
+    goStep(5);document.getElementById('bkFooter').style.display='none';
+    document.getElementById('bkBar').style.width='100%';
+    document.getElementById('bkStepLabel').textContent='✓ Anfrage gesendet';
+    document.getElementById('bkTitle').textContent='Alles erledigt!';
+    document.getElementById('bkSub').textContent='Ich melde mich bald 🙌';
+  }
+})();
+</script>
+
+<script src="js/main.js"></script>
+<script src="js/translations.js"></script>
+<script>
+(function(){
+    var savedLang = localStorage.getItem('lweb_lang');
+    var lang;
+    if (savedLang) { lang = savedLang; }
+    else {
+        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
+        var supported = ['de', 'en', 'es', 'fr', 'it'];
+        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    }
+    if (typeof translations === 'undefined' || !translations[lang] || lang === 'de') return;
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key]) el.innerHTML = t[key];
+    });
+})();
+</script>
+<script src="js/chatbot.js"></script>
+
+<!-- Price Calculator Modal -->
+<div class="calc-overlay" id="calcOverlay" onclick="closePriceCalc()"></div>
+<div class="calc-modal" id="calcModal">
+    <button class="calc-close" onclick="closePriceCalc()" aria-label="Schliessen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="calc-progress"><div class="calc-progress-bar" id="calcProgressBar"></div></div>
+    <div class="calc-steps" id="calcSteps">
+        <div class="calc-step active" data-step="1">
+            <div class="calc-step-header">
+                <span class="calc-step-badge">Schritt 1 von 5</span>
+                <h3>Was möchten Sie erstellen?</h3>
+                <p>Wählen Sie den Projekttyp, der am besten zu Ihnen passt.</p>
+            </div>
+            <div class="calc-options" id="calcTypeOptions">
+                <button class="calc-option" data-value="website" onclick="calcSelectType(this)">
+                    <div class="calc-option-icon calc-option-icon--web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                    <div class="calc-option-text"><strong>Website</strong><span>Professionelle Webseite für Ihr Unternehmen</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="app" onclick="calcSelectType(this)">
+                    <div class="calc-option-icon calc-option-icon--mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                    <div class="calc-option-text"><strong>Mobile App</strong><span>Native iOS &amp; Android App mit React Native</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="app-landing" onclick="calcSelectType(this)">
+                    <div class="calc-option-icon calc-option-icon--combo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="calc-combo-plus"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                    <div class="calc-option-text"><strong>App + Landing Page</strong><span>Mobile App mit professioneller Webpräsenz</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+            </div>
+        </div>
+        <div class="calc-step" data-step="2">
+            <div class="calc-step-header">
+                <span class="calc-step-badge">Schritt 2 von 5</span>
+                <h3 id="calcStep2Title">Wie gross ist Ihr Projekt?</h3>
+                <p id="calcStep2Desc">Wählen Sie den ungefähren Umfang.</p>
+            </div>
+            <div class="calc-options" id="calcScopeOptions"></div>
+        </div>
+        <div class="calc-step" data-step="3">
+            <div class="calc-step-header">
+                <span class="calc-step-badge">Schritt 3 von 5</span>
+                <h3 id="calcStep3Title">Welche Funktionen brauchen Sie?</h3>
+                <p>Wählen Sie alle gewünschten Funktionen aus.</p>
+            </div>
+            <div class="calc-options calc-options--multi" id="calcFeatureOptions"></div>
+        </div>
+        <div class="calc-step" data-step="4">
+            <div class="calc-step-header">
+                <span class="calc-step-badge">Schritt 4 von 5</span>
+                <h3>Haben Sie bereits ein Design?</h3>
+                <p>Das beeinflusst den Aufwand und die Kosten.</p>
+            </div>
+            <div class="calc-options" id="calcDesignOptions">
+                <button class="calc-option" data-value="ready" onclick="calcSelectSingle(this,'design')">
+                    <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+                    <div class="calc-option-text"><strong>Design vorhanden</strong><span>Figma, Sketch, PSD oder ähnliches</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="idea" onclick="calcSelectSingle(this,'design')">
+                    <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+                    <div class="calc-option-text"><strong>Ungefähre Vorstellung</strong><span>Ich habe Ideen, aber kein fertiges Design</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="scratch" onclick="calcSelectSingle(this,'design')">
+                    <div class="calc-option-icon calc-option-icon--design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="calc-option-text"><strong>Design von Grund auf</strong><span>Komplettes UI/UX Design benötigt</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+            </div>
+        </div>
+        <div class="calc-step" data-step="5">
+            <div class="calc-step-header">
+                <span class="calc-step-badge">Schritt 5 von 5</span>
+                <h3>Brauchen Sie KI-Funktionen?</h3>
+                <p>Chatbots, Texterkennung, automatisierte Prozesse und mehr.</p>
+            </div>
+            <div class="calc-options" id="calcAiOptions">
+                <button class="calc-option" data-value="yes" onclick="calcSelectSingle(this,'ai')">
+                    <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <div class="calc-option-text"><strong>Ja, KI integrieren</strong><span>Chatbot, GPT, Bilderkennung etc.</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="no" onclick="calcSelectSingle(this,'ai')">
+                    <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                    <div class="calc-option-text"><strong>Nein, nicht nötig</strong><span>Keine KI-Funktionen benötigt</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+                <button class="calc-option" data-value="maybe" onclick="calcSelectSingle(this,'ai')">
+                    <div class="calc-option-icon calc-option-icon--ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                    <div class="calc-option-text"><strong>Bin mir unsicher</strong><span>Möchte mich beraten lassen</span></div>
+                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
+                </button>
+            </div>
+        </div>
+        <div class="calc-step" data-step="result">
+            <div class="calc-result" id="calcResult">
+                <div class="calc-result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <h3>Ihr geschätztes Budget</h3>
+                <div class="calc-result-summary" id="calcResultSummary"></div>
+                <div class="calc-result-price" id="calcResultPrice"></div>
+                <div class="calc-result-time" id="calcResultTime"></div>
+                <p class="calc-result-note">* Unverbindliche Schätzung. Der endgültige Preis hängt vom konkreten Projektumfang ab.</p>
+                <div class="calc-result-actions">
+                    <button class="calc-result-whatsapp" id="calcWhatsappBtn" onclick="calcOpenWhatsApp()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span id="calcResultWhatsapp">Per WhatsApp kontaktieren</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="calc-nav" id="calcNav">
+        <button class="calc-nav-back" id="calcBackBtn" onclick="calcBack()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Zurück</button>
+        <button class="calc-nav-next" id="calcNextBtn" onclick="calcNext()" disabled>Weiter <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+</div>
 
 </body>
 </html>
