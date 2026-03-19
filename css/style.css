@@ -610,13 +610,22 @@ body.dark-mode .header-nav-sub-hint {
     color: #fff;
 }
 .mobile-menu-link--cta {
-    color: var(--begonia400);
-    border: 1.5px solid var(--begonia400);
+    color: #7eb8f7;
+    border: 1.5px solid #7eb8f7;
     margin-top: 8px;
+    font-size: 16px;
 }
 .mobile-menu-link--cta:hover {
-    background: var(--begonia400);
-    color: #fff;
+    background: rgba(126,184,247,0.15);
+    color: #7eb8f7;
+}
+.mobile-menu-link--cta-red {
+    color: var(--begonia400);
+    border-color: var(--begonia400);
+}
+.mobile-menu-link--cta-red:hover {
+    background: rgba(254,108,117,0.12);
+    color: var(--begonia400);
 }
 .mobile-menu-footer {
     margin-top: 24px;
