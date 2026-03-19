@@ -4177,3 +4177,15 @@ var translations = {
         'nav.services.dev.hint': 'React Native · Next.js · Remix',
     }
 };
+
+// Mark active nav item based on current page
+(function() {
+    var page = window.location.pathname.split('/').pop() || 'index.html';
+    if (!page || page === 'index.html') return;
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.header-nav-sub--custom[href]').forEach(function(el) {
+            var href = el.getAttribute('href').split('/').pop();
+            if (href === page) el.classList.add('active');
+        });
+    });
+})();

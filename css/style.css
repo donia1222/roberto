@@ -169,6 +169,7 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
 }
 .header-nav-item svg {
     color: var(--begonia400);
@@ -256,7 +257,8 @@ body.dark-mode .header-nav-sub:hover {
         white-space: normal;
         transition: background 150ms, box-shadow 150ms, border-color 150ms;
     }
-    .header-nav-sub--custom:hover {
+    .header-nav-sub--custom:hover,
+    .header-nav-sub--custom.active {
         background: #ffe4e6;
         border-color: #fe6c75;
         box-shadow: 0 4px 14px rgba(254,108,117,0.18);
