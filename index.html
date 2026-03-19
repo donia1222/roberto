@@ -1085,7 +1085,7 @@
     .region-pin-label{font-size:0.82rem;font-weight:700;color:var(--text,#1a1a2e);background:var(--surface,#fff);padding:4px 10px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);white-space:nowrap;border:1px solid var(--border,rgba(0,0,0,0.06));}
     [data-theme="dark"] .region-pin-label{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.1);}
     @keyframes region-pulse{0%,100%{box-shadow:0 0 0 6px rgba(var(--begonia-rgb,239,83,80),0.2);}50%{box-shadow:0 0 0 12px rgba(var(--begonia-rgb,239,83,80),0.08);}}
-    @media(max-width:600px){.region-map{aspect-ratio:4/3;}.region-pin-label{font-size:0.72rem;padding:3px 7px;}}
+    @media(max-width:600px){.region-map{aspect-ratio:2/1;max-width:100%;}.region-pin-label{font-size:0.72rem;padding:3px 7px;}}
     .region-pin--anim{opacity:0;transform:translate(-50%,-50%) scale(0) translateY(10px);transition:opacity 0.4s ease, transform 0.4s ease;}
     .region-pin--anim.visible{opacity:1;transform:translate(-50%,-50%) scale(1) translateY(0);}
     .region-map-bg svg line,.region-map-bg svg circle{opacity:0;transition:opacity 0.6s ease;}

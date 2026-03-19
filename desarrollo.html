@@ -1250,6 +1250,53 @@ body.dark-mode .dev-price-amount{color:#f1f5f9;}
 
 </div>
 
+<!-- WORKFLOW -->
+<section class="section workflow">
+    <div class="container">
+        <div class="section-header">
+            <h2>So einfach geht's <img src="img/section-ai-cta-rocket.f0d163deb419.gif" alt="Rocket" style="height: 1.8em; vertical-align: middle; display: inline-block;"></h2>
+            <p>Von der ersten Idee bis zur fertigen App oder Website &mdash; ein transparenter Prozess mit fairen Preisen.</p>
+        </div>
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="workflow-step-number">01</div>
+                <h4>Gespräch (kostenlos)</h4>
+                <p>Wir besprechen Ihre Idee persönlich. Sie erhalten ein unverbindliches Angebot zum fairen Preis.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">02</div>
+                <h4>Website wird erstellt</h4>
+                <p>Ich designe und entwickle Ihre Website oder App. Sie erhalten regelmässige Updates und können Feedback geben.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">03</div>
+                <h4>Veröffentlichung online</h4>
+                <p>Ihre Website geht live. Inklusive persönlichem Support und Betreuung auch nach dem Launch.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">04</div>
+                <h4>Launch &amp; Support</h4>
+                <p>Veröffentlichung im App Store / Play Store und persönlicher Support auch nach dem Launch.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+(function(){
+    var ws = document.querySelector('.workflow-steps');
+    if(!ws) return;
+    if(typeof workflowObserver !== 'undefined') { workflowObserver.observe(ws); return; }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            var steps = e.target.querySelectorAll('.workflow-step');
+            if(e.isIntersecting){ steps.forEach(function(s,i){ setTimeout(function(){ s.classList.add('visible'); }, i*200); }); }
+            else { steps.forEach(function(s){ s.classList.remove('visible'); }); }
+        });
+    },{threshold:0.15});
+    obs.observe(ws);
+})();
+</script>
+
 <!-- ═════════════════ CTA ═════════════════ -->
 <section class="tw-cta" id="tw-cta" style="margin-top:80px;">
     <div class="tw-wrap">
