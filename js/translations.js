@@ -1539,6 +1539,7 @@ var translations = {
         'ap.cta.note': 'Free initial consultation — non-binding and without obligation',
         // webs-publicadas
         'wb.pub.hero.badge': 'Published Websites',
+        'wb.filter.all': 'All', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomy', 'wb.filter.ki': 'AI & Tech',
         'wb.pub.hero.h1': 'Websites for<br><span>SMEs & Businesses</span>',
         'wb.pub.hero.sub': 'From restaurants to eCommerce, from AI tools to engineering firms. Built with Next.js, Remix and React — all live, all for real clients.',
         'wb.pub.hero.stat.projects': 'Projects live',
@@ -2393,6 +2394,7 @@ var translations = {
         'ap.cta.note': 'Consulta inicial gratuita — sin compromiso y sin obligación',
         // webs-publicadas
         'wb.pub.hero.badge': 'Webs publicadas',
+        'wb.filter.all': 'Todos', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomía', 'wb.filter.ki': 'IA & Tech',
         'wb.pub.hero.h1': 'Webs para<br><span>PYMEs & negocios</span>',
         'wb.pub.hero.sub': 'Desde restaurantes hasta eCommerce, desde herramientas IA hasta ingenierías. Desarrolladas con Next.js, Remix y React — todas live, todas para clientes reales.',
         'wb.pub.hero.stat.projects': 'Proyectos live',
@@ -3247,6 +3249,7 @@ var translations = {
         'ap.cta.note': 'Consultation initiale gratuite — sans engagement et sans obligation',
         // webs-publicadas
         'wb.pub.hero.badge': 'Sites web publiés',
+        'wb.filter.all': 'Tous', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomie', 'wb.filter.ki': 'IA & Tech',
         'wb.pub.hero.h1': 'Sites web pour<br><span>PME & commerces</span>',
         'wb.pub.hero.sub': 'Des restaurants à l\'eCommerce, des outils IA aux bureaux d\'ingénierie. Développés avec Next.js, Remix et React — tous live, tous pour de vrais clients.',
         'wb.pub.hero.stat.projects': 'Projets live',
@@ -4101,6 +4104,7 @@ var translations = {
         'ap.cta.note': 'Consulenza iniziale gratuita — senza vincoli e senza obblighi',
         // webs-publicadas
         'wb.pub.hero.badge': 'Siti web pubblicati',
+        'wb.filter.all': 'Tutti', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomia', 'wb.filter.ki': 'IA & Tech',
         'wb.pub.hero.h1': 'Siti web per<br><span>PMI & aziende</span>',
         'wb.pub.hero.sub': 'Dai ristoranti all\'eCommerce, dagli strumenti IA agli studi di ingegneria. Sviluppati con Next.js, Remix e React — tutti live, tutti per clienti reali.',
         'wb.pub.hero.stat.projects': 'Progetti live',

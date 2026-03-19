@@ -1051,10 +1051,29 @@ body.dark-mode .wb-tag--web3{background:#0a1a40;color:#93c5fd;}
 .wb-card-link:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);}
 body.dark-mode .wb-card-link{background:#1e2d3d;}
 </style>
+    <!-- FILTER TABS -->
+    <div class="wb-filter-wrap">
+        <button class="wb-filter-btn active" data-filter="all" data-i18n="wb.filter.all">Alle</button>
+        <button class="wb-filter-btn" data-filter="ecommerce" data-i18n="wb.filter.ecommerce">eCommerce</button>
+        <button class="wb-filter-btn" data-filter="gastro" data-i18n="wb.filter.gastro">Gastronomie</button>
+        <button class="wb-filter-btn" data-filter="ki" data-i18n="wb.filter.ki">KI & Tech</button>
+    </div>
+    <style>
+    .wb-filter-wrap{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:40px;}
+    .wb-filter-btn{background:rgba(15,29,44,0.06);border:1.5px solid transparent;border-radius:50px;padding:9px 22px;font-size:13px;font-weight:700;color:#6b7d99;cursor:pointer;transition:all .22s ease;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.01em;}
+    .wb-filter-btn:hover{background:rgba(254,108,117,0.08);color:#fe6c75;border-color:rgba(254,108,117,0.2);}
+    .wb-filter-btn.active{background:#fe6c75;color:#fff;border-color:#fe6c75;box-shadow:0 4px 16px rgba(254,108,117,0.35);}
+    body.dark-mode .wb-filter-btn{background:rgba(255,255,255,0.07);color:#8a9bb3;}
+    body.dark-mode .wb-filter-btn.active{background:#fe6c75;color:#fff;}
+    .wb-stack-section.wb-is-filtered .wb-stack-wrap{display:flex;flex-direction:column;gap:24px;}
+    .wb-stack-section.wb-is-filtered .wb-card{position:relative!important;top:auto!important;margin-bottom:0!important;}
+    .wb-card.wb-hidden{display:none!important;}
+    </style>
+
     <div class="wb-stack-wrap">
 
         <!-- 1 -->
-        <div class="wb-card" id="wb-ecommerce" style="top:88px;z-index:1;">
+        <div class="wb-card" data-cat="ecommerce" id="wb-ecommerce" style="top:88px;z-index:1;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">leder-shop.ch</span></div>
                 <img src="img/ledershop.jpeg" alt="Leder-Shop">
@@ -1071,7 +1090,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 2 -->
-        <div class="wb-card" style="top:108px;z-index:2;">
+        <div class="wb-card" data-cat="ecommerce" style="top:108px;z-index:2;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">usfh.ch</span></div>
                 <img src="img/usa.jpeg" alt="US-Fishing & Huntingshop">
@@ -1088,7 +1107,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 3 -->
-        <div class="wb-card" id="wb-ki" style="top:128px;z-index:3;">
+        <div class="wb-card" data-cat="ki" id="wb-ki" style="top:128px;z-index:3;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">ai-generator-a5j5.vercel.app</span></div>
                 <img src="img/geenrador.jpeg" alt="KI Creator Suite">
@@ -1105,7 +1124,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 4 -->
-        <div class="wb-card" style="top:148px;z-index:4;">
+        <div class="wb-card" data-cat="ki" style="top:148px;z-index:4;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">rezeptsammlung.net</span></div>
                 <img src="img/recipesamlun.jpeg" alt="Recipe Digitizer">
@@ -1122,7 +1141,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 5 -->
-        <div class="wb-card" style="top:168px;z-index:5;">
+        <div class="wb-card" data-cat="ecommerce" style="top:168px;z-index:5;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">hot-bbq.ch</span></div>
                 <img src="img/hotbbq.jpg" alt="HOT & BBQ">
@@ -1139,7 +1158,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 6 -->
-        <div class="wb-card" style="top:188px;z-index:6;">
+        <div class="wb-card" data-cat="business" style="top:188px;z-index:6;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">beautystyles.vercel.app</span></div>
                 <img src="img/beautystyle.jpg" alt="BeautyStyle">
@@ -1156,7 +1175,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 7 -->
-        <div class="wb-card" id="wb-gastro" style="top:208px;z-index:7;">
+        <div class="wb-card" data-cat="gastro" id="wb-gastro" style="top:208px;z-index:7;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">ushuaia-bar.ch</span></div>
                 <img src="img/ushuaia.png" alt="Ushuaia Bar">
@@ -1173,7 +1192,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 8 -->
-        <div class="wb-card" style="top:228px;z-index:8;">
+        <div class="wb-card" data-cat="gastro" style="top:228px;z-index:8;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">cantinatexmex.ch</span></div>
                 <img src="img/cantina.jpeg" alt="Cantina Tex-Mex">
@@ -1190,7 +1209,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 9 -->
-        <div class="wb-card" id="wb-business" style="top:248px;z-index:9;">
+        <div class="wb-card" data-cat="business" id="wb-business" style="top:248px;z-index:9;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">inotecengineering.ch</span></div>
                 <img src="img/inotec.jpeg" alt="iNOTEC Engineering">
@@ -1207,7 +1226,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 10 -->
-        <div class="wb-card" style="top:268px;z-index:10;">
+        <div class="wb-card" data-cat="business" style="top:268px;z-index:10;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">flink-sauber.li</span></div>
                 <img src="img/flinck.jpeg" alt="Flinck Sauber">
@@ -1224,7 +1243,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 11 -->
-        <div class="wb-card" style="top:288px;z-index:11;">
+        <div class="wb-card" data-cat="gastro" style="top:288px;z-index:11;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">bouquetmediterraneo.ch</span></div>
                 <img src="img/bouquet.jpeg" alt="Bouquet Mediterraneo">
@@ -1241,7 +1260,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 12 -->
-        <div class="wb-card" style="top:308px;z-index:12;">
+        <div class="wb-card" data-cat="business" style="top:308px;z-index:12;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">remix-crypto.vercel.app</span></div>
                 <img src="img/crypto.png" alt="Crypto Dashboard">
@@ -1258,7 +1277,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 13 -->
-        <div class="wb-card" style="top:328px;z-index:13;">
+        <div class="wb-card" data-cat="business" style="top:328px;z-index:13;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">renovation-tau.vercel.app</span></div>
                 <img src="img/renovation.jpg" alt="Renovation">
@@ -1275,7 +1294,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 14 -->
-        <div class="wb-card" style="top:348px;z-index:14;">
+        <div class="wb-card" data-cat="business" style="top:348px;z-index:14;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">rrapi.ch</span></div>
                 <img src="img/rrapi.jpg" alt="Rrapi Immobilien">
@@ -1292,7 +1311,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 15 -->
-        <div class="wb-card" style="top:368px;z-index:15;margin-bottom:0;">
+        <div class="wb-card" data-cat="gastro" style="top:368px;z-index:15;margin-bottom:0;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">espanol-lac.vercel.app</span></div>
                 <img src="img/espanol.jpeg" alt="El Español">
@@ -2626,6 +2645,28 @@ body.dark-mode .bk-progress{background:#2a3040}
 </script>
 
 <script src="js/translations.js"></script>
+<script>
+// ── CARD FILTER ─────────────────────────────────────────
+(function(){
+    var section = document.querySelector('.wb-stack-section');
+    document.querySelectorAll('.wb-filter-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            var filter = btn.getAttribute('data-filter');
+            document.querySelectorAll('.wb-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active');
+            if(filter === 'all'){
+                section.classList.remove('wb-is-filtered');
+                document.querySelectorAll('.wb-card').forEach(function(c){ c.classList.remove('wb-hidden'); });
+            } else {
+                section.classList.add('wb-is-filtered');
+                document.querySelectorAll('.wb-card').forEach(function(c){
+                    c.classList.toggle('wb-hidden', c.getAttribute('data-cat') !== filter);
+                });
+            }
+        });
+    });
+})();
+</script>
 <script>
 (function(){
     var savedLang = localStorage.getItem('lweb_lang');
