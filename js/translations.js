@@ -16,7 +16,7 @@ var translations = {
         'nav.apps.price': 'Preis berechnen',
         'nav.apps.price.hint': 'Sofortschätzung für Ihre App',
         'nav.websites': 'Websites',
-        'nav.websites.published': 'Veröffentlichte Projekte',
+        'nav.websites.published': 'Projekte',
         'nav.websites.published.hint': 'Unternehmen, die Lweb vertrauen',
         'nav.websites.shop': 'Perfekter Online-Shop',
         'nav.websites.shop.hint': 'Mit Administrationspanel',
