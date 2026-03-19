@@ -888,7 +888,7 @@
 .wb-hero{background:linear-gradient(180deg,#fff 0%,#eef4ff 100%);padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden;margin-top:-20px;}
 .wb-wrap{max-width:1100px;margin:0 auto;}
 .wb-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(254,108,117,0.08);border:1px solid rgba(254,108,117,0.2);border-radius:600px;padding:7px 18px;font-size:12px;font-weight:700;color:#fe6c75;letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .6s ease both;}
-.wb-hero-badge .blink{width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:blink 1.5s infinite;display:inline-block;}
+.wb-hero-badge .blink{width:6px;height:6px;border-radius:50%;background:#4dd35b;animation:blink 1.5s infinite;display:inline-block;}
 .wb-hero-h1{font-size:clamp(38px,5.5vw,72px);font-weight:800;line-height:1.05;letter-spacing:-.035em;color:#0f1d2c;margin:0 0 20px;animation:fadeUp .6s .1s ease both;}
 .wb-hero-h1 span{color:#fe6c75;}
 .wb-hero-sub{font-size:18px;line-height:1.7;color:#6b7d99;max-width:580px;margin:0 auto 40px;animation:fadeUp .6s .2s ease both;}
@@ -942,52 +942,45 @@ body.dark-mode .wb-chip{background:#1e2a3a;border-color:rgba(255,255,255,.08);co
     </div>
 </section>
 
-<!-- ═════════════════ TECH CHIPS MARQUEE ═════════════════ -->
-<div class="wb-chips-marquee-wrap">
+<!-- ═════════════════ TECH MARQUEE ═════════════════ -->
 <style>
-.wb-chips-marquee-wrap{display:block;overflow:hidden;background:#fff;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.06);}
-body.dark-mode .wb-chips-marquee-wrap{background:#1a1f2e;border-color:rgba(255,255,255,.06);}
-@keyframes wb-marquee{0%{transform:translateX(0)}100%{transform:translateX(-33.333%)}}
-.wb-chips-marquee{display:flex;gap:12px;width:max-content;animation:wb-marquee 35s linear infinite;}
-.wb-chip-m{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:50px;padding:6px 14px 6px 10px;font-size:12px;font-weight:700;color:#3f4960;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.07);}
-.wb-chip-m .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-body.dark-mode .wb-chip-m{background:#1e2a3a;border-color:rgba(255,255,255,.1);color:#c8d5e3;}
+.tw-marquee-wrap{overflow:hidden;padding:20px 0;background:#eef3fc;position:relative;}
+.tw-marquee-wrap::before,.tw-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;}
+.tw-marquee-wrap::before{left:0;background:linear-gradient(90deg,#eef3fc,transparent);}
+.tw-marquee-wrap::after{right:0;background:linear-gradient(270deg,#eef3fc,transparent);}
+.tw-marquee{display:flex;gap:40px;width:max-content;animation:tw-marquee 30s linear infinite;}
+.tw-marquee:hover{animation-play-state:paused;}
+.tw-marquee-item{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;color:#3f4960;white-space:nowrap;text-transform:uppercase;letter-spacing:0.05em;}
+.tw-marquee-item::before{content:'';width:6px;height:6px;border-radius:50%;background:#fe6c75;flex-shrink:0;}
+@keyframes tw-marquee{to{transform:translateX(-50%);}}
+body.dark-mode .tw-marquee-wrap{background:#151a27;}
+body.dark-mode .tw-marquee-wrap::before{background:linear-gradient(90deg,#151a27,transparent);}
+body.dark-mode .tw-marquee-wrap::after{background:linear-gradient(270deg,#151a27,transparent);}
+body.dark-mode .tw-marquee-item{color:#8a9bb3;}
 </style>
-  <div class="wb-chips-marquee">
-    <!-- set 1 -->
-    <div class="wb-chip-m"><span class="dot" style="background:#e34f26"></span>HTML</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#1572b6"></span>CSS</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#f7df1e"></span>JavaScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#3178c6"></span>TypeScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Next.js</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#61dafb"></span>React</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#777bb4"></span>PHP</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Vercel</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#06b6d4"></span>Remix</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#38bdf8"></span>Tailwind</div>
-    <!-- set 2 -->
-    <div class="wb-chip-m"><span class="dot" style="background:#e34f26"></span>HTML</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#1572b6"></span>CSS</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#f7df1e"></span>JavaScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#3178c6"></span>TypeScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Next.js</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#61dafb"></span>React</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#777bb4"></span>PHP</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Vercel</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#06b6d4"></span>Remix</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#38bdf8"></span>Tailwind</div>
-    <!-- set 3 -->
-    <div class="wb-chip-m"><span class="dot" style="background:#e34f26"></span>HTML</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#1572b6"></span>CSS</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#f7df1e"></span>JavaScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#3178c6"></span>TypeScript</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Next.js</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#61dafb"></span>React</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#777bb4"></span>PHP</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#000"></span>Vercel</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#06b6d4"></span>Remix</div>
-    <div class="wb-chip-m"><span class="dot" style="background:#38bdf8"></span>Tailwind</div>
-  </div>
+<div class="tw-marquee-wrap">
+    <div class="tw-marquee">
+        <span class="tw-marquee-item">HTML</span>
+        <span class="tw-marquee-item">CSS</span>
+        <span class="tw-marquee-item">JavaScript</span>
+        <span class="tw-marquee-item">TypeScript</span>
+        <span class="tw-marquee-item">Next.js</span>
+        <span class="tw-marquee-item">React</span>
+        <span class="tw-marquee-item">PHP</span>
+        <span class="tw-marquee-item">Vercel</span>
+        <span class="tw-marquee-item">Remix</span>
+        <span class="tw-marquee-item">Tailwind</span>
+        <span class="tw-marquee-item">HTML</span>
+        <span class="tw-marquee-item">CSS</span>
+        <span class="tw-marquee-item">JavaScript</span>
+        <span class="tw-marquee-item">TypeScript</span>
+        <span class="tw-marquee-item">Next.js</span>
+        <span class="tw-marquee-item">React</span>
+        <span class="tw-marquee-item">PHP</span>
+        <span class="tw-marquee-item">Vercel</span>
+        <span class="tw-marquee-item">Remix</span>
+        <span class="tw-marquee-item">Tailwind</span>
+    </div>
 </div>
 
 <!-- ═════════════════ STACKING CARDS ═════════════════ -->
