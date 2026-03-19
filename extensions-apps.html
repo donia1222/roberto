@@ -745,12 +745,14 @@ body.dark-mode .lang-opt:hover{background:#1e2a3a;color:#f1f5f9}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-panel-back" onclick="sessionStorage.setItem('openMobileMenu','main-open');">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    <span data-i18n="nav.back.main">Hauptmenü</span>
+  </a>
   <nav class="mobile-menu-nav">
-    <a href="index.html" class="mobile-menu-link mobile-menu-link--cta" onclick="sessionStorage.setItem('openMobileMenu','sub-open-apps');">Zurück zu Mobile Apps</a>
-    <a href="#popular" class="mobile-menu-link" data-i18n="ext.nav.popular">Extensiones</a>
-    <a href="#cms" class="mobile-menu-link" data-i18n="ext.nav.cms">CMS</a>
-    <a href="#collections" class="mobile-menu-link" data-i18n="ext.nav.collections">Colecciones</a>
-    <a href="#multilingual" class="mobile-menu-link" data-i18n="ext.nav.multi">Idiomas</a>
+    <a href="extensions-apps.html" class="mobile-menu-link mobile-menu-link--custom active"><span data-i18n="nav.apps.create">App erstellen</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></a>
+    <a href="apps-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></a>
+    <a href="#" class="mobile-menu-link mobile-menu-link--custom" onclick="event.preventDefault();closeMobileMenu();if(typeof openAppPriceCalc==='function')openAppPriceCalc();else window.location.href='index.html';"><span data-i18n="nav.apps.price">Preis berechnen</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.price.hint">Sofortschätzung für Ihre App</small></a>
   </nav>
   <div class="mobile-menu-footer">
     <a href="mailto:info@lweb.ch">info@lweb.ch</a>

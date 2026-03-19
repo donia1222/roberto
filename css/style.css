@@ -403,6 +403,10 @@ body.dark-mode .header-nav-sub:hover {
     flex-direction: column;
     gap: 0;
 }
+.mobile-menu-link--custom.active {
+    color: var(--begonia400);
+    background: rgba(254,108,117,0.08);
+}
 .mobile-menu-link-hint {
     display: block;
     font-size: 12px;
