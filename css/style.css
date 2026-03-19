@@ -560,6 +560,12 @@ body.dark-mode .header-nav-sub-hint {
     background: rgba(255,255,255,0.1);
     color: #fff;
 }
+.header.menu-open .header-icon-btn--primary {
+    display: none !important;
+}
+.header.menu-open .header-back-desktop {
+    visibility: hidden !important;
+}
 
 /* Mobile menu modal */
 .mobile-menu {
