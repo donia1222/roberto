@@ -31,7 +31,7 @@
         .bl-title-icon { display: inline-block; color: #fe6c75; animation: bl-spin 3s linear infinite; }
         /* ── HERO BANNER ── */
         .bl-hero-banner {
-            background: #fff;
+            background: linear-gradient(180deg,#fff 0%,#eef4ff 100%);
             padding: 90px 24px 80px; overflow: hidden; position: relative; margin-top: -20px;
         }
         .bl-hero-inner {
@@ -396,15 +396,41 @@
             .bl-filter-btn { padding: 8px 16px; font-size: 13px; }
         }
 
-        /* header back desktop */
-        .header-back-desktop { display: flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
+        /* Header — igual que webs-publicadas.html */
+        .header-back-desktop { display:flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
         .header-back-desktop svg { transition: transform 0.2s ease; }
         .header-back-desktop:hover { background:#8ecce8 !important; }
         .header-back-desktop:hover svg { transform: translateX(-4px); }
-        .header-burger { display: none !important; }
-        @media(max-width: 1024px) {
+        .header-title {
+            display: flex; flex-direction: column; gap: 3px; align-items: center;
+            text-align: center; line-height: 1.1;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
+        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #fe6c75; }
+        .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
+        .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
+        .header .header-nav { transition: opacity 0.3s ease; }
+        @media (min-width:1025px) {
+            .header-title {
+                position: absolute; left: 90px; transform: none;
+                text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+            }
+            .header-title span:first-child { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+            .header-title .accent { font-size: 13px; font-weight: 800; }
+            .header.past-hero .header-nav { opacity: 1; pointer-events: auto; }
+            .header .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+            .header-inner { position: relative; }
+        }
+        @media (max-width:1024px) {
+            .header-title { position: absolute; left: 50%; transform: translateX(-50%); }
+            .header-title span:first-child { font-size: 17px; }
+            .header-title .accent { font-size: 12px; }
             .header.menu-open .header-back-desktop { visibility: hidden !important; }
         }
+        body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
+        .header-nav-item { white-space: nowrap; }
+        .header.menu-open .header-title span:first-child { color: #fff !important; }
     </style>
 </head>
 <body>
@@ -416,7 +442,10 @@
         <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </a>
-        <div class="header-title" id="headerTitle"></div>
+        <div class="header-title" id="headerTitle">
+            <span>Blog</span>
+            <span class="accent">Web Dev Insights</span>
+        </div>
         <nav class="header-nav" aria-label="Hauptnavigation">
     <div class="header-nav-dropdown">
         <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
