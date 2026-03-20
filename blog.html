@@ -31,7 +31,7 @@
         .bl-title-icon { display: inline-block; color: #fe6c75; animation: bl-spin 3s linear infinite; }
         /* ── HERO BANNER ── */
         .bl-hero-banner {
-            background: linear-gradient(180deg, #fff 0%, #fffbf2 100%);
+            background: #fff;
             padding: 90px 24px 80px; overflow: hidden; position: relative; margin-top: -20px;
         }
         .bl-hero-inner {
@@ -399,6 +399,7 @@
         /* header back desktop */
         .header-back-desktop { display: flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
         .header-back-desktop:hover { background:#8ecce8 !important; }
+        .header-burger { display: none !important; }
         @media(max-width: 1024px) {
             .header.menu-open .header-back-desktop { visibility: hidden !important; }
         }
@@ -509,13 +510,13 @@
     <div class="bl-hero-inner">
         <!-- LEFT -->
         <div>
-            <div class="bl-hero-badge"><span class="bl-hero-badge-dot"></span> Lweb · Buchs SG</div>
+            <div class="bl-hero-badge"><span class="bl-hero-badge-dot"></span> <span data-i18n="blog.hero.loc">Lweb · Buchs SG</span></div>
             <h1 class="bl-hero-h1"><span class="bl-star">✦</span> Blog</h1>
-            <p class="bl-hero-sub-new">Webentwicklung, Mobile Apps, KI &amp; mehr — Tipps und Einblicke direkt vom Entwickler in Buchs SG.</p>
+            <p class="bl-hero-sub-new" data-i18n="blog.hero.sub">Webentwicklung, Mobile Apps, KI &amp; mehr — Tipps und Einblicke direkt vom Entwickler in Buchs SG.</p>
             <div class="bl-hero-stat-row">
-                <div class="bl-hero-stat"><span class="bl-hero-stat-n">12+</span><span class="bl-hero-stat-l">Artikel</span></div>
-                <div class="bl-hero-stat"><span class="bl-hero-stat-n">4</span><span class="bl-hero-stat-l">Kategorien</span></div>
-                <div class="bl-hero-stat"><span class="bl-hero-stat-n">~6 Min.</span><span class="bl-hero-stat-l">Ø Lesezeit</span></div>
+                <div class="bl-hero-stat"><span class="bl-hero-stat-n">12+</span><span class="bl-hero-stat-l" data-i18n="blog.stat.articles">Artikel</span></div>
+                <div class="bl-hero-stat"><span class="bl-hero-stat-n">4</span><span class="bl-hero-stat-l" data-i18n="blog.stat.categories">Kategorien</span></div>
+                <div class="bl-hero-stat"><span class="bl-hero-stat-n">~6 Min.</span><span class="bl-hero-stat-l" data-i18n="blog.stat.readtime">Ø Lesezeit</span></div>
             </div>
         </div>
         <!-- RIGHT: floating cards -->
@@ -707,9 +708,9 @@
 <!-- ═══════════════ CTA ══════════════════════════════════════════ -->
 <section class="bl-cta" id="bl-cta" style="margin-top: 60px;">
     <div class="bl-wrap" style="max-width:720px;">
-        <div class="bl-cta-label">Projekt starten</div>
-        <h2>Dein Projekt —<br><span>persönlich beraten.</span></h2>
-        <p>Von der Idee zur fertigen Website oder App. Faire Preise, direkt vom Entwickler in Buchs SG.</p>
+        <div class="bl-cta-label" data-i18n="blog.cta.label">Projekt starten</div>
+        <h2 data-i18n-html="blog.cta.h2">Dein Projekt —<br><span>persönlich beraten.</span></h2>
+        <p data-i18n="blog.cta.sub">Von der Idee zur fertigen Website oder App. Faire Preise, direkt vom Entwickler in Buchs SG.</p>
         <div class="bl-cta-btns">
             <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Website%20oder%20App%20entwickeln%20lassen." target="_blank" rel="noopener" class="bl-btn-red">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
