@@ -744,18 +744,25 @@
         <!-- More apps toggle — desktop only -->
         <div class="bento-more-wrap" id="bentoMoreWrap">
             <button class="bento-more-btn" id="bentoMoreBtn" onclick="toggleBentoShelf()">
-                <div class="bento-more-stack" id="bentoMoreSub">
-                    <img src="img/foodscan.png" alt="FoodScan AI">
-                    <img src="img/dogmentor.jpg" alt="DogMentor KI">
-                    <img src="img/hundezonen.png" alt="Hundezonen">
-                    <img src="img/ketorecipe.png" alt="KetoRecipeLab">
-                    <img src="img/workti.png" alt="Work Ti">
+                <div class="bento-more-left">
+                    <div class="bento-more-icon-sq">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>
+                    </div>
+                    <div class="bento-more-text">
+                        <span id="bentoMoreLabel" data-i18n="apps.more">Weitere Apps anzeigen</span>
+                        <span class="bento-more-count">5 veröffentlichte Apps</span>
+                    </div>
                 </div>
-                <div class="bento-more-text">
-                    <span id="bentoMoreLabel" data-i18n="apps.more">Weitere Apps anzeigen</span>
-                    <span class="bento-more-count">5 Apps</span>
+                <div class="bento-more-right">
+                    <div class="bento-more-stack" id="bentoMoreSub">
+                        <img src="img/foodscan.png" alt="FoodScan AI">
+                        <img src="img/dogmentor.jpg" alt="DogMentor KI">
+                        <img src="img/hundezonen.png" alt="Hundezonen">
+                        <img src="img/ketorecipe.png" alt="KetoRecipeLab">
+                        <img src="img/workti.png" alt="Work Ti">
+                    </div>
+                    <span class="bento-more-cta">Apps anzeigen <svg id="bentoMoreIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;transition:transform .35s ease;"><polyline points="6 9 12 15 18 9"/></svg></span>
                 </div>
-                <svg id="bentoMoreIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
         </div>
         <style>
@@ -764,23 +771,24 @@
                 .bento-shelf{overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1),opacity .4s ease;}
                 .bento-shelf--collapsed{max-height:0!important;opacity:0;pointer-events:none;}
                 .bento-shelf:not(.bento-shelf--collapsed){max-height:1600px;opacity:1;pointer-events:auto;}
-                .bento-more-wrap{display:flex;justify-content:center;margin-top:32px;}
-                .bento-more-btn{display:inline-flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #eef2f7;border-radius:18px;padding:14px 22px 14px 14px;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s,border-color .2s;}
-                .bento-more-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(254,108,117,.15);border-color:rgba(254,108,117,.3);}
-                body.dark-mode .bento-more-btn{background:#111827;border-color:#1e2d3d;box-shadow:0 4px 20px rgba(0,0,0,.3);}
-                .bento-more-stack{display:flex;align-items:center;}
-                .bento-more-stack img{width:38px;height:38px;border-radius:10px;object-fit:cover;border:2px solid #fff;margin-left:-10px;transition:transform .2s;}
-                .bento-more-stack img:first-child{margin-left:0;}
-                .bento-more-btn:hover .bento-more-stack img{transform:translateY(-2px);}
-                body.dark-mode .bento-more-stack img{border-color:#111827;}
-                .bento-more-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px;flex:1;}
+                .bento-more-wrap{margin-top:32px;}
+                .bento-more-btn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;width:100%;background:linear-gradient(135deg,rgba(254,108,117,0.08) 0%,rgba(254,108,117,0.03) 100%);border:1.5px solid rgba(254,108,117,0.15);border-radius:16px;padding:20px 28px;cursor:pointer;font-family:inherit;text-align:left;transition:all .3s ease;}
+                .bento-more-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(254,108,117,.1);border-color:rgba(254,108,117,.4);}
+                body.dark-mode .bento-more-btn{background:linear-gradient(135deg,rgba(254,108,117,0.1) 0%,rgba(254,108,117,0.04) 100%);border-color:rgba(254,108,117,0.2);}
+                .bento-more-left{display:flex;align-items:center;gap:14px;flex:1;min-width:220px;}
+                .bento-more-icon-sq{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#fe6c75,#e1545d);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+                .bento-more-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px;}
                 .bento-more-text #bentoMoreLabel{font-size:15px;font-weight:700;color:var(--gunpowder900);}
                 body.dark-mode .bento-more-text #bentoMoreLabel{color:#f1f5f9;}
-                .bento-more-count{font-size:12px;font-weight:500;color:var(--begonia400);}
-                #bentoMoreIcon{color:var(--gunpowder400);flex-shrink:0;transition:transform .35s ease;}
-                #bentoMoreIcon.is-open{transform:rotate(180deg);}
+                .bento-more-count{font-size:13px;color:var(--text-secondary);line-height:1.4;}
+                .bento-more-right{display:flex;align-items:center;gap:16px;}
+                .bento-more-stack{display:flex;align-items:center;}
+                .bento-more-stack img{width:56px;height:56px;border-radius:10px;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin-right:-8px;position:relative;}
+                .bento-more-stack img:last-child{margin-right:0;}
+                body.dark-mode .bento-more-stack img{border-color:#111827;}
+                .bento-more-cta{font-size:13px;font-weight:700;color:#fe6c75;white-space:nowrap;display:flex;align-items:center;gap:4px;}
                 .bento-more-btn.is-open .bento-more-stack{display:none;}
-                #bentoMoreIcon{transition:transform .35s ease;}
+                #bentoMoreIcon.is-open{transform:rotate(180deg);}
                 .bento-shelf--open #bentoMoreIcon,#bentoMoreIcon.is-open{transform:rotate(180deg);}
             }
             @media(max-width:1024px){

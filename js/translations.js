@@ -1540,6 +1540,10 @@ var translations = {
         // webs-publicadas
         'wb.pub.hero.badge': 'Published Websites',
         'wb.filter.all': 'All', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomy', 'wb.filter.ki': 'AI & Tech',
+        // blog
+        'blog.hero.badge': 'Blog & Insights', 'blog.hero.h1': 'Our Blog', 'blog.hero.sub': 'Web development, mobile apps, AI & more — tips and insights directly from the developer in Buchs SG.',
+        'blog.filter.all': 'All', 'blog.filter.webdev': 'Web Dev', 'blog.filter.mobile': 'Mobile', 'blog.filter.ki': 'AI & Tech', 'blog.filter.ecommerce': 'eCommerce',
+        'blog.back': 'Back to Blog', 'blog.by': 'by', 'blog.related': 'Related Articles', 'blog.readmore': 'Read more →', 'blog.min': 'min read',
         'wb.pub.hero.h1': 'Websites for<br><span>SMEs & Businesses</span>',
         'wb.pub.hero.sub': 'From restaurants to eCommerce, from AI tools to engineering firms. Built with Next.js, Remix and React — all live, all for real clients.',
         'wb.pub.hero.stat.projects': 'Projects live',
@@ -2395,6 +2399,10 @@ var translations = {
         // webs-publicadas
         'wb.pub.hero.badge': 'Webs publicadas',
         'wb.filter.all': 'Todos', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomía', 'wb.filter.ki': 'IA & Tech',
+        // blog
+        'blog.hero.badge': 'Blog & Artículos', 'blog.hero.h1': 'Nuestro Blog', 'blog.hero.sub': 'Desarrollo web, apps móviles, IA y más — consejos e ideas directamente del desarrollador en Buchs SG.',
+        'blog.filter.all': 'Todos', 'blog.filter.webdev': 'Web Dev', 'blog.filter.mobile': 'Mobile', 'blog.filter.ki': 'IA & Tech', 'blog.filter.ecommerce': 'eCommerce',
+        'blog.back': 'Volver al Blog', 'blog.by': 'por', 'blog.related': 'Artículos relacionados', 'blog.readmore': 'Leer más →', 'blog.min': 'min',
         'wb.pub.hero.h1': 'Webs para<br><span>PYMEs & negocios</span>',
         'wb.pub.hero.sub': 'Desde restaurantes hasta eCommerce, desde herramientas IA hasta ingenierías. Desarrolladas con Next.js, Remix y React — todas live, todas para clientes reales.',
         'wb.pub.hero.stat.projects': 'Proyectos live',
@@ -3250,6 +3258,10 @@ var translations = {
         // webs-publicadas
         'wb.pub.hero.badge': 'Sites web publiés',
         'wb.filter.all': 'Tous', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomie', 'wb.filter.ki': 'IA & Tech',
+        // blog
+        'blog.hero.badge': 'Blog & Articles', 'blog.hero.h1': 'Notre Blog', 'blog.hero.sub': 'Développement web, apps mobiles, IA & plus — conseils et insights directement du développeur à Buchs SG.',
+        'blog.filter.all': 'Tous', 'blog.filter.webdev': 'Web Dev', 'blog.filter.mobile': 'Mobile', 'blog.filter.ki': 'IA & Tech', 'blog.filter.ecommerce': 'eCommerce',
+        'blog.back': 'Retour au Blog', 'blog.by': 'par', 'blog.related': 'Articles connexes', 'blog.readmore': 'Lire la suite →', 'blog.min': 'min',
         'wb.pub.hero.h1': 'Sites web pour<br><span>PME & commerces</span>',
         'wb.pub.hero.sub': 'Des restaurants à l\'eCommerce, des outils IA aux bureaux d\'ingénierie. Développés avec Next.js, Remix et React — tous live, tous pour de vrais clients.',
         'wb.pub.hero.stat.projects': 'Projets live',
@@ -4105,6 +4117,10 @@ var translations = {
         // webs-publicadas
         'wb.pub.hero.badge': 'Siti web pubblicati',
         'wb.filter.all': 'Tutti', 'wb.filter.ecommerce': 'eCommerce', 'wb.filter.gastro': 'Gastronomia', 'wb.filter.ki': 'IA & Tech',
+        // blog
+        'blog.hero.badge': 'Blog & Articoli', 'blog.hero.h1': 'Il nostro Blog', 'blog.hero.sub': 'Sviluppo web, app mobili, IA e altro — consigli e approfondimenti direttamente dallo sviluppatore a Buchs SG.',
+        'blog.filter.all': 'Tutti', 'blog.filter.webdev': 'Web Dev', 'blog.filter.mobile': 'Mobile', 'blog.filter.ki': 'IA & Tech', 'blog.filter.ecommerce': 'eCommerce',
+        'blog.back': 'Torna al Blog', 'blog.by': 'di', 'blog.related': 'Articoli correlati', 'blog.readmore': 'Leggi di più →', 'blog.min': 'min',
         'wb.pub.hero.h1': 'Siti web per<br><span>PMI & aziende</span>',
         'wb.pub.hero.sub': 'Dai ristoranti all\'eCommerce, dagli strumenti IA agli studi di ingegneria. Sviluppati con Next.js, Remix e React — tutti live, tutti per clienti reali.',
         'wb.pub.hero.stat.projects': 'Progetti live',

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Blog | Web Dev Insights | Lweb</title>
+    <meta name="description" content="Web Development, Mobile Apps und KI — Tipps und Einblicke direkt vom Entwickler Roberto Salvador in Buchs SG.">
+    <link rel="canonical" href="https://www.lweb.ch/blog.html">
+    <meta property="og:url" content="https://www.lweb.ch/blog.html">
+    <meta name="author" content="Roberto Salvador — Lweb">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { padding-top: 60px; overflow-x: hidden; background: #f5f7fb; }
+
+        /* ═══ ANIMATIONS ════════════════════════════════════ */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        @keyframes tw-marquee { to { transform:translateX(-50%); } }
+
+        /* ═══ COMMON ════════════════════════════════════════ */
+        .bl-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+
+        /* ═══ SECTION TITLE ════════════════════════════════════ */
+        @keyframes bl-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .bl-title-icon { display: inline-block; color: #fe6c75; animation: bl-spin 3s linear infinite; }
+        .bl-section-title { text-align: center; padding: 52px 24px 8px; }
+        .bl-section-h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; color: #0f1d2c; margin: 0 0 14px; }
+        .bl-section-h1 span { color: #fe6c75; }
+        .bl-section-sub { font-size: 16px; line-height: 1.7; color: #6b7d99; max-width: 540px; margin: 0 auto; }
+        body.dark-mode .bl-section-h1 { color: #f1f5f9; }
+
+        /* ═══ MARQUEE ════════════════════════════════════════ */
+        .bl-marquee-wrap { overflow:hidden; padding:16px 0; background:#eef3fc; position:relative; }
+        .bl-marquee-wrap::before,.bl-marquee-wrap::after { content:''; position:absolute; top:0; bottom:0; width:100px; z-index:2; }
+        .bl-marquee-wrap::before { left:0; background:linear-gradient(90deg,#eef3fc,transparent); }
+        .bl-marquee-wrap::after { right:0; background:linear-gradient(270deg,#eef3fc,transparent); }
+        .bl-marquee { display:flex; gap:36px; width:max-content; animation:tw-marquee 28s linear infinite; }
+        .bl-marquee-item { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700; color:#3f4960; white-space:nowrap; text-transform:uppercase; letter-spacing:.05em; }
+        .bl-marquee-item::before { content:''; width:6px; height:6px; border-radius:50%; background:#fe6c75; flex-shrink:0; }
+        body.dark-mode .bl-marquee-wrap { background:#151a27; }
+        body.dark-mode .bl-marquee-wrap::before { background:linear-gradient(90deg,#151a27,transparent); }
+        body.dark-mode .bl-marquee-wrap::after { background:linear-gradient(270deg,#151a27,transparent); }
+        body.dark-mode .bl-marquee-item { color:#8a9bb3; }
+
+        /* ═══ FILTER TABS ════════════════════════════════════ */
+        .bl-filter-wrap {
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+            padding: 40px 24px 32px;
+        }
+        .bl-filter-btn {
+            padding: 10px 22px; border-radius: 50px; border: 1.5px solid #dde6f0;
+            background: #fff; font-size: 14px; font-weight: 700; color: #6b7d99;
+            cursor: pointer; transition: all .2s; letter-spacing: .01em;
+        }
+        .bl-filter-btn:hover { border-color: #fe6c75; color: #fe6c75; }
+        .bl-filter-btn.active { background: #fe6c75; border-color: #fe6c75; color: #fff; }
+        body.dark-mode .bl-filter-btn { background: #1a1f2e; border-color: #2a3040; color: #8a9bb3; }
+        body.dark-mode .bl-filter-btn:hover { border-color: #fe6c75; color: #fe6c75; }
+        body.dark-mode .bl-filter-btn.active { background: #fe6c75; color: #fff; }
+
+        /* ═══ BLOG LISTING ═══════════════════════════════════ */
+        .bl-listing { padding: 0 0 100px; }
+
+        /* Featured area */
+        .bl-featured {
+            max-width: 1120px; margin: 0 auto; padding: 0 24px 40px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        .bl-feat-large {
+            position: relative; border-radius: 22px; overflow: hidden;
+            background: #fff; cursor: pointer;
+            box-shadow: 0 4px 24px rgba(15,29,44,.07);
+            transition: transform .25s, box-shadow .25s;
+            display: flex; flex-direction: column;
+        }
+        .bl-feat-large:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(15,29,44,.12); }
+        .bl-feat-large-img {
+            width: 100%; height: 280px; object-fit: cover; display: block;
+            flex-shrink: 0;
+        }
+        .bl-feat-large-body {
+            padding: 28px 32px 32px; display: flex; flex-direction: column; flex: 1;
+        }
+        .bl-feat-large-body .bl-cat { margin-bottom: 12px; }
+        .bl-feat-large-body .bl-title {
+            font-size: 26px; font-weight: 800; line-height: 1.22;
+            letter-spacing: -.02em; color: #0f1d2c; margin-bottom: 14px;
+        }
+        .bl-feat-large-body .bl-excerpt {
+            font-size: 15px; line-height: 1.65; color: #6b7d99;
+            margin-bottom: 20px;
+        }
+
+        .bl-feat-smalls {
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .bl-feat-small {
+            background: #fff; border-radius: 18px; overflow: hidden; cursor: pointer;
+            display: flex; gap: 0; flex-direction: column;
+            box-shadow: 0 4px 20px rgba(15,29,44,.06);
+            transition: transform .22s, box-shadow .22s;
+            flex: 1;
+        }
+        .bl-feat-small:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,29,44,.11); }
+        .bl-feat-small-img {
+            width: 100%; height: 110px; object-fit: cover; display: block; flex-shrink: 0;
+        }
+        .bl-feat-small-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+        .bl-feat-small-body .bl-title {
+            font-size: 15px; font-weight: 800; line-height: 1.3;
+            letter-spacing: -.01em; color: #0f1d2c; margin-bottom: 6px;
+        }
+        .bl-feat-small-body .bl-excerpt {
+            font-size: 13px; line-height: 1.55; color: #6b7d99;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* Post grid */
+        .bl-grid-section { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .bl-grid-title {
+            font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+            color: #6b7d99; margin-bottom: 20px;
+        }
+        .bl-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+        }
+        .bl-card {
+            background: #fff; border-radius: 18px; overflow: hidden; cursor: pointer;
+            box-shadow: 0 4px 18px rgba(15,29,44,.06);
+            transition: transform .22s, box-shadow .22s;
+            display: flex; flex-direction: column;
+        }
+        .bl-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(15,29,44,.11); }
+        .bl-card-img { width: 100%; height: 150px; object-fit: cover; display: block; }
+        .bl-card-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+        .bl-card-body .bl-cat { margin-bottom: 10px; }
+        .bl-card-body .bl-title {
+            font-size: 15px; font-weight: 800; line-height: 1.3;
+            letter-spacing: -.01em; color: #0f1d2c; margin-bottom: 8px;
+        }
+        .bl-card-body .bl-excerpt {
+            font-size: 13px; line-height: 1.55; color: #6b7d99; flex: 1;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* Common card elements */
+        .bl-cat {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+            padding: 4px 10px; border-radius: 50px;
+        }
+        .bl-cat--webdev { background: rgba(59,130,246,.1); color: #3b82f6; }
+        .bl-cat--mobile { background: rgba(16,185,129,.1); color: #10b981; }
+        .bl-cat--ki { background: rgba(139,92,246,.1); color: #8b5cf6; }
+        .bl-cat--ecommerce { background: rgba(245,158,11,.1); color: #f59e0b; }
+
+        .bl-meta {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 12px; color: #8a9bb3; font-weight: 500; padding-top: 14px;
+        }
+        .bl-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: #c5cfe0; }
+        .bl-readmore {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 13px; font-weight: 700; color: #fe6c75;
+            margin-top: 14px; transition: gap .2s;
+        }
+        .bl-feat-large:hover .bl-readmore { gap: 10px; }
+
+        /* Dark mode cards */
+        body.dark-mode .bl-feat-large,
+        body.dark-mode .bl-feat-small,
+        body.dark-mode .bl-card { background: #1a1f2e; box-shadow: none; border: 1px solid rgba(255,255,255,.05); }
+        body.dark-mode .bl-feat-large-body .bl-title,
+        body.dark-mode .bl-feat-small-body .bl-title,
+        body.dark-mode .bl-card-body .bl-title { color: #f1f5f9; }
+
+        /* Hidden cards (filter) */
+        .bl-card.bl-hidden,
+        .bl-feat-small.bl-hidden,
+        .bl-feat-large.bl-hidden { display: none; }
+
+        /* ═══ POST VIEW ══════════════════════════════════════ */
+        .bl-post-view { display: none; }
+        .bl-post-view.active { display: block; }
+
+        .bl-post-back-bar {
+            max-width: 900px; margin: 0 auto; padding: 32px 24px 0;
+        }
+        .bl-post-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 14px; font-weight: 700; color: #6b7d99;
+            text-decoration: none; cursor: pointer;
+            transition: color .2s; background: none; border: none;
+            padding: 8px 0;
+        }
+        .bl-post-back:hover { color: #fe6c75; }
+        .bl-post-back svg { transition: transform .2s; }
+        .bl-post-back:hover svg { transform: translateX(-3px); }
+
+        .bl-post-content {
+            max-width: 900px; margin: 0 auto; padding: 32px 24px 80px;
+        }
+        .bl-post-header { margin-bottom: 32px; }
+        .bl-post-header .bl-cat { margin-bottom: 16px; }
+        .bl-post-title {
+            font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.12;
+            letter-spacing: -.03em; color: #0f1d2c; margin-bottom: 20px;
+        }
+        body.dark-mode .bl-post-title { color: #f1f5f9; }
+        .bl-post-meta {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+            font-size: 14px; color: #8a9bb3; font-weight: 500;
+        }
+        .bl-post-author {
+            display: flex; align-items: center; gap: 8px; font-weight: 700; color: #3f4960;
+        }
+        body.dark-mode .bl-post-author { color: #c8d5e3; }
+        .bl-post-avatar {
+            width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+            background: linear-gradient(135deg, #fe6c75, #ff9a9e);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0;
+        }
+
+        .bl-post-hero-img {
+            width: 100%; max-height: 480px; object-fit: cover;
+            border-radius: 20px; display: block; margin-bottom: 40px;
+        }
+
+        .bl-post-body {
+            font-size: 17px; line-height: 1.8; color: #3f4960;
+        }
+        body.dark-mode .bl-post-body { color: #c8d5e3; }
+        .bl-post-body p { margin-bottom: 24px; }
+        .bl-post-body h3 {
+            font-size: 22px; font-weight: 800; letter-spacing: -.02em;
+            color: #0f1d2c; margin: 40px 0 16px;
+        }
+        body.dark-mode .bl-post-body h3 { color: #f1f5f9; }
+        .bl-post-body ul { margin: 0 0 24px 20px; }
+        .bl-post-body ul li { margin-bottom: 8px; color: #3f4960; }
+        body.dark-mode .bl-post-body ul li { color: #c8d5e3; }
+        .bl-post-body strong { color: #0f1d2c; font-weight: 700; }
+        body.dark-mode .bl-post-body strong { color: #f1f5f9; }
+        .bl-post-body .bl-callout {
+            background: rgba(254,108,117,.06); border-left: 3px solid #fe6c75;
+            border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 28px 0;
+        }
+        body.dark-mode .bl-post-body .bl-callout { background: rgba(254,108,117,.08); }
+
+        /* Related posts */
+        .bl-related { border-top: 1px solid #e8eef7; padding-top: 60px; margin-top: 16px; }
+        body.dark-mode .bl-related { border-top-color: #2a3040; }
+        .bl-related-title {
+            font-size: 22px; font-weight: 800; letter-spacing: -.02em;
+            color: #0f1d2c; margin-bottom: 28px;
+        }
+        body.dark-mode .bl-related-title { color: #f1f5f9; }
+        .bl-related-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+        }
+
+        /* ═══ CTA SECTION ════════════════════════════════════ */
+        .bl-cta {
+            background: linear-gradient(135deg, #0f1d2c 0%, #1a2d45 100%);
+            padding: 80px 24px; text-align: center;
+        }
+        .bl-cta-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: #fe6c75; margin-bottom: 18px;
+        }
+        .bl-cta-label::before { content:''; width:7px; height:7px; border-radius:50%; background:#fe6c75; }
+        .bl-cta h2 {
+            font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.1;
+            letter-spacing: -.025em; color: #fff; margin-bottom: 14px;
+        }
+        .bl-cta h2 span { color: #fe6c75; }
+        .bl-cta p { font-size: 17px; line-height: 1.7; color: #8a9bb3; max-width: 520px; margin: 0 auto 36px; }
+        .bl-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .bl-btn-red {
+            display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
+            background: #fe6c75; color: #fff; border-radius: 50px; font-size: 15px;
+            font-weight: 700; text-decoration: none; transition: background .2s, transform .15s;
+        }
+        .bl-btn-red:hover { background: #e85d65; transform: translateY(-1px); }
+        .bl-btn-ghost {
+            display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
+            border: 1.5px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);
+            border-radius: 50px; font-size: 15px; font-weight: 700; text-decoration: none;
+            transition: border-color .2s, color .2s;
+        }
+        .bl-btn-ghost:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+        /* ═══ RESPONSIVE ═════════════════════════════════════ */
+        @media(max-width: 1024px) {
+            .bl-featured { grid-template-columns: 1fr 320px; }
+            .bl-grid { grid-template-columns: repeat(2, 1fr); }
+            .bl-related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 768px) {
+            .bl-featured { grid-template-columns: 1fr; }
+            .bl-feat-smalls { flex-direction: row; gap: 12px; }
+            .bl-feat-small { flex: 1; }
+            .bl-feat-large-img { height: 220px; }
+            .bl-feat-large-body { padding: 22px 22px 24px; }
+            .bl-feat-large-body .bl-title { font-size: 20px; }
+        }
+        @media(max-width: 600px) {
+            .bl-feat-smalls { flex-direction: column; }
+            .bl-grid { grid-template-columns: 1fr; }
+            .bl-related-grid { grid-template-columns: repeat(2, 1fr); }
+            .bl-post-title { font-size: 26px; }
+        }
+        @media(max-width: 480px) {
+            .bl-related-grid { grid-template-columns: 1fr; }
+            .bl-filter-btn { padding: 8px 16px; font-size: 13px; }
+        }
+
+        /* header back desktop */
+        @media(max-width: 1024px) {
+            .header-back-desktop { display: flex !important; }
+            .header.menu-open .header-back-desktop { visibility: hidden !important; }
+        }
+    </style>
+</head>
+<body>
+<script>if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode');</script>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <div class="header-title" id="headerTitle"></div>
+        <nav class="header-nav" aria-label="Hauptnavigation">
+    <div class="header-nav-dropdown">
+        <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="header-nav-sub-menu">
+            <a href="desarrollo.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/><line x1="12" y1="6" x2="12" y2="14"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.services.dev">Entwicklung</span><small class="header-nav-sub-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            <a href="leistungen-ki.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.services.ki">KI-Integration</span><small class="header-nav-sub-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            <a href="leistungen-support.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.services.support">Beratung &amp; Support</span><small class="header-nav-sub-hint" data-i18n="nav.services.support.hint">Beratung, Planung &amp; langfristiger Support</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+        </div>
+    </div>
+    <div class="header-nav-dropdown">
+        <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="header-nav-sub-menu">
+            <a href="apps-publicadas.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="header-nav-sub-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            <a href="extensions-apps.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.apps.create">App erstellen</span><small class="header-nav-sub-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+        </div>
+    </div>
+    <div class="header-nav-dropdown">
+        <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.websites">Websites</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="header-nav-sub-menu">
+            <a href="webs-publicadas.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.websites.published">Projekte</span><small class="header-nav-sub-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            <a href="tienda-online.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+            <a href="templates-web.html" class="header-nav-sub header-nav-sub--custom">
+                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
+                <span class="nav-banner-text"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="header-nav-sub-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></span>
+                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </a>
+        </div>
+    </div>
+    <a href="index.html#techstack" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
+    <a href="index.html#about" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
+    <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
+</nav>
+        <div class="header-actions">
+            <a href="#bl-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-panel-back" onclick="sessionStorage.setItem('openMobileMenu','main-open');">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="nav.back.main">Hauptmenü</span>
+    </a>
+    <nav class="mobile-menu-nav">
+        <a href="blog.html" class="mobile-menu-link mobile-menu-link--custom active"><span>Blog</span><small class="mobile-menu-link-hint">Web Dev Insights &amp; Tipps</small></a>
+        <a href="webs-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.published">Projekte</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></a>
+        <a href="apps-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></a>
+    </nav>
+    <div class="mobile-menu-footer">
+        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    </div>
+</div>
+
+
+
+<!-- ═══════════════ BLOG LISTING VIEW ═══════════════════════════ -->
+<div id="blListing">
+    <!-- SECTION TITLE -->
+    <div class="bl-section-title">
+        <h1 class="bl-section-h1" data-i18n="blog.hero.h1"><span class="bl-title-icon">✦</span> <span>Blog</span></h1>
+        <p class="bl-section-sub" data-i18n="blog.hero.sub">Webentwicklung, Mobile Apps, KI &amp; mehr — Tipps und Einblicke direkt vom Entwickler in Buchs SG.</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="bl-filter-wrap">
+        <button class="bl-filter-btn active" data-filter="all" data-i18n="blog.filter.all">Alle</button>
+        <button class="bl-filter-btn" data-filter="webdev" data-i18n="blog.filter.webdev">Web Dev</button>
+        <button class="bl-filter-btn" data-filter="mobile" data-i18n="blog.filter.mobile">Mobile</button>
+        <button class="bl-filter-btn" data-filter="ki" data-i18n="blog.filter.ki">KI &amp; Tech</button>
+        <button class="bl-filter-btn" data-filter="ecommerce" data-i18n="blog.filter.ecommerce">eCommerce</button>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="bl-featured" id="blFeatured">
+        <!-- featured large: post 1 -->
+        <div class="bl-feat-large" data-post="0" data-cat="webdev" onclick="openPost(0)">
+            <img class="bl-feat-large-img" src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1100&auto=format&fit=crop&q=80" alt="Next.js vs Remix" loading="lazy">
+            <div class="bl-feat-large-body">
+                <span class="bl-cat bl-cat--webdev">Web Dev</span>
+                <div class="bl-title">Next.js vs Remix: Welches Framework passt zu dir?</div>
+                <div class="bl-excerpt">Beide Frameworks basieren auf React — aber ihre Philosophie ist grundverschieden. Wir zeigen, wann welches die bessere Wahl ist und welche Projekte von welchem Framework profitieren.</div>
+                <div class="bl-readmore">Weiterlesen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                <div class="bl-meta">
+                    <span>Roberto Salvador</span>
+                    <span class="bl-meta-dot"></span>
+                    <span>15. Februar 2025</span>
+                    <span class="bl-meta-dot"></span>
+                    <span>7 Min.</span>
+                </div>
+            </div>
+        </div>
+        <!-- featured smalls: posts 2, 3, 4 -->
+        <div class="bl-feat-smalls" id="blFeatSmalls">
+            <div class="bl-feat-small" data-post="1" data-cat="mobile" onclick="openPost(1)">
+                <img class="bl-feat-small-img" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=80" alt="React Native" loading="lazy">
+                <div class="bl-feat-small-body">
+                    <span class="bl-cat bl-cat--mobile">Mobile</span>
+                    <div class="bl-title">React Native 2025: Native Performance für iOS &amp; Android</div>
+                    <div class="bl-excerpt">Warum React Native die erste Wahl für Cross-Platform Apps ist und was sich 2025 geändert hat.</div>
+                    <div class="bl-meta" style="padding-top:10px;font-size:11px;">
+                        <span>12. Jan. 2025</span><span class="bl-meta-dot"></span><span>5 Min.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bl-feat-small" data-post="2" data-cat="ki" onclick="openPost(2)">
+                <img class="bl-feat-small-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&auto=format&fit=crop&q=80" alt="KI Integration" loading="lazy">
+                <div class="bl-feat-small-body">
+                    <span class="bl-cat bl-cat--ki">KI &amp; Tech</span>
+                    <div class="bl-title">KI in deine Website einbauen — so geht's mit OpenAI</div>
+                    <div class="bl-excerpt">Schritt-für-Schritt: Chatbot, Textgenerierung und smarte Features mit der OpenAI API.</div>
+                    <div class="bl-meta" style="padding-top:10px;font-size:11px;">
+                        <span>28. Jan. 2025</span><span class="bl-meta-dot"></span><span>8 Min.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bl-feat-small" data-post="3" data-cat="webdev" onclick="openPost(3)">
+                <img class="bl-feat-small-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80" alt="Core Web Vitals" loading="lazy">
+                <div class="bl-feat-small-body">
+                    <span class="bl-cat bl-cat--webdev">Web Dev</span>
+                    <div class="bl-title">Core Web Vitals 2025: Schnellere Websites für Google</div>
+                    <div class="bl-excerpt">Wie du LCP, FID und CLS optimierst und dein Google-Ranking nachhaltig verbesserst.</div>
+                    <div class="bl-meta" style="padding-top:10px;font-size:11px;">
+                        <span>5. Feb. 2025</span><span class="bl-meta-dot"></span><span>6 Min.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POST GRID -->
+    <div class="bl-grid-section">
+        <div class="bl-grid" id="blGrid">
+            <div class="bl-card" data-post="4" data-cat="ecommerce" onclick="openPost(4)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&auto=format&fit=crop&q=80" alt="eCommerce" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--ecommerce">eCommerce</span>
+                    <div class="bl-title">eCommerce mit Next.js: Der perfekte Online-Shop</div>
+                    <div class="bl-excerpt">Von der Produktseite bis zum Checkout — wie du mit Next.js einen schnellen, skalierbaren Shop baust.</div>
+                    <div class="bl-meta">
+                        <span>20. Feb. 2025</span><span class="bl-meta-dot"></span><span>9 Min.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bl-card" data-post="5" data-cat="webdev" onclick="openPost(5)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=700&auto=format&fit=crop&q=80" alt="Design Trends" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--webdev">Web Dev</span>
+                    <div class="bl-title">Web Design Trends 2025: Was jetzt modern ist</div>
+                    <div class="bl-excerpt">Von Glassmorphism bis zu KI-generierten Layouts — die wichtigsten Design-Trends dieses Jahr.</div>
+                    <div class="bl-meta">
+                        <span>3. März 2025</span><span class="bl-meta-dot"></span><span>5 Min.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bl-card" data-post="6" data-cat="ki" onclick="openPost(6)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&auto=format&fit=crop&q=80" alt="ChatGPT Integration" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--ki">KI &amp; Tech</span>
+                    <div class="bl-title">ChatGPT in deine App: Schritt-für-Schritt Anleitung</div>
+                    <div class="bl-excerpt">Wie du mit wenigen Zeilen Code einen intelligenten Assistenten in React oder React Native einbindest.</div>
+                    <div class="bl-meta">
+                        <span>10. März 2025</span><span class="bl-meta-dot"></span><span>7 Min.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bl-card" data-post="7" data-cat="mobile" onclick="openPost(7)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700&auto=format&fit=crop&q=80" alt="App vs Website" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--mobile">Mobile</span>
+                    <div class="bl-title">App oder Website? Was braucht dein Unternehmen wirklich?</div>
+                    <div class="bl-excerpt">Die ehrliche Antwort: Wann lohnt sich eine native App, wann reicht eine PWA und wann ist eine Website die bessere Wahl?</div>
+                    <div class="bl-meta">
+                        <span>17. März 2025</span><span class="bl-meta-dot"></span><span>6 Min.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ POST VIEW ════════════════════════════════════ -->
+<div class="bl-post-view" id="blPostView">
+    <div class="bl-post-back-bar">
+        <button class="bl-post-back" onclick="closePost()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span data-i18n="blog.back">Zurück zum Blog</span>
+        </button>
+    </div>
+    <div class="bl-post-content">
+        <div class="bl-post-header">
+            <span class="bl-cat" id="blPostCat"></span>
+            <h1 class="bl-post-title" id="blPostTitle"></h1>
+            <div class="bl-post-meta">
+                <div class="bl-post-author">
+                    <div class="bl-post-avatar">RS</div>
+                    <span data-i18n="blog.by">von</span> Roberto Salvador
+                </div>
+                <span class="bl-meta-dot" style="width:4px;height:4px;"></span>
+                <span id="blPostDate"></span>
+                <span class="bl-meta-dot" style="width:4px;height:4px;"></span>
+                <span id="blPostRead"></span>
+            </div>
+        </div>
+        <img class="bl-post-hero-img" id="blPostImg" src="" alt="">
+        <div class="bl-post-body" id="blPostBody"></div>
+
+        <!-- RELATED POSTS -->
+        <div class="bl-related">
+            <div class="bl-related-title" data-i18n="blog.related">Verwandte Artikel</div>
+            <div class="bl-related-grid" id="blRelatedGrid"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ CTA ══════════════════════════════════════════ -->
+<section class="bl-cta" id="bl-cta" style="margin-top: 60px;">
+    <div class="bl-wrap" style="max-width:720px;">
+        <div class="bl-cta-label">Projekt starten</div>
+        <h2>Dein Projekt —<br><span>persönlich beraten.</span></h2>
+        <p>Von der Idee zur fertigen Website oder App. Faire Preise, direkt vom Entwickler in Buchs SG.</p>
+        <div class="bl-cta-btns">
+            <a href="https://wa.me/41765608645?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Website%20oder%20App%20entwickeln%20lassen." target="_blank" rel="noopener" class="bl-btn-red">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                +41 76 560 86 45
+            </a>
+            <a href="mailto:info@lweb.ch" class="bl-btn-ghost">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@lweb.ch
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ═══════════════ SCRIPTS ═══════════════════════════════════════ -->
+<script>
+// ── BLOG DATA ─────────────────────────────────────────────────────
+var POSTS = [
+    {
+        id: 0,
+        cat: 'webdev',
+        catLabel: 'Web Dev',
+        catClass: 'bl-cat--webdev',
+        title: 'Next.js vs Remix: Welches Framework passt zu dir?',
+        date: '15. Februar 2025',
+        readTime: '7 Min.',
+        img: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Next.js und Remix sind zwei der beliebtesten React-Frameworks — aber ihre Herangehensweise an das Rendering und die Datenladung ist fundamental verschieden. Welches passt zu deinem Projekt?</p>
+<h3>Was unterscheidet die beiden Frameworks?</h3>
+<p><strong>Next.js</strong> setzt auf einen hybriden Ansatz: Du kannst pro Seite entscheiden, ob sie statisch generiert (SSG), serverseitig gerendert (SSR) oder mit Incremental Static Regeneration (ISR) ausgeliefert wird. Das macht Next.js extrem flexibel für Content-Seiten, Marketing-Pages und grosse Apps.</p>
+<p><strong>Remix</strong> hingegen geht einen anderen Weg: Es setzt konsequent auf das Web-Plattform-Modell — HTTP, Browser-APIs und serverseitige Datenlader (Loaders). Der Fokus liegt auf schnellen Ladezeiten und resilientem Verhalten auch ohne JavaScript.</p>
+<h3>Wann solltest du Next.js wählen?</h3>
+<ul>
+<li>Du baust eine grosse App mit vielen statischen Seiten (Blog, Dokumentation, eCommerce)</li>
+<li>Du brauchst flexibles Rendering: manche Seiten statisch, andere dynamisch</li>
+<li>Dein Team kennt Next.js bereits oder du willst das grosse Ecosystem nutzen</li>
+<li>Du setzt auf Vercel als Hosting-Plattform</li>
+</ul>
+<div class="bl-callout"><strong>Tipp für KMU:</strong> Next.js eignet sich hervorragend für Unternehmenswebsites, die gleichzeitig schnell laden und dynamische Inhalte wie Produktkataloge oder Buchungssysteme brauchen.</div>
+<h3>Wann ist Remix die bessere Wahl?</h3>
+<ul>
+<li>Du baust eine hochgradig interaktive Web-App mit vielen Formularen und Datenmutationen</li>
+<li>Progressive Enhancement ist dir wichtig (App funktioniert auch ohne JS)</li>
+<li>Du willst nah am Web-Standard bleiben und weniger Framework-Magie</li>
+<li>Deine App hat komplexe, verschachtelte Layouts mit parallelen Datenladeoperationen</li>
+</ul>
+<h3>Performance-Vergleich in der Praxis</h3>
+<p>In meinen Projekten für Kunden in der Region Buchs SG und Liechtenstein setze ich vor allem auf Next.js — die Flexibilität und das grosse Ökosystem überwiegen. Für ein Restaurant-Buchungssystem mit komplexen Formularen hat sich Remix jedoch als die bessere Wahl erwiesen.</p>
+<h3>Fazit</h3>
+<p>Beide Frameworks sind exzellent und produzieren schnelle, moderne Websites. Die Entscheidung hängt vom Projekttyp ab: Next.js für Flexibilität und SSG, Remix für interaktive Apps und Web-Plattform-Nähe. Für die meisten KMU-Projekte empfehle ich Next.js als soliden Einstieg.</p>
+        `
+    },
+    {
+        id: 1,
+        cat: 'mobile',
+        catLabel: 'Mobile',
+        catClass: 'bl-cat--mobile',
+        title: 'React Native 2025: Native Performance für iOS & Android',
+        date: '12. Januar 2025',
+        readTime: '5 Min.',
+        img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>React Native hat sich in den letzten Jahren massiv weiterentwickelt. Mit der neuen Architektur (JSI, Fabric, TurboModules) ist die Performance-Lücke zu nativen Apps nahezu verschwunden — und das bei einer einzigen Codebasis für iOS und Android.</p>
+<h3>Was ist neu in React Native 2025?</h3>
+<p>Die <strong>New Architecture</strong> ist seit 2024 standardmässig aktiviert. Sie ersetzt die alte JavaScript Bridge durch direkte C++ Bindings — was bedeutet: schnellere Kommunikation zwischen JS und nativen Modulen, weniger Overhead, bessere Animationen.</p>
+<ul>
+<li><strong>JSI (JavaScript Interface):</strong> Direkter Zugriff auf native APIs ohne Bridge</li>
+<li><strong>Fabric Renderer:</strong> Neuer, synchroner UI-Rendering-Layer</li>
+<li><strong>TurboModules:</strong> Lazy Loading für native Module</li>
+<li><strong>Codegen:</strong> Automatische Typgenerierung für native Interfaces</li>
+</ul>
+<h3>Ein Code, zwei Plattformen — der echte Vorteil</h3>
+<p>Was mich immer wieder begeistert: Eine einzige React Native Codebasis liefert echte native Apps — nicht WebViews in einem Container. Das bedeutet native Navigation, native Animationen und Zugriff auf alle Gerätesensoren.</p>
+<div class="bl-callout"><strong>Kostenvorteil für KMU:</strong> Statt zwei separate Apps (iOS + Android) zu entwickeln, zahlt man effektiv nur für eine App. Das spart 30–50% der Entwicklungskosten.</div>
+<h3>Wann React Native, wann doch nativ?</h3>
+<p>Für 95% der Business-Apps ist React Native die richtige Wahl. Ausnahmen sind rechenintensive Apps (3D-Spiele, AR/VR mit hoher Performance-Anforderung) oder Apps, die sehr spezifische native APIs nutzen, die noch nicht in React Native verfügbar sind.</p>
+<h3>Unsere Erfahrung</h3>
+<p>Alle unsere Apps — von FoodScan AI über BuyVoice bis DogMentor KI — sind mit React Native gebaut und im App Store und Google Play Store verfügbar. Die Performance ist auf beiden Plattformen ausgezeichnet.</p>
+        `
+    },
+    {
+        id: 2,
+        cat: 'ki',
+        catLabel: 'KI & Tech',
+        catClass: 'bl-cat--ki',
+        title: 'KI in deine Website einbauen — so geht\'s mit OpenAI',
+        date: '28. Januar 2025',
+        readTime: '8 Min.',
+        img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Künstliche Intelligenz ist keine Science Fiction mehr — sie ist ein praktisches Werkzeug, das du heute in deine Website oder App einbauen kannst. Mit der OpenAI API geht das schneller als du denkst.</p>
+<h3>Was kann die OpenAI API für deine Website tun?</h3>
+<ul>
+<li><strong>Chatbot / Kundensupport:</strong> Beantworte häufige Fragen automatisch, 24/7</li>
+<li><strong>Textgenerierung:</strong> Produktbeschreibungen, Blog-Posts, E-Mails</li>
+<li><strong>Suchfunktion:</strong> Semantische Suche statt einfacher Keyword-Suche</li>
+<li><strong>Datenauswertung:</strong> Formularauswertungen, Feedback-Analyse</li>
+<li><strong>Personalisierung:</strong> Individuelle Empfehlungen für jeden Besucher</li>
+</ul>
+<h3>Einstieg: Der erste API-Call</h3>
+<p>Der einfachste Weg ist eine Next.js API Route. Du installierst das OpenAI SDK, erstellst eine Route und rufst die Completion API auf. Der Aufwand für einen einfachen Chatbot beträgt nur wenige Stunden.</p>
+<div class="bl-callout"><strong>Kosten im Blick:</strong> GPT-4o mini kostet nur Bruchteile eines Cents pro Anfrage. Ein Chatbot mit 1000 Anfragen/Tag kostet weniger als 5 CHF/Monat. Das ist erschwinglich für jedes KMU.</div>
+<h3>Best Practices für KI in der Produktion</h3>
+<p>Rate Limiting ist wichtig — sonst können Kosten explodieren. Ebenso solltest du Prompts sorgfältig formulieren und das Modell auf deinen Kontext (dein Unternehmen, deine Produkte) ausrichten. Ein gut konfiguriertes System-Prompt macht den Unterschied zwischen einem generischen Bot und einem echten Mehrwert für deine Kunden.</p>
+<h3>Unsere Erfahrung mit KI-Projekten</h3>
+<p>In mehreren Projekten für Kunden in der Ostschweiz und Liechtenstein haben wir KI-Features eingebaut: von einfachen FAQ-Bots bis hin zu komplexen Produktempfehlungs-Systemen. Die Kunden sind begeistert — und die Implementierung war in jedem Fall unkomplizierter als erwartet.</p>
+        `
+    },
+    {
+        id: 3,
+        cat: 'webdev',
+        catLabel: 'Web Dev',
+        catClass: 'bl-cat--webdev',
+        title: 'Core Web Vitals 2025: Schnellere Websites für Google',
+        date: '5. Februar 2025',
+        readTime: '6 Min.',
+        img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Google bewertet nicht nur Inhalte — sondern auch, wie schnell und angenehm deine Website zu nutzen ist. Die Core Web Vitals sind dabei die entscheidenden Metriken. Eine Verbesserung dieser Werte kann dein Ranking direkt beeinflussen.</p>
+<h3>Die drei wichtigsten Metriken</h3>
+<ul>
+<li><strong>LCP (Largest Contentful Paint):</strong> Wie schnell lädt das grösste Element? Ziel: unter 2.5 Sekunden</li>
+<li><strong>INP (Interaction to Next Paint):</strong> Wie reaktionsschnell ist die Seite bei Interaktionen? Ziel: unter 200ms</li>
+<li><strong>CLS (Cumulative Layout Shift):</strong> Springt der Inhalt beim Laden herum? Ziel: unter 0.1</li>
+</ul>
+<h3>Die häufigsten Performance-Killer</h3>
+<p>In meiner Praxis sehe ich immer wieder dieselben Probleme: nicht-optimierte Bilder (fehlende WebP-Konvertierung, fehlende Grössen-Angaben), zu viele JavaScript-Bundles die blockieren, Google Fonts die synchron geladen werden, und fehlende Server-seitige Caching-Strategien.</p>
+<div class="bl-callout"><strong>Quick Win:</strong> Allein die Umstellung auf next/image in Next.js verbessert den LCP-Wert meistens um 30–50%. Das ist die einfachste und wirkungsvollste Massnahme.</div>
+<h3>Konkrete Optimierungsmassnahmen</h3>
+<ul>
+<li>Bilder: WebP/AVIF, lazy loading, explizite width/height</li>
+<li>Fonts: font-display: swap, preconnect zu Google Fonts</li>
+<li>JavaScript: Code Splitting, Tree Shaking, Bundle-Analyse</li>
+<li>Server: HTTP/2, Brotli-Komprimierung, CDN für statische Assets</li>
+<li>CSS: Critical CSS inline, restliches CSS lazy geladen</li>
+</ul>
+<h3>Messen und verbessern</h3>
+<p>Google PageSpeed Insights und Lighthouse sind kostenlose Tools, mit denen du deinen aktuellen Stand messen kannst. Ziel sollte ein Score von 90+ auf Mobile sein — das ist realistisch erreichbar mit den richtigen Technologien und Best Practices.</p>
+        `
+    },
+    {
+        id: 4,
+        cat: 'ecommerce',
+        catLabel: 'eCommerce',
+        catClass: 'bl-cat--ecommerce',
+        title: 'eCommerce mit Next.js: Der perfekte Online-Shop',
+        date: '20. Februar 2025',
+        readTime: '9 Min.',
+        img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Ein Online-Shop mit Next.js zu bauen bedeutet: maximale Performance, perfekte SEO und vollständige Kontrolle über jeden Aspekt — vom Design bis zur Checkout-Erfahrung. Aber wie geht man das an?</p>
+<h3>Warum Next.js für eCommerce?</h3>
+<p>Shopify und WooCommerce sind grossartig für Standard-Shops. Aber für Unternehmen, die eine einzigartige User Experience wollen, einzigartige Logik brauchen oder höchste Performance anstreben, ist ein Custom-Built Shop mit Next.js die bessere Wahl.</p>
+<ul>
+<li><strong>SSG für Produktseiten:</strong> Blitzschnelle statische Seiten, die dennoch dynamische Preise zeigen können</li>
+<li><strong>API Routes:</strong> Eigene Backend-Logik für Bestellungen, Lagerbestand, Zahlungen</li>
+<li><strong>Stripe Integration:</strong> Sichere Zahlungsabwicklung in wenigen Stunden</li>
+<li><strong>Full SEO Control:</strong> Perfekte Meta-Tags, strukturierte Daten, Sitemaps</li>
+</ul>
+<div class="bl-callout"><strong>Unsere Empfehlung:</strong> Für den Start empfehlen wir Next.js + Stripe + ein einfaches Headless CMS (wie Sanity oder Contentful). Das gibt dir maximale Flexibilität bei überschaubarem Aufwand.</div>
+<h3>Die wichtigsten Features für einen erfolgreichen Shop</h3>
+<p>Ein guter Online-Shop braucht mehr als nur Produktseiten und einen Warenkorb. Schnelle Suche, Filteroptionen, klare Produktbilder, vertrauensbildende Elemente (Bewertungen, Garantien, sichere Zahlung) und ein reibungsloser Mobile-Checkout sind entscheidend für hohe Conversion-Raten.</p>
+<h3>Praxis-Beispiel: Hot Sauce Shop</h3>
+<p>Für einen Kunden haben wir einen Premium Hot Sauce Online-Shop mit Next.js gebaut. Das Resultat: Ladezeiten unter 1 Sekunde, perfekte Mobile-Darstellung und ein Admin-Panel, mit dem der Kunde selbst Produkte verwalten kann — ohne technisches Wissen.</p>
+        `
+    },
+    {
+        id: 5,
+        cat: 'webdev',
+        catLabel: 'Web Dev',
+        catClass: 'bl-cat--webdev',
+        title: 'Web Design Trends 2025: Was jetzt modern ist',
+        date: '3. März 2025',
+        readTime: '5 Min.',
+        img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Web Design entwickelt sich schnell — was 2022 modern war, wirkt heute schon angestaubt. Hier sind die Trends, die 2025 dominieren und die du in deinem nächsten Projekt berücksichtigen solltest.</p>
+<h3>1. Bento Grid Layouts</h3>
+<p>Apple hat es populär gemacht, viele folgen nach: Das Bento-Grid ist ein modulares Layout-System, das Informationen in verschieden grossen Kacheln organisiert. Es sieht modern aus, ist auf Mobile gut umsetzbar und kommuniziert viel auf engem Raum.</p>
+<h3>2. Blur & Glassmorphism — aber subtil</h3>
+<p>Verwaschene Hintergründe und halbtransparente Elemente sind nicht verschwunden — aber in 2025 werden sie subtiler eingesetzt. Weniger Overengineering, mehr gezielte Akzente für Karten und Modals.</p>
+<h3>3. Variable Fonts & Expressive Typography</h3>
+<p>Grosse, mutige Headlines mit sehr engem Letter-Spacing (so wie auf dieser Seite) sind der Standard für moderne Web-Präsenzen. Plus Jakarta Sans, Geist, Inter — schlanke, gut lesbare Fonts dominieren.</p>
+<div class="bl-callout"><strong>Praxis-Tipp:</strong> Eine Schrift, die auf einem 5K-Monitor und auf einem 4-Zoll-iPhone gleichermassen gut aussieht, ist die beste Schrift für dein Projekt. Teste immer auf echten Geräten.</div>
+<h3>4. Micro-Animations & Smooth Scroll</h3>
+<p>Sanfte Hover-Effekte, Fade-Up Animationen beim Scrollen und flüssige Übergänge sind kein Luxus mehr — Nutzer erwarten sie. CSS Transitions und GSAP machen das umsetzbar ohne grossen Overhead.</p>
+<h3>5. Dark Mode als Standard</h3>
+<p>Dark Mode ist keine Option mehr — er ist Pflicht. Wer seinen Besuchern keinen Dark Mode anbietet, verliert Glaubwürdigkeit bei Tech-affinen Zielgruppen. Implementiere prefers-color-scheme und biete einen manuellen Toggle an.</p>
+        `
+    },
+    {
+        id: 6,
+        cat: 'ki',
+        catLabel: 'KI & Tech',
+        catClass: 'bl-cat--ki',
+        title: 'ChatGPT in deine App: Schritt-für-Schritt Anleitung',
+        date: '10. März 2025',
+        readTime: '7 Min.',
+        img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>ChatGPT in eine React oder React Native App einzubinden ist einfacher als viele denken. In dieser Anleitung zeige ich dir Schritt für Schritt, wie du einen funktionierenden KI-Assistenten in deine App integrierst.</p>
+<h3>Voraussetzungen</h3>
+<ul>
+<li>OpenAI Account und API Key (kostenloser Einstieg möglich)</li>
+<li>React oder React Native Projekt</li>
+<li>Node.js und npm/yarn</li>
+</ul>
+<h3>Schritt 1: OpenAI SDK installieren</h3>
+<p>Das OpenAI npm Package ist der einfachste Weg. Für React Native empfehle ich den API-Call über eine eigene Backend-API (Next.js API Route oder Node.js Server), damit der API Key nicht im Client-Code landet.</p>
+<h3>Schritt 2: API Route erstellen</h3>
+<p>In Next.js erstellst du eine API Route unter /api/chat. Diese nimmt die Nachrichten entgegen, sendet sie an OpenAI und gibt die Antwort zurück. Das System-Prompt definierst du hier — es legt fest, wie sich der Bot verhält.</p>
+<div class="bl-callout"><strong>Sicherheit zuerst:</strong> Speichere deinen API Key niemals im Frontend-Code! Nutze immer Environment Variables auf dem Server. In Next.js ist das OPENAI_API_KEY ohne NEXT_PUBLIC_ Prefix.</div>
+<h3>Schritt 3: Chat UI im Frontend</h3>
+<p>Ein einfaches Chat-Interface braucht: einen Message-Array im State, ein Text-Input mit Send-Button, und eine Scroll-View die neue Nachrichten zeigt. Mit Tailwind CSS ist das in 30 Minuten gebaut.</p>
+<h3>Schritt 4: Streaming für bessere UX</h3>
+<p>Statt auf die vollständige Antwort zu warten, kannst du mit Server-Sent Events oder Vercel AI SDK die Antwort streamen — Wort für Wort, wie beim echten ChatGPT. Das fühlt sich deutlich responsiver an und verbessert die User Experience erheblich.</p>
+<h3>Unsere Apps mit KI</h3>
+<p>FoodScan AI (Keto-Scanner), DogMentor KI und KetoRecipeLab sind unsere Apps, die alle KI-Features nutzen. Die Implementierung hat in jedem Fall unter einer Woche gedauert — das meiste davon war das Fine-Tuning der Prompts für das jeweilige Use Case.</p>
+        `
+    },
+    {
+        id: 7,
+        cat: 'mobile',
+        catLabel: 'Mobile',
+        catClass: 'bl-cat--mobile',
+        title: 'App oder Website? Was braucht dein Unternehmen wirklich?',
+        date: '17. März 2025',
+        readTime: '6 Min.',
+        img: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Diese Frage bekomme ich fast täglich: "Brauche ich eine App oder reicht eine Website?" Die ehrliche Antwort ist: Es kommt darauf an. Aber ich kann dir helfen, die richtige Entscheidung für dein Unternehmen zu treffen.</p>
+<h3>Wann brauchst du wirklich eine App?</h3>
+<p>Eine native App macht Sinn, wenn deine Nutzer täglich mit ihr interagieren, wenn du Gerätefunktionen brauchst (Kamera, GPS, Bluetooth, Push-Notifications) oder wenn du ein Offline-Erlebnis bieten willst. Beispiele: Fitness-Tracker, Kassiersysteme, Scan-Apps, Community-Plattformen.</p>
+<h3>Wann ist eine Website die bessere Wahl?</h3>
+<ul>
+<li>Dein Ziel ist primär Marketing und Lead-Generierung</li>
+<li>Kunden suchen dich über Google (SEO ist wichtig)</li>
+<li>Die Nutzung ist gelegentlich, nicht täglich</li>
+<li>Du hast ein begrenztes Budget und willst schnell online sein</li>
+<li>Deine Inhalte ändern sich häufig (News, Produkte, Events)</li>
+</ul>
+<div class="bl-callout"><strong>Die clevere Lösung:</strong> Starte mit einer hervorragenden, Mobile-optimierten Website. Wenn du siehst, dass deine Nutzer sie täglich nutzen und App-Features vermissen, ist der Zeitpunkt für eine native App gekommen.</div>
+<h3>Progressive Web Apps (PWA) — der Mittelweg</h3>
+<p>PWAs kombinieren das Beste beider Welten: Sie funktionieren wie eine Website, können aber auf dem Homescreen installiert werden, offline funktionieren und Push-Notifications senden. Für viele Geschäftsmodelle ist das die ideale Lösung.</p>
+<h3>Kosten im Überblick</h3>
+<p>Eine professionelle Unternehmenswebsite startet bei 950 CHF. Eine native App (iOS + Android) beginnt bei 3'500 CHF. Eine PWA liegt dazwischen. Die Entscheidung sollte nicht nur vom Budget abhängen — sondern von dem, was deine Kunden wirklich brauchen und wie sie dein Angebot nutzen werden.</p>
+<h3>Unser Rat</h3>
+<p>Ruf an oder schreib uns — wir besprechen deinen konkreten Fall kostenlos und empfehlen die Lösung, die wirklich zu deinem Unternehmen passt. Nicht die teuerste — die richtige.</p>
+        `
+    }
+];
+
+// ── CATEGORY LABELS & ICONS ─────────────────────────────────────
+var CAT_LABELS = { webdev: 'Web Dev', mobile: 'Mobile', ki: 'KI & Tech', ecommerce: 'eCommerce' };
+var CAT_CLASSES = { webdev: 'bl-cat--webdev', mobile: 'bl-cat--mobile', ki: 'bl-cat--ki', ecommerce: 'bl-cat--ecommerce' };
+
+// Translation overrides for cat labels
+function getCatLabel(cat) {
+    var t = window._blT || {};
+    var map = {
+        webdev: t['blog.filter.webdev'] || 'Web Dev',
+        mobile: t['blog.filter.mobile'] || 'Mobile',
+        ki: t['blog.filter.ki'] || 'KI & Tech',
+        ecommerce: t['blog.filter.ecommerce'] || 'eCommerce'
+    };
+    return map[cat] || cat;
+}
+
+// ── OPEN POST ───────────────────────────────────────────────────
+window.openPost = function(idx) {
+    var p = POSTS[idx];
+    if (!p) return;
+    // fill content
+    document.getElementById('blPostCat').className = 'bl-cat ' + p.catClass;
+    document.getElementById('blPostCat').textContent = getCatLabel(p.cat);
+    document.getElementById('blPostTitle').textContent = p.title;
+    document.getElementById('blPostDate').textContent = p.date;
+    var t = window._blT || {};
+    document.getElementById('blPostRead').textContent = p.readTime + ' ' + (t['blog.min'] || 'Min.');
+    var img = document.getElementById('blPostImg');
+    img.src = p.img;
+    img.alt = p.title;
+    document.getElementById('blPostBody').innerHTML = p.body;
+    // related
+    var related = POSTS.filter(function(pp) { return pp.id !== idx; }).slice(0, 4);
+    var rg = document.getElementById('blRelatedGrid');
+    rg.innerHTML = related.map(function(pp) {
+        return '<div class="bl-card" onclick="openPost(' + pp.id + ')" style="cursor:pointer;">' +
+            '<img class="bl-card-img" src="' + pp.img + '" alt="' + pp.title + '" loading="lazy">' +
+            '<div class="bl-card-body">' +
+            '<span class="bl-cat ' + pp.catClass + '">' + getCatLabel(pp.cat) + '</span>' +
+            '<div class="bl-title" style="margin-top:8px;">' + pp.title + '</div>' +
+            '<div class="bl-meta"><span>' + pp.date + '</span><span class="bl-meta-dot"></span><span>' + pp.readTime + '</span></div>' +
+            '</div></div>';
+    }).join('');
+    // show post view
+    document.getElementById('blListing').style.display = 'none';
+    var pv = document.getElementById('blPostView');
+    pv.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// ── CLOSE POST ──────────────────────────────────────────────────
+window.closePost = function() {
+    document.getElementById('blPostView').classList.remove('active');
+    document.getElementById('blListing').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// ── FILTER ──────────────────────────────────────────────────────
+document.querySelectorAll('.bl-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.bl-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var allCards = document.querySelectorAll('[data-cat]');
+        allCards.forEach(function(c) {
+            if (filter === 'all') {
+                c.classList.remove('bl-hidden');
+            } else {
+                c.classList.toggle('bl-hidden', c.getAttribute('data-cat') !== filter);
+            }
+        });
+
+        // If featured large is hidden, rearrange
+        var featLarge = document.querySelector('.bl-feat-large');
+        var smalls = document.querySelectorAll('.bl-feat-small');
+        // just hide/show — layout handled by CSS grid
+    });
+});
+</script>
+
+<script>
+// ── Dark mode & accessibility ─────────────────────────────────
+(function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeColor').setAttribute('content', '#0a1520');
+    }
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
+})();
+</script>
+
+<script>
+// ── Header scroll ─────────────────────────────────────────────
+(function(){
+    var header = document.querySelector('.header');
+    if (!header) return;
+    window.addEventListener('scroll', function(){
+        header.classList.toggle('scrolled', window.pageYOffset > 50);
+    });
+})();
+</script>
+
+<script>
+// ── Mobile menu ───────────────────────────────────────────────
+(function(){
+    var burger = document.getElementById('menuBurger');
+    var menu = document.getElementById('mobileMenu');
+    var header = document.querySelector('.header');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', function(){
+        var isOpen = menu.classList.toggle('open');
+        header.classList.toggle('menu-open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen);
+    });
+    // close on outside click
+    document.addEventListener('click', function(e){
+        if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+            menu.classList.remove('open');
+            header.classList.remove('menu-open');
+        }
+    });
+})();
+</script>
+
+<script src="js/translations.js"></script>
+<script>
+// ── i18n ─────────────────────────────────────────────────────
+(function(){
+    var savedLang = localStorage.getItem('lweb_lang');
+    var lang;
+    if (savedLang) { lang = savedLang; }
+    else {
+        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
+        var supported = ['de', 'en', 'es', 'fr', 'it'];
+        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
+    }
+    if (typeof translations !== 'undefined' && translations[lang] && lang !== 'de') {
+        var t = translations[lang];
+        window._blT = t;
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n');
+            if (t[key]) el.textContent = t[key];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n-html');
+            if (t[key]) el.innerHTML = t[key];
+        });
+        // Update filter buttons active label if needed
+        // Update lang buttons
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+        });
+    }
+})();
+
+window.switchLang = function(lang) {
+    localStorage.setItem('lweb_lang', lang);
+    location.reload();
+};
+</script>
+
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>
