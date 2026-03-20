@@ -2238,7 +2238,7 @@ body.dark-mode .website-card--shop {
 .about-content > p { font-size: 17px; line-height: 1.7; color: var(--gunpowder500); margin-bottom: 28px; }
 .about-points { display: flex; flex-direction: column; gap: 14px; }
 .about-point { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; color: var(--gunpowder600); }
-.about-point-icon { flex-shrink: 0; width: 24px; height: 24px; background: var(--begonia400); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.about-point-icon { flex-shrink: 0; width: 24px; height: 24px; background: #4dd35b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
 .about-point-icon svg { width: 14px; height: 14px; fill: #fff; }
 .about-image {
     display: flex;
