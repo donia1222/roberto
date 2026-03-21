@@ -261,10 +261,13 @@
 
         /* ═══ POST VIEW ══════════════════════════════════════ */
         .bl-post-view { display: none; }
-        .bl-post-view.active { display: block; }
+        .bl-post-view.active { display: block; padding-top: 20px; }
 
         .bl-post-back-bar {
-            max-width: 900px; margin: 0 auto; padding: 32px 24px 0;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: #ffffff; height: 60px;
+            display: flex; align-items: center;
+            padding: 0 20px; box-shadow: 0 1px 8px rgba(0,0,0,0.07);
         }
         .bl-post-back {
             display: inline-flex; align-items: center; gap: 8px;
@@ -399,7 +402,7 @@
 
         /* Header — igual que webs-publicadas.html */
         .header { background: #ffffff !important; }
-        .header-blog-label { display:none; align-items:center; gap:5px; font-size:13px; font-weight:800; color:#fe6c75; letter-spacing:0.01em; }
+        .header-blog-label { display:none; align-items:center; gap:5px; font-size:16px; font-weight:800; color:#fe6c75; letter-spacing:0.01em; }
         .header-blog-label svg { stroke:#fe6c75; flex-shrink:0; }
         @media(max-width:1024px){ .header-blog-label { display:flex; } }
         .header-back-desktop { display:flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
@@ -1049,6 +1052,8 @@ window.openPost = function(idx) {
     // show post view
     document.getElementById('blListing').style.display = 'none';
     document.querySelector('.bl-hero-banner').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
+    document.body.style.paddingTop = '60px';
     var pv = document.getElementById('blPostView');
     pv.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1059,6 +1064,7 @@ window.closePost = function() {
     document.getElementById('blPostView').classList.remove('active');
     document.getElementById('blListing').style.display = '';
     document.querySelector('.bl-hero-banner').style.display = '';
+    document.querySelector('.header').style.display = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
