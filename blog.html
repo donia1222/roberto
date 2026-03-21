@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body { padding-top: 60px; overflow-x: hidden; background: #f5f7fb; }
+        body { padding-top: 60px; overflow-x: hidden; background: #eef4ff; }
 
         /* ═══ ANIMATIONS ════════════════════════════════════ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -91,6 +91,7 @@
             .bl-hero-topics { display: none; }
         }
         @media(max-width:600px){ .bl-hero-banner { padding: 72px 20px 52px; } }
+        @media(max-width:1024px){ .bl-hero-banner { display:none; } }
         body.dark-mode .bl-hero-banner { background: linear-gradient(180deg, #111827 0%, #0f1520 100%); }
         body.dark-mode .bl-hero-h1, body.dark-mode .bl-hero-stat-n { color: #f1f5f9; }
         body.dark-mode .bl-hero-sub-new, body.dark-mode .bl-hero-stat-l { color: #8a9bb3; }
@@ -397,6 +398,7 @@
         }
 
         /* Header — igual que webs-publicadas.html */
+        .header { background: #eef4ff !important; }
         .header-back-desktop { display:flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
         .header-back-desktop svg { transition: transform 0.2s ease; }
         .header-back-desktop:hover { background:#8ecce8 !important; }
