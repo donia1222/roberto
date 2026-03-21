@@ -438,6 +438,18 @@
         }
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
         .header-nav-item { white-space: nowrap; }
+        /* Sticky filter tabs in header - desktop only */
+        .bl-header-filters {
+            display: none; align-items: center; gap: 8px;
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .bl-header-filters .bl-filter-btn {
+            padding: 10px 22px; font-size: 14px;
+        }
+        @media(min-width:1025px) {
+            .header.filters-sticky .header-nav { opacity: 0; pointer-events: none; }
+            .header.filters-sticky .bl-header-filters { display: flex; }
+        }
         .header.menu-open .header-title span:first-child { color: #fff !important; }
         .header-burger { display: none !important; }
     </style>
@@ -454,6 +466,13 @@
         <div class="header-title" id="headerTitle">
             <span>Blog</span>
             <span class="accent">Web Dev Insights</span>
+        </div>
+        <div class="bl-header-filters">
+            <button class="bl-filter-btn active" data-filter="all" data-i18n="blog.filter.all">Alle</button>
+            <button class="bl-filter-btn" data-filter="webdev" data-i18n="blog.filter.webdev">Web Dev</button>
+            <button class="bl-filter-btn" data-filter="mobile" data-i18n="blog.filter.mobile">Mobile</button>
+            <button class="bl-filter-btn" data-filter="ki" data-i18n="blog.filter.ki">KI &amp; Tech</button>
+            <button class="bl-filter-btn" data-filter="ecommerce" data-i18n="blog.filter.ecommerce">eCommerce</button>
         </div>
         <nav class="header-nav" aria-label="Hauptnavigation">
     <div class="header-nav-dropdown">
@@ -1074,6 +1093,9 @@ document.querySelectorAll('.bl-filter-btn').forEach(function(btn) {
         var filter = btn.getAttribute('data-filter');
         document.querySelectorAll('.bl-filter-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
+        // Sync header clone
+        var f = btn.getAttribute('data-filter');
+        document.querySelectorAll('.bl-header-filters .bl-filter-btn[data-filter="' + f + '"]').forEach(function(b){ b.classList.add('active'); });
 
         var allCards = document.querySelectorAll('[data-cat]');
         allCards.forEach(function(c) {
@@ -1111,8 +1133,36 @@ document.querySelectorAll('.bl-filter-btn').forEach(function(btn) {
 (function(){
     var header = document.querySelector('.header');
     if (!header) return;
+    var filterWrap = document.querySelector('.bl-filter-wrap');
+    var headerFilters = document.querySelector('.bl-header-filters');
+
+    // Sync filter active state between original and header clone
+    function syncFilters(clickedFilter, allBtns) {
+        allBtns.forEach(function(b){ b.classList.remove('active'); });
+        document.querySelectorAll('.bl-filter-btn[data-filter="' + clickedFilter + '"]').forEach(function(b){ b.classList.add('active'); });
+    }
+    if (headerFilters) {
+        headerFilters.querySelectorAll('.bl-filter-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+                var f = btn.getAttribute('data-filter');
+                var allBtns = document.querySelectorAll('.bl-filter-btn');
+                syncFilters(f, allBtns);
+                // trigger filter
+                var evt = new MouseEvent('click', {bubbles:true});
+                document.querySelector('.bl-filter-wrap .bl-filter-btn[data-filter="' + f + '"]').dispatchEvent(evt);
+            });
+        });
+    }
+
     window.addEventListener('scroll', function(){
         header.classList.toggle('scrolled', window.pageYOffset > 50);
+        // Sticky filter tabs - desktop only
+        if (window.innerWidth >= 1025 && filterWrap) {
+            var rect = filterWrap.getBoundingClientRect();
+            header.classList.toggle('filters-sticky', rect.top <= 72);
+        } else {
+            header.classList.remove('filters-sticky');
+        }
     });
 })();
 </script>
