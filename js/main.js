@@ -1601,7 +1601,7 @@ var webProjects = {
     },
     ushuaia: {
         title: 'Ushuaia Bar',
-        url: 'https://ushuaia-bar.ch',
+        url: 'https://www.ushuaia-bar.ch',
         image: 'img/ushuaia.png',
         complexity: 'medium',
         desc: 'Stilvolle Website für die Ushuaia Bar in Buchs SG mit Speise- und Getränkekarte, Events, Reservierungssystem und Galerie.',
