@@ -502,6 +502,7 @@ var translations = {
         'svc.support.cta': 'Beratung anfragen',
         // Price Calculator
         'calc.btn': 'Preis berechnen',
+        'hero.webseite.btn': 'Webseite ab 450 CHF',
         'calc.step': 'Schritt',
         'calc.of': 'von',
         'calc.s1.title': 'Was möchten Sie erstellen?',
@@ -1255,6 +1256,7 @@ var translations = {
         'svc.support.cta': 'Request consultation',
         // Price Calculator
         'calc.btn': 'Calculate price',
+        'hero.webseite.btn': 'Website from 450 CHF',
         'calc.step': 'Step',
         'calc.of': 'of',
         'calc.s1.title': 'What do you need?',
@@ -2117,6 +2119,7 @@ var translations = {
         'svc.support.cta': 'Solicitar consultor\u00eda',
         // Price Calculator
         'calc.btn': 'Calcular precio',
+        'hero.webseite.btn': 'P\u00e1gina Web desde 450 CHF',
         'calc.step': 'Paso',
         'calc.of': 'de',
         'calc.s1.title': '\u00bfQu\u00e9 necesitas?',
@@ -2979,6 +2982,7 @@ var translations = {
         'svc.support.cta': 'Demander un conseil',
         // Price Calculator
         'calc.btn': 'Calculer le prix',
+        'hero.webseite.btn': 'Site Web d\u00e8s 450 CHF',
         'calc.step': '\u00c9tape',
         'calc.of': 'sur',
         'calc.s1.title': 'Que souhaitez-vous cr\u00e9er ?',
@@ -3841,6 +3845,7 @@ var translations = {
         'svc.support.cta': 'Richiedere consulenza',
         // Price Calculator
         'calc.btn': 'Calcola il prezzo',
+        'hero.webseite.btn': 'Sito Web da 450 CHF',
         'calc.step': 'Passo',
         'calc.of': 'di',
         'calc.s1.title': 'Cosa vuoi creare?',
