@@ -1559,6 +1559,17 @@ function calcGoToContact() {
 
 // ===== WEB PROJECT MODAL =====
 var webProjects = {
+    vcardcreator: {
+        title: 'VCard Creator',
+        url: 'https://vcard-creato.vercel.app',
+        image: null,
+        video: 'img/sora-video-1774223926866.mp4',
+        complexity: 'medium',
+        desc: 'Digitale Visitenkarte in Sekunden erstellen — permanente URL, QR-Code und .vcf Kontaktdatei. 100% kostenlos, ohne Registrierung, direkt im Browser.',
+        techs: ['Next.js', 'TypeScript', 'PHP API', 'MySQL', 'QR Code'],
+        features: ['Permanente shareable URL', 'QR-Code inklusive', '.vcf Kontakt Download', 'Foto-Upload', '5 Sprachen (DE/EN/ES/FR/IT)', '100% kostenlos'],
+        price: '🎉 Kostenlos'
+    },
     usfishing: {
         title: 'US-Fishing & Huntingshop',
         url: 'https://online-shop-seven-delta.vercel.app',
@@ -1728,9 +1739,13 @@ function openWebModal(id) {
     if (!project) return;
     currentWebProject = id;
 
-    // Image
+    // Image or video
     var imgEl = document.getElementById('webModalImage');
-    imgEl.innerHTML = '<img src="' + project.image + '" alt="' + project.title + '">';
+    if (project.video) {
+        imgEl.innerHTML = '<video src="' + project.video + '" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>';
+    } else {
+        imgEl.innerHTML = '<img src="' + project.image + '" alt="' + project.title + '">';
+    }
 
     // Complexity badge
     var badgeEl = document.getElementById('webModalBadge');

@@ -577,6 +577,44 @@
     </div>
 </section>
 
+<!-- VCARD CREATOR BANNER -->
+<section class="section" style="padding-top:0;padding-bottom:64px;">
+    <div class="container">
+        <div class="vcard-promo-banner">
+            <!-- Video side -->
+            <div class="vcard-promo-video">
+                <video src="img/sora-video-1774223926866.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <!-- Text side -->
+            <div class="vcard-promo-text">
+                <div class="vcard-promo-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22"/><rect x="6" y="2" width="12" height="10"/></svg>
+                    <span data-i18n="vcard.banner.badge">100% kostenlos · Keine Registrierung</span>
+                </div>
+                <h3 data-i18n="vcard.banner.title">Digitale Visitenkarte in Sekunden erstellen</h3>
+                <p data-i18n="vcard.banner.desc">Formular ausfüllen — sofort eine permanente URL, QR-Code und .vcf-Kontaktdatei erhalten. Kostenlos, direkt im Browser, ohne App.</p>
+                <ul class="vcard-promo-feats">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="vcard.banner.feat1">Shareable Link</span>
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="vcard.banner.feat2">QR-Code inklusive</span>
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="vcard.banner.feat3">.vcf Download</span>
+                    </li>
+                </ul>
+                <a href="https://vcard-creato.vercel.app" target="_blank" rel="noopener noreferrer" class="vcard-promo-cta" data-i18n="vcard.banner.cta">
+                    Jetzt kostenlos erstellen →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- MOBILE APPS -->
 <section class="section apps" id="apps">
     <div class="container">
@@ -1135,6 +1173,20 @@
             <button class="website-filter-tab" data-filter="complex" data-i18n="websites.filter.complex">Komplex</button>
         </div>
         <div class="websites-grid">
+            <div class="website-card" data-complexity="medium" onclick="openWebModal('vcardcreator')" style="cursor:pointer;">
+                <div class="website-card-image" style="position:relative;overflow:hidden;">
+                    <video src="img/sora-video-1774223926866.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 400ms ease;"></video>
+                    <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.95);border:1.5px solid #fecdd3;color:#fe6c75;font-size:11px;font-weight:700;padding:3px 10px;border-radius:1000px;letter-spacing:0.02em;">
+                        ✦ Neu
+                    </div>
+                </div>
+                <div class="website-card-content">
+                    <h4>VCard Creator</h4>
+                    <span class="website-card-url">vcard-creato.vercel.app</span>
+                    <p>Digitale Visitenkarten in Sekunden — permanente URL, QR-Code und .vcf. 100% kostenlos.</p>
+                    <div class="website-card-tech-row"><span>Next.js</span><span>PHP API</span><span class="ai-tag">Kostenlos 🎉</span></div>
+                </div>
+            </div>
             <div class="website-card" data-complexity="complex" onclick="openWebModal('ledershop')">
                 <div class="website-card-image"><img src="img/ledershop.jpeg" alt="Leder-Shop Website - Premium Lederartikel"></div>
                 <div class="website-card-content">

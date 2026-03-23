@@ -5066,3 +5066,115 @@ body.dark-mode .bv-aflow          { background: #b49ed4; }
     .buyvoice-demo { min-height: 200px; }
 }
 
+
+/* ── VCARD CREATOR PROMO BANNER ── */
+.vcard-promo-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1.5px solid var(--gunpowder100, #dfeefb);
+    box-shadow: 0 16px 56px rgba(15,29,44,0.10);
+    background: #fff;
+}
+.vcard-promo-video {
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    padding: 20px 0 20px 20px;
+    background: #fff;
+}
+.vcard-promo-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+}
+.vcard-promo-text {
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    background: #fff;
+}
+.vcard-promo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff5f5;
+    border: 1.5px solid #fecdd3;
+    color: #fe6c75;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 1000px;
+    margin-bottom: 20px;
+    width: fit-content;
+    letter-spacing: 0.01em;
+}
+.vcard-promo-text h3 {
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 800;
+    color: var(--gunpowder900, #0f1d2c);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+}
+.vcard-promo-text p {
+    font-size: 15px;
+    color: var(--gunpowder500, #6b7d99);
+    line-height: 1.65;
+    margin-bottom: 24px;
+}
+.vcard-promo-feats {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.vcard-promo-feats li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gunpowder700, #424e65);
+}
+.vcard-promo-feats li svg {
+    color: #fe6c75;
+    flex-shrink: 0;
+}
+.vcard-promo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fe6c75;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 1000px;
+    text-decoration: none;
+    width: fit-content;
+    box-shadow: 0 6px 24px rgba(254,108,117,0.35);
+    transition: transform 180ms, box-shadow 180ms;
+}
+.vcard-promo-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(254,108,117,0.45);
+    color: #fff;
+}
+@media (max-width: 900px) {
+    .vcard-promo-banner { grid-template-columns: 1fr; }
+    .vcard-promo-video { min-height: 220px; max-height: 280px; padding: 16px 16px 0; }
+    .vcard-promo-text { padding: 36px 28px; }
+}
+@media (max-width: 600px) {
+    .vcard-promo-text { padding: 28px 20px; }
+    .vcard-promo-text h3 { font-size: 22px; }
+}
