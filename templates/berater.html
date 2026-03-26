@@ -536,6 +536,240 @@
         .b-footer-copy { font-size:13px; color:rgba(255,255,255,0.3); }
         .b-footer-copy a { color:var(--indigo-light); text-decoration:none; }
 
+        /* ═══ HERO TRUST STRIP ═══ */
+        .b-hero-trust {
+            position:absolute; bottom:0; left:0; right:0; z-index:3;
+            background:rgba(15,23,42,0.6); backdrop-filter:blur(20px);
+            border-top:1px solid rgba(129,140,248,0.15);
+            padding:20px 48px;
+        }
+        .b-hero-trust-inner {
+            max-width:1280px; margin:0 auto;
+            display:flex; align-items:center; gap:0; justify-content:space-around;
+        }
+        .b-trust-item {
+            display:flex; align-items:center; gap:12px; padding:0 24px;
+        }
+        .b-trust-item + .b-trust-item {
+            border-left:1px solid rgba(129,140,248,0.15);
+        }
+        .b-trust-icon {
+            width:40px; height:40px; border-radius:10px;
+            background:rgba(79,70,229,0.15); display:flex; align-items:center;
+            justify-content:center; color:var(--indigo-light); flex-shrink:0;
+        }
+        .b-trust-num {
+            font-family:var(--serif); font-size:22px; color:#fff; line-height:1.1;
+        }
+        .b-trust-label { font-size:12px; color:rgba(255,255,255,0.5); margin-top:1px; }
+
+        /* ═══ CLIENTS / LOGOS ═══ */
+        .b-clients-wrap {
+            background:var(--cream); padding:60px 48px;
+            border-bottom:1px solid rgba(79,70,229,0.06);
+        }
+        .b-clients-inner { max-width:1280px; margin:0 auto; }
+        .b-clients-label {
+            text-align:center; font-size:12px; font-weight:700; letter-spacing:0.2em;
+            text-transform:uppercase; color:var(--text-light); margin-bottom:40px;
+        }
+        .b-clients-logos {
+            display:flex; align-items:center; justify-content:center;
+            gap:48px; flex-wrap:wrap;
+        }
+        .b-client-logo {
+            display:flex; align-items:center; justify-content:center;
+            padding:16px 28px; border-radius:12px;
+            border:1px solid rgba(79,70,229,0.08);
+            background:#fff; color:var(--text-light);
+            font-size:15px; font-weight:700; letter-spacing:0.04em;
+            transition:all 0.3s; white-space:nowrap;
+        }
+        .b-client-logo:hover { border-color:rgba(79,70,229,0.2); color:var(--indigo); box-shadow:0 4px 16px rgba(79,70,229,0.08); }
+
+        /* ═══ PROCESS / WIE ICH ARBEITE ═══ */
+        .b-process-wrap {
+            background:linear-gradient(180deg, var(--cream) 0%, #eef2ff 100%);
+            padding:0; position:relative;
+        }
+        .b-process-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.2), transparent);
+        }
+        .b-process-steps {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;
+        }
+        .b-process-steps::before {
+            content:''; position:absolute; top:44px; left:calc(12.5% + 0px); right:calc(12.5% + 0px);
+            height:2px; background:linear-gradient(90deg, var(--indigo), var(--indigo-light));
+            z-index:0; opacity:0.3;
+        }
+        .b-process-step {
+            text-align:center; padding:40px 28px; position:relative; z-index:1;
+        }
+        .b-process-num {
+            width:56px; height:56px; border-radius:50%;
+            background:linear-gradient(135deg, var(--indigo), var(--indigo-light));
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--serif); font-size:22px; color:#fff; font-weight:400;
+            margin:0 auto 20px; box-shadow:0 8px 24px rgba(79,70,229,0.3);
+            transition:transform 0.3s;
+        }
+        .b-process-step:hover .b-process-num { transform:scale(1.1); }
+        .b-process-step h4 {
+            font-family:var(--serif); font-size:20px; color:var(--dark);
+            margin-bottom:10px; font-weight:400;
+        }
+        .b-process-step p { font-size:14px; color:var(--text-light); line-height:1.7; }
+        .b-process-badge {
+            display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.1em;
+            text-transform:uppercase; color:var(--indigo); background:rgba(79,70,229,0.08);
+            padding:4px 12px; border-radius:20px; margin-bottom:14px;
+        }
+
+        /* ═══ PRICING / PAKETE ═══ */
+        .b-pricing-wrap { background:var(--cream); position:relative; }
+        .b-pricing-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+        }
+        .b-pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .b-pricing-card {
+            border-radius:24px; padding:40px 32px; position:relative; overflow:hidden;
+            background:#fff; border:1px solid rgba(79,70,229,0.08);
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+        }
+        .b-pricing-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(79,70,229,0.1); }
+        .b-pricing-card--featured {
+            background:linear-gradient(135deg, var(--indigo) 0%, #4338ca 50%, #312e81 100%);
+            border-color:transparent; box-shadow:0 12px 40px rgba(79,70,229,0.35);
+        }
+        .b-pricing-card--featured:hover { box-shadow:0 24px 60px rgba(79,70,229,0.4); }
+        .b-pricing-popular {
+            position:absolute; top:20px; right:20px;
+            background:#f59e0b; color:#fff; font-size:11px; font-weight:700;
+            padding:4px 12px; border-radius:20px; letter-spacing:0.06em; text-transform:uppercase;
+        }
+        .b-pricing-tier {
+            font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+            color:var(--indigo); margin-bottom:12px;
+        }
+        .b-pricing-card--featured .b-pricing-tier { color:rgba(255,255,255,0.7); }
+        .b-pricing-card h3 {
+            font-family:var(--serif); font-size:26px; font-weight:400;
+            color:var(--dark); margin-bottom:8px;
+        }
+        .b-pricing-card--featured h3 { color:#fff; }
+        .b-pricing-desc { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:28px; }
+        .b-pricing-card--featured .b-pricing-desc { color:rgba(255,255,255,0.6); }
+        .b-pricing-price {
+            margin-bottom:28px; padding-bottom:28px;
+            border-bottom:1px solid rgba(79,70,229,0.08);
+        }
+        .b-pricing-card--featured .b-pricing-price { border-color:rgba(255,255,255,0.15); }
+        .b-pricing-amount {
+            font-family:var(--serif); font-size:48px; color:var(--dark); line-height:1;
+        }
+        .b-pricing-card--featured .b-pricing-amount { color:#fff; }
+        .b-pricing-per { font-size:14px; color:var(--text-light); }
+        .b-pricing-card--featured .b-pricing-per { color:rgba(255,255,255,0.55); }
+        .b-pricing-features { list-style:none; margin-bottom:32px; }
+        .b-pricing-features li {
+            display:flex; align-items:center; gap:10px;
+            font-size:14px; color:var(--text-light); padding:8px 0;
+            border-bottom:1px solid rgba(79,70,229,0.05);
+        }
+        .b-pricing-card--featured .b-pricing-features li {
+            color:rgba(255,255,255,0.75); border-color:rgba(255,255,255,0.08);
+        }
+        .b-pricing-features li::before {
+            content:''; width:18px; height:18px; border-radius:50%;
+            background:rgba(79,70,229,0.1); flex-shrink:0;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:center;
+        }
+        .b-pricing-card--featured .b-pricing-features li::before {
+            background-color:rgba(255,255,255,0.15);
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+        }
+        .b-pricing-btn {
+            display:block; text-align:center; padding:14px; border-radius:12px;
+            font-size:14px; font-weight:600; text-decoration:none; transition:all 0.3s;
+            background:rgba(79,70,229,0.08); color:var(--indigo);
+            border:1.5px solid rgba(79,70,229,0.15);
+        }
+        .b-pricing-btn:hover { background:var(--indigo); color:#fff; border-color:var(--indigo); }
+        .b-pricing-card--featured .b-pricing-btn {
+            background:#fff; color:var(--indigo);
+        }
+        .b-pricing-card--featured .b-pricing-btn:hover { background:rgba(255,255,255,0.9); }
+
+        /* ═══ SKILLS / TOOLS ═══ */
+        .b-skills-wrap {
+            background:linear-gradient(135deg, #0f172a, #1e1b4b);
+            padding:100px 48px; position:relative; overflow:hidden;
+        }
+        .b-skills-wrap::before {
+            content:''; position:absolute; top:-50%; right:-20%; width:600px; height:600px;
+            border-radius:50%; background:radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
+        }
+        .b-skills-inner { max-width:1280px; margin:0 auto; position:relative; z-index:1; }
+        .b-skills-header { text-align:center; margin-bottom:64px; }
+        .b-skills-header .b-section-tag { color:var(--indigo-light); justify-content:center; }
+        .b-skills-header .b-section-tag::before { background:var(--indigo-light); }
+        .b-skills-header h2 { color:#fff; }
+        .b-skills-header p { color:rgba(255,255,255,0.55); margin:0 auto; }
+        .b-skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+        .b-skill-group { }
+        .b-skill-group-title {
+            font-size:12px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+            color:var(--indigo-light); margin-bottom:20px;
+            display:flex; align-items:center; gap:10px;
+        }
+        .b-skill-group-title::after {
+            content:''; flex:1; height:1px; background:rgba(129,140,248,0.2);
+        }
+        .b-skill-tags { display:flex; flex-wrap:wrap; gap:10px; }
+        .b-skill-tag {
+            padding:8px 16px; border-radius:8px;
+            background:rgba(255,255,255,0.05); border:1px solid rgba(129,140,248,0.12);
+            color:rgba(255,255,255,0.7); font-size:13px; font-weight:500;
+            transition:all 0.3s; cursor:default;
+        }
+        .b-skill-tag:hover { background:rgba(79,70,229,0.2); border-color:rgba(79,70,229,0.4); color:#fff; }
+
+        /* ═══ FAQ ═══ */
+        .b-faq-wrap { background:var(--cream); position:relative; }
+        .b-faq-wrap::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:1px;
+            background:linear-gradient(90deg, transparent, rgba(79,70,229,0.15), transparent);
+        }
+        .b-faq-list { max-width:800px; margin:0 auto; }
+        .b-faq-item {
+            border-bottom:1px solid rgba(79,70,229,0.08); overflow:hidden;
+        }
+        .b-faq-q {
+            width:100%; background:none; border:none; cursor:pointer;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:24px 0; gap:20px; text-align:left;
+        }
+        .b-faq-q span {
+            font-family:var(--sans); font-size:17px; font-weight:600;
+            color:var(--dark); line-height:1.4;
+        }
+        .b-faq-icon {
+            width:32px; height:32px; border-radius:8px; flex-shrink:0;
+            background:rgba(79,70,229,0.08); display:flex; align-items:center;
+            justify-content:center; color:var(--indigo); transition:all 0.3s;
+        }
+        .b-faq-item.open .b-faq-icon { background:var(--indigo); color:#fff; transform:rotate(45deg); }
+        .b-faq-a {
+            max-height:0; overflow:hidden; transition:max-height 0.4s ease;
+        }
+        .b-faq-a p {
+            padding:0 0 24px; font-size:15px; color:var(--text-light); line-height:1.8;
+        }
+
         /* ═══ RESPONSIVE 1024 ═══ */
         @media (max-width:1024px) {
             .b-nav { padding:16px 24px; }
@@ -558,6 +792,16 @@
             .b-footer-inner { grid-template-columns:1fr; gap:32px; }
             .b-footer-bottom { flex-direction:column; gap:12px; text-align:center; }
             .b-section-title { font-size:36px; }
+            .b-hero-trust { padding:16px 24px; }
+            .b-hero-trust-inner { gap:0; flex-wrap:wrap; justify-content:center; }
+            .b-trust-item { padding:8px 16px; }
+            .b-clients-wrap { padding:48px 24px; }
+            .b-clients-logos { gap:20px; }
+            .b-process-steps { grid-template-columns:1fr 1fr; }
+            .b-process-steps::before { display:none; }
+            .b-pricing-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
+            .b-skills-wrap { padding:80px 24px; }
+            .b-skills-grid { grid-template-columns:1fr; gap:24px; }
         }
 
         /* ═══ RESPONSIVE 600 ═══ */
@@ -595,6 +839,7 @@
     <div class="b-nav-links">
         <a href="#about">Über mich</a>
         <a href="#expertise">Expertise</a>
+        <a href="#pakete">Pakete</a>
         <a href="#projects">Projekte</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact" class="b-nav-cta">Kontakt</a>
@@ -608,6 +853,7 @@
 <div class="b-mobile-menu" id="bMobileMenu">
     <a href="#about">Über mich</a>
     <a href="#expertise">Expertise</a>
+    <a href="#pakete">Pakete</a>
     <a href="#projects">Projekte</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Kontakt</a>
@@ -633,6 +879,47 @@
             </div>
         </div>
     </div>
+    <!-- Trust strip -->
+    <div class="b-hero-trust">
+        <div class="b-hero-trust-inner">
+            <div class="b-trust-item">
+                <div class="b-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <div class="b-trust-num">15+</div>
+                    <div class="b-trust-label">Jahre Erfahrung</div>
+                </div>
+            </div>
+            <div class="b-trust-item">
+                <div class="b-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                    <div class="b-trust-num">200+</div>
+                    <div class="b-trust-label">Projekte abgeschlossen</div>
+                </div>
+            </div>
+            <div class="b-trust-item">
+                <div class="b-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div>
+                    <div class="b-trust-num">50+</div>
+                    <div class="b-trust-label">Zufriedene Kunden</div>
+                </div>
+            </div>
+            <div class="b-trust-item">
+                <div class="b-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                    <div class="b-trust-num">4.9★</div>
+                    <div class="b-trust-label">Kundenbewertung</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ═══════════ MARQUEE ═══════════ -->
@@ -650,6 +937,21 @@
         <div class="b-marquee-item"><span class="b-marquee-dot"></span> Agile Coaching</div>
         <div class="b-marquee-item"><span class="b-marquee-dot"></span> Change Management</div>
         <div class="b-marquee-item"><span class="b-marquee-dot"></span> Workshop Moderation</div>
+    </div>
+</div>
+
+<!-- ═══════════ CLIENTS ═══════════ -->
+<div class="b-clients-wrap fade-up">
+    <div class="b-clients-inner">
+        <p class="b-clients-label">Vertrauen von führenden Unternehmen</p>
+        <div class="b-clients-logos">
+            <div class="b-client-logo">TechStart AG</div>
+            <div class="b-client-logo">FinServ Group</div>
+            <div class="b-client-logo">MedTech Solutions</div>
+            <div class="b-client-logo">Helvetia Ventures</div>
+            <div class="b-client-logo">SwissBank</div>
+            <div class="b-client-logo">DigiCorp</div>
+        </div>
     </div>
 </div>
 
@@ -747,6 +1049,43 @@
     </section>
 </div>
 
+<!-- ═══════════ PROCESS ═══════════ -->
+<div class="b-process-wrap" id="process">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag">Mein Prozess</div>
+            <h2 class="b-section-title">Wie ich arbeite</h2>
+            <p class="b-section-desc">Strukturiert, transparent und ergebnisorientiert — von der ersten Idee bis zur nachhaltigen Umsetzung.</p>
+        </div>
+        <div class="b-process-steps">
+            <div class="b-process-step fade-up">
+                <div class="b-process-num">1</div>
+                <div class="b-process-badge">Woche 1</div>
+                <h4>Discovery</h4>
+                <p>Tiefes Verständnis Ihrer Herausforderungen, Ziele und des Unternehmenskontexts durch Interviews und Analyse.</p>
+            </div>
+            <div class="b-process-step fade-up">
+                <div class="b-process-num">2</div>
+                <div class="b-process-badge">Woche 2–3</div>
+                <h4>Strategie</h4>
+                <p>Entwicklung eines massgeschneiderten Lösungskonzepts mit klaren Massnahmen, Prioritäten und Erfolgsmessung.</p>
+            </div>
+            <div class="b-process-step fade-up">
+                <div class="b-process-num">3</div>
+                <div class="b-process-badge">Woche 4+</div>
+                <h4>Umsetzung</h4>
+                <p>Begleitung der Implementierung — agil, iterativ und eng abgestimmt mit Ihren Teams und Stakeholdern.</p>
+            </div>
+            <div class="b-process-step fade-up">
+                <div class="b-process-num">4</div>
+                <div class="b-process-badge">Laufend</div>
+                <h4>Review & Optimierung</h4>
+                <p>Regelmässige Retrospektiven, Anpassungen und kontinuierliche Verbesserung für nachhaltige Resultate.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
 <!-- ═══════════ PROJECTS ═══════════ -->
 <div class="b-projects-wrap" id="projects">
     <section class="b-section">
@@ -801,6 +1140,71 @@
                         <span data-edit="text" data-edit-key="proj3-result">+65% Nutzerzufriedenheit</span>
                     </span>
                 </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<div class="b-pricing-wrap" id="pakete">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag">Leistungen & Pakete</div>
+            <h2 class="b-section-title">Transparent und flexibel</h2>
+            <p class="b-section-desc">Klare Pakete für jede Projektgrösse — oder ein individuelles Angebot ganz auf Ihre Bedürfnisse zugeschnitten.</p>
+        </div>
+        <div class="b-pricing-grid">
+            <div class="b-pricing-card fade-up">
+                <div class="b-pricing-tier">Starter</div>
+                <h3>Strategy Sprint</h3>
+                <p class="b-pricing-desc">Kompakte Strategieberatung für klare Entscheidungsgrundlagen und schnellen Mehrwert.</p>
+                <div class="b-pricing-price">
+                    <div class="b-pricing-amount">CHF 3'500</div>
+                    <div class="b-pricing-per">pro Sprint (1 Woche)</div>
+                </div>
+                <ul class="b-pricing-features">
+                    <li>Ist-Analyse & Interviews</li>
+                    <li>Strategisches Konzeptpapier</li>
+                    <li>2 Workshop-Sessions</li>
+                    <li>Handlungsempfehlungen</li>
+                    <li>2 Wochen E-Mail-Support</li>
+                </ul>
+                <a href="#contact" class="b-pricing-btn">Anfragen</a>
+            </div>
+            <div class="b-pricing-card b-pricing-card--featured fade-up">
+                <div class="b-pricing-popular">Beliebt</div>
+                <div class="b-pricing-tier">Business</div>
+                <h3>Transformation Programme</h3>
+                <p class="b-pricing-desc">Umfassende Begleitung für digitale Transformationsprojekte von Anfang bis Ende.</p>
+                <div class="b-pricing-price">
+                    <div class="b-pricing-amount">CHF 12'000</div>
+                    <div class="b-pricing-per">pro Monat (Retainer)</div>
+                </div>
+                <ul class="b-pricing-features">
+                    <li>Vollständige Projektbegleitung</li>
+                    <li>Agile Coaching & Facilitation</li>
+                    <li>Wöchentliche Statusmeetings</li>
+                    <li>Stakeholder-Management</li>
+                    <li>Unbegrenzter Support</li>
+                </ul>
+                <a href="#contact" class="b-pricing-btn">Gespräch buchen</a>
+            </div>
+            <div class="b-pricing-card fade-up">
+                <div class="b-pricing-tier">Enterprise</div>
+                <h3>Custom Engagement</h3>
+                <p class="b-pricing-desc">Massgeschneiderte Lösungen für komplexe Grossunternehmen und langfristige Partnerschaften.</p>
+                <div class="b-pricing-price">
+                    <div class="b-pricing-amount">Individuell</div>
+                    <div class="b-pricing-per">auf Anfrage</div>
+                </div>
+                <ul class="b-pricing-features">
+                    <li>Dediziertes Beraterteam</li>
+                    <li>Multi-Projekt-Management</li>
+                    <li>Executive Coaching</li>
+                    <li>Boardroom-Präsentationen</li>
+                    <li>Langfristige Partnerschaft</li>
+                </ul>
+                <a href="#contact" class="b-pricing-btn">Angebot anfragen</a>
             </div>
         </div>
     </section>
@@ -869,6 +1273,100 @@
                         <div class="b-testimonial-role" data-edit="text" data-edit-key="test3-role">CTO, MedTech Solutions</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<div class="b-skills-wrap">
+    <div class="b-skills-inner">
+        <div class="b-skills-header fade-up">
+            <div class="b-section-tag">Skills & Tools</div>
+            <h2 class="b-section-title" style="color:#fff">Mein Werkzeugkasten</h2>
+            <p class="b-section-desc">Methoden, Frameworks und Tools, mit denen ich täglich arbeite und nachweislich Ergebnisse erziele.</p>
+        </div>
+        <div class="b-skills-grid">
+            <div class="b-skill-group fade-up">
+                <div class="b-skill-group-title">Strategie & Management</div>
+                <div class="b-skill-tags">
+                    <span class="b-skill-tag">OKRs</span>
+                    <span class="b-skill-tag">Business Model Canvas</span>
+                    <span class="b-skill-tag">Value Proposition Design</span>
+                    <span class="b-skill-tag">SWOT-Analyse</span>
+                    <span class="b-skill-tag">Balanced Scorecard</span>
+                    <span class="b-skill-tag">Roadmapping</span>
+                </div>
+            </div>
+            <div class="b-skill-group fade-up">
+                <div class="b-skill-group-title">Agile & Methodik</div>
+                <div class="b-skill-tags">
+                    <span class="b-skill-tag">Scrum</span>
+                    <span class="b-skill-tag">Kanban</span>
+                    <span class="b-skill-tag">SAFe</span>
+                    <span class="b-skill-tag">Design Thinking</span>
+                    <span class="b-skill-tag">Lean Startup</span>
+                    <span class="b-skill-tag">Sprint Planning</span>
+                </div>
+            </div>
+            <div class="b-skill-group fade-up">
+                <div class="b-skill-group-title">Tools & Plattformen</div>
+                <div class="b-skill-tags">
+                    <span class="b-skill-tag">Jira</span>
+                    <span class="b-skill-tag">Confluence</span>
+                    <span class="b-skill-tag">Miro</span>
+                    <span class="b-skill-tag">Figma</span>
+                    <span class="b-skill-tag">Notion</span>
+                    <span class="b-skill-tag">MS Teams</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<div class="b-faq-wrap" id="faq">
+    <section class="b-section">
+        <div class="b-section-header fade-up">
+            <div class="b-section-tag">FAQ</div>
+            <h2 class="b-section-title">Häufige Fragen</h2>
+            <p class="b-section-desc">Antworten auf die wichtigsten Fragen rund um die Zusammenarbeit und meine Leistungen.</p>
+        </div>
+        <div class="b-faq-list fade-up">
+            <div class="b-faq-item">
+                <button class="b-faq-q" onclick="bFaqToggle(this)">
+                    <span>Wie läuft ein erstes Kennenlerngespräch ab?</span>
+                    <div class="b-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="b-faq-a"><p>Das 30-minütige Erstgespräch ist völlig unverbindlich und kostenfrei. Wir sprechen über Ihre Herausforderungen, Ziele und ob und wie ich Ihnen helfen kann. Danach erhalten Sie innerhalb von 48 Stunden ein konkretes Angebot.</p></div>
+            </div>
+            <div class="b-faq-item">
+                <button class="b-faq-q" onclick="bFaqToggle(this)">
+                    <span>Arbeiten Sie remote oder vor Ort?</span>
+                    <div class="b-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="b-faq-a"><p>Beides — je nach Projektphase und Anforderung. Workshops und wichtige Meilensteine führe ich bevorzugt vor Ort durch, während operative Begleitung und Coaching auch sehr gut remote funktionieren. Ich bin in der gesamten DACH-Region tätig.</p></div>
+            </div>
+            <div class="b-faq-item">
+                <button class="b-faq-q" onclick="bFaqToggle(this)">
+                    <span>Für welche Branchen und Unternehmensgrößen sind Sie tätig?</span>
+                    <div class="b-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="b-faq-a"><p>Ich arbeite branchenübergreifend — von innovativen Startups bis hin zu etablierten Konzernen. Besondere Expertise habe ich in Finanzdienstleistungen, Gesundheitswesen, Technologie und Industrie. Was alle meine Kunden eint: der Wunsch, sich zukunftsfähig aufzustellen.</p></div>
+            </div>
+            <div class="b-faq-item">
+                <button class="b-faq-q" onclick="bFaqToggle(this)">
+                    <span>Wie schnell können Sie ein Projekt starten?</span>
+                    <div class="b-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="b-faq-a"><p>In der Regel starte ich neue Projekte innerhalb von 1–2 Wochen nach Vertragsunterzeichnung. Für dringende Situationen — z.B. kurzfristige Workshop-Moderation oder Krisenbegleitung — bin ich oft auch schneller verfügbar. Kontaktieren Sie mich einfach direkt.</p></div>
+            </div>
+            <div class="b-faq-item">
+                <button class="b-faq-q" onclick="bFaqToggle(this)">
+                    <span>Was unterscheidet Sie von einer klassischen Unternehmensberatung?</span>
+                    <div class="b-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="b-faq-a"><p>Als unabhängiger Berater habe ich keine Hierarchien, keine Projektmitarbeiter im Hintergrund und keine versteckten Interessen. Sie erhalten direkten Zugang zu mir — mit meiner vollen Erfahrung und Aufmerksamkeit. Das macht die Zusammenarbeit schneller, persönlicher und deutlich kosteneffizienter.</p></div>
             </div>
         </div>
     </section>
@@ -1025,6 +1523,21 @@
     }, { threshold:0.12 });
     document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
 })();
+
+// FAQ accordion
+function bFaqToggle(btn) {
+    var item = btn.parentElement;
+    var answer = item.querySelector('.b-faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.b-faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.b-faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+}
 
 // Stat counter animation
 (function(){

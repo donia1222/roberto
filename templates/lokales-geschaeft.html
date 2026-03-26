@@ -617,6 +617,173 @@
         .s-footer-copy a { color:var(--gold); text-decoration:none; }
         .s-footer-copy a:hover { text-decoration:underline; }
 
+        /* ═══ HERO TRUST STRIP ═══ */
+        .s-hero-trust {
+            position:absolute; bottom:0; left:0; right:0; z-index:3;
+            background:rgba(26,18,24,0.65); backdrop-filter:blur(20px);
+            border-top:1px solid rgba(212,165,116,0.2);
+            padding:18px 48px;
+        }
+        .s-hero-trust-inner {
+            max-width:1100px; margin:0 auto;
+            display:flex; align-items:center; justify-content:space-around;
+        }
+        .s-trust-item {
+            display:flex; align-items:center; gap:14px; padding:0 20px;
+        }
+        .s-trust-item + .s-trust-item {
+            border-left:1px solid rgba(212,165,116,0.15);
+        }
+        .s-trust-icon {
+            width:40px; height:40px; border-radius:10px;
+            background:rgba(212,165,116,0.12); display:flex;
+            align-items:center; justify-content:center; color:var(--gold); flex-shrink:0;
+        }
+        .s-trust-num {
+            font-family:var(--serif); font-size:22px; color:#fff; line-height:1.1;
+            font-weight:600;
+        }
+        .s-trust-label { font-size:12px; color:rgba(255,255,255,0.5); margin-top:1px; }
+
+        /* ═══ WERTE / VALUES ═══ */
+        .s-values { background:var(--cream); }
+        .s-values-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+        }
+        .s-value-card {
+            background:#fff; border-radius:20px; padding:44px 36px;
+            text-align:center;
+            box-shadow:0 4px 20px rgba(139,34,82,0.04);
+            border:1px solid rgba(212,165,116,0.1);
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+            position:relative; overflow:hidden;
+        }
+        .s-value-card::before {
+            content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+            background:linear-gradient(90deg, var(--burgundy), var(--gold));
+            transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+        }
+        .s-value-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,34,82,0.08); }
+        .s-value-card:hover::before { transform:scaleX(1); }
+        .s-value-icon {
+            width:70px; height:70px; border-radius:50%;
+            background:rgba(139,34,82,0.06); border:2px solid rgba(212,165,116,0.2);
+            display:flex; align-items:center; justify-content:center;
+            margin:0 auto 24px; color:var(--burgundy);
+            transition:all 0.4s;
+        }
+        .s-value-card:hover .s-value-icon {
+            background:var(--burgundy); color:#fff; border-color:var(--burgundy);
+        }
+        .s-value-card h3 {
+            font-family:var(--serif); font-size:24px; font-weight:600;
+            color:var(--dark); margin-bottom:14px;
+        }
+        .s-value-card p { font-size:15px; color:var(--text-light); line-height:1.8; }
+
+        /* ═══ PRODUZENTEN ═══ */
+        .s-producers { background:var(--warm); }
+        .s-producers-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+        }
+        .s-producer-card {
+            background:#fff; border-radius:16px; padding:32px 28px;
+            border:1px solid rgba(212,165,116,0.12);
+            transition:all 0.4s; display:flex; flex-direction:column; gap:16px;
+            box-shadow:0 4px 16px rgba(139,34,82,0.03);
+        }
+        .s-producer-card:hover { transform:translateY(-4px); border-color:var(--gold-light); box-shadow:0 12px 36px rgba(139,34,82,0.08); }
+        .s-producer-img { width:100%; height:140px; border-radius:10px; overflow:hidden; }
+        .s-producer-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+        .s-producer-card:hover .s-producer-img img { transform:scale(1.06); }
+        .s-producer-region {
+            font-size:10px; font-weight:700; letter-spacing:0.15em;
+            text-transform:uppercase; color:var(--burgundy); opacity:0.7;
+        }
+        .s-producer-name {
+            font-family:var(--serif); font-size:20px; font-weight:600;
+            color:var(--dark); line-height:1.2;
+        }
+        .s-producer-desc { font-size:13px; color:var(--text-light); line-height:1.7; flex:1; }
+        .s-producer-tag {
+            display:inline-block; font-size:11px; font-weight:600;
+            color:var(--burgundy); background:rgba(139,34,82,0.06);
+            padding:4px 12px; border-radius:600px; align-self:flex-start;
+            border:1px solid rgba(139,34,82,0.1);
+        }
+
+        /* ═══ GALLERY / INSTAGRAM ═══ */
+        .s-gallery { background:var(--cream); }
+        .s-gallery-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+        }
+        .s-gallery-item {
+            position:relative; border-radius:14px; overflow:hidden;
+            aspect-ratio:1; cursor:pointer;
+        }
+        .s-gallery-item img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform 0.5s cubic-bezier(0.22,1,0.36,1);
+            display:block;
+        }
+        .s-gallery-item:hover img { transform:scale(1.08); }
+        .s-gallery-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(180deg, transparent 40%, rgba(139,34,82,0.75) 100%);
+            display:flex; flex-direction:column; justify-content:flex-end;
+            padding:20px; opacity:0; transition:opacity 0.4s;
+        }
+        .s-gallery-item:hover .s-gallery-overlay { opacity:1; }
+        .s-gallery-caption {
+            font-family:var(--serif); font-size:16px; font-weight:600; color:#fff;
+        }
+        .s-gallery-cat {
+            font-size:11px; font-weight:700; letter-spacing:0.12em;
+            text-transform:uppercase; color:var(--gold-light); margin-bottom:4px;
+        }
+        .s-gallery-cta {
+            text-align:center; margin-top:40px;
+        }
+        .s-gallery-cta a {
+            display:inline-flex; align-items:center; gap:10px;
+            font-size:14px; font-weight:600; color:var(--burgundy);
+            text-decoration:none; letter-spacing:0.04em;
+            border-bottom:1.5px solid rgba(139,34,82,0.3); padding-bottom:4px;
+            transition:all 0.3s;
+        }
+        .s-gallery-cta a:hover { color:#a02a64; border-color:var(--burgundy); gap:14px; }
+
+        /* ═══ FAQ ═══ */
+        .s-faq { background:var(--warm); }
+        .s-faq-list { max-width:780px; margin:0 auto; }
+        .s-faq-item {
+            border-bottom:1px solid rgba(212,165,116,0.2); overflow:hidden;
+        }
+        .s-faq-q {
+            width:100%; background:none; border:none; cursor:pointer;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:24px 0; gap:20px; text-align:left;
+        }
+        .s-faq-q span {
+            font-family:var(--serif); font-size:18px; font-weight:500;
+            color:var(--dark); line-height:1.4;
+        }
+        .s-faq-icon {
+            width:32px; height:32px; border-radius:50%; flex-shrink:0;
+            background:rgba(139,34,82,0.06); border:1px solid rgba(212,165,116,0.2);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--burgundy); transition:all 0.3s;
+        }
+        .s-faq-item.open .s-faq-icon {
+            background:var(--burgundy); color:#fff; transform:rotate(45deg);
+            border-color:var(--burgundy);
+        }
+        .s-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+        .s-faq-a p { padding:0 0 24px; font-size:15px; color:var(--text-light); line-height:1.9; }
+
         /* ═══ RESPONSIVE 1024px ═══ */
         @media (max-width:1024px) {
             .s-nav { padding:16px 28px; }
@@ -636,6 +803,12 @@
             .s-specials-grid > :last-child { grid-column:span 2; }
             .s-test-grid { grid-template-columns:1fr; max-width:560px; }
             .s-contact-grid { grid-template-columns:1fr; }
+            .s-hero-trust { padding:14px 24px; }
+            .s-hero-trust-inner { flex-wrap:wrap; gap:8px; justify-content:center; }
+            .s-trust-item { padding:6px 14px; }
+            .s-values-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
+            .s-producers-grid { grid-template-columns:1fr 1fr; }
+            .s-gallery-grid { grid-template-columns:repeat(2,1fr); }
             .s-footer-inner { grid-template-columns:1fr 1fr; }
             .s-footer-brand { grid-column:span 2; }
         }
@@ -664,6 +837,8 @@
             .s-about-stats { gap:20px; }
             .s-about-stat-n { font-size:28px; }
             .s-btn { padding:13px 28px; font-size:12px; }
+            .s-producers-grid { grid-template-columns:1fr; }
+            .s-gallery-grid { grid-template-columns:1fr 1fr; }
         }
     </style>
 </head>
@@ -710,6 +885,48 @@
             <a href="#about" class="s-btn s-btn--outline" data-edit="text" data-edit-key="hero-btn2">Unsere Geschichte</a>
         </div>
     </div>
+    <!-- Trust strip -->
+    <div class="s-hero-trust">
+        <div class="s-hero-trust-inner">
+            <div class="s-trust-item">
+                <div class="s-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <div class="s-trust-num">12+</div>
+                    <div class="s-trust-label">Jahre in Zürich</div>
+                </div>
+            </div>
+            <div class="s-trust-item">
+                <div class="s-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </div>
+                <div>
+                    <div class="s-trust-num">200+</div>
+                    <div class="s-trust-label">Handverlesene Produkte</div>
+                </div>
+            </div>
+            <div class="s-trust-item">
+                <div class="s-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div>
+                    <div class="s-trust-num">40+</div>
+                    <div class="s-trust-label">Lokale Produzenten</div>
+                </div>
+            </div>
+            <div class="s-trust-item">
+                <div class="s-trust-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                    <div class="s-trust-num">4.9★</div>
+                    <div class="s-trust-label">Google-Bewertung</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="s-hero-scroll">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
     </div>
@@ -877,6 +1094,50 @@
     </svg>
 </div>
 
+<!-- ═══════════ WERTE ═══════════ -->
+<section class="s-section s-values">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag">Unsere Überzeugungen</div>
+        <h2 class="s-section-title">Was uns <em>antreibt</em></h2>
+        <p class="s-section-desc">Drei Werte stehen im Mittelpunkt von allem, was wir tun — und von jedem Produkt, das wir in unser Sortiment aufnehmen.</p>
+        <div class="s-divider"></div>
+    </div>
+    <div class="s-values-grid">
+        <div class="s-value-card fade-up stagger-1">
+            <div class="s-value-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Lokal & Regional</h3>
+            <p>Alle unsere Produkte stammen aus der Schweiz und dem nahen Ausland. Kurze Lieferwege, bekannte Gesichter, starke Gemeinschaften — das ist unser Anspruch.</p>
+        </div>
+        <div class="s-value-card fade-up stagger-2">
+            <div class="s-value-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Nachhaltig & Fair</h3>
+            <p>Wir arbeiten nur mit Produzenten zusammen, die faire Löhne zahlen, umweltschonend produzieren und auf Plastik verzichten. Gut für Mensch und Planet.</p>
+        </div>
+        <div class="s-value-card fade-up stagger-3">
+            <div class="s-value-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h3>Handgemacht & Einzigartig</h3>
+            <p>Jedes Stück ist ein Original. Handgefertigt mit Sorgfalt und Leidenschaft — kein Massenprodukt, kein Algorithmus. Nur echtes Handwerk, das bleibt.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ORNAMENT ═══════════ -->
+<div class="s-ornament" style="background:var(--warm);">
+    <svg width="80" height="24" viewBox="0 0 80 24" fill="none">
+        <circle cx="12" cy="12" r="3" stroke="#8b2252" stroke-width="1" fill="none" opacity="0.3"/>
+        <circle cx="40" cy="12" r="5" stroke="#d4a574" stroke-width="1" fill="none" opacity="0.4"/>
+        <circle cx="68" cy="12" r="3" stroke="#8b2252" stroke-width="1" fill="none" opacity="0.3"/>
+        <line x1="18" y1="12" x2="32" y2="12" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+        <line x1="48" y1="12" x2="62" y2="12" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+</div>
+
 <!-- ═══════════ SPECIALS / ANGEBOTE ═══════════ -->
 <section class="s-section s-specials" id="specials">
     <div class="s-section-header fade-up">
@@ -986,6 +1247,152 @@
                     <div class="s-test-role" data-edit="text" data-edit-key="test3-role">Google Review</div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ PRODUZENTEN ═══════════ -->
+<section class="s-section s-producers" id="produzenten">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag">Unsere Partner</div>
+        <h2 class="s-section-title">Die <em>Produzenten</em> hinter den Produkten</h2>
+        <p class="s-section-desc">Wir kennen jeden unserer Partner persönlich. Lernen Sie die Menschen kennen, deren Leidenschaft in jedem Produkt steckt.</p>
+        <div class="s-divider"></div>
+    </div>
+    <div class="s-producers-grid">
+        <div class="s-producer-card fade-up stagger-1">
+            <div class="s-producer-img">
+                <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=600&q=80" alt="Imkerei Oberland" loading="lazy">
+            </div>
+            <div class="s-producer-region">Zürcher Oberland</div>
+            <div class="s-producer-name">Imkerei Oberland</div>
+            <p class="s-producer-desc">Drei Generationen Imker. 40 Bienenvölker auf 1200m Höhe — der reinste Alpenhonig der Schweiz, ungefiltert und naturbelassen.</p>
+            <span class="s-producer-tag">Honig & Waben</span>
+        </div>
+        <div class="s-producer-card fade-up stagger-2">
+            <div class="s-producer-img">
+                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=80" alt="Atelier Seifenkunst" loading="lazy">
+            </div>
+            <div class="s-producer-region">Zürich Kreis 4</div>
+            <div class="s-producer-name">Atelier Seifenkunst</div>
+            <p class="s-producer-desc">Kleine Manufaktur für handgemachte Naturseifen. Alle Rohstoffe biologisch, Verpackung kompostierbar. Mit Liebe gemacht, für sensible Haut.</p>
+            <span class="s-producer-tag">Pflege & Kosmetik</span>
+        </div>
+        <div class="s-producer-card fade-up stagger-3">
+            <div class="s-producer-img">
+                <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Töpferei Schaffhausen" loading="lazy">
+            </div>
+            <div class="s-producer-region">Schaffhausen</div>
+            <div class="s-producer-name">Töpferei am Rhein</div>
+            <p class="s-producer-desc">Handgedrehte Keramik aus regionalen Tonen. Jedes Stück ein Unikat — für den Alltag entworfen, mit der Stärke des Handwerks.</p>
+            <span class="s-producer-tag">Keramik & Handwerk</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ GALERIE ═══════════ -->
+<section class="s-section s-gallery" id="galerie">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag">Instagram & Galerie</div>
+        <h2 class="s-section-title">Ein Blick in <em>unser Geschäft</em></h2>
+        <p class="s-section-desc">Stimmungen, Produkte und Momente — so sieht es aus, wenn Herz auf Handwerk trifft.</p>
+        <div class="s-divider"></div>
+    </div>
+    <div class="s-gallery-grid">
+        <div class="s-gallery-item fade-up stagger-1">
+            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="Boutique" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Geschäft</div>
+                <div class="s-gallery-caption">Unser Ladenlokal am Rennweg</div>
+            </div>
+        </div>
+        <div class="s-gallery-item fade-up stagger-2">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Honig" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Naturprodukte</div>
+                <div class="s-gallery-caption">Frischer Alpenhonig vom Imker</div>
+            </div>
+        </div>
+        <div class="s-gallery-item fade-up stagger-3">
+            <img src="https://images.unsplash.com/photo-1602607167684-0fbb2b34d7ba?w=600&q=80" alt="Kerzen" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Wohnen</div>
+                <div class="s-gallery-caption">Handgegossene Duftkerzen</div>
+            </div>
+        </div>
+        <div class="s-gallery-item fade-up stagger-4">
+            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Keramik" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Handwerk</div>
+                <div class="s-gallery-caption">Keramik aus der Töpferei am Rhein</div>
+            </div>
+        </div>
+        <div class="s-gallery-item fade-up stagger-5">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Tee" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Genuss</div>
+                <div class="s-gallery-caption">Bergkräuter-Teemischungen</div>
+            </div>
+        </div>
+        <div class="s-gallery-item fade-up stagger-6">
+            <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=600&q=80" alt="Geschenke" loading="lazy">
+            <div class="s-gallery-overlay">
+                <div class="s-gallery-cat">Geschenke</div>
+                <div class="s-gallery-caption">Individuell verpackte Geschenksets</div>
+            </div>
+        </div>
+    </div>
+    <div class="s-gallery-cta fade-up">
+        <a href="#">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Folgen Sie uns auf Instagram @maisonfleur_zh
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="s-section s-faq" id="faq">
+    <div class="s-section-header fade-up">
+        <div class="s-section-tag">Häufige Fragen</div>
+        <h2 class="s-section-title">Ihre <em>Fragen</em>, unsere Antworten</h2>
+        <div class="s-divider"></div>
+    </div>
+    <div class="s-faq-list fade-up">
+        <div class="s-faq-item">
+            <button class="s-faq-q" onclick="sFaqToggle(this)">
+                <span>Bieten Sie einen Geschenkverpackungsservice an?</span>
+                <div class="s-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="s-faq-a"><p>Ja — gerne verpacken wir jedes Produkt oder Set als Geschenk. Wählen Sie aus verschiedenen Verpackungsoptionen (Leinenbeutel, Holzbox, Geschenkkarton) und lassen Sie uns eine persönliche Karte beilegen. Dieser Service ist kostenlos ab CHF 40.— Einkaufswert.</p></div>
+        </div>
+        <div class="s-faq-item">
+            <button class="s-faq-q" onclick="sFaqToggle(this)">
+                <span>Kann ich Produkte auch online bestellen?</span>
+                <div class="s-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="s-faq-a"><p>Aktuell sind wir primär ein stationäres Geschäft — der persönliche Kontakt ist uns wichtig. Für Bestellungen oder Reservierungen können Sie uns gerne per E-Mail oder Telefon kontaktieren. Ausgewählte Produkte liefern wir innerhalb der Schweiz auf Anfrage.</p></div>
+        </div>
+        <div class="s-faq-item">
+            <button class="s-faq-q" onclick="sFaqToggle(this)">
+                <span>Nehmen Sie neue Produzenten in Ihr Sortiment auf?</span>
+                <div class="s-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="s-faq-a"><p>Wir freuen uns immer über Anfragen von lokalen Produzenten, die mit unseren Werten übereinstimmen: lokal, handgemacht, nachhaltig. Schicken Sie uns eine kurze Vorstellung Ihrer Produkte per E-Mail — wir melden uns innerhalb von 2 Wochen zurück.</p></div>
+        </div>
+        <div class="s-faq-item">
+            <button class="s-faq-q" onclick="sFaqToggle(this)">
+                <span>Gibt es Firmenrabatte oder Mengenpreise?</span>
+                <div class="s-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="s-faq-a"><p>Ja — für Firmenkunden, Events und Grossbestellungen ab 10 Einheiten bieten wir individuelle Konditionen. Wir helfen Ihnen gerne dabei, einzigartige Firmengeschenke oder Event-Pakete zusammenzustellen. Kontaktieren Sie uns direkt für ein persönliches Angebot.</p></div>
+        </div>
+        <div class="s-faq-item">
+            <button class="s-faq-q" onclick="sFaqToggle(this)">
+                <span>Wie kommen wir am besten zu Ihnen?</span>
+                <div class="s-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="s-faq-a"><p>Wir befinden uns am Rennweg 15 in der Zürcher Altstadt — ideal erreichbar per Tram (Haltestelle Rennweg, Linie 13) oder S-Bahn (Zürich HB, 5 Minuten Fussweg). Veloabstellplätze sind direkt vor dem Geschäft vorhanden. Für Autofahrer gibt es Parkhäuser in der näheren Umgebung.</p></div>
         </div>
     </div>
 </section>
@@ -1122,6 +1529,21 @@
 </footer>
 
 <script>
+// FAQ accordion
+function sFaqToggle(btn) {
+    var item = btn.parentElement;
+    var answer = item.querySelector('.s-faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.s-faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.s-faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+}
+
 // Nav scroll
 (function(){
     var nav = document.getElementById('sNav');

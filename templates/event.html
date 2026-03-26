@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Lumière — Eventlocation Template | Lweb</title>
+    <meta name="description" content="Elegantes Eventlocation-Template mit Galerie, Paketen und Kontakt. Professionelle Webseite ab 250 CHF.">
+    <meta name="theme-color" content="#0a0a14" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Outfit',sans-serif; color:#e8e4dc; background:#0a0a14; overflow-x:hidden; }
+
+        :root {
+            --midnight: #0a0a14;
+            --midnight2: #10101e;
+            --midnight3: #18182a;
+            --champagne: #c9a96e;
+            --champagne2: #e0c488;
+            --champagne-pale: #f2e4c4;
+            --rose: #d4748c;
+            --text: #e8e4dc;
+            --muted: #8a8098;
+            --serif: 'Bodoni Moda', serif;
+            --sans: 'Outfit', sans-serif;
+        }
+
+        /* ── Back ────────────────────────────────── */
+        .ev-back {
+            position:fixed; top:14px; left:16px; z-index:9999;
+            display:inline-flex; align-items:center; gap:7px;
+            font-family:var(--sans); font-size:13px; font-weight:500;
+            color:var(--champagne); background:rgba(10,10,20,0.85);
+            border:1px solid rgba(201,169,110,0.25); border-radius:30px;
+            padding:7px 16px 7px 12px;
+            text-decoration:none; backdrop-filter:blur(12px);
+            transition:background .2s, border-color .2s;
+        }
+        .ev-back:hover { background:rgba(201,169,110,0.15); border-color:var(--champagne); }
+        .ev-back svg { transition:transform .2s; }
+        .ev-back:hover svg { transform:translateX(-3px); }
+
+        /* ── Nav ─────────────────────────────────── */
+        .ev-nav {
+            position:fixed; top:0; left:0; right:0; z-index:900;
+            transition:background .4s, border-color .4s;
+        }
+        .ev-nav.scrolled {
+            background:rgba(10,10,20,0.96); border-bottom:1px solid rgba(201,169,110,0.12);
+            backdrop-filter:blur(20px);
+        }
+        .ev-nav-inner {
+            max-width:1200px; margin:0 auto;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:0 40px; height:76px;
+        }
+        .ev-logo {
+            font-family:var(--serif); font-size:22px; font-weight:500; letter-spacing:0.04em;
+            color:#fff; text-decoration:none;
+        }
+        .ev-logo span { color:var(--champagne); font-style:italic; }
+        .ev-nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+        .ev-nav-links a {
+            font-size:14px; font-weight:400; color:rgba(232,228,220,0.7);
+            text-decoration:none; letter-spacing:0.03em; transition:color .2s;
+        }
+        .ev-nav-links a:hover { color:var(--champagne); }
+        .ev-nav-cta {
+            font-weight:600; color:var(--midnight) !important;
+            background:var(--champagne); padding:10px 24px; border-radius:4px;
+            transition:background .2s !important;
+        }
+        .ev-nav-cta:hover { background:var(--champagne2) !important; }
+        .ev-nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+        .ev-nav-burger span { display:block; width:22px; height:1.5px; background:var(--champagne); border-radius:2px; }
+        .ev-nav-mobile { display:none; }
+
+        /* ── Hero ────────────────────────────────── */
+        .ev-hero {
+            position:relative; height:100vh; min-height:680px;
+            display:flex; align-items:center; justify-content:center;
+            overflow:hidden; text-align:center;
+        }
+        .ev-hero-bg {
+            position:absolute; inset:0;
+            background-image:url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1800&q=85');
+            background-size:cover; background-position:center;
+            transform:scale(1.06);
+            transition:transform 8s ease;
+        }
+        .ev-hero-bg.loaded { transform:scale(1); }
+        .ev-hero-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(160deg, rgba(10,10,20,0.72) 0%, rgba(10,10,20,0.55) 50%, rgba(10,10,20,0.8) 100%);
+        }
+        .ev-hero-content { position:relative; z-index:1; padding:0 24px; max-width:860px; }
+        .ev-hero-eyebrow {
+            display:inline-flex; align-items:center; gap:14px;
+            font-size:11px; font-weight:500; letter-spacing:0.22em;
+            text-transform:uppercase; color:var(--champagne);
+            margin-bottom:28px;
+        }
+        .ev-hero-eyebrow span { display:block; width:40px; height:1px; background:var(--champagne); }
+        .ev-hero-h1 {
+            font-family:var(--serif);
+            font-size:clamp(52px,8vw,96px);
+            font-weight:500; line-height:1.06; color:#fff;
+            margin-bottom:28px; letter-spacing:-0.01em;
+        }
+        .ev-hero-h1 em { font-style:italic; color:var(--champagne-pale); display:block; }
+        .ev-hero-sub {
+            font-size:18px; line-height:1.7; color:rgba(232,228,220,0.75);
+            max-width:580px; margin:0 auto 48px;
+        }
+        .ev-hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .ev-btn-primary {
+            display:inline-flex; align-items:center; gap:8px;
+            font-family:var(--sans); font-size:15px; font-weight:600;
+            background:var(--champagne); color:var(--midnight);
+            padding:15px 32px; border-radius:4px; text-decoration:none;
+            letter-spacing:0.03em;
+            transition:background .2s, transform .2s;
+        }
+        .ev-btn-primary:hover { background:var(--champagne2); transform:translateY(-2px); }
+        .ev-btn-ghost {
+            display:inline-flex; align-items:center; gap:8px;
+            font-family:var(--sans); font-size:15px; font-weight:500;
+            border:1px solid rgba(201,169,110,0.45); color:var(--champagne);
+            padding:15px 32px; border-radius:4px; text-decoration:none;
+            transition:border-color .2s, background .2s;
+        }
+        .ev-btn-ghost:hover { border-color:var(--champagne); background:rgba(201,169,110,0.08); }
+        .ev-hero-scroll {
+            position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+            display:flex; flex-direction:column; align-items:center; gap:8px;
+            font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+            color:rgba(201,169,110,0.6); z-index:1;
+        }
+        .ev-hero-scroll-line {
+            width:1px; height:48px;
+            background:linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);
+            animation:evScrollLine 2s ease-in-out infinite;
+        }
+        @keyframes evScrollLine { 0%,100%{opacity:0.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+        /* ── Stats strip ─────────────────────────── */
+        .ev-strip {
+            background:var(--champagne);
+        }
+        .ev-strip-inner {
+            max-width:1200px; margin:0 auto; padding:0 40px;
+            display:grid; grid-template-columns:repeat(4,1fr);
+        }
+        .ev-strip-item {
+            padding:32px 0; text-align:center;
+            border-right:1px solid rgba(10,10,20,0.15);
+        }
+        .ev-strip-item:last-child { border-right:none; }
+        .ev-strip-num {
+            font-family:var(--serif); font-size:36px; font-weight:700;
+            color:var(--midnight); line-height:1;
+        }
+        .ev-strip-label { font-size:13px; font-weight:500; color:rgba(10,10,20,0.65); margin-top:4px; }
+
+        /* ── Section commons ─────────────────────── */
+        .ev-label {
+            display:inline-flex; align-items:center; gap:12px;
+            font-size:11px; font-weight:600; letter-spacing:0.2em;
+            text-transform:uppercase; color:var(--champagne);
+            margin-bottom:20px;
+        }
+        .ev-label span { display:block; width:32px; height:1px; background:var(--champagne); }
+        .ev-h2 {
+            font-family:var(--serif); font-size:clamp(34px,4.5vw,54px);
+            font-weight:500; line-height:1.14; color:#fff; margin-bottom:18px;
+        }
+        .ev-h2 em { font-style:italic; color:var(--champagne-pale); }
+        .ev-lead { font-size:17px; line-height:1.75; color:var(--muted); }
+
+        /* ── Galerie ─────────────────────────────── */
+        .ev-gallery-wrap { background:var(--midnight2); padding:100px 0; }
+        .ev-gallery-head {
+            max-width:1200px; margin:0 auto; padding:0 40px 56px;
+            display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap;
+        }
+        .ev-gallery-head-text { max-width:520px; }
+        .ev-gallery-link {
+            font-size:14px; font-weight:500; color:var(--champagne);
+            text-decoration:none; letter-spacing:0.06em;
+            border-bottom:1px solid rgba(201,169,110,0.35); padding-bottom:2px;
+            transition:border-color .2s;
+            white-space:nowrap;
+        }
+        .ev-gallery-link:hover { border-color:var(--champagne); }
+        /* Editorial grid */
+        .ev-gallery-grid {
+            max-width:1200px; margin:0 auto; padding:0 40px;
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr;
+            grid-template-rows:280px 280px;
+            gap:6px;
+        }
+        .ev-gallery-item { overflow:hidden; position:relative; }
+        .ev-gallery-item:nth-child(1) { grid-row:1/3; }
+        .ev-gallery-item:nth-child(4) { grid-column:2/4; }
+        .ev-gallery-item img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform .6s ease, filter .4s;
+            filter:brightness(0.88);
+        }
+        .ev-gallery-item:hover img { transform:scale(1.05); filter:brightness(1); }
+        .ev-gallery-item-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(to top, rgba(10,10,20,0.7) 0%, transparent 50%);
+            opacity:0; transition:opacity .35s;
+            display:flex; align-items:flex-end; padding:20px;
+        }
+        .ev-gallery-item:hover .ev-gallery-item-overlay { opacity:1; }
+        .ev-gallery-caption { font-size:13px; font-weight:500; color:#fff; letter-spacing:0.06em; text-transform:uppercase; }
+
+        /* ── Anlässe / Event Types ────────────────── */
+        .ev-types-wrap { background:var(--midnight); padding:100px 0; }
+        .ev-types-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+        .ev-types-head { text-align:center; margin-bottom:64px; }
+        .ev-types-head .ev-label { justify-content:center; }
+        .ev-types-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+            background:rgba(201,169,110,0.1); border-radius:2px; overflow:hidden;
+        }
+        .ev-type {
+            background:var(--midnight); padding:56px 40px;
+            position:relative; overflow:hidden;
+            transition:background .3s;
+        }
+        .ev-type:hover { background:var(--midnight3); }
+        .ev-type-icon {
+            font-family:var(--serif); font-size:48px; font-weight:400;
+            color:var(--champagne); margin-bottom:24px; display:block;
+            line-height:1;
+        }
+        .ev-type-num {
+            position:absolute; top:20px; right:24px;
+            font-family:var(--serif); font-size:80px; font-weight:700;
+            color:rgba(201,169,110,0.04); line-height:1;
+        }
+        .ev-type-title {
+            font-family:var(--serif); font-size:24px; font-weight:500;
+            color:#fff; margin-bottom:12px;
+        }
+        .ev-type-text { font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:24px; }
+        .ev-type-capacity {
+            display:inline-flex; align-items:center; gap:8px;
+            font-size:13px; font-weight:500; color:var(--champagne);
+            background:rgba(201,169,110,0.1); padding:6px 14px; border-radius:20px;
+        }
+
+        /* ── Pakete ──────────────────────────────── */
+        .ev-packages-wrap { background:var(--midnight2); padding:100px 0; }
+        .ev-packages-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+        .ev-packages-head { text-align:center; margin-bottom:64px; }
+        .ev-packages-head .ev-label { justify-content:center; }
+        .ev-packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .ev-package {
+            border:1px solid rgba(201,169,110,0.12);
+            border-radius:2px; padding:48px 36px;
+            position:relative; overflow:hidden;
+            transition:border-color .3s, transform .3s;
+            background:var(--midnight);
+        }
+        .ev-package:hover { border-color:rgba(201,169,110,0.4); transform:translateY(-4px); }
+        .ev-package.featured {
+            background:var(--champagne);
+            border-color:var(--champagne);
+        }
+        .ev-package.featured:hover { transform:translateY(-6px); }
+        .ev-package-badge {
+            position:absolute; top:0; right:28px;
+            font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+            background:var(--rose); color:#fff;
+            padding:5px 14px; border-radius:0 0 6px 6px;
+        }
+        .ev-package-name {
+            font-family:var(--serif); font-size:13px; font-weight:400;
+            letter-spacing:0.16em; text-transform:uppercase;
+            color:var(--champagne); margin-bottom:16px;
+        }
+        .ev-package.featured .ev-package-name { color:var(--midnight); }
+        .ev-package-price {
+            font-family:var(--serif); font-size:52px; font-weight:700;
+            color:#fff; line-height:1; margin-bottom:6px;
+        }
+        .ev-package.featured .ev-package-price { color:var(--midnight); }
+        .ev-package-note { font-size:13px; color:var(--muted); margin-bottom:32px; }
+        .ev-package.featured .ev-package-note { color:rgba(10,10,20,0.55); }
+        .ev-package-divider { height:1px; background:rgba(201,169,110,0.12); margin-bottom:32px; }
+        .ev-package.featured .ev-package-divider { background:rgba(10,10,20,0.15); }
+        .ev-package-features { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:36px; }
+        .ev-package-features li {
+            display:flex; align-items:center; gap:10px;
+            font-size:14px; color:rgba(232,228,220,0.8);
+        }
+        .ev-package.featured .ev-package-features li { color:rgba(10,10,20,0.75); }
+        .ev-package-features li svg { color:var(--champagne); flex-shrink:0; }
+        .ev-package.featured .ev-package-features li svg { color:var(--midnight); }
+        .ev-package-cta {
+            display:block; text-align:center;
+            font-family:var(--sans); font-size:14px; font-weight:600;
+            border:1px solid rgba(201,169,110,0.3); color:var(--champagne);
+            padding:13px 24px; border-radius:4px; text-decoration:none;
+            transition:background .2s, border-color .2s, color .2s;
+        }
+        .ev-package-cta:hover { background:var(--champagne); color:var(--midnight); border-color:var(--champagne); }
+        .ev-package.featured .ev-package-cta {
+            background:var(--midnight); color:#fff; border-color:var(--midnight);
+        }
+        .ev-package.featured .ev-package-cta:hover { background:var(--midnight3); }
+
+        /* ── Location Info ───────────────────────── */
+        .ev-location-wrap { background:var(--midnight); padding:100px 0; }
+        .ev-location-inner {
+            max-width:1200px; margin:0 auto; padding:0 40px;
+            display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+        }
+        .ev-location-img { position:relative; }
+        .ev-location-img img {
+            width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+            border-radius:2px;
+        }
+        .ev-location-badge {
+            position:absolute; bottom:-24px; right:-24px;
+            width:140px; height:140px; border-radius:50%;
+            background:var(--champagne);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            text-align:center; padding:16px;
+        }
+        .ev-location-badge-num { font-family:var(--serif); font-size:32px; font-weight:700; color:var(--midnight); line-height:1; }
+        .ev-location-badge-label { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(10,10,20,0.65); margin-top:4px; }
+        .ev-location-facts { display:flex; flex-direction:column; gap:24px; margin-top:40px; }
+        .ev-location-fact {
+            display:flex; align-items:center; gap:16px;
+            padding:20px 24px; background:var(--midnight3);
+            border-left:2px solid var(--champagne); border-radius:0 4px 4px 0;
+        }
+        .ev-location-fact-icon {
+            width:40px; height:40px; border-radius:50%;
+            background:rgba(201,169,110,0.1);
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .ev-location-fact-title { font-size:14px; font-weight:600; color:#fff; margin-bottom:2px; }
+        .ev-location-fact-sub { font-size:13px; color:var(--muted); }
+
+        /* ── Testimonials ────────────────────────── */
+        .ev-testi-wrap { background:var(--midnight2); padding:100px 0; }
+        .ev-testi-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+        .ev-testi-head { text-align:center; margin-bottom:64px; }
+        .ev-testi-head .ev-label { justify-content:center; }
+        .ev-testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .ev-testi-card {
+            padding:40px 36px; border:1px solid rgba(201,169,110,0.1);
+            border-radius:2px; background:var(--midnight);
+            position:relative; transition:border-color .3s;
+        }
+        .ev-testi-card:hover { border-color:rgba(201,169,110,0.35); }
+        .ev-testi-mark {
+            font-family:var(--serif); font-size:64px; color:rgba(201,169,110,0.12);
+            line-height:0.8; margin-bottom:20px; display:block;
+        }
+        .ev-testi-text {
+            font-family:var(--serif); font-size:17px; font-style:italic;
+            line-height:1.75; color:rgba(232,228,220,0.85); margin-bottom:28px;
+        }
+        .ev-testi-author { display:flex; align-items:center; gap:12px; }
+        .ev-testi-avatar {
+            width:44px; height:44px; border-radius:50%;
+            background:linear-gradient(135deg, var(--champagne), var(--rose));
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--serif); font-size:15px; font-weight:700;
+            color:var(--midnight); flex-shrink:0;
+        }
+        .ev-testi-name { font-size:14px; font-weight:600; color:#fff; }
+        .ev-testi-event { font-size:12px; color:var(--champagne); margin-top:2px; font-style:italic; }
+
+        /* ── FAQ ──────────────────────────────────── */
+        .ev-faq-wrap { background:var(--midnight); padding:100px 0; }
+        .ev-faq-inner { max-width:760px; margin:0 auto; padding:0 40px; }
+        .ev-faq-head { text-align:center; margin-bottom:56px; }
+        .ev-faq-head .ev-label { justify-content:center; }
+        .ev-faq-item { border-bottom:1px solid rgba(201,169,110,0.1); }
+        .ev-faq-q {
+            width:100%; background:none; border:none; cursor:pointer;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:24px 0; text-align:left; gap:16px;
+            font-family:var(--serif); font-size:18px; font-weight:500; color:#fff;
+        }
+        .ev-faq-q:hover { color:var(--champagne-pale); }
+        .ev-faq-icon {
+            width:30px; height:30px; border-radius:50%; flex-shrink:0;
+            border:1px solid rgba(201,169,110,0.25);
+            display:flex; align-items:center; justify-content:center;
+            transition:background .25s, border-color .25s, transform .3s;
+        }
+        .ev-faq-item.open .ev-faq-icon { background:var(--champagne); border-color:var(--champagne); transform:rotate(45deg); }
+        .ev-faq-item.open .ev-faq-icon svg { color:var(--midnight); }
+        .ev-faq-a {
+            font-size:15px; line-height:1.75; color:var(--muted);
+            max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s;
+        }
+        .ev-faq-item.open .ev-faq-a { max-height:300px; padding-bottom:24px; }
+
+        /* ── CTA ─────────────────────────────────── */
+        .ev-cta-wrap {
+            position:relative; overflow:hidden; padding:140px 0; text-align:center;
+        }
+        .ev-cta-bg {
+            position:absolute; inset:0;
+            background-image:url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1800&q=85');
+            background-size:cover; background-position:center;
+        }
+        .ev-cta-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(10,10,20,0.88) 0%, rgba(10,10,20,0.75) 100%);
+        }
+        .ev-cta-inner {
+            position:relative; z-index:1;
+            max-width:700px; margin:0 auto; padding:0 40px;
+        }
+        .ev-cta-inner .ev-label { justify-content:center; }
+        .ev-cta-h2 { font-family:var(--serif); font-size:clamp(36px,5vw,60px); font-weight:500; color:#fff; line-height:1.15; margin-bottom:20px; }
+        .ev-cta-sub { font-size:17px; line-height:1.7; color:rgba(232,228,220,0.65); margin-bottom:44px; }
+        .ev-cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+        /* ── Kontakt ─────────────────────────────── */
+        .ev-contact-wrap { background:var(--midnight2); padding:100px 0; }
+        .ev-contact-inner {
+            max-width:1200px; margin:0 auto; padding:0 40px;
+            display:grid; grid-template-columns:1fr 1.5fr; gap:80px; align-items:start;
+        }
+        .ev-contact-side .ev-h2 { font-size:clamp(28px,3.5vw,40px); }
+        .ev-contact-detail {
+            display:flex; align-items:flex-start; gap:14px;
+            font-size:14px; color:rgba(232,228,220,0.65); margin-top:20px;
+            line-height:1.6;
+        }
+        .ev-contact-detail svg { color:var(--champagne); flex-shrink:0; margin-top:2px; }
+        .ev-form { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+        .ev-form-full { grid-column:1/-1; }
+        .ev-field { display:flex; flex-direction:column; gap:8px; }
+        .ev-field label {
+            font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+            color:rgba(201,169,110,0.7);
+        }
+        .ev-field input, .ev-field select, .ev-field textarea {
+            font-family:var(--sans); font-size:15px; color:var(--text);
+            background:var(--midnight3); border:1px solid rgba(201,169,110,0.12);
+            border-radius:2px; padding:13px 16px;
+            outline:none; transition:border-color .2s;
+        }
+        .ev-field input:focus, .ev-field select:focus, .ev-field textarea:focus {
+            border-color:rgba(201,169,110,0.45);
+        }
+        .ev-field select option { background:var(--midnight3); }
+        .ev-field textarea { resize:vertical; min-height:120px; }
+        .ev-submit {
+            font-family:var(--sans); font-size:15px; font-weight:600;
+            background:var(--champagne); color:var(--midnight);
+            border:none; border-radius:4px; padding:15px 32px;
+            cursor:pointer; width:100%;
+            transition:background .2s;
+            display:flex; align-items:center; justify-content:center; gap:8px;
+        }
+        .ev-submit:hover { background:var(--champagne2); }
+
+        /* ── Footer ──────────────────────────────── */
+        .ev-footer {
+            background:var(--midnight); border-top:1px solid rgba(201,169,110,0.08);
+            padding:60px 0 32px;
+        }
+        .ev-footer-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+        .ev-footer-top {
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:24px;
+            padding-bottom:36px; border-bottom:1px solid rgba(201,169,110,0.08); margin-bottom:24px;
+        }
+        .ev-footer-logo { font-family:var(--serif); font-size:22px; font-weight:500; color:#fff; text-decoration:none; letter-spacing:0.04em; }
+        .ev-footer-logo span { color:var(--champagne); font-style:italic; }
+        .ev-footer-nav { display:flex; gap:24px; list-style:none; }
+        .ev-footer-nav a { font-size:13px; color:var(--muted); text-decoration:none; transition:color .2s; }
+        .ev-footer-nav a:hover { color:var(--champagne); }
+        .ev-footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .ev-footer-copy { font-size:13px; color:rgba(255,255,255,0.2); }
+        .ev-footer-badge { font-size:12px; color:rgba(255,255,255,0.2); }
+        .ev-footer-badge a { color:var(--champagne); text-decoration:none; }
+
+        /* ── Animations ──────────────────────────── */
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ── Responsive ──────────────────────────── */
+        @media (max-width:1024px) {
+            .ev-gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+            .ev-gallery-item:nth-child(1) { grid-row:auto; grid-column:1/-1; aspect-ratio:16/7; }
+            .ev-gallery-item:nth-child(4) { grid-column:auto; }
+            .ev-types-grid { grid-template-columns:1fr; gap:1px; }
+            .ev-packages-grid { grid-template-columns:1fr 1fr; }
+            .ev-location-inner { grid-template-columns:1fr; gap:48px; }
+            .ev-location-badge { display:none; }
+            .ev-testi-grid { grid-template-columns:1fr 1fr; }
+            .ev-contact-inner { grid-template-columns:1fr; gap:48px; }
+            .ev-strip-inner { grid-template-columns:1fr 1fr; }
+            .ev-strip-item:nth-child(2) { border-right:none; }
+        }
+        @media (max-width:600px) {
+            .ev-nav-links { display:none; }
+            .ev-nav-burger { display:flex; }
+            .ev-nav-inner { padding:0 20px; }
+            .ev-nav-mobile {
+                display:none; position:absolute; top:76px; left:0; right:0;
+                background:rgba(10,10,20,0.97); padding:16px 24px; flex-direction:column; gap:4px;
+                border-top:1px solid rgba(201,169,110,0.1);
+            }
+            .ev-nav-mobile.open { display:flex; }
+            .ev-nav-mobile a { font-size:16px; color:var(--text); text-decoration:none; padding:12px 0; border-bottom:1px solid rgba(201,169,110,0.08); }
+            .ev-gallery-grid { padding:0 20px; grid-template-columns:1fr; grid-template-rows:auto; gap:4px; }
+            .ev-gallery-item:nth-child(1) { grid-column:auto; }
+            .ev-gallery-item:nth-child(4) { grid-column:auto; }
+            .ev-gallery-item { aspect-ratio:4/3; height:auto !important; }
+            .ev-packages-grid { grid-template-columns:1fr; }
+            .ev-testi-grid { grid-template-columns:1fr; }
+            .ev-strip-inner { grid-template-columns:1fr 1fr; }
+            .ev-types-grid { gap:1px; }
+            .ev-faq-inner { padding:0 20px; }
+            .ev-form { grid-template-columns:1fr; }
+            .ev-footer-nav { flex-wrap:wrap; gap:16px; }
+            .ev-hero-h1 { font-size:48px; }
+            .ev-gallery-head, .ev-types-inner, .ev-packages-inner, .ev-testi-inner, .ev-contact-inner, .ev-footer-inner { padding-left:20px; padding-right:20px; }
+            .ev-location-inner { padding:0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back -->
+<a href="../templates-web.html" class="ev-back">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Zurück
+</a>
+
+<!-- Nav -->
+<nav class="ev-nav" id="evNav">
+    <div class="ev-nav-inner">
+        <a href="#" class="ev-logo">Villa <span>Lumière</span></a>
+        <ul class="ev-nav-links">
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#anlaesse">Anlässe</a></li>
+            <li><a href="#pakete">Pakete</a></li>
+            <li><a href="#kontakt" class="ev-nav-cta">Anfragen</a></li>
+        </ul>
+        <button class="ev-nav-burger" id="evBurger" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="ev-nav-mobile" id="evMobileMenu">
+        <a href="#galerie">Galerie</a>
+        <a href="#anlaesse">Anlässe</a>
+        <a href="#pakete">Pakete</a>
+        <a href="#kontakt">Anfragen</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="ev-hero">
+    <div class="ev-hero-bg" id="evHeroBg" data-edit="image" data-edit-key="hero-bg"></div>
+    <div class="ev-hero-overlay"></div>
+    <div class="ev-hero-content fade-up">
+        <div class="ev-hero-eyebrow">
+            <span></span>
+            Eventlocation Zürich
+            <span></span>
+        </div>
+        <h1 class="ev-hero-h1" data-edit="text" data-edit-key="hero-h1">
+            Ihr Moment.
+            <em>Unvergesslich.</em>
+        </h1>
+        <p class="ev-hero-sub" data-edit="text" data-edit-key="hero-sub">
+            Eine Location, die atmet — für Hochzeiten, Galas und private Feste. Eleganz trifft auf Herzlichkeit.
+        </p>
+        <div class="ev-hero-btns">
+            <a href="#galerie" class="ev-btn-primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Location entdecken
+            </a>
+            <a href="#kontakt" class="ev-btn-ghost">Datum anfragen</a>
+        </div>
+    </div>
+    <div class="ev-hero-scroll">
+        Scrollen
+        <div class="ev-hero-scroll-line"></div>
+    </div>
+</section>
+
+<!-- Stats Strip -->
+<div class="ev-strip">
+    <div class="ev-strip-inner">
+        <div class="ev-strip-item">
+            <div class="ev-strip-num">500</div>
+            <div class="ev-strip-label">Gäste (max. Kapazität)</div>
+        </div>
+        <div class="ev-strip-item">
+            <div class="ev-strip-num">14</div>
+            <div class="ev-strip-label">Jahre Erfahrung</div>
+        </div>
+        <div class="ev-strip-item">
+            <div class="ev-strip-num">980+</div>
+            <div class="ev-strip-label">Unvergessliche Events</div>
+        </div>
+        <div class="ev-strip-item">
+            <div class="ev-strip-num">4.9★</div>
+            <div class="ev-strip-label">Durchschnittsbewertung</div>
+        </div>
+    </div>
+</div>
+
+<!-- Galerie -->
+<div class="ev-gallery-wrap" id="galerie">
+    <div class="ev-gallery-head">
+        <div class="ev-gallery-head-text">
+            <div class="ev-label"><span></span>Impressionen</div>
+            <h2 class="ev-h2">Eine Location,<br>die <em>begeistert</em></h2>
+        </div>
+        <a href="#kontakt" class="ev-gallery-link">Besichtigung anfragen →</a>
+    </div>
+    <div class="ev-gallery-grid">
+        <div class="ev-gallery-item" style="height:566px">
+            <img src="https://images.unsplash.com/photo-1532117182044-031e7cd916ee?w=900&q=80" alt="Festsaal" loading="lazy" data-edit="image" data-edit-key="gal1">
+            <div class="ev-gallery-item-overlay"><span class="ev-gallery-caption">Grosser Festsaal</span></div>
+        </div>
+        <div class="ev-gallery-item" style="height:280px">
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=700&q=80" alt="Tischdekoration" loading="lazy" data-edit="image" data-edit-key="gal2">
+            <div class="ev-gallery-item-overlay"><span class="ev-gallery-caption">Tischdekoration</span></div>
+        </div>
+        <div class="ev-gallery-item" style="height:280px">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Empfangshalle" loading="lazy" data-edit="image" data-edit-key="gal3">
+            <div class="ev-gallery-item-overlay"><span class="ev-gallery-caption">Empfangshalle</span></div>
+        </div>
+        <div class="ev-gallery-item" style="height:280px">
+            <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=900&q=80" alt="Terrasse" loading="lazy" data-edit="image" data-edit-key="gal4">
+            <div class="ev-gallery-item-overlay"><span class="ev-gallery-caption">Sommergarten</span></div>
+        </div>
+        <div class="ev-gallery-item" style="height:280px">
+            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=700&q=80" alt="Bar" loading="lazy" data-edit="image" data-edit-key="gal5">
+            <div class="ev-gallery-item-overlay"><span class="ev-gallery-caption">Lounge & Bar</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Types -->
+<div class="ev-types-wrap" id="anlaesse">
+    <div class="ev-types-inner">
+        <div class="ev-types-head fade-up">
+            <div class="ev-label"><span></span>Für jeden Anlass</div>
+            <h2 class="ev-h2">Was wir <em>gestalten</em></h2>
+        </div>
+        <div class="ev-types-grid">
+            <div class="ev-type fade-up">
+                <div class="ev-type-num">01</div>
+                <span class="ev-type-icon">♡</span>
+                <div class="ev-type-title">Hochzeiten & Feiern</div>
+                <p class="ev-type-text">Der schönste Tag verdient den schönsten Rahmen. Von der intimen Feier bis zum grossen Fest — wir gestalten Ihren Traum.</p>
+                <div class="ev-type-capacity">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    20–500 Gäste
+                </div>
+            </div>
+            <div class="ev-type fade-up" style="transition-delay:.1s">
+                <div class="ev-type-num">02</div>
+                <span class="ev-type-icon">◈</span>
+                <div class="ev-type-title">Galas & Corporate Events</div>
+                <p class="ev-type-text">Firmenjubiläen, Award-Nächte und Business-Dinners in exklusivem Ambiente — Eindruck hinterlassen garantiert.</p>
+                <div class="ev-type-capacity">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    50–500 Gäste
+                </div>
+            </div>
+            <div class="ev-type fade-up" style="transition-delay:.2s">
+                <div class="ev-type-num">03</div>
+                <span class="ev-type-icon">✦</span>
+                <div class="ev-type-title">Private Parties & Geburtstage</div>
+                <p class="ev-type-text">Runde Geburtstage, Jubiläen und besondere Momente im Leben — feiern Sie mit Stil und ohne Stress.</p>
+                <div class="ev-type-capacity">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    20–200 Gäste
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pakete -->
+<div class="ev-packages-wrap" id="pakete">
+    <div class="ev-packages-inner">
+        <div class="ev-packages-head fade-up">
+            <div class="ev-label"><span></span>Preise & Pakete</div>
+            <h2 class="ev-h2">Transparent und <em>fair</em></h2>
+            <p class="ev-lead" style="max-width:540px;margin:0 auto">Alle Pakete beinhalten das Grundequipment, Betreuung vor Ort und unser erfahrenes Team.</p>
+        </div>
+        <div class="ev-packages-grid">
+            <div class="ev-package fade-up">
+                <div class="ev-package-name">Essentials</div>
+                <div class="ev-package-price">3'500</div>
+                <div class="ev-package-note">CHF · bis 80 Gäste · 6 Stunden</div>
+                <div class="ev-package-divider"></div>
+                <ul class="ev-package-features">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Kleiner Saal (80 Pers.)
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Standardbestuhlung & -tische
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Tontechnik & Mikrofon
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        1 Ansprechperson
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Garderobe & Parking
+                    </li>
+                </ul>
+                <a href="#kontakt" class="ev-package-cta">Anfragen</a>
+            </div>
+            <div class="ev-package featured fade-up" style="transition-delay:.1s">
+                <div class="ev-package-badge">Beliebt</div>
+                <div class="ev-package-name">Prestige</div>
+                <div class="ev-package-price">7'900</div>
+                <div class="ev-package-note">CHF · bis 250 Gäste · 10 Stunden</div>
+                <div class="ev-package-divider"></div>
+                <ul class="ev-package-features">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Festsaal (250 Pers.)
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Premium-Dekoration inklusive
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Licht & Tontechnik komplett
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Dedicated Event-Manager
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Welcome-Drink & Canapés
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Fotografier-Ecke
+                    </li>
+                </ul>
+                <a href="#kontakt" class="ev-package-cta">Anfragen</a>
+            </div>
+            <div class="ev-package fade-up" style="transition-delay:.2s">
+                <div class="ev-package-name">Grand Luxe</div>
+                <div class="ev-package-price">auf Anfrage</div>
+                <div class="ev-package-note" style="min-height:24px">Bis 500 Gäste · Ganztägig</div>
+                <div class="ev-package-divider"></div>
+                <ul class="ev-package-features">
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Gesamte Location exklusiv
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Full-Service Catering-Koordination
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Individuelle Lichtgestaltung
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        DJ-Beratung & Bühne
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        VIP-Lounge & Brautsuiten
+                    </li>
+                    <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Komplettes Rundum-Sorglos-Paket
+                    </li>
+                </ul>
+                <a href="#kontakt" class="ev-package-cta">Persönliche Beratung</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Location Info -->
+<div class="ev-location-wrap">
+    <div class="ev-location-inner">
+        <div class="ev-location-img fade-up">
+            <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&q=80" alt="Villa Lumière Interieur" loading="lazy" data-edit="image" data-edit-key="location-img">
+            <div class="ev-location-badge">
+                <div class="ev-location-badge-num">14</div>
+                <div class="ev-location-badge-label">Jahre Leidenschaft</div>
+            </div>
+        </div>
+        <div class="fade-up" style="transition-delay:.15s">
+            <div class="ev-label"><span></span>Die Location</div>
+            <h2 class="ev-h2">Mehr als<br>ein <em>Raum</em></h2>
+            <p class="ev-lead">Die Villa Lumière vereint historische Architektur mit modernstem Komfort. Jeder Winkel erzählt eine Geschichte — und Ihre soll hier beginnen.</p>
+            <div class="ev-location-facts">
+                <div class="ev-location-fact">
+                    <div class="ev-location-fact-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    </div>
+                    <div>
+                        <div class="ev-location-fact-title">1'200 m² Eventfläche</div>
+                        <div class="ev-location-fact-sub">Festsaal, Empfangshalle, Sommergarten, Lounge & Brautsuiten</div>
+                    </div>
+                </div>
+                <div class="ev-location-fact">
+                    <div class="ev-location-fact-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <div class="ev-location-fact-title">Zentrale Lage Zürich</div>
+                        <div class="ev-location-fact-sub">5 Minuten vom HB, kostenlose Tiefgarage mit 80 Plätzen</div>
+                    </div>
+                </div>
+                <div class="ev-location-fact">
+                    <div class="ev-location-fact-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--champagne)" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+                    </div>
+                    <div>
+                        <div class="ev-location-fact-title">Eigene Küche & Partnerköche</div>
+                        <div class="ev-location-fact-sub">Professionelle Kücheninfrastruktur und Caterer-Netzwerk vor Ort</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="ev-testi-wrap">
+    <div class="ev-testi-inner">
+        <div class="ev-testi-head fade-up">
+            <div class="ev-label"><span></span>Stimmen unserer Gäste</div>
+            <h2 class="ev-h2">Erinnerungen, die <em>bleiben</em></h2>
+        </div>
+        <div class="ev-testi-grid">
+            <div class="ev-testi-card fade-up">
+                <span class="ev-testi-mark">"</span>
+                <p class="ev-testi-text">«Unsere Hochzeit war wie ein Märchen. Das Team der Villa Lumière hat alles perfekt organisiert — wir mussten an nichts denken und konnten einfach geniessen.»</p>
+                <div class="ev-testi-author">
+                    <div class="ev-testi-avatar">JF</div>
+                    <div>
+                        <div class="ev-testi-name">Julia & Florian Weber</div>
+                        <div class="ev-testi-event">Hochzeit · Juni 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ev-testi-card fade-up" style="transition-delay:.1s">
+                <span class="ev-testi-mark">"</span>
+                <p class="ev-testi-text">«Für unser Firmenjubiläum war die Villa Lumière die perfekte Wahl. Eindrucksvoller Rahmen, exzellenter Service und ein Team, das mitdenkt.»</p>
+                <div class="ev-testi-author">
+                    <div class="ev-testi-avatar">MR</div>
+                    <div>
+                        <div class="ev-testi-name">Marcus Reinhard</div>
+                        <div class="ev-testi-event">Firmengala · März 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ev-testi-card fade-up" style="transition-delay:.2s">
+                <span class="ev-testi-mark">"</span>
+                <p class="ev-testi-text">«Mein 50. Geburtstag wurde hier zum unvergesslichen Erlebnis. Die Atmosphäre, das Licht, die Dekoration — absolut traumhaft. Klare Empfehlung!»</p>
+                <div class="ev-testi-author">
+                    <div class="ev-testi-avatar">CS</div>
+                    <div>
+                        <div class="ev-testi-name">Christine Steiner</div>
+                        <div class="ev-testi-event">Geburtstagsfeier · Oktober 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="ev-faq-wrap">
+    <div class="ev-faq-inner">
+        <div class="ev-faq-head">
+            <div class="ev-label"><span></span>FAQ</div>
+            <h2 class="ev-h2">Häufige <em>Fragen</em></h2>
+        </div>
+        <div>
+            <div class="ev-faq-item">
+                <button class="ev-faq-q" onclick="evFaq(this)">
+                    Wie früh sollte ich die Location reservieren?
+                    <span class="ev-faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="ev-faq-a">Für Hochzeiten empfehlen wir eine Buchung 12–18 Monate im Voraus, da beliebte Daten rasch vergeben sind. Für Firmenevents und kleinere Feiern sind oft auch kurzfristigere Buchungen (3–6 Monate) möglich. Schreiben Sie uns einfach an.</div>
+            </div>
+            <div class="ev-faq-item">
+                <button class="ev-faq-q" onclick="evFaq(this)">
+                    Kann ich mein eigenes Catering mitbringen?
+                    <span class="ev-faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="ev-faq-a">Ja, externe Caterer sind willkommen. Wir stellen eine professionelle Küche zur Verfügung. Alternativ empfehlen wir unsere Partnerkoch-Netzwerk — damit haben wir langjährige, bewährte Zusammenarbeit.</div>
+            </div>
+            <div class="ev-faq-item">
+                <button class="ev-faq-q" onclick="evFaq(this)">
+                    Gibt es Parkplätze für die Gäste?
+                    <span class="ev-faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="ev-faq-a">Ja — unsere Tiefgarage bietet 80 Parkplätze kostenlos für Ihre Gäste. Zusätzlich gibt es öffentliche Parkmöglichkeiten in unmittelbarer Nähe. Die Location ist auch mit ÖV (5 Min. vom HB) bestens erreichbar.</div>
+            </div>
+            <div class="ev-faq-item">
+                <button class="ev-faq-q" onclick="evFaq(this)">
+                    Bis wie spät kann die Feier dauern?
+                    <span class="ev-faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="ev-faq-a">Regulär bis 02:00 Uhr. Mit entsprechender Bewilligung und je nach Anlass ist auch ein späteres Ende möglich. Dies klären wir individuell und rechtzeitig mit den Behörden ab.</div>
+            </div>
+            <div class="ev-faq-item">
+                <button class="ev-faq-q" onclick="evFaq(this)">
+                    Was passiert bei schlechtem Wetter für Outdoor-Events?
+                    <span class="ev-faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                </button>
+                <div class="ev-faq-a">Unser Sommergarten ist mit einem eleganten Wetterschutzdach ausgestattet. Bei starkem Regen können wir kurzfristig auf die überdachte Empfangshalle oder den Festsaal ausweichen — Ihr Event findet in jedem Fall wie geplant statt.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="ev-cta-wrap">
+    <div class="ev-cta-bg"></div>
+    <div class="ev-cta-overlay"></div>
+    <div class="ev-cta-inner fade-up">
+        <div class="ev-label"><span></span>Ihr Datum sichern</div>
+        <h2 class="ev-cta-h2">Bereit für Ihren<br><em style="font-style:italic;color:var(--champagne-pale)">unvergesslichen Abend?</em></h2>
+        <p class="ev-cta-sub">Schreiben Sie uns — wir prüfen Ihre Wunschdaten und melden uns innert 24 Stunden mit einem persönlichen Angebot.</p>
+        <div class="ev-cta-btns">
+            <a href="#kontakt" class="ev-btn-primary">Jetzt anfragen</a>
+            <a href="tel:+41441234567" class="ev-btn-ghost">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +41 44 123 45 67
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Kontakt -->
+<div class="ev-contact-wrap" id="kontakt">
+    <div class="ev-contact-inner">
+        <div class="fade-up">
+            <div class="ev-label"><span></span>Kontakt</div>
+            <h2 class="ev-h2" style="font-size:clamp(28px,3.5vw,40px)">Schreiben Sie uns Ihre <em>Wünsche</em></h2>
+            <p class="ev-lead" style="margin-bottom:0">Wir antworten persönlich und unverbindlich — Ihr Traum-Event beginnt mit einer Nachricht.</p>
+            <div class="ev-contact-detail">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Seestrasse 88, 8002 Zürich
+            </div>
+            <div class="ev-contact-detail">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +41 44 123 45 67
+            </div>
+            <div class="ev-contact-detail">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hello@villa-lumiere.ch
+            </div>
+        </div>
+        <form onsubmit="return false" class="fade-up" style="transition-delay:.15s">
+            <div class="ev-form">
+                <div class="ev-field">
+                    <label>Vorname</label>
+                    <input type="text" placeholder="Julia">
+                </div>
+                <div class="ev-field">
+                    <label>Nachname</label>
+                    <input type="text" placeholder="Weber">
+                </div>
+                <div class="ev-field">
+                    <label>E-Mail</label>
+                    <input type="email" placeholder="julia@beispiel.ch">
+                </div>
+                <div class="ev-field">
+                    <label>Telefon</label>
+                    <input type="tel" placeholder="+41 79 000 00 00">
+                </div>
+                <div class="ev-field ev-form-full">
+                    <label>Art des Anlasses</label>
+                    <select>
+                        <option value="">Bitte wählen…</option>
+                        <option>Hochzeit</option>
+                        <option>Firmenanlass / Gala</option>
+                        <option>Geburtstag / Private Feier</option>
+                        <option>Sonstiges</option>
+                    </select>
+                </div>
+                <div class="ev-field">
+                    <label>Wunschdatum</label>
+                    <input type="date">
+                </div>
+                <div class="ev-field">
+                    <label>Anzahl Gäste</label>
+                    <select>
+                        <option value="">Anzahl wählen</option>
+                        <option>bis 50</option>
+                        <option>50–100</option>
+                        <option>100–250</option>
+                        <option>250–500</option>
+                    </select>
+                </div>
+                <div class="ev-field ev-form-full">
+                    <label>Ihre Wünsche & Fragen</label>
+                    <textarea placeholder="Beschreiben Sie kurz Ihren Anlass und Ihre Vorstellungen…"></textarea>
+                </div>
+                <div class="ev-form-full">
+                    <button class="ev-submit" type="submit">
+                        Anfrage senden
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="ev-footer">
+    <div class="ev-footer-inner">
+        <div class="ev-footer-top">
+            <a href="#" class="ev-footer-logo">Villa <span>Lumière</span></a>
+            <ul class="ev-footer-nav">
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#anlaesse">Anlässe</a></li>
+                <li><a href="#pakete">Pakete</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#">Impressum</a></li>
+                <li><a href="#">Datenschutz</a></li>
+            </ul>
+        </div>
+        <div class="ev-footer-bottom">
+            <div class="ev-footer-copy">© 2025 Villa Lumière GmbH · Zürich</div>
+            <div class="ev-footer-badge">Webseite von <a href="../index.html">Lweb</a></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('evNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    document.getElementById('evBurger').addEventListener('click', () => {
+        document.getElementById('evMobileMenu').classList.toggle('open');
+    });
+
+    // Hero bg parallax-zoom on load
+    window.addEventListener('load', () => {
+        document.getElementById('evHeroBg').classList.add('loaded');
+    });
+
+    // FAQ
+    function evFaq(btn) {
+        const item = btn.closest('.ev-faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.ev-faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // Fade-up observer
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -577,6 +577,182 @@
         }
         .f-footer-copy a { color:var(--coral); text-decoration:none; }
 
+        /* ═══ MARQUEE ═══ */
+        .f-marquee {
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            padding:18px 0; overflow:hidden; position:relative;
+        }
+        .f-marquee-track {
+            display:flex; gap:0; width:max-content;
+            animation:marqueeScroll 28s linear infinite;
+        }
+        @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .f-marquee-item {
+            display:flex; align-items:center; gap:20px; padding:0 28px;
+            font-family:var(--display); font-size:16px; color:rgba(255,255,255,0.9);
+            letter-spacing:0.1em; white-space:nowrap;
+        }
+        .f-marquee-sep {
+            width:6px; height:6px; border-radius:50%;
+            background:rgba(255,255,255,0.4); flex-shrink:0;
+        }
+
+        /* ═══ STUNDENPLAN ═══ */
+        .f-schedule-wrap { background:var(--dark2); }
+        .f-schedule-table {
+            width:100%; border-collapse:collapse; margin-top:8px;
+        }
+        .f-schedule-table th {
+            font-family:var(--display); font-size:14px; letter-spacing:0.1em;
+            color:var(--text-muted); font-weight:400; padding:14px 10px;
+            text-align:center; border-bottom:1px solid rgba(255,255,255,0.06);
+        }
+        .f-schedule-table td {
+            padding:8px; vertical-align:top;
+            border-bottom:1px solid rgba(255,255,255,0.04);
+            border-right:1px solid rgba(255,255,255,0.04);
+        }
+        .f-schedule-table td:last-child { border-right:none; }
+        .f-schedule-slot {
+            background:rgba(255,255,255,0.03); border-radius:8px; padding:10px 12px;
+            border-left:3px solid var(--coral); margin-bottom:6px; cursor:default;
+            transition:all 0.3s;
+        }
+        .f-schedule-slot:last-child { margin-bottom:0; }
+        .f-schedule-slot:hover { background:rgba(255,77,77,0.08); }
+        .f-schedule-slot.cyan { border-left-color:var(--cyan); }
+        .f-schedule-slot.cyan:hover { background:rgba(0,229,255,0.06); }
+        .f-schedule-slot.yellow { border-left-color:#ffc107; }
+        .f-schedule-slot.yellow:hover { background:rgba(255,193,7,0.06); }
+        .f-slot-name {
+            font-size:12px; font-weight:700; color:#fff;
+            letter-spacing:0.04em; text-transform:uppercase;
+        }
+        .f-slot-time { font-size:11px; color:var(--text-muted); margin-top:2px; }
+        .f-slot-trainer { font-size:11px; color:var(--coral); margin-top:2px; font-weight:500; }
+        .f-slot-trainer.cyan { color:var(--cyan); }
+        .f-slot-trainer.yellow { color:#ffc107; }
+        .f-schedule-legend {
+            display:flex; gap:24px; margin-top:24px; justify-content:center;
+            flex-wrap:wrap;
+        }
+        .f-legend-item {
+            display:flex; align-items:center; gap:8px;
+            font-size:13px; color:var(--text-muted);
+        }
+        .f-legend-dot {
+            width:12px; height:12px; border-radius:2px; flex-shrink:0;
+        }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .f-testimonials-wrap { background:var(--dark); }
+        .f-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .f-testimonial-card {
+            background:var(--dark2); border-radius:20px; padding:36px;
+            border:1px solid rgba(255,255,255,0.05);
+            transition:all 0.4s; position:relative; overflow:hidden;
+        }
+        .f-testimonial-card::before {
+            content:''; position:absolute; top:0; left:0; width:100%; height:3px;
+            background:linear-gradient(90deg, var(--coral), var(--cyan));
+            transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+        }
+        .f-testimonial-card:hover { transform:translateY(-6px); border-color:rgba(255,77,77,0.15); }
+        .f-testimonial-card:hover::before { transform:scaleX(1); }
+        .f-test-stars { display:flex; gap:4px; margin-bottom:16px; color:var(--coral); }
+        .f-test-quote {
+            font-family:var(--display); font-size:56px; color:rgba(255,77,77,0.15);
+            line-height:1; margin-bottom:-8px; letter-spacing:0;
+        }
+        .f-test-text {
+            font-size:15px; color:var(--text); line-height:1.8;
+            margin-bottom:24px; font-style:italic;
+        }
+        .f-test-result {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(255,77,77,0.08); color:var(--coral);
+            font-size:12px; font-weight:700; letter-spacing:0.08em;
+            text-transform:uppercase; padding:6px 14px; border-radius:20px;
+            margin-bottom:20px;
+        }
+        .f-test-author { display:flex; align-items:center; gap:14px; }
+        .f-test-avatar {
+            width:48px; height:48px; border-radius:50%;
+            background:linear-gradient(135deg, var(--coral), #ff6b6b);
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--display); font-size:20px; color:#fff; flex-shrink:0;
+        }
+        .f-test-name { font-weight:700; font-size:14px; color:#fff; }
+        .f-test-role { font-size:12px; color:var(--text-muted); margin-top:2px; }
+
+        /* ═══ TRANSFORMATION BANNER ═══ */
+        .f-transform-wrap {
+            position:relative; padding:100px 0; overflow:hidden;
+        }
+        .f-transform-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80') center/cover no-repeat;
+        }
+        .f-transform-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(10,10,10,0.92), rgba(255,77,77,0.15));
+        }
+        .f-transform-content {
+            position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 24px;
+            display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+        }
+        .f-transform-text h2 {
+            font-family:var(--display); font-size:52px; color:#fff;
+            letter-spacing:0.04em; line-height:1.1; margin-bottom:20px;
+        }
+        .f-transform-text h2 span {
+            background:linear-gradient(135deg, var(--coral), var(--cyan));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .f-transform-text p {
+            font-size:16px; color:var(--text-muted); line-height:1.8; margin-bottom:28px;
+        }
+        .f-transform-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+        .f-transform-stat {
+            background:rgba(255,255,255,0.05); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.08); border-radius:14px;
+            padding:24px; text-align:center; transition:all 0.3s;
+        }
+        .f-transform-stat:hover { border-color:rgba(255,77,77,0.3); background:rgba(255,77,77,0.06); }
+        .f-transform-stat-num {
+            font-family:var(--display); font-size:40px; color:#fff;
+            letter-spacing:0.04em; line-height:1;
+        }
+        .f-transform-stat-num span { color:var(--coral); }
+        .f-transform-stat-label { font-size:12px; color:var(--text-muted); margin-top:6px; letter-spacing:0.06em; text-transform:uppercase; }
+
+        /* ═══ FAQ ═══ */
+        .f-faq-wrap { background:var(--dark2); }
+        .f-faq-list { max-width:800px; margin:0 auto; }
+        .f-faq-item { border-bottom:1px solid rgba(255,255,255,0.05); overflow:hidden; }
+        .f-faq-q {
+            width:100%; background:none; border:none; cursor:pointer;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:24px 0; gap:20px; text-align:left;
+        }
+        .f-faq-q span {
+            font-family:var(--sans); font-size:16px; font-weight:600;
+            color:#fff; line-height:1.4;
+        }
+        .f-faq-icon {
+            width:34px; height:34px; border-radius:50%; flex-shrink:0;
+            background:rgba(255,77,77,0.1); border:1px solid rgba(255,77,77,0.2);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--coral); transition:all 0.3s;
+        }
+        .f-faq-item.open .f-faq-icon {
+            background:var(--coral); color:#fff; transform:rotate(45deg);
+            border-color:var(--coral);
+        }
+        .f-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+        .f-faq-a p { padding:0 0 24px; font-size:15px; color:var(--text-muted); line-height:1.8; }
+
         /* ═══ RESPONSIVE 1024px ═══ */
         @media(max-width:1024px) {
             .f-nav { padding:18px 24px; }
@@ -592,6 +768,11 @@
             .f-price-card.popular:hover { transform:translateY(-6px); }
             .f-contact-grid { grid-template-columns:1fr; gap:48px; }
             .f-section { padding:80px 0; }
+            .f-testimonials-grid { grid-template-columns:1fr; max-width:500px; margin:0 auto; }
+            .f-transform-content { grid-template-columns:1fr; gap:40px; }
+            .f-schedule-table thead { display:none; }
+            .f-schedule-table, .f-schedule-table tbody, .f-schedule-table tr, .f-schedule-table td { display:block; width:100%; }
+            .f-schedule-table tr { margin-bottom:24px; }
         }
 
         /* ═══ RESPONSIVE 600px ═══ */
@@ -686,6 +867,28 @@
         </div>
     </div>
 </section>
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="f-marquee">
+    <div class="f-marquee-track">
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Yoga</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> HIIT Training</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> CrossFit</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Boxing</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Pilates</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Spinning</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Personal Training</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Ernährungsberatung</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Yoga</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> HIIT Training</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> CrossFit</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Boxing</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Pilates</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Spinning</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Personal Training</div>
+        <div class="f-marquee-item"><span class="f-marquee-sep"></span> Ernährungsberatung</div>
+    </div>
+</div>
 
 <!-- ═══════════ ABOUT ═══════════ -->
 <section class="f-section" id="about">
@@ -869,11 +1072,188 @@
     </div>
 </section>
 
+<!-- ═══════════ STUNDENPLAN ═══════════ -->
+<section class="f-section f-schedule-wrap" id="stundenplan">
+    <div class="f-container">
+        <div class="f-section-header fade-up">
+            <div class="f-section-num">03</div>
+            <div class="f-section-tag">Wochenplan</div>
+            <h2 class="f-section-title">DEIN <span>STUNDENPLAN</span></h2>
+        </div>
+        <div style="overflow-x:auto;">
+        <table class="f-schedule-table fade-up" style="min-width:700px;">
+            <thead>
+                <tr>
+                    <th style="width:80px;">Zeit</th>
+                    <th>Montag</th>
+                    <th>Dienstag</th>
+                    <th>Mittwoch</th>
+                    <th>Donnerstag</th>
+                    <th>Freitag</th>
+                    <th>Samstag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color:var(--text-muted);font-size:12px;padding:8px;vertical-align:middle;">Morgen</td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Yoga</div>
+                            <div class="f-slot-time">07:00 – 08:00</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">HIIT</div>
+                            <div class="f-slot-time">07:00 – 07:45</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Pilates</div>
+                            <div class="f-slot-time">07:00 – 07:55</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">CrossFit</div>
+                            <div class="f-slot-time">06:30 – 07:20</div>
+                            <div class="f-slot-trainer">Alex Meier</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot yellow">
+                            <div class="f-slot-name">Spinning</div>
+                            <div class="f-slot-time">07:00 – 07:45</div>
+                            <div class="f-slot-trainer yellow">Team</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Yoga Flow</div>
+                            <div class="f-slot-time">09:00 – 10:00</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text-muted);font-size:12px;padding:8px;vertical-align:middle;">Mittag</td>
+                    <td>
+                        <div class="f-schedule-slot yellow">
+                            <div class="f-slot-name">Spinning</div>
+                            <div class="f-slot-time">12:00 – 12:45</div>
+                            <div class="f-slot-trainer yellow">Team</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Pilates</div>
+                            <div class="f-slot-time">12:00 – 12:55</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">HIIT</div>
+                            <div class="f-slot-time">12:00 – 12:45</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot yellow">
+                            <div class="f-slot-name">Spinning</div>
+                            <div class="f-slot-time">12:30 – 13:15</div>
+                            <div class="f-slot-trainer yellow">Team</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">Boxing</div>
+                            <div class="f-slot-time">12:00 – 13:00</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">CrossFit</div>
+                            <div class="f-slot-time">11:00 – 11:50</div>
+                            <div class="f-slot-trainer">Alex Meier</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text-muted);font-size:12px;padding:8px;vertical-align:middle;">Abend</td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">CrossFit</div>
+                            <div class="f-slot-time">18:00 – 18:50</div>
+                            <div class="f-slot-trainer">Alex Meier</div>
+                        </div>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">Boxing</div>
+                            <div class="f-slot-time">19:30 – 20:30</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Yoga</div>
+                            <div class="f-slot-time">18:30 – 19:30</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">CrossFit</div>
+                            <div class="f-slot-time">18:00 – 18:50</div>
+                            <div class="f-slot-trainer">Alex Meier</div>
+                        </div>
+                        <div class="f-schedule-slot yellow">
+                            <div class="f-slot-name">Spinning</div>
+                            <div class="f-slot-time">19:30 – 20:15</div>
+                            <div class="f-slot-trainer yellow">Team</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">HIIT</div>
+                            <div class="f-slot-time">18:00 – 18:45</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="f-schedule-slot cyan">
+                            <div class="f-slot-name">Pilates</div>
+                            <div class="f-slot-time">18:00 – 18:55</div>
+                            <div class="f-slot-trainer cyan">Sarah Koch</div>
+                        </div>
+                        <div class="f-schedule-slot">
+                            <div class="f-slot-name">Boxing</div>
+                            <div class="f-slot-time">19:30 – 20:30</div>
+                            <div class="f-slot-trainer">Marco Silva</div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="f-schedule-legend fade-up">
+            <div class="f-legend-item"><div class="f-legend-dot" style="background:var(--coral);"></div> Kraft & Cardio</div>
+            <div class="f-legend-item"><div class="f-legend-dot" style="background:var(--cyan);"></div> Mind & Body</div>
+            <div class="f-legend-item"><div class="f-legend-dot" style="background:#ffc107;"></div> Ausdauer</div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ TRAINERS ═══════════ -->
 <section class="f-section" id="trainers">
     <div class="f-container">
         <div class="f-section-header fade-up" style="text-align:center;">
-            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">03</div>
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">04</div>
             <div class="f-section-tag" style="justify-content:center;" data-edit="text" data-edit-key="trainers-tag">Unser Team</div>
             <h2 class="f-section-title" data-edit="text" data-edit-key="trainers-title">DEINE <span>TRAINER</span></h2>
         </div>
@@ -918,11 +1298,90 @@
     </div>
 </section>
 
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="f-section f-testimonials-wrap" id="testimonials">
+    <div class="f-container">
+        <div class="f-section-header fade-up" style="text-align:center;">
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">05</div>
+            <div class="f-section-tag" style="justify-content:center;">Erfolgsgeschichten</div>
+            <h2 class="f-section-title">ECHTE <span>RESULTATE</span></h2>
+        </div>
+        <div class="f-testimonials-grid">
+            <div class="f-testimonial-card fade-up">
+                <div class="f-test-quote">"</div>
+                <div class="f-test-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="f-test-text">Peak Fitness hat mein Leben verändert. In 6 Monaten habe ich 15 kg abgenommen und fühle mich stärker als je zuvor. Alex ist der beste Coach den ich je hatte.</p>
+                <div class="f-test-result">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                    -15 kg in 6 Monaten
+                </div>
+                <div class="f-test-author">
+                    <div class="f-test-avatar">LM</div>
+                    <div>
+                        <div class="f-test-name">Lukas Müller</div>
+                        <div class="f-test-role">Mitglied seit 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="f-testimonial-card fade-up">
+                <div class="f-test-quote">"</div>
+                <div class="f-test-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="f-test-text">Die Yoga-Stunden mit Sarah sind unglaublich. Ich war vorher komplett unflexibel — jetzt starte ich jeden Morgen mit einer Praxis und fühle mich ausgeglichen und energiegeladen.</p>
+                <div class="f-test-result">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                    3x/Woche aktiv
+                </div>
+                <div class="f-test-author">
+                    <div class="f-test-avatar" style="background:linear-gradient(135deg, var(--cyan), #0080ff);">AS</div>
+                    <div>
+                        <div class="f-test-name">Anna Schneider</div>
+                        <div class="f-test-role">Mitglied seit 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="f-testimonial-card fade-up">
+                <div class="f-test-quote">"</div>
+                <div class="f-test-stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="f-test-text">Das CrossFit-Programm mit Alex hat meine Grenzen völlig neu definiert. Das Team hier ist unglaublich — eine Community die pushes und feiert. Ich würde nichts tauschen.</p>
+                <div class="f-test-result">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                    +20 kg Kraftzuwachs
+                </div>
+                <div class="f-test-author">
+                    <div class="f-test-avatar">TW</div>
+                    <div>
+                        <div class="f-test-name">Tim Weber</div>
+                        <div class="f-test-role">Mitglied seit 2022</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ PRICING ═══════════ -->
 <section class="f-section f-pricing" id="pricing">
     <div class="f-container">
         <div class="f-section-header fade-up" style="text-align:center;">
-            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">04</div>
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">06</div>
             <div class="f-section-tag" style="justify-content:center;" data-edit="text" data-edit-key="pricing-tag">Mitgliedschaft</div>
             <h2 class="f-section-title" data-edit="text" data-edit-key="pricing-title">UNSERE <span>PREISE</span></h2>
         </div>
@@ -972,6 +1431,40 @@
                     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span data-edit="text" data-edit-key="price3-f6">Gästepass (2x/Mo)</span></li>
                 </ul>
                 <button class="f-price-btn" data-edit="text" data-edit-key="price3-btn">Abo wählen</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ TRANSFORMATION ═══════════ -->
+<section class="f-transform-wrap">
+    <div class="f-transform-bg"></div>
+    <div class="f-transform-content">
+        <div class="f-transform-text fade-up">
+            <div class="f-section-tag">Deine Transformation</div>
+            <h2>RESULTS. <span>NICHT AUSREDEN.</span></h2>
+            <p>Unsere Mitglieder erreichen echte Ergebnisse — weil wir echte Unterstützung liefern. Personalisierte Pläne, erfahrene Trainer und eine Community, die nicht aufgibt.</p>
+            <a href="#contact" class="f-hero-cta" style="display:inline-flex;">
+                Jetzt starten
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="f-transform-stats fade-up">
+            <div class="f-transform-stat">
+                <div class="f-transform-stat-num">92<span>%</span></div>
+                <div class="f-transform-stat-label">Erreichen ihre Ziele</div>
+            </div>
+            <div class="f-transform-stat">
+                <div class="f-transform-stat-num">4.9<span>★</span></div>
+                <div class="f-transform-stat-label">Bewertung (Google)</div>
+            </div>
+            <div class="f-transform-stat">
+                <div class="f-transform-stat-num">-12<span>kg</span></div>
+                <div class="f-transform-stat-label">Ø Gewichtsverlust</div>
+            </div>
+            <div class="f-transform-stat">
+                <div class="f-transform-stat-num">6<span>Mo</span></div>
+                <div class="f-transform-stat-label">Ø Zeit bis Ziel</div>
             </div>
         </div>
     </div>
@@ -1062,6 +1555,54 @@
     </div>
 </section>
 
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="f-section f-faq-wrap" id="faq">
+    <div class="f-container">
+        <div class="f-section-header fade-up" style="text-align:center;">
+            <div class="f-section-num" style="left:50%;transform:translateX(-50%);">07</div>
+            <div class="f-section-tag" style="justify-content:center;">FAQ</div>
+            <h2 class="f-section-title">DEINE <span>FRAGEN</span></h2>
+        </div>
+        <div class="f-faq-list fade-up">
+            <div class="f-faq-item">
+                <button class="f-faq-q" onclick="fFaqToggle(this)">
+                    <span>Kann ich das Studio vor der Anmeldung ausprobieren?</span>
+                    <div class="f-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="f-faq-a"><p>Ja! Dein erstes Probetraining ist bei uns 100% kostenlos und unverbindlich. Schreib uns oder ruf einfach an — wir vereinbaren einen Termin, zeigen dir das Studio und begleiten dich durch dein erstes Training.</p></div>
+            </div>
+            <div class="f-faq-item">
+                <button class="f-faq-q" onclick="fFaqToggle(this)">
+                    <span>Wie lange laufen eure Mitgliedschaftsverträge?</span>
+                    <div class="f-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="f-faq-a"><p>Wir bieten Monatsmitgliedschaften ohne Mindestlaufzeit — du kannst jederzeit kündigen. Zusätzlich gibt es 6- und 12-Monats-Pakete mit attraktivem Rabatt für alle, die langfristig trainieren möchten.</p></div>
+            </div>
+            <div class="f-faq-item">
+                <button class="f-faq-q" onclick="fFaqToggle(this)">
+                    <span>Brauche ich Erfahrung für die Gruppenkurse?</span>
+                    <div class="f-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="f-faq-a"><p>Nein! Unsere Kurse sind für alle Fitness-Level ausgelegt. Jeder Kurs hat eine Schwierigkeitsangabe (Leicht / Mittel / Intensiv) — und unsere Trainer passen die Übungen individuell an, wenn nötig. Anfänger sind herzlich willkommen.</p></div>
+            </div>
+            <div class="f-faq-item">
+                <button class="f-faq-q" onclick="fFaqToggle(this)">
+                    <span>Bietet ihr auch Ernährungsberatung an?</span>
+                    <div class="f-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="f-faq-a"><p>Ja — in den Premium und Elite Paketen ist eine persönliche Ernährungsberatung inklusive. Unser Ernährungsexperte erstellt gemeinsam mit dir einen individuellen Plan, der auf deine Ziele und deinen Alltag zugeschnitten ist.</p></div>
+            </div>
+            <div class="f-faq-item">
+                <button class="f-faq-q" onclick="fFaqToggle(this)">
+                    <span>Gibt es Parkplätze oder gute ÖV-Anbindung?</span>
+                    <div class="f-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="f-faq-a"><p>Wir befinden uns an der Limmatstrasse 78 in Zürich-Kreis 5 — direkt neben der Tramhaltestelle Limmatplatz (Linien 4 und 13). Veloparkplätze sind direkt vor dem Eingang vorhanden. Autoparkplätze sind in der Umgebung auf Stundenbasis verfügbar.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="f-footer">
     <div class="f-footer-logo" data-edit="text" data-edit-key="footer-logo">PEAK <span>FITNESS</span></div>
@@ -1083,6 +1624,21 @@
 </footer>
 
 <script>
+// FAQ accordion
+function fFaqToggle(btn) {
+    var item = btn.parentElement;
+    var answer = item.querySelector('.f-faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.f-faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.f-faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+}
+
 // Nav scroll
 (function(){
     var nav = document.getElementById('fNav');

@@ -386,6 +386,120 @@
         .r-marquee-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); }
         @keyframes r-marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
+        /* ═══ HERO TRUST STRIP ═══ */
+        .r-hero-trust {
+            position:absolute; bottom:0; left:0; right:0;
+            display:flex; justify-content:center;
+            background:rgba(0,0,0,0.55); backdrop-filter:blur(12px);
+            border-top:1px solid rgba(255,255,255,0.08);
+        }
+        .r-hero-trust-item {
+            display:flex; align-items:center; gap:12px;
+            padding:16px 36px; border-right:1px solid rgba(255,255,255,0.08);
+            flex:1; max-width:240px; justify-content:center;
+        }
+        .r-hero-trust-item:last-child { border-right:none; }
+        .r-hero-trust-icon { width:36px; height:36px; border-radius:10px; background:rgba(200,149,108,0.2); border:1px solid rgba(200,149,108,0.35); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .r-hero-trust-icon svg { width:18px; height:18px; color:var(--gold-light); }
+        .r-hero-trust-n { font-family:var(--serif); font-size:20px; font-weight:700; color:#fff; line-height:1; }
+        .r-hero-trust-l { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; letter-spacing:0.05em; }
+        @media(max-width:700px){ .r-hero-trust { display:none; } }
+
+        /* ═══ MENU BADGES ═══ */
+        .r-menu-badges { display:flex; gap:6px; margin-top:6px; flex-wrap:wrap; }
+        .r-menu-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:100px; display:inline-flex; align-items:center; gap:3px; }
+        .r-menu-badge--veg { background:rgba(77,175,74,0.12); color:#4daf4a; }
+        .r-menu-badge--star { background:rgba(200,149,108,0.15); color:var(--gold); }
+        .r-menu-badge--new { background:rgba(229,57,53,0.12); color:#e53935; }
+        .r-menu-badge--spicy { background:rgba(244,81,30,0.12); color:#f4511e; }
+
+        /* ═══ GALLERY CAPTION OVERLAY ═══ */
+        .r-gallery-caption { position:absolute; bottom:0; left:0; right:0; padding:20px 16px 14px; background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 100%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; justify-content:space-between; z-index:2; }
+        .r-gallery-item:hover .r-gallery-caption { opacity:1; }
+        .r-gallery-caption-text { font-size:13px; font-weight:600; color:#fff; }
+        .r-gallery-caption-tag { font-size:10px; font-weight:700; background:var(--gold); color:#fff; padding:3px 8px; border-radius:100px; }
+
+        /* ═══ TAGESMENÜ ═══ */
+        .r-daily { background:var(--dark); padding:80px 24px; }
+        .r-daily-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+        .r-daily-card { border-radius:20px; overflow:hidden; position:relative; }
+        .r-daily-card-bg { position:absolute; inset:0; }
+        .r-daily-card-bg img { width:100%; height:100%; object-fit:cover; display:block; }
+        .r-daily-card-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.8) 100%); }
+        .r-daily-card-body { position:relative; z-index:1; padding:36px; }
+        .r-daily-label { font-size:11px; font-weight:700; color:var(--gold-light); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px; }
+        .r-daily-title { font-family:var(--serif); font-size:28px; font-weight:700; color:#fff; margin-bottom:8px; }
+        .r-daily-desc { font-size:14px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:24px; }
+        .r-daily-courses { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+        .r-daily-course { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+        .r-daily-course-name { font-size:14px; color:rgba(255,255,255,0.85); font-weight:500; }
+        .r-daily-course-dots { flex:1; height:1px; background:repeating-linear-gradient(to right,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.2) 4px,transparent 4px,transparent 10px); }
+        .r-daily-course-price { font-family:var(--serif); font-size:16px; font-weight:700; color:var(--gold-light); white-space:nowrap; }
+        .r-daily-footer { display:flex; align-items:center; justify-content:space-between; }
+        .r-daily-total { font-family:var(--serif); font-size:22px; font-weight:700; color:var(--gold); }
+        .r-daily-btn { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:#fff; font-size:12px; font-weight:700; padding:8px 18px; border-radius:100px; text-decoration:none; transition:all 0.25s; }
+        .r-daily-btn:hover { background:var(--gold); border-color:var(--gold); }
+        @media(max-width:800px){ .r-daily-inner { grid-template-columns:1fr; } .r-daily-card-bg { position:relative; height:200px; } .r-daily-card { display:flex; flex-direction:column; } .r-daily-card-body { background:rgba(26,26,26,0.95); } }
+
+        /* ═══ WEINKARTE ═══ */
+        .r-wine { background:var(--cream); }
+        .r-wine-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .r-wine-card { background:#fff; border-radius:20px; overflow:hidden; border:1px solid rgba(200,149,108,0.12); transition:all 0.4s ease; }
+        .r-wine-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.08); }
+        .r-wine-img { height:200px; overflow:hidden; position:relative; }
+        .r-wine-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+        .r-wine-card:hover .r-wine-img img { transform:scale(1.06); }
+        .r-wine-region { position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.6); backdrop-filter:blur(6px); color:#fff; font-size:10px; font-weight:700; padding:3px 10px; border-radius:100px; letter-spacing:0.05em; }
+        .r-wine-body { padding:22px 24px 26px; }
+        .r-wine-type { font-size:11px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px; }
+        .r-wine-name { font-family:var(--serif); font-size:20px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+        .r-wine-desc { font-size:13px; color:var(--text-light); line-height:1.6; margin-bottom:16px; }
+        .r-wine-footer { display:flex; align-items:center; justify-content:space-between; }
+        .r-wine-price { font-family:var(--serif); font-size:20px; font-weight:700; color:var(--gold); }
+        .r-wine-price span { font-family:var(--sans); font-size:12px; color:var(--text-light); font-weight:400; }
+        .r-wine-tags { display:flex; gap:5px; flex-wrap:wrap; }
+        .r-wine-tag { font-size:10px; font-weight:600; background:rgba(200,149,108,0.1); color:var(--gold); padding:3px 8px; border-radius:100px; }
+        @media(max-width:800px){ .r-wine-grid { grid-template-columns:1fr; max-width:400px; } }
+
+        /* ═══ PRIVATE EVENTS ═══ */
+        .r-events { background:#fff; }
+        .r-events-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .r-events-img { border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.1); position:relative; }
+        .r-events-img img { width:100%; height:480px; object-fit:cover; display:block; transition:transform 0.6s; }
+        .r-events-img:hover img { transform:scale(1.03); }
+        .r-events-img-badge { position:absolute; bottom:20px; left:20px; background:rgba(26,26,26,0.85); backdrop-filter:blur(8px); border:1px solid rgba(200,149,108,0.3); border-radius:14px; padding:14px 20px; }
+        .r-events-img-badge-n { font-family:var(--serif); font-size:28px; font-weight:700; color:var(--gold); }
+        .r-events-img-badge-l { font-size:12px; color:rgba(255,255,255,0.6); margin-top:2px; }
+        .r-events-perks { display:flex; flex-direction:column; gap:16px; margin:28px 0 32px; }
+        .r-events-perk { display:flex; align-items:center; gap:14px; }
+        .r-events-perk-icon { width:44px; height:44px; border-radius:12px; background:rgba(200,149,108,0.1); border:1px solid rgba(200,149,108,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .r-events-perk-icon svg { width:20px; height:20px; color:var(--gold); }
+        .r-events-perk-title { font-size:15px; font-weight:700; color:var(--dark); margin-bottom:2px; }
+        .r-events-perk-desc { font-size:13px; color:var(--text-light); }
+        @media(max-width:900px){ .r-events-inner { grid-template-columns:1fr; } .r-events-img img { height:300px; } }
+
+        /* ═══ FAQ ═══ */
+        .r-faq { background:var(--cream); }
+        .r-faq-inner { max-width:800px; margin:0 auto; }
+        .r-faq-item { background:#fff; border-radius:14px; margin-bottom:10px; border:1px solid rgba(200,149,108,0.1); overflow:hidden; }
+        .r-faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; padding:18px 24px; background:none; border:none; cursor:pointer; font-family:var(--sans); font-size:15px; font-weight:600; color:var(--dark); text-align:left; gap:16px; }
+        .r-faq-icon { width:28px; height:28px; border-radius:50%; flex-shrink:0; background:rgba(200,149,108,0.1); display:flex; align-items:center; justify-content:center; transition:all 0.3s; }
+        .r-faq-icon svg { width:13px; height:13px; color:var(--gold); transition:transform 0.3s; }
+        .r-faq-item.open .r-faq-icon { background:var(--gold); }
+        .r-faq-item.open .r-faq-icon svg { color:#fff; transform:rotate(45deg); }
+        .r-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s; padding:0 24px; font-size:14px; color:var(--text-light); line-height:1.75; }
+        .r-faq-item.open .r-faq-a { max-height:200px; padding:0 24px 18px; }
+
+        /* ═══ FINAL CTA ═══ */
+        .r-cta-final { position:relative; padding:100px 24px; text-align:center; background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover no-repeat; }
+        .r-cta-final::after { content:''; position:absolute; inset:0; background:rgba(10,7,4,0.78); }
+        .r-cta-final-inner { position:relative; z-index:1; max-width:640px; margin:0 auto; }
+        .r-cta-tag { display:inline-flex; align-items:center; gap:6px; background:rgba(200,149,108,0.2); border:1px solid rgba(200,149,108,0.4); color:var(--gold-light); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:24px; }
+        .r-cta-final h2 { font-family:var(--serif); font-size:48px; font-weight:700; color:#fff; line-height:1.15; margin-bottom:16px; }
+        .r-cta-final p { font-size:17px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:36px; }
+        .r-cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+        @media(max-width:600px){ .r-cta-final h2 { font-size:32px; } }
+
         /* ═══ BACK TO LWEB ═══ */
         .r-back {
             position:fixed; top:14px; left:14px; z-index:200;
@@ -490,8 +604,11 @@
             <a href="#contact" class="r-btn r-btn--outline" data-edit="text" data-edit-key="hero-btn2">Tisch reservieren</a>
         </div>
     </div>
-    <div class="r-hero-scroll">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <div class="r-hero-trust">
+        <div class="r-hero-trust-item"><div class="r-hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="r-hero-trust-n">4.8 ★</div><div class="r-hero-trust-l">Google Bewertung</div></div></div>
+        <div class="r-hero-trust-item"><div class="r-hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="r-hero-trust-n">500+</div><div class="r-hero-trust-l">Gäste täglich</div></div></div>
+        <div class="r-hero-trust-item"><div class="r-hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><div class="r-hero-trust-n">15+</div><div class="r-hero-trust-l">Jahre Erfahrung</div></div></div>
+        <div class="r-hero-trust-item"><div class="r-hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div><div><div class="r-hero-trust-n">Online</div><div class="r-hero-trust-l">Reservierung</div></div></div>
     </div>
 </section>
 
@@ -565,6 +682,7 @@
             <div class="r-menu-item-info">
                 <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a1-name">Bruschetta Classica</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a1-price">CHF 14</span></div>
                 <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a1-desc">Geröstetes Brot mit Tomaten, Basilikum und nativem Olivenöl</p>
+                <div class="r-menu-badges"><span class="r-menu-badge r-menu-badge--veg">🌿 Vegetarisch</span></div>
             </div>
         </div>
         <div class="r-menu-item fade-up">
@@ -572,6 +690,7 @@
             <div class="r-menu-item-info">
                 <div class="r-menu-item-top"><span class="r-menu-item-name" data-edit="text" data-edit-key="menu-a2-name">Carpaccio di Manzo</span><span class="r-menu-item-price" data-edit="text" data-edit-key="menu-a2-price">CHF 22</span></div>
                 <p class="r-menu-item-desc" data-edit="text" data-edit-key="menu-a2-desc">Hauchdünnes Rindfleisch mit Rucola, Parmesan und Trüffelöl</p>
+                <div class="r-menu-badges"><span class="r-menu-badge r-menu-badge--star">⭐ Chef's Choice</span></div>
             </div>
         </div>
         <div class="r-menu-item fade-up">
@@ -755,24 +874,78 @@
     <div class="r-gallery-grid">
         <div class="r-gallery-item r-gallery-item--tall fade-up">
             <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="Restaurant Atmosphere" loading="lazy" data-edit="image" data-edit-key="gallery1">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">Unser Ambiente</span><span class="r-gallery-caption-tag">Interior</span></div>
         </div>
         <div class="r-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Dining Area" loading="lazy" data-edit="image" data-edit-key="gallery2">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">Dining Area</span><span class="r-gallery-caption-tag">Sala</span></div>
         </div>
         <div class="r-gallery-item r-gallery-item--wide fade-up">
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Presentation" loading="lazy" data-edit="image" data-edit-key="gallery3">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">Pasta fresca</span><span class="r-gallery-caption-tag">Küche</span></div>
         </div>
         <div class="r-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Kitchen" loading="lazy" data-edit="image" data-edit-key="gallery4">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">Offene Küche</span><span class="r-gallery-caption-tag">Cucina</span></div>
         </div>
         <div class="r-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Wine Selection" loading="lazy" data-edit="image" data-edit-key="gallery5">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">80+ Weine</span><span class="r-gallery-caption-tag">Weinkarte</span></div>
         </div>
         <div class="r-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=600&q=80" alt="Dessert" loading="lazy" data-edit="image" data-edit-key="gallery6">
+            <div class="r-gallery-caption"><span class="r-gallery-caption-text">Hausgemachtes Tiramisu</span><span class="r-gallery-caption-tag">Dolci</span></div>
         </div>
     </div>
 </section>
+
+<!-- ═══════════ TAGESMENÜ ═══════════ -->
+<div class="r-daily">
+    <div style="max-width:1100px;margin:0 auto 40px;text-align:center">
+        <div class="r-section-tag" style="color:var(--gold-light);justify-content:center">Tagesmenü</div>
+        <h2 style="font-family:var(--serif);font-size:40px;font-weight:700;color:#fff;margin-bottom:8px;">Mittag & Abend</h2>
+        <p style="color:rgba(255,255,255,0.55);font-size:16px;">Täglich frisch zubereitet — wählen Sie Ihr Menü.</p>
+    </div>
+    <div class="r-daily-inner">
+        <!-- Mittagsmenü -->
+        <div class="r-daily-card">
+            <div class="r-daily-card-bg"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Mittagsmenü" loading="lazy"></div>
+            <div class="r-daily-card-body">
+                <div class="r-daily-label">Dienstag – Freitag · 11:30–14:00</div>
+                <div class="r-daily-title">Mittagsmenü</div>
+                <div class="r-daily-desc">Täglich wechselnde Mittagsmenus — schnell, frisch und zu unschlagbarem Preis.</div>
+                <div class="r-daily-courses">
+                    <div class="r-daily-course"><span class="r-daily-course-name">Suppe des Tages</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">CHF 8</span></div>
+                    <div class="r-daily-course"><span class="r-daily-course-name">Pasta oder Risotto</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">CHF 22</span></div>
+                    <div class="r-daily-course"><span class="r-daily-course-name">Dessert</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">CHF 9</span></div>
+                </div>
+                <div class="r-daily-footer">
+                    <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">3-Gang Menü</div><div class="r-daily-total">CHF 39</div></div>
+                    <a href="#contact" class="r-daily-btn">Tisch reservieren <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <!-- Abendmenü -->
+        <div class="r-daily-card">
+            <div class="r-daily-card-bg"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Abendmenü" loading="lazy"></div>
+            <div class="r-daily-card-body">
+                <div class="r-daily-label">Täglich · 17:30–22:00</div>
+                <div class="r-daily-title">Degustationsmenü</div>
+                <div class="r-daily-desc">Ein kulinarisches Erlebnis — 4 Gänge mit saisonalen Highlights und Weinbegleitung.</div>
+                <div class="r-daily-courses">
+                    <div class="r-daily-course"><span class="r-daily-course-name">Antipasto della Casa</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">inkl.</span></div>
+                    <div class="r-daily-course"><span class="r-daily-course-name">Primo Piatto</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">inkl.</span></div>
+                    <div class="r-daily-course"><span class="r-daily-course-name">Secondo Piatto</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">inkl.</span></div>
+                    <div class="r-daily-course"><span class="r-daily-course-name">Dolce</span><div class="r-daily-course-dots"></div><span class="r-daily-course-price">inkl.</span></div>
+                </div>
+                <div class="r-daily-footer">
+                    <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">4-Gang inkl. Wasser</div><div class="r-daily-total">CHF 89</div></div>
+                    <a href="#contact" class="r-daily-btn">Reservieren <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ═══════════ CHEF SPECIAL ═══════════ -->
 <section class="r-chef" data-edit="image" data-edit-key="chef-bg">
@@ -907,6 +1080,125 @@
     </div>
 </section>
 
+<!-- ═══════════ WEINKARTE ═══════════ -->
+<section class="r-section r-wine" id="weine">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag">Weinkarte</div>
+        <h2 class="r-section-title">Unsere Weinauswahl</h2>
+        <p class="r-section-desc">Über 80 handverlesene Weine aus Italien und der Schweiz — perfekt zu jedem Gang.</p>
+        <div class="r-divider"></div>
+    </div>
+    <div class="r-wine-grid">
+        <div class="r-wine-card fade-up">
+            <div class="r-wine-img">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80" alt="Barolo" loading="lazy">
+                <div class="r-wine-region">Piemont, IT</div>
+            </div>
+            <div class="r-wine-body">
+                <div class="r-wine-type">Rotwein</div>
+                <div class="r-wine-name">Barolo DOCG 2019</div>
+                <div class="r-wine-desc">Tiefgründig, komplex — Noten von Kirsche, Tabak und Teer. Der König der italienischen Weine.</div>
+                <div class="r-wine-footer">
+                    <div class="r-wine-price">CHF 78 <span>/ Flasche</span></div>
+                    <div class="r-wine-tags"><span class="r-wine-tag">Trocken</span><span class="r-wine-tag">Kräftig</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="r-wine-card fade-up">
+            <div class="r-wine-img">
+                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Pinot Grigio" loading="lazy">
+                <div class="r-wine-region">Alto Adige, IT</div>
+            </div>
+            <div class="r-wine-body">
+                <div class="r-wine-type">Weisswein</div>
+                <div class="r-wine-name">Pinot Grigio DOC 2022</div>
+                <div class="r-wine-desc">Frisch und lebendig mit Aromen von grünem Apfel, Zitrus und einem Hauch Mandel.</div>
+                <div class="r-wine-footer">
+                    <div class="r-wine-price">CHF 42 <span>/ Flasche</span></div>
+                    <div class="r-wine-tags"><span class="r-wine-tag">Trocken</span><span class="r-wine-tag">Leicht</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="r-wine-card fade-up">
+            <div class="r-wine-img">
+                <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=600&q=80" alt="Prosecco" loading="lazy">
+                <div class="r-wine-region">Veneto, IT</div>
+            </div>
+            <div class="r-wine-body">
+                <div class="r-wine-type">Schaumwein</div>
+                <div class="r-wine-name">Prosecco Superiore DOCG</div>
+                <div class="r-wine-desc">Elegante Perlage, florale Aromen und angenehme Frische — perfekt als Aperitivo.</div>
+                <div class="r-wine-footer">
+                    <div class="r-wine-price">CHF 12 <span>/ Glas</span></div>
+                    <div class="r-wine-tags"><span class="r-wine-tag">Extra Dry</span><span class="r-wine-tag">Fruchtig</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ PRIVATE EVENTS ═══════════ -->
+<section class="r-section r-events" id="events">
+    <div class="r-events-inner">
+        <div class="r-events-img fade-up">
+            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80" alt="Private Events" loading="lazy">
+            <div class="r-events-img-badge">
+                <div class="r-events-img-badge-n">100+</div>
+                <div class="r-events-img-badge-l">Events pro Jahr</div>
+            </div>
+        </div>
+        <div class="fade-up">
+            <div class="r-section-tag" style="justify-content:flex-start">Private Events</div>
+            <h2 class="r-section-title" style="text-align:left">Ihr unvergesslicher Anlass</h2>
+            <p class="r-section-desc" style="margin:0 0 8px;max-width:100%">Ob Firmenanlass, Geburtstag oder Hochzeitsfeier — La Tavola bietet den perfekten Rahmen für Ihre Feier.</p>
+            <div class="r-events-perks">
+                <div class="r-events-perk">
+                    <div class="r-events-perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+                    <div><div class="r-events-perk-title">Bis 80 Gäste</div><div class="r-events-perk-desc">Exklusiver Bereich oder ganzes Restaurant buchbar</div></div>
+                </div>
+                <div class="r-events-perk">
+                    <div class="r-events-perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+                    <div><div class="r-events-perk-title">Individuelles Menü</div><div class="r-events-perk-desc">Massgeschneidertes Buffet oder Gourmet-Menü</div></div>
+                </div>
+                <div class="r-events-perk">
+                    <div class="r-events-perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <div><div class="r-events-perk-title">Full-Service</div><div class="r-events-perk-desc">Dekoration, Technik und professioneller Service inklusive</div></div>
+                </div>
+            </div>
+            <a href="#contact" class="r-btn r-btn--primary">Anfrage senden</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="r-section r-faq">
+    <div class="r-section-header fade-up">
+        <div class="r-section-tag">FAQ</div>
+        <h2 class="r-section-title">Häufig gestellte Fragen</h2>
+        <div class="r-divider"></div>
+    </div>
+    <div class="r-faq-inner">
+        <div class="r-faq-item fade-up"><button class="r-faq-q" onclick="rFaqToggle(this)">Muss ich im Voraus reservieren?<div class="r-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="r-faq-a">Für Abendessen und Wochenenden empfehlen wir eine Reservierung. Bei grösseren Gruppen (ab 6 Personen) ist eine Voranmeldung zwingend. Mittags sind oft noch Plätze verfügbar.</div></div>
+        <div class="r-faq-item fade-up"><button class="r-faq-q" onclick="rFaqToggle(this)">Gibt es vegetarische und vegane Optionen?<div class="r-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="r-faq-a">Ja, wir haben eine umfangreiche Auswahl an vegetarischen und veganen Gerichten. Allergiker werden gebeten, uns bei der Reservierung zu informieren — wir passen die Speisen gerne an.</div></div>
+        <div class="r-faq-item fade-up"><button class="r-faq-q" onclick="rFaqToggle(this)">Gibt es Parkplätze in der Nähe?<div class="r-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="r-faq-a">Direkt vor dem Restaurant befinden sich gebührenpflichtige Parkplätze. Das Parkhaus Marktplatz (200m) bietet weitere Möglichkeiten. Wir empfehlen die Anreise mit öffentlichen Verkehrsmitteln.</div></div>
+        <div class="r-faq-item fade-up"><button class="r-faq-q" onclick="rFaqToggle(this)">Bieten Sie auch Catering an?<div class="r-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="r-faq-a">Ja! Unser Catering-Service bringt die Qualität von La Tavola zu Ihnen — ob Büroessen, Firmenanlass oder private Feier. Nehmen Sie Kontakt auf für ein persönliches Angebot.</div></div>
+        <div class="r-faq-item fade-up"><button class="r-faq-q" onclick="rFaqToggle(this)">Akzeptieren Sie Kreditkarten?<div class="r-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="r-faq-a">Wir akzeptieren alle gängigen Kreditkarten (Visa, Mastercard, Amex), Debitkarten, TWINT und natürlich Bargeld. Rechnungen für Firmen sind auf Anfrage möglich.</div></div>
+    </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="r-cta-final">
+    <div class="r-cta-final-inner fade-up">
+        <div class="r-cta-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 4.8 Sterne · 800+ Bewertungen</div>
+        <h2>Erleben Sie La Tavola</h2>
+        <p>Reservieren Sie jetzt Ihren Tisch und geniessen Sie einen unvergesslichen Abend mit authentischer italienischer Küche.</p>
+        <div class="r-cta-btns">
+            <a href="#contact" class="r-btn r-btn--primary">Tisch reservieren</a>
+            <a href="#menu" class="r-btn r-btn--outline">Speisekarte ansehen</a>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="r-footer">
     <div class="r-footer-logo" data-edit="logo" data-edit-key="footer-logo">La Tavola</div>
@@ -952,6 +1244,14 @@
         });
     });
 })();
+
+// FAQ accordion
+function rFaqToggle(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.r-faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+}
 
 // Scroll fade-up animations
 (function(){

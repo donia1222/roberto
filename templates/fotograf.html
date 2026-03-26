@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lena Voss Photography — Fotograf Template | Lweb</title>
+    <meta name="description" content="Elegantes Fotografie-Portfolio mit Galerie, Paketen und Kontakt. Professionelle Webseite ab 250 CHF.">
+    <meta name="theme-color" content="#0c0c0c" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'DM Sans',sans-serif; color:#d4ccc0; background:#0c0c0c; overflow-x:hidden; }
+
+        :root {
+            --dark: #0c0c0c;
+            --dark2: #151515;
+            --dark3: #1e1e1e;
+            --amber: #c8860a;
+            --amber-light: #e8a820;
+            --amber-pale: #f5d08a;
+            --text: #d4ccc0;
+            --text-muted: #7a7060;
+            --cream: #faf7f2;
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'DM Sans', sans-serif;
+        }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        @keyframes slideLeft { from{opacity:0;transform:translateX(-60px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes slideRight { from{opacity:0;transform:translateX(60px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        @keyframes shimmer { 0%{background-position:-300% center} 100%{background-position:300% center} }
+        @keyframes pulseAmber { 0%,100%{box-shadow:0 0 0 0 rgba(200,134,10,0.3)} 50%{box-shadow:0 0 0 8px rgba(200,134,10,0)} }
+        @keyframes scanLine { 0%{top:0} 100%{top:100%} }
+
+        .fade-up { opacity:0; transform:translateY(40px); transition:all 0.9s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ═══ BACK BUTTON ═══ */
+        .p-back {
+            position:fixed; top:14px; left:14px; z-index:200;
+            width:32px; height:32px; border-radius:50%;
+            background:rgba(12,12,12,0.8); backdrop-filter:blur(12px);
+            border:1px solid rgba(200,134,10,0.25);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .p-back:hover { background:var(--amber); border-color:var(--amber); transform:scale(1.1); }
+
+        /* ═══ NAV ═══ */
+        .p-nav {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            padding:24px 56px; display:flex; align-items:center; justify-content:space-between;
+            transition:all 0.5s ease;
+        }
+        .p-nav.scrolled {
+            background:rgba(12,12,12,0.92); backdrop-filter:blur(24px);
+            padding:16px 56px; border-bottom:1px solid rgba(200,134,10,0.12);
+        }
+        .p-nav-logo {
+            font-family:var(--serif); font-size:22px; font-weight:400;
+            color:#fff; text-decoration:none; letter-spacing:0.06em;
+            font-style:italic;
+        }
+        .p-nav-logo span { color:var(--amber-light); font-style:normal; font-weight:300; }
+        .p-nav-links { display:flex; gap:40px; align-items:center; }
+        .p-nav-links a {
+            color:rgba(255,255,255,0.6); text-decoration:none; font-size:12px;
+            font-weight:500; letter-spacing:0.14em; text-transform:uppercase;
+            transition:color 0.3s;
+        }
+        .p-nav-links a:hover { color:var(--amber-light); }
+        .p-nav-cta {
+            color:#fff !important; padding:10px 28px;
+            border:1px solid rgba(200,134,10,0.5); border-radius:2px;
+            transition:all 0.3s !important; letter-spacing:0.1em !important;
+        }
+        .p-nav-cta:hover { background:var(--amber) !important; border-color:var(--amber) !important; }
+        .p-nav-burger {
+            display:none; background:none; border:none; cursor:pointer;
+            width:28px; height:20px; position:relative; z-index:101;
+        }
+        .p-nav-burger span {
+            display:block; width:100%; height:1.5px; background:#fff;
+            position:absolute; left:0; transition:all 0.3s;
+        }
+        .p-nav-burger span:nth-child(1) { top:0; }
+        .p-nav-burger span:nth-child(2) { top:9px; }
+        .p-nav-burger span:nth-child(3) { top:18px; }
+        .p-nav-burger.open span:nth-child(1) { top:9px; transform:rotate(45deg); background:var(--amber-light); }
+        .p-nav-burger.open span:nth-child(2) { opacity:0; }
+        .p-nav-burger.open span:nth-child(3) { top:9px; transform:rotate(-45deg); background:var(--amber-light); }
+
+        .p-mobile-menu {
+            position:fixed; inset:0; z-index:99;
+            background:rgba(12,12,12,0.98); backdrop-filter:blur(24px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px;
+            opacity:0; pointer-events:none; transition:opacity 0.4s;
+        }
+        .p-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .p-mobile-menu a {
+            font-family:var(--serif); font-size:36px; color:#fff; font-style:italic;
+            text-decoration:none; letter-spacing:0.04em; transition:color 0.3s;
+        }
+        .p-mobile-menu a:hover { color:var(--amber-light); }
+
+        /* ═══ HERO ═══ */
+        .p-hero {
+            height:100vh; min-height:700px; position:relative;
+            display:flex; align-items:flex-end; overflow:hidden;
+        }
+        .p-hero-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1554080353-a576cf803bda?w=1920&q=80') center/cover no-repeat;
+        }
+        .p-hero-bg::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(180deg, rgba(12,12,12,0.2) 0%, rgba(12,12,12,0.4) 40%, rgba(12,12,12,0.92) 100%);
+        }
+        /* scan line effect */
+        .p-hero-scan {
+            position:absolute; top:0; left:0; right:0; height:2px;
+            background:linear-gradient(90deg, transparent, rgba(200,134,10,0.4), transparent);
+            animation:scanLine 8s ease-in-out infinite; z-index:2; pointer-events:none;
+        }
+        .p-hero-content {
+            position:relative; z-index:3; padding:0 56px 80px; width:100%;
+        }
+        .p-hero-tag {
+            display:inline-flex; align-items:center; gap:12px;
+            color:var(--amber-light); font-size:11px; font-weight:500;
+            letter-spacing:0.25em; text-transform:uppercase; margin-bottom:20px;
+            animation:fadeUp 1s 0.3s both;
+        }
+        .p-hero-tag::before { content:''; width:50px; height:1px; background:var(--amber-light); }
+        .p-hero h1 {
+            font-family:var(--serif); font-size:clamp(56px, 8vw, 110px);
+            font-weight:300; color:#fff; line-height:0.95;
+            letter-spacing:-0.01em; margin-bottom:28px;
+            animation:fadeUp 1s 0.5s both;
+        }
+        .p-hero h1 em { font-style:italic; color:var(--amber-pale); }
+        .p-hero-sub {
+            font-size:16px; color:rgba(255,255,255,0.5); font-weight:300;
+            letter-spacing:0.06em; max-width:460px; line-height:1.8;
+            animation:fadeUp 1s 0.7s both;
+        }
+        .p-hero-btns {
+            display:flex; gap:16px; margin-top:40px;
+            animation:fadeUp 1s 0.9s both;
+        }
+        .p-btn {
+            display:inline-flex; align-items:center; gap:10px;
+            padding:14px 36px; font-size:12px; font-weight:600;
+            text-decoration:none; letter-spacing:0.14em; text-transform:uppercase;
+            transition:all 0.4s; border:none; cursor:pointer; font-family:var(--sans);
+        }
+        .p-btn--primary {
+            background:var(--amber); color:#fff;
+        }
+        .p-btn--primary:hover { background:var(--amber-light); transform:translateY(-2px); box-shadow:0 10px 32px rgba(200,134,10,0.35); }
+        .p-btn--outline {
+            border:1px solid rgba(255,255,255,0.25); color:#fff; background:transparent;
+        }
+        .p-btn--outline:hover { border-color:var(--amber-light); color:var(--amber-light); }
+
+        .p-hero-scroll {
+            position:absolute; bottom:40px; right:56px; z-index:3;
+            display:flex; flex-direction:column; align-items:center; gap:8px;
+            color:rgba(255,255,255,0.35); font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+            animation:fadeIn 1s 1.2s both;
+        }
+        .p-hero-scroll-line {
+            width:1px; height:48px; background:linear-gradient(to bottom, rgba(200,134,10,0.6), transparent);
+        }
+
+        /* ═══ STATS BAR ═══ */
+        .p-stats {
+            background:var(--dark2); border-top:1px solid rgba(200,134,10,0.08);
+            border-bottom:1px solid rgba(200,134,10,0.08); padding:0;
+        }
+        .p-stats-inner {
+            max-width:1200px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(4,1fr);
+        }
+        .p-stat {
+            padding:36px 24px; text-align:center; position:relative;
+            border-right:1px solid rgba(255,255,255,0.05);
+        }
+        .p-stat:last-child { border-right:none; }
+        .p-stat-num {
+            font-family:var(--serif); font-size:44px; font-weight:300;
+            color:#fff; line-height:1; letter-spacing:0.02em;
+        }
+        .p-stat-num span { color:var(--amber-light); }
+        .p-stat-label {
+            font-size:11px; color:var(--text-muted); margin-top:8px;
+            letter-spacing:0.14em; text-transform:uppercase;
+        }
+
+        /* ═══ MARQUEE ═══ */
+        .p-marquee {
+            background:var(--amber); padding:16px 0; overflow:hidden;
+        }
+        .p-marquee-track {
+            display:flex; width:max-content;
+            animation:marqueeScroll 25s linear infinite;
+        }
+        .p-marquee-item {
+            display:flex; align-items:center; gap:20px; padding:0 32px;
+            font-family:var(--serif); font-size:17px; font-style:italic;
+            color:rgba(12,12,12,0.85); white-space:nowrap; font-weight:400;
+        }
+        .p-marquee-dot { width:5px; height:5px; border-radius:50%; background:rgba(12,12,12,0.4); flex-shrink:0; }
+
+        /* ═══ SECTION COMMON ═══ */
+        .p-section { padding:120px 56px; max-width:1280px; margin:0 auto; }
+        .p-section-tag {
+            display:inline-flex; align-items:center; gap:12px;
+            font-size:11px; font-weight:600; letter-spacing:0.22em;
+            text-transform:uppercase; color:var(--amber); margin-bottom:16px;
+        }
+        .p-section-tag::before { content:''; width:36px; height:1px; background:var(--amber); }
+        .p-section-title {
+            font-family:var(--serif); font-size:clamp(38px,5vw,60px);
+            font-weight:300; color:#fff; line-height:1.1; margin-bottom:16px;
+            letter-spacing:-0.01em;
+        }
+        .p-section-title em { font-style:italic; color:var(--amber-pale); }
+        .p-section-desc {
+            font-size:16px; color:var(--text-muted); line-height:1.9;
+            font-weight:300; max-width:560px;
+        }
+        .p-section-header { margin-bottom:72px; }
+        .p-section-header-center { text-align:center; margin-bottom:72px; }
+        .p-section-header-center .p-section-tag { justify-content:center; }
+        .p-section-header-center .p-section-desc { margin:0 auto; }
+
+        /* ═══ PORTFOLIO GRID ═══ */
+        .p-portfolio-wrap { background:var(--dark2); padding:120px 0; }
+        .p-portfolio-inner { max-width:1280px; margin:0 auto; padding:0 56px; }
+        .p-portfolio-grid {
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            grid-template-rows:auto;
+            gap:4px;
+        }
+        .p-portfolio-item {
+            position:relative; overflow:hidden; cursor:pointer;
+            background:var(--dark3);
+        }
+        .p-portfolio-item:nth-child(1) { grid-column:span 2; aspect-ratio:16/10; }
+        .p-portfolio-item:nth-child(2) { aspect-ratio:4/5; }
+        .p-portfolio-item:nth-child(3) { aspect-ratio:4/5; }
+        .p-portfolio-item:nth-child(4) { aspect-ratio:16/10; }
+        .p-portfolio-item:nth-child(5) { grid-column:span 2; aspect-ratio:16/10; }
+        .p-portfolio-item img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform 0.7s cubic-bezier(0.22,1,0.36,1); filter:grayscale(20%);
+        }
+        .p-portfolio-item:hover img { transform:scale(1.06); filter:grayscale(0); }
+        .p-portfolio-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(180deg, transparent 50%, rgba(12,12,12,0.85) 100%);
+            display:flex; flex-direction:column; justify-content:flex-end; padding:28px 32px;
+            opacity:0; transition:opacity 0.4s;
+        }
+        .p-portfolio-item:hover .p-portfolio-overlay { opacity:1; }
+        .p-portfolio-cat {
+            font-size:10px; font-weight:600; letter-spacing:0.2em;
+            text-transform:uppercase; color:var(--amber-light); margin-bottom:4px;
+        }
+        .p-portfolio-name {
+            font-family:var(--serif); font-size:22px; font-weight:400;
+            color:#fff; font-style:italic;
+        }
+
+        /* ═══ SERVICES ═══ */
+        .p-services-wrap { background:var(--dark); }
+        .p-services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+        .p-service-card {
+            padding:56px 44px; position:relative; overflow:hidden;
+            background:var(--dark2); transition:background 0.5s;
+            border:1px solid rgba(255,255,255,0.04);
+        }
+        .p-service-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:2px;
+            background:linear-gradient(90deg, var(--amber), var(--amber-light));
+            transform:scaleX(0); transform-origin:left; transition:transform 0.5s;
+        }
+        .p-service-card:hover { background:rgba(200,134,10,0.04); }
+        .p-service-card:hover::before { transform:scaleX(1); }
+        .p-service-num {
+            font-family:var(--serif); font-size:64px; font-weight:300;
+            color:rgba(255,255,255,0.04); position:absolute;
+            top:24px; right:32px; line-height:1; pointer-events:none;
+        }
+        .p-service-icon {
+            width:56px; height:56px; border-radius:2px;
+            border:1px solid rgba(200,134,10,0.25);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--amber); margin-bottom:28px;
+            transition:all 0.4s;
+        }
+        .p-service-card:hover .p-service-icon { background:var(--amber); color:#fff; border-color:var(--amber); }
+        .p-service-card h3 {
+            font-family:var(--serif); font-size:28px; font-weight:400;
+            color:#fff; margin-bottom:14px; font-style:italic;
+        }
+        .p-service-card p { font-size:14px; color:var(--text-muted); line-height:1.9; margin-bottom:24px; }
+        .p-service-link {
+            display:inline-flex; align-items:center; gap:8px;
+            font-size:12px; font-weight:600; letter-spacing:0.12em;
+            text-transform:uppercase; color:var(--amber); text-decoration:none;
+            transition:gap 0.3s;
+        }
+        .p-service-link:hover { gap:14px; }
+
+        /* ═══ ABOUT ═══ */
+        .p-about-wrap { background:var(--dark2); }
+        .p-about-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+            max-width:1280px; margin:0 auto; padding:120px 56px;
+        }
+        .p-about-img-wrap { position:relative; }
+        .p-about-img {
+            position:relative; overflow:hidden; aspect-ratio:3/4;
+        }
+        .p-about-img img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            filter:grayscale(15%); transition:filter 0.5s;
+        }
+        .p-about-img:hover img { filter:grayscale(0); }
+        .p-about-img::before {
+            content:''; position:absolute; top:-16px; left:-16px;
+            width:120px; height:120px;
+            border-top:1px solid rgba(200,134,10,0.4);
+            border-left:1px solid rgba(200,134,10,0.4);
+            z-index:2; pointer-events:none;
+        }
+        .p-about-img::after {
+            content:''; position:absolute; bottom:-16px; right:-16px;
+            width:120px; height:120px;
+            border-bottom:1px solid rgba(200,134,10,0.4);
+            border-right:1px solid rgba(200,134,10,0.4);
+            z-index:2; pointer-events:none;
+        }
+        .p-about-award {
+            position:absolute; bottom:32px; left:-28px;
+            background:var(--amber); color:#fff; padding:20px 24px;
+            z-index:3; text-align:center;
+        }
+        .p-about-award-num {
+            font-family:var(--serif); font-size:36px; font-weight:400; line-height:1;
+        }
+        .p-about-award-label { font-size:10px; letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; }
+        .p-about-text p {
+            font-size:16px; color:var(--text-muted); line-height:1.9; margin-bottom:20px; font-weight:300;
+        }
+        .p-about-text p strong { color:var(--text); font-weight:600; }
+        .p-about-signature {
+            font-family:var(--serif); font-size:36px; font-style:italic;
+            color:var(--amber-light); margin-top:32px; font-weight:300;
+        }
+
+        /* ═══ PRICING ═══ */
+        .p-pricing-wrap { background:var(--dark); }
+        .p-pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; }
+        .p-price-card {
+            padding:56px 44px; background:var(--dark2);
+            position:relative; transition:background 0.4s;
+        }
+        .p-price-card--featured {
+            background:var(--amber);
+        }
+        .p-price-tag {
+            font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+            color:var(--amber); margin-bottom:12px;
+        }
+        .p-price-card--featured .p-price-tag { color:rgba(12,12,12,0.6); }
+        .p-price-card h3 {
+            font-family:var(--serif); font-size:28px; font-weight:400;
+            color:#fff; margin-bottom:8px; font-style:italic;
+        }
+        .p-price-card--featured h3 { color:#0c0c0c; }
+        .p-price-desc { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:32px; }
+        .p-price-card--featured .p-price-desc { color:rgba(12,12,12,0.6); }
+        .p-price-amount {
+            font-family:var(--serif); font-size:64px; font-weight:300;
+            color:#fff; line-height:1; margin-bottom:4px;
+        }
+        .p-price-card--featured .p-price-amount { color:#0c0c0c; }
+        .p-price-period { font-size:13px; color:var(--text-muted); margin-bottom:36px; }
+        .p-price-card--featured .p-price-period { color:rgba(12,12,12,0.5); }
+        .p-price-divider {
+            height:1px; background:rgba(255,255,255,0.08); margin-bottom:32px;
+        }
+        .p-price-card--featured .p-price-divider { background:rgba(12,12,12,0.15); }
+        .p-price-features { list-style:none; margin-bottom:40px; }
+        .p-price-features li {
+            display:flex; align-items:center; gap:12px;
+            font-size:14px; color:var(--text-muted); padding:10px 0;
+            border-bottom:1px solid rgba(255,255,255,0.05);
+        }
+        .p-price-card--featured .p-price-features li {
+            color:rgba(12,12,12,0.75); border-color:rgba(12,12,12,0.1);
+        }
+        .p-price-features li::before {
+            content:''; width:18px; height:18px; flex-shrink:0; border-radius:2px;
+            background:rgba(200,134,10,0.15);
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23c8860a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:center;
+        }
+        .p-price-card--featured .p-price-features li::before {
+            background-color:rgba(12,12,12,0.12);
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230c0c0c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+        }
+        .p-price-btn {
+            display:block; text-align:center; padding:15px;
+            font-size:12px; font-weight:600; letter-spacing:0.14em;
+            text-transform:uppercase; text-decoration:none; transition:all 0.3s;
+            border:1px solid rgba(200,134,10,0.4); color:var(--amber); background:transparent;
+            cursor:pointer; font-family:var(--sans);
+        }
+        .p-price-btn:hover { background:var(--amber); color:#fff; border-color:var(--amber); }
+        .p-price-card--featured .p-price-btn {
+            background:#0c0c0c; color:var(--amber-light); border-color:#0c0c0c;
+        }
+        .p-price-card--featured .p-price-btn:hover { background:#1e1e1e; }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .p-test-wrap { background:var(--dark2); }
+        .p-test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; }
+        .p-test-card {
+            padding:48px 40px; background:var(--dark);
+            position:relative; transition:background 0.4s;
+        }
+        .p-test-card:hover { background:rgba(200,134,10,0.03); }
+        .p-test-quote {
+            font-family:var(--serif); font-size:80px; line-height:1;
+            color:rgba(200,134,10,0.15); margin-bottom:-16px;
+        }
+        .p-test-stars { display:flex; gap:4px; color:var(--amber); margin-bottom:18px; }
+        .p-test-text {
+            font-family:var(--serif); font-size:17px; font-style:italic;
+            font-weight:300; color:var(--text); line-height:1.8; margin-bottom:28px;
+        }
+        .p-test-author { display:flex; align-items:center; gap:16px; }
+        .p-test-avatar {
+            width:48px; height:48px; border-radius:50%; overflow:hidden;
+            border:2px solid rgba(200,134,10,0.2); flex-shrink:0;
+        }
+        .p-test-avatar img { width:100%; height:100%; object-fit:cover; }
+        .p-test-name { font-size:14px; font-weight:600; color:#fff; }
+        .p-test-role { font-size:12px; color:var(--text-muted); margin-top:2px; }
+
+        /* ═══ FAQ ═══ */
+        .p-faq-wrap { background:var(--dark); }
+        .p-faq-list { max-width:760px; margin:0 auto; }
+        .p-faq-item { border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden; }
+        .p-faq-q {
+            width:100%; background:none; border:none; cursor:pointer;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:24px 0; gap:20px; text-align:left;
+        }
+        .p-faq-q span {
+            font-family:var(--serif); font-size:19px; font-weight:300;
+            color:#fff; line-height:1.4; font-style:italic;
+        }
+        .p-faq-icon {
+            width:32px; height:32px; flex-shrink:0;
+            border:1px solid rgba(200,134,10,0.3);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--amber); transition:all 0.3s;
+        }
+        .p-faq-item.open .p-faq-icon { background:var(--amber); color:#fff; border-color:var(--amber); transform:rotate(45deg); }
+        .p-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+        .p-faq-a p { padding:0 0 24px; font-size:15px; color:var(--text-muted); line-height:1.9; font-weight:300; }
+
+        /* ═══ CTA ═══ */
+        .p-cta-wrap {
+            position:relative; padding:160px 56px; text-align:center; overflow:hidden;
+        }
+        .p-cta-bg {
+            position:absolute; inset:0;
+            background:url('https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=1920&q=80') center/cover no-repeat;
+        }
+        .p-cta-bg::after {
+            content:''; position:absolute; inset:0;
+            background:rgba(12,12,12,0.82);
+        }
+        .p-cta-content { position:relative; z-index:2; max-width:640px; margin:0 auto; }
+        .p-cta-content h2 {
+            font-family:var(--serif); font-size:clamp(44px,6vw,72px); font-weight:300;
+            color:#fff; line-height:1.1; margin-bottom:20px;
+        }
+        .p-cta-content h2 em { font-style:italic; color:var(--amber-pale); }
+        .p-cta-content p { font-size:16px; color:rgba(255,255,255,0.5); margin-bottom:40px; line-height:1.8; font-weight:300; }
+
+        /* ═══ CONTACT ═══ */
+        .p-contact-wrap { background:var(--dark2); }
+        .p-contact-grid {
+            display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
+            max-width:1280px; margin:0 auto; padding:120px 56px;
+        }
+        .p-form label {
+            display:block; font-size:11px; font-weight:600; letter-spacing:0.14em;
+            text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+        }
+        .p-form input, .p-form textarea, .p-form select {
+            width:100%; padding:14px 0; background:transparent;
+            border:none; border-bottom:1px solid rgba(255,255,255,0.1);
+            color:#fff; font-family:var(--sans); font-size:15px; font-weight:300;
+            outline:none; transition:border-color 0.3s; margin-bottom:28px;
+        }
+        .p-form input:focus, .p-form textarea:focus, .p-form select:focus { border-color:var(--amber); }
+        .p-form input::placeholder, .p-form textarea::placeholder { color:rgba(255,255,255,0.2); }
+        .p-form select { cursor:pointer; appearance:none; color:rgba(255,255,255,0.6); }
+        .p-form select option { background:var(--dark2); color:#fff; }
+        .p-form textarea { height:120px; resize:none; }
+        .p-form-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+        .p-form-submit {
+            padding:16px 48px; background:var(--amber); color:#fff;
+            border:none; font-size:12px; font-weight:600; letter-spacing:0.14em;
+            text-transform:uppercase; cursor:pointer; transition:all 0.3s; font-family:var(--sans);
+        }
+        .p-form-submit:hover { background:var(--amber-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,134,10,0.3); }
+        .p-contact-info h3 {
+            font-family:var(--serif); font-size:36px; font-weight:300;
+            color:#fff; margin-bottom:14px; font-style:italic;
+        }
+        .p-contact-info > p { font-size:15px; color:var(--text-muted); line-height:1.8; margin-bottom:40px; font-weight:300; }
+        .p-contact-row {
+            display:flex; align-items:flex-start; gap:20px; margin-bottom:28px;
+        }
+        .p-contact-icon {
+            width:40px; height:40px; border:1px solid rgba(200,134,10,0.25);
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+            color:var(--amber);
+        }
+        .p-contact-row h4 { font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:4px; }
+        .p-contact-row p { font-size:15px; color:#fff; font-weight:300; }
+        .p-contact-social { display:flex; gap:12px; margin-top:40px; }
+        .p-contact-social a {
+            width:44px; height:44px; border:1px solid rgba(255,255,255,0.08);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--text-muted); transition:all 0.3s;
+        }
+        .p-contact-social a:hover { border-color:var(--amber); color:var(--amber); }
+
+        /* ═══ FOOTER ═══ */
+        .p-footer {
+            background:var(--dark); border-top:1px solid rgba(200,134,10,0.08);
+            padding:56px; position:relative;
+        }
+        .p-footer-inner {
+            max-width:1280px; margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+        }
+        .p-footer-logo {
+            font-family:var(--serif); font-size:28px; font-weight:300;
+            color:#fff; font-style:italic;
+        }
+        .p-footer-logo span { color:var(--amber-light); font-style:normal; }
+        .p-footer-links { display:flex; gap:32px; }
+        .p-footer-links a {
+            color:rgba(255,255,255,0.35); text-decoration:none; font-size:12px;
+            letter-spacing:0.1em; text-transform:uppercase; transition:color 0.3s;
+        }
+        .p-footer-links a:hover { color:var(--amber-light); }
+        .p-footer-copy { font-size:12px; color:rgba(255,255,255,0.25); }
+        .p-footer-copy a { color:var(--amber); text-decoration:none; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width:1024px) {
+            .p-nav { padding:18px 28px; }
+            .p-nav.scrolled { padding:14px 28px; }
+            .p-nav-links { display:none; }
+            .p-nav-burger { display:block; }
+            .p-hero-content { padding:0 28px 80px; }
+            .p-hero-scroll { right:28px; }
+            .p-section { padding:80px 28px; }
+            .p-portfolio-inner { padding:80px 28px; }
+            .p-portfolio-grid { grid-template-columns:1fr 1fr; }
+            .p-portfolio-item:nth-child(1) { grid-column:span 2; }
+            .p-portfolio-item:nth-child(5) { grid-column:span 2; }
+            .p-services-grid { grid-template-columns:1fr; }
+            .p-about-grid { grid-template-columns:1fr; gap:48px; padding:80px 28px; }
+            .p-about-award { left:auto; right:20px; }
+            .p-pricing-grid { grid-template-columns:1fr; }
+            .p-test-grid { grid-template-columns:1fr; max-width:560px; margin:0 auto; }
+            .p-cta-wrap { padding:100px 28px; }
+            .p-contact-grid { grid-template-columns:1fr; gap:48px; padding:80px 28px; }
+            .p-footer { padding:40px 28px; }
+            .p-footer-inner { flex-direction:column; align-items:flex-start; gap:20px; }
+            .p-stats-inner { grid-template-columns:1fr 1fr; }
+            .p-stat:nth-child(2) { border-right:none; }
+        }
+        @media (max-width:600px) {
+            .p-hero h1 { font-size:clamp(40px,10vw,64px); }
+            .p-hero-btns { flex-direction:column; gap:12px; }
+            .p-portfolio-grid { grid-template-columns:1fr; }
+            .p-portfolio-item:nth-child(1),
+            .p-portfolio-item:nth-child(5) { grid-column:auto; }
+            .p-form-row { grid-template-columns:1fr; }
+            .p-stats-inner { grid-template-columns:1fr; }
+            .p-stat { border-right:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back -->
+<a href="../templates-web.html#tw-templates" class="p-back" aria-label="Zurück">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+</a>
+
+<!-- NAV -->
+<nav class="p-nav" id="pNav">
+    <a href="#" class="p-nav-logo" data-edit="text" data-edit-key="nav-logo">Lena <span>Voss</span></a>
+    <div class="p-nav-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Leistungen</a>
+        <a href="#about">Über mich</a>
+        <a href="#pricing">Pakete</a>
+        <a href="#contact" class="p-nav-cta">Anfragen</a>
+    </div>
+    <button class="p-nav-burger" id="pBurger" aria-label="Menü">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="p-mobile-menu" id="pMobileMenu">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Leistungen</a>
+    <a href="#about">Über mich</a>
+    <a href="#pricing">Pakete</a>
+    <a href="#contact">Anfragen</a>
+</div>
+
+<!-- HERO -->
+<section class="p-hero">
+    <div class="p-hero-bg" data-edit="image" data-edit-key="hero-bg"></div>
+    <div class="p-hero-scan"></div>
+    <div class="p-hero-content">
+        <div class="p-hero-tag" data-edit="text" data-edit-key="hero-tag">Portraiture · Hochzeit · Editorial</div>
+        <h1 data-edit="text" data-edit-key="hero-title">Moments<br>that <em>last<br>forever.</em></h1>
+        <p class="p-hero-sub" data-edit="text" data-edit-key="hero-sub">Authentische Fotografie für die wichtigsten Augenblicke Ihres Lebens. Basiert in Zürich, weltweit buchbar.</p>
+        <div class="p-hero-btns">
+            <a href="#portfolio" class="p-btn p-btn--primary" data-edit="text" data-edit-key="hero-btn1">Portfolio ansehen</a>
+            <a href="#contact" class="p-btn p-btn--outline" data-edit="text" data-edit-key="hero-btn2">Termin anfragen</a>
+        </div>
+    </div>
+    <div class="p-hero-scroll">
+        <span>Scroll</span>
+        <div class="p-hero-scroll-line"></div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="p-stats">
+    <div class="p-stats-inner">
+        <div class="p-stat fade-up">
+            <div class="p-stat-num" data-edit="text" data-edit-key="stat1">800<span>+</span></div>
+            <div class="p-stat-label">Shootings</div>
+        </div>
+        <div class="p-stat fade-up">
+            <div class="p-stat-num" data-edit="text" data-edit-key="stat2">12</div>
+            <div class="p-stat-label">Jahre Erfahrung</div>
+        </div>
+        <div class="p-stat fade-up">
+            <div class="p-stat-num" data-edit="text" data-edit-key="stat3">4<span>×</span></div>
+            <div class="p-stat-label">Awards gewonnen</div>
+        </div>
+        <div class="p-stat fade-up">
+            <div class="p-stat-num" data-edit="text" data-edit-key="stat4">5.0<span>★</span></div>
+            <div class="p-stat-label">Bewertung</div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="p-marquee">
+    <div class="p-marquee-track">
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Hochzeitsfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Portraitfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Editorial</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Corporate</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Produktfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Familienfotos</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Hochzeitsfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Portraitfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Editorial</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Corporate</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Produktfotografie</div>
+        <div class="p-marquee-item"><span class="p-marquee-dot"></span> Familienfotos</div>
+    </div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="p-portfolio-wrap" id="portfolio">
+    <div class="p-portfolio-inner">
+        <div class="p-section-header fade-up">
+            <div class="p-section-tag">Portfolio</div>
+            <h2 class="p-section-title">Selected <em>works</em></h2>
+            <p class="p-section-desc">Eine Auswahl meiner liebsten Arbeiten — von intimen Porträts bis zu grossen Hochzeitsreportagen.</p>
+        </div>
+        <div class="p-portfolio-grid">
+            <div class="p-portfolio-item fade-up">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="Hochzeit" loading="lazy" data-edit="image" data-edit-key="port1-img">
+                <div class="p-portfolio-overlay">
+                    <div class="p-portfolio-cat">Hochzeit</div>
+                    <div class="p-portfolio-name">Anna & Thomas, Zürich 2025</div>
+                </div>
+            </div>
+            <div class="p-portfolio-item fade-up">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" alt="Portrait" loading="lazy" data-edit="image" data-edit-key="port2-img">
+                <div class="p-portfolio-overlay">
+                    <div class="p-portfolio-cat">Portrait</div>
+                    <div class="p-portfolio-name">Executive Series</div>
+                </div>
+            </div>
+            <div class="p-portfolio-item fade-up">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80" alt="Editorial" loading="lazy" data-edit="image" data-edit-key="port3-img">
+                <div class="p-portfolio-overlay">
+                    <div class="p-portfolio-cat">Editorial</div>
+                    <div class="p-portfolio-name">Fashion Week Zürich</div>
+                </div>
+            </div>
+            <div class="p-portfolio-item fade-up">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" alt="Hochzeit" loading="lazy" data-edit="image" data-edit-key="port4-img">
+                <div class="p-portfolio-overlay">
+                    <div class="p-portfolio-cat">Hochzeit</div>
+                    <div class="p-portfolio-name">Sophie & Marc, Luzern</div>
+                </div>
+            </div>
+            <div class="p-portfolio-item fade-up">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" alt="Corporate" loading="lazy" data-edit="image" data-edit-key="port5-img">
+                <div class="p-portfolio-overlay">
+                    <div class="p-portfolio-cat">Corporate</div>
+                    <div class="p-portfolio-name">Team & Headshots</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<div class="p-services-wrap" id="services">
+    <div class="p-section">
+        <div class="p-section-header-center fade-up">
+            <div class="p-section-tag">Leistungen</div>
+            <h2 class="p-section-title">Was ich <em>anbiete</em></h2>
+            <p class="p-section-desc">Drei Schwerpunkte — maßgeschneidert für jeden Anlass, mit demselben Anspruch an Qualität und Emotion.</p>
+        </div>
+        <div class="p-services-grid fade-up">
+            <div class="p-service-card">
+                <div class="p-service-num">01</div>
+                <div class="p-service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </div>
+                <h3>Hochzeitsfotografie</h3>
+                <p>Ihr grösster Tag, festgehalten in zeitlosen Bildern. Ich begleite Sie von der Vorbereitung bis zum letzten Tanz — diskret, einfühlsam und mit einem Auge für den perfekten Moment.</p>
+                <a href="#pricing" class="p-service-link">Pakete ansehen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <div class="p-service-card">
+                <div class="p-service-num">02</div>
+                <div class="p-service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+                </div>
+                <h3>Portrait & Editorial</h3>
+                <p>Von LinkedIn-Headshots über Businessporträts bis zu kreativen Editorial-Produktionen. Im Studio oder an einem Ort Ihrer Wahl — immer authentisch, immer Sie.</p>
+                <a href="#pricing" class="p-service-link">Pakete ansehen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <div class="p-service-card">
+                <div class="p-service-num">03</div>
+                <div class="p-service-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+                </div>
+                <h3>Corporate & Brand</h3>
+                <p>Authentische Unternehmensbilder, die Ihre Marke stärken. Team-Portraits, Reportagen, Events und Produktfotografie — strategisch gedacht, ästhetisch umgesetzt.</p>
+                <a href="#pricing" class="p-service-link">Pakete ansehen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<div class="p-about-wrap" id="about">
+    <div class="p-about-grid">
+        <div class="p-about-img-wrap fade-up">
+            <div class="p-about-img">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" alt="Lena Voss" loading="lazy" data-edit="image" data-edit-key="about-img">
+            </div>
+            <div class="p-about-award">
+                <div class="p-about-award-num">4×</div>
+                <div class="p-about-award-label">Award Winner</div>
+            </div>
+        </div>
+        <div class="fade-up">
+            <div class="p-section-tag">Über mich</div>
+            <h2 class="p-section-title">Die Frau<br>hinter der <em>Kamera</em></h2>
+            <p>Ich bin Lena Voss — Fotografin mit Leib und Seele. Aufgewachsen in Basel, heute in Zürich zu Hause. Was mich antreibt? <strong>Die Überzeugung, dass ein einziges Bild ein ganzes Leben erzählen kann.</strong></p>
+            <p>Seit über 12 Jahren halte ich Momente fest, die sonst verloren gehen würden. Mein Stil ist zeitlos, warm und ehrlich — nie aufgesetzt, immer nah am Menschen.</p>
+            <p>Zu meinen Kunden zählen Brautpaare, Unternehmerpersönlichkeiten und internationale Modemarken. Jedes Shooting behandle ich mit derselben Sorgfalt und Leidenschaft.</p>
+            <div class="p-about-signature">Lena Voss</div>
+        </div>
+    </div>
+</div>
+
+<!-- PRICING -->
+<div class="p-pricing-wrap" id="pricing">
+    <div class="p-section">
+        <div class="p-section-header-center fade-up">
+            <div class="p-section-tag">Pakete & Preise</div>
+            <h2 class="p-section-title">Transparente <em>Preise</em></h2>
+            <p class="p-section-desc">Keine versteckten Kosten — klare Pakete für jeden Bedarf, individuelle Angebote auf Anfrage.</p>
+        </div>
+        <div class="p-pricing-grid fade-up">
+            <div class="p-price-card">
+                <div class="p-price-tag">Essential</div>
+                <h3>Portrait Session</h3>
+                <p class="p-price-desc">Perfekt für individuelle Portraits, Headshots oder kleine Familienshootings.</p>
+                <div class="p-price-amount">450<span style="font-size:24px;"> CHF</span></div>
+                <div class="p-price-period">inkl. MwSt.</div>
+                <div class="p-price-divider"></div>
+                <ul class="p-price-features">
+                    <li>2h Shooting (Studio oder Outdoor)</li>
+                    <li>30 fertig bearbeitete Fotos</li>
+                    <li>Online-Galerie für 60 Tage</li>
+                    <li>Druckfreigabe aller Bilder</li>
+                    <li>1 Outfit-Wechsel</li>
+                </ul>
+                <a href="#contact" class="p-price-btn">Buchen</a>
+            </div>
+            <div class="p-price-card p-price-card--featured">
+                <div class="p-price-tag">Most Popular</div>
+                <h3>Hochzeit Basis</h3>
+                <p class="p-price-desc">Professionelle Hochzeitsdokumentation für Ihren besonderen Tag — komplett und stressfrei.</p>
+                <div class="p-price-amount">1'800<span style="font-size:24px;"> CHF</span></div>
+                <div class="p-price-period">inkl. MwSt.</div>
+                <div class="p-price-divider"></div>
+                <ul class="p-price-features">
+                    <li>8h Shooting am Hochzeitstag</li>
+                    <li>250+ fertig bearbeitete Fotos</li>
+                    <li>Vorbereitungs-Konsultation</li>
+                    <li>Passwortgeschützte Galerie</li>
+                    <li>Druckfreigabe aller Bilder</li>
+                </ul>
+                <a href="#contact" class="p-price-btn">Jetzt buchen</a>
+            </div>
+            <div class="p-price-card">
+                <div class="p-price-tag">Premium</div>
+                <h3>Hochzeit Komplett</h3>
+                <p class="p-price-desc">Das komplette Paket für Paare, die keinen Moment verpassen möchten.</p>
+                <div class="p-price-amount">2'900<span style="font-size:24px;"> CHF</span></div>
+                <div class="p-price-period">inkl. MwSt.</div>
+                <div class="p-price-divider"></div>
+                <ul class="p-price-features">
+                    <li>10h Shooting + Getting Ready</li>
+                    <li>400+ fertig bearbeitete Fotos</li>
+                    <li>Engagement-Shooting inklusive</li>
+                    <li>Gedrucktes Fotobuch (A4)</li>
+                    <li>USB-Stick mit allen Dateien</li>
+                </ul>
+                <a href="#contact" class="p-price-btn">Anfragen</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="p-test-wrap" id="testimonials">
+    <div class="p-section">
+        <div class="p-section-header-center fade-up">
+            <div class="p-section-tag">Kundenstimmen</div>
+            <h2 class="p-section-title">Was meine <em>Kunden</em> sagen</h2>
+        </div>
+        <div class="p-test-grid fade-up">
+            <div class="p-test-card">
+                <div class="p-test-quote">"</div>
+                <div class="p-test-stars">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="p-test-text">Lena hat unsere Hochzeit in Bilder verwandelt, die uns ein Leben lang begleiten werden. Sie war unauffällig, aber überall zur richtigen Zeit — ein echtes Talent.</p>
+                <div class="p-test-author">
+                    <div class="p-test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="" loading="lazy"></div>
+                    <div>
+                        <div class="p-test-name">Anna & Thomas Berger</div>
+                        <div class="p-test-role">Hochzeit in Zürich</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-test-card">
+                <div class="p-test-quote">"</div>
+                <div class="p-test-stars">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="p-test-text">Unsere neuen Team-Portraits haben das Feedback unserer Kunden völlig verändert. Lena versteht es, Professionalität und Persönlichkeit in einem Bild zu vereinen.</p>
+                <div class="p-test-author">
+                    <div class="p-test-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="" loading="lazy"></div>
+                    <div>
+                        <div class="p-test-name">Michael Hess</div>
+                        <div class="p-test-role">CEO, Hess Consulting AG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-test-card">
+                <div class="p-test-quote">"</div>
+                <div class="p-test-stars">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="p-test-text">Das Familien-Shooting mit Lena war eine wunderbare Erfahrung. Die Kinder haben sie sofort ins Herz geschlossen — und die Fotos sind atemberaubend.</p>
+                <div class="p-test-author">
+                    <div class="p-test-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="" loading="lazy"></div>
+                    <div>
+                        <div class="p-test-name">Familie Zimmermann</div>
+                        <div class="p-test-role">Portrait-Session</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="p-faq-wrap" id="faq">
+    <div class="p-section">
+        <div class="p-section-header-center fade-up">
+            <div class="p-section-tag">FAQ</div>
+            <h2 class="p-section-title">Ihre <em>Fragen</em></h2>
+        </div>
+        <div class="p-faq-list fade-up">
+            <div class="p-faq-item">
+                <button class="p-faq-q" onclick="pFaqToggle(this)">
+                    <span>Wie weit im Voraus soll ich buchen?</span>
+                    <div class="p-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="p-faq-a"><p>Für Hochzeiten empfehle ich eine Buchung 6–12 Monate im Voraus, da ich nur begrenzt Termine pro Saison annehme. Portrait- und Corporate-Sessions sind oft schon 2–4 Wochen voraus buchbar. Kontaktieren Sie mich frühzeitig, damit ich Ihren Wunschtermin reservieren kann.</p></div>
+            </div>
+            <div class="p-faq-item">
+                <button class="p-faq-q" onclick="pFaqToggle(this)">
+                    <span>Wo finden die Shootings statt?</span>
+                    <div class="p-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="p-faq-a"><p>Ich verfüge über ein eigenes Studio in Zürich-West und bin gleichzeitig sehr gerne outdoor oder an Locations Ihrer Wahl tätig. Für Hochzeiten reise ich in der ganzen Schweiz und auf Wunsch auch ins Ausland — Reisekosten werden transparent ausgewiesen.</p></div>
+            </div>
+            <div class="p-faq-item">
+                <button class="p-faq-q" onclick="pFaqToggle(this)">
+                    <span>Wann erhalte ich meine fertigen Bilder?</span>
+                    <div class="p-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="p-faq-a"><p>Portrait-Sessions: innerhalb von 7 Werktagen. Hochzeiten: innerhalb von 4–6 Wochen. Sie erhalten eine passwortgeschützte Online-Galerie, aus der Sie alle Bilder in voller Auflösung herunterladen können.</p></div>
+            </div>
+            <div class="p-faq-item">
+                <button class="p-faq-q" onclick="pFaqToggle(this)">
+                    <span>Wie viele Bilder sind im Paket enthalten?</span>
+                    <div class="p-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="p-faq-a"><p>Alle Pakete beinhalten eine Mindestanzahl an fertig retuschierten Bildern — in der Praxis liefere ich oft mehr. Qualität geht immer vor Quantität: Jedes Bild, das Sie erhalten, ist bewusst ausgewählt und professionell nachbearbeitet.</p></div>
+            </div>
+            <div class="p-faq-item">
+                <button class="p-faq-q" onclick="pFaqToggle(this)">
+                    <span>Kann ich ein individuelles Angebot anfragen?</span>
+                    <div class="p-faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                </button>
+                <div class="p-faq-a"><p>Natürlich. Jedes Projekt ist einzigartig — deshalb erstelle ich gerne ein massgeschneidertes Angebot für Corporate-Aufträge, mehrtägige Events oder spezielle Anforderungen. Schildern Sie mir Ihre Vorstellungen und ich melde mich innerhalb von 24 Stunden mit einem konkreten Angebot.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="p-cta-wrap">
+    <div class="p-cta-bg" data-edit="image" data-edit-key="cta-bg"></div>
+    <div class="p-cta-content fade-up">
+        <div class="p-section-tag" style="justify-content:center;margin-bottom:16px;">Bereit?</div>
+        <h2>Lassen Sie uns<br><em>zusammenarbeiten</em></h2>
+        <p>Schildern Sie mir Ihre Vorstellung — ich melde mich innerhalb von 24 Stunden mit einem persönlichen Angebot.</p>
+        <a href="#contact" class="p-btn p-btn--primary">Jetzt anfragen</a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<div class="p-contact-wrap" id="contact">
+    <div class="p-contact-grid">
+        <div class="fade-up">
+            <div class="p-section-tag">Kontakt</div>
+            <h2 class="p-section-title" style="margin-bottom:40px;">Schreiben<br>Sie mir.</h2>
+            <form class="p-form" onsubmit="event.preventDefault()">
+                <div class="p-form-row">
+                    <div><label>Vorname</label><input type="text" placeholder="Ihr Vorname"></div>
+                    <div><label>Nachname</label><input type="text" placeholder="Ihr Nachname"></div>
+                </div>
+                <div><label>E-Mail</label><input type="email" placeholder="ihre@email.ch"></div>
+                <div><label>Anliegen</label>
+                    <select>
+                        <option>Hochzeitsfotografie</option>
+                        <option>Portrait-Session</option>
+                        <option>Corporate & Brand</option>
+                        <option>Sonstiges</option>
+                    </select>
+                </div>
+                <div><label>Datum / Wunschtermin</label><input type="text" placeholder="z.B. 14. Juni 2026"></div>
+                <div><label>Ihre Nachricht</label><textarea placeholder="Erzählen Sie mir von Ihrem Projekt..."></textarea></div>
+                <button type="submit" class="p-form-submit">Anfrage senden</button>
+            </form>
+        </div>
+        <div class="p-contact-info fade-up">
+            <h3>Kontakt &amp;<br>Informationen</h3>
+            <p>Ich freue mich auf Ihre Anfrage. Für Hochzeiten empfehle ich ein persönliches Kennenlerngespräch — kostenlos und unverbindlich.</p>
+            <div class="p-contact-row">
+                <div class="p-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div><h4>E-Mail</h4><p data-edit="text" data-edit-key="contact-email">hello@lenavoss.ch</p></div>
+            </div>
+            <div class="p-contact-row">
+                <div class="p-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                <div><h4>Telefon</h4><p data-edit="text" data-edit-key="contact-phone">+41 79 456 78 90</p></div>
+            </div>
+            <div class="p-contact-row">
+                <div class="p-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div><h4>Studio</h4><p data-edit="text" data-edit-key="contact-addr">Hardstrasse 201, 8005 Zürich</p></div>
+            </div>
+            <div class="p-contact-social">
+                <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="#" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 12a4 4 0 118 0c0 4-3 6-3 6"/><line x1="12" y1="12" x2="10" y2="22"/><circle cx="12" cy="12" r="10"/></svg></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="p-footer">
+    <div class="p-footer-inner">
+        <div class="p-footer-logo">Lena <span>Voss</span></div>
+        <div class="p-footer-links">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Leistungen</a>
+            <a href="#pricing">Preise</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+        <div class="p-footer-copy">&copy; 2026 Lena Voss Photography — Template von <a href="../templates-web.html">Lweb</a></div>
+    </div>
+</footer>
+
+<script>
+// FAQ
+function pFaqToggle(btn) {
+    var item = btn.parentElement;
+    var ans = item.querySelector('.p-faq-a');
+    var open = item.classList.contains('open');
+    document.querySelectorAll('.p-faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.p-faq-a').style.maxHeight='0';
+    });
+    if (!open) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight+'px'; }
+}
+
+// Nav scroll
+(function(){
+    var nav = document.getElementById('pNav');
+    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.pageYOffset > 80); });
+})();
+
+// Mobile menu
+(function(){
+    var burger = document.getElementById('pBurger');
+    var menu = document.getElementById('pMobileMenu');
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Fade-up
+(function(){
+    if (!('IntersectionObserver' in window)){
+        document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold:0.1 });
+    document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+<script>
+if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+    var s = document.createElement('script');
+    s.src = '../js/template-editor.js';
+    s.onload = function() { TemplateEditor.init({ templateId: 'fotograf', clientId: 'demo' }); };
+    document.body.appendChild(s);
+}
+</script>
+</body>
+</html>
