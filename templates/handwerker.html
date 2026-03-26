@@ -139,6 +139,29 @@
             color:rgba(255,255,255,0.5); animation:parallaxFloat 2s ease-in-out infinite;
         }
 
+        /* Hero trust strip */
+        .h-hero-trust {
+            position:absolute; bottom:0; left:0; right:0;
+            display:flex; justify-content:center; gap:0;
+            background:rgba(0,0,0,0.55); backdrop-filter:blur(12px);
+            border-top:1px solid rgba(255,255,255,0.08);
+        }
+        .h-hero-trust-item {
+            display:flex; align-items:center; gap:10px;
+            padding:16px 32px; border-right:1px solid rgba(255,255,255,0.08);
+            flex:1; max-width:220px; justify-content:center;
+        }
+        .h-hero-trust-item:last-child { border-right:none; }
+        .h-hero-trust-icon {
+            width:36px; height:36px; border-radius:10px;
+            background:rgba(39,174,96,0.2); border:1px solid rgba(39,174,96,0.3);
+            display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        }
+        .h-hero-trust-icon svg { width:18px; height:18px; color:var(--green-light); }
+        .h-hero-trust-n { font-family:var(--serif); font-size:20px; font-weight:700; color:#fff; line-height:1; }
+        .h-hero-trust-l { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; letter-spacing:0.05em; }
+        @media(max-width:700px){ .h-hero-trust { display:none; } }
+
         /* ═══ SECTION COMMON ═══ */
         .h-section { padding:100px 24px; }
         .h-section-header { text-align:center; margin-bottom:64px; }
@@ -212,21 +235,80 @@
         .h-service-card {
             border-radius:16px; overflow:hidden; border:1px solid #f0f0f0;
             transition:all 0.4s cubic-bezier(0.22,1,0.36,1); background:#fff;
+            box-shadow:0 2px 12px rgba(0,0,0,0.04);
         }
-        .h-service-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.08); }
-        .h-service-card-img { width:100%; height:220px; overflow:hidden; }
-        .h-service-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
-        .h-service-card:hover .h-service-card-img img { transform:scale(1.05); }
-        .h-service-card-body { padding:28px; }
+        .h-service-card:hover { transform:translateY(-8px); box-shadow:0 20px 48px rgba(0,0,0,0.1); border-color:rgba(39,174,96,0.2); }
+        .h-service-card-img { width:100%; height:220px; overflow:hidden; position:relative; }
+        .h-service-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
+        .h-service-card:hover .h-service-card-img img { transform:scale(1.07); }
+        /* Service card icon badge */
+        .h-service-icon-badge {
+            position:absolute; top:16px; left:16px; z-index:2;
+            width:44px; height:44px; border-radius:12px;
+            background:var(--green); display:flex; align-items:center; justify-content:center;
+            box-shadow:0 4px 16px rgba(39,174,96,0.4);
+        }
+        .h-service-icon-badge svg { width:22px; height:22px; color:#fff; }
+        /* Notdienst ribbon */
+        .h-service-ribbon {
+            position:absolute; top:16px; right:16px; z-index:2;
+            background:rgba(0,0,0,0.6); backdrop-filter:blur(6px);
+            color:#fff; font-size:11px; font-weight:700; padding:4px 10px;
+            border-radius:100px; border:1px solid rgba(255,255,255,0.2);
+        }
+        .h-service-card-body { padding:24px 28px 28px; }
         .h-service-card-body h3 {
             font-family:var(--serif); font-size:22px; font-weight:700;
-            color:var(--dark); margin-bottom:12px;
+            color:var(--dark); margin-bottom:10px;
         }
-        .h-service-card-body p { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+        .h-service-card-body p { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:18px; }
+        /* Feature list inside service card */
+        .h-service-features { list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:6px; }
+        .h-service-features li { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--dark); }
+        .h-service-features li::before {
+            content:''; width:16px; height:16px; border-radius:4px;
+            background:rgba(39,174,96,0.12); flex-shrink:0;
+            background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2327ae60' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:center; background-size:10px;
+        }
+        /* Price badge */
+        .h-service-footer { display:flex; align-items:center; justify-content:space-between; }
         .h-service-price {
-            font-family:var(--serif); font-size:20px; font-weight:700;
-            color:var(--green);
+            display:inline-flex; align-items:baseline; gap:4px;
+            font-family:var(--serif); font-size:22px; font-weight:700; color:var(--green);
         }
+        .h-service-price span { font-family:var(--sans); font-size:12px; color:var(--text-light); font-weight:500; }
+        .h-service-cta {
+            font-size:12px; font-weight:700; color:var(--green); text-decoration:none;
+            display:inline-flex; align-items:center; gap:4px;
+            border:1.5px solid var(--green); padding:6px 14px; border-radius:6px;
+            transition:all 0.25s ease;
+        }
+        .h-service-cta:hover { background:var(--green); color:#fff; }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .h-testimonials { background:#fff; }
+        .h-testimonials-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+        }
+        .h-testi-card {
+            background:var(--cream); border-radius:16px; padding:28px;
+            border:1px solid rgba(0,0,0,0.04);
+            transition:all 0.35s ease;
+        }
+        .h-testi-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.07); }
+        .h-testi-stars { color:var(--green); font-size:16px; letter-spacing:2px; margin-bottom:14px; }
+        .h-testi-text { font-size:15px; color:var(--text); line-height:1.7; margin-bottom:20px; font-style:italic; }
+        .h-testi-author { display:flex; align-items:center; gap:12px; }
+        .h-testi-avatar {
+            width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;
+            background:var(--green); display:flex; align-items:center; justify-content:center;
+            font-family:var(--serif); font-size:16px; font-weight:700; color:#fff;
+        }
+        .h-testi-name { font-size:14px; font-weight:700; color:var(--dark); }
+        .h-testi-role { font-size:12px; color:var(--text-light); margin-top:2px; }
+        @media(max-width:900px){ .h-testimonials-grid { grid-template-columns:1fr; max-width:500px; } }
 
         /* ═══ GALLERY ═══ */
         .h-gallery { background:var(--cream); overflow:hidden; }
@@ -246,6 +328,21 @@
         }
         .h-gallery-item--tall { grid-row:span 2; }
         .h-gallery-item--tall img { height:100%; min-height:532px; }
+        /* Gallery caption overlay */
+        .h-gallery-caption {
+            position:absolute; bottom:0; left:0; right:0;
+            padding:20px 16px 16px;
+            background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+            opacity:0; transition:opacity 0.3s ease;
+            display:flex; align-items:flex-end; justify-content:space-between;
+        }
+        .h-gallery-item:hover .h-gallery-caption { opacity:1; }
+        .h-gallery-caption-text { font-size:13px; font-weight:600; color:#fff; }
+        .h-gallery-caption-tag {
+            font-size:10px; font-weight:700; color:#fff;
+            background:var(--green); padding:3px 8px; border-radius:100px;
+            white-space:nowrap;
+        }
         .h-gallery-item::after {
             content:''; position:absolute; inset:0;
             background:linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
@@ -297,6 +394,160 @@
             color:var(--text-light); font-size:14px; font-weight:600;
             border:1px solid rgba(0,0,0,0.06);
         }
+
+        /* ═══ NOTDIENST BANNER ═══ */
+        .h-notdienst {
+            background:linear-gradient(135deg, #c0392b 0%, #96281b 100%);
+            padding:0 24px; position:relative; overflow:hidden;
+        }
+        .h-notdienst::before {
+            content:''; position:absolute; inset:0;
+            background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .h-notdienst-inner {
+            max-width:1100px; margin:0 auto;
+            display:flex; align-items:center; justify-content:space-between;
+            gap:32px; padding:36px 0; flex-wrap:wrap;
+        }
+        .h-notdienst-left { display:flex; align-items:center; gap:20px; }
+        .h-notdienst-icon {
+            width:60px; height:60px; border-radius:16px; flex-shrink:0;
+            background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center;
+            border:1px solid rgba(255,255,255,0.25);
+        }
+        .h-notdienst-icon svg { width:28px; height:28px; color:#fff; }
+        .h-notdienst-label { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px; }
+        .h-notdienst-title { font-family:var(--serif); font-size:26px; font-weight:700; color:#fff; line-height:1.2; }
+        .h-notdienst-sub { font-size:14px; color:rgba(255,255,255,0.7); margin-top:4px; }
+        .h-notdienst-right { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+        .h-notdienst-phone {
+            font-family:var(--serif); font-size:32px; font-weight:700; color:#fff;
+            text-decoration:none; letter-spacing:0.02em;
+            transition:opacity 0.2s;
+        }
+        .h-notdienst-phone:hover { opacity:0.85; }
+        .h-notdienst-btn {
+            background:#fff; color:#c0392b; font-size:14px; font-weight:700;
+            padding:14px 28px; border-radius:8px; text-decoration:none;
+            transition:all 0.25s; white-space:nowrap;
+        }
+        .h-notdienst-btn:hover { background:#f8f8f8; transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+        @media(max-width:700px){ .h-notdienst-inner { flex-direction:column; align-items:flex-start; } .h-notdienst-phone { font-size:24px; } }
+
+        /* ═══ PROCESS / HOW IT WORKS ═══ */
+        .h-process { background:var(--cream); }
+        .h-process-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+            position:relative;
+        }
+        .h-process-grid::before {
+            content:''; position:absolute; top:36px; left:calc(12.5% + 8px); right:calc(12.5% + 8px);
+            height:2px; background:repeating-linear-gradient(to right, var(--green) 0, var(--green) 8px, transparent 8px, transparent 16px);
+            z-index:0;
+        }
+        .h-process-step {
+            display:flex; flex-direction:column; align-items:center; text-align:center;
+            position:relative; z-index:1;
+        }
+        .h-process-num {
+            width:72px; height:72px; border-radius:50%;
+            background:#fff; border:2px solid var(--green);
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:20px; position:relative;
+            box-shadow:0 4px 16px rgba(39,174,96,0.15);
+            transition:all 0.35s ease;
+        }
+        .h-process-step:hover .h-process-num { background:var(--green); }
+        .h-process-num svg { width:28px; height:28px; color:var(--green); transition:color 0.35s; }
+        .h-process-step:hover .h-process-num svg { color:#fff; }
+        .h-process-num-badge {
+            position:absolute; top:-6px; right:-6px;
+            width:22px; height:22px; border-radius:50%;
+            background:var(--green); color:#fff; font-size:11px; font-weight:800;
+            display:flex; align-items:center; justify-content:center;
+            border:2px solid var(--cream);
+        }
+        .h-process-step h4 { font-family:var(--serif); font-size:18px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+        .h-process-step p { font-size:13px; color:var(--text-light); line-height:1.6; }
+        @media(max-width:900px){ .h-process-grid { grid-template-columns:repeat(2,1fr); } .h-process-grid::before { display:none; } }
+        @media(max-width:500px){ .h-process-grid { grid-template-columns:1fr; } }
+
+        /* ═══ EINSATZGEBIET ═══ */
+        .h-area { background:#fff; }
+        .h-area-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .h-area-map {
+            border-radius:20px; overflow:hidden; position:relative;
+            background:linear-gradient(135deg, #d4edda 0%, #a8d5b5 100%);
+            min-height:380px; display:flex; align-items:center; justify-content:center;
+            border:1px solid rgba(39,174,96,0.2);
+        }
+        .h-area-map-label { text-align:center; }
+        .h-area-map-label svg { width:64px; height:64px; color:var(--green); opacity:0.6; }
+        .h-area-map-label p { font-size:14px; color:var(--text-light); margin-top:12px; }
+        .h-area-cities-title { font-family:var(--serif); font-size:32px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+        .h-area-cities-sub { font-size:16px; color:var(--text-light); line-height:1.6; margin-bottom:28px; }
+        .h-area-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px; }
+        .h-area-city {
+            display:flex; align-items:center; gap:8px;
+            background:var(--cream); border-radius:10px; padding:10px 14px;
+            font-size:14px; font-weight:600; color:var(--dark);
+            border:1px solid rgba(39,174,96,0.12); transition:all 0.25s;
+        }
+        .h-area-city:hover { border-color:var(--green); background:#e8f5ee; }
+        .h-area-city svg { width:14px; height:14px; color:var(--green); flex-shrink:0; }
+        .h-area-radius {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(39,174,96,0.1); border-radius:8px; padding:10px 16px;
+            font-size:13px; font-weight:600; color:var(--green);
+        }
+        @media(max-width:900px){ .h-area-inner { grid-template-columns:1fr; } .h-area-map { min-height:220px; } }
+
+        /* ═══ FAQ ═══ */
+        .h-faq { background:var(--cream); }
+        .h-faq-inner { max-width:800px; margin:0 auto; }
+        .h-faq-item {
+            background:#fff; border-radius:14px; margin-bottom:12px;
+            border:1px solid rgba(0,0,0,0.05); overflow:hidden;
+            transition:box-shadow 0.3s;
+        }
+        .h-faq-item:hover { box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+        .h-faq-q {
+            width:100%; display:flex; align-items:center; justify-content:space-between;
+            padding:20px 24px; background:none; border:none; cursor:pointer;
+            font-family:var(--sans); font-size:16px; font-weight:600; color:var(--dark);
+            text-align:left; gap:16px;
+        }
+        .h-faq-icon {
+            width:28px; height:28px; border-radius:50%; flex-shrink:0;
+            background:rgba(39,174,96,0.1); display:flex; align-items:center; justify-content:center;
+            transition:all 0.3s;
+        }
+        .h-faq-icon svg { width:14px; height:14px; color:var(--green); transition:transform 0.3s; }
+        .h-faq-item.open .h-faq-icon { background:var(--green); }
+        .h-faq-item.open .h-faq-icon svg { color:#fff; transform:rotate(45deg); }
+        .h-faq-a {
+            max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s;
+            padding:0 24px; font-size:15px; color:var(--text-light); line-height:1.7;
+        }
+        .h-faq-item.open .h-faq-a { max-height:300px; padding:0 24px 20px; }
+
+        /* ═══ FINAL CTA ═══ */
+        .h-cta-final {
+            background:linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
+            padding:80px 24px; text-align:center; position:relative; overflow:hidden;
+        }
+        .h-cta-final::before {
+            content:''; position:absolute; top:-120px; left:50%; transform:translateX(-50%);
+            width:600px; height:600px; border-radius:50%;
+            background:radial-gradient(circle, rgba(39,174,96,0.12) 0%, transparent 70%);
+        }
+        .h-cta-final-inner { position:relative; z-index:1; max-width:640px; margin:0 auto; }
+        .h-cta-final-tag { display:inline-flex; align-items:center; gap:6px; background:rgba(39,174,96,0.15); border:1px solid rgba(39,174,96,0.3); color:var(--green-light); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:24px; }
+        .h-cta-final h2 { font-family:var(--serif); font-size:44px; font-weight:700; color:#fff; line-height:1.2; margin-bottom:16px; }
+        .h-cta-final p { font-size:17px; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:36px; }
+        .h-cta-final-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+        @media(max-width:600px){ .h-cta-final h2 { font-size:30px; } }
 
         /* ═══ FOOTER ═══ */
         .h-footer {
@@ -412,8 +663,44 @@
             <a href="#contact" class="h-btn h-btn--outline" data-edit="text" data-edit-key="hero-btn2">Offerte anfragen</a>
         </div>
     </div>
-    <div class="h-hero-scroll">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <!-- Trust strip -->
+    <div class="h-hero-trust">
+        <div class="h-hero-trust-item">
+            <div class="h-hero-trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+                <div class="h-hero-trust-n">25+</div>
+                <div class="h-hero-trust-l">Jahre Erfahrung</div>
+            </div>
+        </div>
+        <div class="h-hero-trust-item">
+            <div class="h-hero-trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+                <div class="h-hero-trust-n">1200+</div>
+                <div class="h-hero-trust-l">Projekte</div>
+            </div>
+        </div>
+        <div class="h-hero-trust-item">
+            <div class="h-hero-trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+                <div class="h-hero-trust-n">4.9 ★</div>
+                <div class="h-hero-trust-l">Google Bewertung</div>
+            </div>
+        </div>
+        <div class="h-hero-trust-item">
+            <div class="h-hero-trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+                <div class="h-hero-trust-n">24/7</div>
+                <div class="h-hero-trust-l">Notdienst</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -432,6 +719,26 @@
         <span class="h-marquee-item"><span class="h-marquee-dot"></span><span>Seit 1998 in Zürich</span></span>
         <span class="h-marquee-item"><span class="h-marquee-dot"></span><span>Kostenlose Beratung</span></span>
         <span class="h-marquee-item"><span class="h-marquee-dot"></span><span>Renovation & Umbau</span></span>
+    </div>
+</div>
+
+<!-- ═══════════ NOTDIENST BANNER ═══════════ -->
+<div class="h-notdienst">
+    <div class="h-notdienst-inner">
+        <div class="h-notdienst-left">
+            <div class="h-notdienst-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+                <div class="h-notdienst-label">24/7 Notdienst</div>
+                <div class="h-notdienst-title">Notfall? Wir sind sofort da.</div>
+                <div class="h-notdienst-sub">Rund um die Uhr erreichbar — auch am Wochenende und an Feiertagen.</div>
+            </div>
+        </div>
+        <div class="h-notdienst-right">
+            <a href="tel:+41445678900" class="h-notdienst-phone">+41 44 567 89 00</a>
+            <a href="#contact" class="h-notdienst-btn">Jetzt anrufen</a>
+        </div>
     </div>
 </div>
 
@@ -476,32 +783,154 @@
     <div class="h-services-grid">
         <div class="h-service-card fade-up">
             <div class="h-service-card-img">
+                <div class="h-service-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
                 <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80" alt="Sanitär & Heizung" loading="lazy" data-edit="image" data-edit-key="service1-img">
             </div>
             <div class="h-service-card-body">
                 <h3 data-edit="text" data-edit-key="service1-title">Sanitär & Heizung</h3>
-                <p data-edit="text" data-edit-key="service1-desc">Installation und Wartung von Heizungsanlagen, Badezimmer-Renovationen, Rohrsanierungen und Warmwasseraufbereitung.</p>
-                <div class="h-service-price" data-edit="text" data-edit-key="service1-price">ab CHF 85/h</div>
+                <p data-edit="text" data-edit-key="service1-desc">Installation und Wartung von Heizungsanlagen, Badezimmer-Renovationen und Rohrsanierungen.</p>
+                <ul class="h-service-features">
+                    <li>Heizung & Warmwasser</li>
+                    <li>Badezimmer-Renovation</li>
+                    <li>Rohrsanierung & Leckbehebung</li>
+                </ul>
+                <div class="h-service-footer">
+                    <div class="h-service-price" data-edit="text" data-edit-key="service1-price">ab CHF 85<span>/Stunde</span></div>
+                    <a href="#contact" class="h-service-cta">Anfragen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+                </div>
             </div>
         </div>
         <div class="h-service-card fade-up">
             <div class="h-service-card-img">
+                <div class="h-service-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
                 <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="Elektroinstallation" loading="lazy" data-edit="image" data-edit-key="service2-img">
             </div>
             <div class="h-service-card-body">
                 <h3 data-edit="text" data-edit-key="service2-title">Elektroinstallation</h3>
-                <p data-edit="text" data-edit-key="service2-desc">Elektroinstallationen für Neu- und Umbauten, Sicherungskästen, Beleuchtungslösungen und Smart-Home-Integration.</p>
-                <div class="h-service-price" data-edit="text" data-edit-key="service2-price">ab CHF 90/h</div>
+                <p data-edit="text" data-edit-key="service2-desc">Elektroinstallationen für Neu- und Umbauten, Sicherungskästen und Smart-Home-Integration.</p>
+                <ul class="h-service-features">
+                    <li>Neu- und Umbauten</li>
+                    <li>Smart-Home & Beleuchtung</li>
+                    <li>Sicherungskästen & Prüfungen</li>
+                </ul>
+                <div class="h-service-footer">
+                    <div class="h-service-price" data-edit="text" data-edit-key="service2-price">ab CHF 90<span>/Stunde</span></div>
+                    <a href="#contact" class="h-service-cta">Anfragen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+                </div>
             </div>
         </div>
         <div class="h-service-card fade-up">
             <div class="h-service-card-img">
+                <div class="h-service-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
                 <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Renovation & Umbau" loading="lazy" data-edit="image" data-edit-key="service3-img">
             </div>
             <div class="h-service-card-body">
                 <h3 data-edit="text" data-edit-key="service3-title">Renovation & Umbau</h3>
                 <p data-edit="text" data-edit-key="service3-desc">Komplette Wohnungs- und Hausinnenrenovationen, Küchen- und Badumbau, Boden- und Wandarbeiten.</p>
-                <div class="h-service-price" data-edit="text" data-edit-key="service3-price">ab CHF 5'000</div>
+                <ul class="h-service-features">
+                    <li>Küche & Bad Umbau</li>
+                    <li>Boden & Wandarbeiten</li>
+                    <li>Komplette Gebäudesanierung</li>
+                </ul>
+                <div class="h-service-footer">
+                    <div class="h-service-price" data-edit="text" data-edit-key="service3-price">ab CHF 5'000<span> Projekt</span></div>
+                    <a href="#contact" class="h-service-cta">Anfragen <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="h-section h-process">
+    <div class="h-section-header fade-up">
+        <div class="h-section-tag">Ablauf</div>
+        <h2 class="h-section-title">So einfach geht's</h2>
+        <p class="h-section-desc">Von der Anfrage bis zur fertigen Arbeit — transparent und ohne Überraschungen.</p>
+        <div class="h-divider"></div>
+    </div>
+    <div class="h-process-grid">
+        <div class="h-process-step fade-up">
+            <div class="h-process-num">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div class="h-process-num-badge">1</div>
+            </div>
+            <h4>Anfrage stellen</h4>
+            <p>Kontaktformular ausfüllen oder direkt anrufen — beschreiben Sie Ihr Anliegen kurz.</p>
+        </div>
+        <div class="h-process-step fade-up">
+            <div class="h-process-num">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="h-process-num-badge">2</div>
+            </div>
+            <h4>Kostenlose Offerte</h4>
+            <p>Innert 24 Stunden erhalten Sie eine transparente Offerte ohne versteckte Kosten.</p>
+        </div>
+        <div class="h-process-step fade-up">
+            <div class="h-process-num">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="h-process-num-badge">3</div>
+            </div>
+            <h4>Termin vereinbaren</h4>
+            <p>Wir stimmen einen Wunschtermin ab — flexibel auch abends und samstags.</p>
+        </div>
+        <div class="h-process-step fade-up">
+            <div class="h-process-num">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div class="h-process-num-badge">4</div>
+            </div>
+            <h4>Sauber fertiggestellt</h4>
+            <p>Pünktliche Ausführung, saubere Arbeit und Garantie auf alle erbrachten Leistungen.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="h-section h-testimonials">
+    <div class="h-section-header fade-up">
+        <div class="h-section-tag">Kundenstimmen</div>
+        <h2 class="h-section-title">Was unsere Kunden sagen</h2>
+        <p class="h-section-desc">Über 1200 zufriedene Kunden in Zürich und Umgebung — hier ein paar Stimmen.</p>
+        <div class="h-divider"></div>
+    </div>
+    <div class="h-testimonials-grid">
+        <div class="h-testi-card fade-up">
+            <div class="h-testi-stars">★★★★★</div>
+            <p class="h-testi-text">„Meier Technik hat unsere Heizung am Wochenende innerhalb von 3 Stunden repariert. Schnell, sauber und zum fairen Preis. Sehr empfehlenswert!"</p>
+            <div class="h-testi-author">
+                <div class="h-testi-avatar">TM</div>
+                <div>
+                    <div class="h-testi-name">Thomas Müller</div>
+                    <div class="h-testi-role">Hausbesitzer, Zürich</div>
+                </div>
+            </div>
+        </div>
+        <div class="h-testi-card fade-up">
+            <div class="h-testi-stars">★★★★★</div>
+            <p class="h-testi-text">„Die komplette Badsanierung wurde in nur 4 Tagen fertiggestellt — pünktlich und ohne versteckte Kosten. Das Ergebnis ist wunderschön."</p>
+            <div class="h-testi-author">
+                <div class="h-testi-avatar">SK</div>
+                <div>
+                    <div class="h-testi-name">Sandra Keller</div>
+                    <div class="h-testi-role">Wohnungseigentümerin, Winterthur</div>
+                </div>
+            </div>
+        </div>
+        <div class="h-testi-card fade-up">
+            <div class="h-testi-stars">★★★★★</div>
+            <p class="h-testi-text">„Professionell, zuverlässig und immer erreichbar. Wir haben Meier Technik für alle unsere Gewerberäume unter Vertrag — absolut top."</p>
+            <div class="h-testi-author">
+                <div class="h-testi-avatar">RB</div>
+                <div>
+                    <div class="h-testi-name">Reto Brändli</div>
+                    <div class="h-testi-role">Geschäftsführer, Zürich</div>
+                </div>
             </div>
         </div>
     </div>
@@ -519,21 +948,27 @@
     <div class="h-gallery-grid">
         <div class="h-gallery-item h-gallery-item--tall fade-up">
             <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Badsanierung" loading="lazy" data-edit="image" data-edit-key="gallery1">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Badsanierung Zürich</span><span class="h-gallery-caption-tag">Sanitär</span></div>
         </div>
         <div class="h-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Küche Renovation" loading="lazy" data-edit="image" data-edit-key="gallery2">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Küche Renovation</span><span class="h-gallery-caption-tag">Umbau</span></div>
         </div>
         <div class="h-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Elektroinstallation" loading="lazy" data-edit="image" data-edit-key="gallery3">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Elektroinstallation</span><span class="h-gallery-caption-tag">Elektro</span></div>
         </div>
         <div class="h-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Rohbau" loading="lazy" data-edit="image" data-edit-key="gallery4">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Rohbau & Technik</span><span class="h-gallery-caption-tag">Bau</span></div>
         </div>
         <div class="h-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=600&q=80" alt="Heizung Installation" loading="lazy" data-edit="image" data-edit-key="gallery5">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Heizung Installation</span><span class="h-gallery-caption-tag">Heizung</span></div>
         </div>
         <div class="h-gallery-item fade-up">
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Fertige Renovation" loading="lazy" data-edit="image" data-edit-key="gallery6">
+            <div class="h-gallery-caption"><span class="h-gallery-caption-text">Fertige Renovation</span><span class="h-gallery-caption-tag">Renovation</span></div>
         </div>
     </div>
 </section>
@@ -597,6 +1032,103 @@
     </div>
 </section>
 
+<!-- ═══════════ EINSATZGEBIET ═══════════ -->
+<section class="h-section h-area">
+    <div class="h-area-inner">
+        <div class="h-area-map fade-up">
+            <div class="h-area-map-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <p>Karte des Einsatzgebiets<br><small style="opacity:0.6">(Google Maps einbettbar)</small></p>
+            </div>
+        </div>
+        <div class="fade-up">
+            <div class="h-section-tag" style="justify-content:flex-start">Einsatzgebiet</div>
+            <div class="h-area-cities-title">Wir sind in Ihrer Nähe</div>
+            <div class="h-area-cities-sub">Unser Team ist täglich in der Agglomeration Zürich unterwegs — schnelle Reaktionszeiten garantiert.</div>
+            <div class="h-area-grid">
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Zürich</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Winterthur</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Uster</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Dietikon</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Dübendorf</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Schlieren</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Kloten</div>
+                <div class="h-area-city"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>+ Umgebung</div>
+            </div>
+            <div class="h-area-radius">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Einsatzradius: bis 30 km um Zürich
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="h-section h-faq">
+    <div class="h-section-header fade-up">
+        <div class="h-section-tag">FAQ</div>
+        <h2 class="h-section-title">Häufig gestellte Fragen</h2>
+        <p class="h-section-desc">Antworten auf die wichtigsten Fragen rund um unsere Leistungen und Preise.</p>
+        <div class="h-divider"></div>
+    </div>
+    <div class="h-faq-inner">
+        <div class="h-faq-item fade-up">
+            <button class="h-faq-q" onclick="hFaqToggle(this)">
+                Wie schnell können Sie bei einem Notfall kommen?
+                <div class="h-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="h-faq-a">Bei Notfällen sind wir in der Regel innert 60–90 Minuten vor Ort — in Zürich Stadt meist noch schneller. Unser Notdienst ist rund um die Uhr, auch an Sonn- und Feiertagen, erreichbar.</div>
+        </div>
+        <div class="h-faq-item fade-up">
+            <button class="h-faq-q" onclick="hFaqToggle(this)">
+                Was kostet eine kostenlose Offerte?
+                <div class="h-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="h-faq-a">Die Offerte ist für Sie vollständig kostenlos und unverbindlich. Wir besichtigen das Objekt oder erstellen anhand Ihrer Beschreibung eine detaillierte Kostenschätzung — transparent, ohne versteckte Posten.</div>
+        </div>
+        <div class="h-faq-item fade-up">
+            <button class="h-faq-q" onclick="hFaqToggle(this)">
+                Haben Sie eine Garantie auf Ihre Arbeiten?
+                <div class="h-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="h-faq-a">Ja — auf alle unsere Arbeiten gewähren wir 2 Jahre Garantie. Sollte nach Ausführung ein Problem auftreten, kommen wir kostenlos zurück und beheben es.</div>
+        </div>
+        <div class="h-faq-item fade-up">
+            <button class="h-faq-q" onclick="hFaqToggle(this)">
+                Arbeiten Sie auch für Unternehmen und Gewerbe?
+                <div class="h-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="h-faq-a">Selbstverständlich. Wir betreuen sowohl Privatkunden als auch Gewerbe- und Industriekunden. Für Firmenkunden bieten wir Wartungsverträge mit bevorzugten Reaktionszeiten an.</div>
+        </div>
+        <div class="h-faq-item fade-up">
+            <button class="h-faq-q" onclick="hFaqToggle(this)">
+                Welche Zahlungsmethoden akzeptieren Sie?
+                <div class="h-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            </button>
+            <div class="h-faq-a">Wir akzeptieren Rechnung (30 Tage netto), Kreditkarte, TWINT und Banküberweisung. Bei grösseren Projekten bieten wir auch Ratenzahlung an.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="h-cta-final">
+    <div class="h-cta-final-inner fade-up">
+        <div class="h-cta-final-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            4.9 von 5 Sternen · 300+ Bewertungen
+        </div>
+        <h2>Bereit für Ihr Projekt?</h2>
+        <p>Fordern Sie jetzt Ihre kostenlose Offerte an — innert 24 Stunden erhalten Sie eine transparente Kostenschätzung.</p>
+        <div class="h-cta-final-btns">
+            <a href="#contact" class="h-btn h-btn--primary">Kostenlose Offerte</a>
+            <a href="tel:+41445678900" class="h-btn h-btn--outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                +41 44 567 89 00
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="h-footer">
     <div class="h-footer-logo" data-edit="logo" data-edit-key="footer-logo">Meier <span>Technik</span></div>
@@ -642,6 +1174,14 @@
         });
     });
 })();
+
+// FAQ accordion
+function hFaqToggle(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.h-faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+}
 
 // Scroll fade-up animations
 (function(){
