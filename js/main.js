@@ -1845,7 +1845,7 @@ function filterWebsites(complexity) {
     setTimeout(function() {
         var delay = 0;
         cards.forEach(function(card) {
-            if (complexity === 'all' || card.getAttribute('data-complexity') === complexity) {
+            if (complexity === 'all' || card.getAttribute('data-cat') === complexity) {
                 card.style.display = 'block';
                 setTimeout(function() {
                     card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';

@@ -1170,13 +1170,13 @@
             <p data-i18n="websites.desc">Moderne, schnelle Websites für Unternehmen in Buchs SG, im Rheintal, St. Gallen und Liechtenstein. Von Restaurants bis Handwerker.</p>
         </div>
         <div class="websites-filter-tabs">
-            <button class="website-filter-tab active" data-filter="all" data-i18n="websites.filter.all">Alle</button>
-            <button class="website-filter-tab" data-filter="easy" data-i18n="websites.filter.easy">Einfach</button>
-            <button class="website-filter-tab" data-filter="medium" data-i18n="websites.filter.medium">Mittel</button>
-            <button class="website-filter-tab" data-filter="complex" data-i18n="websites.filter.complex">Komplex</button>
+            <button class="website-filter-tab active" data-filter="all">Alle</button>
+            <button class="website-filter-tab" data-filter="ecommerce">eCommerce</button>
+            <button class="website-filter-tab" data-filter="gastro">Gastronomie</button>
+            <button class="website-filter-tab" data-filter="ki">KI &amp; Tech</button>
         </div>
         <div class="websites-grid">
-            <div class="website-card" data-complexity="medium" onclick="openWebModal('vcardcreator')" style="cursor:pointer;">
+            <div class="website-card" data-cat="ki" onclick="openWebModal('vcardcreator')" style="cursor:pointer;">
                 <div class="website-card-image" style="position:relative;overflow:hidden;">
                     <video src="img/sora-video-1774223926866.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 400ms ease;"></video>
                     <div style="position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.95);border:1.5px solid #fecdd3;color:#fe6c75;font-size:11px;font-weight:700;padding:3px 10px;border-radius:1000px;letter-spacing:0.02em;">
@@ -1190,7 +1190,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>PHP API</span><span class="ai-tag">Kostenlos 🎉</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('ledershop')">
+            <div class="website-card" data-cat="ecommerce" onclick="openWebModal('ledershop')">
                 <div class="website-card-image"><img src="img/ledershop.jpeg" alt="Leder-Shop Website - Premium Lederartikel"></div>
                 <div class="website-card-content">
                     <h4>Leder-Shop</h4>
@@ -1199,7 +1199,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('usfishing')">
+            <div class="website-card" data-cat="ecommerce" onclick="openWebModal('usfishing')">
                 <div class="website-card-image"><img src="img/usa.jpeg" alt="US-Fishing & Huntingshop Website"></div>
                 <div class="website-card-content">
                     <h4>US-Fishing &amp; Huntingshop</h4>
@@ -1208,7 +1208,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('kicreator')">
+            <div class="website-card" data-cat="ki" onclick="openWebModal('kicreator')">
                 <div class="website-card-image"><img src="img/geenrador.jpeg" alt="KI Creator Suite Website"></div>
                 <div class="website-card-content">
                     <h4>KI Creator Suite</h4>
@@ -1217,7 +1217,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span class="ai-tag">KI Technologie</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('recipedigitizer')">
+            <div class="website-card" data-cat="ki" onclick="openWebModal('recipedigitizer')">
                 <div class="website-card-image"><img src="img/recipesamlun.jpeg" alt="Recipe Digitizer Website"></div>
                 <div class="website-card-content">
                     <h4>Recipe Digitizer</h4>
@@ -1226,7 +1226,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span><span class="ai-tag">OpenAI</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('hotbbq')">
+            <div class="website-card" data-cat="ecommerce" onclick="openWebModal('hotbbq')">
                 <div class="website-card-image"><img src="img/hotbbq.jpg" alt="HOT BBQ Website - eCommerce Buchs SG"></div>
                 <div class="website-card-content">
                     <h4>HOT &amp; BBQ</h4>
@@ -1235,7 +1235,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>eCommerce</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="medium" onclick="openWebModal('beauty')">
+            <div class="website-card" data-cat="business" onclick="openWebModal('beauty')">
                 <div class="website-card-image"><img src="img/beautystyle.jpg" alt="BeautyStyle Website"></div>
                 <div class="website-card-content">
                     <h4>BeautyStyle</h4>
@@ -1244,7 +1244,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>Framer Motion</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="medium" onclick="openWebModal('ushuaia')">
+            <div class="website-card" data-cat="gastro" onclick="openWebModal('ushuaia')">
                 <div class="website-card-image"><img src="img/ushuaia.png" alt="Ushuaia Bar Website Buchs SG"></div>
                 <div class="website-card-content">
                     <h4>Ushuaia Bar</h4>
@@ -1253,7 +1253,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="medium" onclick="openWebModal('cantina')">
+            <div class="website-card" data-cat="gastro" onclick="openWebModal('cantina')">
                 <div class="website-card-image"><img src="img/cantina.jpeg" alt="Cantina Tex-Mex Restaurant Website"></div>
                 <div class="website-card-content">
                     <h4>Cantina Tex-Mex</h4>
@@ -1262,7 +1262,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>React</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="easy" onclick="openWebModal('inotec')">
+            <div class="website-card" data-cat="business" onclick="openWebModal('inotec')">
                 <div class="website-card-image"><img src="img/inotec.jpeg" alt="iNOTEC Engineering Website"></div>
                 <div class="website-card-content">
                     <h4>iNOTEC Engineering</h4>
@@ -1271,7 +1271,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>PHP</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="easy" onclick="openWebModal('flinck')">
+            <div class="website-card" data-cat="business" onclick="openWebModal('flinck')">
                 <div class="website-card-image"><img src="img/flinck.jpeg" alt="Flinck Sauber Website Liechtenstein"></div>
                 <div class="website-card-content">
                     <h4>Flinck Sauber</h4>
@@ -1280,7 +1280,7 @@
                     <div class="website-card-tech-row"><span>Next.js</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="medium" onclick="openWebModal('bouquet')">
+            <div class="website-card" data-cat="gastro" onclick="openWebModal('bouquet')">
                 <div class="website-card-image"><img src="img/bouquet.jpeg" alt="Bouquet Mediterraneo Restaurant Website"></div>
                 <div class="website-card-content">
                     <h4>Bouquet Mediterraneo</h4>
@@ -1289,7 +1289,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>React</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="complex" onclick="openWebModal('crypto')">
+            <div class="website-card" data-cat="ki" onclick="openWebModal('crypto')">
                 <div class="website-card-image"><img src="img/crypto.png" alt="Crypto Dashboard Website"></div>
                 <div class="website-card-content">
                     <h4>Crypto Dashboard</h4>
@@ -1298,7 +1298,7 @@
                     <div class="website-card-tech-row"><span>Remix</span><span>Web3</span><span>API</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="easy" onclick="openWebModal('renovation')">
+            <div class="website-card" data-cat="business" onclick="openWebModal('renovation')">
                 <div class="website-card-image"><img src="img/renovation.jpg" alt="Renovation Website"></div>
                 <div class="website-card-content">
                     <h4>Renovation</h4>
@@ -1308,7 +1308,7 @@
                 </div>
             </div>
      
-            <div class="website-card" data-complexity="easy" onclick="openWebModal('rrapi')">
+            <div class="website-card" data-cat="business" onclick="openWebModal('rrapi')">
                 <div class="website-card-image"><img src="img/rrapi.jpg" alt="Rrapi Immobilien Website"></div>
                 <div class="website-card-content">
                     <h4>Rrapi Immobilien</h4>
@@ -1317,7 +1317,7 @@
                     <div class="website-card-tech-row"><span>HTML</span><span>CSS</span><span>PHP</span><span class="admin-tag">Admin Panel</span></div>
                 </div>
             </div>
-            <div class="website-card" data-complexity="easy" onclick="openWebModal('espanol')">
+            <div class="website-card" data-cat="gastro" onclick="openWebModal('espanol')">
                 <div class="website-card-image"><img src="img/espanol.jpeg" alt="El Español Restaurant Website Buchs SG"></div>
                 <div class="website-card-content">
                     <h4>El Español</h4>
@@ -1556,13 +1556,63 @@
 <!-- TRUST -->
 <section class="trust">
     <div class="container">
-        <div class="trust-grid">
-            <div class="trust-stat"><div class="trust-stat-number">6+</div><div class="trust-stat-label">Jahre Erfahrung</div></div>
-            <div class="trust-stat"><div class="trust-stat-number">20+</div><div class="trust-stat-label">Apps entwickelt</div></div>
-            <div class="trust-stat"><div class="trust-stat-number">7</div><div class="trust-stat-label">Apps im App Store</div></div>
-            <div class="trust-stat"><div class="trust-stat-number">50+</div><div class="trust-stat-label">Websites online</div></div>
+        <div class="trust-grid" id="trustGrid">
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                <div class="trust-stat-number" data-target="6" data-suffix="+">0</div>
+                <div class="trust-stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                <div class="trust-stat-number" data-target="20" data-suffix="+">0</div>
+                <div class="trust-stat-label">Apps entwickelt</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                <div class="trust-stat-number" data-target="7" data-suffix="">0</div>
+                <div class="trust-stat-label">Apps im App Store</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div class="trust-stat-number" data-target="50" data-suffix="+">0</div>
+                <div class="trust-stat-label">Websites online</div>
+            </div>
         </div>
     </div>
+    <script>
+    (function(){
+        var grid = document.getElementById('trustGrid');
+        if (!grid) return;
+        var animated = false;
+        function countUp(el) {
+            var target = parseInt(el.dataset.target, 10);
+            var suffix = el.dataset.suffix || '';
+            var duration = 1200;
+            var start = performance.now();
+            function step(now) {
+                var elapsed = now - start;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+        function runAnimation() {
+            if (animated) return;
+            animated = true;
+            grid.querySelectorAll('.trust-stat-number, .trust-stat-label').forEach(function(el){
+                el.classList.add('visible');
+            });
+            grid.querySelectorAll('.trust-stat-number').forEach(function(el, i){
+                setTimeout(function(){ countUp(el); }, i * 100);
+            });
+        }
+        new IntersectionObserver(function(entries, obs){
+            if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
+        }, { threshold: 0.4 }).observe(grid);
+    })();
+    </script>
 </section>
 
 
