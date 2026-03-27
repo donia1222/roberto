@@ -1729,6 +1729,16 @@ var webProjects = {
         techs: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'OpenAI', 'PWA'],
         features: ['KI-Rezeptanalyse (GPT-4.1)', 'Kamera & Scanner Erfassung', 'Portionenberechnung mit KI', 'Mehrbenutzersystem mit Rollen', 'Admin-Dashboard', 'Offline-Modus (PWA)'],
         price: 'CHF 4\'500 – 8\'000'
+    },
+    websiteanalyser: {
+        title: 'Website Analyser',
+        url: 'https://website-analyser-alpha-eight.vercel.app',
+        image: 'img/analize.jpeg',
+        complexity: 'complex',
+        desc: 'KI-gestützte Website-Analyse — URL eingeben und sofort konkrete Verbesserungsvorschläge für Design, SEO, Performance, Mobile und Barrierefreiheit erhalten.',
+        techs: ['Next.js', 'React 19', 'TypeScript', 'Gemini AI', 'Tailwind CSS'],
+        features: ['KI-Analyse via Gemini AI', 'Design-Bewertung', 'SEO-Auswertung', 'Performance-Check', 'Mobile-Optimierung', 'Barrierefreiheit'],
+        price: 'CHF 2\'500 – 4\'500'
     }
 };
 
