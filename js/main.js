@@ -1661,8 +1661,8 @@ var webProjects = {
         price: 'CHF 2\'500 – 4\'500'
     },
     renovation: {
-        title: 'Renovation',
-        url: 'https://renovation-tau.vercel.app',
+        title: 'NIKQI',
+        url: 'https://nikqi.ch',
         image: 'img/renovation.jpg',
         complexity: 'easy',
         desc: 'Professionelle Unternehmenswebsite für einen Renovierungsbetrieb mit Projektgalerie, Dienstleistungen und Kontaktformular.',
