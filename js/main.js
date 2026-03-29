@@ -1668,7 +1668,7 @@ var webProjects = {
         desc: 'Professionelle Unternehmenswebsite für einen Renovierungsbetrieb mit Projektgalerie, Dienstleistungen und Kontaktformular.',
         techs: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
         features: ['Projektgalerie (Vorher/Nachher)', 'Dienstleistungsübersicht', 'Kontaktformular', 'Referenzen', 'Responsive Design', 'SEO-optimiert'],
-        price: 'CHF 900 – 1\'800'
+        price: 'CHF 650'
     },
     webm: {
         title: 'WebM Converter',
