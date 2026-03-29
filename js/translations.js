@@ -788,6 +788,12 @@ var translations = {
         'blog.cta.sub': 'Von der Idee zur fertigen Website oder App. Faire Preise, direkt vom Entwickler in Buchs SG.',
         'blog.hero.badge': 'Blog & Einblicke', 'blog.hero.h1': 'Blog', 'blog.filter.all': 'Alle', 'blog.filter.webdev': 'Web Dev', 'blog.filter.mobile': 'Mobile', 'blog.filter.ki': 'KI & Tech', 'blog.filter.ecommerce': 'eCommerce',
         'blog.back': 'Zurück zum Blog', 'blog.by': 'von', 'blog.related': 'Verwandte Artikel', 'blog.readmore': 'Weiterlesen →', 'blog.min': 'Min.',
+        'lp.badge': 'Neuestes Projekt',
+        'lp.label': 'Gerade veröffentlicht',
+        'lp.desc': 'Professionelle Renovations- und Bauwebsite mit modernem Design, Portfolio, Angebotsanfrage und direkter Kontaktmöglichkeit.',
+        'lp.visit': 'Website besuchen',
+        'lp.detail': 'Mehr erfahren',
+        'lp.tag1': 'Neu online',
     },
     en: {
         'nav.services': 'Services',
@@ -1670,6 +1676,12 @@ var translations = {
         // nav desarrollo
         'nav.services.dev': 'Development',
         'nav.services.dev.hint': 'React Native · Next.js · Remix',
+        'lp.badge': 'Latest Project',
+        'lp.label': 'Just published',
+        'lp.desc': 'Professional renovation & construction website with modern design, portfolio, quote request and direct contact.',
+        'lp.visit': 'Visit website',
+        'lp.detail': 'Learn more',
+        'lp.tag1': 'New online',
     },
     es: {
         'nav.services': 'Servicios',
@@ -2552,6 +2564,12 @@ var translations = {
         // nav desarrollo
         'nav.services.dev': 'Desarrollo',
         'nav.services.dev.hint': 'React Native · Next.js · Remix',
+        'lp.badge': 'Último proyecto',
+        'lp.label': 'Recién publicado',
+        'lp.desc': 'Web profesional de renovación y construcción con diseño moderno, portfolio, solicitud de presupuesto y contacto directo.',
+        'lp.visit': 'Visitar web',
+        'lp.detail': 'Ver más',
+        'lp.tag1': 'Nuevo online',
     },
     fr: {
         'nav.services': 'Services',
@@ -3434,6 +3452,12 @@ var translations = {
         // nav desarrollo
         'nav.services.dev': 'Développement',
         'nav.services.dev.hint': 'React Native · Next.js · Remix',
+        'lp.badge': 'Dernier projet',
+        'lp.label': 'Tout juste publié',
+        'lp.desc': 'Site web professionnel de rénovation et construction avec design moderne, portfolio, demande de devis et contact direct.',
+        'lp.visit': 'Visiter le site',
+        'lp.detail': 'En savoir plus',
+        'lp.tag1': 'Nouveau en ligne',
     },
     it: {
         'nav.services': 'Servizi',
@@ -4316,6 +4340,12 @@ var translations = {
         // nav desarrollo
         'nav.services.dev': 'Sviluppo',
         'nav.services.dev.hint': 'React Native · Next.js · Remix',
+        'lp.badge': 'Ultimo progetto',
+        'lp.label': 'Appena pubblicato',
+        'lp.desc': 'Sito web professionale di ristrutturazione ed edilizia con design moderno, portfolio, richiesta di preventivo e contatto diretto.',
+        'lp.visit': 'Visita il sito',
+        'lp.detail': 'Scopri di più',
+        'lp.tag1': 'Nuovo online',
     }
 };
 
