@@ -1789,6 +1789,21 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 .website-card-tech-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .website-card-tech-row span { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 1000px; background: var(--gunpowder50); color: var(--gunpowder500); border: 1px solid #e2e8f0; }
 .website-card-tech-row span.admin-tag { background: #dbeafe; color: #3b82f6; border-color: #bfdbfe; }
+.website-card--latest { border-color: rgba(254,108,117,.35); box-shadow: 0 0 0 2px rgba(254,108,117,.12); }
+.wc-latest-badge {
+    position: absolute; top: 10px; right: 10px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fe6c75;
+    border-radius: 100px; padding: 5px 12px;
+    font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+    color: #fff; z-index: 2;
+}
+.wc-latest-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+    animation: wc-online 1.6s ease-in-out infinite;
+    flex-shrink: 0;
+}
+@keyframes wc-online { 0%,100%{background:#22c55e;} 50%{background:#15803d;} }
 .website-card--cta {
     background: linear-gradient(135deg, var(--begonia400) 0%, var(--begonia500) 100%);
     border: none;
