@@ -15,6 +15,7 @@
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
         .about-content h2 { font-size: clamp(32px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.03em; }
+        body.dark-mode #about { background: linear-gradient(180deg, #0f1d2c 0%, #0d1a2e 100%) !important; }
 
         /* ═══ ANIMATIONS ═══════════════════════════════════ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -823,7 +824,7 @@
 </div>
 
 <!-- ═════════════════ ABOUT / HERO ═════════════════ -->
-<section class="section about" id="about" style="padding-top:80px;">
+<section class="section about" id="about" style="padding-top:80px; background: linear-gradient(180deg, #fff 0%, #f4f7fb 100%);">
     <div class="container">
         <div class="about-inner">
             <div class="about-content">
