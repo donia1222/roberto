@@ -683,9 +683,9 @@
         <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </a>
-        <div class="header-title" id="headerTitle" data-i18n-html="tw.header.title">
-            <span>Webseiten ab</span>
-            <span class="accent">450 CHF</span>
+        <div class="header-title" id="headerTitle">
+            <span>Lweb</span>
+            <span class="accent" data-i18n="nav.tech">Technologien</span>
         </div>
         <nav class="header-nav" aria-label="Hauptnavigation">
     <div class="header-nav-dropdown">
@@ -743,7 +743,7 @@
             </a>
         </div>
     </div>
-    <a href="index.html#techstack" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
+    <a href="technologien.html" class="header-nav-item active"><span data-i18n="nav.tech">Technologien</span></a>
     <a href="index.html#about" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
     <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
 </nav>
@@ -760,18 +760,64 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="mobile-panel-back" onclick="sessionStorage.setItem('openMobileMenu','main-open');">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        <span data-i18n="nav.back.main">Hauptmenü</span>
-    </a>
-    <nav class="mobile-menu-nav">
-        <a href="webs-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.published">Projekte</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></a>
-        <a href="tienda-online.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></a>
-        <a href="templates-web.html" class="mobile-menu-link mobile-menu-link--custom active"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></a>
-    </nav>
-    <div class="mobile-menu-footer">
-        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
-        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    <!-- Panel principal -->
+    <div class="mobile-panel mobile-panel--main" id="mobilePanelMain">
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-menu-link" data-i18n="bk.home">Zur Startseite</a>
+            <a href="#" class="mobile-menu-link mobile-menu-link--parent" onclick="event.preventDefault();openMobileLeistungenSubpanel()">
+                <span data-i18n="nav.services">Leistungen</span>
+            </a>
+            <a href="#" class="mobile-menu-link mobile-menu-link--parent" onclick="event.preventDefault();openMobileAppsSubpanel()">
+                <span data-i18n="nav.apps">Mobile Apps</span>
+            </a>
+            <a href="#" class="mobile-menu-link mobile-menu-link--parent" onclick="event.preventDefault();openMobileSubpanel()">
+                <span data-i18n="nav.websites">Websites</span>
+            </a>
+            <a href="technologien.html" class="mobile-menu-link active" data-i18n="nav.tech">Technologien</a>
+            <a href="index.html#about" class="mobile-menu-link" data-i18n="nav.about">Über mich</a>
+            <a href="index.html#contact" class="mobile-menu-link mobile-menu-link--cta mobile-menu-link--cta-red" data-i18n="nav.contact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Kontakt</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+            <a href="tel:+41765608645">+41 76 560 86 45</a>
+        </div>
+    </div>
+    <!-- Panel sub: Leistungen -->
+    <div class="mobile-panel mobile-panel--leistungen" id="mobilePanelLeistungen">
+        <button class="mobile-panel-back" onclick="closeMobileLeistungenSubpanel()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span data-i18n="nav.back.main">Hauptmenü</span>
+        </button>
+        <nav class="mobile-menu-nav">
+            <a href="desarrollo.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.services.dev">Entwicklung</span><small class="mobile-menu-link-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></a>
+            <a href="leistungen-ki.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.services.ki">KI-Integration</span><small class="mobile-menu-link-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></a>
+            <a href="leistungen-support.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.services.support">Beratung &amp; Support</span><small class="mobile-menu-link-hint" data-i18n="nav.services.support.hint">Beratung, Planung &amp; langfristiger Support</small></a>
+        </nav>
+    </div>
+    <!-- Panel sub: Apps -->
+    <div class="mobile-panel mobile-panel--apps" id="mobilePanelApps">
+        <button class="mobile-panel-back" onclick="closeMobileAppsSubpanel()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span data-i18n="nav.back.main">Hauptmenü</span>
+        </button>
+        <nav class="mobile-menu-nav">
+            <a href="extensions-apps.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.apps.create">App erstellen</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.create.hint">Funktionen & Bibliotheken entdecken</small></a>
+            <a href="apps-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></a>
+            <a href="index.html#apps" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.apps.price">Preis berechnen</span><small class="mobile-menu-link-hint" data-i18n="nav.apps.price.hint">Sofortschätzung für Ihre App</small></a>
+        </nav>
+    </div>
+    <!-- Panel sub: Websites -->
+    <div class="mobile-panel mobile-panel--sub" id="mobilePanelWebsites">
+        <button class="mobile-panel-back" onclick="closeMobileSubpanel()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span data-i18n="nav.back.main">Hauptmenü</span>
+        </button>
+        <nav class="mobile-menu-nav">
+            <a href="webs-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.published">Projekte</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></a>
+            <a href="tienda-online.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></a>
+            <a href="templates-web.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></a>
+            <a href="index.html#contact" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.custom">Massgeschneidert</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.custom.hint">Einzigartiger Code für dich</small></a>
+        </nav>
     </div>
 </div>
 
@@ -793,7 +839,7 @@
 .hc-hero::before {
     content:'';
     position:absolute; inset:0;
-    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(254,108,117,.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,180,100,.10) 0%, transparent 70%);
     pointer-events:none;
 }
 .hc-grid-bg {
@@ -1223,15 +1269,14 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
-    var headerTitle = document.getElementById('headerTitle');
-    if (headerTitle && t['tw.header.title']) headerTitle.innerHTML = t['tw.header.title'];
+    // headerTitle is fixed for this page (Lweb / Tecnologías)
 })();
 </script>
 
 <script>
 // ── Header shrink + title on scroll ──────────────
 (function(){
-    var heroH1 = document.querySelector('.tw-hero-h1');
+    var heroH1 = document.querySelector('.hc-h1');
     var header = document.querySelector('.header');
     if (!heroH1 || !header) return;
     window.addEventListener('scroll', function(){
@@ -1259,38 +1304,33 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
         document.body.style.overflow = isOpen ? 'hidden' : '';
         document.querySelector('.header').classList.toggle('menu-open', isOpen);
     });
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
+    mobileMenu.querySelectorAll('a:not(.mobile-menu-link--parent)').forEach(function(link) {
         link.addEventListener('click', function() {
             burger.classList.remove('open'); mobileMenu.classList.remove('open');
+            mobileMenu.classList.remove('sub-open','sub-open-apps','sub-open-leistungen');
             document.body.style.overflow = '';
             document.querySelector('.header').classList.remove('menu-open');
         });
     });
 })();
+function openMobileSubpanel(){ document.getElementById('mobileMenu').classList.add('sub-open'); }
+function closeMobileSubpanel(){ document.getElementById('mobileMenu').classList.remove('sub-open'); }
+function openMobileLeistungenSubpanel(){ document.getElementById('mobileMenu').classList.add('sub-open-leistungen'); }
+function closeMobileLeistungenSubpanel(){ document.getElementById('mobileMenu').classList.remove('sub-open-leistungen'); }
+function openMobileAppsSubpanel(){ document.getElementById('mobileMenu').classList.add('sub-open-apps'); }
+function closeMobileAppsSubpanel(){ document.getElementById('mobileMenu').classList.remove('sub-open-apps'); }
+function closeMobileMenu(){
+    var b=document.getElementById('menuBurger'), m=document.getElementById('mobileMenu');
+    b.classList.remove('open'); m.classList.remove('open','sub-open','sub-open-apps','sub-open-leistungen');
+    document.body.style.overflow=''; document.querySelector('.header').classList.remove('menu-open');
+}
+function openVCardModal(){ closeMobileMenu(); window.location.href='index.html#vcard'; }
+function openChatFromMenu(){ closeMobileMenu(); window.location.href='index.html#chat'; }
+function openA11yFromMenu(){ closeMobileMenu(); window.location.href='index.html#a11y'; }
 </script>
 
 <script>
-// ── Active nav on scroll ─────────────────────────
-(function(){
-    if (window.innerWidth < 1025) return;
-    var navItems = document.querySelectorAll('.header-nav .header-nav-item');
-    var sections = [];
-    navItems.forEach(function(item){
-        var id = item.getAttribute('href').replace('#','');
-        var el = document.getElementById(id);
-        if (el) sections.push({el: el, link: item});
-    });
-    if (!sections.length) return;
-    window.addEventListener('scroll', function(){
-        var scrollY = window.pageYOffset + 120;
-        var atBottom = (window.innerHeight + window.pageYOffset) >= document.body.scrollHeight - 50;
-        var current = null;
-        if (atBottom) current = sections[sections.length - 1];
-        else sections.forEach(function(s){ if (s.el.offsetTop <= scrollY) current = s; });
-        navItems.forEach(function(item){ item.classList.remove('active'); });
-        if (current) current.link.classList.add('active');
-    });
-})();
+// ── Active nav on scroll — disabled: Tecnologías always active ──────────────────────────
 </script>
 
 <script>
@@ -1379,25 +1419,362 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
 </script>
 
 
+<!-- ═════════════════ AI AGENTS ═════════════════ -->
+<style>
+/* ── Section ── */
+.aia-section {
+    background: linear-gradient(180deg, #fff8f0 0%, #fff4e8 50%, #fff8f0 100%);
+    padding: 110px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+body.dark-mode .aia-section { background: #07101c; }
+.aia-section::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+        radial-gradient(ellipse 55% 45% at 20% 50%, rgba(255,150,80,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(167,139,250,.04) 0%, transparent 60%);
+}
+body.dark-mode .aia-section::before {
+    background:
+        radial-gradient(ellipse 55% 45% at 20% 50%, rgba(91,184,232,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(167,139,250,.06) 0%, transparent 60%);
+}
+/* grid noise texture */
+.aia-noise {
+    position:absolute; inset:0; pointer-events:none; opacity:.015;
+    background-image: linear-gradient(rgba(15,29,44,.8) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(15,29,44,.8) 1px, transparent 1px);
+    background-size:40px 40px;
+}
+body.dark-mode .aia-noise { opacity:.03; background-image: linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px); }
+
+/* ── Header ── */
+.aia-header {
+    text-align:center;
+    padding:0 24px 64px;
+    position:relative; z-index:2;
+}
+.aia-eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(91,184,232,.1); border:1px solid rgba(91,184,232,.25);
+    border-radius:100px; padding:5px 14px;
+    font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:#2a7fa8; margin-bottom:22px;
+}
+body.dark-mode .aia-eyebrow { color:#5bb8e8; }
+.aia-eyebrow-dot {
+    width:6px; height:6px; border-radius:50%;
+    background:#5bb8e8;
+    animation: aia-blink 1.8s ease-in-out infinite;
+}
+@keyframes aia-blink {
+    0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(91,184,232,.6)}
+    50%{opacity:.4;box-shadow:0 0 0 5px rgba(91,184,232,0)}
+}
+.aia-h2 {
+    font-size: clamp(26px,3vw,40px);
+    font-weight:800; line-height:1.1; letter-spacing:-0.02em;
+    color:#0f1d2c; margin-bottom:12px;
+}
+body.dark-mode .aia-h2 { color:#f0f6ff; }
+.aia-h2 em { font-style:normal; color:#fe6c75; }
+.aia-sub {
+    font-size:17px; color:#6b7d99; max-width:600px; margin:0 auto 28px; line-height:1.7;
+}
+body.dark-mode .aia-sub { color:#94a3b8; }
+.aia-pill {
+    display:inline-flex; align-items:center; gap:14px;
+    background:linear-gradient(135deg,rgba(254,108,117,.08),rgba(254,108,117,.03));
+    border:1px solid rgba(254,108,117,.25); border-radius:16px;
+    padding:14px 26px;
+}
+.aia-pill-num {
+    font-size:30px; font-weight:900; color:#e84a55;
+    letter-spacing:-0.03em; line-height:1;
+}
+body.dark-mode .aia-pill-num { color:#fe6c75; }
+.aia-pill-label {
+    font-size:13px; font-weight:600; color:#4a6070; line-height:1.35; text-align:left;
+}
+body.dark-mode .aia-pill-label { color:rgba(240,246,255,.6); }
+
+/* ── Orbit ── */
+.aia-orbit-scene {
+    position:relative; z-index:2;
+    width:560px; height:560px;
+    margin:0 auto;
+}
+@media(max-width:640px){ .aia-orbit-scene { width:340px; height:340px; } }
+
+/* orbit ring */
+.aia-ring {
+    position:absolute; inset:80px;
+    border-radius:50%;
+    border:1.5px dashed rgba(91,184,232,.22);
+    animation: aia-spin 32s linear infinite;
+}
+body.dark-mode .aia-ring { border-color:rgba(91,184,232,.18); }
+@keyframes aia-spin { to{ transform:rotate(360deg); } }
+
+/* SVG connector lines */
+.aia-lines { position:absolute; inset:0; pointer-events:none; }
+
+/* center hub */
+.aia-hub {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:110px; height:110px;
+    border-radius:50%;
+    background:transparent;
+    border:none;
+    display:flex; align-items:center; justify-content:center;
+    z-index:5;
+    animation: aia-hub-pulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(217,119,87,.35));
+}
+body.dark-mode .aia-hub { filter: drop-shadow(0 0 22px rgba(217,119,87,.5)); }
+@keyframes aia-hub-pulse {
+    0%,100%{ filter: drop-shadow(0 0 14px rgba(217,119,87,.3)); }
+    50%{ filter: drop-shadow(0 0 26px rgba(217,119,87,.55)); }
+}
+.aia-hub img { width:72px; height:72px; animation: aia-hub-zoom 3.5s ease-in-out infinite; }
+@keyframes aia-hub-zoom { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.18); } }
+.aia-hub-txt { display:none; }
+
+/* satellite node */
+.aia-sat {
+    position:absolute; top:50%; left:50%;
+    transform:rotate(var(--a)) translateY(calc(-1 * var(--r,200px))) rotate(calc(-1 * var(--a))) translate(-50%,-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    z-index:4;
+    cursor:pointer;
+}
+@media(max-width:640px){
+    .aia-sat { --r:120px !important; }
+}
+.aia-sat-node {
+    width:56px; height:56px; border-radius:18px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--c);
+    box-shadow:0 4px 20px color-mix(in srgb,var(--c) 45%,transparent), 0 0 0 0 color-mix(in srgb,var(--c) 30%,transparent);
+    transition:transform 200ms ease, box-shadow 200ms ease;
+    animation: aia-float var(--fd,4s) ease-in-out infinite;
+    animation-delay: var(--fd2,0s);
+}
+@keyframes aia-float {
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+}
+.aia-sat-node svg { width:22px; height:22px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.aia-sat:hover .aia-sat-node {
+    transform:scale(1.12) translateY(-3px);
+    box-shadow:0 8px 28px color-mix(in srgb,var(--c) 55%,transparent);
+}
+.aia-sat-name {
+    font-size:13px; font-weight:800; color:#0f1d2c; white-space:nowrap;
+    text-align:center; letter-spacing:-.01em;
+}
+body.dark-mode .aia-sat-name { color:#e0eaf5; }
+.aia-sat-role {
+    font-size:11px; font-weight:700; color:var(--c); text-transform:uppercase;
+    letter-spacing:.06em; white-space:nowrap; text-align:center; margin-top:-2px;
+}
+@media(max-width:640px){
+    .aia-sat-name { font-size:11px; }
+    .aia-sat-role { font-size:10px; display:block; }
+    .aia-sat-node { width:44px; height:44px; border-radius:13px; }
+    .aia-sat-node svg { width:18px; height:18px; }
+    .aia-hub { width:72px; height:72px; }
+    .aia-hub img { width:52px; height:52px; }
+    .aia-hub-txt { display:none; }
+}
+</style>
+
+<section class="aia-section" id="ai-agents">
+    <div class="aia-noise"></div>
+    <div class="aia-header">
+        <div class="aia-eyebrow">
+            <img src="img/claude-logo.svg" alt="Claude" style="width:18px;height:18px;object-fit:contain;">
+            <span class="aia-eyebrow-dot"></span>
+            <span id="aiBadge">Claude · Anthropic</span>
+        </div>
+        <h2 class="aia-h2" id="aiH2">5 KI-Agenten. <em>80% günstiger</em><br>als eine Agentur.</h2>
+        <p class="aia-sub" id="aiSub">Ich arbeite mit 5 spezialisierten Claude-Agenten von Anthropic — jeder für eine spezifische Aufgabe trainiert. Das garantiert maximale Qualität in Rekordzeit und zum besten Preis.</p>
+    </div>
+
+    <!-- Orbit diagram -->
+    <div class="aia-orbit-scene" id="aiaOrbit">
+        <div class="aia-ring"></div>
+        <svg class="aia-lines" id="aiaLines" viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet"></svg>
+
+        <!-- Hub center -->
+        <div class="aia-hub">
+            <img src="img/claude-logo.svg" alt="Claude">
+        </div>
+
+        <!-- Satellites: rotate(Ndeg) → top, top-right, bottom-right, bottom-left, top-left -->
+        <div class="aia-sat" style="--a:0deg;--r:200px;--c:#5bb8e8;--fd:4.2s;--fd2:0s">
+            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+            <div class="aia-sat-name" id="a1name">Strategy Agent</div>
+            <div class="aia-sat-role" id="a1role">Planung & Konzept</div>
+        </div>
+
+        <div class="aia-sat" style="--a:72deg;--r:200px;--c:#a78bfa;--fd:3.8s;--fd2:.4s">
+            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="aia-sat-name" id="a2name">Design Agent</div>
+            <div class="aia-sat-role" id="a2role">UI/UX & Ästhetik</div>
+        </div>
+
+        <div class="aia-sat" style="--a:144deg;--r:200px;--c:#22c55e;--fd:4.5s;--fd2:.8s">
+            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div class="aia-sat-name" id="a3name">Code Agent</div>
+            <div class="aia-sat-role" id="a3role">Entwicklung & Code</div>
+        </div>
+
+        <div class="aia-sat" style="--a:216deg;--r:200px;--c:#fb923c;--fd:3.6s;--fd2:1.2s">
+            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+            <div class="aia-sat-name" id="a4name">SEO Agent</div>
+            <div class="aia-sat-role" id="a4role">Sichtbarkeit & Ranking</div>
+        </div>
+
+        <div class="aia-sat" style="--a:288deg;--r:200px;--c:#f472b6;--fd:4s;--fd2:1.6s">
+            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <div class="aia-sat-name" id="a5name">Content Agent</div>
+            <div class="aia-sat-role" id="a5role">Texte & Kommunikation</div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function(){
+    var aiTrans = {
+        de:{ badge:'Claude · Anthropic', h2:'5 KI-Agenten. <em>80% günstiger</em><br>als eine Agentur.', sub:'Ich arbeite mit 5 spezialisierten Claude-Agenten von Anthropic — jeder für eine spezifische Aufgabe trainiert. Das garantiert maximale Qualität in Rekordzeit und zum besten Preis.', pill:'gegenüber einer<br>klassischen Agentur',
+            a1n:'Strategy Agent',a1r:'Planung & Konzept',
+            a2n:'Design Agent',a2r:'UI/UX & Ästhetik',
+            a3n:'Code Agent',a3r:'Entwicklung & Code',
+            a4n:'SEO Agent',a4r:'Sichtbarkeit & Ranking',
+            a5n:'Content Agent',a5r:'Texte & Kommunikation' },
+        en:{ badge:'Claude · Anthropic', h2:'5 AI Agents. <em>80% cheaper</em><br>than an agency.', sub:'I work with 5 specialized Claude agents from Anthropic — each trained for a specific task. This guarantees maximum quality in record time and at the best price.', pill:'compared to a<br>traditional agency',
+            a1n:'Strategy Agent',a1r:'Planning & Concept',
+            a2n:'Design Agent',a2r:'UI/UX & Aesthetics',
+            a3n:'Code Agent',a3r:'Development & Code',
+            a4n:'SEO Agent',a4r:'Visibility & Ranking',
+            a5n:'Content Agent',a5r:'Texts & Communication' },
+        es:{ badge:'Claude · Anthropic', h2:'5 Agentes IA. <em>80% más baratos</em><br>que una agencia.', sub:'Trabajo con 5 agentes Claude especializados de Anthropic — cada uno entrenado para una tarea específica. Esto garantiza la máxima calidad en tiempo récord y al mejor precio.', pill:'comparado con una<br>agencia tradicional',
+            a1n:'Agente Estrategia',a1r:'Planificación & Concepto',
+            a2n:'Agente Diseño',a2r:'UI/UX & Estética',
+            a3n:'Agente Código',a3r:'Desarrollo & Código',
+            a4n:'Agente SEO',a4r:'Visibilidad & Ranking',
+            a5n:'Agente Contenido',a5r:'Textos & Comunicación' },
+        fr:{ badge:'Claude · Anthropic', h2:'5 Agents IA. <em>80% moins chers</em><br>qu\'une agence.', sub:'Je travaille avec 5 agents Claude spécialisés d\'Anthropic — chacun entraîné pour une tâche spécifique. Cela garantit une qualité maximale en un temps record et au meilleur prix.', pill:'par rapport à une<br>agence traditionnelle',
+            a1n:'Agent Stratégie',a1r:'Planification & Concept',
+            a2n:'Agent Design',a2r:'UI/UX & Esthétique',
+            a3n:'Agent Code',a3r:'Développement & Code',
+            a4n:'Agent SEO',a4r:'Visibilité & Ranking',
+            a5n:'Agent Contenu',a5r:'Textes & Communication' },
+        it:{ badge:'Claude · Anthropic', h2:'5 Agenti IA. <em>80% più economici</em><br>di un\'agenzia.', sub:'Lavoro con 5 agenti Claude specializzati di Anthropic — ognuno addestrato per un compito specifico. Questo garantisce la massima qualità in tempi record e al miglior prezzo.', pill:'rispetto a un\'agenzia<br>tradizionale',
+            a1n:'Agente Strategia',a1r:'Pianificazione & Concept',
+            a2n:'Agente Design',a2r:'UI/UX & Estetica',
+            a3n:'Agente Codice',a3r:'Sviluppo & Codice',
+            a4n:'Agente SEO',a4r:'Visibilità & Ranking',
+            a5n:'Agente Contenuto',a5r:'Testi & Comunicazione' }
+    };
+    var lang=(localStorage.getItem('lweb_lang')||'de').split('-')[0];
+    var t=aiTrans[lang]||aiTrans.de;
+    function s(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;}
+    s('aiBadge',t.badge);s('aiH2',t.h2);s('aiSub',t.sub);s('aiPillText',t.pill);
+    s('a1name',t.a1n);s('a1role',t.a1r);
+    s('a2name',t.a2n);s('a2role',t.a2r);
+    s('a3name',t.a3n);s('a3role',t.a3r);
+    s('a4name',t.a4n);s('a4role',t.a4r);
+    s('a5name',t.a5n);s('a5role',t.a5r);
+
+    // Draw SVG connector lines from center to each satellite
+    function drawLines(){
+        var scene=document.getElementById('aiaOrbit');
+        var svg=document.getElementById('aiaLines');
+        if(!scene||!svg) return;
+        var sats=scene.querySelectorAll('.aia-sat');
+        var sr=scene.getBoundingClientRect();
+        var cx=sr.width/2, cy=sr.height/2;
+        var scale=sr.width/560;
+        svg.setAttribute('viewBox','0 0 '+sr.width+' '+sr.height);
+        svg.innerHTML='';
+        sats.forEach(function(sat){
+            var r=sat.getBoundingClientRect();
+            var sx=(r.left+r.width/2)-sr.left;
+            var sy=(r.top+r.height/2)-sr.top;
+            var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+            line.setAttribute('x1',cx); line.setAttribute('y1',cy);
+            line.setAttribute('x2',sx); line.setAttribute('y2',sy);
+            line.setAttribute('stroke',getComputedStyle(sat).getPropertyValue('--c').trim()||'#5bb8e8');
+            line.setAttribute('stroke-width','1.5');
+            line.setAttribute('stroke-dasharray','4 4');
+            line.setAttribute('opacity','0.35');
+            svg.appendChild(line);
+        });
+    }
+    setTimeout(drawLines, 200);
+    window.addEventListener('resize', drawLines);
+})();
+</script>
+
 <!-- ═════════════════ CTA ═════════════════ -->
 <section class="tw-cta" id="tw-cta">
     <div class="tw-wrap">
-        <div class="tw-label" data-i18n="tw.cta.label">Bereit zu starten?</div>
-        <h2 class="tw-h2" data-i18n-html="tw.cta.h2">Ihre professionelle Webseite<br><span class="tw-accent">ab 450 CHF.</span></h2>
-        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="tw.cta.editor">Mit Editor ab 650 CHF</p>
-        <p class="tw-sub" data-i18n="tw.cta.p">Wählen Sie ein Template, senden Sie uns Ihre Daten — und in wenigen Tagen ist Ihr Unternehmen online. Einfach, schnell und professionell.</p>
+        <div class="tw-label" id="ctaLabel">IHR PROJEKT STARTEN</div>
+        <h2 class="tw-h2" id="ctaH2">Ihr Projekt direkt vom Entwickler.</h2>
+        <p class="tw-sub" id="ctaSub">Von der Landingpage bis zur mobilen App. Persönlich beraten aus Buchs SG — faire Preise, schnelle Umsetzung.</p>
         <div class="tw-cta-btns">
             <a href="booking.html" class="tw-btn-red">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                <span data-i18n="booking.cta">Termin vereinbaren</span>
+                <span id="ctaBtn">Termin vereinbaren</span>
             </a>
         </div>
         <div class="tw-cta-note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-i18n="tw.cta.note">Unverbindliche Beratung — kostenlos und ohne Verpflichtung</span>
+            <span id="ctaNote">Unverbindliche Beratung — kostenlos und ohne Verpflichtung</span>
         </div>
     </div>
 </section>
+
+<script>
+(function(){
+    var lang = localStorage.getItem('lweb_lang') || (navigator.language||'de').slice(0,2).toLowerCase();
+    var supported = ['de','en','es','fr','it'];
+    if (supported.indexOf(lang) === -1) lang = 'de';
+
+    // Apply global data-i18n translations to late-rendered elements
+    if (typeof translations !== 'undefined' && translations[lang]) {
+        var t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+            var key = el.getAttribute('data-i18n');
+            if (t[key]) el.textContent = t[key];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+            var key = el.getAttribute('data-i18n-html');
+            if (t[key]) el.innerHTML = t[key];
+        });
+    }
+
+    // CTA section translations
+    var ctaTrans = {
+        de: { label:'IHR PROJEKT STARTEN', h2:'Ihr Projekt direkt vom Entwickler.', sub:'Von der Landingpage bis zur mobilen App. Persönlich beraten aus Buchs SG — faire Preise, schnelle Umsetzung.', btn:'Termin vereinbaren', note:'Unverbindliche Beratung — kostenlos und ohne Verpflichtung' },
+        en: { label:'START YOUR PROJECT', h2:'Your project direct from the developer.', sub:'From landing page to mobile app. Personally advised from Buchs SG — fair prices, fast delivery.', btn:'Book an appointment', note:'Free consultation — no commitment, no obligation' },
+        es: { label:'INICIA TU PROYECTO', h2:'Tu proyecto directo del desarrollador.', sub:'Desde la landing page hasta la app móvil. Asesorado personalmente desde Buchs SG — precios justos, ejecución rápida.', btn:'Reservar cita', note:'Consulta sin compromiso — gratuita y sin obligación' },
+        fr: { label:'DÉMARREZ VOTRE PROJET', h2:'Votre projet directement du développeur.', sub:"De la landing page à l'application mobile. Conseillé personnellement depuis Buchs SG — prix équitables, réalisation rapide.", btn:'Prendre rendez-vous', note:'Consultation gratuite — sans engagement ni obligation' },
+        it: { label:'AVVIA IL TUO PROGETTO', h2:'Il tuo progetto direttamente dallo sviluppatore.', sub:"Dalla landing page all'app mobile. Consulenza personale da Buchs SG — prezzi equi, realizzazione rapida.", btn:'Prenota appuntamento', note:'Consulenza iniziale gratuita — senza vincoli e senza obblighi' }
+    };
+    var c = ctaTrans[lang] || ctaTrans.de;
+    function si(id, txt){ var el=document.getElementById(id); if(el) el.textContent=txt; }
+    si('ctaLabel', c.label);
+    si('ctaH2', c.h2);
+    si('ctaSub', c.sub);
+    si('ctaBtn', c.btn);
+    si('ctaNote', c.note);
+})();
+</script>
 
 </body>
 </html>

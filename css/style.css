@@ -338,7 +338,9 @@ body.dark-mode .header-nav-sub:hover {
 .mobile-panel--main {
     /* visible by default */
 }
-.mobile-panel--sub {
+.mobile-panel--sub,
+.mobile-panel--leistungen,
+.mobile-panel--apps {
     position: absolute;
     top: 0;
     left: 0;
@@ -359,6 +361,26 @@ body.dark-mode .header-nav-sub:hover {
     pointer-events: none;
 }
 .mobile-menu.sub-open .mobile-panel--sub {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+}
+.mobile-menu.sub-open-leistungen .mobile-panel--main {
+    transform: translateX(-30%);
+    opacity: 0;
+    pointer-events: none;
+}
+.mobile-menu.sub-open-leistungen .mobile-panel--leistungen {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+}
+.mobile-menu.sub-open-apps .mobile-panel--main {
+    transform: translateX(-30%);
+    opacity: 0;
+    pointer-events: none;
+}
+.mobile-menu.sub-open-apps .mobile-panel--apps {
     transform: translateX(0);
     opacity: 1;
     pointer-events: all;
@@ -403,7 +425,8 @@ body.dark-mode .header-nav-sub:hover {
     flex-direction: column;
     gap: 0;
 }
-.mobile-menu-link--custom.active {
+.mobile-menu-link--custom.active,
+.mobile-menu-link.active {
     color: var(--begonia400);
     background: rgba(254,108,117,0.08);
 }
