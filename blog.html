@@ -539,7 +539,7 @@
         </div>
     </div>
     <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
-    <a href="index.html#about" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
+    <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
     <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
 </nav>
         <div class="header-actions">
@@ -1231,6 +1231,18 @@ window.switchLang = function(lang) {
 </script>
 
 <script src="js/chatbot.js"></script>
+
+<script>
+(function(){
+    var from = sessionStorage.getItem('lweb_back');
+    if (!from) return;
+    sessionStorage.removeItem('lweb_back');
+    var backBtn = document.querySelector('.header-back-desktop');
+    if (backBtn) backBtn.setAttribute('href', from);
+    // Also update "Über mich" nav link
+    document.querySelectorAll('a[href="ubermich.html"]').forEach(function(a){ a.setAttribute('href', from); });
+})();
+</script>
 
 </body>
 </html>

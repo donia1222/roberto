@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Webseiten ab 450 CHF | Professionelle Templates — Lweb</title>
-    <meta name="description" content="Professionelle Webseiten-Templates ab 450 CHF. Moderne Designs für Restaurants, Coiffeure, Handwerker und mehr. Online in 48 Stunden.">
+    <title>Über mich — Roberto Salvador | Lweb</title>
+    <meta name="description" content="Roberto Salvador — Webentwickler aus Buchs SG. Professionelle Webseiten, Apps und KI-Lösungen für KMU und Startups.">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="theme-color" content="#ffffff" id="themeColor">
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -14,6 +14,7 @@
     <script src="js/translations.js"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
+        .about-content h2 { font-size: clamp(32px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.03em; }
 
         /* ═══ ANIMATIONS ═══════════════════════════════════ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -684,8 +685,8 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </a>
         <div class="header-title" id="headerTitle">
-            <span>Lweb</span>
-            <span class="accent" data-i18n="nav.tech">Technologien</span>
+            <span>Roberto</span>
+            <span class="accent">Salvador</span>
         </div>
         <nav class="header-nav" aria-label="Hauptnavigation">
     <div class="header-nav-dropdown">
@@ -743,8 +744,8 @@
             </a>
         </div>
     </div>
-    <a href="technologien.html" class="header-nav-item active"><span data-i18n="nav.tech">Technologien</span></a>
-    <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
+    <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
+    <a href="ubermich.html" class="header-nav-item active"><span data-i18n="nav.about">Über mich</span></a>
     <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
 </nav>
         <div class="header-actions">
@@ -773,8 +774,8 @@
             <a href="#" class="mobile-menu-link mobile-menu-link--parent" onclick="event.preventDefault();openMobileSubpanel()">
                 <span data-i18n="nav.websites">Websites</span>
             </a>
-            <a href="technologien.html" class="mobile-menu-link active" data-i18n="nav.tech">Technologien</a>
-            <a href="ubermich.html" class="mobile-menu-link" data-i18n="nav.about">Über mich</a>
+            <a href="technologien.html" class="mobile-menu-link" data-i18n="nav.tech">Technologien</a>
+            <a href="ubermich.html" class="mobile-menu-link active" data-i18n="nav.about">Über mich</a>
             <a href="index.html#contact" class="mobile-menu-link mobile-menu-link--cta mobile-menu-link--cta-red" data-i18n="nav.contact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Kontakt</a>
         </nav>
         <div class="mobile-menu-footer">
@@ -821,495 +822,196 @@
     </div>
 </div>
 
-<!-- ═════════════════ HANDCRAFT HERO ═════════════════ -->
-<style>
-@keyframes hc-fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
-@keyframes hc-blink  { 0%,100%{opacity:1} 50%{opacity:0.25} }
-@keyframes hc-float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-@keyframes hc-spin   { to{transform:rotate(360deg)} }
-@keyframes hc-shimmer{ 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-@keyframes hc-pulse  { 0%,100%{box-shadow:0 0 0 0 rgba(254,108,117,.45)} 70%{box-shadow:0 0 0 14px rgba(254,108,117,0)} }
-
-.hc-hero {
-    background: linear-gradient(180deg, #fff 0%, #f4f7fb 100%);
-    padding: 80px 24px 72px;
-    overflow: hidden;
-    position: relative;
-}
-.hc-hero::before {
-    content:'';
-    position:absolute; inset:0;
-    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,180,100,.10) 0%, transparent 70%);
-    pointer-events:none;
-}
-.hc-grid-bg {
-    position:absolute; inset:0; pointer-events:none; overflow:hidden; opacity:.04;
-    background-image: linear-gradient(rgba(15,29,44,.8) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(15,29,44,.8) 1px, transparent 1px);
-    background-size: 48px 48px;
-}
-.hc-wrap { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
-
-/* Badge */
-.hc-badge {
-    display:inline-flex; align-items:center; gap:8px;
-    background:rgba(254,108,117,.1); border:1px solid rgba(254,108,117,.25);
-    border-radius:600px; padding:7px 18px;
-    font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    color:#fe6c75; margin-bottom:28px;
-    animation:hc-fadeUp .6s ease both;
-}
-.hc-badge-dot { width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:hc-blink 1.4s infinite; }
-
-/* Headline */
-.hc-h1 {
-    font-size:clamp(32px,4vw,54px); font-weight:800; line-height:1.1;
-    letter-spacing:-.025em; color:#0f1d2c; margin-bottom:18px;
-    animation:hc-fadeUp .6s .1s ease both;
-}
-.hc-h1 .hc-accent { color:#fe6c75; }
-.hc-h1 .hc-green  { color:#4dd35b; }
-
-/* Sub */
-.hc-sub {
-    font-size:17px; line-height:1.75; color:#6b7d99;
-    max-width:640px; margin-bottom:52px;
-    animation:hc-fadeUp .6s .2s ease both;
-}
-
-/* Cards grid */
-.hc-cards {
-    display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
-    animation:hc-fadeUp .7s .3s ease both;
-}
-.hc-card {
-    background:#fff;
-    border:1px solid rgba(15,29,44,.08);
-    border-radius:20px; padding:32px 28px;
-    box-shadow:0 4px 20px rgba(0,0,0,.04);
-    transition:all .35s cubic-bezier(.34,1.56,.64,1);
-    position:relative; overflow:hidden;
-    cursor:default;
-}
-.hc-card::before {
-    content:''; position:absolute; inset:0; border-radius:20px;
-    background:linear-gradient(135deg,rgba(254,108,117,.05) 0%,transparent 60%);
-    opacity:0; transition:opacity .3s;
-}
-.hc-card:hover { transform:translateY(-6px); border-color:rgba(254,108,117,.25); box-shadow:0 12px 36px rgba(0,0,0,.08); }
-.hc-card:hover::before { opacity:1; }
-
-.hc-card-icon {
-    width:52px; height:52px; border-radius:14px;
-    display:flex; align-items:center; justify-content:center;
-    margin-bottom:20px;
-    animation:hc-float 4s ease-in-out infinite;
-}
-.hc-card:nth-child(2) .hc-card-icon { animation-delay:.6s; }
-.hc-card:nth-child(3) .hc-card-icon { animation-delay:1.2s; }
-.hc-card:nth-child(4) .hc-card-icon { animation-delay:1.8s; }
-.hc-card:nth-child(5) .hc-card-icon { animation-delay:2.4s; }
-
-.hc-card-icon svg { width:26px; height:26px; }
-.hc-card h3 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 10px; line-height:1.3; }
-.hc-card p  { font-size:15px; line-height:1.7; color:#6b7d99; margin:0; }
-
-.hc-card-tag {
-    display:inline-flex; align-items:center; gap:5px;
-    margin-top:16px; padding:4px 12px; border-radius:600px;
-    font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-}
-
-/* 5th card spans 2 cols on last row if odd */
-@media(min-width:769px){
-    .hc-card--wide { grid-column: span 1; }
-}
-
-/* Code snippet decoration */
-.hc-code-bar {
-    margin-top:56px;
-    background:#0f1d2c; border:1px solid rgba(255,255,255,.07);
-    border-radius:16px; padding:28px 32px;
-    font-family:'Courier New',monospace; font-size:14px; line-height:2;
-    color:rgba(255,255,255,.4); overflow:hidden;
-    animation:hc-fadeUp .7s .45s ease both;
-    position:relative;
-    box-shadow:0 8px 40px rgba(0,0,0,.12);
-}
-.hc-code-bar::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:2px;
-    background:linear-gradient(90deg,transparent,rgba(254,108,117,.7),transparent);
-}
-.hc-code-dots { display:flex; gap:6px; margin-bottom:14px; }
-.hc-code-dots span { width:11px;height:11px;border-radius:50%; }
-.hc-code-line .kw  { color:#fe6c75; }
-.hc-code-line .fn  { color:#61dafb; }
-.hc-code-line .st  { color:#4dd35b; }
-.hc-code-line .cm  { color:rgba(255,255,255,.25); font-style:italic; }
-.hc-code-line .nb  { color:#f7c948; }
-
-/* Responsive */
-@media(max-width:600px){
-    .hc-hero{padding:80px 20px 60px;}
-    .hc-cards{grid-template-columns:1fr; gap:16px;}
-    .hc-card{padding:24px 20px;}
-    .hc-sub{font-size:16px;}
-    .hc-code-bar{font-size:11px; padding:20px 16px;}
-}
-body.dark-mode .hc-hero { background:linear-gradient(180deg,#1a1f2e 0%,#131825 100%); }
-body.dark-mode .hc-h1 { color:#f1f5f9; }
-body.dark-mode .hc-sub { color:#94a3b8; }
-body.dark-mode .hc-card { background:#1e2536; border-color:rgba(255,255,255,.06); box-shadow:none; }
-body.dark-mode .hc-card h3 { color:#f1f5f9; }
-body.dark-mode .hc-card p  { color:#8a9bb3; }
-</style>
-
-<section class="hc-hero">
-    <div class="hc-grid-bg"></div>
-    <div class="hc-wrap">
-
-        <div class="hc-badge">
-            <span class="hc-badge-dot"></span>
-            <span data-i18n="hc.badge">100% Handgemacht — kein Template-Baukasten</span>
+<!-- ═════════════════ ABOUT / HERO ═════════════════ -->
+<section class="section about" id="about" style="padding-top:80px;">
+    <div class="container">
+        <div class="about-inner">
+            <div class="about-content">
+                <h2>Roberto Salvador<br><span id="aboutSubline">Ihr <span style="color:var(--begonia400,#fe6c75)">Partner</span> vor Ort</span></h2>
+                <p data-i18n="about.desc">Seit über 5 Jahren entwickle ich Apps und Websites für Unternehmen in Buchs SG, im Rheintal, Kanton St. Gallen und Liechtenstein. Direkt vom Entwickler — ohne teure Agentur dazwischen. Persönlich, unkompliziert und zu fairen Preisen.</p>
+                <div class="about-points">
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <span data-i18n="about.point1">Ansässig in Buchs, Kanton St. Gallen (Schweiz)</span>
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <span data-i18n="about.point2">30+ veröffentlichte Apps im App Store &amp; Play Store</span>
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <span data-i18n="about.point3">Spezialisiert auf KI-gestützte Anwendungen mit OpenAI</span>
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <span data-i18n="about.point4">Mehrsprachig: Deutsch, Spanisch, Englisch</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="about-image-ring">
+                    <svg class="about-ring-text" viewBox="0 0 300 300">
+                        <defs>
+                            <path id="ringPath" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/>
+                        </defs>
+                        <text>
+                            <textPath href="#ringPath" startOffset="0%">React Native &bull; Expo &bull; Next.js &bull; TypeScript &bull; Xcode &bull; OpenAI &bull; Node.js &bull;</textPath>
+                        </text>
+                    </svg>
+                    <img src="img/profile.png" alt="Roberto Salvador - App Entwickler in Buchs SG, Kanton St. Gallen">
+                </div>
+            </div>
         </div>
-
-        <h1 class="hc-h1">
-            <span data-i18n-html="hc.h1">Kein WordPress.<br>Kein Baukasten.<br><span class="hc-accent">Reiner Code.</span></span>
-        </h1>
-
-        <p class="hc-sub" data-i18n="hc.sub">
-            Jede Website und App entsteht von Grund auf — Zeile für Zeile. Keine vorgefertigten Templates, keine Page-Builder. Nur sauberer, schneller und wartbarer Code, der exakt zu Ihrem Projekt passt.
-        </p>
-
-        <div class="hc-cards">
-
-            <!-- 1 -->
-            <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(254,108,117,.15);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3 data-i18n="hc.c1.title">HTML · CSS · JavaScript</h3>
-                <p data-i18n="hc.c1.p">Einfache Seiten entstehen in purem HTML, CSS und JS — ohne Framework-Overhead. Blitzschnell, leichtgewichtig und 100% kontrollierbar.</p>
-                <span class="hc-card-tag" style="background:rgba(254,108,117,.12);color:#fe6c75;">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span data-i18n="hc.tag.pure">Pure Code</span>
-                </span>
-            </div>
-
-            <!-- 2 -->
-            <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(97,218,251,.12);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#61dafb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07M4.93 4.93a10 10 0 0 0 0 14.14"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(45 12 12)"/></svg>
-                </div>
-                <h3 data-i18n="hc.c2.title">React & Next.js für moderne Apps</h3>
-                <p data-i18n="hc.c2.p">Komplexe Webanwendungen und dynamische Seiten werden mit React, Next.js oder Remix entwickelt — modern, skalierbar und zukunftssicher.</p>
-                <span class="hc-card-tag" style="background:rgba(97,218,251,.1);color:#61dafb;">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    <span data-i18n="hc.tag.modern">Modern Stack</span>
-                </span>
-            </div>
-
-            <!-- 3 -->
-            <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(77,211,91,.12);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                </div>
-                <h3 data-i18n="hc.c3.title">Eigene Templates für Low-Cost Seiten</h3>
-                <p data-i18n="hc.c3.p">Lweb entwickelt seine eigenen Templates — handgefertigt in HTML/CSS. Keine Lizenzkosten, keine Abhängigkeiten. Professionelles Design ab 450 CHF.</p>
-                <span class="hc-card-tag" style="background:rgba(77,211,91,.1);color:#4dd35b;">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span data-i18n="hc.tag.own">Lweb Originals</span>
-                </span>
-            </div>
-
-            <!-- 4 -->
-            <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(247,201,72,.12);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#f7c948" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><path d="M23 12A11 11 0 0 0 1 12"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
-                </div>
-                <h3 data-i18n="hc.c4.title">Kein WordPress, kein Baukasten</h3>
-                <p data-i18n="hc.c4.p">Keine Plugins, keine Sicherheitslücken, kein monatliches Abo. Alles ist Handarbeit — wartungsarm, blitzschnell und vollständig in Ihrer Hand.</p>
-                <span class="hc-card-tag" style="background:rgba(247,201,72,.1);color:#f7c948;">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    <span data-i18n="hc.tag.nowp">No WordPress</span>
-                </span>
-            </div>
-
-
-        </div>
-
-        <!-- Code typewriter -->
-        <div class="hc-code-bar">
-            <div class="hc-code-dots">
-                <span style="background:#ff5f57;"></span>
-                <span style="background:#febc2e;"></span>
-                <span style="background:#28c840;"></span>
-            </div>
-            <div id="hcCodeOut" style="height:9.5em;overflow:hidden;"></div>
-        </div>
-        <style>
-            .hc-cursor { display:inline-block; color:#fe6c75; animation:hc-blink .7s infinite; font-weight:400; }
-        </style>
-        <script>
-        (function(){
-            var lines = [
-                { html: '<span class="cm">// lweb.ch — handcrafted, no template engine</span>' },
-                { html: '<span class="kw">const</span> <span class="nb">website</span> = <span class="kw">new</span> <span class="fn">LwebProject</span>({' },
-                { html: '\u00a0\u00a0stack: [<span class="st">\'HTML\'</span>, <span class="st">\'CSS\'</span>, <span class="st">\'React\'</span>, <span class="st">\'Next.js\'</span>],' },
-                { html: '\u00a0\u00a0wordpress: <span class="kw">false</span>,\u00a0\u00a0\u00a0\u00a0<span class="cm">// never</span>' },
-                { html: '\u00a0\u00a0templates: <span class="st">\'own\'</span>,\u00a0\u00a0\u00a0\u00a0<span class="cm">// handcrafted by lweb</span>' },
-                { html: '\u00a0\u00a0quality: <span class="st">\'artisanal\'</span>' },
-                { html: '});' }
-            ];
-            var out = document.getElementById('hcCodeOut');
-            if (!out) return;
-
-            function stripTags(h){ return h.replace(/<[^>]*>/g,''); }
-
-            function typeLineInEl(el, fullHtml, cb){
-                var plain = stripTags(fullHtml);
-                var i = 0;
-                function tick(){
-                    i++;
-                    // rebuild: walk fullHtml outputting tags immediately, chars one by one
-                    var shown = 0, result = '', pos = 0;
-                    while(pos < fullHtml.length && shown < i){
-                        if(fullHtml[pos]==='<'){
-                            var end = fullHtml.indexOf('>',pos);
-                            result += fullHtml.slice(pos, end+1); pos = end+1;
-                        } else {
-                            result += fullHtml[pos]; shown++; pos++;
-                        }
-                    }
-                    el.innerHTML = result + '<span class="hc-cursor">▌</span>';
-                    if(i < plain.length) setTimeout(tick, 22);
-                    else { setTimeout(function(){ el.innerHTML = result; cb(); }, 80); }
-                }
-                tick();
-            }
-
-            function runAll(idx, done){
-                if(idx >= lines.length){ done(); return; }
-                var el = document.createElement('div');
-                el.className = 'hc-code-line';
-                out.appendChild(el);
-                typeLineInEl(el, lines[idx].html, function(){
-                    setTimeout(function(){ runAll(idx+1, done); }, 40);
-                });
-            }
-
-            function loop(){
-                out.innerHTML = '';
-                runAll(0, function(){ setTimeout(loop, 4500); });
-            }
-            setTimeout(loop, 400);
-        })();
-        </script>
-
     </div>
 </section>
 
-<script>
-(function(){
-    var hcTrans = {
-        de: {
-            'hc.badge':'100% Handgemacht — kein Template-Baukasten',
-            'hc.h1':'Kein WordPress.<br>Kein Baukasten.<br><span class="hc-accent">Reiner Code.</span>',
-            'hc.sub':'Jede Website und App entsteht von Grund auf — Zeile für Zeile. Keine vorgefertigten Templates, keine Page-Builder. Nur sauberer, schneller und wartbarer Code, der exakt zu Ihrem Projekt passt.',
-            'hc.c1.title':'HTML · CSS · JavaScript','hc.c1.p':'Einfache Seiten entstehen in purem HTML, CSS und JS — ohne Framework-Overhead. Blitzschnell, leichtgewichtig und 100% kontrollierbar.',
-            'hc.c2.title':'React & Next.js für moderne Apps','hc.c2.p':'Komplexe Webanwendungen und dynamische Seiten werden mit React, Next.js oder Remix entwickelt — modern, skalierbar und zukunftssicher.',
-            'hc.c3.title':'Eigene Templates für Low-Cost Seiten','hc.c3.p':'Lweb entwickelt seine eigenen Templates — handgefertigt in HTML/CSS. Keine Lizenzkosten, keine Abhängigkeiten. Professionelles Design ab 450 CHF.',
-            'hc.c4.title':'Kein WordPress, kein Baukasten','hc.c4.p':'Keine Plugins, keine Sicherheitslücken, kein monatliches Abo. Alles ist Handarbeit — wartungsarm, blitzschnell und vollständig in Ihrer Hand.',
-            'hc.c5.title':'Alles Massarbeit','hc.c5.p':'Jede Seite wird individuell konzipiert, gestaltet und programmiert. Das Ergebnis ist ein einzigartiges Produkt — nicht ein weiteres Klon-Template.',
-            'hc.tag.pure':'Pure Code','hc.tag.modern':'Modern Stack','hc.tag.own':'Lweb Originals','hc.tag.nowp':'No WordPress','hc.tag.custom':'100% Custom'
-        },
-        en: {
-            'hc.badge':'100% Handcrafted — no page builder',
-            'hc.h1':'No WordPress.<br>No Builder.<br><span class="hc-accent">Pure Code.</span>',
-            'hc.sub':'Every website and app is built from scratch — line by line. No pre-made templates, no page builders. Just clean, fast, maintainable code that fits your project perfectly.',
-            'hc.c1.title':'HTML · CSS · JavaScript','hc.c1.p':'Simple sites are built in pure HTML, CSS and JS — no framework overhead. Lightning fast, lightweight and 100% controllable.',
-            'hc.c2.title':'React & Next.js for modern apps','hc.c2.p':'Complex web apps and dynamic pages are built with React, Next.js or Remix — modern, scalable and future-proof.',
-            'hc.c3.title':'Own templates for low-cost sites','hc.c3.p':'Lweb builds its own templates — handcrafted in HTML/CSS. No license fees, no dependencies. Professional design from CHF 450.',
-            'hc.c4.title':'No WordPress, no builder','hc.c4.p':'No plugins, no security holes, no monthly subscription. Everything is handmade — low maintenance, lightning fast and fully in your control.',
-            'hc.c5.title':'Everything bespoke','hc.c5.p':'Every page is individually conceived, designed and coded. The result is a unique product — not another cloned template.',
-            'hc.tag.pure':'Pure Code','hc.tag.modern':'Modern Stack','hc.tag.own':'Lweb Originals','hc.tag.nowp':'No WordPress','hc.tag.custom':'100% Custom'
-        },
-        es: {
-            'hc.badge':'100% Artesanal — sin constructor de páginas',
-            'hc.h1':'Sin WordPress.<br>Sin Constructor.<br><span class="hc-accent">Código Puro.</span>',
-            'hc.sub':'Cada web y app se construye desde cero — línea a línea. Sin plantillas prefabricadas, sin page builders. Solo código limpio, rápido y mantenible que se adapta perfectamente a tu proyecto.',
-            'hc.c1.title':'HTML · CSS · JavaScript','hc.c1.p':'Los sitios sencillos se crean en HTML, CSS y JS puro — sin sobrecarga de frameworks. Ultra rápido, ligero y 100% controlable.',
-            'hc.c2.title':'React & Next.js para apps modernas','hc.c2.p':'Las aplicaciones web complejas y páginas dinámicas se desarrollan con React, Next.js o Remix — moderno, escalable y preparado para el futuro.',
-            'hc.c3.title':'Plantillas propias para sitios económicos','hc.c3.p':'Lweb desarrolla sus propias plantillas — hechas a mano en HTML/CSS. Sin costes de licencia, sin dependencias. Diseño profesional desde 450 CHF.',
-            'hc.c4.title':'Sin WordPress, sin constructor','hc.c4.p':'Sin plugins, sin vulnerabilidades, sin suscripción mensual. Todo es artesanal — bajo mantenimiento, ultra rápido y totalmente en tus manos.',
-            'hc.c5.title':'Todo a medida','hc.c5.p':'Cada página se concibe, diseña y programa de forma individual. El resultado es un producto único — no otra plantilla clonada.',
-            'hc.tag.pure':'Código Puro','hc.tag.modern':'Stack Moderno','hc.tag.own':'Lweb Originals','hc.tag.nowp':'Sin WordPress','hc.tag.custom':'100% Custom'
-        },
-        fr: {
-            'hc.badge':'100% Artisanal — pas de constructeur de pages',
-            'hc.h1':'Sans WordPress.<br>Sans Builder.<br><span class="hc-accent">Code Pur.</span>',
-            'hc.sub':'Chaque site et application est construit de zéro — ligne par ligne. Pas de templates préfabriqués, pas de page builders. Juste du code propre, rapide et maintenable.',
-            'hc.c1.title':'HTML · CSS · JavaScript','hc.c1.p':'Les sites simples sont créés en HTML, CSS et JS purs — sans surcharge de framework. Ultra rapide, léger et 100% contrôlable.',
-            'hc.c2.title':'React & Next.js pour les apps modernes','hc.c2.p':'Les applications web complexes sont développées avec React, Next.js ou Remix — moderne, évolutif et pérenne.',
-            'hc.c3.title':'Templates propres pour sites économiques','hc.c3.p':'Lweb développe ses propres templates — faits main en HTML/CSS. Pas de frais de licence, pas de dépendances. Design professionnel dès 450 CHF.',
-            'hc.c4.title':'Sans WordPress, sans builder','hc.c4.p':'Pas de plugins, pas de failles de sécurité, pas d\'abonnement mensuel. Tout est artisanal — faible maintenance, ultra rapide.',
-            'hc.c5.title':'Tout sur mesure','hc.c5.p':'Chaque page est conçue, designée et programmée individuellement. Le résultat est un produit unique — pas un énième template cloné.',
-            'hc.tag.pure':'Code Pur','hc.tag.modern':'Stack Moderne','hc.tag.own':'Lweb Originals','hc.tag.nowp':'Sans WordPress','hc.tag.custom':'100% Custom'
-        },
-        it: {
-            'hc.badge':'100% Artigianale — nessun costruttore di pagine',
-            'hc.h1':'Niente WordPress.<br>Niente Builder.<br><span class="hc-accent">Codice Puro.</span>',
-            'hc.sub':'Ogni sito e app viene costruito da zero — riga per riga. Nessun template prefabbricato, nessun page builder. Solo codice pulito, veloce e manutenibile.',
-            'hc.c1.title':'HTML · CSS · JavaScript','hc.c1.p':'I siti semplici vengono creati in HTML, CSS e JS puro — senza overhead di framework. Velocissimo, leggero e 100% controllabile.',
-            'hc.c2.title':'React & Next.js per app moderne','hc.c2.p':'Le applicazioni web complesse vengono sviluppate con React, Next.js o Remix — moderno, scalabile e a prova di futuro.',
-            'hc.c3.title':'Template propri per siti economici','hc.c3.p':'Lweb sviluppa i propri template — fatti a mano in HTML/CSS. Nessun costo di licenza, nessuna dipendenza. Design professionale da 450 CHF.',
-            'hc.c4.title':'Niente WordPress, niente builder','hc.c4.p':'Nessun plugin, nessuna vulnerabilità, nessun abbonamento mensile. Tutto è artigianale — bassa manutenzione, velocissimo.',
-            'hc.c5.title':'Tutto su misura','hc.c5.p':'Ogni pagina viene concepita, progettata e programmata individualmente. Il risultato è un prodotto unico — non l\'ennesimo template clonato.',
-            'hc.tag.pure':'Codice Puro','hc.tag.modern':'Stack Moderno','hc.tag.own':'Lweb Originals','hc.tag.nowp':'No WordPress','hc.tag.custom':'100% Custom'
-        }
-    };
-    var lang = localStorage.getItem('lweb_lang') || (navigator.language||'de').slice(0,2).toLowerCase();
-    if(!['de','en','es','fr','it'].includes(lang)) lang='de';
-    var t = hcTrans[lang] || hcTrans.de;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-        var k=el.getAttribute('data-i18n'); if(t[k]) el.textContent=t[k];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
-        var k=el.getAttribute('data-i18n-html'); if(t[k]) el.innerHTML=t[k];
-    });
-})();
-</script>
+<!-- ═════════════════ HIRE BANNER ═════════════════ -->
+<div class="hire-banner">
+    <div class="container">
+        <div class="hire-banner-inner">
+            <span class="hire-handshake" aria-hidden="true">🤝</span>
+            <p class="hire-banner-text" data-i18n="hire.banner">Auch als externer Entwickler für Ihr Team verfügbar — projektbasiert oder temporär. Lassen Sie uns zusammenarbeiten.</p>
+            <a href="#tw-cta" class="hire-banner-btn" data-i18n="hire.btn">Kontakt</a>
+        </div>
+    </div>
+</div>
 
-<!-- ═════════════════ TECHSTACK HERO ═════════════════ -->
-<style>
-.techstack-scroll-wrapper:hover .techstack-col-track,
-.techstack-col:hover .techstack-col-track {
-    animation-play-state: paused !important;
-}
-</style>
-<section class="section techstack" id="techstack" style="padding-top:80px;">
+<!-- ═════════════════ WHY ME ═════════════════ -->
+<section class="section why-me">
     <div class="container">
         <div class="section-header">
-            <h2 data-i18n-html="tech.title"><svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Modernste Technologien</h2>
-            <p data-i18n="tech.desc">Ich arbeite mit den neuesten Frameworks und Tools für maximale Performance und Zukunftssicherheit.</p>
+            <h2 data-i18n="why.title">Warum ich der Richtige bin 👍</h2>
+            <p data-i18n="why.desc">Direkt vom Entwickler — ohne Agenturaufschlag. Das bedeutet für Sie: bessere Preise, schnellere Kommunikation und persönliche Betreuung.</p>
         </div>
-        <div class="techstack-scroll-wrapper">
-            <div class="techstack-scroll-fade"></div>
-            <div class="techstack-scroll-columns">
-                <!-- Column 1: scrolls UP -->
-                <div class="techstack-col techstack-col--up">
-                    <div class="techstack-col-track">
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><div class="ts-card-text"><strong>React</strong><span>UI Library</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><div class="ts-card-text"><strong>React Native</strong><span>Cross-Platform Apps</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="ts-card-text"><strong>TypeScript</strong><span>Type-safe JavaScript</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><div class="ts-card-text"><strong>Next.js</strong><span>Fullstack Framework</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><div class="ts-card-text"><strong>Remix</strong><span>Web Framework</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="ts-card-text"><strong>Swift</strong><span>iOS Native</span></div></div>
-                        <!-- duplicate for seamless loop -->
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="-11 -11 22 22"><circle r="2" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1"><ellipse rx="10" ry="4.2"/><ellipse rx="10" ry="4.2" transform="rotate(60)"/><ellipse rx="10" ry="4.2" transform="rotate(120)"/></g></svg></div><div class="ts-card-text"><strong>React</strong><span>UI Library</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#61dafb22;color:#61dafb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="16" rx="1.5"/><circle cx="12" cy="12" r="5" stroke-dasharray="3 2"/></svg></div><div class="ts-card-text"><strong>React Native</strong><span>Cross-Platform Apps</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#3178c622;color:#3178c6;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="ts-card-text"><strong>TypeScript</strong><span>Type-safe JavaScript</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#00000012;color:#000;"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z" fill="currentColor"/></svg></div><div class="ts-card-text"><strong>Next.js</strong><span>Fullstack Framework</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#121212;color:#fff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><div class="ts-card-text"><strong>Remix</strong><span>Web Framework</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#f0513822;color:#f05138;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="ts-card-text"><strong>Swift</strong><span>iOS Native</span></div></div>
-                    </div>
-                </div>
-                <!-- Column 2: scrolls DOWN -->
-                <div class="techstack-col techstack-col--down">
-                    <div class="techstack-col-track">
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="ts-card-text"><strong>Xcode</strong><span>iOS Development</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="ts-card-text"><strong>OpenAI API</strong><span>KI-Integration</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="ts-card-text"><strong>Framer Motion</strong><span>Animationen</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><div class="ts-card-text"><strong>FFmpeg</strong><span>Video Processing</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ts-card-text"><strong>Web3</strong><span>Blockchain</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="ts-card-text"><strong>Node.js</strong><span>Backend Runtime</span></div></div>
-                        <!-- duplicate for seamless loop -->
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#147efb22;color:#147efb;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="ts-card-text"><strong>Xcode</strong><span>iOS Development</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#10a37f22;color:#10a37f;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="ts-card-text"><strong>OpenAI API</strong><span>KI-Integration</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#0055ff22;color:#0055ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="ts-card-text"><strong>Framer Motion</strong><span>Animationen</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#00780822;color:#007808;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div><div class="ts-card-text"><strong>FFmpeg</strong><span>Video Processing</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#f7931a22;color:#f7931a;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ts-card-text"><strong>Web3</strong><span>Blockchain</span></div></div>
-                        <div class="ts-card"><div class="ts-card-icon" style="background:#33993322;color:#339933;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="ts-card-text"><strong>Node.js</strong><span>Backend Runtime</span></div></div>
-                    </div>
-                </div>
+        <div class="why-cards">
+            <div class="why-card">
+                <div class="why-card-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                <h4 data-i18n="why1.title">Faire Preise</h4>
+                <p data-i18n="why1.desc">Kein Agenturaufschlag. Sie arbeiten direkt mit dem Entwickler — das spart Ihnen bis zu 50% der üblichen Kosten.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                <h4 data-i18n="why2.title">Native Performance</h4>
+                <p data-i18n="why2.desc">Echte native Apps mit React Native — schnell, flüssig und für beide Plattformen gleichzeitig entwickelt.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                <h4 data-i18n="why3.title">Persönlicher Kontakt</h4>
+                <p data-i18n="why3.desc">Ein Ansprechpartner für alles. Ich bin vor Ort in Buchs SG und jederzeit persönlich erreichbar.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═════════════════ SCRIPTS ═════════════════ -->
-<script>
-(function() {
-    // 1. DARK MODE
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeColor').setAttribute('content', '#0a1520');
-    }
-    // 2. ACCESSIBILITY
-    ['text','motion','lh','spacing'].forEach(function(cat){
-        var val = localStorage.getItem('a11y-' + cat);
-        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
-    });
-    // 3. LANGUAGE
-    var savedLang = localStorage.getItem('lweb_lang');
-    var lang;
-    if (savedLang) { lang = savedLang; }
-    else {
-        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
-        var supported = ['de', 'en', 'es', 'fr', 'it'];
-        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
-    }
-    if (typeof translations === 'undefined' || !translations[lang]) return;
-    var t = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-html');
-        if (t[key]) el.innerHTML = t[key];
-    });
-    // headerTitle is fixed for this page (Lweb / Tecnologías)
-})();
-</script>
+<!-- ═════════════════ BLOG PREVIEW ═════════════════ -->
+<style>
+@keyframes um-blog-icon-bounce { 0%,100%{transform:translateY(0) rotate(-4deg)} 50%{transform:translateY(-5px) rotate(4deg)} }
+.um-blog-icon { display:inline-flex; align-items:center; color:#fe6c75; margin-right:4px; vertical-align:middle; animation: um-blog-icon-bounce 2.4s ease-in-out infinite; }
+.um-blog { padding: 80px 0 100px; background: #f8fafc; }
+body.dark-mode .um-blog { background: #0d1a2a; }
+.um-blog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.um-blog-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px; }
+.um-blog-head h2 { font-size:clamp(22px,3vw,30px); font-weight:800; color:#0f1d2c; letter-spacing:-.02em; margin:0; }
+body.dark-mode .um-blog-head h2 { color:#f0f6ff; }
+.um-blog-head h2 em { font-style:normal; color:#fe6c75; }
+.um-blog-all { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:#fe6c75; text-decoration:none; border:1.5px solid rgba(254,108,117,.3); border-radius:50px; padding:8px 18px; transition:background .18s,color .18s; }
+.um-blog-all:hover { background:#fe6c75; color:#fff; }
+.um-blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+@media(max-width:900px){ .um-blog-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:580px){ .um-blog-grid { grid-template-columns:1fr; } }
+.um-blog-card { background:#fff; border-radius:16px; overflow:hidden; border:1px solid rgba(15,29,44,.07); box-shadow:0 2px 16px rgba(15,29,44,.06); transition:transform .2s,box-shadow .2s; cursor:pointer; text-decoration:none; display:block; color:inherit; }
+body.dark-mode .um-blog-card { background:#1a2840; border-color:rgba(255,255,255,.08); }
+.um-blog-card:hover { transform:translateY(-4px); box-shadow:0 8px 32px rgba(15,29,44,.13); }
+.um-blog-card img { width:100%; height:180px; object-fit:cover; display:block; }
+.um-blog-card-body { padding:18px 20px 20px; }
+.um-blog-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; border-radius:50px; padding:3px 10px; margin-bottom:10px; }
+.um-blog-badge--webdev { background:rgba(59,130,246,.1); color:#3b82f6; }
+.um-blog-badge--mobile { background:rgba(16,185,129,.1); color:#10b981; }
+.um-blog-badge--ki { background:rgba(254,108,117,.1); color:#fe6c75; }
+.um-blog-badge--ecommerce { background:rgba(234,179,8,.12); color:#ca8a04; }
+.um-blog-card-title { font-size:15px; font-weight:700; line-height:1.4; color:#0f1d2c; margin-bottom:8px; }
+body.dark-mode .um-blog-card-title { color:#f0f6ff; }
+.um-blog-card-meta { font-size:11px; color:#8a9bb3; display:flex; align-items:center; gap:8px; }
+.um-blog-card-meta-dot { width:3px; height:3px; border-radius:50%; background:#8a9bb3; }
+</style>
+
+<section class="um-blog">
+    <div class="um-blog-wrap">
+        <div class="um-blog-head">
+            <h2><span class="um-blog-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span> Blog — <em id="blogSectionSub">Insights & Tipps</em></h2>
+            <a href="blog.html" class="um-blog-all" onclick="sessionStorage.setItem('lweb_back','ubermich.html')">
+                <span id="blogAllBtn">Alle Artikel lesen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+        <div class="um-blog-grid">
+            <a href="blog.html" class="um-blog-card" onclick="sessionStorage.setItem('lweb_back','ubermich.html')">
+                <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=700&auto=format&fit=crop&q=80" alt="Next.js vs Remix" loading="lazy">
+                <div class="um-blog-card-body">
+                    <span class="um-blog-badge um-blog-badge--webdev">Web Dev</span>
+                    <div class="um-blog-card-title">Next.js vs Remix: Welches Framework passt zu dir?</div>
+                    <div class="um-blog-card-meta"><span>15. Feb. 2025</span><span class="um-blog-card-meta-dot"></span><span>7 Min.</span></div>
+                </div>
+            </a>
+            <a href="blog.html" class="um-blog-card" onclick="sessionStorage.setItem('lweb_back','ubermich.html')">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&auto=format&fit=crop&q=80" alt="React Native" loading="lazy">
+                <div class="um-blog-card-body">
+                    <span class="um-blog-badge um-blog-badge--mobile">Mobile</span>
+                    <div class="um-blog-card-title">React Native 2025: Native Performance für iOS &amp; Android</div>
+                    <div class="um-blog-card-meta"><span>12. Jan. 2025</span><span class="um-blog-card-meta-dot"></span><span>5 Min.</span></div>
+                </div>
+            </a>
+            <a href="blog.html" class="um-blog-card" onclick="sessionStorage.setItem('lweb_back','ubermich.html')">
+                <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&auto=format&fit=crop&q=80" alt="KI Integration" loading="lazy">
+                <div class="um-blog-card-body">
+                    <span class="um-blog-badge um-blog-badge--ki">KI &amp; Tech</span>
+                    <div class="um-blog-card-title">KI in deine Website einbauen — so geht's mit OpenAI</div>
+                    <div class="um-blog-card-meta"><span>28. Jan. 2025</span><span class="um-blog-card-meta-dot"></span><span>8 Min.</span></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
 <script>
-// ── Header shrink + title on scroll ──────────────
+// ── Header shrink + title on scroll ──
 (function(){
-    var heroH1 = document.querySelector('.hc-h1');
+    var aboutH2 = document.querySelector('.about h2, .about-content h2');
     var header = document.querySelector('.header');
-    if (!heroH1 || !header) return;
+    if (!header) return;
     window.addEventListener('scroll', function(){
         header.classList.toggle('scrolled', window.pageYOffset > 50);
     });
-    if ('IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function(entries) {
+    if (aboutH2 && 'IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries){
             header.classList.toggle('past-hero', !entries[0].isIntersecting);
         }, { threshold: 0 });
-        obs.observe(heroH1);
+        obs.observe(aboutH2);
     }
 })();
 </script>
 
 <script>
-// ── Mobile menu ──────────────────────────────────
+// ── Mobile menu ──
 (function(){
-    var burger = document.getElementById('menuBurger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    if (!burger || !mobileMenu) return;
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-        var isOpen = mobileMenu.classList.contains('open');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-        document.querySelector('.header').classList.toggle('menu-open', isOpen);
-    });
-    mobileMenu.querySelectorAll('a:not(.mobile-menu-link--parent)').forEach(function(link) {
-        link.addEventListener('click', function() {
-            burger.classList.remove('open'); mobileMenu.classList.remove('open');
-            mobileMenu.classList.remove('sub-open','sub-open-apps','sub-open-leistungen');
-            document.body.style.overflow = '';
-            document.querySelector('.header').classList.remove('menu-open');
+    document.addEventListener('DOMContentLoaded', function(){
+        var burger = document.getElementById('menuBurger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (!burger || !mobileMenu) return;
+        burger.addEventListener('click', function(){
+            burger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            var isOpen = mobileMenu.classList.contains('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.querySelector('.header').classList.toggle('menu-open', isOpen);
+        });
+        mobileMenu.querySelectorAll('a:not(.mobile-menu-link--parent)').forEach(function(link){
+            link.addEventListener('click', function(){
+                burger.classList.remove('open');
+                mobileMenu.classList.remove('open','sub-open','sub-open-apps','sub-open-leistungen');
+                document.body.style.overflow = '';
+                document.querySelector('.header').classList.remove('menu-open');
+            });
         });
     });
 })();
@@ -1324,399 +1026,25 @@ function closeMobileMenu(){
     b.classList.remove('open'); m.classList.remove('open','sub-open','sub-open-apps','sub-open-leistungen');
     document.body.style.overflow=''; document.querySelector('.header').classList.remove('menu-open');
 }
-function openVCardModal(){ closeMobileMenu(); window.location.href='index.html#vcard'; }
-function openChatFromMenu(){ closeMobileMenu(); window.location.href='index.html#chat'; }
-function openA11yFromMenu(){ closeMobileMenu(); window.location.href='index.html#a11y'; }
 </script>
 
 <script>
-// ── Active nav on scroll — disabled: Tecnologías always active ──────────────────────────
-</script>
-
-<script>
-// ── Scroll-triggered animations ──────────────────
 (function(){
-    if (!('IntersectionObserver' in window)) return;
-
-    // How-card
-    var howCard = document.getElementById('twHowCard');
-    if (howCard) {
-        var howObs = new IntersectionObserver(function(entries){
-            if (entries[0].isIntersecting) { howCard.classList.add('tw-visible'); howObs.disconnect(); }
-        }, { threshold: 0.15 });
-        howObs.observe(howCard);
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeColor').setAttribute('content','#0a1520');
     }
-
-    // Template cards
-    var cards = document.querySelectorAll('.tw-tpl-card');
-    var cardsObs = new IntersectionObserver(function(entries){
-        if (entries[0].isIntersecting) {
-            cards.forEach(function(c, i){
-                setTimeout(function(){ c.classList.add('tw-visible'); }, i * 100);
-            });
-            cardsObs.disconnect();
-        }
-    }, { threshold: 0.12 });
-    if (cards.length) cardsObs.observe(document.getElementById('twGalleryGrid'));
-
-    // Include columns
-    var incCols = document.querySelectorAll('.tw-inc-col');
-    var incObs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-            if (e.isIntersecting) { e.target.classList.add('tw-visible'); incObs.unobserve(e.target); }
-        });
-    }, { threshold: 0.2 });
-    incCols.forEach(function(col){ incObs.observe(col); });
-
-    // Extra cards
-    var extras = document.querySelectorAll('.tw-extra-card');
-    var extObs = new IntersectionObserver(function(entries){
-        if (entries[0].isIntersecting) {
-            extras.forEach(function(c, i){
-                setTimeout(function(){ c.classList.add('tw-visible'); }, i * 100);
-            });
-            extObs.disconnect();
-        }
-    }, { threshold: 0.15 });
-    if (extras.length) extObs.observe(document.getElementById('twExtrasGrid'));
-})();
-</script>
-
-<script>
-// ── Floating particles in gallery section ────────
-(function(){
-    var container = document.getElementById('twParticles');
-    if (!container) return;
-    var colors = ['#fdb5b9','#c4b5fd','#93c5fd','#86efac','#fde68a','#fdba74'];
-    for (var i = 0; i < 30; i++) {
-        var p = document.createElement('div');
-        p.className = 'tw-particle';
-        var size = Math.random() * 4 + 2;
-        p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:-10px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*8+6)+'s;animation-delay:'+(Math.random()*10)+'s;';
-        container.appendChild(p);
-    }
-})();
-</script>
-
-<script>
-// ── 3D tilt on template cards ────────────────────
-(function(){
-    if (window.innerWidth < 1025) return;
-    var cards = document.querySelectorAll('.tw-tpl-card');
-    cards.forEach(function(card){
-        card.addEventListener('mousemove', function(e){
-            var rect = card.getBoundingClientRect();
-            var x = e.clientX - rect.left, y = e.clientY - rect.top;
-            var cx = rect.width / 2, cy = rect.height / 2;
-            var rx = ((y - cy) / cy) * -6, ry = ((x - cx) / cx) * 6;
-            card.style.transform = 'perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';
-        });
-        card.addEventListener('mouseleave', function(){
-            card.style.transform = '';
-        });
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val=localStorage.getItem('a11y-'+cat);
+        if(val && val!=='normal') document.body.classList.add('a11y-'+cat+'-'+val);
     });
-})();
-</script>
-
-
-<!-- ═════════════════ AI AGENTS ═════════════════ -->
-<style>
-/* ── Section ── */
-.aia-section {
-    background: linear-gradient(180deg, #fff8f0 0%, #fff4e8 50%, #fff8f0 100%);
-    padding: 110px 0 80px;
-    position: relative;
-    overflow: hidden;
-}
-body.dark-mode .aia-section { background: #07101c; }
-.aia-section::before {
-    content:''; position:absolute; inset:0; pointer-events:none;
-    background:
-        radial-gradient(ellipse 55% 45% at 20% 50%, rgba(255,150,80,.05) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(167,139,250,.04) 0%, transparent 60%);
-}
-body.dark-mode .aia-section::before {
-    background:
-        radial-gradient(ellipse 55% 45% at 20% 50%, rgba(91,184,232,.07) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(167,139,250,.06) 0%, transparent 60%);
-}
-/* grid noise texture */
-.aia-noise {
-    position:absolute; inset:0; pointer-events:none; opacity:.015;
-    background-image: linear-gradient(rgba(15,29,44,.8) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(15,29,44,.8) 1px, transparent 1px);
-    background-size:40px 40px;
-}
-body.dark-mode .aia-noise { opacity:.03; background-image: linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px); }
-
-/* ── Header ── */
-.aia-header {
-    text-align:center;
-    padding:0 24px 64px;
-    position:relative; z-index:2;
-}
-.aia-eyebrow {
-    display:inline-flex; align-items:center; gap:8px;
-    background:rgba(91,184,232,.1); border:1px solid rgba(91,184,232,.25);
-    border-radius:100px; padding:5px 14px;
-    font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    color:#2a7fa8; margin-bottom:22px;
-}
-body.dark-mode .aia-eyebrow { color:#5bb8e8; }
-.aia-eyebrow-dot {
-    width:6px; height:6px; border-radius:50%;
-    background:#5bb8e8;
-    animation: aia-blink 1.8s ease-in-out infinite;
-}
-@keyframes aia-blink {
-    0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(91,184,232,.6)}
-    50%{opacity:.4;box-shadow:0 0 0 5px rgba(91,184,232,0)}
-}
-.aia-h2 {
-    font-size: clamp(26px,3vw,40px);
-    font-weight:800; line-height:1.1; letter-spacing:-0.02em;
-    color:#0f1d2c; margin-bottom:12px;
-}
-body.dark-mode .aia-h2 { color:#f0f6ff; }
-.aia-h2 em { font-style:normal; color:#fe6c75; }
-.aia-sub {
-    font-size:17px; color:#6b7d99; max-width:600px; margin:0 auto 28px; line-height:1.7;
-}
-body.dark-mode .aia-sub { color:#94a3b8; }
-.aia-pill {
-    display:inline-flex; align-items:center; gap:14px;
-    background:linear-gradient(135deg,rgba(254,108,117,.08),rgba(254,108,117,.03));
-    border:1px solid rgba(254,108,117,.25); border-radius:16px;
-    padding:14px 26px;
-}
-.aia-pill-num {
-    font-size:30px; font-weight:900; color:#e84a55;
-    letter-spacing:-0.03em; line-height:1;
-}
-body.dark-mode .aia-pill-num { color:#fe6c75; }
-.aia-pill-label {
-    font-size:13px; font-weight:600; color:#4a6070; line-height:1.35; text-align:left;
-}
-body.dark-mode .aia-pill-label { color:rgba(240,246,255,.6); }
-
-/* ── Orbit ── */
-.aia-orbit-scene {
-    position:relative; z-index:2;
-    width:560px; height:560px;
-    margin:0 auto;
-}
-@media(max-width:640px){ .aia-orbit-scene { width:340px; height:340px; } }
-
-/* orbit ring */
-.aia-ring {
-    position:absolute; inset:80px;
-    border-radius:50%;
-    border:1.5px dashed rgba(91,184,232,.22);
-    animation: aia-spin 32s linear infinite;
-}
-body.dark-mode .aia-ring { border-color:rgba(91,184,232,.18); }
-@keyframes aia-spin { to{ transform:rotate(360deg); } }
-
-/* SVG connector lines */
-.aia-lines { position:absolute; inset:0; pointer-events:none; }
-
-/* center hub */
-.aia-hub {
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    width:110px; height:110px;
-    border-radius:50%;
-    background:transparent;
-    border:none;
-    display:flex; align-items:center; justify-content:center;
-    z-index:5;
-    animation: aia-hub-pulse 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 18px rgba(217,119,87,.35));
-}
-body.dark-mode .aia-hub { filter: drop-shadow(0 0 22px rgba(217,119,87,.5)); }
-@keyframes aia-hub-pulse {
-    0%,100%{ filter: drop-shadow(0 0 14px rgba(217,119,87,.3)); }
-    50%{ filter: drop-shadow(0 0 26px rgba(217,119,87,.55)); }
-}
-.aia-hub img { width:72px; height:72px; animation: aia-hub-zoom 3.5s ease-in-out infinite; }
-@keyframes aia-hub-zoom { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.18); } }
-.aia-hub-txt { display:none; }
-
-/* satellite node */
-.aia-sat {
-    position:absolute; top:50%; left:50%;
-    transform:rotate(var(--a)) translateY(calc(-1 * var(--r,200px))) rotate(calc(-1 * var(--a))) translate(-50%,-50%);
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-    z-index:4;
-    cursor:pointer;
-}
-@media(max-width:640px){
-    .aia-sat { --r:120px !important; }
-}
-.aia-sat-node {
-    width:56px; height:56px; border-radius:18px;
-    display:flex; align-items:center; justify-content:center;
-    background:var(--c);
-    box-shadow:0 4px 20px color-mix(in srgb,var(--c) 45%,transparent), 0 0 0 0 color-mix(in srgb,var(--c) 30%,transparent);
-    transition:transform 200ms ease, box-shadow 200ms ease;
-    animation: aia-float var(--fd,4s) ease-in-out infinite;
-    animation-delay: var(--fd2,0s);
-}
-@keyframes aia-float {
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-6px); }
-}
-.aia-sat-node svg { width:22px; height:22px; stroke:#fff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-.aia-sat:hover .aia-sat-node {
-    transform:scale(1.12) translateY(-3px);
-    box-shadow:0 8px 28px color-mix(in srgb,var(--c) 55%,transparent);
-}
-.aia-sat-name {
-    font-size:13px; font-weight:800; color:#0f1d2c; white-space:nowrap;
-    text-align:center; letter-spacing:-.01em;
-}
-body.dark-mode .aia-sat-name { color:#e0eaf5; }
-.aia-sat-role {
-    font-size:11px; font-weight:700; color:var(--c); text-transform:uppercase;
-    letter-spacing:.06em; white-space:nowrap; text-align:center; margin-top:-2px;
-}
-@media(max-width:640px){
-    .aia-sat-name { font-size:11px; }
-    .aia-sat-role { font-size:10px; display:block; }
-    .aia-sat-node { width:44px; height:44px; border-radius:13px; }
-    .aia-sat-node svg { width:18px; height:18px; }
-    .aia-hub { width:72px; height:72px; }
-    .aia-hub img { width:52px; height:52px; }
-    .aia-hub-txt { display:none; }
-}
-</style>
-
-<section class="aia-section" id="ai-agents">
-    <div class="aia-noise"></div>
-    <div class="aia-header">
-        <div class="aia-eyebrow">
-            <img src="img/claude-logo.svg" alt="Claude" style="width:18px;height:18px;object-fit:contain;">
-            <span class="aia-eyebrow-dot"></span>
-            <span id="aiBadge">Claude · Anthropic</span>
-        </div>
-        <h2 class="aia-h2" id="aiH2">5 KI-Agenten. <em>80% günstiger</em><br>als eine Agentur.</h2>
-        <p class="aia-sub" id="aiSub">Ich arbeite mit 5 spezialisierten Claude-Agenten von Anthropic — jeder für eine spezifische Aufgabe trainiert. Das garantiert maximale Qualität in Rekordzeit und zum besten Preis.</p>
-    </div>
-
-    <!-- Orbit diagram -->
-    <div class="aia-orbit-scene" id="aiaOrbit">
-        <div class="aia-ring"></div>
-        <svg class="aia-lines" id="aiaLines" viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet"></svg>
-
-        <!-- Hub center -->
-        <div class="aia-hub">
-            <img src="img/claude-logo.svg" alt="Claude">
-        </div>
-
-        <!-- Satellites: rotate(Ndeg) → top, top-right, bottom-right, bottom-left, top-left -->
-        <div class="aia-sat" style="--a:0deg;--r:200px;--c:#5bb8e8;--fd:4.2s;--fd2:0s">
-            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-            <div class="aia-sat-name" id="a1name">Strategy Agent</div>
-            <div class="aia-sat-role" id="a1role">Planung & Konzept</div>
-        </div>
-
-        <div class="aia-sat" style="--a:72deg;--r:200px;--c:#a78bfa;--fd:3.8s;--fd2:.4s">
-            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-            <div class="aia-sat-name" id="a2name">Design Agent</div>
-            <div class="aia-sat-role" id="a2role">UI/UX & Ästhetik</div>
-        </div>
-
-        <div class="aia-sat" style="--a:144deg;--r:200px;--c:#22c55e;--fd:4.5s;--fd2:.8s">
-            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <div class="aia-sat-name" id="a3name">Code Agent</div>
-            <div class="aia-sat-role" id="a3role">Entwicklung & Code</div>
-        </div>
-
-        <div class="aia-sat" style="--a:216deg;--r:200px;--c:#fb923c;--fd:3.6s;--fd2:1.2s">
-            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-            <div class="aia-sat-name" id="a4name">SEO Agent</div>
-            <div class="aia-sat-role" id="a4role">Sichtbarkeit & Ranking</div>
-        </div>
-
-        <div class="aia-sat" style="--a:288deg;--r:200px;--c:#f472b6;--fd:4s;--fd2:1.6s">
-            <div class="aia-sat-node"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-            <div class="aia-sat-name" id="a5name">Content Agent</div>
-            <div class="aia-sat-role" id="a5role">Texte & Kommunikation</div>
-        </div>
-    </div>
-</section>
-
-<script>
-(function(){
-    var aiTrans = {
-        de:{ badge:'Claude · Anthropic', h2:'5 KI-Agenten. <em>80% günstiger</em><br>als eine Agentur.', sub:'Ich arbeite mit 5 spezialisierten Claude-Agenten von Anthropic — jeder für eine spezifische Aufgabe trainiert. Das garantiert maximale Qualität in Rekordzeit und zum besten Preis.', pill:'gegenüber einer<br>klassischen Agentur',
-            a1n:'Strategy Agent',a1r:'Planung & Konzept',
-            a2n:'Design Agent',a2r:'UI/UX & Ästhetik',
-            a3n:'Code Agent',a3r:'Entwicklung & Code',
-            a4n:'SEO Agent',a4r:'Sichtbarkeit & Ranking',
-            a5n:'Content Agent',a5r:'Texte & Kommunikation' },
-        en:{ badge:'Claude · Anthropic', h2:'5 AI Agents. <em>80% cheaper</em><br>than an agency.', sub:'I work with 5 specialized Claude agents from Anthropic — each trained for a specific task. This guarantees maximum quality in record time and at the best price.', pill:'compared to a<br>traditional agency',
-            a1n:'Strategy Agent',a1r:'Planning & Concept',
-            a2n:'Design Agent',a2r:'UI/UX & Aesthetics',
-            a3n:'Code Agent',a3r:'Development & Code',
-            a4n:'SEO Agent',a4r:'Visibility & Ranking',
-            a5n:'Content Agent',a5r:'Texts & Communication' },
-        es:{ badge:'Claude · Anthropic', h2:'5 Agentes IA. <em>80% más baratos</em><br>que una agencia.', sub:'Trabajo con 5 agentes Claude especializados de Anthropic — cada uno entrenado para una tarea específica. Esto garantiza la máxima calidad en tiempo récord y al mejor precio.', pill:'comparado con una<br>agencia tradicional',
-            a1n:'Agente Estrategia',a1r:'Planificación & Concepto',
-            a2n:'Agente Diseño',a2r:'UI/UX & Estética',
-            a3n:'Agente Código',a3r:'Desarrollo & Código',
-            a4n:'Agente SEO',a4r:'Visibilidad & Ranking',
-            a5n:'Agente Contenido',a5r:'Textos & Comunicación' },
-        fr:{ badge:'Claude · Anthropic', h2:'5 Agents IA. <em>80% moins chers</em><br>qu\'une agence.', sub:'Je travaille avec 5 agents Claude spécialisés d\'Anthropic — chacun entraîné pour une tâche spécifique. Cela garantit une qualité maximale en un temps record et au meilleur prix.', pill:'par rapport à une<br>agence traditionnelle',
-            a1n:'Agent Stratégie',a1r:'Planification & Concept',
-            a2n:'Agent Design',a2r:'UI/UX & Esthétique',
-            a3n:'Agent Code',a3r:'Développement & Code',
-            a4n:'Agent SEO',a4r:'Visibilité & Ranking',
-            a5n:'Agent Contenu',a5r:'Textes & Communication' },
-        it:{ badge:'Claude · Anthropic', h2:'5 Agenti IA. <em>80% più economici</em><br>di un\'agenzia.', sub:'Lavoro con 5 agenti Claude specializzati di Anthropic — ognuno addestrato per un compito specifico. Questo garantisce la massima qualità in tempi record e al miglior prezzo.', pill:'rispetto a un\'agenzia<br>tradizionale',
-            a1n:'Agente Strategia',a1r:'Pianificazione & Concept',
-            a2n:'Agente Design',a2r:'UI/UX & Estetica',
-            a3n:'Agente Codice',a3r:'Sviluppo & Codice',
-            a4n:'Agente SEO',a4r:'Visibilità & Ranking',
-            a5n:'Agente Contenuto',a5r:'Testi & Comunicazione' }
-    };
-    var lang=(localStorage.getItem('lweb_lang')||'de').split('-')[0];
-    var t=aiTrans[lang]||aiTrans.de;
-    function s(id,html){var el=document.getElementById(id);if(el)el.innerHTML=html;}
-    s('aiBadge',t.badge);s('aiH2',t.h2);s('aiSub',t.sub);s('aiPillText',t.pill);
-    s('a1name',t.a1n);s('a1role',t.a1r);
-    s('a2name',t.a2n);s('a2role',t.a2r);
-    s('a3name',t.a3n);s('a3role',t.a3r);
-    s('a4name',t.a4n);s('a4role',t.a4r);
-    s('a5name',t.a5n);s('a5role',t.a5r);
-
-    // Draw SVG connector lines from center to each satellite
-    function drawLines(){
-        var scene=document.getElementById('aiaOrbit');
-        var svg=document.getElementById('aiaLines');
-        if(!scene||!svg) return;
-        var sats=scene.querySelectorAll('.aia-sat');
-        var sr=scene.getBoundingClientRect();
-        var cx=sr.width/2, cy=sr.height/2;
-        var scale=sr.width/560;
-        svg.setAttribute('viewBox','0 0 '+sr.width+' '+sr.height);
-        svg.innerHTML='';
-        sats.forEach(function(sat){
-            var r=sat.getBoundingClientRect();
-            var sx=(r.left+r.width/2)-sr.left;
-            var sy=(r.top+r.height/2)-sr.top;
-            var line=document.createElementNS('http://www.w3.org/2000/svg','line');
-            line.setAttribute('x1',cx); line.setAttribute('y1',cy);
-            line.setAttribute('x2',sx); line.setAttribute('y2',sy);
-            line.setAttribute('stroke',getComputedStyle(sat).getPropertyValue('--c').trim()||'#5bb8e8');
-            line.setAttribute('stroke-width','1.5');
-            line.setAttribute('stroke-dasharray','4 4');
-            line.setAttribute('opacity','0.35');
-            svg.appendChild(line);
-        });
-    }
-    setTimeout(drawLines, 200);
-    window.addEventListener('resize', drawLines);
+    var lang=localStorage.getItem('lweb_lang')||(navigator.language||'de').slice(0,2).toLowerCase();
+    var supported=['de','en','es','fr','it'];
+    if(supported.indexOf(lang)===-1) lang='de';
+    if(typeof translations==='undefined'||!translations[lang]) return;
+    var t=translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k])el.textContent=t[k];});
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){var k=el.getAttribute('data-i18n-html');if(t[k])el.innerHTML=t[k];});
 })();
 </script>
 
@@ -1757,6 +1085,29 @@ body.dark-mode .aia-sat-name { color:#e0eaf5; }
             if (t[key]) el.innerHTML = t[key];
         });
     }
+
+    // Blog section translations
+    var blogTrans = {
+        de: { sub:'Insights & Tipps', btn:'Alle Artikel lesen' },
+        en: { sub:'Insights & Tips',  btn:'Read all articles' },
+        es: { sub:'Insights & Consejos', btn:'Leer todos los artículos' },
+        fr: { sub:'Insights & Conseils', btn:'Lire tous les articles' },
+        it: { sub:'Insights & Consigli', btn:'Leggi tutti gli articoli' }
+    };
+    var bl = blogTrans[lang] || blogTrans.de;
+    var bsEl = document.getElementById('blogSectionSub'); if(bsEl) bsEl.textContent = bl.sub;
+    var baEl = document.getElementById('blogAllBtn');     if(baEl) baEl.textContent = bl.btn;
+
+    // Hero subline translation
+    var sublines = {
+        de: 'Ihr <span style="color:var(--begonia400,#fe6c75)">Partner</span> vor Ort',
+        en: 'Your <span style="color:var(--begonia400,#fe6c75)">Partner</span> on site',
+        es: 'Tu <span style="color:var(--begonia400,#fe6c75)">socio</span> local',
+        fr: 'Votre <span style="color:var(--begonia400,#fe6c75)">partenaire</span> sur place',
+        it: 'Il tuo <span style="color:var(--begonia400,#fe6c75)">partner</span> locale'
+    };
+    var subEl = document.getElementById('aboutSubline');
+    if (subEl && sublines[lang]) subEl.innerHTML = sublines[lang];
 
     // CTA section translations
     var ctaTrans = {
