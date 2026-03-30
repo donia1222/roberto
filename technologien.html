@@ -78,10 +78,13 @@
             align-items:center; justify-content:center;
             background: linear-gradient(180deg, #fff 15%, #e8faf3 100%);
             padding: 80px 24px 80px; position: relative; overflow: hidden;
+            
         }
         @media(max-width:1024px){.tw-hero{margin-top:-40px;}}
         .tw-hero-center {
             text-align:center; max-width:780px; margin:0 auto;
+            
+            
         }
         .tw-hero-badge {
             display:inline-flex; align-items:center; gap:8px;
@@ -945,7 +948,7 @@
 
 /* Responsive */
 @media(max-width:600px){
-    .hc-hero{padding:80px 20px 60px;}
+    .hc-hero{padding:80px 20px 60px; margin-top:-40px;}
     .hc-cards{grid-template-columns:1fr; gap:16px;}
     .hc-card{padding:24px 20px;}
     .hc-sub{font-size:16px;}
@@ -963,10 +966,6 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
     <div class="hc-grid-bg"></div>
     <div class="hc-wrap">
 
-        <div class="hc-badge">
-            <span class="hc-badge-dot"></span>
-            <span data-i18n="hc.badge">100% Handgemacht — kein Template-Baukasten</span>
-        </div>
 
         <h1 class="hc-h1">
             <span data-i18n-html="hc.h1">Kein WordPress.<br>Kein Baukasten.<br><span class="hc-accent">Reiner Code.</span></span>
