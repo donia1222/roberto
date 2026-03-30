@@ -216,6 +216,9 @@ var translations = {
         'bk.cta.note': 'Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung',
         'bk.days': 'Mo,Di,Mi,Do,Fr,Sa,So',
         'bk.months': 'Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember',
+        'bk.header.line1': 'Termin',
+        'bk.header.line2': 'vereinbaren',
+        'bk.cta.h2': 'Ihr Projekt direkt vom Entwickler.',
         // Clients Trust
         'clients.title': 'Betriebe, die mir <span style="color:var(--begonia400)">vertrauen</span>',
         'clients.desc': 'Lokale Unternehmen aus Buchs SG, Vaduz und Sevelen, die für ihren Webauftritt auf meine Arbeit setzen.',
@@ -1048,6 +1051,9 @@ var translations = {
         'bk.cta.note': 'Free initial consultation — no strings attached',
         'bk.days': 'Mon,Tue,Wed,Thu,Fri,Sat,Sun',
         'bk.months': 'January,February,March,April,May,June,July,August,September,October,November,December',
+        'bk.header.line1': 'Book an',
+        'bk.header.line2': 'Appointment',
+        'bk.cta.h2': 'Your project directly from the developer.',
         // Clients Trust
         'clients.title': 'Businesses that <span style="color:var(--begonia400)">trust me</span>',
         'clients.desc': 'Local companies from Buchs SG, Vaduz and Sevelen who rely on my work for their web presence.',
@@ -1981,6 +1987,9 @@ var translations = {
         'bk.cta.note': 'Consulta inicial gratuita — sin compromiso',
         'bk.days': 'Lun,Mar,Mié,Jue,Vie,Sáb,Dom',
         'bk.months': 'Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre',
+        'bk.header.line1': 'Reservar',
+        'bk.header.line2': 'una cita',
+        'bk.cta.h2': 'Tu proyecto directamente del desarrollador.',
         // Clients Trust
         'clients.title': 'Empresas que <span style="color:var(--begonia400)">confían en mí</span>',
         'clients.desc': 'Empresas locales de Buchs SG, Vaduz y Sevelen que confían en mi trabajo para su presencia web.',
@@ -2914,6 +2923,9 @@ var translations = {
         'bk.cta.note': 'Consultation initiale gratuite — sans engagement',
         'bk.days': 'Lun,Mar,Mer,Jeu,Ven,Sam,Dim',
         'bk.months': 'Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre',
+        'bk.header.line1': 'Prendre',
+        'bk.header.line2': 'rendez-vous',
+        'bk.cta.h2': 'Votre projet directement du développeur.',
         // Clients Trust
         'clients.title': 'Entreprises qui me <span style="color:var(--begonia400)">font confiance</span>',
         'clients.desc': 'Des entreprises locales de Buchs SG, Vaduz et Sevelen qui s\'appuient sur mon travail pour leur présence web.',
@@ -3847,6 +3859,9 @@ var translations = {
         'bk.cta.note': 'Prima consulenza gratuita — senza impegno',
         'bk.days': 'Lun,Mar,Mer,Gio,Ven,Sab,Dom',
         'bk.months': 'Gennaio,Febbraio,Marzo,Aprile,Maggio,Giugno,Luglio,Agosto,Settembre,Ottobre,Novembre,Dicembre',
+        'bk.header.line1': 'Prenota',
+        'bk.header.line2': 'appuntamento',
+        'bk.cta.h2': 'Il tuo progetto direttamente dallo sviluppatore.',
         // Clients Trust
         'clients.title': 'Aziende che si <span style="color:var(--begonia400)">fidano di me</span>',
         'clients.desc': 'Aziende locali da Buchs SG, Vaduz e Sevelen che affidano a me il loro sito web.',

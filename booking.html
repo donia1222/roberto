@@ -234,8 +234,8 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </a>
         <div class="header-title" id="headerTitle">
-            <span>Termin</span>
-            <span class="accent">vereinbaren</span>
+            <span data-i18n="bk.header.line1">Termin</span>
+            <span class="accent" data-i18n="bk.header.line2">vereinbaren</span>
         </div>
         <nav class="header-nav" aria-label="Hauptnavigation">
             <div class="header-nav-dropdown">
@@ -365,13 +365,13 @@
     </div>
 
     <!-- RIGHT FORM -->
-    <div class="bk-card">
+    <div class="bk-info">
         <div class="bk-prog"><div class="bk-prog-bar" id="bkBar" style="width:0%"></div></div>
 
         <div class="bk-head">
             <div class="bk-step-lbl" id="bkStepLbl"></div>
-            <div class="bk-title" id="bkTitle">Service wählen</div>
-            <div class="bk-sub" id="bkSub">Für welches Thema möchten Sie einen Termin?</div>
+            <div class="bk-title" id="bkTitle" data-i18n="bk.step1.title">Service wählen</div>
+            <div class="bk-sub" id="bkSub" data-i18n="bk.step1.sub">Für welches Thema möchten Sie einen Termin?</div>
         </div>
 
         <div class="bk-body">
@@ -712,22 +712,22 @@ document.getElementById('bkChoiceOverlay').style.display='none';
             <div class="trust-stat">
                 <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
                 <div class="trust-stat-number" data-target="6" data-suffix="+">0</div>
-                <div class="trust-stat-label">Jahre Erfahrung</div>
+                <div class="trust-stat-label" data-i18n="trust.label1">Jahre Erfahrung</div>
             </div>
             <div class="trust-stat">
                 <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
                 <div class="trust-stat-number" data-target="20" data-suffix="+">0</div>
-                <div class="trust-stat-label">Apps entwickelt</div>
+                <div class="trust-stat-label" data-i18n="trust.label2">Apps entwickelt</div>
             </div>
             <div class="trust-stat">
                 <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
                 <div class="trust-stat-number" data-target="7" data-suffix="">0</div>
-                <div class="trust-stat-label">Apps im App Store</div>
+                <div class="trust-stat-label" data-i18n="trust.label3">Apps im App Store</div>
             </div>
             <div class="trust-stat">
                 <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
                 <div class="trust-stat-number" data-target="50" data-suffix="+">0</div>
-                <div class="trust-stat-label">Websites online</div>
+                <div class="trust-stat-label" data-i18n="trust.label4">Websites online</div>
             </div>
         </div>
     </div>
@@ -770,12 +770,12 @@ document.getElementById('bkChoiceOverlay').style.display='none';
 <section class="bk-cta">
     <div class="bk-cta-wrap">
         <div class="bk-cta-label" data-i18n="bk.cta.label">Ihr Projekt starten</div>
-        <h2>Ihr Projekt <span>direkt vom Entwickler.</span></h2>
+        <h2 data-i18n="bk.cta.h2">Ihr Projekt direkt vom Entwickler.</h2>
         <p data-i18n="bk.cta.desc">Von der Landingpage bis zur mobilen App. Persönlich beraten aus Buchs SG — faire Preise, schnelle Umsetzung.</p>
         <div class="bk-cta-btns">
             <button onclick="downloadVCard()" class="gbcta gbcta--primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Visitenkarte speichern
+                <span data-i18n="footer.vcard">Visitenkarte speichern</span>
             </button>
         </div>
         <div class="bk-cta-note">
@@ -799,6 +799,9 @@ document.getElementById('bkChoiceOverlay').style.display='none';
     document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k])el.textContent=t[k];});
     // Placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var k=el.getAttribute('data-i18n-ph');if(t[k])el.placeholder=t[k];});
+    // Step label init (needed for all languages)
+    var stepLbl=document.getElementById('bkStepLbl');
+    if(stepLbl&&t['bk.step.of']) stepLbl.textContent=t['bk.step.of'].replace('{n}','1');
     if(lang==='de')return;
     // Update JS arrays for dynamic content
     if(t['bk.days']) window.DAYS=t['bk.days'].split(',');
