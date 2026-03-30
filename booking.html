@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Termin vereinbaren | Lweb</title>
+    <meta name="description" content="Kostenloses Beratungsgespräch mit Lweb — 30 Minuten, keine Verpflichtung.">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { padding-top: 104px; background: #f4f6f9; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        body.dark-mode { background: #1a1f2e; }
+
+        /* ── PAGE WRAP ── */
+        .bk-page { max-width: 960px; margin: 0 auto; padding: 36px 16px 60px; display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; }
+        @media(max-width: 720px) { .bk-page { grid-template-columns: 1fr; padding: 20px 12px 48px; } }
+
+        /* ── LEFT INFO CARD ── */
+        .bk-info { background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #e8ecf0; }
+        body.dark-mode .bk-info { background: #1e2536; border-color: #2d3548; }
+
+        .bk-info-logo { width: 80px; height: 80px; margin-bottom: 16px; }
+        .bk-info-name { font-size: 20px; font-weight: 800; color: #0f1d2c; letter-spacing: -.03em; margin-bottom: 3px; }
+        body.dark-mode .bk-info-name { color: #f1f5f9; }
+        .bk-info-role { font-size: 13px; color: #6b7280; margin-bottom: 18px; }
+        body.dark-mode .bk-info-role { color: #94a3b8; }
+
+        .bk-badge { display: inline-flex; align-items: center; gap: 7px; background: #f0fdf4; color: #16a34a; font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+        body.dark-mode .bk-badge { background: rgba(34,197,94,.1); color: #4ade80; }
+        .bk-badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: bdot 2s infinite; }
+        @keyframes bdot { 0%,100%{opacity:1}50%{opacity:.3} }
+
+        .bk-info-list { display: flex; flex-direction: column; gap: 11px; margin-bottom: 22px; }
+        .bk-info-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #374151; }
+        body.dark-mode .bk-info-row { color: #c8d5e3; }
+        .bk-info-row svg { color: #fe6c75; flex-shrink: 0; }
+
+        .bk-divider { height: 1px; background: #f1f5f9; margin: 18px 0; }
+        body.dark-mode .bk-divider { background: #2d3548; }
+
+        .bk-perks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+        .bk-perks li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: #374151; line-height: 1.5; }
+        body.dark-mode .bk-perks li { color: #c8d5e3; }
+        .bk-perks li::before { content: '✓'; width: 20px; height: 20px; background: #fff5f5; color: #fe6c75; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+        body.dark-mode .bk-perks li::before { background: rgba(254,108,117,.12); }
+
+        .bk-call { margin-top: 18px; background: #f8fafc; border-radius: 12px; padding: 14px; border: 1px solid #e8ecf0; text-align: center; }
+        body.dark-mode .bk-call { background: #111827; border-color: #2d3548; }
+        .bk-call p { font-size: 12px; color: #6b7280; margin-bottom: 10px; }
+        body.dark-mode .bk-call p { color: #94a3b8; }
+        .bk-call a { display: inline-flex; align-items: center; gap: 7px; background: #0f1d2c; color: #fff; padding: 9px 18px; border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 150ms; }
+        body.dark-mode .bk-call a { background: #2d3548; }
+        .bk-call a:hover { background: #fe6c75; }
+
+        /* ── RIGHT FORM CARD ── */
+        .bk-card { background: #fff; border-radius: 16px; border: 1px solid #e8ecf0; overflow: hidden; }
+        body.dark-mode .bk-card { background: #1e2536; border-color: #2d3548; }
+
+        .bk-prog { height: 3px; background: #f1f5f9; }
+        body.dark-mode .bk-prog { background: #2d3548; }
+        .bk-prog-bar { height: 100%; background: #fe6c75; border-radius: 2px; transition: width 350ms ease; }
+
+        .bk-head { padding: 24px 24px 0; }
+        .bk-step-lbl { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fe6c75; margin-bottom: 6px; }
+        .bk-title { font-size: 21px; font-weight: 800; color: #0f1d2c; margin-bottom: 4px; letter-spacing: -.025em; }
+        body.dark-mode .bk-title { color: #f1f5f9; }
+        .bk-sub { font-size: 15px; color: #6b7280; line-height: 1.5; }
+        body.dark-mode .bk-sub { color: #94a3b8; }
+
+        .bk-body { padding: 20px 24px 8px; }
+
+        /* Steps */
+        .bk-step { display: none; }
+        .bk-step.active { display: block; animation: bkIn .22s ease; }
+        @keyframes bkIn { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Service cards */
+        .bk-svcs { display: grid; gap: 8px; margin-top: 10px; }
+        .bk-svc { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 2px solid #e8ecf0; border-radius: 12px; background: #fff; cursor: pointer; text-align: left; width: 100%; transition: all 140ms; font-family: inherit; }
+        body.dark-mode .bk-svc { background: #1e2536; border-color: #2d3548; }
+        .bk-svc:hover { border-color: #fe6c75; background: #fff8f8; }
+        body.dark-mode .bk-svc:hover { background: #1a2030; }
+        .bk-svc.sel { border-color: #fe6c75; background: #fff5f5; box-shadow: 0 0 0 3px rgba(254,108,117,.1); }
+        body.dark-mode .bk-svc.sel { background: rgba(254,108,117,.08); }
+        .bk-svc-ico { font-size: 21px; width: 38px; height: 38px; background: #f8fafc; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 140ms; color: #fe6c75; }
+        body.dark-mode .bk-svc-ico { background: #111827; color: #fe6c75; }
+        .bk-svc.sel .bk-svc-ico { background: #fe6c75; color: #fff; }
+        .bk-svc-info strong { display: block; font-size: 15px; font-weight: 700; color: #0f1d2c; }
+        body.dark-mode .bk-svc-info strong { color: #f1f5f9; }
+        .bk-svc-info span { font-size: 13px; color: #9ca3af; }
+        .bk-svc-chk { margin-left: auto; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #e2e8f0; flex-shrink: 0; transition: all 140ms; display: flex; align-items: center; justify-content: center; color: transparent; }
+        body.dark-mode .bk-svc-chk { border-color: #4b5563; }
+        .bk-svc.sel .bk-svc-chk { background: #fe6c75; border-color: #fe6c75; color: #fff; }
+
+        /* Calendar */
+        .bk-cal-nav { display: flex; align-items: center; justify-content: space-between; margin: 12px 0 10px; }
+        .bk-cal-month { font-size: 15px; font-weight: 800; color: #0f1d2c; }
+        body.dark-mode .bk-cal-month { color: #f1f5f9; }
+        .bk-cal-arr { background: #f8fafc; border: 1.5px solid #e8ecf0; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #555; transition: all 140ms; }
+        body.dark-mode .bk-cal-arr { background: #111827; border-color: #2d3548; color: #94a3b8; }
+        .bk-cal-arr:hover { border-color: #fe6c75; color: #fe6c75; }
+        .bk-cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+        .bk-cal-dow { font-size: 10px; font-weight: 700; color: #9ca3af; text-align: center; padding: 5px 0; text-transform: uppercase; }
+        .bk-cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: none; color: #0f1d2c; transition: all 120ms; font-family: inherit; }
+        body.dark-mode .bk-cal-day { color: #e2e8f0; }
+        .bk-cal-day:hover:not(.bk-off) { background: #fff5f5; color: #fe6c75; font-weight: 700; }
+        body.dark-mode .bk-cal-day:hover:not(.bk-off) { background: rgba(254,108,117,.1); }
+        .bk-cal-day.bk-today { color: #fe6c75; font-weight: 800; box-shadow: inset 0 0 0 1.5px #fe6c75; border-radius: 8px; }
+        .bk-cal-day.bk-today.bk-picked { box-shadow: none; }
+        .bk-cal-day.bk-picked { background: #fe6c75 !important; color: #fff !important; font-weight: 700; }
+        .bk-cal-day.bk-off { color: #d1d5db; cursor: default; pointer-events: none; }
+        body.dark-mode .bk-cal-day.bk-off { color: #374151; }
+        .bk-cal-day.bk-empty { pointer-events: none; }
+
+        /* Slots */
+        .bk-slots-wrap { margin-top: 16px; }
+        .bk-slots-lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #6b7280; margin-bottom: 9px; }
+        body.dark-mode .bk-slots-lbl { color: #94a3b8; }
+        .bk-slots { display: flex; flex-wrap: wrap; gap: 7px; }
+        .bk-slot { padding: 7px 14px; border: 1.5px solid #e8ecf0; border-radius: 100px; font-size: 13px; font-weight: 600; color: #374151; cursor: pointer; background: #fff; transition: all 140ms; font-family: inherit; }
+        body.dark-mode .bk-slot { background: #111827; border-color: #2d3548; color: #94a3b8; }
+        .bk-slot:hover { border-color: #fe6c75; color: #fe6c75; background: #fff8f8; }
+        body.dark-mode .bk-slot:hover { background: #1a2030; }
+        .bk-slot.sel { background: #fe6c75; border-color: #fe6c75; color: #fff; }
+        .bk-slot.taken { background: #f8fafc; border-color: #f1f5f9; color: #c4cdd6; cursor: not-allowed; pointer-events: none; text-decoration: line-through; }
+        body.dark-mode .bk-slot.taken { background: #111827; border-color: #1e2536; color: #374151; }
+        .bk-slots-hint { font-size: 13px; color: #9ca3af; padding: 4px 0; }
+
+        /* Inputs */
+        .bk-field { margin-bottom: 13px; }
+        .bk-field label { display: block; font-size: 12px; font-weight: 700; color: #374151; margin-bottom: 5px; letter-spacing: .01em; }
+        body.dark-mode .bk-field label { color: #c8d5e3; }
+        .bk-field input, .bk-field textarea { width: 100%; padding: 10px 13px; border: 1.5px solid #e8ecf0; border-radius: 10px; font-size: 14px; color: #0f1d2c; background: #fff; outline: none; transition: border-color 140ms; font-family: inherit; }
+        body.dark-mode .bk-field input, body.dark-mode .bk-field textarea { background: #111827; border-color: #2d3548; color: #e2e8f0; }
+        .bk-field input:focus, .bk-field textarea:focus { border-color: #fe6c75; box-shadow: 0 0 0 3px rgba(254,108,117,.08); }
+        .bk-field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+        .bk-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media(max-width:420px) { .bk-grid2 { grid-template-columns: 1fr; } }
+
+        /* Buttons */
+        .bk-footer { padding: 12px 24px 20px; display: flex; gap: 10px; justify-content: flex-end; }
+        .bk-btn { height: 44px; padding: 0 22px; border-radius: 100px; border: none; cursor: pointer; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: all 170ms; font-family: inherit; }
+        .bk-btn-ghost { background: #f8fafc; border: 1.5px solid #e8ecf0; color: #555; }
+        body.dark-mode .bk-btn-ghost { background: #2d3548; border-color: #374151; color: #c8d5e3; }
+        .bk-btn-ghost:hover { border-color: #bbb; color: #111; }
+        body.dark-mode .bk-btn-ghost:hover { border-color: #94a3b8; color: #f1f5f9; }
+        .bk-btn-primary { background: #fe6c75; color: #fff; box-shadow: 0 4px 14px rgba(254,108,117,.3); }
+        .bk-btn-primary:hover { background: #ff8a91; transform: translateY(-1px); }
+        .bk-btn-primary:disabled { background: #f1a0a5; box-shadow: none; cursor: not-allowed; transform: none; }
+
+        /* Error */
+        .bk-err { font-size: 12px; color: #dc2626; margin-top: 7px; padding: 6px 10px; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca; display: none; }
+        body.dark-mode .bk-err { background: rgba(220,38,38,.1); border-color: rgba(220,38,38,.25); color: #f87171; }
+        .bk-err.show { display: block; }
+
+        /* Confirmation */
+        .bk-confirm { text-align: center; padding: 12px 0 16px; }
+        .bk-confirm-icon { width: 68px; height: 68px; background: linear-gradient(135deg,#fe6c75,#ff9a9e); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; animation: bkPop .45s cubic-bezier(.34,1.56,.64,1); }
+        @keyframes bkPop { from{transform:scale(0)}to{transform:scale(1)} }
+        .bk-confirm-title { font-size: 20px; font-weight: 800; color: #0f1d2c; margin-bottom: 6px; }
+        body.dark-mode .bk-confirm-title { color: #f1f5f9; }
+        .bk-confirm-text { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.6; }
+        body.dark-mode .bk-confirm-text { color: #94a3b8; }
+        .bk-summary { background: #f8fafc; border-radius: 12px; padding: 16px; text-align: left; border: 1px solid #e8ecf0; }
+        body.dark-mode .bk-summary { background: #111827; border-color: #2d3548; }
+        .bk-sum-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
+        body.dark-mode .bk-sum-row { border-bottom-color: #1e2536; }
+        .bk-sum-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .bk-sum-key { font-weight: 700; color: #374151; min-width: 68px; flex-shrink: 0; }
+        body.dark-mode .bk-sum-key { color: #c8d5e3; }
+        .bk-sum-val { color: #6b7280; }
+        body.dark-mode .bk-sum-val { color: #94a3b8; }
+        .bk-home-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: color 150ms; }
+        .bk-home-link:hover { color: #fe6c75; }
+
+        @keyframes bkShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+        /* Show home icon on mobile too */
+        .header-back-desktop { display:flex!important; }
+
+        /* Header title */
+        .header-inner { position: relative; }
+        .header-title {
+            display: flex; flex-direction: column; gap: 0; align-items: flex-start; line-height: 1.1;
+            position: absolute; left: 90px; top: 50%; transform: translateY(-50%);
+        }
+        .header-title span:first-child { font-size: 14px; font-weight: 700; color: #0f1d2c; letter-spacing: -.02em; }
+        body.dark-mode .header-title span:first-child { color: #f1f5f9; }
+        .header-title .accent { font-size: 12px; font-weight: 700; color: #fe6c75; }
+        @media (min-width: 1025px) {
+            .header-title span:first-child { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+            .header-title .accent { font-size: 15px; font-weight: 800; color: #fe6c75; }
+        }
+
+        /* Nav — centered */
+        .header-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+        @media(max-width: 1024px) { .header-nav { display: none; } }
+
+        /* WhatsApp/Email choice modal */
+        .bk-choice-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:flex-end;justify-content:center;padding:0 0 env(safe-area-inset-bottom,0)}
+        .bk-choice-box{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:28px 24px 36px;animation:slideUp .3s ease}
+        body.dark-mode .bk-choice-box{background:#1e2536}
+        @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+        .bk-choice-title{font-size:16px;font-weight:800;color:#0f1d2c;margin-bottom:6px;letter-spacing:-.02em}
+        body.dark-mode .bk-choice-title{color:#f1f5f9}
+        .bk-choice-sub{font-size:13px;color:#6b7280;margin-bottom:20px}
+        body.dark-mode .bk-choice-sub{color:#94a3b8}
+        .bk-choice-btn{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid #e8ecf0;background:#fff;cursor:pointer;font-family:inherit;margin-bottom:10px;transition:all 150ms;text-align:left}
+        body.dark-mode .bk-choice-btn{background:#111827;border-color:#2d3548}
+        .bk-choice-btn:hover{border-color:#fe6c75;background:#fff8f8}
+        body.dark-mode .bk-choice-btn:hover{background:#1a2030}
+        .bk-choice-btn--wa:hover{border-color:#25d366;background:#f0fdf4}
+        .bk-choice-btn-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .bk-choice-btn--wa .bk-choice-btn-ico{background:#f0fdf4;color:#25d366}
+        .bk-choice-btn--email .bk-choice-btn-ico{background:#fff5f5;color:#fe6c75}
+        .bk-choice-btn strong{display:block;font-size:14px;font-weight:700;color:#0f1d2c}
+        body.dark-mode .bk-choice-btn strong{color:#f1f5f9}
+        .bk-choice-btn span{font-size:12px;color:#9ca3af}
+        .bk-choice-cancel{display:block;width:100%;text-align:center;padding:10px;font-size:13px;color:#9ca3af;background:none;border:none;cursor:pointer;font-family:inherit;margin-top:2px}
+        .bk-choice-cancel:hover{color:#fe6c75}
+    </style>
+</head>
+<body>
+<script>if(localStorage.getItem('darkMode')==='true')document.body.classList.add('dark-mode');</script>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════ -->
+<header class="header">
+    <div class="header-inner">
+        <a href="#" onclick="event.preventDefault();history.back();" class="header-icon-btn header-back-desktop" aria-label="Zurück">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <div class="header-title" id="headerTitle">
+            <span>Termin</span>
+            <span class="accent">vereinbaren</span>
+        </div>
+        <nav class="header-nav" aria-label="Hauptnavigation">
+            <div class="header-nav-dropdown">
+                <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="header-nav-sub-menu">
+                    <a href="desarrollo.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/><line x1="12" y1="6" x2="12" y2="14"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.services.dev">Entwicklung</span><small class="header-nav-sub-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                    <a href="leistungen-ki.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.services.ki">KI-Integration</span><small class="header-nav-sub-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                    <a href="leistungen-support.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.services.support">Beratung &amp; Support</span><small class="header-nav-sub-hint" data-i18n="nav.services.support.hint">Beratung, Planung &amp; langfristiger Support</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                </div>
+            </div>
+            <div class="header-nav-dropdown">
+                <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="header-nav-sub-menu">
+                    <a href="apps-publicadas.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="header-nav-sub-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                    <a href="extensions-apps.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.apps.create">App erstellen</span><small class="header-nav-sub-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                </div>
+            </div>
+            <div class="header-nav-dropdown">
+                <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.websites">Websites</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <div class="header-nav-sub-menu">
+                    <a href="webs-publicadas.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.websites.published">Projekte</span><small class="header-nav-sub-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                    <a href="tienda-online.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                    <a href="templates-web.html" class="header-nav-sub header-nav-sub--custom">
+                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
+                        <span class="nav-banner-text"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="header-nav-sub-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></span>
+                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+                    </a>
+                </div>
+            </div>
+            <a href="index.html#techstack" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
+            <a href="index.html#about" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
+            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="tel:+41765608645" class="header-icon-btn header-icon-btn--primary" aria-label="Anrufen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-panel-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="nav.back.main">Hauptmenü</span>
+    </a>
+    <nav class="mobile-menu-nav">
+        <a href="booking.html" class="mobile-menu-link mobile-menu-link--custom active"><span>Termin vereinbaren</span><small class="mobile-menu-link-hint">Kostenlose Beratung buchen</small></a>
+        <a href="index.html#contact" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.contact">Kontakt</span></a>
+    </nav>
+    <div class="mobile-menu-footer">
+        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    </div>
+</div>
+
+<!-- ═══ PAGE CONTENT ═══════════════════════════════════ -->
+<div class="bk-page">
+
+    <!-- LEFT INFO -->
+    <div class="bk-info">
+        <div class="bk-info-logo">
+            <img src="img/logolweb.png" alt="Lweb Logo" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <div class="bk-info-name">Lweb <span style="font-size:13px;font-weight:700;color:#fe6c75;letter-spacing:-.01em;">Schweiz 🇨🇭</span></div>
+        <div class="bk-info-role" data-i18n="bk.role">Web & App Entwicklung</div>
+        <div class="bk-badge">
+            <span class="bk-badge-dot"></span>
+            <span data-i18n="bk.badge">Kostenlose Beratung · 30 Min</span>
+        </div>
+        <div class="bk-info-list">
+            <div class="bk-info-row">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="bk.duration">30 Minuten · Keine Verpflichtung</span>
+            </div>
+            <div class="bk-info-row">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span data-i18n="bk.hours">Mo – Fr, 09:00 – 18:00 Uhr</span>
+            </div>
+            <div class="bk-info-row">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Sevelen / Buchs SG
+            </div>
+            <div class="bk-info-row" style="margin-top:4px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.95 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <a href="tel:+41765608645" style="color:#5b9bd5;text-decoration:none;font-weight:600;">+41 76 560 86 45</a>
+            </div>
+        </div>
+        <div class="bk-divider"></div>
+        <ul class="bk-perks">
+            <li data-i18n="bk.perk1">Persönliche Beratung zu Ihrem Projekt</li>
+            <li data-i18n="bk.perk2">Individuelle Angebotserstellung</li>
+            <li data-i18n="bk.perk3">Antwort innerhalb von 24 Stunden</li>
+        </ul>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="bk-card">
+        <div class="bk-prog"><div class="bk-prog-bar" id="bkBar" style="width:0%"></div></div>
+
+        <div class="bk-head">
+            <div class="bk-step-lbl" id="bkStepLbl"></div>
+            <div class="bk-title" id="bkTitle">Service wählen</div>
+            <div class="bk-sub" id="bkSub">Für welches Thema möchten Sie einen Termin?</div>
+        </div>
+
+        <div class="bk-body">
+
+            <!-- Step 1: Service -->
+            <div class="bk-step active" id="bkS1">
+                <div class="bk-svcs">
+                    <button class="bk-svc" onclick="pickSvc(0)">
+                        <div class="bk-svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                        <div class="bk-svc-info"><strong data-i18n="bk.svc0.name">Website / Webseite</strong><span data-i18n="bk.svc0.desc">Landing Page, Firmenseite, Online-Shop</span></div>
+                        <div class="bk-svc-chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    </button>
+                    <button class="bk-svc" onclick="pickSvc(1)">
+                        <div class="bk-svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                        <div class="bk-svc-info"><strong data-i18n="bk.svc1.name">Mobile App</strong><span data-i18n="bk.svc1.desc">iOS & Android, React Native</span></div>
+                        <div class="bk-svc-chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    </button>
+                    <button class="bk-svc" onclick="pickSvc(2)">
+                        <div class="bk-svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                        <div class="bk-svc-info"><strong data-i18n="bk.svc2.name">KI-Chatbot / Automation</strong><span data-i18n="bk.svc2.desc">Chatbot, Automatisierung, KI-Lösungen</span></div>
+                        <div class="bk-svc-chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    </button>
+                    <button class="bk-svc" onclick="pickSvc(3)">
+                        <div class="bk-svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <div class="bk-svc-info"><strong data-i18n="bk.svc3.name">Kostenlose Beratung</strong><span data-i18n="bk.svc3.desc">Allgemeines Erstgespräch</span></div>
+                        <div class="bk-svc-chk"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    </button>
+                </div>
+                <div class="bk-err" id="bkErrSvc" data-i18n="bk.err.svc">Bitte wählen Sie einen Service aus.</div>
+            </div>
+
+            <!-- Step 2: Date & Time -->
+            <div class="bk-step" id="bkS2">
+                <div class="bk-cal-nav">
+                    <button class="bk-cal-arr" onclick="calPrev()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <div class="bk-cal-month" id="bkCalMonth"></div>
+                    <button class="bk-cal-arr" onclick="calNext()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+                <div class="bk-cal-grid" id="bkCalDow"></div>
+                <div class="bk-cal-grid" id="bkCalDays" style="margin-top:3px"></div>
+                <div class="bk-slots-wrap">
+                    <div class="bk-slots-lbl" id="bkSlotsLbl">— Uhrzeit —</div>
+                    <div class="bk-slots" id="bkSlots"></div>
+                </div>
+                <div class="bk-err" id="bkErrDate" data-i18n="bk.err.date">Bitte wählen Sie Datum und Uhrzeit aus.</div>
+            </div>
+
+            <!-- Step 3: Contact -->
+            <div class="bk-step" id="bkS3">
+                <div class="bk-grid2">
+                    <div class="bk-field">
+                        <label data-i18n="bk.label.name">Ihr Name *</label>
+                        <input type="text" id="bkName" autocomplete="name" placeholder="Max Mustermann" data-i18n-ph="bk.ph.name">
+                    </div>
+                    <div class="bk-field">
+                        <label data-i18n="bk.label.email">E-Mail *</label>
+                        <input type="email" id="bkEmail" autocomplete="email" placeholder="max@beispiel.ch">
+                    </div>
+                </div>
+                <div class="bk-field">
+                    <label data-i18n="bk.label.phone">Telefon (optional)</label>
+                    <input type="tel" id="bkPhone" autocomplete="tel" placeholder="+41 79 000 00 00">
+                </div>
+                <div class="bk-field">
+                    <label data-i18n="bk.label.project">Ihr Projekt (optional)</label>
+                    <textarea id="bkMsg" rows="3" placeholder="Kurze Beschreibung…" data-i18n-ph="bk.ph.project"></textarea>
+                </div>
+                <div class="bk-err" id="bkErrContact" data-i18n="bk.err.contact">Bitte füllen Sie Name und E-Mail aus.</div>
+            </div>
+
+            <!-- Step 4: Confirm -->
+            <div class="bk-step" id="bkS4">
+                <div class="bk-confirm">
+                    <div class="bk-confirm-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="bk-confirm-title" data-i18n="bk.confirm.title">Termin angefragt! 🎉</div>
+                    <div class="bk-confirm-text" data-i18n="bk.confirm.text">Ich melde mich innerhalb von 24 Stunden bei Ihnen.</div>
+                    <div class="bk-summary" id="bkSummary"></div>
+                    <a href="index.html" class="bk-home-link">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span data-i18n="bk.home">Zur Startseite</span>
+                    </a>
+                </div>
+            </div>
+
+        </div><!-- /bk-body -->
+
+        <div class="bk-footer" id="bkFooter">
+            <button class="bk-btn bk-btn-ghost" id="bkBtnBack" onclick="goBack()" style="display:none"><span data-i18n="bk.back">Zurück</span></button>
+            <button class="bk-btn bk-btn-primary" id="bkBtnNext" onclick="goNext()">
+                Weiter
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </div>
+
+</div><!-- /bk-page -->
+
+<script>
+var DAYS   = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+var MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+var SLOTS  = ['09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+var SVC_NAMES = ['Website / Webseite','Mobile App (iOS & Android)','KI-Chatbot / Automation','Kostenlose Beratung'];
+
+var state = { step:1, svc:-1, date:null, time:null, calY:new Date().getFullYear(), calM:new Date().getMonth() };
+var reserved = [];
+
+fetch('https://web.lweb.ch/remail/?t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(d){reserved=d.reserved||[];})
+    .catch(function(){reserved=[];});
+function isRes(date,time){return reserved.some(function(r){return r.date===date&&r.time===time;});}
+function pad(n){return String(n).padStart(2,'0');}
+
+/* ── Service ── */
+function pickSvc(i){
+    state.svc=i;
+    document.querySelectorAll('.bk-svc').forEach(function(b,idx){b.classList.toggle('sel',idx===i);});
+    document.getElementById('bkErrSvc').classList.remove('show');
+}
+
+/* ── Calendar ── */
+function renderCal(){
+    var now=new Date(), y=state.calY, m=state.calM;
+    document.getElementById('bkCalMonth').textContent=MONTHS[m]+' '+y;
+    document.getElementById('bkCalDow').innerHTML=DAYS.map(function(d){return '<div class="bk-cal-dow">'+d+'</div>';}).join('');
+    var first=new Date(y,m,1), firstDow=(first.getDay()+6)%7, dim=new Date(y,m+1,0).getDate();
+    var html='';
+    for(var i=0;i<firstDow;i++) html+='<div class="bk-cal-day bk-empty"></div>';
+    for(var d=1;d<=dim;d++){
+        var dt=new Date(y,m,d), dow=dt.getDay();
+        var isWE=dow===0||dow===6;
+        var isPast=dt<new Date(now.getFullYear(),now.getMonth(),now.getDate());
+        var isToday=dt.toDateString()===now.toDateString();
+        var ds=y+'-'+pad(m+1)+'-'+pad(d);
+        var allFull=!isWE&&!isPast&&SLOTS.every(function(s){return isRes(ds,s);});
+        var isPicked=state.date===ds;
+        var cls='bk-cal-day';
+        if(isWE||isPast||allFull) cls+=' bk-off';
+        if(isToday&&!allFull&&!isPicked) cls+=' bk-today';
+        if(isPicked) cls+=' bk-picked';
+        html+='<button class="'+cls+'" onclick="pickDate(\''+ds+'\')">'+d+'</button>';
+    }
+    document.getElementById('bkCalDays').innerHTML=html;
+    renderSlots();
+}
+function renderSlots(){
+    var sl=document.getElementById('bkSlots'), lb=document.getElementById('bkSlotsLbl');
+    if(!state.date){sl.innerHTML='<div class="bk-slots-hint">'+(window.BK_SLOTS_HINT||'Bitte zuerst ein Datum wählen')+'</div>';lb.textContent='— Uhrzeit —';return;}
+    var p=state.date.split('-').map(Number), dateObj=new Date(p[0],p[1]-1,p[2]);
+    lb.textContent=DAYS[(dateObj.getDay()+6)%7]+', '+p[2]+'. '+MONTHS[p[1]-1];
+    sl.innerHTML=SLOTS.map(function(s){
+        var taken=isRes(state.date,s), sel=state.time===s;
+        return '<button class="bk-slot'+(taken?' taken':sel?' sel':'')+'"'+(taken?'':' onclick="pickTime(\''+s+'\')"')+'>'+s+'</button>';
+    }).join('');
+}
+function pickDate(ds){state.date=ds;state.time=null;renderCal();document.getElementById('bkErrDate').classList.remove('show');}
+function pickTime(t){state.time=t;renderSlots();document.getElementById('bkErrDate').classList.remove('show');}
+function calPrev(){state.calM--;if(state.calM<0){state.calM=11;state.calY--;}renderCal();}
+function calNext(){state.calM++;if(state.calM>11){state.calM=0;state.calY++;}renderCal();}
+
+/* ── Steps ── */
+var TITLES=['','Service wählen','Datum & Uhrzeit','Kontaktdaten','Bestätigung'];
+var SUBS=['','Für welches Thema möchten Sie einen Termin?','Wählen Sie einen freien Termin aus.','Wie soll ich Sie erreichen?',''];
+
+function toStep(n){
+    document.getElementById('bkS'+state.step).classList.remove('active');
+    state.step=n;
+    document.getElementById('bkS'+n).classList.add('active');
+    document.getElementById('bkBar').style.width=(n===4?100:Math.round((n-1)/3*100))+'%';
+    document.getElementById('bkStepLbl').textContent=n<4?(window.BK_STEP_OF||'Schritt {n} von 3').replace('{n}',n):'';
+    document.getElementById('bkTitle').textContent=TITLES[n];
+    document.getElementById('bkSub').textContent=SUBS[n];
+    var footer=document.getElementById('bkFooter');
+    var btnB=document.getElementById('bkBtnBack');
+    var btnN=document.getElementById('bkBtnNext');
+    if(n===4){footer.style.display='none';return;}
+    footer.style.display='flex';
+    btnB.style.display=n>1?'inline-flex':'none';
+    var svgArrow='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>';
+    btnN.innerHTML=(n===3?(window.BK_SUBMIT||'Termin anfragen'):(window.BK_NEXT||'Weiter'))+' '+svgArrow;
+    if(n===2) renderCal();
+}
+
+function goNext(){
+    if(state.step===1){
+        if(state.svc===-1){
+            var e=document.getElementById('bkErrSvc');
+            e.classList.add('show');
+            var svcs=document.querySelector('.bk-svcs');
+            svcs.style.animation='none';svcs.offsetHeight;svcs.style.animation='bkShake .35s ease';
+            return;
+        }
+        toStep(2);
+    } else if(state.step===2){
+        if(!state.date||!state.time){document.getElementById('bkErrDate').classList.add('show');return;}
+        toStep(3);
+    } else if(state.step===3){
+        var name=document.getElementById('bkName').value.trim();
+        var email=document.getElementById('bkEmail').value.trim();
+        if(!name||!email){document.getElementById('bkErrContact').classList.add('show');return;}
+        submit(name,email);
+    }
+}
+function goBack(){if(state.step>1)toStep(state.step-1);}
+
+/* ── Submit ── */
+var _submitData = null;
+
+function submit(name,email){
+    var phone=document.getElementById('bkPhone').value.trim();
+    var msg=document.getElementById('bkMsg').value.trim();
+    var svcName=SVC_NAMES[state.svc];
+    var p=state.date.split('-').map(Number), dateObj=new Date(p[0],p[1]-1,p[2]);
+    var dateFmt=DAYS[(dateObj.getDay()+6)%7]+', '+p[2]+'. '+MONTHS[p[1]-1]+' '+p[0];
+    _submitData={name:name,email:email,phone:phone,msg:msg,svcName:svcName,dateFmt:dateFmt};
+    var isMobile=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    if(isMobile){
+        document.getElementById('bkChoiceOverlay').style.display='flex';
+    } else {
+        doSend('email');
+    }
+}
+
+function doSend(channel){
+    document.getElementById('bkChoiceOverlay').style.display='none';
+    var d=_submitData;
+    if(!d) return;
+    var btn=document.getElementById('bkBtnNext');
+    btn.disabled=true; btn.textContent='Wird gesendet…';
+    reserved.push({date:state.date,time:state.time});
+
+    var rows=[['Service',d.svcName],['Datum',d.dateFmt],['Uhrzeit',state.time],['Name',d.name],['E-Mail',d.email]];
+    if(d.phone) rows.push(['Telefon',d.phone]);
+
+    if(channel==='whatsapp'){
+        var waText='Neue Terminanfrage%0A'+
+            'Name: '+encodeURIComponent(d.name)+'%0A'+
+            'Email: '+encodeURIComponent(d.email)+'%0A'+
+            'Service: '+encodeURIComponent(d.svcName)+'%0A'+
+            'Datum: '+encodeURIComponent(d.dateFmt)+'%0A'+
+            'Uhrzeit: '+encodeURIComponent(state.time)+
+            (d.phone?'%0ATelefon: '+encodeURIComponent(d.phone):'')+
+            (d.msg?'%0ANachricht: '+encodeURIComponent(d.msg):'');
+        window.open('https://wa.me/41765608645?text='+waText,'_blank');
+        showConfirm(rows); btn.disabled=false;
+    } else {
+        // Send to PHP endpoint
+        fetch('https://web.lweb.ch/remail/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name:    d.name,
+                email:   d.email,
+                phone:   d.phone || '',
+                service: d.svcName,
+                date:    d.dateFmt,
+                rawDate: state.date,
+                time:    state.time,
+                message: d.msg || ''
+            })
+        }).then(function(r){ return r.json(); })
+          .then(function(r){ console.log('[booking] email sent:', r); })
+          .catch(function(e){ console.error('[booking] email error:', e); });
+        showConfirm(rows); btn.disabled=false;
+    }
+}
+
+function showConfirm(rows){
+    document.getElementById('bkSummary').innerHTML=rows.map(function(r){return '<div class="bk-sum-row"><span class="bk-sum-key">'+r[0]+'</span><span class="bk-sum-val">'+r[1]+'</span></div>';}).join('');
+    toStep(4);
+}
+
+/* ── Init ── */
+toStep(1);
+document.getElementById('bkChoiceOverlay').style.display='none';
+
+/* ── Header scroll title ── */
+(function(){
+    var header = document.querySelector('.header');
+    if(!header) return;
+    window.addEventListener('scroll', function(){
+        header.classList.toggle('past-hero', window.scrollY > 30);
+    }, {passive: true});
+})();
+</script>
+
+<!-- WhatsApp / Email choice modal (mobile) -->
+<div class="bk-choice-overlay" id="bkChoiceOverlay" style="display:none">
+    <div class="bk-choice-box">
+        <div class="bk-choice-title">Wie soll die Anfrage gesendet werden?</div>
+        <div class="bk-choice-sub">Wählen Sie Ihre bevorzugte Kontaktmethode.</div>
+        <button class="bk-choice-btn bk-choice-btn--wa" onclick="doSend('whatsapp')">
+            <div class="bk-choice-btn-ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.824 11.824 0 0012.05 0zm0 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374a9.861 9.861 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884z"/></svg>
+            </div>
+            <div>
+                <strong>WhatsApp</strong>
+                <span>Nachricht an +41 76 560 86 45</span>
+            </div>
+        </button>
+        <button class="bk-choice-btn bk-choice-btn--email" onclick="doSend('email')">
+            <div class="bk-choice-btn-ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+                <strong>E-Mail</strong>
+                <span>Anfrage an info@lweb.ch</span>
+            </div>
+        </button>
+        <button class="bk-choice-cancel" onclick="document.getElementById('bkChoiceOverlay').style.display='none'">Abbrechen</button>
+    </div>
+</div>
+
+<!-- FOOTER BANNER -->
+<style>
+.bk-cta { background: linear-gradient(165deg,#060e18 0%,#0f1d2c 100%); text-align: center; padding: 80px 24px; }
+.bk-cta-wrap { max-width: 700px; margin: 0 auto; }
+.bk-cta-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fe6c75; margin-bottom: 18px; }
+.bk-cta-label::before { content:''; width:7px; height:7px; border-radius:50%; background:#fe6c75; animation:bdot 1.5s infinite; }
+.bk-cta h2 { font-size: clamp(28px,4vw,46px); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 14px; }
+.bk-cta h2 span { color: #fe6c75; }
+.bk-cta p { font-size: 17px; line-height: 1.7; color: #8a9bb3; max-width: 520px; margin: 0 auto 32px; }
+.bk-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.bk-cta-note { margin-top: 22px; font-size: 13px; color: #6b7d99; display: flex; align-items: center; justify-content: center; gap: 7px; }
+.bk-cta-note svg { color: #4dd35b; }
+.bk-copy { background: #060e18; text-align: center; padding: 16px 24px; font-size: 12px; color: #3a4a5c; border-top: 1px solid rgba(255,255,255,.04); }
+</style>
+<!-- TRUST STATS -->
+<section class="trust">
+    <div class="container">
+        <div class="trust-grid" id="bkTrustGrid">
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                <div class="trust-stat-number" data-target="6" data-suffix="+">0</div>
+                <div class="trust-stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                <div class="trust-stat-number" data-target="20" data-suffix="+">0</div>
+                <div class="trust-stat-label">Apps entwickelt</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+                <div class="trust-stat-number" data-target="7" data-suffix="">0</div>
+                <div class="trust-stat-label">Apps im App Store</div>
+            </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div class="trust-stat-number" data-target="50" data-suffix="+">0</div>
+                <div class="trust-stat-label">Websites online</div>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var grid = document.getElementById('bkTrustGrid');
+        if (!grid) return;
+        var animated = false;
+        function countUp(el) {
+            var target = parseInt(el.dataset.target, 10);
+            var suffix = el.dataset.suffix || '';
+            var duration = 1200;
+            var start = performance.now();
+            function step(now) {
+                var elapsed = now - start;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+        function runAnimation() {
+            if (animated) return;
+            animated = true;
+            grid.querySelectorAll('.trust-stat-number, .trust-stat-label').forEach(function(el){
+                el.classList.add('visible');
+            });
+            grid.querySelectorAll('.trust-stat-number').forEach(function(el, i){
+                setTimeout(function(){ countUp(el); }, i * 100);
+            });
+        }
+        new IntersectionObserver(function(entries, obs){
+            if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
+        }, { threshold: 0.4 }).observe(grid);
+    })();
+    </script>
+</section>
+
+<section class="bk-cta">
+    <div class="bk-cta-wrap">
+        <div class="bk-cta-label" data-i18n="bk.cta.label">Ihr Projekt starten</div>
+        <h2>Ihr Projekt <span>direkt vom Entwickler.</span></h2>
+        <p data-i18n="bk.cta.desc">Von der Landingpage bis zur mobilen App. Persönlich beraten aus Buchs SG — faire Preise, schnelle Umsetzung.</p>
+        <div class="bk-cta-btns">
+            <button onclick="downloadVCard()" class="gbcta gbcta--primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Visitenkarte speichern
+            </button>
+        </div>
+        <div class="bk-cta-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="bk.cta.note">Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung</span>
+        </div>
+    </div>
+</section>
+<div class="bk-copy">&copy; 2026 Lweb — Roberto Salvador. App Entwickler in Buchs SG, Schweiz.</div>
+
+<script src="js/translations.js"></script>
+<script>
+(function(){
+    var savedLang=localStorage.getItem('lweb_lang');
+    var lang;
+    if(savedLang){lang=savedLang;}
+    else{var bl=(navigator.language||'de').slice(0,2).toLowerCase();var sp=['de','en','es','fr','it'];lang=sp.indexOf(bl)!==-1?bl:'de';}
+    if(typeof translations==='undefined'||!translations[lang])return;
+    var t=translations[lang];
+    // Static elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k])el.textContent=t[k];});
+    // Placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var k=el.getAttribute('data-i18n-ph');if(t[k])el.placeholder=t[k];});
+    if(lang==='de')return;
+    // Update JS arrays for dynamic content
+    if(t['bk.days']) window.DAYS=t['bk.days'].split(',');
+    if(t['bk.months']) window.MONTHS=t['bk.months'].split(',');
+    if(t['bk.step1.title']) window.TITLES=['',t['bk.step1.title']||'',t['bk.step2.title']||'',t['bk.step3.title']||'',t['bk.step4.title']||''];
+    if(t['bk.step1.sub']) window.SUBS=['',t['bk.step1.sub']||'',t['bk.step2.sub']||'',t['bk.step3.sub']||'',''];
+    if(t['bk.svc0.name']) window.SVC_NAMES=[t['bk.svc0.name']||'',t['bk.svc1.name']||'',t['bk.svc2.name']||'',t['bk.svc3.name']||''];
+    if(t['bk.step.of']) window.BK_STEP_OF=t['bk.step.of'];
+    if(t['bk.slots.hint']) window.BK_SLOTS_HINT=t['bk.slots.hint'];
+    if(t['bk.next']) window.BK_NEXT=t['bk.next'];
+    if(t['bk.submit']) window.BK_SUBMIT=t['bk.submit'];
+    if(t['bk.back']) window.BK_BACK=t['bk.back'];
+})();
+</script>
+<script src="js/main.js"></script>
+<script>
+// Burger fallback — in case main.js doesn't bind it
+(function(){
+    function initBurger(){
+        var burger = document.getElementById('menuBurger');
+        var menu   = document.getElementById('mobileMenu');
+        if(!burger || !menu || burger._bkBound) return;
+        burger._bkBound = true;
+        burger.addEventListener('click', function(){
+            menu.classList.toggle('open');
+            burger.classList.toggle('open');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        });
+        menu.querySelectorAll('a').forEach(function(a){
+            a.addEventListener('click', function(){
+                menu.classList.remove('open');
+                burger.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+    if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', initBurger);
+    } else {
+        initBurger();
+    }
+})();
+</script>
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>
