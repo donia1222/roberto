@@ -186,6 +186,24 @@
 
         @keyframes bkShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
 
+        /* ── TABS ── */
+        .bk-tabs-bar { display: flex; border-bottom: 1.5px solid #e8ecf0; border-radius: 16px 16px 0 0; overflow: hidden; }
+        body.dark-mode .bk-tabs-bar { border-color: #2d3548; }
+        .bk-tab { flex: 1; padding: 15px 16px; border: none; border-bottom: 2.5px solid transparent; margin-bottom: -1.5px; background: #f8fafc; font-family: inherit; font-size: 13px; font-weight: 700; color: #6b7280; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; transition: all 150ms; }
+        body.dark-mode .bk-tab { background: #111827; color: #94a3b8; }
+        .bk-tab.active { background: #fff; color: #0f1d2c; border-bottom-color: #fe6c75; }
+        body.dark-mode .bk-tab.active { background: #1e2536; color: #f1f5f9; }
+        .bk-tab:hover:not(.active) { background: #f1f5f9; color: #374151; }
+        body.dark-mode .bk-tab:hover:not(.active) { background: #1a2030; color: #c8d5e3; }
+
+        /* ── DAY PICKER ── */
+        .bk-day-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+        .bk-day-btn { padding: 8px 18px; border: 1.5px solid #e8ecf0; border-radius: 100px; font-size: 13px; font-weight: 600; color: #374151; cursor: pointer; background: #fff; transition: all 140ms; font-family: inherit; }
+        body.dark-mode .bk-day-btn { background: #111827; border-color: #2d3548; color: #94a3b8; }
+        .bk-day-btn:hover { border-color: #fe6c75; color: #fe6c75; background: #fff8f8; }
+        body.dark-mode .bk-day-btn:hover { background: #1a2030; color: #fe6c75; }
+        .bk-day-btn.sel { background: #fe6c75; border-color: #fe6c75; color: #fff; }
+
         /* Show home icon on mobile too */
         .header-back-desktop { display:flex!important; background:#cce8f7!important; color:#1a85b0!important; }
         .header-back-desktop svg { transition: transform 0.2s ease; }
@@ -341,6 +359,21 @@
 
     <!-- FORM -->
     <div class="bk-card">
+
+        <!-- TABS -->
+        <div class="bk-tabs-bar">
+            <button class="bk-tab active" id="tabAppt" onclick="switchTab('appt')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span data-i18n="bk.tab.appt">Termin buchen</span>
+            </button>
+            <button class="bk-tab" id="tabCallback" onclick="switchTab('callback')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.95 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <span data-i18n="bk.tab.callback">Rückruf anfragen</span>
+            </button>
+        </div>
+
+        <!-- APPOINTMENT SECTION -->
+        <div id="bkApptSection">
         <div class="bk-prog"><div class="bk-prog-bar" id="bkBar" style="width:0%"></div></div>
 
         <div class="bk-head">
@@ -446,6 +479,68 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
         </div>
+        </div><!-- /bkApptSection -->
+
+        <!-- CALLBACK SECTION -->
+        <div id="bkCallbackSection" style="display:none">
+            <div id="bkCbForm">
+                <div class="bk-head" style="padding-bottom:6px">
+                    <div class="bk-step-lbl" style="margin-bottom:6px" data-i18n="bk.tab.callback">Rückruf anfragen</div>
+                    <div class="bk-title" data-i18n="bk.cb.title">Soll Roberto Sie zurückrufen?</div>
+                    <div class="bk-sub" data-i18n="bk.cb.sub">Wählen Sie Ihren Wunschtag, die Uhrzeit und hinterlassen Sie Ihre Nummer.</div>
+                </div>
+                <div class="bk-body">
+                    <div class="bk-field">
+                        <label data-i18n="bk.cb.day.lbl">Bevorzugter Tag</label>
+                        <div class="bk-day-btns" id="bkCbDayBtns">
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Mo')" data-i18n="bk.cb.day.mon">Mo</button>
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Di')" data-i18n="bk.cb.day.tue">Di</button>
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Mi')" data-i18n="bk.cb.day.wed">Mi</button>
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Do')" data-i18n="bk.cb.day.thu">Do</button>
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Fr')" data-i18n="bk.cb.day.fri">Fr</button>
+                            <button class="bk-day-btn" onclick="pickCbDay(this,'Sa')" data-i18n="bk.cb.day.sat">Sa</button>
+                        </div>
+                    </div>
+                    <div class="bk-field">
+                        <label data-i18n="bk.cb.time.lbl">Bevorzugte Uhrzeit</label>
+                        <input type="text" id="bkCbTime" placeholder="z.B. 10:00 – 12:00" data-i18n-ph="bk.cb.time.ph">
+                    </div>
+                    <div class="bk-grid2">
+                        <div class="bk-field">
+                            <label data-i18n="bk.label.name">Ihr Name *</label>
+                            <input type="text" id="bkCbName" autocomplete="name" placeholder="Max Mustermann" data-i18n-ph="bk.ph.name">
+                        </div>
+                        <div class="bk-field">
+                            <label data-i18n="bk.cb.phone.lbl">Telefon *</label>
+                            <input type="tel" id="bkCbPhone" autocomplete="tel" placeholder="+41 79 000 00 00">
+                        </div>
+                    </div>
+                    <div class="bk-err" id="bkCbErr" data-i18n="bk.cb.err">Bitte Name und Telefonnummer angeben.</div>
+                </div>
+                <div class="bk-footer">
+                    <button class="bk-btn bk-btn-primary" id="bkCbBtn" onclick="submitCallback()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.95 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <span data-i18n="bk.cb.send">Rückruf anfordern</span>
+                    </button>
+                </div>
+            </div>
+            <div id="bkCbConfirm" style="display:none">
+                <div class="bk-body" style="padding-top:28px;padding-bottom:28px">
+                    <div class="bk-confirm">
+                        <div class="bk-confirm-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.95 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div class="bk-confirm-title" data-i18n="bk.cb.done.title">Anfrage gesendet! 📞</div>
+                        <div class="bk-confirm-text" data-i18n="bk.cb.done.text">Roberto ruft Sie so bald wie möglich zurück.</div>
+                        <a href="index.html" class="bk-home-link">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <span data-i18n="bk.home">Zur Startseite</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /bkCallbackSection -->
+
     </div>
 
     <!-- INFO BANNER -->
@@ -664,6 +759,49 @@ function doSend(channel){
 function showConfirm(rows){
     document.getElementById('bkSummary').innerHTML=rows.map(function(r){return '<div class="bk-sum-row"><span class="bk-sum-key">'+r[0]+'</span><span class="bk-sum-val">'+r[1]+'</span></div>';}).join('');
     toStep(4);
+}
+
+/* ── Tab switch ── */
+function switchTab(tab){
+    var isAppt=tab==='appt';
+    document.getElementById('tabAppt').classList.toggle('active',isAppt);
+    document.getElementById('tabCallback').classList.toggle('active',!isAppt);
+    document.getElementById('bkApptSection').style.display=isAppt?'':'none';
+    document.getElementById('bkCallbackSection').style.display=isAppt?'none':'';
+}
+
+/* ── Callback day picker ── */
+var cbDay=null;
+function pickCbDay(btn,day){
+    document.querySelectorAll('#bkCbDayBtns .bk-day-btn').forEach(function(b){b.classList.remove('sel');});
+    btn.classList.add('sel');
+    cbDay=btn.textContent.trim();
+}
+
+/* ── Callback submit ── */
+function submitCallback(){
+    var name=document.getElementById('bkCbName').value.trim();
+    var phone=document.getElementById('bkCbPhone').value.trim();
+    var time=document.getElementById('bkCbTime').value.trim();
+    var err=document.getElementById('bkCbErr');
+    if(!name||!phone){err.classList.add('show');return;}
+    err.classList.remove('show');
+    var btn=document.getElementById('bkCbBtn');
+    btn.disabled=true; btn.style.opacity='0.6';
+    fetch('https://web.lweb.ch/remail/',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            type:'callback',
+            name:name,
+            phone:phone,
+            preferredDay:cbDay||'—',
+            preferredTime:time||'—',
+            service:'Rückruf / Callback'
+        })
+    }).catch(function(e){console.error('[callback]',e);});
+    document.getElementById('bkCbForm').style.display='none';
+    document.getElementById('bkCbConfirm').style.display='';
 }
 
 /* ── Init ── */

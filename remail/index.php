@@ -35,6 +35,40 @@ function clean($val) {
     return htmlspecialchars(strip_tags(trim((string)$val)), ENT_QUOTES, 'UTF-8');
 }
 
+// ── Callback / Rückruf ───────────────────────────────────────────────────────
+if (($data['type'] ?? '') === 'callback') {
+    $cbName  = clean($data['name']          ?? '—');
+    $cbPhone = clean($data['phone']         ?? '—');
+    $cbDay   = clean($data['preferredDay']  ?? '—');
+    $cbTime  = clean($data['preferredTime'] ?? '—');
+
+    if (!$cbName || !$cbPhone) {
+        http_response_code(400);
+        echo json_encode(['ok' => false, 'error' => 'Name und Telefon erforderlich']);
+        exit;
+    }
+
+    $logo = 'https://web.lweb.ch/remail/logolweb.png';
+    $cbRows = [
+        'Name'          => $cbName,
+        'Telefon'       => $cbPhone,
+        'Wunschtag'     => $cbDay,
+        'Wunschuhrzeit' => $cbTime,
+    ];
+    $cbHtml = buildHtml(
+        'Rückrufanfrage — Lweb',
+        '📞 Rückrufanfrage',
+        $cbName . ' möchte zurückgerufen werden.',
+        $cbRows,
+        'Ruf den Kunden so bald wie möglich zurück: <a href="tel:' . $cbPhone . '" style="color:#fe6c75;text-decoration:none;">' . $cbPhone . '</a>',
+        $logo,
+        '#fe6c75'
+    );
+    sendHtml('info@lweb.ch', 'Rückrufanfrage von ' . $cbName . ' — Lweb', $cbHtml);
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
 $name    = clean($data['name']    ?? '');
 $email   = clean($data['email']   ?? '');
 $phone   = clean($data['phone']   ?? '—');
