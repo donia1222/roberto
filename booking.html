@@ -141,9 +141,10 @@
         .bk-field { margin-bottom: 13px; }
         .bk-field label { display: block; font-size: 12px; font-weight: 700; color: #374151; margin-bottom: 5px; letter-spacing: .01em; }
         body.dark-mode .bk-field label { color: #c8d5e3; }
-        .bk-field input, .bk-field textarea { width: 100%; padding: 10px 13px; border: 1.5px solid #e8ecf0; border-radius: 10px; font-size: 14px; color: #0f1d2c; background: #fff; outline: none; transition: border-color 140ms; font-family: inherit; }
-        body.dark-mode .bk-field input, body.dark-mode .bk-field textarea { background: #111827; border-color: #2d3548; color: #e2e8f0; }
-        .bk-field input:focus, .bk-field textarea:focus { border-color: #fe6c75; box-shadow: 0 0 0 3px rgba(254,108,117,.08); }
+        .bk-field input, .bk-field textarea, .bk-field select { width: 100%; padding: 10px 13px; border: 1.5px solid #e8ecf0; border-radius: 10px; font-size: 14px; color: #0f1d2c; background: #fff; outline: none; transition: border-color 140ms; font-family: inherit; }
+        body.dark-mode .bk-field input, body.dark-mode .bk-field textarea, body.dark-mode .bk-field select { background: #111827; border-color: #2d3548; color: #e2e8f0; }
+        .bk-field input:focus, .bk-field textarea:focus, .bk-field select:focus { border-color: #fe6c75; box-shadow: 0 0 0 3px rgba(254,108,117,.08); }
+        .bk-field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; cursor: pointer; }
         .bk-field textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
         .bk-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         @media(max-width:420px) { .bk-grid2 { grid-template-columns: 1fr; } }
@@ -503,7 +504,19 @@
                     </div>
                     <div class="bk-field">
                         <label data-i18n="bk.cb.time.lbl">Bevorzugte Uhrzeit</label>
-                        <input type="text" id="bkCbTime" placeholder="z.B. 10:00 – 12:00" data-i18n-ph="bk.cb.time.ph">
+                        <select id="bkCbTime">
+                            <option value="" data-i18n="bk.cb.time.ph">— Uhrzeit wählen —</option>
+                            <option>10:00</option><option>10:30</option>
+                            <option>11:00</option><option>11:30</option>
+                            <option>12:00</option>
+                            <option disabled>──────</option>
+                            <option>13:00</option><option>13:30</option>
+                            <option>14:00</option><option>14:30</option>
+                            <option>15:00</option><option>15:30</option>
+                            <option>16:00</option><option>16:30</option>
+                            <option>17:00</option><option>17:30</option>
+                            <option>18:00</option>
+                        </select>
                     </div>
                     <div class="bk-grid2">
                         <div class="bk-field">
@@ -951,8 +964,13 @@ document.getElementById('bkChoiceOverlay').style.display='none';
     var t=translations[lang];
     // Static elements
     document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k])el.textContent=t[k];});
-    // Placeholders
-    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var k=el.getAttribute('data-i18n-ph');if(t[k])el.placeholder=t[k];});
+    // Placeholders (inputs) + first option of selects
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+        var k=el.getAttribute('data-i18n-ph');
+        if(!t[k])return;
+        if(el.tagName==='SELECT'){if(el.options[0])el.options[0].textContent=t[k];}
+        else{el.placeholder=t[k];}
+    });
     // Step label init (needed for all languages)
     var stepLbl=document.getElementById('bkStepLbl');
     if(stepLbl&&t['bk.step.of']) stepLbl.textContent=t['bk.step.of'].replace('{n}','1');
