@@ -748,7 +748,7 @@
     </div>
     <a href="technologien.html" class="header-nav-item active"><span data-i18n="nav.tech">Technologien</span></a>
     <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
-    <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();if(typeof openChatBot==='function')openChatBot();else window.location.href='index.html';"><span data-i18n="nav.bot">Frag den Bot</span></a>
+    <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();window.location.href='index.html#chatbot';"><span data-i18n="nav.bot">Frag den Bot</span></a>
 </nav>
         <div class="header-actions">
             <a href="#tw-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
@@ -1319,7 +1319,7 @@ function closeMobileMenu(){
     document.body.style.overflow=''; document.querySelector('.header').classList.remove('menu-open');
 }
 function openVCardModal(){ closeMobileMenu(); window.location.href='index.html#vcard'; }
-function openChatFromMenu(){ closeMobileMenu(); window.location.href='index.html#chat'; }
+function openChatFromMenu(){ closeMobileMenu(); window.location.href='index.html#chatbot'; }
 function openA11yFromMenu(){ closeMobileMenu(); window.location.href='index.html#a11y'; }
 </script>
 

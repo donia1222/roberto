@@ -442,3 +442,11 @@ function voiceSetStatus(status, text) {
     document.getElementById('chatbotVoiceStatus').textContent = status;
     document.getElementById('chatbotVoiceText').textContent = text || '';
 }
+
+// Auto-open chatbot if navigated from another page with #chatbot hash
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash === '#chatbot') {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+        setTimeout(function() { openChatBot(); }, 150);
+    }
+});

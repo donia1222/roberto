@@ -2525,3 +2525,13 @@ window.addEventListener("pageshow", function() {
         }
     }
 });
+
+// Auto-open chatbot when navigating from another page with #chatbot hash
+window.addEventListener("pageshow", function() {
+    if (window.location.hash === '#chatbot') {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+        setTimeout(function() {
+            if (typeof openChatBot === 'function') openChatBot();
+        }, 300);
+    }
+});
