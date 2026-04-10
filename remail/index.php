@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json; charset=utf-8');
 
@@ -9,10 +9,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$BOOKINGS_FILE = __DIR__ . '/bookings.json';
+$BOOKINGS_FILE      = __DIR__ . '/bookings.json';
+$BOOKINGS_FULL_FILE = __DIR__ . '/bookings-full.json';
+define('ADMIN_TOKEN', 'lweb2026admin'); // ← cambia esto por un token secreto
 
-// ── GET → devolver slots reservados ──────────────────────────────────────
+// ── Helpers full bookings ─────────────────────────────────────────────────────
+function readFullBookings($file) {
+    if (!file_exists($file)) return [];
+    $data = json_decode(file_get_contents($file), true);
+    return is_array($data) ? $data : [];
+}
+function writeFullBookings($file, $bookings) {
+    file_put_contents($file, json_encode($bookings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+
+// ── ADMIN endpoints (GET/POST with token) ─────────────────────────────────────
+$token  = $_GET['token']  ?? '';
+$action = $_GET['action'] ?? '';
+
+// ── GET ───────────────────────────────────────────────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    // Admin: listar todas las citas con detalles
+    if ($action === 'all' && $token === ADMIN_TOKEN) {
+        $bookings = readFullBookings($BOOKINGS_FULL_FILE);
+        // Ordenar por fecha desc
+        usort($bookings, function($a, $b) {
+            return strcmp($b['rawDate'] . $b['time'], $a['rawDate'] . $a['time']);
+        });
+        echo json_encode(['ok' => true, 'bookings' => $bookings]);
+        exit;
+    }
+
+    // Admin: eliminar una cita
+    if ($action === 'delete' && $token === ADMIN_TOKEN) {
+        $id = $_GET['id'] ?? '';
+        if (!$id) { http_response_code(400); echo json_encode(['ok'=>false,'error'=>'id required']); exit; }
+        $bookings = readFullBookings($BOOKINGS_FULL_FILE);
+        $bookings = array_values(array_filter($bookings, fn($b) => ($b['id'] ?? '') !== $id));
+        writeFullBookings($BOOKINGS_FULL_FILE, $bookings);
+        // También actualizar bookings.json (reserved slots)
+        $reserved = array_map(fn($b) => ['date' => $b['rawDate'], 'time' => $b['time']], $bookings);
+        $statuses  = ['pending','confirmed'];
+        $reserved  = array_values(array_filter(
+            array_map(fn($b) => ['date' => $b['rawDate'], 'time' => $b['time']],
+                array_filter($bookings, fn($b) => in_array($b['status'] ?? 'pending', $statuses))
+            )
+        ));
+        file_put_contents($BOOKINGS_FILE, json_encode(['reserved' => $reserved], JSON_PRETTY_PRINT));
+        echo json_encode(['ok' => true]);
+        exit;
+    }
+
+    // Admin: actualizar estado de una cita
+    if ($action === 'status' && $token === ADMIN_TOKEN) {
+        $id     = $_GET['id']     ?? '';
+        $status = $_GET['status'] ?? '';
+        $allowed = ['pending','confirmed','cancelled'];
+        if (!$id || !in_array($status, $allowed)) {
+            http_response_code(400); echo json_encode(['ok'=>false,'error'=>'invalid params']); exit;
+        }
+        $bookings = readFullBookings($BOOKINGS_FULL_FILE);
+        foreach ($bookings as &$b) {
+            if (($b['id'] ?? '') === $id) { $b['status'] = $status; break; }
+        }
+        unset($b);
+        writeFullBookings($BOOKINGS_FULL_FILE, $bookings);
+        // Rebuild reserved: sólo pending y confirmed
+        $reserved = array_values(array_map(
+            fn($b) => ['date' => $b['rawDate'], 'time' => $b['time']],
+            array_filter($bookings, fn($b) => in_array($b['status'] ?? 'pending', ['pending','confirmed']))
+        ));
+        file_put_contents($BOOKINGS_FILE, json_encode(['reserved' => $reserved], JSON_PRETTY_PRINT));
+        echo json_encode(['ok' => true]);
+        exit;
+    }
+
+    // Público: devolver slots reservados
     if (!file_exists($BOOKINGS_FILE)) {
         echo json_encode(['reserved' => []]);
     } else {
@@ -179,16 +252,30 @@ $clientHtml = buildHtml(
 );
 sendHtml($email, 'Terminbestätigung — Lweb', $clientHtml);
 
+// ── Guardar cita completa en bookings-full.json ───────────────────────────
+$rawDate  = clean($data['rawDate'] ?? $date);
+$fullBookings = readFullBookings($BOOKINGS_FULL_FILE);
+$fullBookings[] = [
+    'id'        => uniqid('bk_', true),
+    'createdAt' => date('Y-m-d H:i:s'),
+    'status'    => 'pending',
+    'name'      => $name,
+    'email'     => $email,
+    'phone'     => $phone,
+    'service'   => $service,
+    'date'      => $date,
+    'rawDate'   => $rawDate,
+    'time'      => $time,
+    'message'   => $msg,
+];
+writeFullBookings($BOOKINGS_FULL_FILE, $fullBookings);
+
 // ── Guardar slot reservado en bookings.json ───────────────────────────────
 $bookings = ['reserved' => []];
 if (file_exists($BOOKINGS_FILE)) {
     $existing = json_decode(file_get_contents($BOOKINGS_FILE), true);
     if (isset($existing['reserved'])) $bookings = $existing;
 }
-// Guardar la fecha en formato YYYY-MM-DD a partir del texto formateado
-// El JS envía date como texto formateado ("Di, 31. März 2026"), pero también
-// necesitamos guardar el valor raw. Lo añadimos como campo extra desde el JS.
-$rawDate = clean($data['rawDate'] ?? $date);
 $bookings['reserved'][] = ['date' => $rawDate, 'time' => $time];
 file_put_contents($BOOKINGS_FILE, json_encode($bookings, JSON_PRETTY_PRINT));
 
