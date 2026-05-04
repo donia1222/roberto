@@ -1660,6 +1660,16 @@ var webProjects = {
         features: ['Echtzeit-Krypto-Kurse', 'Interaktive Charts', 'Portfolio-Übersicht', 'Marktdaten & Trends', 'API-Integration', 'Responsive Design'],
         price: 'CHF 2\'500 – 4\'500'
     },
+    offerto: {
+        title: 'Offerto PROFI',
+        url: 'https://www.offerto-profi.ch',
+        image: 'img/offertpo.jpeg',
+        complexity: 'medium',
+        desc: 'Spare Zeit und Geld — alle Wochenangebote von Aligro, TopCC und Transgourmet auf einen Blick. Nie wieder Prospekte wälzen. Kostenlos, kein Abo, keine Werbung, lebenslange Updates.',
+        techs: ['Next.js', 'TypeScript', 'PWA', 'Vercel'],
+        features: ['Wochenangebote Aligro', 'Wochenangebote TopCC', 'Wochenangebote Transgourmet', 'Offline verfügbar (PWA)', 'Kein Abo · Keine Werbung', 'Lebenslange Updates'],
+        price: 'Kostenlos'
+    },
     renovation: {
         title: 'NIKQI',
         url: 'https://nikqi.ch',
