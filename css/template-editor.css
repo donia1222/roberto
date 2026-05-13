@@ -12,7 +12,7 @@
     box-shadow:0 4px 20px rgba(254,108,117,0.4);
     transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
     font-family:'Inter','Plus Jakarta Sans','Outfit',sans-serif;
-    font-size:14px; font-weight:600; letter-spacing:0.02em;
+    font-size: 14px; font-weight:600; letter-spacing:0.02em;
     padding:0 20px 0 16px;
 }
 .te-toggle:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(254,108,117,0.45); }
@@ -86,11 +86,11 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     flex-shrink:0;
 }
 .te-sidebar-header h3 {
-    font-size:16px; font-weight:700; color:#0f1d2c; margin:0;
+    font-size: 16px; font-weight:700; color:#0f1d2c; margin:0;
     display:flex; align-items:center; gap:8px;
 }
 .te-sidebar-header h3 .te-el-type {
-    font-size:11px; font-weight:600; text-transform:uppercase;
+    font-size: 11px; font-weight:600; text-transform:uppercase;
     background:#f0f4fa; color:#6b7d99; padding:2px 8px; border-radius:4px;
 }
 .te-close {
@@ -108,7 +108,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 /* ── Form Controls ────────────────────────────────── */
 .te-group { margin-bottom:20px; }
 .te-group label {
-    display:block; font-size:12px; font-weight:600;
+    display:block; font-size: 12px; font-weight:600;
     color:#6b7d99; text-transform:uppercase; letter-spacing:0.05em;
     margin-bottom:8px;
 }
@@ -116,7 +116,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 .te-textarea {
     width:100%; min-height:80px; padding:12px 14px;
     border:1px solid #e2e8f0; border-radius:10px;
-    font-size:14px; color:#0f1d2c; resize:vertical;
+    font-size: 14px; color:#0f1d2c; resize:vertical;
     font-family:inherit; line-height:1.6;
     transition:border-color 0.2s;
 }
@@ -125,7 +125,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 .te-input {
     width:100%; padding:10px 14px;
     border:1px solid #e2e8f0; border-radius:10px;
-    font-size:14px; color:#0f1d2c;
+    font-size: 14px; color:#0f1d2c;
     font-family:inherit; transition:border-color 0.2s;
 }
 .te-input:focus { outline:none; border-color:#fe6c75; box-shadow:0 0 0 3px rgba(254,108,117,0.1); }
@@ -142,7 +142,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 .te-color-picker::-webkit-color-swatch { border:none; border-radius:8px; }
 .te-color-hex {
     flex:1; padding:10px 14px; border:1px solid #e2e8f0;
-    border-radius:10px; font-size:13px; font-family:'SF Mono',monospace;
+    border-radius:10px; font-size: 13px; font-family:'SF Mono',monospace;
     color:#0f1d2c;
 }
 .te-color-hex:focus { outline:none; border-color:#fe6c75; }
@@ -150,7 +150,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 /* Font selector */
 .te-select {
     width:100%; padding:10px 14px; border:1px solid #e2e8f0;
-    border-radius:10px; font-size:14px; color:#0f1d2c;
+    border-radius:10px; font-size: 14px; color:#0f1d2c;
     font-family:inherit; cursor:pointer; background:#fff;
     appearance:none;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7d99' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
@@ -173,7 +173,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     box-shadow:0 2px 8px rgba(254,108,117,0.3);
 }
 .te-size-val {
-    min-width:48px; text-align:center; font-size:13px;
+    min-width:48px; text-align:center; font-size: 13px;
     font-weight:600; color:#0f1d2c; background:#f4f7fb;
     padding:4px 8px; border-radius:6px;
 }
@@ -190,7 +190,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 .te-upload-btn {
     width:100%; padding:12px; border:2px dashed #e2e8f0;
     border-radius:12px; background:#fafbfd; cursor:pointer;
-    font-size:14px; color:#6b7d99; font-weight:500;
+    font-size: 14px; color:#6b7d99; font-weight:500;
     display:flex; align-items:center; justify-content:center; gap:8px;
     transition:all 0.2s;
 }
@@ -204,7 +204,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 }
 .te-btn {
     flex:1; padding:12px; border:none; border-radius:10px;
-    font-size:14px; font-weight:600; cursor:pointer;
+    font-size: 14px; font-weight:600; cursor:pointer;
     transition:all 0.2s; font-family:inherit;
 }
 .te-btn-save {
@@ -221,7 +221,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 .te-toast {
     position:fixed; bottom:100px; right:24px; z-index:10001;
     padding:14px 24px; border-radius:12px;
-    background:#0f1d2c; color:#fff; font-size:14px; font-weight:500;
+    background:#0f1d2c; color:#fff; font-size: 14px; font-weight:500;
     box-shadow:0 8px 30px rgba(0,0,0,0.2);
     transform:translateY(20px); opacity:0;
     transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
@@ -255,13 +255,13 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width:500px) {
     .te-sidebar { width:100%; right:-100%; }
-    .te-toggle { bottom:16px; right:16px; height:44px; padding:0 16px 0 12px; font-size:13px; }
+    .te-toggle { bottom:16px; right:16px; height:44px; padding:0 16px 0 12px; font-size: 13px; }
 }
 
 /* ── Status Bar ───────────────────────────────────── */
 .te-status {
     position:fixed; bottom:0; left:0; right:0; z-index:10001;
-    padding:0 24px; font-size:13px; font-weight:500;
+    padding:0 24px; font-size: 13px; font-weight:500;
     color:#fff; background:#0f1d2c;
     transform:translateY(100%); transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);
     font-family:'Inter','Plus Jakarta Sans','Outfit',sans-serif;
@@ -275,12 +275,12 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     animation:te-pulse 2s ease infinite;
 }
 @keyframes te-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-.te-status-text { font-weight:600; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; }
+.te-status-text { font-weight:600; font-size: 12px; letter-spacing:0.04em; text-transform:uppercase; }
 .te-status-sep { width:1px; height:16px; background:rgba(255,255,255,0.15); }
-.te-status-hint { opacity:0.45; font-weight:400; font-size:12px; }
+.te-status-hint { opacity:0.45; font-weight:400; font-size: 12px; }
 .te-status-key {
     display:inline-block; background:rgba(255,255,255,0.1);
-    padding:1px 6px; border-radius:3px; font-size:10px;
+    padding:1px 6px; border-radius:3px; font-size: 10px;
     font-weight:700; letter-spacing:0.06em; border:1px solid rgba(255,255,255,0.12);
 }
 @media (max-width:600px) {

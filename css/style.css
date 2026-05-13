@@ -1028,20 +1028,44 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     position: absolute;
     width: 420px;
     height: 420px;
-    border: 1.5px dashed var(--cerulean100);
     border-radius: 50%;
-    animation: orbitSpin 60s linear infinite;
+    animation: orbitSpin 8s linear infinite;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        #ff6b6b 8%,
+        #f59e0b 20%,
+        #64b4ff 35%,
+        #a855f7 50%,
+        #22c55e 65%,
+        #ff6b6b 80%,
+        transparent 100%
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 3px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 3px));
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
 }
 .hero-orbit-inner {
     position: absolute;
     width: 320px;
     height: 320px;
-    border: 1px dashed rgba(200,213,227,0.4);
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    animation: orbitSpin 45s linear infinite reverse;
+    margin: -160px 0 0 -160px;
+    animation: orbitSpin 14s linear infinite reverse;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        rgba(100, 180, 255, 0.8) 15%,
+        rgba(168, 85, 247, 0.8) 40%,
+        rgba(34, 197, 94, 0.6) 65%,
+        rgba(255, 107, 107, 0.7) 85%,
+        transparent 100%
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), white calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), white calc(100% - 2px));
+    filter: drop-shadow(0 0 5px rgba(100, 180, 255, 0.4));
 }
 @keyframes orbitSpin {
     from { transform: rotate(0deg); }
@@ -3945,7 +3969,7 @@ body.calc-open {
     .hero-image { order: -1; }
     .hero-anim { width: 380px; height: 380px; }
     .hero-orbit { width: 340px; height: 340px; }
-    .hero-orbit-inner { width: 260px; height: 260px; }
+    .hero-orbit-inner { width: 260px; height: 260px; margin: -130px 0 0 -130px; }
     .hero-phone { width: 160px; height: 320px; border-radius: 28px; }
     .hero-phone-notch { width: 80px; height: 22px; }
     .hero-phone-screen { border-radius: 24px; padding: 36px 12px 12px; }
@@ -3973,7 +3997,7 @@ body.calc-open {
     .section { padding: 72px 0; }
     .hero-anim { width: 300px; height: 300px; }
     .hero-orbit { width: 260px; height: 260px; }
-    .hero-orbit-inner { width: 200px; height: 200px; }
+    .hero-orbit-inner { width: 200px; height: 200px; margin: -100px 0 0 -100px; }
     .hero-phone { width: 130px; height: 260px; border-radius: 24px; }
     .float-icon { width: 38px; height: 38px; font-size: 10px; border-radius: 10px; }
     .float-code { display: none; }
@@ -4350,10 +4374,10 @@ body.dark-mode .gbcta--secondarygunpowder:hover {
     color: #fff;
 }
 body.dark-mode .hero-orbit {
-    border-color: rgba(179,221,242,0.15);
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
 }
 body.dark-mode .hero-orbit-inner {
-    border-color: rgba(200,213,227,0.1);
+    filter: drop-shadow(0 0 8px rgba(100, 180, 255, 0.5));
 }
 
 /* Metrics */
