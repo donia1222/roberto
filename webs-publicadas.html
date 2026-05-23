@@ -15,7 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body { padding-top: 60px; overflow-x: hidden; background: #fff; }
+        /* `overflow-x:clip` (unlike `hidden`) does NOT create a scrolling context
+           and CAN coexist with overflow-y:visible, so sticky descendants work. */
+        html { overflow-x: clip !important; overflow-y: visible !important; }
+        body { overflow-x: clip !important; overflow-y: visible !important; padding-top: 60px; background: #fff; }
 
         /* ═══ ANIMATIONS ═══════════════════════════════════ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -1232,18 +1235,25 @@ body.dark-mode .wb-stack-section{background:#0d1117;}
 /* ── Stacking card ── */
 .wb-card{
     position:sticky;
+    top:100px;
     border-radius:20px;
     overflow:hidden;
     background:#fff;
     box-shadow:0 8px 40px rgba(0,0,0,.1);
     display:grid;
     grid-template-columns:1.1fr 1fr;
-    min-height:340px;
-    transition:box-shadow .3s;
-    margin-bottom:24px;
+    min-height:380px;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), opacity .5s ease, box-shadow .3s;
+    margin-bottom:40px;
+    transform-origin:50% 0%;
+    will-change:transform;
+}
+/* Subtle ring while a card is locked at the sticky line */
+.wb-card.wb-stacked{
+    box-shadow:0 -2px 0 rgba(254,108,117,0), 0 16px 50px rgba(0,0,0,.14);
 }
 body.dark-mode .wb-card{background:#141d2b;box-shadow:0 8px 40px rgba(0,0,0,.35);}
-@media(max-width:720px){.wb-card{grid-template-columns:1fr;position:relative;top:auto!important;}}
+@media(max-width:720px){.wb-card{grid-template-columns:1fr;top:80px;min-height:auto;margin-bottom:32px;}}
 
 /* ── Image side ── */
 .wb-card-img{position:relative;overflow:hidden;min-height:240px;}
@@ -1311,7 +1321,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
     <div class="wb-stack-wrap">
 
         <!-- 1 -->
-        <div class="wb-card" data-cat="ecommerce" id="wb-ecommerce" style="top:88px;z-index:1;">
+        <div class="wb-card" data-cat="ecommerce" id="wb-ecommerce" style="z-index:1;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">leder-shop.ch</span></div>
                 <img src="img/ledershop.jpeg" alt="Leder-Shop">
@@ -1328,7 +1338,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 2 -->
-        <div class="wb-card" data-cat="ecommerce" style="top:108px;z-index:2;">
+        <div class="wb-card" data-cat="ecommerce" style="z-index:2;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">usfh.ch</span></div>
                 <img src="img/usa.jpeg" alt="US-Fishing & Huntingshop">
@@ -1345,7 +1355,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 3 -->
-        <div class="wb-card" data-cat="ki" id="wb-ki" style="top:128px;z-index:3;">
+        <div class="wb-card" data-cat="ki" id="wb-ki" style="z-index:3;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">ai-generator-a5j5.vercel.app</span></div>
                 <img src="img/geenrador.jpeg" alt="KI Creator Suite">
@@ -1362,7 +1372,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 4 -->
-        <div class="wb-card" data-cat="ki" style="top:148px;z-index:4;">
+        <div class="wb-card" data-cat="ki" style="z-index:4;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">rezeptsammlung.net</span></div>
                 <img src="img/recipesamlun.jpeg" alt="Recipe Digitizer">
@@ -1379,7 +1389,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 5 -->
-        <div class="wb-card" data-cat="ecommerce" style="top:168px;z-index:5;">
+        <div class="wb-card" data-cat="ecommerce" style="z-index:5;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">hot-bbq.ch</span></div>
                 <img src="img/hotbbq.jpg" alt="HOT & BBQ">
@@ -1396,7 +1406,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 6 -->
-        <div class="wb-card" data-cat="business" style="top:188px;z-index:6;">
+        <div class="wb-card" data-cat="business" style="z-index:6;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">beautystyles.vercel.app</span></div>
                 <img src="img/beautystyle.jpg" alt="BeautyStyle">
@@ -1413,7 +1423,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 7 -->
-        <div class="wb-card" data-cat="gastro" id="wb-gastro" style="top:208px;z-index:7;">
+        <div class="wb-card" data-cat="gastro" id="wb-gastro" style="z-index:7;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">ushuaia-bar.ch</span></div>
                 <img src="img/ushuaia.png" alt="Ushuaia Bar">
@@ -1430,7 +1440,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 8 -->
-        <div class="wb-card" data-cat="gastro" style="top:228px;z-index:8;">
+        <div class="wb-card" data-cat="gastro" style="z-index:8;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">cantinatexmex.ch</span></div>
                 <img src="img/cantina.jpeg" alt="Cantina Tex-Mex">
@@ -1447,7 +1457,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 9 -->
-        <div class="wb-card" data-cat="business" id="wb-business" style="top:248px;z-index:9;">
+        <div class="wb-card" data-cat="business" id="wb-business" style="z-index:9;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">inotecengineering.ch</span></div>
                 <img src="img/inotec.jpeg" alt="iNOTEC Engineering">
@@ -1464,7 +1474,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 10 -->
-        <div class="wb-card" data-cat="business" style="top:268px;z-index:10;">
+        <div class="wb-card" data-cat="business" style="z-index:10;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">flink-sauber.li</span></div>
                 <img src="img/flinck.jpeg" alt="Flinck Sauber">
@@ -1481,7 +1491,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 11 -->
-        <div class="wb-card" data-cat="gastro" style="top:288px;z-index:11;">
+        <div class="wb-card" data-cat="gastro" style="z-index:11;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">bouquetmediterraneo.ch</span></div>
                 <img src="img/bouquet.jpeg" alt="Bouquet Mediterraneo">
@@ -1498,7 +1508,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 12 -->
-        <div class="wb-card" data-cat="business" style="top:308px;z-index:12;">
+        <div class="wb-card" data-cat="business" style="z-index:12;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">remix-crypto.vercel.app</span></div>
                 <img src="img/crypto.png" alt="Crypto Dashboard">
@@ -1515,7 +1525,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 13 -->
-        <div class="wb-card" data-cat="business" style="top:328px;z-index:13;">
+        <div class="wb-card" data-cat="business" style="z-index:13;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">nikqi.ch</span></div>
                 <img src="img/renovation.jpg" alt="Renovation">
@@ -1532,7 +1542,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 14 -->
-        <div class="wb-card" data-cat="business" style="top:348px;z-index:14;">
+        <div class="wb-card" data-cat="business" style="z-index:14;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">rrapi.ch</span></div>
                 <img src="img/rrapi.jpg" alt="Rrapi Immobilien">
@@ -1550,7 +1560,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
 
         <!-- 15 -->
         <!-- 16 — VCard Creator -->
-        <div class="wb-card" data-cat="ki" style="top:388px;z-index:16;">
+        <div class="wb-card" data-cat="ki" style="z-index:15;">
             <div class="wb-card-img" style="position:relative;">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">vcard-creato.vercel.app</span></div>
                 <video src="img/sora-video-1774223926866.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;"></video>
@@ -1567,7 +1577,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
             </div>
         </div>
 
-        <div class="wb-card" data-cat="gastro" style="top:368px;z-index:15;margin-bottom:0;">
+        <div class="wb-card" data-cat="gastro" style="z-index:\1;margin-bottom:0;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">espanol-lac.vercel.app</span></div>
                 <img src="img/espanol.jpeg" alt="El Español">
@@ -1584,7 +1594,7 @@ body.dark-mode .wb-card-link{background:#1e2d3d;}
         </div>
 
         <!-- 17 — Website Analyser -->
-        <div class="wb-card" data-cat="ki" style="top:408px;z-index:17;margin-bottom:0;">
+        <div class="wb-card" data-cat="ki" style="z-index:\1;margin-bottom:0;">
             <div class="wb-card-img">
                 <div class="wb-browser-bar"><span class="wb-browser-dot wb-browser-dot--r"></span><span class="wb-browser-dot wb-browser-dot--y"></span><span class="wb-browser-dot wb-browser-dot--g"></span><span class="wb-browser-url">website-analyser-alpha-eight.vercel.app</span></div>
                 <img src="img/analize.jpeg" alt="Website Analyser">
@@ -2935,6 +2945,36 @@ body.dark-mode .bk-progress{background:#2a3040}
             }
         });
     });
+})();
+
+// ── STACKING SCROLL EFFECT ──────────────────────────────
+// Pure sticky CSS does the stacking — the JS only animates a tiny
+// lift on the just-arrived card so it feels like it lands on top.
+(function(){
+    var section = document.querySelector('.wb-stack-section');
+    if (!section) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll('.wb-card'));
+    if (!cards.length) return;
+    var stickyTop = 100;
+    function update(){
+        if (section.classList.contains('wb-is-filtered')) {
+            cards.forEach(function(c){ c.classList.remove('wb-stacked'); });
+            return;
+        }
+        cards.forEach(function(c){
+            var r = c.getBoundingClientRect();
+            // active "landed" when its top is at the sticky line (±2px)
+            c.classList.toggle('wb-stacked', Math.abs(r.top - stickyTop) < 2);
+        });
+    }
+    var raf = null;
+    function onScroll(){
+        if (raf) return;
+        raf = requestAnimationFrame(function(){ raf = null; update(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onScroll);
+    update();
 })();
 </script>
 <script>
