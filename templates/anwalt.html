@@ -211,10 +211,68 @@
         .n-footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:13.5px; color:#8c8878; }
         .n-footer-bottom a { color:var(--clay); text-decoration:none; font-weight:600; }
 
+        /* ═══ CREDENTIALS STRIP ═══ */
+        .n-creds { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:38px 0; }
+        .n-creds-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+        .n-creds-label { font-size:13px; color:var(--text-soft); font-weight:600; letter-spacing:0.04em; flex-shrink:0; }
+        .n-creds-logos { display:flex; align-items:center; gap:40px; flex-wrap:wrap; }
+        .n-cred { display:inline-flex; align-items:center; gap:10px; font-family:var(--serif); font-size:18px; font-weight:600; color:var(--ink); opacity:0.7; transition:opacity 0.3s; }
+        .n-cred:hover { opacity:1; }
+        .n-cred svg { width:22px; height:22px; stroke:var(--sage-deep); flex-shrink:0; }
+
+        /* ═══ PROCESS ═══ */
+        .n-process { display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
+        .n-step { position:relative; padding:34px 28px; background:var(--cream); border:1px solid var(--line); border-radius:26px; transition:transform 0.4s, box-shadow 0.4s; }
+        .n-step:hover { transform:translateY(-8px); box-shadow:var(--shadow-soft); }
+        .n-step-num { width:48px; height:48px; border-radius:50% 50% 50% 12px; background:var(--sand-2); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:20px; font-weight:600; color:var(--terra-deep); margin-bottom:22px; }
+        .n-step:hover .n-step-num { background:var(--grad-earth); color:#fff; }
+        .n-step h3 { font-family:var(--serif); font-size:20px; font-weight:600; color:var(--ink); margin-bottom:10px; }
+        .n-step p { font-size:14.5px; color:var(--text-soft); line-height:1.6; }
+
+        /* ═══ PRICING ═══ */
+        .n-pricing { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
+        .n-price-card { background:var(--cream); border:1px solid var(--line); border-radius:28px; padding:40px 34px; display:flex; flex-direction:column; transition:transform 0.4s, box-shadow 0.4s; }
+        .n-price-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-soft); }
+        .n-price-card.featured { background:var(--ink); border-color:var(--ink); }
+        .n-price-card.featured .n-price-name, .n-price-card.featured .n-price-amount { color:var(--cream); }
+        .n-price-card.featured .n-price-desc, .n-price-card.featured .n-price-list li { color:#bdb9ab; }
+        .n-price-card.featured .n-price-list svg { stroke:var(--clay); }
+        .n-price-badge { align-self:flex-start; font-size:11.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--terra); padding:5px 12px; border-radius:100px; margin-bottom:18px; }
+        .n-price-name { font-family:var(--serif); font-size:23px; font-weight:600; color:var(--ink); margin-bottom:8px; }
+        .n-price-desc { font-size:14px; color:var(--text-soft); line-height:1.55; margin-bottom:22px; }
+        .n-price-amount { font-family:var(--serif); font-size:40px; font-weight:600; color:var(--ink); line-height:1; }
+        .n-price-amount span { font-family:var(--sans); font-size:15px; font-weight:500; color:var(--text-soft); }
+        .n-price-list { list-style:none; margin:26px 0; display:flex; flex-direction:column; gap:13px; flex:1; }
+        .n-price-list li { display:flex; align-items:flex-start; gap:11px; font-size:14.5px; color:var(--text); line-height:1.5; }
+        .n-price-list svg { width:18px; height:18px; stroke:var(--sage-deep); flex-shrink:0; margin-top:1px; }
+        .n-price-btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 24px; border-radius:100px; font-size:14.5px; font-weight:600; text-decoration:none; transition:all 0.3s; background:var(--sand-2); color:var(--ink); }
+        .n-price-btn:hover { background:var(--terra); color:#fff; }
+        .n-price-card.featured .n-price-btn { background:var(--clay); color:var(--ink); }
+        .n-price-card.featured .n-price-btn:hover { background:var(--cream); }
+        .n-price-note { text-align:center; font-size:13.5px; color:var(--text-soft); margin-top:28px; }
+
+        /* ═══ RATGEBER / INSIGHTS ═══ */
+        .n-insights { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+        .n-article { background:var(--cream); border:1px solid var(--line); border-radius:26px; overflow:hidden; text-decoration:none; display:flex; flex-direction:column; transition:transform 0.4s, box-shadow 0.4s; }
+        .n-article:hover { transform:translateY(-8px); box-shadow:var(--shadow-soft); }
+        .n-article-img { height:200px; overflow:hidden; }
+        .n-article-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+        .n-article:hover .n-article-img img { transform:scale(1.06); }
+        .n-article-body { padding:26px 28px 30px; display:flex; flex-direction:column; flex:1; }
+        .n-article-meta { display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--terra-deep); font-weight:600; margin-bottom:12px; }
+        .n-article-meta .cat { background:var(--sand-2); padding:4px 11px; border-radius:100px; }
+        .n-article h3 { font-family:var(--serif); font-size:20px; font-weight:600; color:var(--ink); line-height:1.25; margin-bottom:10px; }
+        .n-article p { font-size:14.5px; color:var(--text-soft); line-height:1.6; flex:1; }
+        .n-article .more { display:inline-flex; align-items:center; gap:7px; margin-top:18px; font-size:14px; font-weight:600; color:var(--terra-deep); }
+        .n-article .more svg { width:15px; height:15px; transition:transform 0.3s; }
+        .n-article:hover .more svg { transform:translateX(4px); }
+
         /* ═══ RESPONSIVE ═══ */
         @media (max-width:1000px) {
-            .n-services, .n-team, .n-testi { grid-template-columns:repeat(2,1fr); }
+            .n-services, .n-team, .n-testi, .n-insights { grid-template-columns:repeat(2,1fr); }
             .n-stats { grid-template-columns:repeat(2,1fr); }
+            .n-process { grid-template-columns:repeat(2,1fr); }
+            .n-pricing { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
         }
         @media (max-width:820px) {
             .n-nav-links { display:none; }
@@ -227,7 +285,7 @@
             .n-contact-card { padding:40px 28px; }
         }
         @media (max-width:560px) {
-            .n-services, .n-team, .n-testi, .n-values { grid-template-columns:1fr; }
+            .n-services, .n-team, .n-testi, .n-values, .n-process, .n-insights { grid-template-columns:1fr; }
             .n-hero-float.f1 { left:6px; } .n-hero-float.f2 { right:6px; }
         }
     </style>
@@ -250,9 +308,10 @@
             </a>
             <div class="n-nav-links">
                 <a href="#rechtsgebiete">Rechtsgebiete</a>
-                <a href="#kanzlei">Kanzlei</a>
+                <a href="#ablauf">Ablauf</a>
                 <a href="#team">Team</a>
-                <a href="#stimmen">Stimmen</a>
+                <a href="#honorar">Honorar</a>
+                <a href="#ratgeber">Ratgeber</a>
                 <a href="#kontakt" class="n-nav-cta">Erstgespräch</a>
             </div>
             <button class="n-burger" id="nBurger" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -387,6 +446,38 @@
         </div>
     </section>
 
+    <!-- ═══════════ CREDENTIALS ═══════════ -->
+    <div class="n-creds reveal">
+        <div class="n-wrap">
+            <div class="n-creds-inner">
+                <span class="n-creds-label" data-edit="text" data-edit-key="creds-label">Mitglied & zertifiziert bei:</span>
+                <div class="n-creds-logos">
+                    <span class="n-cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v18M5 7l7-4 7 4M5 7l-2 6a4 4 0 008 0L5 7zM19 7l-2 6a4 4 0 008 0l-6-6z"/></svg> <span data-edit="text" data-edit-key="cred1">Schweizer Anwaltsverband</span></span>
+                    <span class="n-cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg> <span data-edit="text" data-edit-key="cred2">TREUHAND|SUISSE</span></span>
+                    <span class="n-cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> <span data-edit="text" data-edit-key="cred3">EXPERTsuisse</span></span>
+                    <span class="n-cred"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6"/></svg> <span data-edit="text" data-edit-key="cred4">Zürcher Anwaltsverband</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ PROCESS ═══════════ -->
+    <section class="n-section" id="ablauf">
+        <div class="n-wrap">
+            <div class="n-head center reveal">
+                <div class="n-tag" data-edit="text" data-edit-key="proc-tag">So arbeiten wir</div>
+                <h2 class="n-h2" data-edit="text" data-edit-key="proc-title">Ihr Weg zur <em>Lösung</em></h2>
+                <p data-edit="text" data-edit-key="proc-desc">Transparent und nachvollziehbar — vom ersten Kontakt bis zum Abschluss begleiten wir Sie Schritt für Schritt.</p>
+            </div>
+            <div class="n-process">
+                <div class="n-step reveal"><div class="n-step-num">1</div><h3 data-edit="text" data-edit-key="step1-t">Erstgespräch</h3><p data-edit="text" data-edit-key="step1-p">Wir hören zu und verschaffen uns ein klares Bild Ihrer Situation — kostenlos und unverbindlich.</p></div>
+                <div class="n-step reveal d1"><div class="n-step-num">2</div><h3 data-edit="text" data-edit-key="step2-t">Analyse & Strategie</h3><p data-edit="text" data-edit-key="step2-p">Wir prüfen die Rechtslage und entwickeln einen konkreten Fahrplan mit klaren Optionen.</p></div>
+                <div class="n-step reveal d2"><div class="n-step-num">3</div><h3 data-edit="text" data-edit-key="step3-t">Umsetzung</h3><p data-edit="text" data-edit-key="step3-p">Wir handeln in Ihrem Sinn — verhandeln, gestalten Verträge oder vertreten Sie vor Gericht.</p></div>
+                <div class="n-step reveal d3"><div class="n-step-num">4</div><h3 data-edit="text" data-edit-key="step4-t">Begleitung</h3><p data-edit="text" data-edit-key="step4-p">Auch danach bleiben wir an Ihrer Seite und sorgen für eine nachhaltige Lösung.</p></div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══════════ TEAM ═══════════ -->
     <section class="n-section" id="team" style="padding-top:0;">
         <div class="n-wrap">
@@ -440,6 +531,95 @@
                     <p data-edit="text" data-edit-key="testi3-text">Die Steuerberatung war Gold wert — transparent, vorausschauend und immer erreichbar. Sehr zu empfehlen.</p>
                     <div class="n-testi-foot"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="" data-edit="image" data-edit-key="testi3-img"><div><div class="nm" data-edit="text" data-edit-key="testi3-name">Familie Keller</div><div class="meta" data-edit="text" data-edit-key="testi3-meta">Treuhand-Mandat</div></div></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PRICING / HONORAR ═══════════ -->
+    <section class="n-section" id="honorar" style="padding-top:0;">
+        <div class="n-wrap">
+            <div class="n-head center reveal">
+                <div class="n-tag" data-edit="text" data-edit-key="price-tag">Honorar</div>
+                <h2 class="n-h2" data-edit="text" data-edit-key="price-title">Transparente <em>Konditionen</em></h2>
+                <p data-edit="text" data-edit-key="price-desc">Keine versteckten Kosten. Sie wählen das Modell, das zu Ihrem Anliegen passt — den Rahmen besprechen wir immer vorab.</p>
+            </div>
+            <div class="n-pricing">
+                <div class="n-price-card reveal">
+                    <div class="n-price-name" data-edit="text" data-edit-key="price1-name">Erstberatung</div>
+                    <div class="n-price-desc" data-edit="text" data-edit-key="price1-desc">Klarheit über Ihre Ausgangslage und die nächsten Schritte.</div>
+                    <div class="n-price-amount"><span data-edit="text" data-edit-key="price1-amount">kostenlos</span></div>
+                    <ul class="n-price-list">
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price1-f1">Bis 30 Minuten Gespräch</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price1-f2">Erste Einschätzung Ihrer Lage</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price1-f3">Unverbindlich & vertraulich</span></li>
+                    </ul>
+                    <a href="#kontakt" class="n-price-btn" data-edit="text" data-edit-key="price1-btn">Termin anfragen</a>
+                </div>
+                <div class="n-price-card featured reveal d1">
+                    <span class="n-price-badge" data-edit="text" data-edit-key="price2-badge">Beliebt</span>
+                    <div class="n-price-name" data-edit="text" data-edit-key="price2-name">Mandat nach Aufwand</div>
+                    <div class="n-price-desc" data-edit="text" data-edit-key="price2-desc">Faire Abrechnung nach effektivem Zeitaufwand.</div>
+                    <div class="n-price-amount" data-edit="text" data-edit-key="price2-amount">ab CHF 250<span>/Std.</span></div>
+                    <ul class="n-price-list">
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price2-f1">Transparente Stundenabrechnung</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price2-f2">Feste Ansprechperson</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price2-f3">Laufende Kostenkontrolle</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price2-f4">Antwort innert 24 Stunden</span></li>
+                    </ul>
+                    <a href="#kontakt" class="n-price-btn" data-edit="text" data-edit-key="price2-btn">Jetzt starten</a>
+                </div>
+                <div class="n-price-card reveal d2">
+                    <div class="n-price-name" data-edit="text" data-edit-key="price3-name">Pauschale & Treuhand</div>
+                    <div class="n-price-desc" data-edit="text" data-edit-key="price3-desc">Planbare Kosten für wiederkehrende Mandate.</div>
+                    <div class="n-price-amount" data-edit="text" data-edit-key="price3-amount">auf Anfrage</div>
+                    <ul class="n-price-list">
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price3-f1">Fixpreis pro Leistung</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price3-f2">Buchhaltung & Steuern im Abo</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg><span data-edit="text" data-edit-key="price3-f3">Jährliche Beratung inklusive</span></li>
+                    </ul>
+                    <a href="#kontakt" class="n-price-btn" data-edit="text" data-edit-key="price3-btn">Offerte einholen</a>
+                </div>
+            </div>
+            <p class="n-price-note reveal" data-edit="text" data-edit-key="price-note">Alle Preise verstehen sich exkl. MwSt. · Die definitive Offerte erstellen wir nach dem Erstgespräch.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════ RATGEBER ═══════════ -->
+    <section class="n-section" id="ratgeber" style="padding-top:0;">
+        <div class="n-wrap">
+            <div class="n-head center reveal">
+                <div class="n-tag" data-edit="text" data-edit-key="ins-tag">Ratgeber</div>
+                <h2 class="n-h2" data-edit="text" data-edit-key="ins-title">Wissen, das <em>weiterhilft</em></h2>
+                <p data-edit="text" data-edit-key="ins-desc">Verständlich aufbereitete Beiträge zu Themen, die unsere Mandanten bewegen.</p>
+            </div>
+            <div class="n-insights">
+                <a href="#" class="n-article reveal">
+                    <div class="n-article-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="art1-img"></div>
+                    <div class="n-article-body">
+                        <div class="n-article-meta"><span class="cat" data-edit="text" data-edit-key="art1-cat">Erbrecht</span> <span data-edit="text" data-edit-key="art1-date">5 Min. Lesezeit</span></div>
+                        <h3 data-edit="text" data-edit-key="art1-title">Testament richtig verfassen — die häufigsten Fehler</h3>
+                        <p data-edit="text" data-edit-key="art1-desc">Was ein Testament rechtsgültig macht und worauf Sie bei der Formulierung unbedingt achten sollten.</p>
+                        <span class="more">Weiterlesen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a href="#" class="n-article reveal d1">
+                    <div class="n-article-img"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="art2-img"></div>
+                    <div class="n-article-body">
+                        <div class="n-article-meta"><span class="cat" data-edit="text" data-edit-key="art2-cat">Arbeitsrecht</span> <span data-edit="text" data-edit-key="art2-date">4 Min. Lesezeit</span></div>
+                        <h3 data-edit="text" data-edit-key="art2-title">Kündigung erhalten? Ihre Rechte im Überblick</h3>
+                        <p data-edit="text" data-edit-key="art2-desc">Fristen, Sperrfristen und Möglichkeiten — was Sie nach einer Kündigung wissen müssen.</p>
+                        <span class="more">Weiterlesen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a href="#" class="n-article reveal d2">
+                    <div class="n-article-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="art3-img"></div>
+                    <div class="n-article-body">
+                        <div class="n-article-meta"><span class="cat" data-edit="text" data-edit-key="art3-cat">Treuhand</span> <span data-edit="text" data-edit-key="art3-date">6 Min. Lesezeit</span></div>
+                        <h3 data-edit="text" data-edit-key="art3-title">Steuern optimieren — legale Möglichkeiten für KMU</h3>
+                        <p data-edit="text" data-edit-key="art3-desc">Mit vorausschauender Planung lassen sich Steuern senken. Wir zeigen die wichtigsten Hebel.</p>
+                        <span class="more">Weiterlesen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
