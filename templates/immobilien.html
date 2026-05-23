@@ -193,8 +193,8 @@
         /* ── Inseraten / Listings ─────────────────── */
         .im-listings-wrap { background:var(--white); }
         .im-listings-head {
-            max-width:1160px; margin:0 auto;
-            padding:80px 32px 40px;
+            max-width:1280px; margin:0 auto;
+            padding:96px 32px 32px;
             display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap;
         }
         .im-listings-link {
@@ -204,51 +204,141 @@
             transition:color .2s;
         }
         .im-listings-link:hover { color:var(--gold); }
+
+        /* Filter bar — modern shop-style */
+        .im-filter-wrap {
+            max-width:1280px; margin:0 auto;
+            padding:0 32px 32px;
+            display:flex; gap:24px; align-items:center; flex-wrap:wrap;
+            justify-content:space-between;
+        }
+        .im-filter-row {
+            display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+        }
+        .im-filter-chip {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:10px 18px; border-radius:999px; cursor:pointer;
+            background:#fff; border:1px solid rgba(15,32,64,0.12);
+            font-family:var(--sans); font-size:13px; font-weight:600;
+            color:var(--muted); transition:all .25s;
+        }
+        .im-filter-chip:hover { border-color:var(--navy); color:var(--navy); }
+        .im-filter-chip.active {
+            background:var(--navy); color:#fff; border-color:var(--navy);
+            box-shadow:0 6px 18px rgba(15,32,64,0.2);
+        }
+        .im-filter-chip-count {
+            font-size:11px; opacity:0.7;
+            background:rgba(0,0,0,0.05); padding:1px 7px; border-radius:999px;
+        }
+        .im-filter-chip.active .im-filter-chip-count { background:rgba(255,255,255,0.18); }
+        .im-filter-divider {
+            width:1px; height:24px; background:rgba(15,32,64,0.15);
+        }
+        .im-filter-count {
+            font-size:13px; color:var(--muted); font-weight:500;
+        }
+        .im-filter-count b { color:var(--navy); font-weight:700; }
+        .im-filter-sort {
+            display:inline-flex; align-items:center; gap:8px;
+            font-size:13px; font-weight:600; color:var(--navy); cursor:pointer;
+            padding:10px 16px; border-radius:999px;
+            border:1px solid rgba(15,32,64,0.12); background:#fff;
+            transition:all .25s;
+        }
+        .im-filter-sort:hover { border-color:var(--navy); }
+        .im-filter-sort svg { color:var(--gold); }
+
         .im-listings-grid {
-            max-width:1160px; margin:0 auto;
-            padding:0 32px 80px;
-            display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+            max-width:1280px; margin:0 auto;
+            padding:0 32px 96px;
+            display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
         }
         .im-card {
-            border-radius:12px; overflow:hidden;
+            border-radius:20px; overflow:hidden;
             border:1px solid var(--gray);
             background:#fff;
-            transition:box-shadow .3s, transform .3s;
-            cursor:pointer;
+            transition:all .4s cubic-bezier(.22,1,.36,1);
+            cursor:pointer; position:relative;
+            display:flex; flex-direction:column;
         }
-        .im-card:hover { box-shadow:0 16px 48px rgba(15,32,64,0.12); transform:translateY(-4px); }
+        .im-card.hidden { display:none; }
+        .im-card:hover { box-shadow:0 24px 56px rgba(15,32,64,0.14); transform:translateY(-6px); border-color:var(--gold-pale); }
         .im-card-img { position:relative; aspect-ratio:4/3; overflow:hidden; }
-        .im-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
+        .im-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
         .im-card:hover .im-card-img img { transform:scale(1.06); }
+
+        /* Top-left badges stack */
+        .im-card-badges {
+            position:absolute; top:14px; left:14px; z-index:3;
+            display:flex; flex-direction:column; gap:6px; align-items:flex-start;
+        }
         .im-card-status {
-            position:absolute; top:14px; left:14px;
-            font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
-            padding:5px 12px; border-radius:4px;
+            font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+            padding:5px 11px; border-radius:999px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
         }
         .im-card-status.available { background:var(--gold); color:var(--navy); }
-        .im-card-status.reserved { background:rgba(255,255,255,0.9); color:var(--navy); }
+        .im-card-status.reserved { background:rgba(255,255,255,0.94); color:var(--navy); }
+        .im-card-status.new-tag { background:#16a34a; color:#fff; }
+        .im-card-status.exclusive { background:var(--navy); color:#fff; }
+        .im-card-status.reduced { background:#e11d48; color:#fff; }
+
+        /* Heart icon */
+        .im-card-fav {
+            position:absolute; top:14px; right:14px; z-index:3;
+            width:38px; height:38px; border-radius:50%;
+            background:rgba(255,255,255,0.94); backdrop-filter:blur(10px);
+            border:none; cursor:pointer; color:var(--muted);
+            display:flex; align-items:center; justify-content:center;
+            transition:all .3s; box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        }
+        .im-card-fav:hover { color:#e11d48; transform:scale(1.1); }
+        .im-card-fav.active { color:#e11d48; }
+        .im-card-fav.active svg { fill:#e11d48; }
+
         .im-card-price {
             position:absolute; bottom:0; left:0; right:0;
-            background:linear-gradient(to top, rgba(15,32,64,0.85) 0%, transparent 100%);
-            padding:32px 20px 16px;
-            font-family:var(--serif); font-size:22px; font-weight:700; color:#fff;
+            background:linear-gradient(to top, rgba(15,32,64,0.92) 0%, rgba(15,32,64,0.4) 60%, transparent 100%);
+            padding:48px 20px 18px;
+            font-family:var(--serif); font-size:26px; font-weight:600; color:#fff;
+            letter-spacing:-0.01em; display:flex; align-items:baseline; gap:6px;
         }
-        .im-card-body { padding:20px 22px 24px; }
-        .im-card-type { font-size:11px; font-weight:600; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px; }
-        .im-card-title { font-family:var(--serif); font-size:18px; font-weight:600; color:var(--navy); margin-bottom:6px; line-height:1.3; }
+        .im-card-price small { font-family:var(--sans); font-size:13px; font-weight:500; opacity:0.75; letter-spacing:0.02em; }
+        .im-card-body { padding:22px 22px 24px; flex:1; display:flex; flex-direction:column; }
+        .im-card-type {
+            font-size:10px; font-weight:700; color:var(--gold);
+            letter-spacing:0.14em; text-transform:uppercase; margin-bottom:8px;
+            display:inline-flex; align-items:center; gap:8px;
+        }
+        .im-card-type-pill {
+            font-family:var(--sans); font-size:10px; font-weight:700;
+            padding:3px 10px; border-radius:999px; letter-spacing:0.08em;
+        }
+        .im-card-type-pill.kauf { background:rgba(15,32,64,0.08); color:var(--navy); }
+        .im-card-type-pill.miete { background:rgba(184,150,46,0.15); color:var(--gold); }
+        .im-card-title { font-family:var(--serif); font-size:20px; font-weight:600; color:var(--navy); margin-bottom:8px; line-height:1.25; letter-spacing:-0.01em; }
         .im-card-loc {
-            display:flex; align-items:center; gap:5px;
-            font-size:13px; color:var(--muted); margin-bottom:16px;
+            display:flex; align-items:center; gap:6px;
+            font-size:13px; color:var(--muted); margin-bottom:18px;
         }
         .im-card-specs {
-            display:flex; gap:16px; padding-top:16px;
-            border-top:1px solid var(--gray);
+            display:flex; gap:18px; padding-top:18px;
+            border-top:1px solid var(--gray); margin-top:auto;
         }
         .im-card-spec {
-            display:flex; align-items:center; gap:5px;
-            font-size:13px; color:var(--muted);
+            display:flex; align-items:center; gap:6px;
+            font-size:13px; color:var(--text); font-weight:500;
         }
         .im-card-spec svg { color:var(--gold); }
+
+        /* Empty state */
+        .im-empty {
+            grid-column:1/-1; text-align:center; padding:80px 24px;
+            color:var(--muted); font-size:15px;
+        }
+        .im-empty svg { color:var(--gold); margin-bottom:14px; opacity:0.5; }
+        .im-empty b { color:var(--navy); font-weight:600; display:block; font-size:18px; margin-bottom:6px; }
 
         /* ── Leistungen / Services ────────────────── */
         .im-services-wrap { background:var(--offwhite); }
@@ -539,6 +629,12 @@
             .im-stats-inner { grid-template-columns:1fr 1fr; gap:24px; }
             .im-stat-divider { display:none; }
         }
+        @media (max-width:900px) {
+            .im-filter-wrap { gap:14px; padding:0 24px 24px; }
+            .im-filter-row { gap:6px; }
+            .im-filter-chip { padding:9px 14px; font-size:12px; }
+            .im-filter-divider { display:none; }
+        }
         @media (max-width:600px) {
             .im-nav-links { display:none; }
             .im-nav-burger { display:flex; }
@@ -673,99 +769,314 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
     </div>
-    <div class="im-listings-grid">
 
-        <!-- Card 1 -->
-        <div class="im-card fade-up">
+    <!-- Filter bar -->
+    <div class="im-filter-wrap" id="imFilters">
+        <div class="im-filter-row">
+            <button class="im-filter-chip active" data-filter="alle">Alle <span class="im-filter-chip-count">12</span></button>
+            <button class="im-filter-chip" data-filter="kauf">Kaufen <span class="im-filter-chip-count">7</span></button>
+            <button class="im-filter-chip" data-filter="miete">Mieten <span class="im-filter-chip-count">5</span></button>
+            <div class="im-filter-divider"></div>
+            <button class="im-filter-chip" data-filter="wohnung">Wohnung <span class="im-filter-chip-count">5</span></button>
+            <button class="im-filter-chip" data-filter="haus">Haus <span class="im-filter-chip-count">3</span></button>
+            <button class="im-filter-chip" data-filter="penthouse">Penthouse <span class="im-filter-chip-count">2</span></button>
+            <button class="im-filter-chip" data-filter="villa">Villa <span class="im-filter-chip-count">2</span></button>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+            <span class="im-filter-count"><b id="imVisibleCount">12</b> Objekte gefunden</span>
+            <button class="im-filter-sort" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+                Neueste zuerst
+            </button>
+        </div>
+    </div>
+
+    <div class="im-listings-grid" id="imGrid">
+
+        <!-- 1 — Penthouse Kauf -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="penthouse">
             <div class="im-card-img">
-                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=80" alt="Penthouse Zürich" loading="lazy" data-edit="image" data-edit-key="prop1-img">
-                <div class="im-card-status available">Verfügbar</div>
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=80" alt="Penthouse Zürich" loading="lazy">
+                <div class="im-card-badges">
+                    <span class="im-card-status exclusive">Exklusiv</span>
+                    <span class="im-card-status available">Verfügbar</span>
+                </div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <div class="im-card-price">CHF 2'450'000</div>
             </div>
             <div class="im-card-body">
-                <div class="im-card-type">Penthouse · Kauf</div>
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Penthouse</div>
                 <div class="im-card-title">Penthouse mit Seesicht</div>
                 <div class="im-card-loc">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     Zürichberg, Zürich
                 </div>
                 <div class="im-card-specs">
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg>
-                        5.5 Zi.
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                        220 m²
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                        3 Bäder
-                    </div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 5.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 220 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 3 Bäder</div>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <!-- Card 2 -->
-        <div class="im-card fade-up" style="transition-delay:.1s">
+        <!-- 2 — Villa Kauf -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="villa">
             <div class="im-card-img">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Villa Küsnacht" loading="lazy" data-edit="image" data-edit-key="prop2-img">
-                <div class="im-card-status available">Verfügbar</div>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Villa Küsnacht" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status available">Verfügbar</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <div class="im-card-price">CHF 4'200'000</div>
             </div>
             <div class="im-card-body">
-                <div class="im-card-type">Villa · Kauf</div>
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Villa</div>
                 <div class="im-card-title">Villa mit Privatgarten</div>
                 <div class="im-card-loc">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     Küsnacht, Zürich
                 </div>
                 <div class="im-card-specs">
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg>
-                        8.5 Zi.
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                        380 m²
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                        4 Bäder
-                    </div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 8.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 380 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 4 Bäder</div>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <!-- Card 3 -->
-        <div class="im-card fade-up" style="transition-delay:.2s">
+        <!-- 3 — Altbau Wohnung Kauf reserviert -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="wohnung">
             <div class="im-card-img">
-                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Wohnung Basel" loading="lazy" data-edit="image" data-edit-key="prop3-img">
-                <div class="im-card-status reserved">Reserviert</div>
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Altbauwohnung Basel" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status reserved">Reserviert</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <div class="im-card-price">CHF 1'180'000</div>
             </div>
             <div class="im-card-body">
-                <div class="im-card-type">Wohnung · Kauf</div>
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Altbauwohnung</div>
                 <div class="im-card-title">Exklusive Altbauwohnung</div>
                 <div class="im-card-loc">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     Altstadt, Basel
                 </div>
                 <div class="im-card-specs">
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg>
-                        4.5 Zi.
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                        148 m²
-                    </div>
-                    <div class="im-card-spec">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                        2 Bäder
-                    </div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 4.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 148 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 2 Bäder</div>
                 </div>
             </div>
+        </article>
+
+        <!-- 4 — Loft Miete -->
+        <article class="im-card fade-up" data-type="miete" data-cat="wohnung">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="Loft Zürich-West" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status new-tag">Neu</span><span class="im-card-status available">Frei ab 01.06.</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 3'850 <small>/ Monat</small></div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill miete">Miete</span> Loft</div>
+                <div class="im-card-title">Industrie-Loft mit Galerie</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Zürich-West, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 3.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 132 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 2 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5 — Einfamilienhaus Kauf -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="haus">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Einfamilienhaus Erlenbach" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status reduced">Preis reduziert</span><span class="im-card-status available">Verfügbar</span></div>
+                <button class="im-card-fav active" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 1'890'000</div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Einfamilienhaus</div>
+                <div class="im-card-title">Familienhaus mit Garten</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Erlenbach, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 6.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 195 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 3 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 6 — Penthouse Miete -->
+        <article class="im-card fade-up" data-type="miete" data-cat="penthouse">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Penthouse Miete" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status exclusive">Exklusiv</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 6'200 <small>/ Monat</small></div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill miete">Miete</span> Penthouse</div>
+                <div class="im-card-title">Penthouse mit Dachterrasse</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Enge, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 5.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 178 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 2 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 7 — Modern Wohnung Miete -->
+        <article class="im-card fade-up" data-type="miete" data-cat="wohnung">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=700&q=80" alt="Wohnung Miete" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status new-tag">Neu</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 2'480 <small>/ Monat</small></div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill miete">Miete</span> Wohnung</div>
+                <div class="im-card-title">Helle 3-Zi mit Balkon</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Oerlikon, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 3.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 92 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 1 Bad</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 8 — Reihenhaus Miete -->
+        <article class="im-card fade-up" data-type="miete" data-cat="haus">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80" alt="Reihenhaus" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status available">Sofort frei</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 4'250 <small>/ Monat</small></div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill miete">Miete</span> Reihenhaus</div>
+                <div class="im-card-title">Reihenhaus mit Garten</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Wallisellen, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 5.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 145 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 2 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 9 — Studio Miete -->
+        <article class="im-card fade-up" data-type="miete" data-cat="wohnung">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700&q=80" alt="Studio" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status available">Verfügbar</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 1'650 <small>/ Monat</small></div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill miete">Miete</span> Studio</div>
+                <div class="im-card-title">Modernes City-Studio</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Kreis 4, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 1.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 38 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 1 Bad</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 10 — Villa Kauf Tessin -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="villa">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700&q=80" alt="Villa Tessin" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status exclusive">Exklusiv</span><span class="im-card-status new-tag">Neu</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 3'480'000</div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Villa</div>
+                <div class="im-card-title">Tessiner Villa mit Pool</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Ascona, Tessin
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 7.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 310 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 4 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 11 — Attika Wohnung Kauf -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="wohnung">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Attika Kauf" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status available">Verfügbar</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 1'520'000</div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Attikawohnung</div>
+                <div class="im-card-title">Attika mit 2 Terrassen</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Höngg, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 4.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 165 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 2 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 12 — Modernes Haus Kauf -->
+        <article class="im-card fade-up" data-type="kauf" data-cat="haus">
+            <div class="im-card-img">
+                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80" alt="Modernes Haus" loading="lazy">
+                <div class="im-card-badges"><span class="im-card-status available">Verfügbar</span></div>
+                <button class="im-card-fav" aria-label="Merken"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <div class="im-card-price">CHF 2'190'000</div>
+            </div>
+            <div class="im-card-body">
+                <div class="im-card-type"><span class="im-card-type-pill kauf">Kauf</span> Architektenhaus</div>
+                <div class="im-card-title">Modernes Architektenhaus</div>
+                <div class="im-card-loc">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Zollikon, Zürich
+                </div>
+                <div class="im-card-specs">
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22V8l9-6 9 6v14"/><rect x="9" y="12" width="6" height="10"/></svg> 6.5 Zi.</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 240 m²</div>
+                    <div class="im-card-spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg> 3 Bäder</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Empty state — shown when no matches -->
+        <div class="im-empty" id="imEmpty" style="display:none">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <b>Keine Objekte gefunden</b>
+            Versuchen Sie eine andere Filter-Kombination.
         </div>
 
     </div>
@@ -1147,6 +1458,36 @@
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Property filter
+    (function(){
+        const chips = document.querySelectorAll('#imFilters .im-filter-chip');
+        const cards = document.querySelectorAll('#imGrid .im-card');
+        const empty = document.getElementById('imEmpty');
+        const counter = document.getElementById('imVisibleCount');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                const f = chip.dataset.filter;
+                let visible = 0;
+                cards.forEach(card => {
+                    const matches = (f === 'alle') ||
+                        (card.dataset.type === f) ||
+                        (card.dataset.cat === f);
+                    card.classList.toggle('hidden', !matches);
+                    if (matches) visible++;
+                });
+                if (counter) counter.textContent = visible;
+                if (empty) empty.style.display = visible === 0 ? 'block' : 'none';
+            });
+        });
+    })();
+
+    // Favorite toggle
+    document.querySelectorAll('.im-card-fav').forEach(b => {
+        b.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); b.classList.toggle('active'); });
+    });
 </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="description" content="Professionelles Handwerker-Template für Sanitär, Elektro und Renovation. Moderne Webseite ab 250 CHF.">
     <meta name="theme-color" content="#1a1a1a" id="themeColor">
     <link rel="icon" type="image/png" href="../img/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
     <style>
         *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -16,15 +16,30 @@
 
         /* ═══ VARIABLES ═══ */
         :root {
-            --green: #27ae60;
-            --green-light: #6fcf97;
-            --dark: #1a1a1a;
-            --cream: #f0faf4;
-            --text: #2c2c2c;
-            --text-light: #7a7a7a;
+            --green: #16a34a;
+            --green-deep: #15803d;
+            --green-light: #86efac;
+            --amber: #f59e0b;
+            --steel: #0f1916;
+            --dark: #0a1410;
+            --cream: #f4faf6;
+            --cream-2: #e8f5ed;
+            --text: #0f1916;
+            --text-light: #5a6b62;
             --serif: 'Playfair Display', serif;
             --sans: 'Inter', sans-serif;
+            --grad-green: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
+            --grad-hero: linear-gradient(180deg, rgba(10,20,16,0.35) 0%, rgba(10,20,16,0.55) 50%, rgba(10,20,16,0.85) 100%);
+            --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
         }
+
+        /* ═══ SCROLL PROGRESS ═══ */
+        .h-progress {
+            position:fixed; top:0; left:0; height:3px; width:0%;
+            background:var(--grad-green); z-index:300; transition:width 0.15s ease-out;
+            box-shadow:0 0 12px rgba(34,197,94,0.5);
+        }
+        .h-grain { position:fixed; inset:0; pointer-events:none; z-index:1; background-image:var(--grain); opacity:0.04; mix-blend-mode:overlay; }
 
         /* ═══ ANIMATIONS ═══ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
@@ -44,8 +59,9 @@
             transition:all 0.4s ease;
         }
         .h-nav.scrolled {
-            background:rgba(26,26,26,0.95); backdrop-filter:blur(20px);
-            padding:14px 40px; box-shadow:0 4px 30px rgba(0,0,0,0.15);
+            background:rgba(10,20,16,0.75); backdrop-filter:blur(24px) saturate(180%);
+            padding:12px 40px; box-shadow:0 4px 30px rgba(0,0,0,0.25);
+            border-bottom:1px solid rgba(34,197,94,0.15);
         }
         .h-nav-logo {
             font-family:var(--serif); font-size:24px; font-weight:700;
@@ -60,10 +76,11 @@
         }
         .h-nav-links a:hover { color:var(--green); }
         .h-nav-cta {
-            background:var(--green); color:#fff !important; padding:10px 24px;
-            border-radius:4px; font-weight:600 !important; transition:all 0.3s !important;
+            background:var(--grad-green); color:#fff !important; padding:10px 24px;
+            border-radius:999px; font-weight:600 !important; transition:all 0.3s !important;
+            box-shadow:0 6px 20px rgba(34,197,94,0.35);
         }
-        .h-nav-cta:hover { background:#1e8e4e; transform:translateY(-1px); }
+        .h-nav-cta:hover { transform:translateY(-1px); box-shadow:0 10px 28px rgba(34,197,94,0.5); }
         .h-nav-burger {
             display:none; background:none; border:none; cursor:pointer;
             width:28px; height:20px; position:relative; z-index:101;
@@ -91,22 +108,45 @@
         }
         .h-hero-bg::after {
             content:''; position:absolute; inset:0;
-            background:linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.7) 100%);
+            background:var(--grad-hero);
+        }
+        .h-hero-bg::before {
+            content:''; position:absolute; inset:0; z-index:1;
+            background:
+                radial-gradient(at 15% 25%, rgba(34,197,94,0.25), transparent 50%),
+                radial-gradient(at 85% 80%, rgba(245,158,11,0.15), transparent 55%);
+            mix-blend-mode:screen;
+        }
+        /* hero accent line */
+        .h-hero-line {
+            position:absolute; top:0; left:0; right:0; height:1px; z-index:3;
+            background:linear-gradient(90deg, transparent, rgba(34,197,94,0.6), transparent);
         }
         .h-hero-content { position:relative; z-index:2; max-width:800px; padding:0 24px; }
         .h-hero-tag {
-            display:inline-flex; align-items:center; gap:8px;
-            color:var(--green-light); font-size:13px; font-weight:600;
-            letter-spacing:0.15em; text-transform:uppercase; margin-bottom:24px;
+            display:inline-flex; align-items:center; gap:10px;
+            color:#fff; font-size:12px; font-weight:600;
+            letter-spacing:0.18em; text-transform:uppercase; margin-bottom:28px;
+            padding:8px 18px; border-radius:999px;
+            background:rgba(255,255,255,0.08); backdrop-filter:blur(20px);
+            border:1px solid rgba(255,255,255,0.15);
             animation:fadeUp 0.8s ease both;
         }
-        .h-hero-tag::before, .h-hero-tag::after {
-            content:''; width:30px; height:1px; background:var(--green-light);
+        .h-hero-tag-dot {
+            width:8px; height:8px; border-radius:50%; background:var(--green-light);
+            box-shadow:0 0 12px var(--green-light);
+            animation:pulse 2s ease infinite;
         }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
         .h-hero h1 {
-            font-family:var(--serif); font-size:72px; font-weight:700;
-            color:#fff; line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px;
+            font-family:var(--serif); font-size:92px; font-weight:700;
+            color:#fff; line-height:1.02; letter-spacing:-0.03em; margin-bottom:24px;
             animation:fadeUp 0.8s 0.2s ease both;
+        }
+        .h-hero h1 em {
+            font-style:italic; font-weight:400;
+            background:linear-gradient(110deg, #86efac 0%, #4ade80 50%, #fbbf24 100%);
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
         }
         .h-hero-sub {
             font-size:18px; color:rgba(255,255,255,0.8); line-height:1.7;
@@ -123,15 +163,23 @@
             text-decoration:none; text-transform:uppercase; letter-spacing:0.05em;
             transition:all 0.3s ease; border:none; cursor:pointer;
         }
+        .h-btn { position:relative; overflow:hidden; border-radius:999px; }
+        .h-btn::after {
+            content:''; position:absolute; top:0; left:-100%; width:60%; height:100%;
+            background:linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transition:left 0.7s ease;
+        }
+        .h-btn:hover::after { left:120%; }
         .h-btn--primary {
-            background:var(--green); color:#fff; border-radius:4px;
+            background:var(--grad-green); color:#fff;
+            box-shadow:0 8px 24px rgba(34,197,94,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
         }
-        .h-btn--primary:hover { background:#1e8e4e; transform:translateY(-2px); box-shadow:0 8px 24px rgba(39,174,96,0.35); }
+        .h-btn--primary:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(34,197,94,0.55), inset 0 1px 0 rgba(255,255,255,0.3); }
         .h-btn--outline {
-            background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.4);
-            border-radius:4px;
+            background:rgba(255,255,255,0.06); color:#fff;
+            border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(12px);
         }
-        .h-btn--outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); }
+        .h-btn--outline:hover { border-color:var(--green-light); background:rgba(34,197,94,0.12); }
 
         /* Scroll indicator */
         .h-hero-scroll {
@@ -143,7 +191,7 @@
         .h-hero-trust {
             position:absolute; bottom:0; left:0; right:0;
             display:flex; justify-content:center; gap:0;
-            background:rgba(0,0,0,0.55); backdrop-filter:blur(12px);
+            background:rgba(10,20,16,0.55); backdrop-filter:blur(24px) saturate(180%);
             border-top:1px solid rgba(255,255,255,0.08);
         }
         .h-hero-trust-item {
@@ -153,10 +201,12 @@
         }
         .h-hero-trust-item:last-child { border-right:none; }
         .h-hero-trust-icon {
-            width:36px; height:36px; border-radius:10px;
-            background:rgba(39,174,96,0.2); border:1px solid rgba(39,174,96,0.3);
+            width:40px; height:40px; border-radius:12px;
+            background:var(--grad-green); border:none;
             display:flex; align-items:center; justify-content:center; flex-shrink:0;
+            box-shadow:0 4px 14px rgba(34,197,94,0.3);
         }
+        .h-hero-trust-icon svg { color:#fff !important; }
         .h-hero-trust-icon svg { width:18px; height:18px; color:var(--green-light); }
         .h-hero-trust-n { font-family:var(--serif); font-size:20px; font-weight:700; color:#fff; line-height:1; }
         .h-hero-trust-l { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; letter-spacing:0.05em; }
@@ -166,17 +216,24 @@
         .h-section { padding:100px 24px; }
         .h-section-header { text-align:center; margin-bottom:64px; }
         .h-section-tag {
-            display:inline-flex; align-items:center; gap:8px;
-            color:var(--green); font-size:12px; font-weight:600;
-            letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;
+            display:inline-flex; align-items:center; gap:10px;
+            color:var(--green); font-size:11px; font-weight:700;
+            letter-spacing:0.2em; text-transform:uppercase; margin-bottom:20px;
+            padding:6px 14px; border-radius:999px;
+            background:rgba(22,163,74,0.08); border:1px solid rgba(22,163,74,0.18);
         }
         .h-section-tag::before {
-            content:''; width:8px; height:8px; border-radius:50%;
-            background:var(--green); opacity:0.5;
+            content:''; width:6px; height:6px; border-radius:50%;
+            background:var(--grad-green); flex-shrink:0;
+            box-shadow:0 0 8px rgba(34,197,94,0.6);
         }
         .h-section-title {
-            font-family:var(--serif); font-size:44px; font-weight:700;
-            color:var(--dark); line-height:1.2; letter-spacing:-0.01em; margin-bottom:16px;
+            font-family:var(--serif); font-size:56px; font-weight:700;
+            color:var(--dark); line-height:1.05; letter-spacing:-0.025em; margin-bottom:18px;
+        }
+        .h-section-title em {
+            font-style:italic; font-weight:400;
+            background:var(--grad-green); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
         }
         .h-section-desc {
             font-size:17px; color:var(--text-light); line-height:1.7;
@@ -189,16 +246,25 @@
 
         /* ═══ MARQUEE ═══ */
         .h-marquee-bar {
-            background:var(--green); padding:14px 0; overflow:hidden; white-space:nowrap;
+            background:var(--dark); padding:20px 0; overflow:hidden; white-space:nowrap;
+            border-top:1px solid rgba(34,197,94,0.2);
+            border-bottom:1px solid rgba(34,197,94,0.2);
+            position:relative;
+        }
+        .h-marquee-bar::before {
+            content:''; position:absolute; inset:0;
+            background:radial-gradient(at 50% 50%, rgba(34,197,94,0.15), transparent 70%);
         }
         .h-marquee-track {
             display:inline-flex; gap:48px; animation:h-marquee 30s linear infinite;
         }
         .h-marquee-item {
-            font-family:var(--serif); font-size:16px; font-weight:600;
-            color:#fff; display:flex; align-items:center; gap:12px;
+            font-family:var(--serif); font-size:32px; font-weight:600;
+            color:#fff; display:flex; align-items:center; gap:18px;
+            letter-spacing:-0.01em;
         }
-        .h-marquee-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); }
+        .h-marquee-item:nth-child(even) { font-style:italic; color:var(--green-light); }
+        .h-marquee-dot { width:10px; height:10px; border-radius:50%; background:var(--grad-green); }
         @keyframes h-marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
         /* ═══ ABOUT ═══ */
@@ -217,13 +283,17 @@
             border:1px solid rgba(39,174,96,0.2); border-radius:12px;
         }
         .h-about-text h3 {
-            font-family:var(--serif); font-size:36px; font-weight:700;
-            color:var(--dark); margin-bottom:20px; line-height:1.2;
+            font-family:var(--serif); font-size:48px; font-weight:700;
+            color:var(--dark); margin-bottom:24px; line-height:1.05; letter-spacing:-0.025em;
+        }
+        .h-about-text h3 em {
+            font-style:italic; font-weight:400;
+            background:var(--grad-green); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
         }
         .h-about-text p { font-size:16px; color:var(--text-light); line-height:1.8; margin-bottom:16px; }
         .h-about-stats { display:flex; gap:32px; margin-top:28px; }
         .h-about-stat { text-align:center; }
-        .h-about-stat-n { font-family:var(--serif); font-size:36px; font-weight:700; color:var(--green); }
+        .h-about-stat-n { font-family:var(--serif); font-size:44px; font-weight:700; background:var(--grad-green); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-0.02em; }
         .h-about-stat-l { font-size:12px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px; }
 
         /* ═══ SERVICES ═══ */
@@ -233,20 +303,25 @@
             display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
         }
         .h-service-card {
-            border-radius:16px; overflow:hidden; border:1px solid #f0f0f0;
-            transition:all 0.4s cubic-bezier(0.22,1,0.36,1); background:#fff;
-            box-shadow:0 2px 12px rgba(0,0,0,0.04);
+            border-radius:24px; overflow:hidden; border:1px solid rgba(22,163,74,0.08);
+            transition:all 0.5s cubic-bezier(0.22,1,0.36,1); background:#fff;
+            box-shadow:0 2px 12px rgba(0,0,0,0.04); position:relative;
         }
-        .h-service-card:hover { transform:translateY(-8px); box-shadow:0 20px 48px rgba(0,0,0,0.1); border-color:rgba(39,174,96,0.2); }
+        .h-service-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px; z-index:3;
+            background:var(--grad-green); opacity:0; transition:opacity 0.4s;
+        }
+        .h-service-card:hover { transform:translateY(-10px); box-shadow:0 28px 60px rgba(22,163,74,0.15); border-color:rgba(22,163,74,0.25); }
+        .h-service-card:hover::before { opacity:1; }
         .h-service-card-img { width:100%; height:220px; overflow:hidden; position:relative; }
         .h-service-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
         .h-service-card:hover .h-service-card-img img { transform:scale(1.07); }
         /* Service card icon badge */
         .h-service-icon-badge {
             position:absolute; top:16px; left:16px; z-index:2;
-            width:44px; height:44px; border-radius:12px;
-            background:var(--green); display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 16px rgba(39,174,96,0.4);
+            width:48px; height:48px; border-radius:14px;
+            background:var(--grad-green); display:flex; align-items:center; justify-content:center;
+            box-shadow:0 8px 24px rgba(22,163,74,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
         }
         .h-service-icon-badge svg { width:22px; height:22px; color:#fff; }
         /* Notdienst ribbon */
@@ -293,18 +368,25 @@
             display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
         }
         .h-testi-card {
-            background:var(--cream); border-radius:16px; padding:28px;
-            border:1px solid rgba(0,0,0,0.04);
-            transition:all 0.35s ease;
+            background:#fff; border-radius:20px; padding:32px;
+            border:1px solid rgba(22,163,74,0.1);
+            transition:all 0.4s ease; position:relative;
+            box-shadow:0 4px 18px rgba(0,0,0,0.03);
         }
-        .h-testi-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.07); }
+        .h-testi-card::before {
+            content:'"'; position:absolute; top:12px; right:24px;
+            font-family:var(--serif); font-size:80px; line-height:1;
+            color:var(--green); opacity:0.15; font-style:italic;
+        }
+        .h-testi-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(22,163,74,0.12); border-color:rgba(22,163,74,0.25); }
         .h-testi-stars { color:var(--green); font-size:16px; letter-spacing:2px; margin-bottom:14px; }
         .h-testi-text { font-size:15px; color:var(--text); line-height:1.7; margin-bottom:20px; font-style:italic; }
         .h-testi-author { display:flex; align-items:center; gap:12px; }
         .h-testi-avatar {
-            width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;
-            background:var(--green); display:flex; align-items:center; justify-content:center;
-            font-family:var(--serif); font-size:16px; font-weight:700; color:#fff;
+            width:48px; height:48px; border-radius:50%; overflow:hidden; flex-shrink:0;
+            background:var(--grad-green); display:flex; align-items:center; justify-content:center;
+            font-family:var(--serif); font-size:18px; font-weight:700; color:#fff;
+            box-shadow:0 4px 12px rgba(22,163,74,0.3);
         }
         .h-testi-name { font-size:14px; font-weight:700; color:var(--dark); }
         .h-testi-role { font-size:12px; color:var(--text-light); margin-top:2px; }
@@ -451,14 +533,17 @@
             position:relative; z-index:1;
         }
         .h-process-num {
-            width:72px; height:72px; border-radius:50%;
-            background:#fff; border:2px solid var(--green);
+            width:80px; height:80px; border-radius:50%;
+            background:#fff; border:1.5px solid rgba(22,163,74,0.3);
             display:flex; align-items:center; justify-content:center;
-            margin-bottom:20px; position:relative;
-            box-shadow:0 4px 16px rgba(39,174,96,0.15);
-            transition:all 0.35s ease;
+            margin-bottom:24px; position:relative;
+            box-shadow:0 8px 24px rgba(22,163,74,0.12);
+            transition:all 0.4s ease;
         }
-        .h-process-step:hover .h-process-num { background:var(--green); }
+        .h-process-step:hover .h-process-num {
+            background:var(--grad-green); border-color:transparent; transform:scale(1.05);
+            box-shadow:0 12px 32px rgba(22,163,74,0.4);
+        }
         .h-process-num svg { width:28px; height:28px; color:var(--green); transition:color 0.35s; }
         .h-process-step:hover .h-process-num svg { color:#fff; }
         .h-process-num-badge {
@@ -534,17 +619,20 @@
 
         /* ═══ FINAL CTA ═══ */
         .h-cta-final {
-            background:linear-gradient(135deg, var(--dark) 0%, #2d2d2d 100%);
-            padding:80px 24px; text-align:center; position:relative; overflow:hidden;
+            background:var(--dark);
+            padding:120px 24px; text-align:center; position:relative; overflow:hidden;
         }
         .h-cta-final::before {
-            content:''; position:absolute; top:-120px; left:50%; transform:translateX(-50%);
-            width:600px; height:600px; border-radius:50%;
-            background:radial-gradient(circle, rgba(39,174,96,0.12) 0%, transparent 70%);
+            content:''; position:absolute; inset:0;
+            background:
+                radial-gradient(at 20% 30%, rgba(34,197,94,0.25), transparent 50%),
+                radial-gradient(at 80% 70%, rgba(245,158,11,0.15), transparent 55%),
+                radial-gradient(at 50% 100%, rgba(34,197,94,0.2), transparent 60%);
         }
         .h-cta-final-inner { position:relative; z-index:1; max-width:640px; margin:0 auto; }
         .h-cta-final-tag { display:inline-flex; align-items:center; gap:6px; background:rgba(39,174,96,0.15); border:1px solid rgba(39,174,96,0.3); color:var(--green-light); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:24px; }
-        .h-cta-final h2 { font-family:var(--serif); font-size:44px; font-weight:700; color:#fff; line-height:1.2; margin-bottom:16px; }
+        .h-cta-final h2 { font-family:var(--serif); font-size:68px; font-weight:700; color:#fff; line-height:1.05; margin-bottom:20px; letter-spacing:-0.025em; }
+        .h-cta-final h2 em { font-style:italic; font-weight:400; background:linear-gradient(110deg, #86efac, #fbbf24); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
         .h-cta-final p { font-size:17px; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:36px; }
         .h-cta-final-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
         @media(max-width:600px){ .h-cta-final h2 { font-size:30px; } }
@@ -586,7 +674,11 @@
         @media (max-width:1024px) {
             .h-nav-links { display:none; }
             .h-nav-burger { display:block; }
-            .h-hero h1 { font-size:48px; }
+            .h-hero h1 { font-size:56px; }
+            .h-section-title { font-size:42px; }
+            .h-about-text h3 { font-size:36px; }
+            .h-cta-final h2 { font-size:44px; }
+            .h-marquee-item { font-size:24px; }
             .h-about-grid { grid-template-columns:1fr; }
             .h-services-grid { grid-template-columns:1fr; max-width:500px; }
             .h-gallery-grid { grid-template-columns:1fr 1fr; }
@@ -594,11 +686,13 @@
             .h-contact-grid { grid-template-columns:1fr; }
         }
         @media (max-width:600px) {
-            .h-hero h1 { font-size:36px; }
+            .h-hero h1 { font-size:42px; }
             .h-hero-sub { font-size:15px; }
             .h-section { padding:64px 20px; }
-            .h-section-title { font-size:32px; }
-            .h-about-text h3 { font-size:28px; }
+            .h-section-title { font-size:34px; }
+            .h-about-text h3 { font-size:30px; }
+            .h-cta-final h2 { font-size:34px; }
+            .h-marquee-item { font-size:20px; gap:14px; }
             .h-gallery-grid { grid-template-columns:1fr; }
             .h-gallery-item--tall { grid-row:auto; }
             .h-gallery-item--tall img { min-height:260px; }
@@ -632,6 +726,9 @@
 </head>
 <body>
 
+<div class="h-progress" id="hProgress"></div>
+<div class="h-grain"></div>
+
 <!-- Back to Lweb -->
 <a href="../templates-web.html#tw-templates" class="h-back" aria-label="Zurück">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -662,9 +759,10 @@
 <!-- ═══════════ HERO ═══════════ -->
 <section class="h-hero">
     <div class="h-hero-bg" data-edit="image" data-edit-key="hero-bg"></div>
+    <div class="h-hero-line"></div>
     <div class="h-hero-content">
-        <div class="h-hero-tag" data-edit="text" data-edit-key="hero-tag">Handwerk & Technik</div>
-        <h1 data-edit="text" data-edit-key="hero-title">Meier Technik</h1>
+        <div class="h-hero-tag" data-edit="text" data-edit-key="hero-tag"><span class="h-hero-tag-dot"></span> 24h Notdienst · Handwerk & Technik</div>
+        <h1 data-edit="text" data-edit-key="hero-title">Meier <em>Technik</em></h1>
         <p class="h-hero-sub" data-edit="text" data-edit-key="hero-sub">Ihr zuverlässiger Partner für Sanitär, Elektro und Renovation in Zürich. Qualitätsarbeit seit 1998 — termingerecht und fair.</p>
         <div class="h-hero-btns">
             <a href="#services" class="h-btn h-btn--primary" data-edit="text" data-edit-key="hero-btn1">Unsere Leistungen</a>
@@ -758,7 +856,7 @@
         </div>
         <div class="h-about-text fade-up">
             <div class="h-section-tag" data-edit="text" data-edit-key="about-tag">Über uns</div>
-            <h3 data-edit="text" data-edit-key="about-title">Zuverlässig, kompetent und fair</h3>
+            <h3 data-edit="text" data-edit-key="about-title">Zuverlässig, <em>kompetent</em> und fair</h3>
             <p data-edit="text" data-edit-key="about-p1">Seit über 25 Jahren steht Meier Technik für erstklassige Handwerksarbeit in Zürich und Umgebung. Unser erfahrenes Team betreut Projekte von der kleinen Reparatur bis zur kompletten Gebäudesanierung.</p>
             <p data-edit="text" data-edit-key="about-p2">Wir vereinen traditionelles Handwerk mit moderner Technik — pünktlich, sauber und zu fairen Preisen. Ihre Zufriedenheit ist unser Massstab.</p>
             <div class="h-about-stats">
@@ -783,7 +881,7 @@
 <section class="h-section h-services" id="services">
     <div class="h-section-header fade-up">
         <div class="h-section-tag" data-edit="text" data-edit-key="services-tag">Leistungen</div>
-        <h2 class="h-section-title" data-edit="text" data-edit-key="services-title">Unsere Fachbereiche</h2>
+        <h2 class="h-section-title" data-edit="text" data-edit-key="services-title">Unsere <em>Fachbereiche</em></h2>
         <p class="h-section-desc" data-edit="text" data-edit-key="services-desc">Vom tropfenden Wasserhahn bis zur kompletten Gebäudetechnik — wir sind Ihr Ansprechpartner.</p>
         <div class="h-divider"></div>
     </div>
@@ -859,7 +957,7 @@
 <section class="h-section h-process">
     <div class="h-section-header fade-up">
         <div class="h-section-tag">Ablauf</div>
-        <h2 class="h-section-title">So einfach geht's</h2>
+        <h2 class="h-section-title">So einfach <em>geht's</em></h2>
         <p class="h-section-desc">Von der Anfrage bis zur fertigen Arbeit — transparent und ohne Überraschungen.</p>
         <div class="h-divider"></div>
     </div>
@@ -903,7 +1001,7 @@
 <section class="h-section h-testimonials">
     <div class="h-section-header fade-up">
         <div class="h-section-tag">Kundenstimmen</div>
-        <h2 class="h-section-title">Was unsere Kunden sagen</h2>
+        <h2 class="h-section-title">Was unsere <em>Kunden</em> sagen</h2>
         <p class="h-section-desc">Über 1200 zufriedene Kunden in Zürich und Umgebung — hier ein paar Stimmen.</p>
         <div class="h-divider"></div>
     </div>
@@ -948,7 +1046,7 @@
 <section class="h-section h-gallery" id="projects">
     <div class="h-section-header fade-up">
         <div class="h-section-tag" data-edit="text" data-edit-key="gallery-tag">Referenzen</div>
-        <h2 class="h-section-title" data-edit="text" data-edit-key="gallery-title">Unsere Projekte</h2>
+        <h2 class="h-section-title" data-edit="text" data-edit-key="gallery-title">Unsere <em>Projekte</em></h2>
         <p class="h-section-desc" data-edit="text" data-edit-key="gallery-desc">Ein Auszug unserer abgeschlossenen Arbeiten — von der Badsanierung bis zur Komplettrenovation.</p>
         <div class="h-divider"></div>
     </div>
@@ -959,7 +1057,7 @@
             <div class="h-gallery-caption"><span class="h-gallery-caption-text">Badsanierung Zürich</span><span class="h-gallery-caption-tag">Sanitär</span></div>
         </div>
         <div class="h-gallery-item fade-up">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Küche Renovation" loading="lazy" data-edit="image" data-edit-key="gallery2">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Küche Renovation" loading="lazy" data-edit="image" data-edit-key="gallery2">
             <div class="h-gallery-caption"><span class="h-gallery-caption-text">Küche Renovation</span><span class="h-gallery-caption-tag">Umbau</span></div>
         </div>
         <div class="h-gallery-item fade-up">
@@ -985,7 +1083,7 @@
 <section class="h-section h-contact" id="contact">
     <div class="h-section-header fade-up">
         <div class="h-section-tag" data-edit="text" data-edit-key="contact-tag">Kontakt</div>
-        <h2 class="h-section-title" data-edit="text" data-edit-key="contact-title">Offerte anfragen</h2>
+        <h2 class="h-section-title" data-edit="text" data-edit-key="contact-title">Offerte <em>anfragen</em></h2>
         <p class="h-section-desc" data-edit="text" data-edit-key="contact-desc">Beschreiben Sie Ihr Projekt und wir melden uns innert 24 Stunden mit einer kostenlosen Offerte.</p>
         <div class="h-divider"></div>
     </div>
@@ -1075,7 +1173,7 @@
 <section class="h-section h-faq">
     <div class="h-section-header fade-up">
         <div class="h-section-tag">FAQ</div>
-        <h2 class="h-section-title">Häufig gestellte Fragen</h2>
+        <h2 class="h-section-title">Häufig gestellte <em>Fragen</em></h2>
         <p class="h-section-desc">Antworten auf die wichtigsten Fragen rund um unsere Leistungen und Preise.</p>
         <div class="h-divider"></div>
     </div>
@@ -1125,7 +1223,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             4.9 von 5 Sternen · 300+ Bewertungen
         </div>
-        <h2>Bereit für Ihr Projekt?</h2>
+        <h2>Bereit für Ihr <em>Projekt</em>?</h2>
         <p>Fordern Sie jetzt Ihre kostenlose Offerte an — innert 24 Stunden erhalten Sie eine transparente Kostenschätzung.</p>
         <div class="h-cta-final-btns">
             <a href="#contact" class="h-btn h-btn--primary">Kostenlose Offerte</a>
@@ -1157,12 +1255,18 @@
 </footer>
 
 <script>
-// Nav scroll
+// Nav scroll + progress bar
 (function(){
     var nav = document.getElementById('hNav');
+    var bar = document.getElementById('hProgress');
     window.addEventListener('scroll', function(){
         nav.classList.toggle('scrolled', window.pageYOffset > 80);
-    });
+        if (bar) {
+            var h = document.documentElement;
+            var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+            bar.style.width = pct + '%';
+        }
+    }, { passive:true });
 })();
 
 // Mobile menu

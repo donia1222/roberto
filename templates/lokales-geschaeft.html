@@ -17,16 +17,48 @@
         /* ═══ VARIABLES ═══ */
         :root {
             --burgundy: #8b2252;
+            --burgundy-deep: #6d1a40;
             --gold: #d4a574;
             --gold-light: #e8cca8;
-            --dark: #1a1218;
-            --cream: #fdf8f4;
+            --sale: #e11d48;
+            --success: #16a34a;
+            --dark: #14101a;
+            --ink: #1a1218;
+            --cream: #fdfaf6;
             --warm: #f5ede5;
-            --text: #2d1f1f;
-            --text-light: #8a7070;
+            --line: rgba(20,16,26,0.08);
+            --text: #1a1218;
+            --text-light: #6b5e63;
             --serif: 'Fraunces', serif;
             --sans: 'Manrope', sans-serif;
+            --grad-burg: linear-gradient(135deg, #8b2252 0%, #c2185b 50%, #d4a574 100%);
+            --grad-sale: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
         }
+
+        /* ═══ SCROLL PROGRESS ═══ */
+        .s-progress {
+            position:fixed; top:0; left:0; height:3px; width:0%;
+            background:var(--grad-burg); z-index:400; transition:width 0.15s ease-out;
+            box-shadow:0 0 12px rgba(139,34,82,0.5);
+        }
+        @keyframes gradShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+        /* ═══ ANNOUNCEMENT BAR ═══ */
+        .s-announce {
+            position:fixed; top:0; left:0; right:0; z-index:101;
+            background:var(--ink); color:#fff;
+            padding:9px 24px; font-size:12px; font-weight:500;
+            letter-spacing:0.04em; text-align:center;
+            border-bottom:1px solid rgba(212,165,116,0.18);
+            overflow:hidden; white-space:nowrap;
+        }
+        .s-announce-track {
+            display:inline-flex; gap:48px; animation:marqueeScroll 32s linear infinite;
+            width:max-content; align-items:center;
+        }
+        .s-announce-item { display:inline-flex; align-items:center; gap:10px; }
+        .s-announce-item b { color:var(--gold); font-weight:600; }
+        .s-announce-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:0.6; }
 
         /* ═══ KEYFRAMES ═══ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
@@ -63,14 +95,41 @@
 
         /* ═══ NAV ═══ */
         .s-nav {
-            position:fixed; top:0; left:0; right:0; z-index:100;
-            padding:20px 48px; display:flex; align-items:center; justify-content:space-between;
+            position:fixed; top:38px; left:0; right:0; z-index:100;
+            padding:18px 48px; display:flex; align-items:center; justify-content:space-between;
             transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
         }
         .s-nav.scrolled {
-            background:rgba(26,18,24,0.92); backdrop-filter:blur(24px) saturate(180%);
-            padding:14px 48px; box-shadow:0 8px 40px rgba(139,34,82,0.15);
+            background:rgba(20,16,26,0.7); backdrop-filter:blur(28px) saturate(180%);
+            padding:12px 48px; box-shadow:0 8px 40px rgba(139,34,82,0.12);
+            border-bottom:1px solid rgba(212,165,116,0.12);
         }
+        /* nav-right: cart + cta */
+        .s-nav-right { display:flex; align-items:center; gap:18px; }
+        .s-cart {
+            position:relative; width:42px; height:42px; border-radius:50%;
+            background:rgba(255,255,255,0.06); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.12);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; text-decoration:none; transition:all 0.3s;
+        }
+        .s-cart:hover { background:var(--burgundy); border-color:var(--gold); transform:translateY(-1px); }
+        .s-cart-badge {
+            position:absolute; top:-4px; right:-4px;
+            min-width:20px; height:20px; padding:0 5px; border-radius:999px;
+            background:var(--grad-sale); color:#fff; font-size:10px; font-weight:700;
+            display:flex; align-items:center; justify-content:center;
+            border:2px solid var(--ink);
+            box-shadow:0 2px 8px rgba(225,29,72,0.5);
+        }
+        .s-search {
+            width:42px; height:42px; border-radius:50%;
+            background:rgba(255,255,255,0.06); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.12);
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; cursor:pointer; transition:all 0.3s;
+        }
+        .s-search:hover { background:rgba(255,255,255,0.12); border-color:var(--gold); }
         .s-nav-logo {
             font-family:var(--serif); font-size:26px; margin-left: 40px;  font-weight:600;
             color:#fff; text-decoration:none; letter-spacing:0.01em;
@@ -90,12 +149,15 @@
         .s-nav-links a:hover { color:#fff; }
         .s-nav-links a:hover::after { width:100%; }
         .s-nav-cta {
-            background:var(--burgundy) !important; color:#fff !important; padding:10px 26px;
-            border-radius:600px; font-weight:600 !important; transition:all 0.3s !important;
-            border:1px solid rgba(212,165,116,0.3);
+            background:var(--grad-burg) !important; background-size:200% 200% !important;
+            animation:gradShift 6s ease infinite;
+            color:#fff !important; padding:11px 24px;
+            border-radius:999px; font-weight:600 !important; transition:all 0.3s !important;
+            border:none; display:inline-flex !important; align-items:center; gap:8px;
+            box-shadow:0 6px 20px rgba(139,34,82,0.4);
         }
         .s-nav-cta::after { display:none !important; }
-        .s-nav-cta:hover { background:#a02a64 !important; transform:translateY(-1px); box-shadow:0 8px 28px rgba(139,34,82,0.4); border-color:var(--gold); }
+        .s-nav-cta:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(139,34,82,0.55); }
         .s-nav-burger {
             display:none; background:none; border:none; cursor:pointer;
             width:30px; height:22px; position:relative; z-index:101;
@@ -129,6 +191,7 @@
             height:100vh; min-height:700px; position:relative;
             display:flex; align-items:center; justify-content:center;
             text-align:center; overflow:hidden;
+            margin-top:38px;
         }
         .s-hero-bg {
             position:absolute; inset:0;
@@ -244,63 +307,144 @@
             flex-shrink:0;
         }
 
-        /* ═══ PRODUCTS (Masonry Grid) ═══ */
+        /* ═══ PRODUCTS — Online Shop Grid ═══ */
         .s-products { background:var(--cream); }
         .s-products-grid {
-            max-width:1200px; margin:0 auto;
-            display:grid; grid-template-columns:repeat(3, 1fr);
-            gap:28px;
+            max-width:1280px; margin:0 auto;
+            display:grid; grid-template-columns:repeat(4, 1fr);
+            gap:24px;
         }
+        /* Filter chips */
+        .s-filters {
+            max-width:1280px; margin:0 auto 48px; display:flex; gap:10px;
+            justify-content:center; flex-wrap:wrap;
+        }
+        .s-chip {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:10px 20px; border-radius:999px; cursor:pointer;
+            background:#fff; border:1px solid var(--line);
+            font-size:13px; font-weight:600; color:var(--text-light);
+            letter-spacing:0.02em; transition:all 0.3s;
+        }
+        .s-chip:hover { border-color:var(--burgundy); color:var(--burgundy); }
+        .s-chip.active {
+            background:var(--ink); color:#fff; border-color:var(--ink);
+        }
+        .s-chip-count { font-size:11px; opacity:0.6; }
+
         .s-product-card {
-            background:#fff; border-radius:16px; overflow:hidden;
-            transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
-            box-shadow:0 4px 20px rgba(139,34,82,0.04);
-            border:1px solid rgba(212,165,116,0.12);
+            background:#fff; border-radius:20px; overflow:hidden;
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+            border:1px solid var(--line); position:relative;
+            display:flex; flex-direction:column;
         }
-        .s-product-card:nth-child(1) { grid-row:span 2; }
-        .s-product-card:nth-child(4) { grid-row:span 2; }
-        .s-product-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,34,82,0.1); border-color:var(--gold-light); }
+        .s-product-card:hover { transform:translateY(-6px); box-shadow:0 24px 50px rgba(20,16,26,0.1); border-color:rgba(212,165,116,0.4); }
         .s-product-img {
-            position:relative; overflow:hidden; aspect-ratio:4/3;
+            position:relative; overflow:hidden; aspect-ratio:1;
+            background:var(--warm);
         }
-        .s-product-card:nth-child(1) .s-product-img,
-        .s-product-card:nth-child(4) .s-product-img { aspect-ratio:3/4; }
         .s-product-img img {
             width:100%; height:100%; object-fit:cover; display:block;
-            transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);
+            transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
         }
-        .s-product-card:hover .s-product-img img { transform:scale(1.08); }
-        .s-product-overlay {
-            position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(26,18,24,0.7) 100%);
-            display:flex; align-items:flex-end; padding:20px;
-            opacity:0; transition:opacity 0.4s;
+        .s-product-card:hover .s-product-img img { transform:scale(1.06); }
+
+        /* Top-left badges */
+        .s-product-badges {
+            position:absolute; top:14px; left:14px; z-index:3;
+            display:flex; flex-direction:column; gap:6px; align-items:flex-start;
         }
-        .s-product-card:hover .s-product-overlay { opacity:1; }
-        .s-product-overlay-btn {
-            background:var(--burgundy); color:#fff; padding:8px 20px;
-            border-radius:600px; font-size:12px; font-weight:600;
-            letter-spacing:0.06em; text-transform:uppercase; text-decoration:none;
-            transition:background 0.3s;
+        .s-badge {
+            font-size:10px; font-weight:700; padding:5px 10px;
+            border-radius:999px; letter-spacing:0.08em; text-transform:uppercase;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
         }
-        .s-product-overlay-btn:hover { background:#a02a64; }
-        .s-product-body { padding:22px 24px 26px; }
+        .s-badge--sale { background:var(--grad-sale); color:#fff; }
+        .s-badge--new { background:var(--ink); color:#fff; }
+        .s-badge--bestseller { background:var(--gold); color:var(--ink); }
+        .s-badge--bio { background:var(--success); color:#fff; }
+
+        /* Wishlist heart */
+        .s-product-wish {
+            position:absolute; top:14px; right:14px; z-index:3;
+            width:38px; height:38px; border-radius:50%;
+            background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+            border:none; cursor:pointer; color:var(--text-light);
+            display:flex; align-items:center; justify-content:center;
+            transition:all 0.3s; box-shadow:0 4px 12px rgba(0,0,0,0.08);
+        }
+        .s-product-wish:hover { color:var(--sale); transform:scale(1.1); background:#fff; }
+        .s-product-wish.active { color:var(--sale); }
+        .s-product-wish.active svg { fill:var(--sale); }
+
+        /* Quick add to cart — slides up on hover */
+        .s-product-quickadd {
+            position:absolute; left:14px; right:14px; bottom:14px; z-index:3;
+            background:var(--ink); color:#fff;
+            padding:13px 20px; border-radius:999px;
+            font-size:12px; font-weight:600; letter-spacing:0.08em;
+            text-transform:uppercase; text-decoration:none; text-align:center;
+            display:flex; align-items:center; justify-content:center; gap:8px;
+            transform:translateY(20px); opacity:0; transition:all 0.4s ease;
+            border:1px solid rgba(212,165,116,0.25);
+        }
+        .s-product-card:hover .s-product-quickadd { transform:translateY(0); opacity:1; }
+        .s-product-quickadd:hover { background:var(--burgundy); }
+
+        .s-product-body { padding:18px 20px 22px; flex:1; display:flex; flex-direction:column; gap:6px; }
         .s-product-cat {
-            font-size:10px; font-weight:700; letter-spacing:0.15em;
-            text-transform:uppercase; color:var(--burgundy); margin-bottom:8px;
-            opacity:0.7;
+            font-size:10px; font-weight:600; letter-spacing:0.14em;
+            text-transform:uppercase; color:var(--text-light);
         }
         .s-product-name {
-            font-family:var(--serif); font-size:20px; font-weight:500;
-            color:var(--dark); margin-bottom:6px;
+            font-family:var(--sans); font-size:15px; font-weight:600;
+            color:var(--dark); line-height:1.3; letter-spacing:-0.005em;
+        }
+
+        /* Rating row */
+        .s-product-rating { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text-light); margin-top:2px; }
+        .s-product-rating-stars { color:var(--gold); display:inline-flex; gap:1px; }
+        .s-product-rating-stars svg { width:13px; height:13px; }
+
+        /* Color swatches */
+        .s-product-swatches { display:flex; gap:6px; margin-top:6px; }
+        .s-product-swatch {
+            width:16px; height:16px; border-radius:50%; cursor:pointer;
+            border:1.5px solid #fff; box-shadow:0 0 0 1px var(--line);
+            transition:transform 0.2s;
+        }
+        .s-product-swatch:hover { transform:scale(1.15); }
+        .s-product-swatch.active { box-shadow:0 0 0 1.5px var(--ink); }
+
+        /* Price block */
+        .s-product-price-row {
+            display:flex; align-items:baseline; gap:8px; margin-top:10px;
+            padding-top:12px; border-top:1px solid var(--line);
         }
         .s-product-price {
-            font-family:var(--serif); font-size:18px; font-weight:600;
-            color:var(--burgundy);
+            font-family:var(--sans); font-size:18px; font-weight:700;
+            color:var(--ink); letter-spacing:-0.01em;
         }
-        .s-product-desc {
-            font-size:14px; color:var(--text-light); line-height:1.6;
-            margin-top:8px;
+        .s-product-price--sale { color:var(--sale); }
+        .s-product-price-old {
+            font-size:13px; color:var(--text-light); text-decoration:line-through;
+            font-weight:500;
         }
+        .s-product-price-save {
+            margin-left:auto; font-size:11px; font-weight:700;
+            color:var(--sale); background:rgba(225,29,72,0.08);
+            padding:3px 8px; border-radius:999px;
+        }
+        .s-product-stock {
+            margin-top:8px; font-size:11px; color:var(--success);
+            display:inline-flex; align-items:center; gap:6px; font-weight:600;
+        }
+        .s-product-stock::before {
+            content:''; width:6px; height:6px; border-radius:50%;
+            background:var(--success); box-shadow:0 0 8px var(--success);
+        }
+        .s-product-stock--low { color:var(--sale); }
+        .s-product-stock--low::before { background:var(--sale); box-shadow:0 0 8px var(--sale); }
 
         /* ═══ ABOUT (Asymmetric Overlap) ═══ */
         .s-about { background:var(--warm); overflow:hidden; }
@@ -364,9 +508,10 @@
         .s-special-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(139,34,82,0.1); }
         .s-special-badge {
             position:absolute; top:16px; right:16px; z-index:3;
-            background:var(--burgundy); color:#fff; padding:6px 14px;
-            border-radius:600px; font-size:11px; font-weight:700;
+            background:var(--grad-sale); color:#fff; padding:6px 14px;
+            border-radius:999px; font-size:11px; font-weight:700;
             letter-spacing:0.08em; text-transform:uppercase;
+            box-shadow:0 4px 14px rgba(225,29,72,0.45);
         }
         .s-special-img { position:relative; overflow:hidden; aspect-ratio:4/3; }
         .s-special-img img {
@@ -383,11 +528,11 @@
             font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:16px;
         }
         .s-special-price {
-            font-family:var(--serif); font-size:20px; font-weight:600;
-            color:var(--burgundy);
+            font-family:var(--sans); font-size:22px; font-weight:700;
+            color:var(--sale); letter-spacing:-0.01em;
         }
         .s-special-price del {
-            color:var(--text-light); font-size:14px; font-weight:400; margin-left:8px;
+            color:var(--text-light); font-size:14px; font-weight:500; margin-left:10px;
         }
 
         /* ═══ TESTIMONIALS (Editorial) ═══ */
@@ -501,13 +646,20 @@
         .s-newsletter-form input::placeholder { color:rgba(255,255,255,0.35); }
         .s-newsletter-form input:focus { border-color:var(--gold); }
         .s-newsletter-form button {
-            padding:15px 32px; background:var(--burgundy); color:#fff;
-            border:1px solid rgba(212,165,116,0.3); border-radius:600px;
+            padding:15px 32px; background:var(--grad-burg); color:#fff;
+            background-size:200% 200%; animation:gradShift 6s ease infinite;
+            border:none; border-radius:999px;
             font-size:13px; font-weight:600; letter-spacing:0.06em;
             text-transform:uppercase; cursor:pointer; font-family:var(--sans);
-            transition:all 0.3s;
+            transition:all 0.3s; box-shadow:0 6px 20px rgba(139,34,82,0.4);
         }
-        .s-newsletter-form button:hover { background:#a02a64; border-color:var(--gold); }
+        .s-newsletter-form button:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(139,34,82,0.55); }
+        .s-newsletter-perks {
+            display:flex; gap:20px; justify-content:center; flex-wrap:wrap;
+            margin-top:28px; color:rgba(255,255,255,0.45); font-size:12px;
+        }
+        .s-newsletter-perks span { display:inline-flex; align-items:center; gap:6px; }
+        .s-newsletter-perks svg { color:var(--gold); }
 
         /* ═══ CONTACT ═══ */
         .s-contact { background:var(--warm); }
@@ -792,11 +944,7 @@
             .s-nav-burger { display:block; }
             .s-hero h1 { font-size:52px; }
             .s-section-title { font-size:38px; }
-            .s-products-grid { grid-template-columns:repeat(2, 1fr); }
-            .s-product-card:nth-child(1),
-            .s-product-card:nth-child(4) { grid-row:auto; }
-            .s-product-card:nth-child(1) .s-product-img,
-            .s-product-card:nth-child(4) .s-product-img { aspect-ratio:4/3; }
+            .s-products-grid { grid-template-columns:repeat(3, 1fr); }
             .s-about-grid { grid-template-columns:1fr; gap:0; }
             .s-about-text-card { margin-left:0; margin-top:-40px; }
             .s-specials-grid { grid-template-columns:1fr 1fr; }
@@ -820,7 +968,14 @@
             .s-hero-sub { font-size:16px; }
             .s-section { padding:72px 16px; }
             .s-section-title { font-size:30px; }
-            .s-products-grid { grid-template-columns:1fr; }
+            .s-products-grid { grid-template-columns:repeat(2,1fr); gap:14px; }
+            .s-product-body { padding:14px 14px 18px; }
+            .s-product-name { font-size:14px; }
+            .s-product-price { font-size:16px; }
+            .s-filters { gap:8px; padding:0 16px; }
+            .s-chip { padding:8px 14px; font-size:12px; }
+            .s-nav-right { gap:10px; }
+            .s-search, .s-cart { width:38px; height:38px; }
             .s-specials-grid { grid-template-columns:1fr; }
             .s-specials-grid > :last-child { grid-column:auto; }
             .s-about-text-card { padding:32px 24px; }
@@ -852,8 +1007,31 @@
 </head>
 <body>
 
+<div class="s-progress" id="sProgress"></div>
+
+<!-- ═══════════ ANNOUNCEMENT BAR ═══════════ -->
+<div class="s-announce">
+    <div class="s-announce-track">
+        <span class="s-announce-item">✦ <b>Kostenloser Versand</b> ab CHF 100</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">↺ <b>30 Tage</b> Rückgaberecht</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">⚡ <b>Click & Collect</b> in 2h abholbereit</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">🎁 <b>−10%</b> mit Code <b>HALLO10</b></span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">✦ <b>Kostenloser Versand</b> ab CHF 100</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">↺ <b>30 Tage</b> Rückgaberecht</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">⚡ <b>Click & Collect</b> in 2h abholbereit</span>
+        <span class="s-announce-dot"></span>
+        <span class="s-announce-item">🎁 <b>−10%</b> mit Code <b>HALLO10</b></span>
+    </div>
+</div>
+
 <!-- ═══════════ BACK BUTTON ═══════════ -->
-<a href="../templates-web.html#tw-templates" class="s-back" title="Zurück">
+<a href="../templates-web.html#tw-templates" class="s-back" title="Zurück" style="top:52px">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
 </a>
 
@@ -865,7 +1043,19 @@
         <a href="#about" data-edit="text" data-edit-key="nav-link2">Über uns</a>
         <a href="#specials" data-edit="text" data-edit-key="nav-link3">Angebote</a>
         <a href="#hours" data-edit="text" data-edit-key="nav-link4">Öffnungszeiten</a>
-        <a href="#contact" class="s-nav-cta" data-edit="text" data-edit-key="nav-link5">Kontakt</a>
+    </div>
+    <div class="s-nav-right">
+        <button class="s-search" aria-label="Suche">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <a href="#cart" class="s-cart" aria-label="Warenkorb">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            <span class="s-cart-badge">3</span>
+        </a>
+        <a href="#contact" class="s-nav-cta" data-edit="text" data-edit-key="nav-link5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Kontakt
+        </a>
     </div>
     <button class="s-nav-burger" id="sBurger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -975,79 +1165,180 @@
         <div class="s-divider"></div>
     </div>
 
+    <!-- Filter chips -->
+    <div class="s-filters fade-up">
+        <button class="s-chip active">Alle <span class="s-chip-count">42</span></button>
+        <button class="s-chip">Bestseller <span class="s-chip-count">12</span></button>
+        <button class="s-chip">Neu <span class="s-chip-count">8</span></button>
+        <button class="s-chip">Sale <span class="s-chip-count">6</span></button>
+        <button class="s-chip">Geschenke <span class="s-chip-count">15</span></button>
+        <button class="s-chip">Bio &amp; Natur <span class="s-chip-count">21</span></button>
+    </div>
+
     <div class="s-products-grid">
-        <!-- Product 1 — Honig (tall) -->
+        <!-- 1 Alpenhonig — Bestseller -->
         <div class="s-product-card fade-up stagger-1">
             <div class="s-product-img">
-                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Honig" loading="lazy" data-edit="image" data-edit-key="prod1-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <div class="s-product-badges"><span class="s-badge s-badge--bestseller">Bestseller</span></div>
+                <button class="s-product-wish active" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Alpenhonig" loading="lazy" data-edit="image" data-edit-key="prod1-img">
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod1-cat">Naturprodukt</div>
-                <div class="s-product-name" data-edit="text" data-edit-key="prod1-name">Alpenhonig</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod1-price">CHF 18.90</div>
-                <p class="s-product-desc" data-edit="text" data-edit-key="prod1-desc">Cremiger Blütenhonig vom Imker aus dem Zürcher Oberland. 100% rein und ungefiltert.</p>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod1-name">Alpenhonig 500g</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.9 (128)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price" data-edit="text" data-edit-key="prod1-price">CHF 18.90</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
             </div>
         </div>
-        <!-- Product 2 — Seife -->
+
+        <!-- 2 Seife — Neu + Bio -->
         <div class="s-product-card fade-up stagger-2">
             <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--new">Neu</span><span class="s-badge s-badge--bio">Bio</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=600&q=80" alt="Seife" loading="lazy" data-edit="image" data-edit-key="prod2-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod2-cat">Pflege</div>
                 <div class="s-product-name" data-edit="text" data-edit-key="prod2-name">Handgemachte Seife</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod2-price">CHF 12.50</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.8 (64)</div>
+                <div class="s-product-swatches">
+                    <span class="s-product-swatch active" style="background:#e8cca8" title="Honig"></span>
+                    <span class="s-product-swatch" style="background:#8b2252" title="Rose"></span>
+                    <span class="s-product-swatch" style="background:#16a34a" title="Salbei"></span>
+                </div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price" data-edit="text" data-edit-key="prod2-price">CHF 12.50</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
             </div>
         </div>
-        <!-- Product 3 — Kerzen -->
+
+        <!-- 3 Soja-Duftkerze — Sale -->
         <div class="s-product-card fade-up stagger-3">
             <div class="s-product-img">
-                <img src="https://images.unsplash.com/photo-1602607167684-0fbb2b34d7ba?w=600&q=80" alt="Kerzen" loading="lazy" data-edit="image" data-edit-key="prod3-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <div class="s-product-badges"><span class="s-badge s-badge--sale">−20%</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <img src="https://images.unsplash.com/photo-1599623560574-39d485900c95?w=600&q=80" alt="Kerzen" loading="lazy" data-edit="image" data-edit-key="prod3-img">
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod3-cat">Wohnen</div>
                 <div class="s-product-name" data-edit="text" data-edit-key="prod3-name">Soja-Duftkerze</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod3-price">CHF 34.00</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 5.0 (32)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price s-product-price--sale" data-edit="text" data-edit-key="prod3-price">CHF 27.20</span>
+                    <span class="s-product-price-old">CHF 34.00</span>
+                    <span class="s-product-price-save">Sparen CHF 6.80</span>
+                </div>
+                <span class="s-product-stock s-product-stock--low">Nur noch 3 verfügbar</span>
             </div>
         </div>
-        <!-- Product 4 — Tee (tall) -->
+
+        <!-- 4 Kräutertee — Bio -->
         <div class="s-product-card fade-up stagger-4">
             <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--bio">Bio</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80" alt="Tee" loading="lazy" data-edit="image" data-edit-key="prod4-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod4-cat">Genuss</div>
                 <div class="s-product-name" data-edit="text" data-edit-key="prod4-name">Kräutertee-Kollektion</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod4-price">CHF 16.00</div>
-                <p class="s-product-desc" data-edit="text" data-edit-key="prod4-desc">Handgepflückte Schweizer Bergkräuter, schonend getrocknet. Sechs Sorten im Set.</p>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.7 (89)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price" data-edit="text" data-edit-key="prod4-price">CHF 16.00</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
             </div>
         </div>
-        <!-- Product 5 — Keramik -->
-        <div class="s-product-card fade-up stagger-5">
+
+        <!-- 5 Keramik -->
+        <div class="s-product-card fade-up stagger-1">
             <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--new">Neu</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Keramik" loading="lazy" data-edit="image" data-edit-key="prod5-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod5-cat">Handwerk</div>
-                <div class="s-product-name" data-edit="text" data-edit-key="prod5-name">Keramikschale</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod5-price">CHF 45.00</div>
+                <div class="s-product-name" data-edit="text" data-edit-key="prod5-name">Keramikschale ⌀ 24cm</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.9 (24)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price" data-edit="text" data-edit-key="prod5-price">CHF 45.00</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
             </div>
         </div>
-        <!-- Product 6 — Textilien -->
-        <div class="s-product-card fade-up stagger-6">
+
+        <!-- 6 Leinen-Geschirrtuch — Sale -->
+        <div class="s-product-card fade-up stagger-2">
             <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--sale">−15%</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
                 <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=600&q=80" alt="Textilien" loading="lazy" data-edit="image" data-edit-key="prod6-img">
-                <div class="s-product-overlay"><a href="#contact" class="s-product-overlay-btn">Anfragen</a></div>
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
             </div>
             <div class="s-product-body">
                 <div class="s-product-cat" data-edit="text" data-edit-key="prod6-cat">Textil</div>
                 <div class="s-product-name" data-edit="text" data-edit-key="prod6-name">Leinen-Geschirrtuch</div>
-                <div class="s-product-price" data-edit="text" data-edit-key="prod6-price">CHF 28.00</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.6 (47)</div>
+                <div class="s-product-swatches">
+                    <span class="s-product-swatch active" style="background:#e8cca8"></span>
+                    <span class="s-product-swatch" style="background:#1a1218"></span>
+                    <span class="s-product-swatch" style="background:#8b2252"></span>
+                    <span class="s-product-swatch" style="background:#fff"></span>
+                </div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price s-product-price--sale" data-edit="text" data-edit-key="prod6-price">CHF 23.80</span>
+                    <span class="s-product-price-old">CHF 28.00</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
+            </div>
+        </div>
+
+        <!-- 7 Olivenöl -->
+        <div class="s-product-card fade-up stagger-3">
+            <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--bio">Bio</span><span class="s-badge s-badge--bestseller">Top</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&q=80" alt="Olivenöl" loading="lazy">
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat">Genuss</div>
+                <div class="s-product-name">Olivenöl Extra Vergine 500ml</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 4.9 (211)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price">CHF 32.00</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
+            </div>
+        </div>
+
+        <!-- 8 Schokolade — Neu -->
+        <div class="s-product-card fade-up stagger-4">
+            <div class="s-product-img">
+                <div class="s-product-badges"><span class="s-badge s-badge--new">Neu</span></div>
+                <button class="s-product-wish" aria-label="Wunschliste"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+                <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80" alt="Schokolade" loading="lazy">
+                <a href="#contact" class="s-product-quickadd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> In den Warenkorb</a>
+            </div>
+            <div class="s-product-body">
+                <div class="s-product-cat">Genuss</div>
+                <div class="s-product-name">Bean-to-Bar Schokolade 70%</div>
+                <div class="s-product-rating"><span class="s-product-rating-stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></span> 5.0 (18)</div>
+                <div class="s-product-price-row">
+                    <span class="s-product-price">CHF 9.80</span>
+                </div>
+                <span class="s-product-stock">Auf Lager</span>
             </div>
         </div>
     </div>
@@ -1436,12 +1727,16 @@
 <section class="s-newsletter" id="newsletter">
     <div class="s-newsletter-content fade-up">
         <div class="s-newsletter-tag" data-edit="text" data-edit-key="news-tag">Newsletter</div>
-        <h2 data-edit="text" data-edit-key="news-title">Immer auf dem Laufenden</h2>
-        <p data-edit="text" data-edit-key="news-desc">Erhalten Sie als Erste Neuigkeiten zu neuen Produkten, saisonalen Angeboten und exklusiven Events in Ihrem Postfach.</p>
+        <h2 data-edit="text" data-edit-key="news-title">10% Rabatt auf Ihre <em style="font-style:italic;color:var(--gold)">erste Bestellung</em></h2>
+        <p data-edit="text" data-edit-key="news-desc">Abonnieren Sie unseren Newsletter und erhalten Sie sofort einen 10%-Code für Ihren ersten Einkauf. Plus exklusive Angebote und Neuigkeiten zuerst.</p>
         <form class="s-newsletter-form" onsubmit="event.preventDefault()">
             <input type="email" placeholder="Ihre E-Mail-Adresse" required>
-            <button type="submit">Anmelden</button>
+            <button type="submit">Rabatt sichern</button>
         </form>
+        <div class="s-newsletter-perks">
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Kein Spam, jederzeit kündbar</span>
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Exklusive Mitglieder-Vorteile</span>
+        </div>
     </div>
 </section>
 
@@ -1552,13 +1847,39 @@ function sFaqToggle(btn) {
     }
 }
 
-// Nav scroll
+// Nav scroll + progress + wishlist + filter chips
 (function(){
     var nav = document.getElementById('sNav');
+    var bar = document.getElementById('sProgress');
     window.addEventListener('scroll', function(){
         nav.classList.toggle('scrolled', window.pageYOffset > 80);
-    });
+        if (bar) {
+            var h = document.documentElement;
+            var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+            bar.style.width = pct + '%';
+        }
+    }, { passive:true });
 })();
+// Wishlist toggle
+document.querySelectorAll('.s-product-wish').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); b.classList.toggle('active'); });
+});
+// Filter chips
+document.querySelectorAll('.s-chip').forEach(function(c){
+    c.addEventListener('click', function(){
+        document.querySelectorAll('.s-chip').forEach(function(x){ x.classList.remove('active'); });
+        c.classList.add('active');
+    });
+});
+// Swatches
+document.querySelectorAll('.s-product-swatches').forEach(function(g){
+    g.querySelectorAll('.s-product-swatch').forEach(function(s){
+        s.addEventListener('click', function(){
+            g.querySelectorAll('.s-product-swatch').forEach(function(x){ x.classList.remove('active'); });
+            s.classList.add('active');
+        });
+    });
+});
 
 // Mobile menu
 (function(){
