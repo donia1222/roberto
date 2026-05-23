@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis Aurea — Zahnarzt Template | Lweb</title>
+    <meta name="description" content="Modernes Zahnarzt- und Praxis-Template im Glas-Look mit Leistungen, Team, Galerie und Online-Terminanfrage. Professionelle Webseite ab 450 CHF.">
+    <meta name="theme-color" content="#eafbf7" id="themeColor">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>if(new URLSearchParams(window.location.search).get('editor')==='true'){document.write('<link rel="stylesheet" href="../css/template-editor.css">')}</script>
+    <style>
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Plus Jakarta Sans',sans-serif; color:#1c3a3a; background:#eafaf6; overflow-x:hidden; }
+
+        :root {
+            --teal: #14b8a6;
+            --teal-deep: #0d9488;
+            --aqua: #38bdf8;
+            --aqua-deep: #0ea5e9;
+            --mint: #a7f3d0;
+            --sky: #bae6fd;
+            --ink: #0f2e2e;
+            --text: #1c3a3a;
+            --text-light: #5a7878;
+            --line: rgba(20,184,166,0.14);
+            --glass: rgba(255,255,255,0.55);
+            --glass-strong: rgba(255,255,255,0.72);
+            --serif: 'Fraunces', serif;
+            --sans: 'Plus Jakarta Sans', sans-serif;
+            --grad-aqua: linear-gradient(135deg, #14b8a6 0%, #38bdf8 100%);
+            --grad-soft: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 55%, #818cf8 100%);
+            --shadow-glass: 0 8px 32px rgba(13,148,136,0.10), 0 1px 0 rgba(255,255,255,0.7) inset;
+        }
+
+        /* ═══ AMBIENT BACKGROUND ═══ */
+        .z-bg { position:fixed; inset:0; z-index:-2; background:
+            radial-gradient(ellipse 70% 55% at 12% 8%, rgba(167,243,208,0.55), transparent 60%),
+            radial-gradient(ellipse 60% 60% at 88% 22%, rgba(186,230,253,0.55), transparent 60%),
+            radial-gradient(ellipse 70% 60% at 80% 95%, rgba(129,140,248,0.20), transparent 60%),
+            linear-gradient(160deg, #eafaf6 0%, #f3fbff 50%, #eef6ff 100%);
+        }
+        .z-blob { position:fixed; border-radius:50%; filter:blur(70px); z-index:-1; pointer-events:none; opacity:0.6; }
+        .z-blob.b1 { width:420px; height:420px; top:-80px; left:-60px; background:radial-gradient(circle, rgba(45,212,191,0.45), transparent 70%); animation:float-soft 16s ease-in-out infinite; }
+        .z-blob.b2 { width:380px; height:380px; top:40%; right:-100px; background:radial-gradient(circle, rgba(56,189,248,0.40), transparent 70%); animation:float-soft 20s ease-in-out infinite reverse; }
+
+        @keyframes float-soft { 0%,100%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-30px) translateX(15px)} }
+        @keyframes gradShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        @keyframes scrollHint { 0%,100%{transform:translateY(0);opacity:0.5} 50%{transform:translateY(8px);opacity:1} }
+
+        .fade-up { opacity:0; transform:translateY(34px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        .z-wrap { max-width:1200px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+
+        /* ═══ BACK ═══ */
+        .z-back {
+            position:fixed; top:16px; left:16px; z-index:200;
+            width:38px; height:38px; border-radius:50%;
+            background:var(--glass-strong); backdrop-filter:blur(14px) saturate(170%); -webkit-backdrop-filter:blur(14px) saturate(170%);
+            border:1px solid rgba(255,255,255,0.8); box-shadow:var(--shadow-glass);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--teal-deep); text-decoration:none; transition:all 0.3s;
+        }
+        .z-back svg { width:18px; height:18px; }
+        .z-back:hover { background:var(--grad-aqua); color:#fff; transform:scale(1.08); }
+
+        /* ═══ PROGRESS ═══ */
+        .z-progress { position:fixed; top:0; left:0; height:3px; width:0%; background:var(--grad-aqua); z-index:300; transition:width 0.15s ease-out; box-shadow:0 0 14px rgba(56,189,248,0.55); }
+
+        /* ═══ NAV ═══ */
+        .z-nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 0; transition:all 0.4s ease; }
+        .z-nav-inner { max-width:1200px; margin:0 auto; padding:0 28px; display:flex; align-items:center; justify-content:space-between; }
+        .z-nav.scrolled { padding:10px 0; }
+        .z-nav.scrolled .z-nav-inner { background:rgba(255,255,255,0.6); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); border:1px solid rgba(255,255,255,0.7); border-radius:999px; padding:10px 14px 10px 24px; box-shadow:0 8px 30px rgba(13,148,136,0.12); }
+        .z-nav-logo { font-family:var(--serif); font-size:25px; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:0.01em; display:flex; align-items:center; gap:10px; }
+        .z-nav-logo .dot { width:11px; height:11px; border-radius:50%; background:var(--grad-aqua); box-shadow:0 0 0 4px rgba(56,189,248,0.18); }
+        .z-nav-links { display:flex; gap:30px; align-items:center; }
+        .z-nav-links a { color:var(--text); text-decoration:none; font-size:14.5px; font-weight:500; transition:color 0.3s; }
+        .z-nav-links a:hover { color:var(--teal-deep); }
+        .z-nav-cta { background:var(--grad-aqua); background-size:180% 180%; animation:gradShift 6s ease infinite; color:#fff !important; padding:11px 24px; border-radius:999px; font-weight:600 !important; box-shadow:0 8px 22px rgba(20,184,166,0.35); transition:transform 0.3s, box-shadow 0.3s !important; }
+        .z-nav-cta:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(20,184,166,0.45); }
+        .z-burger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+        .z-burger span { width:24px; height:2px; background:var(--ink); border-radius:2px; transition:all 0.3s; }
+        .z-burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+        .z-burger.open span:nth-child(2){ opacity:0; }
+        .z-burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+        .z-mobile-menu { position:fixed; inset:0; z-index:99; background:rgba(234,250,246,0.92); backdrop-filter:blur(20px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; opacity:0; pointer-events:none; transition:opacity 0.35s ease; }
+        .z-mobile-menu.open { opacity:1; pointer-events:auto; }
+        .z-mobile-menu a { font-family:var(--serif); font-size:30px; color:var(--ink); text-decoration:none; }
+
+        /* ═══ HERO ═══ */
+        .z-hero { position:relative; padding:170px 0 90px; }
+        .z-hero-grid { display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+        .z-pill { display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border-radius:999px; background:var(--glass-strong); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.8); box-shadow:var(--shadow-glass); font-size:13px; font-weight:600; color:var(--teal-deep); margin-bottom:26px; }
+        .z-pill .ping { width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 0 rgba(20,184,166,0.5); animation:ping 2s infinite; }
+        @keyframes ping { 0%{box-shadow:0 0 0 0 rgba(20,184,166,0.5)} 70%{box-shadow:0 0 0 9px rgba(20,184,166,0)} 100%{box-shadow:0 0 0 0 rgba(20,184,166,0)} }
+        .z-hero h1 { font-family:var(--serif); font-size:62px; line-height:1.05; font-weight:500; color:var(--ink); letter-spacing:-0.02em; margin-bottom:24px; }
+        .z-hero h1 em { font-style:italic; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .z-hero-sub { font-size:18px; line-height:1.65; color:var(--text-light); max-width:480px; margin-bottom:34px; }
+        .z-hero-cta { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+        .z-btn { display:inline-flex; align-items:center; gap:10px; padding:16px 30px; border-radius:14px; font-size:15.5px; font-weight:600; text-decoration:none; transition:all 0.3s ease; cursor:pointer; border:none; }
+        .z-btn--primary { background:var(--grad-aqua); color:#fff; box-shadow:0 12px 30px rgba(20,184,166,0.35); }
+        .z-btn--primary:hover { transform:translateY(-3px); box-shadow:0 18px 38px rgba(20,184,166,0.45); }
+        .z-btn--glass { background:var(--glass-strong); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.8); color:var(--text); box-shadow:var(--shadow-glass); }
+        .z-btn--glass:hover { transform:translateY(-3px); color:var(--teal-deep); }
+        .z-hero-trust { display:flex; align-items:center; gap:18px; margin-top:34px; }
+        .z-hero-avatars { display:flex; }
+        .z-hero-avatars img { width:42px; height:42px; border-radius:50%; object-fit:cover; border:3px solid #fff; margin-left:-12px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        .z-hero-avatars img:first-child { margin-left:0; }
+        .z-hero-trust-txt { font-size:13.5px; color:var(--text-light); line-height:1.4; }
+        .z-hero-trust-txt strong { color:var(--ink); font-weight:700; }
+        .z-stars { color:#fbbf24; letter-spacing:1px; }
+
+        .z-hero-visual { position:relative; }
+        .z-hero-card { position:relative; border-radius:30px; overflow:hidden; box-shadow:0 30px 70px rgba(13,148,136,0.20); }
+        .z-hero-card img { width:100%; height:520px; object-fit:cover; display:block; }
+        .z-hero-float { position:absolute; background:var(--glass-strong); backdrop-filter:blur(18px) saturate(180%); -webkit-backdrop-filter:blur(18px) saturate(180%); border:1px solid rgba(255,255,255,0.8); border-radius:20px; padding:16px 20px; box-shadow:var(--shadow-glass); }
+        .z-hero-float.f1 { top:26px; left:-26px; display:flex; align-items:center; gap:12px; animation:float-soft 7s ease-in-out infinite; }
+        .z-hero-float.f2 { bottom:30px; right:-22px; animation:float-soft 9s ease-in-out infinite reverse; }
+        .z-hero-float-ic { width:42px; height:42px; border-radius:12px; background:var(--grad-aqua); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .z-hero-float-ic svg { width:22px; height:22px; stroke:#fff; }
+        .z-hero-float .lbl { font-size:12px; color:var(--text-light); }
+        .z-hero-float .val { font-size:17px; font-weight:700; color:var(--ink); font-family:var(--serif); }
+
+        /* ═══ SECTION HEAD ═══ */
+        .z-section { padding:88px 0; }
+        .z-head { text-align:center; max-width:640px; margin:0 auto 56px; }
+        .z-tag { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal-deep); margin-bottom:16px; padding:7px 16px; border-radius:999px; background:var(--glass); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.7); }
+        .z-h2 { font-family:var(--serif); font-size:44px; line-height:1.12; font-weight:500; color:var(--ink); letter-spacing:-0.01em; margin-bottom:16px; }
+        .z-h2 em { font-style:italic; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .z-head p { font-size:17px; color:var(--text-light); line-height:1.65; }
+
+        /* ═══ GLASS CARD base ═══ */
+        .z-glass { background:var(--glass); backdrop-filter:blur(20px) saturate(170%); -webkit-backdrop-filter:blur(20px) saturate(170%); border:1px solid rgba(255,255,255,0.7); border-radius:24px; box-shadow:var(--shadow-glass); }
+
+        /* ═══ SERVICES ═══ */
+        .z-services { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .z-service { padding:34px 30px; transition:transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s; }
+        .z-service:hover { transform:translateY(-8px); box-shadow:0 22px 50px rgba(13,148,136,0.18); }
+        .z-service-ic { width:58px; height:58px; border-radius:16px; background:linear-gradient(135deg, rgba(45,212,191,0.18), rgba(56,189,248,0.18)); display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+        .z-service-ic svg { width:28px; height:28px; stroke:var(--teal-deep); }
+        .z-service h3 { font-family:var(--serif); font-size:23px; font-weight:600; color:var(--ink); margin-bottom:11px; }
+        .z-service p { font-size:15px; color:var(--text-light); line-height:1.6; }
+
+        /* ═══ ABOUT / WELCOME ═══ */
+        .z-about-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+        .z-about-imgs { position:relative; }
+        .z-about-imgs .main { width:100%; border-radius:26px; height:440px; object-fit:cover; box-shadow:0 24px 60px rgba(13,148,136,0.18); }
+        .z-about-imgs .badge { position:absolute; bottom:-24px; left:-24px; padding:22px 26px; text-align:center; }
+        .z-about-imgs .badge .num { font-family:var(--serif); font-size:38px; font-weight:600; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+        .z-about-imgs .badge .lbl { font-size:13px; color:var(--text-light); margin-top:4px; }
+        .z-about-txt h2 { font-family:var(--serif); font-size:40px; line-height:1.15; font-weight:500; color:var(--ink); margin-bottom:20px; letter-spacing:-0.01em; }
+        .z-about-txt h2 em { font-style:italic; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .z-about-txt p { font-size:16px; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+        .z-about-feats { display:grid; grid-template-columns:1fr 1fr; gap:14px 22px; margin-top:26px; }
+        .z-about-feat { display:flex; align-items:center; gap:11px; font-size:15px; font-weight:500; color:var(--text); }
+        .z-about-feat .chk { width:26px; height:26px; border-radius:50%; background:var(--grad-aqua); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .z-about-feat .chk svg { width:14px; height:14px; stroke:#fff; stroke-width:3; }
+
+        /* ═══ STATS strip ═══ */
+        .z-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+        .z-stat { text-align:center; padding:32px 18px; }
+        .z-stat .num { font-family:var(--serif); font-size:42px; font-weight:600; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+        .z-stat .lbl { font-size:14px; color:var(--text-light); margin-top:10px; font-weight:500; }
+
+        /* ═══ TEAM ═══ */
+        .z-team { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+        .z-member { overflow:hidden; transition:transform 0.4s; }
+        .z-member:hover { transform:translateY(-8px); }
+        .z-member-img { height:300px; overflow:hidden; }
+        .z-member-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+        .z-member:hover .z-member-img img { transform:scale(1.06); }
+        .z-member-info { padding:22px 24px 26px; }
+        .z-member-info h3 { font-family:var(--serif); font-size:21px; font-weight:600; color:var(--ink); }
+        .z-member-info .role { font-size:14px; color:var(--teal-deep); font-weight:600; margin-top:3px; }
+        .z-member-info p { font-size:14px; color:var(--text-light); line-height:1.55; margin-top:12px; }
+
+        /* ═══ GALLERY ═══ */
+        .z-gallery { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; gap:16px; }
+        .z-gallery-item { border-radius:20px; overflow:hidden; box-shadow:0 8px 26px rgba(13,148,136,0.10); }
+        .z-gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.7s; }
+        .z-gallery-item:hover img { transform:scale(1.08); }
+        .z-gallery-item.tall { grid-row:span 2; }
+        .z-gallery-item.wide { grid-column:span 2; }
+
+        /* ═══ TESTIMONIALS ═══ */
+        .z-testi { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .z-testi-card { padding:32px 30px; }
+        .z-testi-card .z-stars { font-size:16px; margin-bottom:16px; }
+        .z-testi-card p { font-size:15.5px; color:var(--text); line-height:1.7; font-style:italic; margin-bottom:22px; }
+        .z-testi-author { display:flex; align-items:center; gap:13px; }
+        .z-testi-author img { width:46px; height:46px; border-radius:50%; object-fit:cover; }
+        .z-testi-author .nm { font-weight:700; color:var(--ink); font-size:15px; }
+        .z-testi-author .meta { font-size:13px; color:var(--text-light); }
+
+        /* ═══ FAQ ═══ */
+        .z-faq { max-width:780px; margin:0 auto; }
+        .z-faq-item { margin-bottom:14px; overflow:hidden; }
+        .z-faq-q { width:100%; text-align:left; background:none; border:none; padding:24px 28px; font-family:var(--sans); font-size:17px; font-weight:600; color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+        .z-faq-icon { width:30px; height:30px; flex-shrink:0; border-radius:50%; background:var(--grad-aqua); display:flex; align-items:center; justify-content:center; transition:transform 0.35s; }
+        .z-faq-icon svg { width:16px; height:16px; stroke:#fff; }
+        .z-faq-item.open .z-faq-icon { transform:rotate(45deg); }
+        .z-faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.4s ease; padding:0 28px; font-size:15.5px; color:var(--text-light); line-height:1.7; }
+        .z-faq-item.open .z-faq-a { max-height:320px; padding:0 28px 26px; }
+
+        /* ═══ CONTACT / CTA ═══ */
+        .z-contact-card { position:relative; overflow:hidden; padding:64px 56px; border-radius:32px; }
+        .z-contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; position:relative; z-index:1; }
+        .z-contact-info h2 { font-family:var(--serif); font-size:40px; font-weight:500; color:var(--ink); line-height:1.15; margin-bottom:18px; letter-spacing:-0.01em; }
+        .z-contact-info h2 em { font-style:italic; background:var(--grad-soft); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .z-contact-info > p { font-size:16px; color:var(--text-light); line-height:1.65; margin-bottom:28px; }
+        .z-contact-row { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+        .z-contact-row .ic { width:46px; height:46px; border-radius:13px; background:var(--glass-strong); border:1px solid rgba(255,255,255,0.8); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:var(--shadow-glass); }
+        .z-contact-row .ic svg { width:20px; height:20px; stroke:var(--teal-deep); }
+        .z-contact-row .lbl { font-size:12.5px; color:var(--text-light); }
+        .z-contact-row .val { font-size:15.5px; font-weight:600; color:var(--ink); }
+        .z-form { display:flex; flex-direction:column; gap:14px; }
+        .z-form input, .z-form select, .z-form textarea { width:100%; padding:15px 18px; border-radius:13px; border:1px solid rgba(255,255,255,0.8); background:rgba(255,255,255,0.6); backdrop-filter:blur(10px); font-family:var(--sans); font-size:15px; color:var(--ink); outline:none; transition:border-color 0.3s, box-shadow 0.3s; }
+        .z-form input::placeholder, .z-form textarea::placeholder { color:#9bb3b3; }
+        .z-form input:focus, .z-form select:focus, .z-form textarea:focus { border-color:var(--teal); box-shadow:0 0 0 4px rgba(20,184,166,0.14); }
+        .z-form textarea { resize:vertical; min-height:96px; }
+        .z-form button { margin-top:4px; }
+
+        /* ═══ FOOTER ═══ */
+        .z-footer { padding:60px 0 38px; text-align:center; }
+        .z-footer-logo { font-family:var(--serif); font-size:30px; font-weight:600; color:var(--ink); display:inline-flex; align-items:center; gap:10px; }
+        .z-footer-logo .dot { width:11px; height:11px; border-radius:50%; background:var(--grad-aqua); }
+        .z-footer-links { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin:26px 0; }
+        .z-footer-links a { color:var(--text-light); text-decoration:none; font-size:14.5px; font-weight:500; transition:color 0.3s; }
+        .z-footer-links a:hover { color:var(--teal-deep); }
+        .z-footer-social { display:flex; gap:12px; justify-content:center; margin-bottom:26px; }
+        .z-footer-social a { width:42px; height:42px; border-radius:50%; background:var(--glass); border:1px solid rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center; color:var(--teal-deep); transition:all 0.3s; }
+        .z-footer-social a:hover { background:var(--grad-aqua); color:#fff; transform:translateY(-3px); }
+        .z-footer-copy { font-size:13.5px; color:var(--text-light); }
+        .z-footer-copy a { color:var(--teal-deep); text-decoration:none; font-weight:600; }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width:1000px) {
+            .z-services, .z-team, .z-testi { grid-template-columns:repeat(2,1fr); }
+            .z-stats { grid-template-columns:repeat(2,1fr); }
+            .z-gallery { grid-template-columns:repeat(2,1fr); }
+        }
+        @media (max-width:820px) {
+            .z-nav-links { display:none; }
+            .z-burger { display:flex; }
+            .z-hero-grid, .z-about-grid, .z-contact-grid { grid-template-columns:1fr; }
+            .z-hero h1 { font-size:46px; }
+            .z-hero-visual { order:-1; }
+            .z-hero-card img { height:380px; }
+            .z-h2, .z-about-txt h2, .z-contact-info h2 { font-size:33px; }
+            .z-section { padding:64px 0; }
+            .z-hero { padding:140px 0 60px; }
+            .z-contact-card { padding:40px 26px; }
+        }
+        @media (max-width:560px) {
+            .z-services, .z-team, .z-testi, .z-gallery, .z-about-feats { grid-template-columns:1fr; }
+            .z-hero h1 { font-size:38px; }
+            .z-hero-float.f1 { left:6px; } .z-hero-float.f2 { right:6px; }
+            .z-gallery-item.wide, .z-gallery-item.tall { grid-column:auto; grid-row:auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="z-bg"></div>
+    <div class="z-blob b1"></div>
+    <div class="z-blob b2"></div>
+    <div class="z-progress" id="zProgress"></div>
+
+    <a href="../templates-web.html#tw-templates" class="z-back" aria-label="Zurück">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    </a>
+
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="z-nav" id="zNav">
+        <div class="z-nav-inner">
+            <a href="#" class="z-nav-logo"><span class="dot"></span> <span data-edit="text" data-edit-key="logo">Praxis Aurea</span></a>
+            <div class="z-nav-links">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#praxis">Praxis</a>
+                <a href="#team">Team</a>
+                <a href="#stimmen">Stimmen</a>
+                <a href="#kontakt" class="z-nav-cta">Termin anfragen</a>
+            </div>
+            <button class="z-burger" id="zBurger" aria-label="Menü"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="z-mobile-menu" id="zMobileMenu">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#praxis">Praxis</a>
+        <a href="#team">Team</a>
+        <a href="#stimmen">Stimmen</a>
+        <a href="#kontakt">Termin anfragen</a>
+    </div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="z-hero">
+        <div class="z-wrap">
+            <div class="z-hero-grid">
+                <div class="z-hero-content fade-up">
+                    <div class="z-pill"><span class="ping"></span> <span data-edit="text" data-edit-key="hero-pill">Zahnarztpraxis in Zürich · seit 2009</span></div>
+                    <h1 data-edit="text" data-edit-key="hero-title">Ein gesundes Lächeln, <em>entspannt</em> begleitet.</h1>
+                    <p class="z-hero-sub" data-edit="text" data-edit-key="hero-sub">Moderne Zahnmedizin in ruhiger Atmosphäre. Wir nehmen uns Zeit für Sie — von der Vorsorge bis zur ästhetischen Behandlung, schmerzarm und auf Augenhöhe.</p>
+                    <div class="z-hero-cta">
+                        <a href="#kontakt" class="z-btn z-btn--primary" data-edit="text" data-edit-key="hero-btn1">Termin anfragen
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        <a href="#leistungen" class="z-btn z-btn--glass" data-edit="text" data-edit-key="hero-btn2">Unsere Leistungen</a>
+                    </div>
+                    <div class="z-hero-trust">
+                        <div class="z-hero-avatars">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="" data-edit="image" data-edit-key="trust-av1">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80" alt="" data-edit="image" data-edit-key="trust-av2">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80" alt="" data-edit="image" data-edit-key="trust-av3">
+                        </div>
+                        <div class="z-hero-trust-txt"><span class="z-stars">★★★★★</span><br><strong>4.9 / 5</strong> · über 320 zufriedene Patienten</div>
+                    </div>
+                </div>
+                <div class="z-hero-visual fade-up">
+                    <div class="z-hero-card">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80" alt="Moderne Zahnarztpraxis" loading="lazy" data-edit="image" data-edit-key="hero-img">
+                    </div>
+                    <div class="z-hero-float f1">
+                        <div class="z-hero-float-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div><div class="lbl">Schmerzarm</div><div class="val">Sanfte Methoden</div></div>
+                    </div>
+                    <div class="z-hero-float f2">
+                        <div class="lbl">Termin meist innert</div><div class="val">48 Stunden</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════ SERVICES ═══════════ -->
+    <section class="z-section" id="leistungen">
+        <div class="z-wrap">
+            <div class="z-head fade-up">
+                <div class="z-tag" data-edit="text" data-edit-key="svc-tag">Leistungen</div>
+                <h2 class="z-h2" data-edit="text" data-edit-key="svc-title">Alles für Ihre <em>Zahngesundheit</em></h2>
+                <p data-edit="text" data-edit-key="svc-desc">Von der professionellen Vorsorge bis zur hochwertigen Ästhetik — bei uns erhalten Sie die gesamte Behandlung aus einer Hand.</p>
+            </div>
+            <div class="z-services">
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2c-3 0-5 2-5 5 0 4 1.5 14 3 14 1 0 1-3 2-3s1 3 2 3c1.5 0 3-10 3-14 0-3-2-5-5-5z"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc1-title">Vorsorge & Prophylaxe</h3>
+                    <p data-edit="text" data-edit-key="svc1-desc">Professionelle Zahnreinigung, Kontrollen und individuelle Beratung, damit Probleme gar nicht erst entstehen.</p>
+                </div>
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 2v6M15 2v6M5 8h14l-1 5a6 6 0 01-12 0z"/><path d="M12 19v3"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc2-title">Ästhetische Zahnheilkunde</h3>
+                    <p data-edit="text" data-edit-key="svc2-desc">Bleaching, Veneers und zahnfarbene Füllungen für ein natürlich strahlendes, harmonisches Lächeln.</p>
+                </div>
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc3-title">Implantologie</h3>
+                    <p data-edit="text" data-edit-key="svc3-desc">Festsitzender, langlebiger Zahnersatz mit modernster 3D-Planung — funktionell und ästhetisch.</p>
+                </div>
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc4-title">Wurzelbehandlung</h3>
+                    <p data-edit="text" data-edit-key="svc4-desc">Schonende Endodontie mit feinen Instrumenten, um Ihre eigenen Zähne so lange wie möglich zu erhalten.</p>
+                </div>
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc5-title">Kieferorthopädie</h3>
+                    <p data-edit="text" data-edit-key="svc5-desc">Unsichtbare Aligner und Zahnspangen für Kinder und Erwachsene — diskret und komfortabel.</p>
+                </div>
+                <div class="z-glass z-service fade-up">
+                    <div class="z-service-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div>
+                    <h3 data-edit="text" data-edit-key="svc6-title">Angstpatienten</h3>
+                    <p data-edit="text" data-edit-key="svc6-desc">Einfühlsame Begleitung, Lachgas und sanfte Sedierung — für Behandlungen ganz ohne Stress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ ABOUT ═══════════ -->
+    <section class="z-section" id="praxis">
+        <div class="z-wrap">
+            <div class="z-about-grid">
+                <div class="z-about-imgs fade-up">
+                    <img class="main" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Behandlungszimmer" loading="lazy" data-edit="image" data-edit-key="about-img">
+                    <div class="z-glass badge">
+                        <div class="num" data-edit="text" data-edit-key="about-badge-num">15+</div>
+                        <div class="lbl" data-edit="text" data-edit-key="about-badge-lbl">Jahre Erfahrung</div>
+                    </div>
+                </div>
+                <div class="z-about-txt fade-up">
+                    <div class="z-tag" data-edit="text" data-edit-key="about-tag">Unsere Praxis</div>
+                    <h2 data-edit="text" data-edit-key="about-title">Modernste Technik, <em>menschliche</em> Nähe.</h2>
+                    <p data-edit="text" data-edit-key="about-p1">In unserer Praxis verbinden wir digitale Zahnmedizin mit echter Zuwendung. Helle, ruhige Behandlungsräume und ein eingespieltes Team sorgen dafür, dass Sie sich vom ersten Moment an wohlfühlen.</p>
+                    <p data-edit="text" data-edit-key="about-p2">Wir erklären jeden Schritt verständlich und nehmen uns Zeit für Ihre Fragen — denn Vertrauen ist die Basis jeder guten Behandlung.</p>
+                    <div class="z-about-feats">
+                        <div class="z-about-feat"><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span data-edit="text" data-edit-key="about-f1">Digitale Röntgentechnik</span></div>
+                        <div class="z-about-feat"><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span data-edit="text" data-edit-key="about-f2">Barrierefreie Praxis</span></div>
+                        <div class="z-about-feat"><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span data-edit="text" data-edit-key="about-f3">Abendsprechstunden</span></div>
+                        <div class="z-about-feat"><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg></span><span data-edit="text" data-edit-key="about-f4">Alle Kassen & privat</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ STATS ═══════════ -->
+    <section class="z-section" style="padding-top:0;">
+        <div class="z-wrap">
+            <div class="z-glass z-stats fade-up" style="padding:14px;">
+                <div class="z-stat"><div class="num" data-edit="text" data-edit-key="stat1-num">12.000+</div><div class="lbl" data-edit="text" data-edit-key="stat1-lbl">Behandlungen</div></div>
+                <div class="z-stat"><div class="num" data-edit="text" data-edit-key="stat2-num">320+</div><div class="lbl" data-edit="text" data-edit-key="stat2-lbl">Bewertungen</div></div>
+                <div class="z-stat"><div class="num" data-edit="text" data-edit-key="stat3-num">48 h</div><div class="lbl" data-edit="text" data-edit-key="stat3-lbl">Ø Terminzeit</div></div>
+                <div class="z-stat"><div class="num" data-edit="text" data-edit-key="stat4-num">6</div><div class="lbl" data-edit="text" data-edit-key="stat4-lbl">Spezialisten</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ TEAM ═══════════ -->
+    <section class="z-section" id="team">
+        <div class="z-wrap">
+            <div class="z-head fade-up">
+                <div class="z-tag" data-edit="text" data-edit-key="team-tag">Unser Team</div>
+                <h2 class="z-h2" data-edit="text" data-edit-key="team-title">Die Menschen hinter <em>Praxis Aurea</em></h2>
+                <p data-edit="text" data-edit-key="team-desc">Erfahrene Behandler und ein herzliches Team, das Sie bei jedem Besuch persönlich begleitet.</p>
+            </div>
+            <div class="z-team">
+                <div class="z-glass z-member fade-up">
+                    <div class="z-member-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="team1-img"></div>
+                    <div class="z-member-info">
+                        <h3 data-edit="text" data-edit-key="team1-name">Dr. med. dent. Lena Bauer</h3>
+                        <div class="role" data-edit="text" data-edit-key="team1-role">Praxisleitung · Implantologie</div>
+                        <p data-edit="text" data-edit-key="team1-bio">Spezialisiert auf Implantate und ästhetische Zahnmedizin mit über 15 Jahren Erfahrung.</p>
+                    </div>
+                </div>
+                <div class="z-glass z-member fade-up">
+                    <div class="z-member-img"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="team2-img"></div>
+                    <div class="z-member-info">
+                        <h3 data-edit="text" data-edit-key="team2-name">Dr. med. dent. Marco Rossi</h3>
+                        <div class="role" data-edit="text" data-edit-key="team2-role">Endodontie · Prophylaxe</div>
+                        <p data-edit="text" data-edit-key="team2-bio">Ruhige Hand und viel Geduld — besonders geschätzt von Angstpatienten und Familien.</p>
+                    </div>
+                </div>
+                <div class="z-glass z-member fade-up">
+                    <div class="z-member-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="team3-img"></div>
+                    <div class="z-member-info">
+                        <h3 data-edit="text" data-edit-key="team3-name">Sarah Keller</h3>
+                        <div class="role" data-edit="text" data-edit-key="team3-role">Dentalhygienikerin</div>
+                        <p data-edit="text" data-edit-key="team3-bio">Ihre Expertin für professionelle Zahnreinigung und alles rund um die tägliche Pflege.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ GALLERY ═══════════ -->
+    <section class="z-section">
+        <div class="z-wrap">
+            <div class="z-head fade-up">
+                <div class="z-tag" data-edit="text" data-edit-key="gallery-tag">Einblicke</div>
+                <h2 class="z-h2" data-edit="text" data-edit-key="gallery-title">Unsere <em>Praxis</em> in Bildern</h2>
+            </div>
+            <div class="z-gallery fade-up">
+                <div class="z-gallery-item wide"><img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery1"></div>
+                <div class="z-gallery-item tall"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery2"></div>
+                <div class="z-gallery-item"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery3"></div>
+                <div class="z-gallery-item"><img src="https://images.unsplash.com/photo-1581585095917-79ce96b56f5f?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery4"></div>
+                <div class="z-gallery-item"><img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery5"></div>
+                <div class="z-gallery-item wide"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80" alt="" loading="lazy" data-edit="image" data-edit-key="gallery6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS ═══════════ -->
+    <section class="z-section" id="stimmen">
+        <div class="z-wrap">
+            <div class="z-head fade-up">
+                <div class="z-tag" data-edit="text" data-edit-key="testi-tag">Patientenstimmen</div>
+                <h2 class="z-h2" data-edit="text" data-edit-key="testi-title">Was unsere <em>Patienten</em> sagen</h2>
+            </div>
+            <div class="z-testi">
+                <div class="z-glass z-testi-card fade-up">
+                    <div class="z-stars">★★★★★</div>
+                    <p data-edit="text" data-edit-key="testi1-text">„Ich hatte immer Angst vor dem Zahnarzt — hier wurde ich so ruhig und freundlich behandelt, dass ich entspannt geblieben bin. Endlich angekommen!“</p>
+                    <div class="z-testi-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="" data-edit="image" data-edit-key="testi1-img">
+                        <div><div class="nm" data-edit="text" data-edit-key="testi1-name">Andrea M.</div><div class="meta" data-edit="text" data-edit-key="testi1-meta">Patientin seit 2021</div></div>
+                    </div>
+                </div>
+                <div class="z-glass z-testi-card fade-up">
+                    <div class="z-stars">★★★★★</div>
+                    <p data-edit="text" data-edit-key="testi2-text">„Top moderne Praxis, alles digital und super erklärt. Mein Implantat sitzt perfekt und der Ablauf war völlig schmerzfrei.“</p>
+                    <div class="z-testi-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="" data-edit="image" data-edit-key="testi2-img">
+                        <div><div class="nm" data-edit="text" data-edit-key="testi2-name">Thomas R.</div><div class="meta" data-edit="text" data-edit-key="testi2-meta">Implantat-Patient</div></div>
+                    </div>
+                </div>
+                <div class="z-glass z-testi-card fade-up">
+                    <div class="z-stars">★★★★★</div>
+                    <p data-edit="text" data-edit-key="testi3-text">„Auch mit meinen Kindern ein Genuss — das Team ist herzlich, geduldig und nimmt jede Sorge ernst. Klare Empfehlung!“</p>
+                    <div class="z-testi-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="" data-edit="image" data-edit-key="testi3-img">
+                        <div><div class="nm" data-edit="text" data-edit-key="testi3-name">Familie Weber</div><div class="meta" data-edit="text" data-edit-key="testi3-meta">Familienpatienten</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section class="z-section">
+        <div class="z-wrap">
+            <div class="z-head fade-up">
+                <div class="z-tag" data-edit="text" data-edit-key="faq-tag">Häufige Fragen</div>
+                <h2 class="z-h2" data-edit="text" data-edit-key="faq-title">Gut zu <em>wissen</em></h2>
+            </div>
+            <div class="z-faq">
+                <div class="z-glass z-faq-item fade-up">
+                    <button class="z-faq-q" onclick="zFaqToggle(this)">Wie schnell bekomme ich einen Termin?<span class="z-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+                    <div class="z-faq-a">In der Regel erhalten Sie innert 48 Stunden einen Termin. Bei akuten Schmerzen halten wir täglich Notfallplätze frei — rufen Sie uns einfach an.</div>
+                </div>
+                <div class="z-glass z-faq-item fade-up">
+                    <button class="z-faq-q" onclick="zFaqToggle(this)">Werden die Kosten von der Versicherung übernommen?<span class="z-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+                    <div class="z-faq-a">Wir rechnen über alle gängigen Kassen und privat ab. Vor grösseren Behandlungen erstellen wir Ihnen einen transparenten Kostenvoranschlag.</div>
+                </div>
+                <div class="z-glass z-faq-item fade-up">
+                    <button class="z-faq-q" onclick="zFaqToggle(this)">Ich habe grosse Angst vorm Zahnarzt — was tun Sie?<span class="z-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+                    <div class="z-faq-a">Wir sind auf Angstpatienten spezialisiert. Mit viel Zeit, klarer Aufklärung sowie Lachgas oder sanfter Sedierung machen wir Ihren Besuch so entspannt wie möglich.</div>
+                </div>
+                <div class="z-glass z-faq-item fade-up">
+                    <button class="z-faq-q" onclick="zFaqToggle(this)">Behandeln Sie auch Kinder?<span class="z-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+                    <div class="z-faq-a">Ja, gerne! Wir nehmen uns für unsere kleinen Patienten besonders viel Zeit und sorgen mit spielerischer Begleitung für einen positiven ersten Eindruck.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section class="z-section" id="kontakt">
+        <div class="z-wrap">
+            <div class="z-glass z-contact-card fade-up">
+                <div class="z-contact-grid">
+                    <div class="z-contact-info">
+                        <div class="z-tag" data-edit="text" data-edit-key="contact-tag">Kontakt</div>
+                        <h2 data-edit="text" data-edit-key="contact-title">Bereit für Ihr <em>strahlendes</em> Lächeln?</h2>
+                        <p data-edit="text" data-edit-key="contact-desc">Fragen Sie unverbindlich einen Termin an — wir melden uns zeitnah bei Ihnen zurück.</p>
+                        <div class="z-contact-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+                            <div><div class="lbl">Telefon</div><div class="val" data-edit="text" data-edit-key="contact-phone">+41 44 123 45 67</div></div>
+                        </div>
+                        <div class="z-contact-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+                            <div><div class="lbl">E-Mail</div><div class="val" data-edit="text" data-edit-key="contact-email">praxis@aurea-dental.ch</div></div>
+                        </div>
+                        <div class="z-contact-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <div><div class="lbl">Adresse</div><div class="val" data-edit="text" data-edit-key="contact-addr">Bahnhofstrasse 12, 8001 Zürich</div></div>
+                        </div>
+                        <div class="z-contact-row">
+                            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                            <div><div class="lbl">Öffnungszeiten</div><div class="val" data-edit="text" data-edit-key="contact-hours">Mo–Fr 08:00–18:00</div></div>
+                        </div>
+                    </div>
+                    <form class="z-form" onsubmit="event.preventDefault(); this.reset(); alert('Vielen Dank! Wir melden uns in Kürze bei Ihnen.');">
+                        <input type="text" placeholder="Ihr Name" required>
+                        <input type="tel" placeholder="Telefonnummer" required>
+                        <input type="email" placeholder="E-Mail-Adresse" required>
+                        <select>
+                            <option value="">Anliegen wählen…</option>
+                            <option>Kontrolle / Vorsorge</option>
+                            <option>Professionelle Zahnreinigung</option>
+                            <option>Ästhetik / Bleaching</option>
+                            <option>Implantat-Beratung</option>
+                            <option>Akute Schmerzen</option>
+                        </select>
+                        <textarea placeholder="Ihre Nachricht (optional)"></textarea>
+                        <button type="submit" class="z-btn z-btn--primary" style="justify-content:center;" data-edit="text" data-edit-key="form-btn">Terminanfrage senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="z-footer">
+        <div class="z-wrap">
+            <div class="z-footer-logo"><span class="dot"></span> Praxis Aurea</div>
+            <div class="z-footer-links">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#praxis">Praxis</a>
+                <a href="#team">Team</a>
+                <a href="#stimmen">Stimmen</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+            <div class="z-footer-social">
+                <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+            <div class="z-footer-copy">© 2026 Praxis Aurea — Template von <a href="../templates-web.html">Lweb</a></div>
+        </div>
+    </footer>
+
+    <script>
+    // Nav scroll + progress
+    (function(){
+        var nav = document.getElementById('zNav');
+        var bar = document.getElementById('zProgress');
+        window.addEventListener('scroll', function(){
+            nav.classList.toggle('scrolled', window.pageYOffset > 60);
+            if (bar) {
+                var h = document.documentElement;
+                bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+            }
+        }, { passive:true });
+    })();
+
+    // Mobile menu
+    (function(){
+        var burger = document.getElementById('zBurger');
+        var menu = document.getElementById('zMobileMenu');
+        burger.addEventListener('click', function(){
+            burger.classList.toggle('open');
+            menu.classList.toggle('open');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        });
+        menu.querySelectorAll('a').forEach(function(a){
+            a.addEventListener('click', function(){
+                burger.classList.remove('open');
+                menu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+    })();
+
+    // FAQ accordion
+    function zFaqToggle(btn) {
+        var item = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.z-faq-item').forEach(function(i){ i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+    }
+
+    // Scroll fade-up
+    (function(){
+        if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+            return;
+        }
+        var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+            });
+        }, { threshold:0.12 });
+        document.querySelectorAll('.fade-up').forEach(function(el){ obs.observe(el); });
+    })();
+    </script>
+
+    <script>
+    if (new URLSearchParams(window.location.search).get('editor') === 'true') {
+        var s = document.createElement('script');
+        s.src = '../js/template-editor.js';
+        s.onload = function() {
+            TemplateEditor.init({ templateId: 'zahnarzt', clientId: 'demo' });
+        };
+        document.body.appendChild(s);
+    }
+    </script>
+</body>
+</html>
