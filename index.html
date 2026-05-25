@@ -361,8 +361,8 @@
     <div class="container">
         <div class="hero-inner">
             <div class="hero-content">
-<h1 data-i18n-html="hero.title">Webseiten für Unternehmen im<br><span>Rheintal &amp; Liechtenstein</span></h1>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">Moderne Websites und Apps für lokale Unternehmen &mdash; schnell, professionell und zu fairen Preisen. Ihr persönlicher Ansprechpartner vor Ort in Buchs SG, Werdenberg und Liechtenstein.</p>
+<h1 data-i18n-html="hero.title">Webseiten auf dem nächsten Level &mdash;<br><span>programmiert, nicht zusammengeklickt.</span></h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Massgeschneidert mit Next.js &amp; React &mdash; kein WordPress, kein Baukasten von der Stange. Schneller, sicherer und einzigartig wie Ihr Unternehmen.</p>
                 <div class="hero-buttons">
                     <a href="booking.html" class="gbcta gbcta--primary" id="heroPriceBtn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
@@ -652,115 +652,56 @@
             </script>
         </div>
         <!-- Banner templates -->
-        <a href="templates-web.html" class="tpl-banner">
-            <div class="tpl-banner-head">
-                <div class="tpl-banner-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                </div>
-                <div class="tpl-banner-copy">
-                    <div class="tpl-banner-title" data-i18n="pricing.templates.title">Nur eine Internetpräsenz nötig?</div>
-                    <div class="tpl-banner-desc" data-i18n="pricing.templates.desc">Fertige Webseiten-Templates ab 450 CHF — professionell und sofort einsatzbereit.</div>
-                </div>
+        <div class="tpl-banner">
+            <div class="tpl-banner-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             </div>
-            <div class="tpl-banner-foot">
-                <div class="tpl-thumbs">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=240&q=70" alt="">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=240&q=70" alt="">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=240&q=70" alt="">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=240&q=70" alt="">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=240&q=70" alt="">
-                    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=240&q=70" alt="">
-                </div>
-                <div class="tpl-banner-cta" data-i18n="pricing.templates.cta">Templates ansehen <span aria-hidden="true">&rarr;</span></div>
+            <div class="tpl-banner-copy">
+                <div class="tpl-banner-title" data-i18n="pricing.templates.title">Nur eine Internetpräsenz nötig?</div>
+                <div class="tpl-banner-desc" data-i18n="pricing.templates.desc">Fertige Webseiten-Templates ab 450 CHF — professionell und sofort einsatzbereit.</div>
             </div>
+            <a href="templates-web.html" class="tpl-banner-btn" data-i18n="pricing.templates.cta">Templates ansehen <span aria-hidden="true">&rarr;</span></a>
             <style>
                 .tpl-banner{
-                    display:flex;flex-direction:column;gap:24px;
-                    margin-top:40px;padding:32px 36px;border-radius:22px;
-                    background:linear-gradient(135deg,rgba(254,108,117,0.10) 0%,rgba(254,108,117,0.03) 100%);
-                    border:1.5px solid rgba(254,108,117,0.18);
-                    text-decoration:none;transition:all 0.3s ease;
+                    display:flex;align-items:center;gap:18px;
+                    margin-top:32px;padding:18px 24px;border-radius:16px;
+                    background:rgba(254,108,117,0.06);
+                    border:1px solid rgba(254,108,117,0.16);
+                    transition:border-color 0.25s ease,background 0.25s ease;
                 }
-                .tpl-banner:hover{
-                    border-color:rgba(254,108,117,0.45);
-                    transform:translateY(-3px);
-                    box-shadow:0 14px 40px rgba(254,108,117,0.15);
-                }
-                .tpl-banner-head{display:flex;align-items:center;gap:20px;}
+                .tpl-banner:hover{border-color:rgba(254,108,117,0.32);background:rgba(254,108,117,0.09);}
                 .tpl-banner-icon{
-                    width:60px;height:60px;border-radius:16px;flex-shrink:0;
+                    width:44px;height:44px;border-radius:12px;flex-shrink:0;
                     background:linear-gradient(135deg,#fe6c75,#e1545d);
                     display:flex;align-items:center;justify-content:center;
-                    box-shadow:0 6px 18px rgba(254,108,117,0.35);
+                    box-shadow:0 4px 12px rgba(254,108,117,0.30);
                 }
+                .tpl-banner-copy{flex:1;min-width:0;}
                 .tpl-banner-title{
-                    font-size:1.5rem;font-weight:700;color:#4b5563;margin-bottom:6px;line-height:1.25;
+                    font-size:1.05rem;font-weight:700;color:var(--gunpowder800);
+                    margin-bottom:2px;line-height:1.3;
                 }
                 .tpl-banner-desc{
-                    font-size:1rem;color:var(--text-secondary);line-height:1.5;
+                    font-size:0.9rem;color:var(--gunpowder500);line-height:1.45;
                 }
-                .tpl-banner-foot{
-                    display:flex;align-items:center;justify-content:space-between;
-                    gap:20px;flex-wrap:wrap;
+                .tpl-banner-btn{
+                    flex-shrink:0;white-space:nowrap;text-decoration:none;
+                    display:inline-flex;align-items:center;gap:7px;
+                    font-size:0.95rem;font-weight:700;color:#fff;
+                    background:var(--begonia400);
+                    padding:12px 22px;border-radius:1000px;
+                    box-shadow:0 6px 20px rgba(254,108,117,0.30);
+                    transition:transform 0.2s ease,box-shadow 0.2s ease,background 0.2s ease;
                 }
-                .tpl-thumbs{display:flex;}
-                .tpl-thumbs img{
-                    width:84px;height:84px;border-radius:14px;object-fit:cover;
-                    border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,0.12);
-                    margin-right:-14px;position:relative;
-                    opacity:0;transform:scale(0.5) translateY(10px);
-                    transition:opacity 0.4s ease,transform 0.4s ease;
-                }
-                .tpl-thumbs img:nth-child(1){z-index:6}
-                .tpl-thumbs img:nth-child(2){z-index:5}
-                .tpl-thumbs img:nth-child(3){z-index:4}
-                .tpl-thumbs img:nth-child(4){z-index:3}
-                .tpl-thumbs img:nth-child(5){z-index:2}
-                .tpl-thumbs img:nth-child(6){z-index:1;margin-right:0}
-                .tpl-thumbs.visible img{opacity:1;transform:scale(1) translateY(0);}
-                .tpl-thumbs.visible img:nth-child(1){transition-delay:0s}
-                .tpl-thumbs.visible img:nth-child(2){transition-delay:0.08s}
-                .tpl-thumbs.visible img:nth-child(3){transition-delay:0.16s}
-                .tpl-thumbs.visible img:nth-child(4){transition-delay:0.24s}
-                .tpl-thumbs.visible img:nth-child(5){transition-delay:0.32s}
-                .tpl-thumbs.visible img:nth-child(6){transition-delay:0.4s}
-                .tpl-banner-cta{
-                    font-size:1rem;font-weight:700;color:var(--begonia400);
-                    white-space:nowrap;display:flex;align-items:center;gap:6px;
-                    padding:12px 22px;border-radius:12px;
-                    background:rgba(254,108,117,0.10);
-                    transition:background 0.25s ease,transform 0.25s ease;
-                    opacity:0;transform:translateX(-8px);
-                }
-                .tpl-thumbs.visible ~ .tpl-banner-cta{
-                    opacity:1;transform:translateX(0);
-                    transition:opacity 0.4s ease 0.45s,transform 0.4s ease 0.45s,background 0.25s ease;
-                }
-                .tpl-banner:hover .tpl-banner-cta{background:rgba(254,108,117,0.18);}
+                .tpl-banner-btn:hover{background:#ff8a91;transform:translateY(-2px);box-shadow:0 8px 26px rgba(254,108,117,0.40);}
+                .tpl-banner-btn span{transition:transform 0.2s ease;}
+                .tpl-banner-btn:hover span{transform:translateX(3px);}
                 @media(max-width:768px){
-                    .tpl-banner{padding:24px 22px;gap:20px;}
-                    .tpl-banner-title{font-size:1.25rem;}
-                    .tpl-banner-desc{font-size:0.95rem;}
-                    .tpl-banner-icon{width:52px;height:52px;border-radius:14px;}
-                    .tpl-thumbs img{width:64px;height:64px;margin-right:-10px;}
-                    .tpl-thumbs img:nth-child(6){margin-right:0}
-                    .tpl-banner-foot{justify-content:center;}
-                }
-                @media(max-width:480px){
-                    .tpl-thumbs{flex-wrap:wrap;justify-content:center;gap:8px;}
-                    .tpl-thumbs img{margin-right:0!important;}
+                    .tpl-banner{flex-direction:column;text-align:center;gap:14px;padding:22px 20px;}
+                    .tpl-banner-btn{width:100%;justify-content:center;}
                 }
             </style>
-        </a>
-        <script>
-        (function(){
-            var t=document.querySelector('.tpl-thumbs');
-            if(!t)return;
-            new IntersectionObserver(function(e,o){
-                if(e[0].isIntersecting){t.classList.add('visible');o.disconnect();}
-            },{threshold:0.3}).observe(t);
-        })();
-        </script>
+        </div>
     </div>
 </section>
 
