@@ -248,11 +248,6 @@
                         <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
                         <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
                     </a>
-                    <a href="templates-web.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="header-nav-sub-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
                 </div>
             </div>
             <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
@@ -350,7 +345,6 @@
         <nav class="mobile-menu-nav">
             <a href="webs-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.published">Projekte</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></a>
             <a href="tienda-online.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></a>
-            <a href="templates-web.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.lowcost">Premade Websites</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.lowcost.hint">ab 450 CHF</small></a>
             <a href="#" class="mobile-menu-link mobile-menu-link--custom" onclick="event.preventDefault();closeMobileMenu();openPriceCalc()"><span data-i18n="nav.websites.custom">Massgeschneidert</span><small class="mobile-menu-link-hint" data-i18n="nav.websites.custom.hint">Einzigartiger Code für dich</small></a>
         </nav>
     </div>
@@ -650,57 +644,6 @@
                     }
                 }
             </script>
-        </div>
-        <!-- Banner templates -->
-        <div class="tpl-banner">
-            <div class="tpl-banner-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <div class="tpl-banner-copy">
-                <div class="tpl-banner-title" data-i18n="pricing.templates.title">Nur eine Internetpräsenz nötig?</div>
-                <div class="tpl-banner-desc" data-i18n="pricing.templates.desc">Fertige Webseiten-Templates ab 450 CHF — professionell und sofort einsatzbereit.</div>
-            </div>
-            <a href="templates-web.html" class="tpl-banner-btn" data-i18n="pricing.templates.cta">Templates ansehen <span aria-hidden="true">&rarr;</span></a>
-            <style>
-                .tpl-banner{
-                    display:flex;align-items:center;gap:18px;
-                    margin-top:32px;padding:18px 24px;border-radius:16px;
-                    background:rgba(254,108,117,0.06);
-                    border:1px solid rgba(254,108,117,0.16);
-                    transition:border-color 0.25s ease,background 0.25s ease;
-                }
-                .tpl-banner:hover{border-color:rgba(254,108,117,0.32);background:rgba(254,108,117,0.09);}
-                .tpl-banner-icon{
-                    width:44px;height:44px;border-radius:12px;flex-shrink:0;
-                    background:linear-gradient(135deg,#fe6c75,#e1545d);
-                    display:flex;align-items:center;justify-content:center;
-                    box-shadow:0 4px 12px rgba(254,108,117,0.30);
-                }
-                .tpl-banner-copy{flex:1;min-width:0;}
-                .tpl-banner-title{
-                    font-size:1.05rem;font-weight:700;color:var(--gunpowder800);
-                    margin-bottom:2px;line-height:1.3;
-                }
-                .tpl-banner-desc{
-                    font-size:0.9rem;color:var(--gunpowder500);line-height:1.45;
-                }
-                .tpl-banner-btn{
-                    flex-shrink:0;white-space:nowrap;text-decoration:none;
-                    display:inline-flex;align-items:center;gap:7px;
-                    font-size:0.95rem;font-weight:700;color:#fff;
-                    background:var(--begonia400);
-                    padding:12px 22px;border-radius:1000px;
-                    box-shadow:0 6px 20px rgba(254,108,117,0.30);
-                    transition:transform 0.2s ease,box-shadow 0.2s ease,background 0.2s ease;
-                }
-                .tpl-banner-btn:hover{background:#ff8a91;transform:translateY(-2px);box-shadow:0 8px 26px rgba(254,108,117,0.40);}
-                .tpl-banner-btn span{transition:transform 0.2s ease;}
-                .tpl-banner-btn:hover span{transform:translateX(3px);}
-                @media(max-width:768px){
-                    .tpl-banner{flex-direction:column;text-align:center;gap:14px;padding:22px 20px;}
-                    .tpl-banner-btn{width:100%;justify-content:center;}
-                }
-            </style>
         </div>
     </div>
 </section>
@@ -1450,10 +1393,6 @@
                     <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></span>
                     <span class="wt-tab-label" data-i18n="wb.shop.title">Perfekter Online-Shop</span>
                 </button>
-                <button class="wt-tab wt-tab--premade" data-tab="premade" role="tab" aria-selected="false">
-                    <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
-                    <span class="wt-tab-label" data-i18n="wb.premade.title">Premade Websites</span>
-                </button>
                 <button class="wt-tab wt-tab--custom" data-tab="custom" role="tab" aria-selected="false">
                     <span class="wt-tab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
                     <span class="wt-tab-label" data-i18n="wb.custom.title">Massgeschneidert</span>
@@ -1475,23 +1414,6 @@
                         </div>
                         <a href="tienda-online.html" class="wt-cta wt-cta--shop" onclick="sessionStorage.setItem('scrollTo','wt-shop-panel')">
                             <span data-i18n="wb.shop.cta">Mehr erfahren</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="wt-panel" data-panel="premade" role="tabpanel">
-                    <div class="wt-panel-content">
-                        <div class="wt-panel-text">
-                            <h3 data-i18n="wb.premade.title">Premade Websites</h3>
-                            <p data-i18n="wb.premade.panel.desc">Professionelle Vorlagen, sofort einsatzbereit. Domain, Hosting und Editor inklusive.</p>
-                            <ul class="wt-features">
-                                <li data-i18n="wb.premade.f1">Sofort online</li>
-                                <li data-i18n="wb.premade.f2">Domain inklusive</li>
-                                <li data-i18n="wb.premade.f3">ab 450 CHF</li>
-                            </ul>
-                        </div>
-                        <a href="templates-web.html" class="wt-cta wt-cta--premade">
-                            <span data-i18n="wb.premade.cta">Vorlagen ansehen</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
                     </div>
