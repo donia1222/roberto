@@ -15,7 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body { padding-top: 60px; overflow-x: hidden; background: #fff; }
+        /* `overflow-x:clip` (unlike `hidden`) does NOT create a scrolling context
+           and CAN coexist with overflow-y:visible, so sticky descendants work. */
+        html { overflow-x: clip !important; overflow-y: visible !important; }
+        body { overflow-x: clip !important; overflow-y: visible !important; padding-top: 60px; background: #fff; }
 
         /* ═══ ANIMATIONS ═══════════════════════════════════ */
         @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
@@ -884,7 +887,7 @@
 <style>
 .ap-hero{background:linear-gradient(180deg,#fff 0%,#f0f6ff 100%);padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden;margin-top:-20px;}
 @media(max-width:1024px){.ap-hero{margin-top:-40px;}}
-.ap-wrap{max-width:1140px;margin:0 auto;}
+.ap-wrap{max-width:1140px;margin:0 auto;position:relative;}
 .ap-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(254,108,117,0.08);border:1px solid rgba(254,108,117,0.2);border-radius:600px;padding:7px 18px;font-size:12px;font-weight:700;color:#fe6c75;letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .6s ease both;}
 .ap-hero-badge .blink{width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:blink 1.5s infinite;display:inline-block;}
 .ap-hero-h1{font-size:clamp(38px,5.5vw,72px);font-weight:800;line-height:1.05;letter-spacing:-.035em;color:#0f1d2c;margin:0 0 20px;animation:fadeUp .6s .1s ease both;}
@@ -916,8 +919,19 @@ body.dark-mode .ap-hero-h1,body.dark-mode .ap-hero-stat-n{color:#f1f5f9;}
 /* ── Card container ── */
 .ap-list{background:#f4f8fd;}
 body.dark-mode .ap-list{background:#0f1520;}
-.ap-card{background:#fff;border-radius:24px;box-shadow:0 4px 32px rgba(0,0,0,.07);display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;margin-bottom:48px;transition:box-shadow .3s,transform .3s;}
-.ap-card:hover{box-shadow:0 12px 48px rgba(0,0,0,.12);transform:translateY(-3px);}
+.ap-card{position:sticky;top:100px;background:#fff;border-radius:24px;box-shadow:0 4px 32px rgba(0,0,0,.07);display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden;margin-bottom:48px;transition:box-shadow .3s,transform .3s;transform-origin:50% 0%;will-change:transform;}
+/* Stacking order — each card slides over the previous one */
+.ap-wrap > .ap-card:nth-child(1){z-index:1}
+.ap-wrap > .ap-card:nth-child(2){z-index:2}
+.ap-wrap > .ap-card:nth-child(3){z-index:3}
+.ap-wrap > .ap-card:nth-child(4){z-index:4}
+.ap-wrap > .ap-card:nth-child(5){z-index:5}
+.ap-wrap > .ap-card:nth-child(6){z-index:6}
+.ap-wrap > .ap-card:nth-child(7){z-index:7}
+.ap-wrap > .ap-card:nth-child(8){z-index:8}
+.ap-card.ap-stacked{box-shadow:0 16px 50px rgba(0,0,0,.16);}
+@media(max-width:768px){.ap-card{top:80px;}}
+.ap-card:hover{box-shadow:0 12px 48px rgba(0,0,0,.12);}
 body.dark-mode .ap-card{background:#141d2b;box-shadow:0 4px 32px rgba(0,0,0,.3);}
 @media(max-width:768px){.ap-card{grid-template-columns:1fr;}}
 
@@ -2640,6 +2654,32 @@ body.dark-mode .bk-progress{background:#2a3040}
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
+})();
+</script>
+<script>
+// ── STACKING SCROLL EFFECT (same as webs-publicadas) ──────
+// Pure sticky CSS does the stacking — the JS only marks the card
+// that just landed at the sticky line so it gets a subtle lift.
+(function(){
+    var wrap = document.querySelector('.ap-wrap');
+    if (!wrap) return;
+    var cards = Array.prototype.slice.call(wrap.querySelectorAll('.ap-card'));
+    if (!cards.length) return;
+    var stickyTop = 100;
+    function update(){
+        cards.forEach(function(c){
+            var r = c.getBoundingClientRect();
+            c.classList.toggle('ap-stacked', Math.abs(r.top - stickyTop) < 2);
+        });
+    }
+    var raf = null;
+    function onScroll(){
+        if (raf) return;
+        raf = requestAnimationFrame(function(){ raf = null; update(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onScroll);
+    update();
 })();
 </script>
 <script src="js/chatbot.js"></script>
