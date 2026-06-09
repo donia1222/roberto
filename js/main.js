@@ -104,6 +104,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         var href = this.getAttribute('href');
         if (!href || !href.startsWith('#') || href === '#' || href.length < 2) return;
+        // Dropdown trigger items (Leistungen, Mobile Apps, Websites) only open the
+        // submenu — never scroll the page.
+        if (this.classList.contains('header-nav-item')) { e.preventDefault(); return; }
         e.preventDefault();
         try {
             var target = document.querySelector(href);
