@@ -636,6 +636,83 @@
     </div>
 </section>
 
+<!-- ── WAS BEI JEDER WEBSITE INKLUSIVE IST (Verkaufsargumente) ── -->
+<section class="section pin-section" style="scroll-margin-top:90px;">
+<style>
+.pin-section{padding:6px 24px 80px;}
+.pin-wrap{max-width:1120px;margin:0 auto;}
+.pin-head{text-align:center;margin:0 auto 44px;max-width:680px;}
+.pin-head h2{font-size:clamp(26px,3vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.12;color:var(--gunpowder900);margin:0 0 14px;}
+body.dark-mode .pin-head h2{color:#f1f5f9;}
+.pin-head h2 span{color:var(--begonia400);}
+.pin-head p{font-size:16px;line-height:1.65;color:var(--gunpowder400);margin:0;}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+@media(max-width:900px){.pin-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.pin-grid{grid-template-columns:1fr;}}
+.pin-card{position:relative;background:#fff;border:1px solid var(--gunpowder100);border-radius:20px;padding:30px 28px;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;}
+.pin-card:hover{transform:translateY(-6px);box-shadow:0 20px 54px rgba(15,29,44,.11);border-color:rgba(254,108,117,.35);}
+body.dark-mode .pin-card{background:#141d2b;border-color:#1e2d3d;}
+body.dark-mode .pin-card:hover{box-shadow:0 20px 54px rgba(0,0,0,.42);}
+.pin-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--begonia400),var(--begonia600));transform:scaleX(0);transform-origin:left;transition:transform .38s ease;}
+.pin-card:hover::before{transform:scaleX(1);}
+.pin-icon{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(254,108,117,.14),rgba(254,108,117,.04));color:var(--begonia400);margin-bottom:18px;}
+.pin-icon svg{width:26px;height:26px;}
+.pin-card h3{font-size:18px;font-weight:800;color:var(--gunpowder900);margin:0 0 9px;letter-spacing:-.01em;}
+body.dark-mode .pin-card h3{color:#f1f5f9;}
+.pin-card p{font-size:14px;line-height:1.65;color:var(--gunpowder400);margin:0;}
+.pin-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;}
+.pin-tag{display:inline-flex;align-items:center;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700;background:var(--gunpowder50);color:var(--gunpowder600);}
+body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
+</style>
+    <div class="pin-wrap">
+        <div class="pin-head">
+            <h2 data-i18n-html="pricing.incl.title">Bei jeder Website <span>inklusive</span></h2>
+            <p data-i18n="pricing.incl.sub">Jede Website schreibe ich von Hand — kein Baukasten, kein CMS. Sauberer Code, der dir gehört.</p>
+        </div>
+        <div class="pin-grid">
+            <!-- 1 · Handgeschriebener Code -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                <h3 data-i18n="pricing.incl.code.t">Handgeschriebener Code</h3>
+                <p data-i18n="pricing.incl.code.d">Jede Website wird individuell für dein Projekt von Hand programmiert — kein Baukasten, kein CMS. Frontend mit Next.js, Remix &amp; React, Backend mit PHP &amp; MySQL.</p>
+                <div class="pin-stack"><span class="pin-tag">Next.js</span><span class="pin-tag">Remix</span><span class="pin-tag">React</span><span class="pin-tag">PHP</span><span class="pin-tag">MySQL</span></div>
+            </div>
+            <!-- 2 · Der Code gehört dir -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-8.1 8.1a5 5 0 1 1-7.07 7.07 5 5 0 0 1 7.07-7.07zm0 0L15.5 7.5m0 0l3.5 3.5L22 8l-3.5-3.5"/></svg></div>
+                <h3 data-i18n="pricing.incl.own.t">Der Code gehört dir</h3>
+                <p data-i18n="pricing.incl.own.d">Volle Rechte am Quellcode für dich als Käufer. Du bist nicht an mich gebunden und behältst die komplette Kontrolle über deine Website.</p>
+            </div>
+            <!-- 3 · Code auf GitHub -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+                <h3 data-i18n="pricing.incl.github.t">Code auf GitHub</h3>
+                <p data-i18n="pricing.incl.github.d">Der Code deiner Website wird auf GitHub veröffentlicht — mit deinen Rechten. So kannst du jederzeit die Qualität prüfen: sauberer, transparenter Code.</p>
+            </div>
+            <!-- 4 · Alles inklusive -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                <h3 data-i18n="pricing.incl.all.t">Alles inklusive</h3>
+                <p data-i18n="pricing.incl.all.d">SSL-Zertifikat, Domain, Standard-SEO und Statistiken — alles ist dabei. Keine versteckten Kosten, keine Überraschungen.</p>
+                <div class="pin-stack"><span class="pin-tag">SSL</span><span class="pin-tag">Domain</span><span class="pin-tag">SEO</span><span class="pin-tag">Statistik</span></div>
+            </div>
+            <!-- 5 · Hosting in der Schweiz -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                <h3 data-i18n="pricing.incl.swiss.t">Hosting in der Schweiz</h3>
+                <p data-i18n="pricing.incl.swiss.d">Alle Websites werden bei Hostpoint in der Schweiz gehostet. Deine Daten bleiben hier — nichts verlässt das Land.</p>
+                <div class="pin-stack"><span class="pin-tag">🇨🇭 Schweiz</span><span class="pin-tag">Hostpoint</span></div>
+            </div>
+            <!-- 6 · Persönlich & lokal -->
+            <div class="pin-card">
+                <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <h3 data-i18n="pricing.incl.local.t">Direkt vom Entwickler</h3>
+                <p data-i18n="pricing.incl.local.d">Kein Agenturaufschlag, kein Zwischenhändler. Du sprichst direkt mit dem Entwickler, der deine Website von Hand baut.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- MOBILE APPS -->
 <section class="section apps" id="apps" style="display:none;">
