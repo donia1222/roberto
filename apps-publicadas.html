@@ -958,14 +958,6 @@ body.dark-mode .ap-features li{color:#c8d5e3;}
 /* ── Store buttons ── */
 .ap-store-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .ap-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;}
-.ap-btn--app{background:#0f1d2c;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18);}
-.ap-btn--app:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
-.ap-btn--play{background:#fff;color:#0f1d2c;border:1.5px solid #e0e8f0;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.ap-btn--play:hover{transform:translateY(-2px);border-color:#fe6c75;color:#fe6c75;}
-.ap-btn--web{background:#fe6c75;color:#fff;box-shadow:0 4px 14px rgba(254,108,117,.3);}
-.ap-btn--web:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(254,108,117,.45);}
-body.dark-mode .ap-btn--app{background:#1e2d3d;border:1px solid #2d3f55;}
-body.dark-mode .ap-btn--play{background:#1e2d3d;border-color:#2d3f55;color:#c8d5e3;}
 
 /* ── Visual side ── */
 .ap-card-visual{display:flex;align-items:center;justify-content:center;padding:40px 32px;position:relative;overflow:hidden;}
@@ -1018,17 +1010,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app1.f5">4.8★ im App Store</li>
                     <li data-i18n="ap.app1.f6">iOS & Android</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/us/app/keto-barcode-scanner/id6757723290" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.lwebch.KetoScanner" target="_blank" rel="noopener" class="ap-btn ap-btn--play">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.16.64.2.97.1l13.4-7.74-3.02-3.02-11.35 10.66zM.5 1.1C.19 1.46 0 2 0 2.72v18.56c0 .72.19 1.26.51 1.62l.08.08 10.4-10.4v-.24L.58 1.02.5 1.1zm19.44 9.98l-2.74-1.58-3.37 3.37 3.37 3.37 2.76-1.59c.79-.45.79-1.19-.02-1.57zM4.15.24l13.4 7.74-3.02 3.02L3.18.34C3.5.22 3.86.26 4.15.24z"/></svg>
-                        <span data-i18n="ap.btn.playstore">Play Store</span>
-                    </a>
-                    <a href="https://www.keto-scan.com" target="_blank" rel="noopener" class="ap-btn ap-btn--web">keto-scan.com</a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#fff8f0 0%,#ffeedd 100%);">
                 <div class="ap-phone ap-phone-main">
@@ -1058,17 +1039,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app2.f5">OpenAI-powered</li>
                     <li data-i18n="ap.app2.f6">iOS & Android</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6505125372" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.VoiceList" target="_blank" rel="noopener" class="ap-btn ap-btn--play">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.16.64.2.97.1l13.4-7.74-3.02-3.02-11.35 10.66zM.5 1.1C.19 1.46 0 2 0 2.72v18.56c0 .72.19 1.26.51 1.62l.08.08 10.4-10.4v-.24L.58 1.02.5 1.1zm19.44 9.98l-2.74-1.58-3.37 3.37 3.37 3.37 2.76-1.59c.79-.45.79-1.19-.02-1.57zM4.15.24l13.4 7.74-3.02 3.02L3.18.34C3.5.22 3.86.26 4.15.24z"/></svg>
-                        <span data-i18n="ap.btn.playstore">Play Store</span>
-                    </a>
-                    <a href="https://www.buyvoice.app" target="_blank" rel="noopener" class="ap-btn ap-btn--web">buyvoice.app</a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#f0edf8 0%,#e5dff5 100%);">
                 <div class="ap-icon-showcase">
@@ -1102,16 +1072,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app3.f5">OpenAI-powered</li>
                     <li data-i18n="ap.app3.f6">iOS & Android</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6472478688" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.foodmentoai" target="_blank" rel="noopener" class="ap-btn ap-btn--play">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.16.64.2.97.1l13.4-7.74-3.02-3.02-11.35 10.66zM.5 1.1C.19 1.46 0 2 0 2.72v18.56c0 .72.19 1.26.51 1.62l.08.08 10.4-10.4v-.24L.58 1.02.5 1.1zm19.44 9.98l-2.74-1.58-3.37 3.37 3.37 3.37 2.76-1.59c.79-.45.79-1.19-.02-1.57zM4.15.24l13.4 7.74-3.02 3.02L3.18.34C3.5.22 3.86.26 4.15.24z"/></svg>
-                        <span data-i18n="ap.btn.playstore">Play Store</span>
-                    </a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#fdf0e6 0%,#f5e4d0 100%);">
                 <div class="ap-icon-showcase">
@@ -1145,13 +1105,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app4.f5">OpenAI-powered</li>
                     <li data-i18n="ap.app4.f6">iOS & Web</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6467635587" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://dog-mentor.com" target="_blank" rel="noopener" class="ap-btn ap-btn--web">dog-mentor.com</a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#e8f0e4 0%,#d8e9d0 100%);">
                 <div class="ap-icon-showcase">
@@ -1185,16 +1138,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app5.f5">Offline-Modus</li>
                     <li data-i18n="ap.app5.f6">iOS & Android</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6745336299" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.HundezonenSchweiz" target="_blank" rel="noopener" class="ap-btn ap-btn--play">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.16.64.2.97.1l13.4-7.74-3.02-3.02-11.35 10.66zM.5 1.1C.19 1.46 0 2 0 2.72v18.56c0 .72.19 1.26.51 1.62l.08.08 10.4-10.4v-.24L.58 1.02.5 1.1zm19.44 9.98l-2.74-1.58-3.37 3.37 3.37 3.37 2.76-1.59c.79-.45.79-1.19-.02-1.57zM4.15.24l13.4 7.74-3.02 3.02L3.18.34C3.5.22 3.86.26 4.15.24z"/></svg>
-                        <span data-i18n="ap.btn.playstore">Play Store</span>
-                    </a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#e0f5f0 0%,#cceee5 100%);">
                 <div class="ap-icon-showcase">
@@ -1228,13 +1171,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app6.f5">OpenAI-powered</li>
                     <li data-i18n="ap.app6.f6">iOS & Web</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6757017200" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://keto-recipe.app" target="_blank" rel="noopener" class="ap-btn ap-btn--web">keto-recipe.app</a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#fdf6e3 0%,#f5ecd4 100%);">
                 <div class="ap-icon-showcase">
@@ -1268,13 +1204,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                     <li data-i18n="ap.app7.f5">Freelancer-Tools</li>
                     <li data-i18n="ap.app7.f6">iOS & Web</li>
                 </ul>
-                <div class="ap-store-btns">
-                    <a href="https://apps.apple.com/app/id6745336262" target="_blank" rel="noopener" class="ap-btn ap-btn--app">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        <span data-i18n="ap.btn.appstore">App Store</span>
-                    </a>
-                    <a href="https://www.workti.app" target="_blank" rel="noopener" class="ap-btn ap-btn--web">workti.app</a>
-                </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#e4eef8 0%,#d0e4f5 100%);">
                 <div class="ap-icon-showcase">
@@ -1313,7 +1242,6 @@ body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span data-i18n="ap.app8.status">In Entwicklung</span>
                     </span>
-                    <a href="https://www.grenzpreis.ch" target="_blank" rel="noopener" class="ap-btn ap-btn--web">grenzpreis.ch</a>
                 </div>
             </div>
             <div class="ap-card-visual" style="background:linear-gradient(135deg,#e6f7f1 0%,#cdeee0 100%);">

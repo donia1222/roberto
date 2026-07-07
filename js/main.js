@@ -1562,17 +1562,6 @@ function calcGoToContact() {
 
 // ===== WEB PROJECT MODAL =====
 var webProjects = {
-    vcardcreator: {
-        title: 'VCard Creator',
-        url: 'https://vcard-creato.vercel.app',
-        image: null,
-        video: 'img/sora-video-1774223926866.mp4',
-        complexity: 'medium',
-        desc: 'Digitale Visitenkarte in Sekunden erstellen — permanente URL, QR-Code und .vcf Kontaktdatei. 100% kostenlos, ohne Registrierung, direkt im Browser.',
-        techs: ['Next.js', 'TypeScript', 'PHP API', 'MySQL', 'QR Code'],
-        features: ['Permanente shareable URL', 'QR-Code inklusive', '.vcf Kontakt Download', 'Foto-Upload', '5 Sprachen (DE/EN/ES/FR/IT)', '100% kostenlos'],
-        price: '🎉 Kostenlos'
-    },
     usfishing: {
         title: 'US-Fishing & Huntingshop',
         url: 'https://online-shop-seven-delta.vercel.app',
@@ -1809,21 +1798,23 @@ function openWebModal(id) {
     // Visit URL
     var visitBtn = document.getElementById('webModalVisit');
     var inProgressNote = document.getElementById('webModalInProgress');
-    if (project.url) {
-        visitBtn.href = project.url;
-        visitBtn.style.pointerEvents = '';
-        visitBtn.style.opacity = '';
-        visitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Website besuchen';
-        visitBtn.className = 'gbcta gbcta--primary gbcta--small';
-        inProgressNote.style.display = 'none';
-    } else {
-        visitBtn.href = '#';
-        visitBtn.style.pointerEvents = 'none';
-        visitBtn.style.opacity = '0.7';
-        visitBtn.innerHTML = '<span style="display:flex;flex-direction:column;align-items:center;gap:2px;width:100%"><span style="display:flex;align-items:center;gap:6px;"><span class="web-modal-loader"></span> In Bearbeitung</span><span style="font-size:12px;font-weight:700;color:var(--begonia400);">Aktuell wird an dieser Website gearbeitet.</span></span>';
-        visitBtn.className = 'gbcta gbcta--small web-modal-inprogress';
-        inProgressNote.style.display = 'none';
+    // Visit button was removed from the markup — guard so the modal still opens.
+    if (visitBtn) {
+        if (project.url) {
+            visitBtn.href = project.url;
+            visitBtn.style.pointerEvents = '';
+            visitBtn.style.opacity = '';
+            visitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Website besuchen';
+            visitBtn.className = 'gbcta gbcta--primary gbcta--small';
+        } else {
+            visitBtn.href = '#';
+            visitBtn.style.pointerEvents = 'none';
+            visitBtn.style.opacity = '0.7';
+            visitBtn.innerHTML = '<span style="display:flex;flex-direction:column;align-items:center;gap:2px;width:100%"><span style="display:flex;align-items:center;gap:6px;"><span class="web-modal-loader"></span> In Bearbeitung</span><span style="font-size:12px;font-weight:700;color:var(--begonia400);">Aktuell wird an dieser Website gearbeitet.</span></span>';
+            visitBtn.className = 'gbcta gbcta--small web-modal-inprogress';
+        }
     }
+    if (inProgressNote) { inProgressNote.style.display = 'none'; }
 
     // Open modal
     document.getElementById('webModalOverlay').classList.add('open');

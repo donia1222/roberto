@@ -1785,13 +1785,6 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 .app-card-tech { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
 .app-card-tech span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 1000px; background: var(--cerulean50); color: var(--cerulean500); }
 .app-card-tech span.ai-tag { background: #fef3e2; color: #d97706; }
-.app-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 1000px; transition: all 200ms; }
-.app-link--appstore { background: var(--gunpowder900); color: #fff; }
-.app-link--appstore:hover { background: var(--gunpowder700); }
-.app-link--playstore { background: #03A9F4; color: #fff; }
-.app-link--playstore:hover { opacity: 0.9; }
-.app-link--web { background: var(--cerulean50); color: var(--cerulean500); }
-.app-link--web:hover { background: var(--cerulean100); }
 
 /* ===== WORKFLOW ===== */
 .workflow { background: #fff; }
