@@ -5,7 +5,7 @@
     <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Veröffentlichte Apps | React Native | Lweb</title>
-    <meta name="description" content="8 veröffentlichte Apps im App Store & Google Play — entwickelt mit React Native von Roberto Salvador. KI-gestützt, mehrsprachig, nativ schnell.">
+    <meta name="description" content="9 veröffentlichte Apps im App Store & Google Play — entwickelt mit React Native von Roberto Salvador. KI-gestützt, mehrsprachig, nativ schnell.">
     <link rel="canonical" href="https://www.lweb.ch/apps-publicadas.html">
     <meta property="og:url" content="https://www.lweb.ch/apps-publicadas.html">
     <meta name="author" content="Roberto Salvador — Lweb">
@@ -902,10 +902,10 @@ body.dark-mode .ap-hero-h1,body.dark-mode .ap-hero-stat-n{color:#f1f5f9;}
 </style>
     <div class="ap-wrap">
         <div class="ap-hero-badge"><span class="blink"></span><span data-i18n="ap.hero.badge">Veröffentlichte Apps</span></div>
-        <h1 class="ap-hero-h1 tw-hero-h1" data-i18n-html="ap.hero.h1">8 Apps im <span>App Store</span><br>& Google Play</h1>
+        <h1 class="ap-hero-h1 tw-hero-h1" data-i18n-html="ap.hero.h1">9 Apps im <span>App Store</span><br>& Google Play</h1>
         <p class="ap-hero-sub" data-i18n="ap.hero.sub">Alle entwickelt mit React Native für native Performance auf iOS und Android. KI-gestützt, mehrsprachig und millionenfach genutzt.</p>
         <div class="ap-hero-stats">
-            <div class="ap-hero-stat"><span class="ap-hero-stat-n">8</span><span class="ap-hero-stat-l" data-i18n="ap.hero.stat.apps">Veröffentlichte Apps</span></div>
+            <div class="ap-hero-stat"><span class="ap-hero-stat-n">9</span><span class="ap-hero-stat-l" data-i18n="ap.hero.stat.apps">Veröffentlichte Apps</span></div>
             <div class="ap-hero-stat"><span class="ap-hero-stat-n">2</span><span class="ap-hero-stat-l" data-i18n="ap.hero.stat.platforms">Plattformen</span></div>
             <div class="ap-hero-stat"><span class="ap-hero-stat-n">4+</span><span class="ap-hero-stat-l" data-i18n="ap.hero.stat.openai">OpenAI-Apps</span></div>
             <div class="ap-hero-stat"><span class="ap-hero-stat-n">4.8★</span><span class="ap-hero-stat-l" data-i18n="ap.hero.stat.rating">Ø Bewertung</span></div>
@@ -958,6 +958,8 @@ body.dark-mode .ap-features li{color:#c8d5e3;}
 /* ── Store buttons ── */
 .ap-store-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .ap-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.ap-btn--web{background:#fe6c75;color:#fff;box-shadow:0 4px 14px rgba(254,108,117,.3);}
+.ap-btn--web:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(254,108,117,.45);}
 
 /* ── Visual side ── */
 .ap-card-visual{display:flex;align-items:center;justify-content:center;padding:40px 32px;position:relative;overflow:hidden;}
@@ -988,6 +990,42 @@ body.dark-mode .ap-tech-badge{background:#1e2d3d;color:#c8d5e3;}
 body.dark-mode .ap-rating-badge{background:#1e2d3d;color:#f1f5f9;}
 </style>
     <div class="ap-wrap">
+
+        <!-- ── Menu Calculate ── -->
+        <div class="ap-card ap-card--alt" id="app-menucalculate">
+            <div class="ap-card-text">
+                <div class="ap-card-top">
+                    <img src="img/menucalculate.png" alt="Menu Calculate" class="ap-icon">
+                    <span class="ap-category">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                        <span data-i18n="ap.app9.category">Gastronomie &amp; KI</span>
+                    </span>
+                </div>
+                <h2 class="ap-card-h2">Menu Calculate</h2>
+                <p class="ap-tagline" data-i18n="ap.app9.tagline">Weisst du, was dir jedes Gericht deiner Karte einbringt?</p>
+                <p class="ap-desc" data-i18n="ap.app9.desc">Menu Calculate berechnet Kosten, Food Cost und Gewinn deiner Gerichte in Sekunden. Du sagst das Gericht per Sprache — der Bot erledigt den Rest.</p>
+                <ul class="ap-features">
+                    <li data-i18n="ap.app9.f1">Gericht per Sprache erfassen</li>
+                    <li data-i18n="ap.app9.f2">Food Cost automatisch</li>
+                    <li data-i18n="ap.app9.f3">Kosten pro Gericht</li>
+                    <li data-i18n="ap.app9.f4">Gewinn pro Gericht</li>
+                    <li data-i18n="ap.app9.f5">Ergebnis in Sekunden</li>
+                    <li data-i18n="ap.app9.f6">KI-Bot</li>
+                </ul>
+                <div class="ap-store-btns">
+                    <a href="https://menu-calculate.com" target="_blank" rel="noopener" class="ap-btn ap-btn--web">menu-calculate.com</a>
+                </div>
+            </div>
+            <div class="ap-card-visual" style="background:linear-gradient(135deg,#fff4e5 0%,#ffe6c7 100%);">
+                <div class="ap-icon-showcase">
+                    <div class="ap-icon-ring ap-icon-ring-1" style="border-color:#f59e0b;animation:float 4.3s ease-in-out infinite;"></div>
+                    <div class="ap-icon-ring ap-icon-ring-2" style="border-color:#f59e0b;animation:float 4.3s .5s ease-in-out infinite;"></div>
+                    <img src="img/menucalculate.png" alt="Menu Calculate" class="ap-icon-big">
+                    <div class="ap-tech-badge ap-tech-badge--1" style="color:#f59e0b;">🎙️ Gericht sagen</div>
+                    <div class="ap-tech-badge ap-tech-badge--2" style="color:#4dd35b;">💰 Food Cost</div>
+                </div>
+            </div>
+        </div>
 
         <!-- ── 1. Keto Scanner ── -->
         <div class="ap-card" id="app-keto">
