@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608171402">
+    <link rel="stylesheet" href="css/style.css?v=202608171408">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -1004,18 +1004,19 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
 <section class="section br-section" id="branchen" style="scroll-margin-top:90px;">
     <div class="container">
         <div class="section-header">
-            <span class="br-eyebrow" data-i18n="br.eyebrow">Fertige Vorlagen &mdash; die günstigste Variante</span>
             <h2 data-i18n-html="br.title">Sehen Sie Ihre Website &mdash; <span style="color:var(--begonia400)">jetzt sofort</span></h2>
             <p data-i18n="br.desc">Diese Websites habe ich bereits fertig gebaut. Wählen Sie Ihre Branche und öffnen Sie eine davon &mdash; kein Mockup, keine Vorschau, die echte Seite, live.</p>
             <div class="br-price">
                 <span class="br-price-glow" aria-hidden="true"></span>
                 <span class="br-price-inner">
-                    <span class="br-price-from" data-i18n="br.price.from">ab</span>
-                    <span class="br-price-num">450</span>
-                    <span class="br-price-cur">CHF</span>
+                    <span class="br-price-label" data-i18n="br.eyebrow">Fertige Vorlagen &mdash; die günstigste Variante</span>
+                    <span class="br-price-row">
+                        <span class="br-price-from" data-i18n="br.price.from">ab</span>
+                        <span class="br-price-num">450</span>
+                        <span class="br-price-cur">CHF</span>
+                    </span>
                 </span>
             </div>
-            <p class="br-price-note" data-i18n="br.price.note">Ich passe eine dieser fertigen Vorlagen mit Ihren Texten, Ihren Bildern und Ihren Farben an &mdash; in wenigen Tagen online.</p>
             <p class="br-price-diff" data-i18n="br.price.diff">Für wen? Für alle, die einfach im Internet gefunden werden wollen &mdash; ohne Shop, ohne Sonderfunktionen. Weil das Grundgerüst schon steht, kostet es deutlich weniger. Brauchen Sie etwas Eigenes, von Grund auf für Ihren Betrieb gebaut, ist das eine individuelle Website ab 990 CHF.</p>
         </div>
 
@@ -1091,17 +1092,17 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
 
 <style>
 /* --- Preisplakette in der Branchen-Sektion --- */
-.br-price{position:relative;display:inline-flex;margin:26px auto 10px;border-radius:18px;isolation:isolate;}
+.br-price{position:relative;display:inline-flex;margin:30px auto 10px;max-width:100%;border-radius:22px;isolation:isolate;}
 .br-price-glow{
-  position:absolute;inset:-3px;border-radius:21px;z-index:-1;
+  position:absolute;inset:-4px;border-radius:26px;z-index:-1;
   background:linear-gradient(115deg,var(--begonia400),#ffb199,var(--begonia600),var(--begonia400));
   background-size:300% 100%;animation:brSweep 5s linear infinite;
   filter:blur(9px);opacity:.42;
 }
 @keyframes brSweep{to{background-position:300% 0;}}
 .br-price-inner{
-  position:relative;display:inline-flex;align-items:baseline;gap:9px;
-  padding:16px 30px;border-radius:18px;
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:22px 38px 24px;border-radius:22px;
   background:linear-gradient(135deg,var(--begonia400),var(--begonia600));
   color:#fff;box-shadow:0 14px 34px rgba(227, 6, 19,.34);
   overflow:hidden;
@@ -1112,18 +1113,17 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
   transform:skewX(-18deg);animation:brShine 3.6s ease-in-out infinite;
 }
 @keyframes brShine{0%{left:-55%}55%,100%{left:120%}}
-.br-price-from{font-size:16px;font-weight:700;opacity:.9;}
-.br-price-num{font-size:52px;font-weight:850;line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums;}
-.br-price-cur{font-size:22px;font-weight:800;letter-spacing:-.01em;}
-.br-price-note{font-size:15.5px;color:var(--gunpowder400);margin:0;}
-.br-eyebrow{
-  display:inline-flex;align-items:center;gap:7px;margin-bottom:14px;
-  padding:7px 15px;border-radius:100px;
-  background:rgba(227,6,19,.08);border:1px solid rgba(227,6,19,.2);
-  color:var(--begonia500);font-size:13px;font-weight:750;
-  letter-spacing:.02em;line-height:1.3;
+.br-price-label{
+  position:relative;z-index:1;
+  padding:6px 16px;border-radius:100px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:13.5px;font-weight:750;letter-spacing:.02em;line-height:1.35;
+  text-align:center;max-width:100%;
 }
-body.dark-mode .br-eyebrow{background:rgba(255,51,65,.12);border-color:rgba(255,51,65,.28);color:#ff5a66;}
+.br-price-row{position:relative;z-index:1;display:inline-flex;align-items:baseline;gap:11px;}
+.br-price-from{font-size:17px;font-weight:700;opacity:.9;}
+.br-price-num{font-size:58px;font-weight:850;line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums;}
+.br-price-cur{font-size:24px;font-weight:800;letter-spacing:-.01em;}
 .br-price-diff{
   max-width:660px;margin:16px auto 0;
   font-size:14.5px;line-height:1.65;color:var(--gunpowder400);
@@ -1132,14 +1132,12 @@ body.dark-mode .br-eyebrow{background:rgba(255,51,65,.12);border-color:rgba(255,
 }
 body.dark-mode .br-price-diff{background:#182534;border-color:#233246;color:#9fb1c7;}
 @media(max-width:560px){
-  .br-eyebrow{font-size:12px;padding:6px 13px;}
   .br-price-diff{font-size:13.5px;padding:13px 16px;}
-}
-@media(max-width:560px){
-  .br-price-inner{padding:13px 24px;}
-  .br-price-num{font-size:42px;}
-  .br-price-cur{font-size:19px;}
-  .br-price-from{font-size:14px;}
+  .br-price-inner{padding:19px 20px 21px;gap:9px;}
+  .br-price-label{font-size:12px;padding:5px 13px;}
+  .br-price-num{font-size:46px;}
+  .br-price-cur{font-size:20px;}
+  .br-price-from{font-size:15px;}
 }
 @media(prefers-reduced-motion:reduce){
   .br-price-glow,.br-price-inner::after{animation:none;}
@@ -2749,9 +2747,9 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608171402"></script>
-<script src="js/booking-modal.js?v=202608171402"></script>
-<script src="js/main.js?v=202608171402"></script>
+<script src="js/translations.js?v=202608171408"></script>
+<script src="js/booking-modal.js?v=202608171408"></script>
+<script src="js/main.js?v=202608171408"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
