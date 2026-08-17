@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1298458382182098');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1298458382182098&ev=PageView&noscript=1"
+    alt=""/></noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>Veröffentlichte Websites | Next.js & Remix | Lweb</title>
     <meta name="description" content="18 veröffentlichte Websites — entwickelt mit Next.js und Remix von Roberto Salvador. eCommerce, Restaurants, KI-Tools und mehr.">
     <link rel="canonical" href="https://www.lweb.ch/webs-publicadas.html">
@@ -13,7 +32,7 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=202608171329">
     <style>
         /* `overflow-x:clip` (unlike `hidden`) does NOT create a scrolling context
            and CAN coexist with overflow-y:visible, so sticky descendants work. */
@@ -805,56 +824,15 @@
             <span>Veröffentlichte</span>
             <span class="accent">Websites</span>
         </div>
-        <nav class="header-nav" aria-label="Hauptnavigation">
-    <div class="header-nav-dropdown">
-        <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="desarrollo.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/><line x1="12" y1="6" x2="12" y2="14"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.services.dev">Entwicklung</span><small class="header-nav-sub-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="leistungen-ki.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.services.ki">KI-Integration</span><small class="header-nav-sub-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <div class="header-nav-dropdown">
-        <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="apps-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="header-nav-sub-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="extensions-apps.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.apps.create">App erstellen</span><small class="header-nav-sub-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <div class="header-nav-dropdown">
-        <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.websites">Websites</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="webs-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.websites.published">Projekte</span><small class="header-nav-sub-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="tienda-online.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
-    <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
-    <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();window.location.href='index.html#chatbot';"><span data-i18n="nav.bot">Frag den Bot</span></a>
-</nav>
+        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
+            <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
+            <a href="index.html#vergleich" class="header-nav-item"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
+            <a href="index.html#preise" class="header-nav-item"><span data-i18n="nav.op.preise">Preise</span></a>
+            <a href="index.html#branchen" class="header-nav-item"><span data-i18n="nav.op.branchen">Ihre Branche</span></a>
+            <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.op.projekte">Projekte</span></a>
+            <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span></a>
+            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
+        </nav>
         <div class="header-actions">
             <a href="#tw-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
@@ -2893,7 +2871,7 @@ body.dark-mode .bk-progress{background:#2a3040}
 })();
 </script>
 
-<script src="js/translations.js"></script>
+<script src="js/translations.js?v=202608171329"></script>
 <script>
 // ── CARD FILTER ─────────────────────────────────────────
 (function(){
@@ -2968,7 +2946,7 @@ body.dark-mode .bk-progress{background:#2a3040}
     });
 })();
 </script>
-<script src="js/chatbot.js"></script>
+<script src="js/chatbot.js?v=202608171329"></script>
 
 </body>
 </html>

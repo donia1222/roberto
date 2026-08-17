@@ -1167,10 +1167,11 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 
 /* ===== METRICS BAR ===== */
 .metrics-bar { background: linear-gradient(180deg, #fffcf5 0%, #fff 100%); padding: 60px 0; }
-.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
-.metric-item { padding: 32px 16px; }
-.metric-number { font-size: 56px; font-weight: 800; color: var(--begonia400); line-height: 1.1; margin-bottom: 8px; }
-.metric-label { font-size: 16px; font-weight: 500; color: var(--gunpowder500); }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+.metric-item { padding: 32px 12px; }
+.metric-number { font-size: 52px; font-weight: 800; color: var(--begonia400); line-height: 1.1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.metric-label { font-size: 15px; font-weight: 500; color: var(--gunpowder500); line-height: 1.4; }
+@media (max-width: 900px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .metric-item { padding: 22px 8px; } .metric-number { font-size: 40px; } .metric-label { font-size: 13.5px; } }
 
 /* ===== SECTIONS ===== */
 .section { padding: 100px 0; overflow: hidden; }
@@ -4078,7 +4079,7 @@ body.calc-open {
     .bento-shelf::-webkit-scrollbar { display: none; }
     .bento-shelf .bento-card { flex: 0 0 240px; scroll-snap-align: start; }
     .bento-shelf .bento-card--wide { flex: 0 0 300px; grid-column: auto; }
-    .services-grid, .workflow-steps, .metrics-grid { grid-template-columns: 1fr; }
+    .services-grid, .workflow-steps { grid-template-columns: 1fr; }
     .techstack-scroll-wrapper { height: 380px; max-width: 100%; }
     .techstack-scroll-columns { gap: 12px; }
     .ts-card { padding: 14px 14px; gap: 10px; }
@@ -4089,8 +4090,8 @@ body.calc-open {
     .service-card--cta { grid-column: span 1; }
     .trust-grid { grid-template-columns: 1fr; }
     .trust-stat-number { font-size: 44px; }
-    .metric-number { font-size: 44px; }
-    .metrics-grid { grid-template-columns: 1fr; gap: 16px; }
+    .metric-number { font-size: 38px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .gbcta { height: 48px; padding: 0 20px; font-size: 16px; }
@@ -5381,3 +5382,94 @@ body.dark-mode .bv-aflow          { background: #b49ed4; }
     .vcard-promo-text { padding: 28px 20px; }
     .vcard-promo-text h3 { font-size: 22px; }
 }
+
+
+/* ============================================================
+   DARK MODE — Nachbesserungen (helle Flächen, die dunkel sein müssen)
+   ============================================================ */
+
+/* Heller Streifen hinter den Website-Tabs */
+body.dark-mode .wt-section { background: transparent; }
+
+/* Service-Icons: helle Pastellflächen -> getönte dunkle Flächen */
+body.dark-mode .service-icon--mobile { background: rgba(99, 102, 241, .16);  color: #a5a9ff; }
+body.dark-mode .service-icon--web    { background: rgba(217, 119, 6, .16);   color: #f0b45c; }
+body.dark-mode .service-icon--ai     { background: rgba(16, 163, 127, .16);  color: #4fd1a5; }
+body.dark-mode .service-icon--support{ background: rgba(254, 108, 117, .16); color: var(--begonia400); }
+
+/* Logos der Kunden + Tech-Chips */
+body.dark-mode .client-card-logo { background: rgba(255,255,255,.05); }
+body.dark-mode .app-card-tech span.ai-tag { background: rgba(217,119,6,.18); color: #f0b45c; }
+
+/* Icons in den Service-Modals */
+body.dark-mode .svc-modal-icon--mobile { background: rgba(99,102,241,.16);  color: #a5a9ff; }
+body.dark-mode .svc-modal-icon--web    { background: rgba(217,119,6,.16);   color: #f0b45c; }
+body.dark-mode .svc-modal-icon--ai     { background: rgba(16,163,127,.16);  color: #4fd1a5; }
+body.dark-mode .svc-modal-icon--support{ background: rgba(254,108,117,.16); color: var(--begonia400); }
+
+/* Icons im Preisrechner */
+body.dark-mode .calc-option-icon--mobile  { background: rgba(99,102,241,.16);  color: #a5a9ff; }
+body.dark-mode .calc-option-icon--web     { background: rgba(217,119,6,.16);   color: #f0b45c; }
+body.dark-mode .calc-option-icon--ai      { background: rgba(16,163,127,.16);  color: #4fd1a5; }
+body.dark-mode .calc-option-icon--design  { background: rgba(168,85,247,.16);  color: #c9a5ff; }
+body.dark-mode .calc-option-icon--feature { background: rgba(255,255,255,.06); }
+body.dark-mode .calc-result-icon { background: rgba(16,163,127,.16); color: #4fd1a5; }
+body.dark-mode .calc-result-tag  { background: rgba(255,255,255,.06); }
+
+/* Projekt-Modal */
+body.dark-mode .web-modal-tech { background: rgba(255,255,255,.06); }
+body.dark-mode .web-modal-badge--easy    { background: rgba(16,163,127,.18);  color: #4fd1a5; }
+body.dark-mode .web-modal-badge--medium  { background: rgba(217,119,6,.18);   color: #f0b45c; }
+body.dark-mode .web-modal-badge--complex { background: rgba(254,108,117,.18); color: var(--begonia400); }
+body.dark-mode .web-modal-inprogress { background: rgba(255,255,255,.06) !important; }
+
+/* Chatbot */
+body.dark-mode .chatbot-mic { background: rgba(255,255,255,.06); }
+
+
+/* ═══════════════════════════════════════════════════════════
+   TEST: Markenrot (#e30613) nur für TEXTE — Hintergründe und
+   Buttons bleiben im Korallton. Zum Zurücknehmen: Block löschen.
+   ═══════════════════════════════════════════════════════════ */
+:root{ --brand-red:#e30613; }
+
+/* Hero */
+.hero-content h1 span,
+.hero-subtitle strong,
+.hero-badge-new,
+/* Kennzahlen */
+.metric-number,
+/* alle Überschriften-Akzente, auch die inline gesetzten */
+[style*="var(--begonia400)"],
+.pin-head h2 span,
+.testi-h2 .accent,
+.section-header h2 span,
+/* Links und Kleintexte */
+.service-link,
+.service-link span,
+.br-go,
+.br-foot-link,
+.website-card-url,
+.vgl-logo-l,
+.faq-question:hover,
+.footer-more-links a:hover{
+    color: var(--brand-red) !important;
+}
+
+body.dark-mode .hero-content h1 span,
+body.dark-mode .hero-subtitle strong,
+body.dark-mode .metric-number,
+body.dark-mode [style*="var(--begonia400)"],
+body.dark-mode .pin-head h2 span,
+body.dark-mode .testi-h2 .accent,
+body.dark-mode .section-header h2 span,
+body.dark-mode .service-link,
+body.dark-mode .br-go,
+body.dark-mode .br-foot-link,
+body.dark-mode .website-card-url{
+    color: #ff2d3d !important;   /* auf dunklem Grund etwas heller, sonst zu dumpf */
+}
+
+/* die SVG-Akzente in den Überschriften mitziehen */
+[style*="var(--begonia400)"] path,
+.pricing-diamond-icon{ stroke: var(--brand-red) !important; }

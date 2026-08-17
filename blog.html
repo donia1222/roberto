@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1298458382182098');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1298458382182098&ev=PageView&noscript=1"
+    alt=""/></noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>Blog | Web Dev Insights | Lweb</title>
     <meta name="description" content="Web Development, Mobile Apps und KI — Tipps und Einblicke direkt vom Entwickler Roberto Salvador in Buchs SG.">
     <link rel="canonical" href="https://www.lweb.ch/blog.html">
@@ -13,7 +32,7 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=202608171329">
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #ffffff; }
 
@@ -402,6 +421,9 @@
 
         /* Header — igual que webs-publicadas.html */
         .header { background: #ffffff !important; }
+        body.dark-mode .header { background: rgba(26, 31, 46, 0.95) !important; }
+        body.dark-mode .header-back-desktop { background:#1e3a4d !important; color:#7cc7e8 !important; }
+        body.dark-mode .header-back-desktop:hover { background:#26506b !important; }
         .header-blog-label { display:none; align-items:center; gap:5px; font-size:16px; font-weight:800; color:#fe6c75; letter-spacing:0.01em; }
         .header-blog-label svg { stroke:#fe6c75; flex-shrink:0; }
         @media(max-width:1024px){ .header-blog-label { display:flex; } }
@@ -482,56 +504,15 @@
             <button class="bl-filter-btn" data-filter="ki" data-i18n="blog.filter.ki">KI &amp; Tech</button>
             <button class="bl-filter-btn" data-filter="ecommerce" data-i18n="blog.filter.ecommerce">eCommerce</button>
         </div>
-        <nav class="header-nav" aria-label="Hauptnavigation">
-    <div class="header-nav-dropdown">
-        <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="desarrollo.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/><line x1="12" y1="6" x2="12" y2="14"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.services.dev">Entwicklung</span><small class="header-nav-sub-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="leistungen-ki.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.services.ki">KI-Integration</span><small class="header-nav-sub-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <div class="header-nav-dropdown">
-        <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="apps-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="header-nav-sub-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="extensions-apps.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.apps.create">App erstellen</span><small class="header-nav-sub-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <div class="header-nav-dropdown">
-        <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.websites">Websites</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-        <div class="header-nav-sub-menu">
-            <a href="webs-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.websites.published">Projekte</span><small class="header-nav-sub-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-            <a href="tienda-online.html" class="header-nav-sub header-nav-sub--custom">
-                <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>
-                <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
-                <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-            </a>
-        </div>
-    </div>
-    <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
-    <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
-    <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();window.location.href='index.html#chatbot';"><span data-i18n="nav.bot">Frag den Bot</span></a>
-</nav>
+        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
+            <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
+            <a href="index.html#vergleich" class="header-nav-item"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
+            <a href="index.html#preise" class="header-nav-item"><span data-i18n="nav.op.preise">Preise</span></a>
+            <a href="index.html#branchen" class="header-nav-item"><span data-i18n="nav.op.branchen">Ihre Branche</span></a>
+            <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.op.projekte">Projekte</span></a>
+            <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span></a>
+            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
+        </nav>
         <div class="header-actions">
             <a href="#bl-cta" class="header-icon-btn header-icon-btn--primary" aria-label="Kontakt">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
@@ -619,24 +600,24 @@
     <!-- FEATURED -->
     <div class="bl-featured" id="blFeatured">
         <!-- featured large: post 1 -->
-        <div class="bl-feat-large" data-post="0" data-cat="webdev" onclick="openPost(0)">
-            <img class="bl-feat-large-img" src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1100&auto=format&fit=crop&q=80" alt="Next.js vs Remix" loading="lazy">
+        <div class="bl-feat-large" data-post="8" data-cat="webdev" onclick="openPost(8)">
+            <img class="bl-feat-large-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1100&auto=format&fit=crop&q=80" alt="Was kostet eine Website" loading="lazy">
             <div class="bl-feat-large-body">
                 <span class="bl-cat bl-cat--webdev">Web Dev</span>
-                <div class="bl-title">Next.js vs Remix: Welches Framework passt zu dir?</div>
-                <div class="bl-excerpt">Beide Frameworks basieren auf React — aber ihre Philosophie ist grundverschieden. Wir zeigen, wann welches die bessere Wahl ist und welche Projekte von welchem Framework profitieren.</div>
+                <div class="bl-title">Was kostet eine Website 2026? Ehrliche Zahlen aus der Region Werdenberg</div>
+                <div class="bl-excerpt">Keine Preise &laquo;auf Anfrage&raquo;: was eine Website f&uuml;r einen Betrieb in Sevelen, Buchs oder Vaduz wirklich kostet &mdash; und warum eine Agentur daf&uuml;r das Vierfache verlangt.</div>
                 <div class="bl-feat-points">
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Next.js: ideal für SEO &amp; statische Seiten</div>
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Remix: serverseitiges Rendering &amp; Formulare</div>
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Performance-Vergleich mit echten Projekten</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Drei echte Beispiele aus der Region, mit Preis</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Was den Preis wirklich bestimmt &mdash; und was nicht</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Die zwei Fragen, die Sie jedem Anbieter stellen sollten</div>
                 </div>
                 <div class="bl-readmore">Weiterlesen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 <div class="bl-meta">
                     <span>Roberto Salvador</span>
                     <span class="bl-meta-dot"></span>
-                    <span>15. Februar 2025</span>
+                    <span>17. August 2026</span>
                     <span class="bl-meta-dot"></span>
-                    <span>7 Min.</span>
+                    <span>8 Min.</span>
                 </div>
             </div>
         </div>
@@ -681,6 +662,17 @@
     <!-- POST GRID -->
     <div class="bl-grid-section">
         <div class="bl-grid" id="blGrid">
+            <div class="bl-card" data-post="0" data-cat="webdev" onclick="openPost(0)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=700&auto=format&fit=crop&q=80" alt="Next.js vs Remix" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--webdev">Web Dev</span>
+                    <div class="bl-title">Next.js vs Remix: Welches Framework passt zu dir?</div>
+                    <div class="bl-excerpt">Beide Frameworks basieren auf React &mdash; aber ihre Philosophie ist grundverschieden. Wann welches die bessere Wahl ist.</div>
+                    <div class="bl-meta">
+                        <span>15. Feb. 2025</span><span class="bl-meta-dot"></span><span>7 Min.</span>
+                    </div>
+                </div>
+            </div>
             <div class="bl-card" data-post="4" data-cat="ecommerce" onclick="openPost(4)">
                 <img class="bl-card-img" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&auto=format&fit=crop&q=80" alt="eCommerce" loading="lazy">
                 <div class="bl-card-body">
@@ -1016,6 +1008,52 @@ var POSTS = [
 <h3>Unser Rat</h3>
 <p>Ruf an oder schreib uns — wir besprechen deinen konkreten Fall kostenlos und empfehlen die Lösung, die wirklich zu deinem Unternehmen passt. Nicht die teuerste — die richtige.</p>
         `
+    },
+    {
+        id: 8,
+        cat: 'webdev',
+        catLabel: 'Web Dev',
+        catClass: 'bl-cat--webdev',
+        title: 'Was kostet eine Website 2026? Ehrliche Zahlen aus der Region Werdenberg',
+        date: '17. August 2026',
+        readTime: '8 Min.',
+        img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Es ist die erste Frage, die mir jeder Betrieb stellt — und die Frage, auf die man im Internet am schwersten eine ehrliche Antwort findet. Die meisten Agenturen schreiben "auf Anfrage". Ich mache es anders und lege die Zahlen offen.</p>
+
+<h3>Die kurze Antwort</h3>
+<p>Für einen kleinen Betrieb in Sevelen, Buchs oder Vaduz liegt eine professionelle Website heute zwischen <strong>990 und 2'900 CHF</strong>. Eine Agentur verlangt für dasselbe Ergebnis meist 4'000 bis 8'000 CHF. Der Unterschied ist nicht die Qualität — es ist der Overhead.</p>
+
+<h3>Warum eine Agentur mehr kostet</h3>
+<p>Das ist kein Vorwurf, sondern schlicht Mathematik. Eine Agentur muss Büroräume, eine Buchhaltung, Projektleitung und eine Verkaufsabteilung bezahlen, bevor auch nur eine Zeile Code entsteht. Von Ihrem Budget landen erfahrungsgemäss nur rund ein Drittel in der eigentlichen Entwicklung.</p>
+<p>Bei mir gibt es kein Büro, keinen Zwischenhändler und keine Verkaufsabteilung. Sie sprechen direkt mit der Person, die Ihre Website baut. Das ist der ganze Trick.</p>
+
+<h3>Was den Preis wirklich bestimmt</h3>
+<p>Nicht die Anzahl Seiten, wie viele glauben. Diese vier Punkte machen den Unterschied:</p>
+<ul>
+<li><strong>Brauchen Sie einen Shop?</strong> Ein Katalog ohne Kasse ist deutlich günstiger als ein Shop mit Zahlung, Lager und Versand.</li>
+<li><strong>Wollen Sie selbst Inhalte ändern?</strong> Ein Redaktionsbereich kostet einmalig mehr, spart aber jede spätere Änderung.</li>
+<li><strong>Wie viele Sprachen?</strong> In unserer Region ist Deutsch Pflicht — Englisch und Italienisch sind oft sinnvoll, kosten aber Aufwand.</li>
+<li><strong>Haben Sie Texte und Bilder?</strong> Der Punkt wird am meisten unterschätzt. Fehlen sie, steht das Projekt still.</li>
+</ul>
+
+<h3>Drei echte Beispiele aus der Region</h3>
+<p><strong>Restaurant in Buchs.</strong> Fünf Seiten, Speisekarte, Öffnungszeiten, Google Maps, Kontaktformular. Rund <strong>990 CHF</strong>. Solche Betriebe brauchen keine Spielereien — sie brauchen, dass man sie auf dem Handy findet und die Karte lesen kann.</p>
+<p><strong>Immobilienbüro in Sevelen.</strong> Objektliste, Detailseiten, Anfrageformular, eigener Verwaltungsbereich für neue Objekte. Rund <strong>1'900 CHF</strong>. Hier lohnt sich der Redaktionsbereich sofort, weil sich die Objekte ständig ändern.</p>
+<p><strong>Fachgeschäft in Sevelen mit über 800 Produkten.</strong> Kompletter Online-Shop mit Kategorien, Suche, Zahlung und Administrationspanel. Ab <strong>2'900 CHF</strong>. Das ist der aufwendigste Fall — und selbst dort liegt man unter dem, was eine Agentur für eine einfache Visitenkarten-Website verlangt.</p>
+
+<h3>Und die günstigste Variante?</h3>
+<p>Wenn Sie einfach nur online auffindbar sein wollen, gibt es fertige Vorlagen für Coiffeure, Zahnarztpraxen, Handwerker, Restaurants und weitere Branchen ab <strong>450 CHF</strong>. Ihre Texte, Ihre Bilder, Ihre Farben — in wenigen Tagen online.</p>
+
+<h3>Was immer dabei ist</h3>
+<p>SSL-Zertifikat, Domain, Basis-SEO und Statistik sind eingerechnet. Gehostet wird bei Hostpoint in der Schweiz, Ihre Daten verlassen das Land nicht. Und der Quellcode gehört Ihnen — er liegt offen auf GitHub, damit Sie die Qualität jederzeit prüfen können und nie an mich gebunden sind.</p>
+
+<h3>Die versteckten Kosten, nach denen niemand fragt</h3>
+<p>Fragen Sie jeden Anbieter zwei Dinge: <em>Was kostet eine kleine Änderung nach dem Launch?</em> Und: <em>Wem gehört der Code?</em> Bei vielen Anbietern kostet jede Kleinigkeit ein Ticket und mehrere Tage Wartezeit — und wenn Sie wechseln wollen, fangen Sie bei null an. Bei mir läuft eine kleine Änderung über WhatsApp, meist noch am selben Tag.</p>
+
+<h3>Mein Rat</h3>
+<p>Holen Sie zwei bis drei Offerten ein und vergleichen Sie nicht nur die Zahl unten rechts, sondern auch, wer Ihr Ansprechpartner ist und wem am Ende der Code gehört. Und wenn Sie einfach wissen wollen, was Ihr konkreter Fall kosten würde: Das Erstgespräch ist kostenlos und unverbindlich — auch wenn Sie sich danach für jemand anderen entscheiden.</p>
+        `
     }
 ];
 
@@ -1183,7 +1221,7 @@ document.querySelectorAll('.bl-filter-btn').forEach(function(btn) {
 })();
 </script>
 
-<script src="js/translations.js"></script>
+<script src="js/translations.js?v=202608171329"></script>
 <script>
 // ── i18n ─────────────────────────────────────────────────────
 (function(){
@@ -1220,7 +1258,7 @@ window.switchLang = function(lang) {
 };
 </script>
 
-<script src="js/chatbot.js"></script>
+<script src="js/chatbot.js?v=202608171329"></script>
 
 <script>
 (function(){

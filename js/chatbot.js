@@ -18,7 +18,7 @@ var chatbotSystemPrompt = 'RULE #1: You MUST reply in the SAME language the user
 '**Kontakt**:\n' +
 '- 📧 E-Mail: info@lweb.ch\n' +
 '- 📞 Telefon: +41 76 560 86 45\n' +
-'- 🏢 Adresse: Buchs SG, 9471, Schweiz\n' +
+'- 🏢 Adresse: Chalberweidstrasse 38, 9475 Sevelen, Schweiz (Region Werdenberg — Buchs SG, Vaduz, Sargans)\n' +
 '- 🌐 Website: www.lweb.ch';
 
 var chatbotMessages = [];

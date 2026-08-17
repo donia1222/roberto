@@ -151,14 +151,10 @@ function animateCounter(element, target, suffix) {
 const metricsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Zielwert und Suffix aus dem HTML lesen, nicht hier fest verdrahten
-            entry.target.querySelectorAll('.metric-number').forEach(function(el){
-                var raw = (el.textContent || '').trim();
-                var m = raw.match(/^(\D*)(\d+)(.*)$/);
-                if (!m) return;                       // z. B. "<24h" -> unveraendert lassen
-                if (m[1]) return;                     // faengt nicht mit einer Ziffer an
-                animateCounter(el, parseInt(m[2], 10), m[3]);
-            });
+            const numbers = entry.target.querySelectorAll('.metric-number');
+            if (numbers[0]) animateCounter(numbers[0], 6, '+');
+            if (numbers[1]) animateCounter(numbers[1], 50, '+');
+            if (numbers[2]) animateCounter(numbers[2], 100, '%');
             metricsObserver.unobserve(entry.target);
         }
     });
@@ -523,7 +519,7 @@ var chatbotSystemPrompt = 'RULE #1: You MUST reply in the SAME language the user
 '**Kontakt**:\n' +
 '- 📧 E-Mail: info@lweb.ch\n' +
 '- 📞 Telefon: +41 76 560 86 45\n' +
-'- 🏢 Adresse: Chalberweidstrasse 38, 9475 Sevelen, Schweiz (Region Werdenberg — Buchs SG, Vaduz, Sargans)\n' +
+'- 🏢 Adresse: Buchs SG, 9471, Schweiz\n' +
 '- 🌐 Website: www.lweb.ch';
 
 var chatbotMessages = [];

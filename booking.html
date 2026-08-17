@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1298458382182098');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1298458382182098&ev=PageView&noscript=1"
+    alt=""/></noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>Termin vereinbaren | Lweb</title>
     <meta name="description" content="Kostenloses Beratungsgespräch mit Lweb — 30 Minuten, keine Verpflichtung.">
     <meta name="theme-color" content="#ffffff" id="themeColor">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=202608171329">
     <style>
         body { padding-top: 104px; background: #f4f6f9; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
         body.dark-mode { background: #1a1f2e; }
@@ -268,55 +287,14 @@
             <span data-i18n="bk.header.line1">Termin</span>
             <span class="accent" data-i18n="bk.header.line2">vereinbaren</span>
         </div>
-        <nav class="header-nav" aria-label="Hauptnavigation">
-            <div class="header-nav-dropdown">
-                <a href="index.html#services" class="header-nav-item"><span data-i18n="nav.services">Leistungen</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                <div class="header-nav-sub-menu">
-                    <a href="desarrollo.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/><line x1="12" y1="6" x2="12" y2="14"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.services.dev">Entwicklung</span><small class="header-nav-sub-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                    <a href="leistungen-ki.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.services.ki">KI-Integration</span><small class="header-nav-sub-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                </div>
-            </div>
-            <div class="header-nav-dropdown">
-                <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                <div class="header-nav-sub-menu">
-                    <a href="apps-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.apps.published">Veröffentlichte Apps</span><small class="header-nav-sub-hint" data-i18n="nav.apps.published.hint">Unsere publizierten Projekte</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                    <a href="extensions-apps.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.apps.create">App erstellen</span><small class="header-nav-sub-hint" data-i18n="nav.apps.create.hint">Funktionen &amp; Bibliotheken entdecken</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                </div>
-            </div>
-            <div class="header-nav-dropdown">
-                <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.websites">Websites</span> <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
-                <div class="header-nav-sub-menu">
-                    <a href="webs-publicadas.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.websites.published">Projekte</span><small class="header-nav-sub-hint" data-i18n="nav.websites.published.hint">Unternehmen, die Lweb vertrauen</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                    <a href="tienda-online.html" class="header-nav-sub header-nav-sub--custom">
-                        <span class="nav-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span>
-                        <span class="nav-banner-text"><span data-i18n="nav.websites.shop">Perfekter Online-Shop</span><small class="header-nav-sub-hint" data-i18n="nav.websites.shop.hint">Mit Administrationspanel</small></span>
-                        <span class="nav-banner-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-                    </a>
-                </div>
-            </div>
-            <a href="technologien.html" class="header-nav-item"><span data-i18n="nav.tech">Technologien</span></a>
-            <a href="ubermich.html" class="header-nav-item"><span data-i18n="nav.about">Über mich</span></a>
-            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();window.location.href='index.html#chatbot';"><span data-i18n="nav.bot">Frag den Bot</span></a>
+        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
+            <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
+            <a href="index.html#vergleich" class="header-nav-item"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
+            <a href="index.html#preise" class="header-nav-item"><span data-i18n="nav.op.preise">Preise</span></a>
+            <a href="index.html#branchen" class="header-nav-item"><span data-i18n="nav.op.branchen">Ihre Branche</span></a>
+            <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.op.projekte">Projekte</span></a>
+            <a href="index.html#apps" class="header-nav-item"><span data-i18n="nav.apps">Mobile Apps</span></a>
+            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
         </nav>
         <div class="header-actions">
             <a href="tel:+41765608645" class="header-icon-btn header-icon-btn--primary" aria-label="Anrufen">
@@ -759,6 +737,17 @@ function doSend(channel){
 }
 
 function showConfirm(rows){
+    /* --- Konversion an Meta Pixel + GA4 melden --- */
+    try{
+        if (typeof fbq === 'function') fbq('track', 'Lead', {
+            content_name: 'terminanfrage',
+            content_category: (typeof _submitData !== 'undefined' && _submitData && _submitData.svcName) || 'website'
+        });
+    }catch(e){}
+    try{
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'booking' });
+    }catch(e){}
+
     document.getElementById('bkSummary').innerHTML=rows.map(function(r){return '<div class="bk-sum-row"><span class="bk-sum-key">'+r[0]+'</span><span class="bk-sum-val">'+r[1]+'</span></div>';}).join('');
     toStep(4);
 }
@@ -942,7 +931,7 @@ document.getElementById('bkChoiceOverlay').style.display='none';
 </section>
 <div class="bk-copy">&copy; 2026 Lweb — Roberto Salvador. App Entwickler in Buchs SG, Schweiz.</div>
 
-<script src="js/translations.js"></script>
+<script src="js/translations.js?v=202608171329"></script>
 <script>
 (function(){
     var savedLang=localStorage.getItem('lweb_lang');
@@ -977,7 +966,7 @@ document.getElementById('bkChoiceOverlay').style.display='none';
     if(t['bk.back']) window.BK_BACK=t['bk.back'];
 })();
 </script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=202608171329"></script>
 <script>
 // Burger fallback — in case main.js doesn't bind it
 (function(){
@@ -1006,7 +995,7 @@ document.getElementById('bkChoiceOverlay').style.display='none';
     }
 })();
 </script>
-<script src="js/chatbot.js"></script>
+<script src="js/chatbot.js?v=202608171329"></script>
 
 </body>
 </html>

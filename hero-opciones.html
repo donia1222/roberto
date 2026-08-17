@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Opciones de hero — Lweb</title>
+<style>
+:root{
+  --begonia400:#fe6c75; --begonia500:#e1545d; --begonia600:#f06069;
+  --gunpowder50:#f4f7fb; --gunpowder100:#dfeefb; --gunpowder150:#c8d5e3;
+  --gunpowder300:#8a9bb3; --gunpowder400:#6b7d99; --gunpowder900:#0f1d2c;
+  --red:#e30613;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:0 20px 90px;background:#fbfcfe;color:var(--gunpowder400);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:34px;font-weight:850;letter-spacing:-.03em;color:var(--gunpowder900);margin:56px 0 8px}
+.lede{margin:0 0 8px;font-size:17px}
+.opt{margin:56px 0 0;border-top:1px solid var(--gunpowder100);padding-top:34px}
+.opt-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.opt-tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--begonia400);background:rgba(254,108,117,.1);border:1px solid rgba(254,108,117,.28);
+  border-radius:999px;padding:5px 13px}
+.opt h2{font-size:23px;font-weight:800;letter-spacing:-.02em;color:var(--gunpowder900);margin:0}
+.opt p.why{margin:0 0 26px;max-width:70ch;font-size:15.5px}
+.stage{background:linear-gradient(180deg,#fff 0%,#f7f9fc 100%);border:1px solid var(--gunpowder100);
+  border-radius:22px;padding:46px 34px;display:flex;justify-content:center}
+
+/* ══════════ OPCIÓN B — mini-web dibujada con texto real ══════════ */
+.b{width:100%;max-width:560px;position:relative;--a:#c2185b}
+.b-frame{border-radius:15px;overflow:hidden;background:#fff;border:1px solid var(--gunpowder100);
+  box-shadow:0 26px 62px rgba(15,29,44,.15)}
+.b-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f2f5f9;border-bottom:1px solid var(--gunpowder100)}
+.b-dot{width:9px;height:9px;border-radius:50%;flex:none}
+.b-url{flex:1;margin-left:6px;background:#fff;border:1px solid var(--gunpowder100);border-radius:6px;
+  padding:4px 9px;font:500 10.5px ui-monospace,Menlo,monospace;color:var(--gunpowder300);
+  white-space:nowrap;overflow:hidden}
+.b-site{height:320px;position:relative;overflow:hidden}
+.b-page{position:absolute;inset:0;opacity:0;transition:opacity .55s ease;background:#fff}
+.b-page.on{opacity:1}
+/* nav de la web simulada */
+.b-nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid #eef2f7}
+.b-logo{display:flex;align-items:center;gap:6px;font:800 12px/1 system-ui;color:#101a26;letter-spacing:-.02em}
+.b-logo i{width:16px;height:16px;border-radius:5px;background:var(--a);display:block}
+.b-menu{display:flex;gap:13px;font:600 8.5px/1 system-ui;color:#8494a8;letter-spacing:.02em}
+.b-navcta{font:700 8.5px/1 system-ui;color:#fff;background:var(--a);border-radius:20px;padding:6px 11px}
+/* hero de la web simulada */
+.b-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;padding:16px}
+.b-kicker{font:800 7.5px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:7px}
+.b-h1{font:800 20px/1.12 system-ui;letter-spacing:-.03em;color:#0d1621;margin:0 0 8px}
+.b-sub{font:400 9px/1.5 system-ui;color:#7a8ba0;margin:0 0 12px}
+.b-btns{display:flex;gap:7px}
+.b-b1{font:700 8.5px/1 system-ui;color:#fff;background:var(--a);border-radius:7px;padding:8px 13px}
+.b-b2{font:700 8.5px/1 system-ui;color:#4a5b70;border:1px solid #dbe3ec;border-radius:7px;padding:8px 13px}
+.b-photo{border-radius:11px;overflow:hidden;position:relative;background:linear-gradient(150deg,var(--a),#0f1d2c)}
+.b-photo svg{position:absolute;inset:0;width:100%;height:100%}
+/* tarjetas */
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 16px 16px}
+.b-card{border:1px solid #eef2f7;border-radius:9px;padding:10px}
+.b-card i{width:20px;height:20px;border-radius:6px;background:color-mix(in srgb,var(--a) 15%,#fff);display:flex;
+  align-items:center;justify-content:center;margin-bottom:7px}
+.b-card i svg{width:11px;height:11px;color:var(--a)}
+.b-ct{font:800 9px/1.2 system-ui;color:#152230;margin-bottom:4px}
+.b-cd{font:400 7.5px/1.45 system-ui;color:#8a9bb0}
+
+/* ══════════ OPCIÓN C — capturas reales ══════════ */
+.c{width:100%;max-width:600px;position:relative}
+.c-frame{border-radius:15px;overflow:hidden;background:#0f1d2c;border:1px solid var(--gunpowder100);
+  box-shadow:0 28px 66px rgba(15,29,44,.2)}
+.c-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#f2f5f9;border-bottom:1px solid var(--gunpowder100)}
+.c-shots{position:relative;aspect-ratio:1166/701;background:#0f1d2c}
+.c-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
+  opacity:0;transform:scale(1.04);transition:opacity .8s ease,transform 6s linear}
+.c-shot.on{opacity:1;transform:scale(1)}
+.c-cap{position:absolute;left:14px;bottom:14px;z-index:3;display:flex;align-items:center;gap:9px;
+  background:rgba(11,20,31,.76);backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.13);
+  border-radius:11px;padding:8px 14px;color:#fff}
+.c-cap b{font:800 13px/1.2 system-ui;letter-spacing:-.01em;display:block}
+.c-cap span{font:600 10.5px/1.2 system-ui;color:#9fb2c8;letter-spacing:.03em}
+.c-cap i{width:7px;height:7px;border-radius:50%;background:#3ddc84;flex:none;animation:blink 1.9s infinite}
+@keyframes blink{50%{opacity:.3}}
+.c-chip{position:absolute;z-index:4;display:inline-flex;align-items:center;gap:6px;background:#fff;
+  border:1px solid var(--gunpowder100);border-radius:11px;padding:8px 13px;
+  font:750 12.5px/1 system-ui;color:var(--gunpowder900);box-shadow:0 12px 30px rgba(15,29,44,.16);
+  animation:float 6s ease-in-out infinite}
+.c-chip--price{top:-14px;left:-14px;background:var(--begonia400);color:#fff;border-color:transparent}
+.c-chip--price b{font:850 15px/1 system-ui}
+.c-chip--ch{bottom:56px;right:-16px;animation-delay:1.4s}
+.c-chip--ch svg{width:15px;height:15px}
+@keyframes float{50%{transform:translateY(-9px)}}
+.c-count{position:absolute;top:-13px;right:-10px;z-index:4;background:var(--gunpowder900);color:#fff;
+  border-radius:11px;padding:8px 14px;font:750 12px/1 system-ui;box-shadow:0 12px 30px rgba(15,29,44,.2)}
+.c-count b{color:var(--begonia400);font-weight:850;font-size:14px}
+
+/* lema compartido */
+.slog{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:26px}
+.slog svg.mark{width:40px;height:40px;color:var(--red);flex:none}
+.slog-t{position:relative;display:inline-flex;align-items:baseline;gap:10px;padding-bottom:12px}
+.slog-t b,.slog-t em{font-style:normal;font:850 26px/1 system-ui;text-transform:uppercase;letter-spacing:-.005em}
+.slog-t b{color:var(--gunpowder900)}
+.slog-t em{color:var(--red)}
+.slog-sw{position:absolute;left:0;right:0;bottom:0;width:100%;height:11px;color:var(--red)}
+
+@media(max-width:720px){
+  .stage{padding:30px 16px}
+  .b-site{height:270px}
+  .b-h1{font-size:16px}
+  .slog-t b,.slog-t em{font-size:18px}
+  .slog svg.mark{width:28px;height:28px}
+  .c-chip--price{left:0;top:-12px}
+  .c-chip--ch{right:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Dos opciones más para el hero</h1>
+<p class="lede">Esto no está en la web — es solo para que elijas. Lo que está publicado ahora es la opción A (el navegador con rectángulos grises).</p>
+
+<!-- ══════════ OPCIÓN B ══════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción B</span><h2>Web dibujada, pero con texto de verdad</h2></div>
+  <p class="why">La misma idea de antes, pero por dentro ya no hay rectángulos grises: hay una web completa y creíble — menú, titular, botones, tres servicios con sus iconos. Cambia sola entre peluquería, restaurante, dentista y taller. Ventaja: es ligerísima y siempre se ve nítida. Inconveniente: sigue siendo un dibujo, no un trabajo tuyo.</p>
+  <div class="stage">
+    <div class="b" id="optB">
+      <div class="b-frame">
+        <div class="b-bar">
+          <span class="b-dot" style="background:#ff5f57"></span><span class="b-dot" style="background:#febc2e"></span><span class="b-dot" style="background:#28c840"></span>
+          <span class="b-url" id="bUrl">coiffeur-sevelen.ch</span>
+        </div>
+        <div class="b-site">
+
+          <div class="b-page on" style="--a:#c2185b" data-url="belle-coiffure-sevelen.ch">
+            <div class="b-nav"><span class="b-logo"><i></i>Belle Coiffure</span><span class="b-menu"><span>Salon</span><span>Preise</span><span>Team</span><span>Kontakt</span></span><span class="b-navcta">Termin</span></div>
+            <div class="b-hero">
+              <div>
+                <div class="b-kicker">Coiffeur in Sevelen</div>
+                <p class="b-h1">Ihr Stil. Unsere Handschrift.</p>
+                <p class="b-sub">Schnitt, Farbe und Pflege — mitten im Dorf, ohne lange Wartezeit.</p>
+                <div class="b-btns"><span class="b-b1">Termin buchen</span><span class="b-b2">Preisliste</span></div>
+              </div>
+              <div class="b-photo"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="44" r="24" fill="rgba(255,255,255,.16)"/><path d="M30 108c0-18 13-30 30-30s30 12 30 30" fill="rgba(255,255,255,.13)"/><g stroke="rgba(255,255,255,.6)" stroke-width="3" stroke-linecap="round"><circle cx="88" cy="26" r="6"/><circle cx="88" cy="46" r="6"/><path d="M105 18 84 42M105 54 84 30"/></g></svg></div>
+            </div>
+            <div class="b-cards">
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></i><div class="b-ct">Damenschnitt</div><div class="b-cd">Beratung, Schnitt und Styling.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3s6 6.6 6 10.5A6 6 0 0 1 6 13.5C6 9.6 12 3 12 3z"/></svg></i><div class="b-ct">Farbe &amp; Strähnen</div><div class="b-cd">Von natürlich bis kräftig.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v9a4 4 0 0 0 8 0V3"/><path d="M12 16v5"/></svg></i><div class="b-ct">Pflege</div><div class="b-cd">Produkte für zu Hause.</div></div>
+            </div>
+          </div>
+
+          <div class="b-page" style="--a:#c2410c" data-url="cantina-buchs.ch">
+            <div class="b-nav"><span class="b-logo"><i></i>Trattoria Ost</span><span class="b-menu"><span>Karte</span><span>Mittag</span><span>Events</span><span>Kontakt</span></span><span class="b-navcta">Tisch</span></div>
+            <div class="b-hero">
+              <div>
+                <div class="b-kicker">Restaurant in Buchs SG</div>
+                <p class="b-h1">Frisch gekocht, jeden Tag.</p>
+                <p class="b-sub">Mittagsmenü ab 18.50 — und am Abend die ganze Karte.</p>
+                <div class="b-btns"><span class="b-b1">Tisch reservieren</span><span class="b-b2">Speisekarte</span></div>
+              </div>
+              <div class="b-photo"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="30" fill="rgba(255,255,255,.15)"/><circle cx="60" cy="60" r="18" fill="rgba(255,255,255,.12)"/><g stroke="rgba(255,255,255,.6)" stroke-width="3" stroke-linecap="round"><path d="M22 20v22a5 5 0 0 0 10 0V20M27 47v53"/><path d="M98 20c-3 4-4 9-4 14s1 8 4 10v56"/></g></svg></div>
+            </div>
+            <div class="b-cards">
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 3v8a3 3 0 0 0 6 0V3M7 11v10"/><path d="M18 3c-2 3-2.5 5-2.5 7.5S16.5 14 18 15v6"/></svg></i><div class="b-ct">Mittagsmenü</div><div class="b-cd">Täglich neu, ab 11.30 Uhr.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><div class="b-ct">Reservieren</div><div class="b-cd">Online in 30 Sekunden.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg></i><div class="b-ct">Feiern bei uns</div><div class="b-cd">Bis 40 Personen.</div></div>
+            </div>
+          </div>
+
+          <div class="b-page" style="--a:#0369a1" data-url="zahnarzt-werdenberg.ch">
+            <div class="b-nav"><span class="b-logo"><i></i>Praxis Rheintal</span><span class="b-menu"><span>Praxis</span><span>Team</span><span>Notfall</span><span>Kontakt</span></span><span class="b-navcta">Termin</span></div>
+            <div class="b-hero">
+              <div>
+                <div class="b-kicker">Zahnarzt Werdenberg</div>
+                <p class="b-h1">Zahnmedizin ohne Angst.</p>
+                <p class="b-sub">Kontrolle, Prophylaxe und Notfälle — auch samstags erreichbar.</p>
+                <div class="b-btns"><span class="b-b1">Termin anfragen</span><span class="b-b2">Notfall</span></div>
+              </div>
+              <div class="b-photo"><svg viewBox="0 0 120 120" fill="none"><path d="M60 28c-8-6-16-8-23-6-9 3-13 11-13 21 0 12 3 20 6 31 3 10 4 21 10 21s7-9 9-17c2-7 4-11 11-11s9 4 11 11c2 8 3 17 9 17s7-11 10-21c3-11 6-19 6-31 0-10-4-18-13-21-7-2-15 0-23 6z" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.55)" stroke-width="2.5"/></svg></div>
+            </div>
+            <div class="b-cards">
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></i><div class="b-ct">Kontrolle</div><div class="b-cd">Zweimal im Jahr, kurz und klar.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></i><div class="b-ct">Kurze Wartezeit</div><div class="b-cd">Termine meist in 3 Tagen.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></i><div class="b-ct">Notfall</div><div class="b-cd">Rund um die Uhr erreichbar.</div></div>
+            </div>
+          </div>
+
+          <div class="b-page" style="--a:#15803d" data-url="handwerk-vaduz.li">
+            <div class="b-nav"><span class="b-logo"><i></i>Meier Technik</span><span class="b-menu"><span>Leistungen</span><span>Projekte</span><span>Team</span><span>Kontakt</span></span><span class="b-navcta">Offerte</span></div>
+            <div class="b-hero">
+              <div>
+                <div class="b-kicker">Handwerk in Vaduz</div>
+                <p class="b-h1">Sanitär, Heizung, Notfall.</p>
+                <p class="b-sub">24 Stunden erreichbar — in Vaduz, Buchs und im ganzen Rheintal.</p>
+                <div class="b-btns"><span class="b-b1">Offerte anfordern</span><span class="b-b2">Projekte</span></div>
+              </div>
+              <div class="b-photo"><svg viewBox="0 0 120 120" fill="none"><g stroke="rgba(255,255,255,.6)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M74 32a20 20 0 0 1-27 27L23 85v15h15l26-24a20 20 0 0 1 27-27L79 61l-7-7z" fill="rgba(255,255,255,.17)"/></g></svg></div>
+            </div>
+            <div class="b-cards">
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3s6 6.6 6 10.5A6 6 0 0 1 6 13.5C6 9.6 12 3 12 3z"/></svg></i><div class="b-ct">Sanitär</div><div class="b-cd">Bad, Leitungen, Reparatur.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></i><div class="b-ct">Heizung</div><div class="b-cd">Wärmepumpen und Service.</div></div>
+              <div class="b-card"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg></i><div class="b-ct">Notdienst</div><div class="b-cd">Auch am Wochenende.</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="slog">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/><line x1="13.5" y1="4" x2="10.5" y2="20"/></svg>
+        <span class="slog-t"><b>Echter Code.</b><em>Echte Leistung.</em>
+          <svg class="slog-sw" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8.5C46 3.4 120 1.6 198 5.2 130 5.6 60 6.6 2 9.6Z" fill="currentColor"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OPCIÓN C ══════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción C</span><h2>Tus webs de verdad, pasando una tras otra</h2></div>
+  <p class="why">Sin dibujos: capturas reales de trabajos tuyos, con el nombre del negocio y su pueblo abajo. La Cantina de Buchs, NIKQI de Sevelen, Rrapi, Flink Sauber de Vaduz, El Español, Ushuaia. Un negocio de la zona ve la web del vecino funcionando — eso no lo iguala ninguna maqueta. Es mi recomendación.</p>
+  <div class="stage">
+    <div class="c" id="optC">
+      <div class="c-frame">
+        <div class="c-bar">
+          <span class="b-dot" style="background:#ff5f57"></span><span class="b-dot" style="background:#febc2e"></span><span class="b-dot" style="background:#28c840"></span>
+          <span class="b-url" id="cUrl">cantina-texmex.ch</span>
+        </div>
+        <div class="c-shots">
+          <img class="c-shot on" src="img/cantina.jpeg"    alt="" data-name="Cantina Tex-Mex" data-town="Buchs SG"  data-url="cantina-texmex.ch">
+          <img class="c-shot"    src="img/renovation.jpg"  alt="" data-name="NIKQI Badkultur" data-town="Sevelen"   data-url="nikqi.ch">
+          <img class="c-shot"    src="img/rrapi.jpg"       alt="" data-name="Rrapi Immobilien" data-town="Sevelen"  data-url="rrapi-immobilien.ch">
+          <img class="c-shot"    src="img/flinck.jpeg"     alt="" data-name="Flink Sauber"     data-town="Vaduz FL" data-url="flinksauber.li">
+          <img class="c-shot"    src="img/espanol.jpeg"    alt="" data-name="El Español"       data-town="Buchs SG" data-url="elespanol.ch">
+          <img class="c-shot"    src="img/inotec.jpeg"     alt="" data-name="Onotec"           data-town="Sevelen"  data-url="onotec.ch">
+          <div class="c-cap"><i></i><span><b id="cName">Cantina Tex-Mex</b><span id="cTown">Buchs SG</span></span></div>
+        </div>
+      </div>
+      <div class="c-chip c-chip--price"><b>ab 990</b>&nbsp;CHF</div>
+      <div class="c-chip c-chip--ch"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#D52B1E"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Hosting CH</div>
+      <div class="c-count"><b>11</b> Betriebe</div>
+      <div class="slog">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/><line x1="13.5" y1="4" x2="10.5" y2="20"/></svg>
+        <span class="slog-t"><b>Echter Code.</b><em>Echte Leistung.</em>
+          <svg class="slog-sw" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8.5C46 3.4 120 1.6 198 5.2 130 5.6 60 6.6 2 9.6Z" fill="currentColor"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function cycle(items, ms, onShow){
+  var i = 0;
+  onShow(items[0]);
+  setInterval(function(){
+    items[i].classList.remove('on');
+    i = (i + 1) % items.length;
+    items[i].classList.add('on');
+    onShow(items[i]);
+  }, ms);
+}
+var bUrl = document.getElementById('bUrl');
+cycle([].slice.call(document.querySelectorAll('#optB .b-page')), 3800, function(el){
+  bUrl.textContent = el.getAttribute('data-url');
+});
+var cUrl = document.getElementById('cUrl'), cName = document.getElementById('cName'), cTown = document.getElementById('cTown');
+cycle([].slice.call(document.querySelectorAll('#optC .c-shot')), 3400, function(el){
+  cUrl.textContent = el.getAttribute('data-url');
+  cName.textContent = el.getAttribute('data-name');
+  cTown.textContent = el.getAttribute('data-town');
+});
+</script>
+</body>
+</html>
