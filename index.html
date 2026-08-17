@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608171421">
+    <link rel="stylesheet" href="css/style.css?v=202608171535">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -371,12 +371,12 @@ body.dark-mode .hero-scroll-hint{border-color:#1e2d3d;color:#94a3b8;}
                 <div class="metric-label" data-i18n="metric.1">Betriebe in der Region</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">800+</div>
-                <div class="metric-label" data-i18n="metric.2">Produkte im grössten Shop</div>
+                <div class="metric-number">100%</div>
+                <div class="metric-label" data-i18n="metric.2">zufriedene Kunden</div>
             </div>
             <div class="metric-item">
-                <div class="metric-number">7</div>
-                <div class="metric-label" data-i18n="metric.3">Apps im App&nbsp;Store &amp; Play&nbsp;Store</div>
+                <div class="metric-number">50+</div>
+                <div class="metric-label" data-i18n="metric.3">Websites online</div>
             </div>
             <div class="metric-item">
                 <div class="metric-number">&lt;24h</div>
@@ -1847,7 +1847,10 @@ body.dark-mode .br-name{color:#eef3f9;}
 </section>
 
 <!-- TRUST -->
-<section class="trust">
+<!-- Ausgeblendet am 17.08.2026: die Zahlen (6+ Jahre, 20+ Apps, 50+ Websites)
+     widersprachen den Metriken oben im Hero. Zum Reaktivieren einfach
+     style="display:none;" aus dem <section>-Tag entfernen. -->
+<section class="trust" style="display:none;">
     <div class="container">
         <div class="trust-grid" id="trustGrid">
             <div class="trust-stat">
@@ -2748,9 +2751,9 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608171421"></script>
-<script src="js/booking-modal.js?v=202608171421"></script>
-<script src="js/main.js?v=202608171421"></script>
+<script src="js/translations.js?v=202608171535"></script>
+<script src="js/booking-modal.js?v=202608171535"></script>
+<script src="js/main.js?v=202608171535"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3155,7 +3158,7 @@ body.dark-mode .sticky-cta{background:#1b2635;}
 }
 .cl-photo::before{
   content:'';position:absolute;inset:-7%;
-  background:url('img/hero-code.jpg?v=202608171421') center/cover no-repeat;
+  background:url('img/hero-code.jpg?v=202608171535') center/cover no-repeat;
   filter:blur(7px) saturate(.85);
   transform:scale(1.06);
 }

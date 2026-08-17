@@ -305,8 +305,8 @@ if (localStorage.getItem('cookieConsent')) {
 
 // Language switcher
 var i18nMap = [
-    // Metrics
-    {s: '.metric-label', keys: ['metric.label1','metric.label2','metric.label3']},
+    // Metrics: die Labels haengen jetzt an data-i18n (metric.1 - metric.4).
+    // Der alte Selektor-Eintrag hat sie beim Sprachwechsel ueberschrieben.
     // Services
     {s: '.services .section-header h2', k: 'services.title'},
     {s: '.services .section-header p', k: 'services.desc'},
