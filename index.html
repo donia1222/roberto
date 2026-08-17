@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608171535">
+    <link rel="stylesheet" href="css/style.css?v=202608171624">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -2307,14 +2307,60 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
     </div>
     <div class="chatbot-messages" id="chatbotMessages">
         <div class="chatbot-msg chatbot-msg--bot">
-            <p>Hallo! Ich bin der Lweb Bot. Ich kann Ihnen Fragen zu unseren Leistungen, Apps, Websites, Technologien und Preisen beantworten. Wie kann ich Ihnen helfen?</p>
+            <p>Hallo! Ich bin der Lweb Bot. Ich beantworte Ihnen Fragen zu Preisen, Ablauf und dem, was für Ihren Betrieb Sinn macht &mdash; ehrlich und ohne Verkaufsgerede. Was für ein Geschäft haben Sie?</p>
         </div>
     </div>
     <div class="chatbot-suggestions" id="chatbotSuggestions">
-        <button onclick="sendSuggestion('Was kostet eine App?')">Was kostet eine App?</button>
-        <button onclick="sendSuggestion('Welche Apps habt ihr?')">Welche Apps habt ihr?</button>
-        <button onclick="sendSuggestion('Welche Technologien nutzt ihr?')">Welche Technologien?</button>
-        <button onclick="sendSuggestion('Kontaktdaten')">Kontaktdaten</button>
+        <button onclick="sendSuggestion('Was kostet meine Website?')">Was kostet meine Website?</button>
+        <button onclick="sendSuggestion('Warum ist es günstiger als eine Agentur?')">Warum günstiger?</button>
+        <button onclick="sendSuggestion('Wie lange dauert es, bis meine Website online ist?')">Wie lange dauert es?</button>
+        <button class="chatbot-more-btn" onclick="openChatQuestions()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Mehr Fragen
+        </button>
+    </div>
+
+    <!-- Fragen-Katalog: gleitet im Chat-Fenster hoch -->
+    <div class="chatq" id="chatQuestions" hidden>
+        <div class="chatq-head">
+            <strong>Häufige Fragen</strong>
+            <button class="chatq-close" onclick="closeChatQuestions()" aria-label="Schliessen">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="chatq-body">
+            <div class="chatq-group">Preis &amp; Ablauf</div>
+            <button onclick="askFromList('Was kostet meine Website?')">Was kostet meine Website?</button>
+            <button onclick="askFromList('Was ist der Unterschied zwischen der Vorlage ab 450 CHF und einer eigenen Website ab 990 CHF?')">Unterschied 450 CHF und 990 CHF?</button>
+            <button onclick="askFromList('Was kostet ein Online-Shop?')">Was kostet ein Online-Shop?</button>
+            <button onclick="askFromList('Was kostet eine App?')">Was kostet eine App?</button>
+            <button onclick="askFromList('Gibt es versteckte Kosten oder monatliche Gebühren?')">Versteckte Kosten?</button>
+            <button onclick="askFromList('Wie läuft ein Projekt bei Ihnen ab?')">Wie läuft ein Projekt ab?</button>
+            <button onclick="askFromList('Wie lange dauert es, bis meine Website online ist?')">Wie lange dauert es?</button>
+
+            <div class="chatq-group">Warum Freelancer</div>
+            <button onclick="askFromList('Warum ist es günstiger als eine Agentur?')">Warum günstiger als eine Agentur?</button>
+            <button onclick="askFromList('Arbeiten Sie allein oder haben Sie ein Team?')">Arbeiten Sie allein?</button>
+            <button onclick="askFromList('Wem gehört der Code meiner Website?')">Wem gehört der Code?</button>
+            <button onclick="askFromList('Was kostet eine kleine Änderung nach dem Launch?')">Änderungen nach dem Launch?</button>
+
+            <div class="chatq-group">Meine Branche</div>
+            <button onclick="askFromList('Ich habe einen Coiffeursalon. Was empfehlen Sie mir?')">Ich habe einen Coiffeursalon</button>
+            <button onclick="askFromList('Ich habe ein Restaurant. Was empfehlen Sie mir?')">Ich habe ein Restaurant</button>
+            <button onclick="askFromList('Ich bin Handwerker. Was empfehlen Sie mir?')">Ich bin Handwerker</button>
+            <button onclick="askFromList('Ich habe eine Praxis. Was empfehlen Sie mir?')">Ich habe eine Praxis</button>
+            <button onclick="askFromList('Ich möchte einen Online-Shop für mein Geschäft.')">Ich möchte einen Online-Shop</button>
+
+            <div class="chatq-group">Technik &amp; Sonstiges</div>
+            <button onclick="askFromList('Kann ich Texte und Bilder selbst ändern?')">Kann ich selbst Texte ändern?</button>
+            <button onclick="askFromList('Wo wird meine Website gehostet?')">Wo wird gehostet?</button>
+            <button onclick="askFromList('Kümmern Sie sich auch um Google und SEO?')">Google und SEO?</button>
+            <button onclick="askFromList('Ich habe schon eine Website. Können Sie sie überarbeiten?')">Bestehende Website überarbeiten?</button>
+            <button onclick="askFromList('Arbeiten Sie auch ausserhalb der Region Werdenberg?')">Arbeiten Sie in der ganzen Schweiz?</button>
+            <button onclick="askFromList('Welche Technologien nutzen Sie?')">Welche Technologien?</button>
+            <button onclick="askFromList('Termin vereinbaren')">Termin vereinbaren</button>
+            <button onclick="askFromList('Kontaktdaten')">Kontaktdaten</button>
+        </div>
     </div>
     <div class="chatbot-input-area">
         <input type="text" id="chatbotInput" placeholder="Ihre Frage eingeben..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()">
@@ -2326,6 +2372,66 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         </button>
     </div>
 </div>
+
+<style>
+/* --- "Mehr Fragen": Katalog im Chat-Fenster --- */
+.chatbot-more-btn{display:inline-flex;align-items:center;gap:5px;}
+.chatq{
+  position:absolute;left:0;right:0;bottom:0;top:64px;z-index:9;
+  display:flex;flex-direction:column;
+  background:#fff;border-radius:0 0 16px 16px;
+  transform:translateY(100%);transition:transform .28s cubic-bezier(.22,1,.36,1);
+}
+.chatq.open{transform:translateY(0);}
+body.dark-mode .chatq{background:#131c29;}
+.chatq-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 16px;border-bottom:1px solid var(--gunpowder100);flex:none;
+}
+.chatq-head strong{font-size:15px;color:var(--gunpowder900);}
+body.dark-mode .chatq-head{border-bottom-color:#233246;}
+body.dark-mode .chatq-head strong{color:#e9f0f7;}
+.chatq-close{
+  width:30px;height:30px;border:0;border-radius:9px;cursor:pointer;
+  background:var(--gunpowder50);color:var(--gunpowder500);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+body.dark-mode .chatq-close{background:#1d2a3a;color:#9fb1c7;}
+.chatq-body{flex:1;overflow-y:auto;padding:12px 14px 18px;-webkit-overflow-scrolling:touch;}
+.chatq-group{
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--begonia400);margin:14px 2px 8px;
+}
+.chatq-group:first-child{margin-top:2px;}
+.chatq-body button{
+  display:block;width:100%;text-align:left;margin-bottom:6px;
+  padding:11px 14px;border-radius:11px;cursor:pointer;
+  background:var(--gunpowder50);border:1px solid var(--gunpowder100);
+  color:var(--gunpowder900);font-size:14px;line-height:1.35;font-family:inherit;
+  transition:background .15s ease,border-color .15s ease;
+}
+.chatq-body button:hover{background:#fff;border-color:var(--begonia400);}
+body.dark-mode .chatq-body button{background:#1a2734;border-color:#233246;color:#e9f0f7;}
+body.dark-mode .chatq-body button:hover{background:#22303f;border-color:#ff3341;}
+</style>
+<script>
+function openChatQuestions(){
+    var p = document.getElementById('chatQuestions');
+    if (!p) return;
+    p.hidden = false;
+    requestAnimationFrame(function(){ p.classList.add('open'); });
+}
+function closeChatQuestions(){
+    var p = document.getElementById('chatQuestions');
+    if (!p) return;
+    p.classList.remove('open');
+    setTimeout(function(){ p.hidden = true; }, 280);
+}
+function askFromList(q){
+    closeChatQuestions();
+    if (typeof sendSuggestion === 'function') sendSuggestion(q);
+}
+</script>
 
 <!-- CTA -->
 <section class="cta-banner" id="contact" style="scroll-margin-top:90px;" data-lw-view="view_kontakt">
@@ -2751,9 +2857,9 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608171535"></script>
-<script src="js/booking-modal.js?v=202608171535"></script>
-<script src="js/main.js?v=202608171535"></script>
+<script src="js/translations.js?v=202608171624"></script>
+<script src="js/booking-modal.js?v=202608171624"></script>
+<script src="js/main.js?v=202608171624"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3158,7 +3264,7 @@ body.dark-mode .sticky-cta{background:#1b2635;}
 }
 .cl-photo::before{
   content:'';position:absolute;inset:-7%;
-  background:url('img/hero-code.jpg?v=202608171535') center/cover no-repeat;
+  background:url('img/hero-code.jpg?v=202608171624') center/cover no-repeat;
   filter:blur(7px) saturate(.85);
   transform:scale(1.06);
 }
