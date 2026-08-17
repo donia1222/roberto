@@ -5439,3 +5439,32 @@ body.dark-mode .br-go,
 body.dark-mode .br-foot-link,
 body.dark-mode .website-card-url,
 body.dark-mode .cl-text em{ color:#ff3341 !important; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILES MENÜ — passt jetzt auch mit acht Einträgen
+   Vorher: justify-content:center. Wenn der Inhalt höher ist als
+   der Bildschirm, läuft er oben UND unten aus dem Bild.
+   ═══════════════════════════════════════════════════════════ */
+.mobile-menu{
+    height: 100vh;
+    height: 100dvh;                 /* iOS: echte sichtbare Höhe */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+.mobile-panel{
+    justify-content: flex-start;
+    padding: 96px 20px calc(30px + env(safe-area-inset-bottom, 0px));
+    min-height: 100%;
+}
+.mobile-menu-nav{ gap: 2px; width: 100%; }
+.mobile-menu-link{ padding: 13px 18px; }
+.mobile-menu-footer{ margin-top: 20px; }
+
+/* sehr niedrige Geräte: noch etwas kompakter */
+@media (max-height: 720px){
+    .mobile-panel{ padding-top: 84px; }
+    .mobile-menu-link{ padding: 10px 16px; font-size: 19px; }
+    .mobile-menu-footer{ margin-top: 14px; gap: 9px; }
+}

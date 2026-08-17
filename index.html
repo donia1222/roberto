@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608171334">
+    <link rel="stylesheet" href="css/style.css?v=202608171344">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -2728,9 +2728,9 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608171334"></script>
-<script src="js/booking-modal.js?v=202608171334"></script>
-<script src="js/main.js?v=202608171334"></script>
+<script src="js/translations.js?v=202608171344"></script>
+<script src="js/booking-modal.js?v=202608171344"></script>
+<script src="js/main.js?v=202608171344"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3174,6 +3174,15 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl-mark{width:clamp(104px,20vw,140px);}
   .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
 }
+/* Handy: nur "Warum so günstig?" zeigen.
+   Der Erstgespräch-Button steckt unten in der fixen Leiste (.sticky-cta),
+   die genau ab 860px erscheint — deshalb dieselbe Grenze. */
+@media(max-width:860px){
+  .hero-buttons #heroPriceBtn{display:none;}
+  .hero-buttons{justify-content:flex-start;}
+  .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
+}
+
 /* Handy: kompakter und dichter am Header */
 @media(max-width:992px){
   .hero{padding-top:20px !important;}
