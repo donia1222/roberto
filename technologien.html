@@ -29,8 +29,8 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608171329">
-    <script src="js/translations.js?v=202608171329"></script>
+    <link rel="stylesheet" href="css/style.css?v=202608171334">
+    <script src="js/translations.js?v=202608171334"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
 
@@ -75,11 +75,11 @@
         .tw-label {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #fe6c75; margin-bottom: 18px;
+            text-transform: uppercase; color: #e30613; margin-bottom: 18px;
         }
         .tw-label::before {
             content:''; width:7px; height:7px; border-radius:50%;
-            background:#fe6c75; animation:blink 1.5s infinite;
+            background:#e30613; animation:blink 1.5s infinite;
         }
         .tw-h2 {
             font-size: 44px; font-weight: 800; line-height: 1.15;
@@ -89,7 +89,7 @@
             font-size: 17px; line-height: 1.7; color: #6b7d99;
             max-width: 600px; margin-bottom: 48px;
         }
-        .tw-accent { color: #fe6c75; }
+        .tw-accent { color: #e30613; }
 
         /* ═══ HERO — centered + phone showcase ═══════════ */
         .tw-hero {
@@ -107,15 +107,15 @@
         }
         .tw-hero-badge {
             display:inline-flex; align-items:center; gap:8px;
-            background:rgba(254,108,117,0.08); border:1px solid rgba(254,108,117,0.18);
+            background:rgba(227, 6, 19,0.08); border:1px solid rgba(227, 6, 19,0.18);
             border-radius:600px; padding:6px 16px; font-size:12px;
-            font-weight:700; color:#fe6c75; letter-spacing:0.05em;
+            font-weight:700; color:#e30613; letter-spacing:0.05em;
             text-transform:uppercase; margin-bottom:24px;
             animation:fadeUp 0.6s ease both;
         }
         .tw-hero-badge .blink {
             width:6px; height:6px; border-radius:50%;
-            background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
+            background:#e30613; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
             font-size:56px; font-weight:800; line-height:1.08;
@@ -134,7 +134,7 @@
         }
         .tw-hero-pill {
             display:inline-flex; align-items:center; gap:6px;
-            background:rgba(254,108,117,0.06); border:1px solid rgba(254,108,117,0.12);
+            background:rgba(227, 6, 19,0.06); border:1px solid rgba(227, 6, 19,0.12);
             border-radius:600px; padding:6px 14px; font-size:13px;
             font-weight:600; color:#3f4960;
         }
@@ -181,13 +181,13 @@
         /* ═══ BUTTONS ═══════════════════════════════════════ */
         .tw-btn-red {
             display:inline-flex; align-items:center; gap:8px;
-            background:#fe6c75; color:#fff; border:none;
+            background:#e30613; color:#fff; border:none;
             border-radius:600px; padding:14px 28px;
             font-size:15px; font-weight:700; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
-            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+            box-shadow:0 4px 16px rgba(227, 6, 19,0.35);
         }
-        .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
+        .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(227, 6, 19,0.45); }
         .tw-btn-ghost {
             display:inline-flex; align-items:center; gap:8px;
             background:transparent; color:#3f4960;
@@ -196,7 +196,7 @@
             font-size:15px; font-weight:600; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
         }
-        .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
+        .tw-btn-ghost:hover { border-color:#e30613; color:#e30613; transform:translateY(-2px); }
 
         /* ═══ MARQUEE ═══════════════════════════════════════ */
         .tw-marquee-wrap {
@@ -220,7 +220,7 @@
         }
         .tw-marquee-item::before {
             content:''; width:6px; height:6px; border-radius:50%;
-            background:#fe6c75; flex-shrink:0;
+            background:#e30613; flex-shrink:0;
         }
 
         /* ═══ HOW IT WORKS — card layout (goodbarber style) ═════ */
@@ -330,7 +330,7 @@
         }
         .tw-tpl-card:hover .tw-tpl-icon-wrap { transform:scale(1.1) translateY(-8px); }
         .tw-tpl-icon-wrap svg { width:32px; height:32px; color:#fff; }
-        .tw-tpl-icon-wrap--red { background:linear-gradient(135deg,#fe6c75,#e1545d); box-shadow:0 8px 24px rgba(254,108,117,0.3); }
+        .tw-tpl-icon-wrap--red { background:linear-gradient(135deg,#e30613,#b8050f); box-shadow:0 8px 24px rgba(227, 6, 19,0.3); }
         .tw-tpl-icon-wrap--blue { background:linear-gradient(135deg,#15a0da,#0089c2); box-shadow:0 8px 24px rgba(21,160,218,0.3); }
         .tw-tpl-icon-wrap--green { background:linear-gradient(135deg,#4dd35b,#2fb83e); box-shadow:0 8px 24px rgba(77,211,91,0.3); }
         .tw-tpl-icon-wrap--orange { background:linear-gradient(135deg,#ffb421,#e09a0e); box-shadow:0 8px 24px rgba(255,180,33,0.3); }
@@ -340,9 +340,9 @@
         .tw-tpl-badge-num {
             position:absolute; top:8px; right:8px;
             width:24px; height:24px; border-radius:50%;
-            background:#fe6c75; color:#fff; font-size:11px; font-weight:800;
+            background:#e30613; color:#fff; font-size:11px; font-weight:800;
             display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 8px rgba(254,108,117,0.3);
+            box-shadow:0 4px 8px rgba(227, 6, 19,0.3);
         }
         .tw-tpl-info { padding:20px 24px; position:relative; z-index:1; }
         .tw-tpl-info h3 { font-size:18px; font-weight:800; color:#0f1d2c; margin:0 0 6px; }
@@ -350,7 +350,7 @@
         .tw-tpl-tags { display:flex; gap:6px; flex-wrap:wrap; }
         .tw-tpl-tag {
             display:inline-flex; align-items:center; gap:4px;
-            background:rgba(254,108,117,0.08); color:#fe6c75;
+            background:rgba(227, 6, 19,0.08); color:#e30613;
             font-size:11px; font-weight:700; padding:4px 10px;
             border-radius:600px; transition:all 0.2s ease;
         }
@@ -358,7 +358,7 @@
 
         /* ═══ STATS BAR ════════════════════════════════════ */
         .tw-stats {
-            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            background:linear-gradient(135deg,#e30613 0%,#b8050f 100%);
             padding:40px 24px; display:flex; justify-content:center; gap:80px;
             position:relative; overflow:hidden;
         }
@@ -431,8 +431,8 @@
         .tw-extra-card h4 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 8px; }
         .tw-extra-card p { font-size:14px; color:#6b7d99; margin:0 0 16px; line-height:1.6; }
         .tw-extra-price {
-            display:inline-block; font-size:18px; font-weight:800; color:#fe6c75;
-            background:rgba(254,108,117,0.08); padding:6px 16px; border-radius:600px;
+            display:inline-block; font-size:18px; font-weight:800; color:#e30613;
+            background:rgba(227, 6, 19,0.08); padding:6px 16px; border-radius:600px;
         }
 
         /* ═══ EDITOR SHOWCASE — demo section ════════════════ */
@@ -451,7 +451,7 @@
         .tw-editor-visual img { width:100%; display:block; }
         .tw-editor-badge-demo {
             position:absolute; top:16px; right:16px;
-            background:rgba(254,108,117,0.92); width:36px; height:36px;
+            background:rgba(227, 6, 19,0.92); width:36px; height:36px;
             border-radius:50%; display:flex; align-items:center; justify-content:center;
             box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:tw-badge-pulse 2.5s ease infinite;
         }
@@ -463,7 +463,7 @@
         }
         .tw-editor-content h3 {
             font-size:14px; font-weight:700; text-transform:uppercase;
-            letter-spacing:0.08em; color:#fe6c75; margin:0 0 16px;
+            letter-spacing:0.08em; color:#e30613; margin:0 0 16px;
         }
         .tw-editor-content h2 {
             font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.2; margin:0 0 20px;
@@ -487,8 +487,8 @@
             display:flex; align-items:center; justify-content:center;
         }
         .tw-editor-feat-icon svg { width:20px; height:20px; stroke-width:2; fill:none; }
-        .tw-editor-feat-icon--red { background:rgba(254,108,117,0.1); }
-        .tw-editor-feat-icon--red svg { stroke:#fe6c75; }
+        .tw-editor-feat-icon--red { background:rgba(227, 6, 19,0.1); }
+        .tw-editor-feat-icon--red svg { stroke:#e30613; }
         .tw-editor-feat-icon--blue { background:rgba(21,160,218,0.1); }
         .tw-editor-feat-icon--blue svg { stroke:#15a0da; }
         .tw-editor-feat-icon--green { background:rgba(77,211,91,0.1); }
@@ -502,11 +502,11 @@
         .tw-editor-try {
             display:inline-flex; align-items:center; gap:10px;
             padding:14px 28px; border-radius:12px;
-            background:linear-gradient(135deg,#fe6c75,#e1545d);
+            background:linear-gradient(135deg,#e30613,#b8050f);
             color:#fff; font-size:15px; font-weight:700; text-decoration:none;
-            transition:all 0.3s; box-shadow:0 4px 16px rgba(254,108,117,0.3);
+            transition:all 0.3s; box-shadow:0 4px 16px rgba(227, 6, 19,0.3);
         }
-        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.4); }
+        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(227, 6, 19,0.4); }
         .tw-editor-try svg { width:18px; height:18px; }
         .tw-editor-try--blue { background:linear-gradient(135deg,#93c5fd,#60a5fa); box-shadow:0 4px 16px rgba(147,197,253,0.4); color:#1e3a5f; }
         .tw-editor-try--blue:hover { box-shadow:0 8px 24px rgba(147,197,253,0.5); }
@@ -529,7 +529,7 @@
 
         /* ═══ ADVANTAGE — red gradient ════════════════════ */
         .tw-advantage {
-            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            background:linear-gradient(135deg,#e30613 0%,#b8050f 100%);
             padding:64px; border-radius:24px; margin:0 auto; max-width:900px;
             color:#fff; text-align:center; position:relative; overflow:hidden;
         }
@@ -573,7 +573,7 @@
         body.dark-mode .tw-hero-h1 { color:#f1f5f9; }
         body.dark-mode .tw-hero-sub { color:#94a3b8; }
         body.dark-mode .tw-hero-pill { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:#c8d5e3; }
-        body.dark-mode .tw-hero-badge { background:rgba(254,108,117,0.15); border-color:rgba(254,108,117,0.3); }
+        body.dark-mode .tw-hero-badge { background:rgba(227, 6, 19,0.15); border-color:rgba(227, 6, 19,0.3); }
         body.dark-mode .tw-phone-mock { box-shadow:0 25px 60px rgba(0,0,0,0.45); }
         body.dark-mode .tw-phone-inner { background:#1e2536; }
         body.dark-mode .tw-phone-label { color:#8a9bb3; }
@@ -593,7 +593,7 @@
         body.dark-mode .tw-tpl-card:hover .tw-tpl-inner { background:rgba(35,42,60,0.95); }
         body.dark-mode .tw-tpl-info h3 { color:#f1f5f9; }
         body.dark-mode .tw-tpl-info p { color:#8a9bb3; }
-        body.dark-mode .tw-tpl-tag { background:rgba(254,108,117,0.15); }
+        body.dark-mode .tw-tpl-tag { background:rgba(227, 6, 19,0.15); }
         body.dark-mode .tw-h2 { color:#f1f5f9; }
         body.dark-mode .tw-sub { color:#94a3b8; }
         body.dark-mode .tw-inc-section { background:#1a1f2e; }
@@ -605,7 +605,7 @@
         body.dark-mode .tw-extra-card h4 { color:#f1f5f9; }
         body.dark-mode .tw-extra-card p { color:#94a3b8; }
         body.dark-mode .tw-btn-ghost { color:#c8d5e3; border-color:rgba(255,255,255,0.15); }
-        body.dark-mode .tw-btn-ghost:hover { color:#fe6c75; border-color:#fe6c75; }
+        body.dark-mode .tw-btn-ghost:hover { color:#e30613; border-color:#e30613; }
 
         /* ═══ RESPONSIVE ═══════════════════════════════════ */
         @media (max-width:1024px) {
@@ -663,7 +663,7 @@
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
-        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #fe6c75; }
+        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #e30613; }
         .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
         .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
         .header .header-nav { transition: opacity 0.3s ease; }
@@ -757,7 +757,7 @@
 @keyframes hc-float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
 @keyframes hc-spin   { to{transform:rotate(360deg)} }
 @keyframes hc-shimmer{ 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-@keyframes hc-pulse  { 0%,100%{box-shadow:0 0 0 0 rgba(254,108,117,.45)} 70%{box-shadow:0 0 0 14px rgba(254,108,117,0)} }
+@keyframes hc-pulse  { 0%,100%{box-shadow:0 0 0 0 rgba(227, 6, 19,.45)} 70%{box-shadow:0 0 0 14px rgba(227, 6, 19,0)} }
 
 .hc-hero {
     background: linear-gradient(180deg, transparent 0%, #fff8f0 100%);
@@ -777,13 +777,13 @@
 /* Badge */
 .hc-badge {
     display:inline-flex; align-items:center; gap:8px;
-    background:rgba(254,108,117,.1); border:1px solid rgba(254,108,117,.25);
+    background:rgba(227, 6, 19,.1); border:1px solid rgba(227, 6, 19,.25);
     border-radius:600px; padding:7px 18px;
     font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    color:#fe6c75; margin-bottom:28px;
+    color:#e30613; margin-bottom:28px;
     animation:hc-fadeUp .6s ease both;
 }
-.hc-badge-dot { width:6px;height:6px;border-radius:50%;background:#fe6c75;animation:hc-blink 1.4s infinite; }
+.hc-badge-dot { width:6px;height:6px;border-radius:50%;background:#e30613;animation:hc-blink 1.4s infinite; }
 
 /* Headline */
 .hc-h1 {
@@ -791,7 +791,7 @@
     letter-spacing:-.025em; color:#0f1d2c; margin-bottom:18px;
     animation:hc-fadeUp .6s .1s ease both;
 }
-.hc-h1 .hc-accent { color:#fe6c75; }
+.hc-h1 .hc-accent { color:#e30613; }
 .hc-h1 .hc-green  { color:#4dd35b; }
 
 /* Sub */
@@ -817,10 +817,10 @@
 }
 .hc-card::before {
     content:''; position:absolute; inset:0; border-radius:20px;
-    background:linear-gradient(135deg,rgba(254,108,117,.05) 0%,transparent 60%);
+    background:linear-gradient(135deg,rgba(227, 6, 19,.05) 0%,transparent 60%);
     opacity:0; transition:opacity .3s;
 }
-.hc-card:hover { transform:translateY(-6px); border-color:rgba(254,108,117,.25); box-shadow:0 12px 36px rgba(0,0,0,.08); }
+.hc-card:hover { transform:translateY(-6px); border-color:rgba(227, 6, 19,.25); box-shadow:0 12px 36px rgba(0,0,0,.08); }
 .hc-card:hover::before { opacity:1; }
 
 .hc-card-icon {
@@ -862,11 +862,11 @@
 }
 .hc-code-bar::before {
     content:''; position:absolute; top:0; left:0; right:0; height:2px;
-    background:linear-gradient(90deg,transparent,rgba(254,108,117,.7),transparent);
+    background:linear-gradient(90deg,transparent,rgba(227, 6, 19,.7),transparent);
 }
 .hc-code-dots { display:flex; gap:6px; margin-bottom:14px; }
 .hc-code-dots span { width:11px;height:11px;border-radius:50%; }
-.hc-code-line .kw  { color:#fe6c75; }
+.hc-code-line .kw  { color:#e30613; }
 .hc-code-line .fn  { color:#61dafb; }
 .hc-code-line .st  { color:#4dd35b; }
 .hc-code-line .cm  { color:rgba(255,255,255,.25); font-style:italic; }
@@ -905,12 +905,12 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
 
             <!-- 1 -->
             <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(254,108,117,.15);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <div class="hc-card-icon" style="background:rgba(227, 6, 19,.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
                 <h3 data-i18n="hc.c1.title">HTML · CSS · JavaScript</h3>
                 <p data-i18n="hc.c1.p">Einfache Seiten entstehen in purem HTML, CSS und JS — ohne Framework-Overhead. Blitzschnell, leichtgewichtig und 100% kontrollierbar.</p>
-                <span class="hc-card-tag" style="background:rgba(254,108,117,.12);color:#fe6c75;">
+                <span class="hc-card-tag" style="background:rgba(227, 6, 19,.12);color:#e30613;">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="hc.tag.pure">Pure Code</span>
                 </span>
@@ -968,7 +968,7 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
             <div id="hcCodeOut" style="height:9.5em;overflow:hidden;"></div>
         </div>
         <style>
-            .hc-cursor { display:inline-block; color:#fe6c75; animation:hc-blink .7s infinite; font-weight:400; }
+            .hc-cursor { display:inline-block; color:#e30613; animation:hc-blink .7s infinite; font-weight:400; }
         </style>
         <script>
         (function(){
@@ -1169,12 +1169,12 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
 
             <!-- 1 · Auth -->
             <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(254,108,117,.15);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <div class="hc-card-icon" style="background:rgba(227, 6, 19,.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
                 <h3 data-i18n="sec.c1.title">Token-Authentifizierung</h3>
                 <p data-i18n="sec.c1.p">Jede Anfrage wird mit einem sicheren Token geprüft. Ohne gültige Anmeldung kommt niemand an Ihre Daten — auch nicht über Umwege.</p>
-                <span class="hc-card-tag" style="background:rgba(254,108,117,.12);color:#fe6c75;">
+                <span class="hc-card-tag" style="background:rgba(227, 6, 19,.12);color:#e30613;">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="sec.c1.tag">Geschützter Zugang</span>
                 </span>
@@ -1234,12 +1234,12 @@ body.dark-mode .hc-card p  { color:#8a9bb3; }
 
             <!-- 6 · Audits -->
             <div class="hc-card">
-                <div class="hc-card-icon" style="background:rgba(254,108,117,.15);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="8.5 11 10.5 13 14 9.5"/></svg>
+                <div class="hc-card-icon" style="background:rgba(227, 6, 19,.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="8.5 11 10.5 13 14 9.5"/></svg>
                 </div>
                 <h3 data-i18n="sec.c6.title">Laufende Sicherheitsaudits</h3>
                 <p data-i18n="sec.c6.p">Der Code wird regelmässig überprüft und Schwachstellen werden sofort geschlossen — proaktiv, nicht erst nach einem Vorfall.</p>
-                <span class="hc-card-tag" style="background:rgba(254,108,117,.12);color:#fe6c75;">
+                <span class="hc-card-tag" style="background:rgba(227, 6, 19,.12);color:#e30613;">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                     <span data-i18n="sec.c6.tag">Immer aktuell</span>
                 </span>
@@ -1490,22 +1490,22 @@ body.dark-mode .aia-eyebrow { color:#5bb8e8; }
     color:#0f1d2c; margin-bottom:12px;
 }
 body.dark-mode .aia-h2 { color:#f0f6ff; }
-.aia-h2 em { font-style:normal; color:#fe6c75; }
+.aia-h2 em { font-style:normal; color:#e30613; }
 .aia-sub {
     font-size:17px; color:#6b7d99; max-width:600px; margin:0 auto 28px; line-height:1.7;
 }
 body.dark-mode .aia-sub { color:#94a3b8; }
 .aia-pill {
     display:inline-flex; align-items:center; gap:14px;
-    background:linear-gradient(135deg,rgba(254,108,117,.08),rgba(254,108,117,.03));
-    border:1px solid rgba(254,108,117,.25); border-radius:16px;
+    background:linear-gradient(135deg,rgba(227, 6, 19,.08),rgba(227, 6, 19,.03));
+    border:1px solid rgba(227, 6, 19,.25); border-radius:16px;
     padding:14px 26px;
 }
 .aia-pill-num {
     font-size:30px; font-weight:900; color:#e84a55;
     letter-spacing:-0.03em; line-height:1;
 }
-body.dark-mode .aia-pill-num { color:#fe6c75; }
+body.dark-mode .aia-pill-num { color:#e30613; }
 .aia-pill-label {
     font-size:13px; font-weight:600; color:#4a6070; line-height:1.35; text-align:left;
 }
