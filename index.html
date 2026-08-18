@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181036">
+    <link rel="stylesheet" href="css/style.css?v=202608181046">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -2857,9 +2857,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608181036"></script>
-<script src="js/booking-modal.js?v=202608181036"></script>
-<script src="js/main.js?v=202608181036"></script>
+<script src="js/translations.js?v=202608181046"></script>
+<script src="js/booking-modal.js?v=202608181046"></script>
+<script src="js/main.js?v=202608181046"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3264,7 +3264,7 @@ body.dark-mode .sticky-cta{background:#1b2635;}
 }
 .cl-photo::before{
   content:'';position:absolute;inset:-7%;
-  background:url('img/hero-code.jpg?v=202608181036') center/cover no-repeat;
+  background:url('img/hero-code.jpg?v=202608181046') center/cover no-repeat;
   filter:blur(7px) saturate(.85);
   transform:scale(1.06);
 }
@@ -3354,17 +3354,20 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
 }
 /* Foto-Karte auf dem Handy hoeher, sonst wird sie zu flach.
    Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
-/* Handy/Tablet: kein Foto — nur der Schriftzug wie am Anfang.
-   Das Foto laeuft erst ab 993px (Desktop-Layout des Hero). */
+/* Handy/Tablet: Foto bleibt, aber kompakter.
+   Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
 @media(max-width:992px){
-  .cl-photo{display:none;}
-  .cl--photo{padding:0;}
-  .cl--photo .cl-text b{color:var(--gunpowder900);text-shadow:none;}
-  body.dark-mode .cl--photo .cl-text b{color:#f4f8fc;}
-  .cl--photo .cl-text em{color:var(--cl-red);text-shadow:none;}
-  .cl--photo .cl-mark{color:var(--cl-red);filter:none;}
-  body.dark-mode .cl--photo .cl-text em,
-  body.dark-mode .cl--photo .cl-mark{color:#ff3641;}
+  .cl--photo{padding:38px 18px 42px;margin-top:6px;}
+  .cl-photo{border-radius:20px;}
+  /* Auf dem Handy ist die Karte schmal: Bildausschnitt auf den
+     Bildschirm ziehen, sonst sieht man nur die dunkle Wand rechts. */
+  .cl-photo::before{background-position:34% center;}
+}
+@media(max-width:560px){
+  .cl--photo{padding:32px 14px 36px;gap:12px;}
+  .cl-photo{border-radius:18px;}
+  .cl--photo .cl-mark{width:74px;}
+  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(19px,5.8vw,25px);}
 }
 @media(prefers-reduced-motion:reduce){
   .cl-glow,.cl-br,.cl-slash{animation:none;}
