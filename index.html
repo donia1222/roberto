@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181158">
+    <link rel="stylesheet" href="css/style.css?v=202608181218">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -1993,7 +1993,7 @@ function expandBranchen(btn){
                             <textPath href="#ringPath" startOffset="0%">React Native &bull; Expo &bull; Next.js &bull; TypeScript &bull; Xcode &bull; OpenAI &bull; Node.js &bull;</textPath>
                         </text>
                     </svg>
-                    <img src="img/profile.png" alt="Roberto Salvador - App Entwickler in Buchs SG, Kanton St. Gallen">
+                    <img src="img/roberto-circle.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -3011,9 +3011,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608181158"></script>
-<script src="js/booking-modal.js?v=202608181158"></script>
-<script src="js/main.js?v=202608181158"></script>
+<script src="js/translations.js?v=202608181218"></script>
+<script src="js/booking-modal.js?v=202608181218"></script>
+<script src="js/main.js?v=202608181218"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3409,7 +3409,15 @@ body.dark-mode .sticky-cta{background:#1b2635;}
 
 /* ── Foto-Hintergrund hinter dem Schriftzug ──
    Bild ablegen unter: img/hero-code.jpg  (16:9, min. 1600px breit) */
-.cl--photo{padding:44px 26px 48px;}
+.cl--photo{
+  /* Zeichen links, Schriftzug daneben — eine Zeile unten,
+     damit Gesicht und Logo im Bild frei bleiben. */
+  flex-direction:row;align-items:flex-end;justify-content:flex-start;
+  aspect-ratio:3/2;padding:0 22px 22px;gap:12px;
+  max-width:470px;margin:0 auto;
+}
+.cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
+.cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(17px,1.8vw,23px);}
 .cl-photo{
   position:absolute;inset:0;z-index:0;border-radius:26px;overflow:hidden;
   pointer-events:none;
@@ -3417,23 +3425,24 @@ body.dark-mode .sticky-cta{background:#1b2635;}
   box-shadow:0 22px 54px rgba(15,29,44,.22);
 }
 .cl-photo::before{
-  content:'';position:absolute;inset:-7%;
-  background:url('img/hero-code.jpg?v=202608181158') center/cover no-repeat;
-  filter:blur(7px) saturate(.85);
-  transform:scale(1.06);
+  content:'';position:absolute;inset:0;
+  background:url('img/roberto-lweb.jpg') center top/cover no-repeat;
 }
+/* Nur unten abdunkeln — die Bildmitte bleibt frei. */
 .cl-photo::after{
   content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 50% 46%,rgba(8,14,22,.88) 0%,rgba(8,14,22,.66) 46%,rgba(8,14,22,.48) 100%),
-    linear-gradient(180deg,rgba(8,14,22,.38),rgba(8,14,22,.62));
+  background:linear-gradient(180deg,
+    rgba(4,9,15,0) 34%,
+    rgba(4,9,15,.42) 58%,
+    rgba(4,9,15,.82) 82%,
+    rgba(4,9,15,.92) 100%);
 }
 /* auf dem Foto steht der Text immer hell */
-.cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 18px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.6);}
-.cl--photo .cl-text em{color:#ff3641;text-shadow:0 2px 18px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.65);}
-.cl--photo .cl-mark{color:#ff3641;filter:drop-shadow(0 3px 14px rgba(0,0,0,.7));}
+.cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.8);}
+.cl--photo .cl-text em{color:#ff3641;text-shadow:0 2px 14px rgba(0,0,0,.85);}
+.cl--photo .cl-mark{color:#ff3641;filter:drop-shadow(0 3px 12px rgba(0,0,0,.8));width:clamp(54px,5vw,68px);margin-bottom:-3px;}
 .cl--photo .cl-mark,.cl--photo .cl-text{position:relative;z-index:2;}
-.cl--photo .cl-glow{z-index:1;}
+.cl--photo .cl-glow{display:none;}
 
 /* weicher roter Schein dahinter */
 .cl-glow{
@@ -3511,17 +3520,21 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
 /* Handy/Tablet: Foto bleibt, aber kompakter.
    Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
 @media(max-width:992px){
-  .cl--photo{padding:38px 18px 42px;margin-top:6px;}
+  /* Zeichen links, Schriftzug daneben — alles in einer Zeile unten */
+  .cl--photo{
+    aspect-ratio:16/10;padding:0 18px 16px;margin-top:6px;
+    flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
+  }
   .cl-photo{border-radius:20px;}
-  /* Auf dem Handy ist die Karte schmal: Bildausschnitt auf den
-     Bildschirm ziehen, sonst sieht man nur die dunkle Wand rechts. */
-  .cl-photo::before{background-position:34% center;}
+  .cl--photo .cl-mark{width:56px;margin-bottom:-2px;}
+  .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:7px;text-align:left;}
+  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
 }
 @media(max-width:560px){
-  .cl--photo{padding:32px 14px 36px;gap:12px;}
+  .cl--photo{aspect-ratio:16/10;padding:0 14px 13px;gap:8px;}
   .cl-photo{border-radius:18px;}
-  .cl--photo .cl-mark{width:74px;}
-  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(19px,5.8vw,25px);}
+  .cl--photo .cl-mark{width:44px;}
+  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
 }
 @media(prefers-reduced-motion:reduce){
   .cl-glow,.cl-br,.cl-slash{animation:none;}
