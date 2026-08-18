@@ -29,8 +29,8 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181036">
-    <script src="js/translations.js?v=202608181036"></script>
+    <link rel="stylesheet" href="css/style.css?v=202608171344">
+    <script src="js/translations.js?v=202608171344"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
         .about-content h2 { font-size: clamp(32px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.03em; }
@@ -78,11 +78,11 @@
         .tw-label {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #fe6c75; margin-bottom: 18px;
+            text-transform: uppercase; color: #e30613; margin-bottom: 18px;
         }
         .tw-label::before {
             content:''; width:7px; height:7px; border-radius:50%;
-            background:#fe6c75; animation:blink 1.5s infinite;
+            background:#e30613; animation:blink 1.5s infinite;
         }
         .tw-h2 {
             font-size: 44px; font-weight: 800; line-height: 1.15;
@@ -92,7 +92,7 @@
             font-size: 17px; line-height: 1.7; color: #6b7d99;
             max-width: 600px; margin-bottom: 48px;
         }
-        .tw-accent { color: #fe6c75; }
+        .tw-accent { color: #e30613; }
 
         /* ═══ HERO — centered + phone showcase ═══════════ */
         .tw-hero {
@@ -107,15 +107,15 @@
         }
         .tw-hero-badge {
             display:inline-flex; align-items:center; gap:8px;
-            background:rgba(254,108,117,0.08); border:1px solid rgba(254,108,117,0.18);
+            background:rgba(227, 6, 19,0.08); border:1px solid rgba(227, 6, 19,0.18);
             border-radius:600px; padding:6px 16px; font-size:12px;
-            font-weight:700; color:#fe6c75; letter-spacing:0.05em;
+            font-weight:700; color:#e30613; letter-spacing:0.05em;
             text-transform:uppercase; margin-bottom:24px;
             animation:fadeUp 0.6s ease both;
         }
         .tw-hero-badge .blink {
             width:6px; height:6px; border-radius:50%;
-            background:#fe6c75; animation:blink 1.5s infinite; display:inline-block;
+            background:#e30613; animation:blink 1.5s infinite; display:inline-block;
         }
         .tw-hero-h1 {
             font-size:56px; font-weight:800; line-height:1.08;
@@ -134,7 +134,7 @@
         }
         .tw-hero-pill {
             display:inline-flex; align-items:center; gap:6px;
-            background:rgba(254,108,117,0.06); border:1px solid rgba(254,108,117,0.12);
+            background:rgba(227, 6, 19,0.06); border:1px solid rgba(227, 6, 19,0.12);
             border-radius:600px; padding:6px 14px; font-size:13px;
             font-weight:600; color:#3f4960;
         }
@@ -181,13 +181,13 @@
         /* ═══ BUTTONS ═══════════════════════════════════════ */
         .tw-btn-red {
             display:inline-flex; align-items:center; gap:8px;
-            background:#fe6c75; color:#fff; border:none;
+            background:#e30613; color:#fff; border:none;
             border-radius:600px; padding:14px 28px;
             font-size:15px; font-weight:700; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
-            box-shadow:0 4px 16px rgba(254,108,117,0.35);
+            box-shadow:0 4px 16px rgba(227, 6, 19,0.35);
         }
-        .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.45); }
+        .tw-btn-red:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(227, 6, 19,0.45); }
         .tw-btn-ghost {
             display:inline-flex; align-items:center; gap:8px;
             background:transparent; color:#3f4960;
@@ -196,7 +196,7 @@
             font-size:15px; font-weight:600; cursor:pointer;
             text-decoration:none; transition:all 0.25s ease;
         }
-        .tw-btn-ghost:hover { border-color:#fe6c75; color:#fe6c75; transform:translateY(-2px); }
+        .tw-btn-ghost:hover { border-color:#e30613; color:#e30613; transform:translateY(-2px); }
 
         /* ═══ MARQUEE ═══════════════════════════════════════ */
         .tw-marquee-wrap {
@@ -220,7 +220,7 @@
         }
         .tw-marquee-item::before {
             content:''; width:6px; height:6px; border-radius:50%;
-            background:#fe6c75; flex-shrink:0;
+            background:#e30613; flex-shrink:0;
         }
 
         /* ═══ HOW IT WORKS — card layout (goodbarber style) ═════ */
@@ -330,7 +330,7 @@
         }
         .tw-tpl-card:hover .tw-tpl-icon-wrap { transform:scale(1.1) translateY(-8px); }
         .tw-tpl-icon-wrap svg { width:32px; height:32px; color:#fff; }
-        .tw-tpl-icon-wrap--red { background:linear-gradient(135deg,#fe6c75,#e1545d); box-shadow:0 8px 24px rgba(254,108,117,0.3); }
+        .tw-tpl-icon-wrap--red { background:linear-gradient(135deg,#e30613,#b8050f); box-shadow:0 8px 24px rgba(227, 6, 19,0.3); }
         .tw-tpl-icon-wrap--blue { background:linear-gradient(135deg,#15a0da,#0089c2); box-shadow:0 8px 24px rgba(21,160,218,0.3); }
         .tw-tpl-icon-wrap--green { background:linear-gradient(135deg,#4dd35b,#2fb83e); box-shadow:0 8px 24px rgba(77,211,91,0.3); }
         .tw-tpl-icon-wrap--orange { background:linear-gradient(135deg,#ffb421,#e09a0e); box-shadow:0 8px 24px rgba(255,180,33,0.3); }
@@ -340,9 +340,9 @@
         .tw-tpl-badge-num {
             position:absolute; top:8px; right:8px;
             width:24px; height:24px; border-radius:50%;
-            background:#fe6c75; color:#fff; font-size:11px; font-weight:800;
+            background:#e30613; color:#fff; font-size:11px; font-weight:800;
             display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 8px rgba(254,108,117,0.3);
+            box-shadow:0 4px 8px rgba(227, 6, 19,0.3);
         }
         .tw-tpl-info { padding:20px 24px; position:relative; z-index:1; }
         .tw-tpl-info h3 { font-size:18px; font-weight:800; color:#0f1d2c; margin:0 0 6px; }
@@ -350,7 +350,7 @@
         .tw-tpl-tags { display:flex; gap:6px; flex-wrap:wrap; }
         .tw-tpl-tag {
             display:inline-flex; align-items:center; gap:4px;
-            background:rgba(254,108,117,0.08); color:#fe6c75;
+            background:rgba(227, 6, 19,0.08); color:#e30613;
             font-size:11px; font-weight:700; padding:4px 10px;
             border-radius:600px; transition:all 0.2s ease;
         }
@@ -358,7 +358,7 @@
 
         /* ═══ STATS BAR ════════════════════════════════════ */
         .tw-stats {
-            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            background:linear-gradient(135deg,#e30613 0%,#b8050f 100%);
             padding:40px 24px; display:flex; justify-content:center; gap:80px;
             position:relative; overflow:hidden;
         }
@@ -431,8 +431,8 @@
         .tw-extra-card h4 { font-size:17px; font-weight:800; color:#0f1d2c; margin:0 0 8px; }
         .tw-extra-card p { font-size:14px; color:#6b7d99; margin:0 0 16px; line-height:1.6; }
         .tw-extra-price {
-            display:inline-block; font-size:18px; font-weight:800; color:#fe6c75;
-            background:rgba(254,108,117,0.08); padding:6px 16px; border-radius:600px;
+            display:inline-block; font-size:18px; font-weight:800; color:#e30613;
+            background:rgba(227, 6, 19,0.08); padding:6px 16px; border-radius:600px;
         }
 
         /* ═══ EDITOR SHOWCASE — demo section ════════════════ */
@@ -451,7 +451,7 @@
         .tw-editor-visual img { width:100%; display:block; }
         .tw-editor-badge-demo {
             position:absolute; top:16px; right:16px;
-            background:rgba(254,108,117,0.92); width:36px; height:36px;
+            background:rgba(227, 6, 19,0.92); width:36px; height:36px;
             border-radius:50%; display:flex; align-items:center; justify-content:center;
             box-shadow:0 4px 12px rgba(0,0,0,0.2); animation:tw-badge-pulse 2.5s ease infinite;
         }
@@ -463,7 +463,7 @@
         }
         .tw-editor-content h3 {
             font-size:14px; font-weight:700; text-transform:uppercase;
-            letter-spacing:0.08em; color:#fe6c75; margin:0 0 16px;
+            letter-spacing:0.08em; color:#e30613; margin:0 0 16px;
         }
         .tw-editor-content h2 {
             font-size:36px; font-weight:800; color:#0f1d2c; line-height:1.2; margin:0 0 20px;
@@ -487,8 +487,8 @@
             display:flex; align-items:center; justify-content:center;
         }
         .tw-editor-feat-icon svg { width:20px; height:20px; stroke-width:2; fill:none; }
-        .tw-editor-feat-icon--red { background:rgba(254,108,117,0.1); }
-        .tw-editor-feat-icon--red svg { stroke:#fe6c75; }
+        .tw-editor-feat-icon--red { background:rgba(227, 6, 19,0.1); }
+        .tw-editor-feat-icon--red svg { stroke:#e30613; }
         .tw-editor-feat-icon--blue { background:rgba(21,160,218,0.1); }
         .tw-editor-feat-icon--blue svg { stroke:#15a0da; }
         .tw-editor-feat-icon--green { background:rgba(77,211,91,0.1); }
@@ -502,11 +502,11 @@
         .tw-editor-try {
             display:inline-flex; align-items:center; gap:10px;
             padding:14px 28px; border-radius:12px;
-            background:linear-gradient(135deg,#fe6c75,#e1545d);
+            background:linear-gradient(135deg,#e30613,#b8050f);
             color:#fff; font-size:15px; font-weight:700; text-decoration:none;
-            transition:all 0.3s; box-shadow:0 4px 16px rgba(254,108,117,0.3);
+            transition:all 0.3s; box-shadow:0 4px 16px rgba(227, 6, 19,0.3);
         }
-        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(254,108,117,0.4); }
+        .tw-editor-try:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(227, 6, 19,0.4); }
         .tw-editor-try svg { width:18px; height:18px; }
         .tw-editor-try--blue { background:linear-gradient(135deg,#93c5fd,#60a5fa); box-shadow:0 4px 16px rgba(147,197,253,0.4); color:#1e3a5f; }
         .tw-editor-try--blue:hover { box-shadow:0 8px 24px rgba(147,197,253,0.5); }
@@ -529,7 +529,7 @@
 
         /* ═══ ADVANTAGE — red gradient ════════════════════ */
         .tw-advantage {
-            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            background:linear-gradient(135deg,#e30613 0%,#b8050f 100%);
             padding:64px; border-radius:24px; margin:0 auto; max-width:900px;
             color:#fff; text-align:center; position:relative; overflow:hidden;
         }
@@ -573,7 +573,7 @@
         body.dark-mode .tw-hero-h1 { color:#f1f5f9; }
         body.dark-mode .tw-hero-sub { color:#94a3b8; }
         body.dark-mode .tw-hero-pill { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); color:#c8d5e3; }
-        body.dark-mode .tw-hero-badge { background:rgba(254,108,117,0.15); border-color:rgba(254,108,117,0.3); }
+        body.dark-mode .tw-hero-badge { background:rgba(227, 6, 19,0.15); border-color:rgba(227, 6, 19,0.3); }
         body.dark-mode .tw-phone-mock { box-shadow:0 25px 60px rgba(0,0,0,0.45); }
         body.dark-mode .tw-phone-inner { background:#1e2536; }
         body.dark-mode .tw-phone-label { color:#8a9bb3; }
@@ -593,7 +593,7 @@
         body.dark-mode .tw-tpl-card:hover .tw-tpl-inner { background:rgba(35,42,60,0.95); }
         body.dark-mode .tw-tpl-info h3 { color:#f1f5f9; }
         body.dark-mode .tw-tpl-info p { color:#8a9bb3; }
-        body.dark-mode .tw-tpl-tag { background:rgba(254,108,117,0.15); }
+        body.dark-mode .tw-tpl-tag { background:rgba(227, 6, 19,0.15); }
         body.dark-mode .tw-h2 { color:#f1f5f9; }
         body.dark-mode .tw-sub { color:#94a3b8; }
         body.dark-mode .tw-inc-section { background:#1a1f2e; }
@@ -605,7 +605,7 @@
         body.dark-mode .tw-extra-card h4 { color:#f1f5f9; }
         body.dark-mode .tw-extra-card p { color:#94a3b8; }
         body.dark-mode .tw-btn-ghost { color:#c8d5e3; border-color:rgba(255,255,255,0.15); }
-        body.dark-mode .tw-btn-ghost:hover { color:#fe6c75; border-color:#fe6c75; }
+        body.dark-mode .tw-btn-ghost:hover { color:#e30613; border-color:#e30613; }
 
         /* ═══ RESPONSIVE ═══════════════════════════════════ */
         @media (max-width:1024px) {
@@ -663,7 +663,7 @@
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
-        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #fe6c75; }
+        .header-title .accent { display: block; font-size: 11px; font-weight: 700; color: #e30613; }
         .header.past-hero .header-title, .header.menu-open .header-title { opacity: 1; }
         .header.past-hero .header-nav { opacity: 0; pointer-events: none; }
         .header .header-nav { transition: opacity 0.3s ease; }
@@ -755,7 +755,7 @@
     <div class="container">
         <div class="about-inner">
             <div class="about-content">
-                <h2>Roberto Salvador<br><span id="aboutSubline">Ihr <span style="color:var(--begonia400,#fe6c75)">Partner</span> vor Ort</span></h2>
+                <h2>Roberto Salvador<br><span id="aboutSubline">Ihr <span style="color:var(--begonia400,#e30613)">Partner</span> vor Ort</span></h2>
                 <p data-i18n="about.desc">Seit über 5 Jahren entwickle ich Apps und Websites für Unternehmen in Buchs SG, im Rheintal, Kanton St. Gallen und Liechtenstein. Direkt vom Entwickler — ohne teure Agentur dazwischen. Persönlich, unkompliziert und zu fairen Preisen.</p>
                 <div class="about-points">
                     <div class="about-point">
@@ -834,16 +834,16 @@
 <!-- ═════════════════ BLOG PREVIEW ═════════════════ -->
 <style>
 @keyframes um-blog-icon-bounce { 0%,100%{transform:translateY(0) rotate(-4deg)} 50%{transform:translateY(-5px) rotate(4deg)} }
-.um-blog-icon { display:inline-flex; align-items:center; color:#fe6c75; margin-right:4px; vertical-align:middle; animation: um-blog-icon-bounce 2.4s ease-in-out infinite; }
+.um-blog-icon { display:inline-flex; align-items:center; color:#e30613; margin-right:4px; vertical-align:middle; animation: um-blog-icon-bounce 2.4s ease-in-out infinite; }
 .um-blog { padding: 80px 0 100px; background: #f8fafc; }
 body.dark-mode .um-blog { background: #0d1a2a; }
 .um-blog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 .um-blog-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px; }
 .um-blog-head h2 { font-size:clamp(22px,3vw,30px); font-weight:800; color:#0f1d2c; letter-spacing:-.02em; margin:0; }
 body.dark-mode .um-blog-head h2 { color:#f0f6ff; }
-.um-blog-head h2 em { font-style:normal; color:#fe6c75; }
-.um-blog-all { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:#fe6c75; text-decoration:none; border:1.5px solid rgba(254,108,117,.3); border-radius:50px; padding:8px 18px; transition:background .18s,color .18s; }
-.um-blog-all:hover { background:#fe6c75; color:#fff; }
+.um-blog-head h2 em { font-style:normal; color:#e30613; }
+.um-blog-all { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:#e30613; text-decoration:none; border:1.5px solid rgba(227, 6, 19,.3); border-radius:50px; padding:8px 18px; transition:background .18s,color .18s; }
+.um-blog-all:hover { background:#e30613; color:#fff; }
 .um-blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 @media(max-width:900px){ .um-blog-grid { grid-template-columns:repeat(2,1fr); } }
 @media(max-width:580px){ .um-blog-grid { grid-template-columns:1fr; } }
@@ -855,7 +855,7 @@ body.dark-mode .um-blog-card { background:#1a2840; border-color:rgba(255,255,255
 .um-blog-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; border-radius:50px; padding:3px 10px; margin-bottom:10px; }
 .um-blog-badge--webdev { background:rgba(59,130,246,.1); color:#3b82f6; }
 .um-blog-badge--mobile { background:rgba(16,185,129,.1); color:#10b981; }
-.um-blog-badge--ki { background:rgba(254,108,117,.1); color:#fe6c75; }
+.um-blog-badge--ki { background:rgba(227, 6, 19,.1); color:#e30613; }
 .um-blog-badge--ecommerce { background:rgba(234,179,8,.12); color:#ca8a04; }
 .um-blog-card-title { font-size:15px; font-weight:700; line-height:1.4; color:#0f1d2c; margin-bottom:8px; }
 body.dark-mode .um-blog-card-title { color:#f0f6ff; }
@@ -1028,11 +1028,11 @@ function closeMobileMenu(){
 
     // Hero subline translation
     var sublines = {
-        de: 'Ihr <span style="color:var(--begonia400,#fe6c75)">Partner</span> vor Ort',
-        en: 'Your <span style="color:var(--begonia400,#fe6c75)">Partner</span> on site',
-        es: 'Tu <span style="color:var(--begonia400,#fe6c75)">socio</span> local',
-        fr: 'Votre <span style="color:var(--begonia400,#fe6c75)">partenaire</span> sur place',
-        it: 'Il tuo <span style="color:var(--begonia400,#fe6c75)">partner</span> locale'
+        de: 'Ihr <span style="color:var(--begonia400,#e30613)">Partner</span> vor Ort',
+        en: 'Your <span style="color:var(--begonia400,#e30613)">Partner</span> on site',
+        es: 'Tu <span style="color:var(--begonia400,#e30613)">socio</span> local',
+        fr: 'Votre <span style="color:var(--begonia400,#e30613)">partenaire</span> sur place',
+        it: 'Il tuo <span style="color:var(--begonia400,#e30613)">partner</span> locale'
     };
     var subEl = document.getElementById('aboutSubline');
     if (subEl && sublines[lang]) subEl.innerHTML = sublines[lang];

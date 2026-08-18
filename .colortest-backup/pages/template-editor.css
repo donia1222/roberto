@@ -6,16 +6,16 @@
 .te-toggle {
     position:fixed; bottom:56px; right:24px; z-index:9999;
     height:48px; border-radius:24px;
-    background:linear-gradient(135deg,#fe6c75,#e1545d);
+    background:linear-gradient(135deg,#e30613,#b8050f);
     color:#fff; border:none; cursor:pointer;
     display:flex; align-items:center; justify-content:center; gap:8px;
-    box-shadow:0 4px 20px rgba(254,108,117,0.4);
+    box-shadow:0 4px 20px rgba(227, 6, 19,0.4);
     transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
     font-family:'Inter','Plus Jakarta Sans','Outfit',sans-serif;
     font-size: 14px; font-weight:600; letter-spacing:0.02em;
     padding:0 20px 0 16px;
 }
-.te-toggle:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(254,108,117,0.45); }
+.te-toggle:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(227, 6, 19,0.45); }
 .te-toggle.te-active {
     background:linear-gradient(135deg,#4dd35b,#2fb83e);
     box-shadow:0 4px 20px rgba(77,211,91,0.4);
@@ -31,17 +31,17 @@ body.te-editing a[data-edit] {
     display:inline-block;
     padding:4px 8px;
     border-radius:6px;
-    background:rgba(254,108,117,0.08);
+    background:rgba(227, 6, 19,0.08);
     transition:background 0.2s;
 }
 body.te-editing a[data-edit]:hover {
-    background:rgba(254,108,117,0.18);
+    background:rgba(227, 6, 19,0.18);
 }
 /* Edit badge — injected via JS to avoid ::after conflicts */
 .te-badge {
     position:absolute; top:6px; right:6px; z-index:9990;
     width:32px; height:32px; border-radius:50%;
-    background:rgba(254,108,117,0.92);
+    background:rgba(227, 6, 19,0.92);
     display:flex; align-items:center; justify-content:center;
     pointer-events:none;
     opacity:0; transition:opacity 0.2s;
@@ -120,7 +120,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     font-family:inherit; line-height:1.6;
     transition:border-color 0.2s;
 }
-.te-textarea:focus { outline:none; border-color:#fe6c75; box-shadow:0 0 0 3px rgba(254,108,117,0.1); }
+.te-textarea:focus { outline:none; border-color:#e30613; box-shadow:0 0 0 3px rgba(227, 6, 19,0.1); }
 
 .te-input {
     width:100%; padding:10px 14px;
@@ -128,7 +128,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     font-size: 14px; color:#0f1d2c;
     font-family:inherit; transition:border-color 0.2s;
 }
-.te-input:focus { outline:none; border-color:#fe6c75; box-shadow:0 0 0 3px rgba(254,108,117,0.1); }
+.te-input:focus { outline:none; border-color:#e30613; box-shadow:0 0 0 3px rgba(227, 6, 19,0.1); }
 
 /* Color picker */
 .te-color-row {
@@ -145,7 +145,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     border-radius:10px; font-size: 13px; font-family:'SF Mono',monospace;
     color:#0f1d2c;
 }
-.te-color-hex:focus { outline:none; border-color:#fe6c75; }
+.te-color-hex:focus { outline:none; border-color:#e30613; }
 
 /* Font selector */
 .te-select {
@@ -157,7 +157,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     background-repeat:no-repeat; background-position:right 14px center;
     padding-right:36px;
 }
-.te-select:focus { outline:none; border-color:#fe6c75; }
+.te-select:focus { outline:none; border-color:#e30613; }
 
 /* Size slider */
 .te-size-row {
@@ -169,8 +169,8 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
 }
 .te-range::-webkit-slider-thumb {
     -webkit-appearance:none; width:20px; height:20px;
-    border-radius:50%; background:#fe6c75; cursor:pointer;
-    box-shadow:0 2px 8px rgba(254,108,117,0.3);
+    border-radius:50%; background:#e30613; cursor:pointer;
+    box-shadow:0 2px 8px rgba(227, 6, 19,0.3);
 }
 .te-size-val {
     min-width:48px; text-align:center; font-size: 13px;
@@ -194,7 +194,7 @@ body.te-editing [data-edit="image"]:hover > .te-badge { opacity:1; }
     display:flex; align-items:center; justify-content:center; gap:8px;
     transition:all 0.2s;
 }
-.te-upload-btn:hover { border-color:#fe6c75; color:#fe6c75; background:#fff5f5; }
+.te-upload-btn:hover { border-color:#e30613; color:#e30613; background:#fff5f5; }
 .te-upload-input { display:none; }
 
 /* ── Action Buttons ───────────────────────────────── */

@@ -29,8 +29,8 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181036">
-    <script src="js/translations.js?v=202608181036"></script>
+    <link rel="stylesheet" href="css/style.css?v=202608171344">
+    <script src="js/translations.js?v=202608171344"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #ffffff; }
         body.dark-mode { background: #0a1520; }
@@ -48,20 +48,20 @@
         .t-label {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #fe6c75; margin-bottom: 14px;
+            text-transform: uppercase; color: #e30613; margin-bottom: 14px;
         }
-        .t-label::before { content:''; width:24px; height:2px; background:#fe6c75; border-radius:2px; display:block; }
+        .t-label::before { content:''; width:24px; height:2px; background:#e30613; border-radius:2px; display:block; }
         .t-h2 {
             font-size: clamp(30px, 4vw, 50px); font-weight: 800;
             line-height: 1.08; letter-spacing: -0.025em; color: inherit; margin-bottom: 16px;
         }
         .t-sub { font-size: 18px; line-height: 1.7; color: #6b7d99; max-width: 600px; }
         .t-dark .t-sub { color: rgba(255,255,255,0.55); }
-        .t-dark .t-label { color: #fe6c75; }
-        .accent { color: #fe6c75; }
+        .t-dark .t-label { color: #e30613; }
+        .accent { color: #e30613; }
 
         /* Header style */
-        .header .header-nav-item:hover { background: rgba(254,108,117,0.12); }
+        .header .header-nav-item:hover { background: rgba(227, 6, 19,0.12); }
         .header .header-nav-item.active { background: rgba(180,210,240,0.15); }
         .header-back-desktop { display:flex !important; background:#cce8f7 !important; color:#1a85b0 !important; }
         .header-back-desktop svg { transition: transform 0.2s ease; }
@@ -75,7 +75,7 @@
         .header-title span:first-child { display: block; font-size: 14px; font-weight: 700; color: #0f1d2c; }
         .header-title .accent { display: block; font-size: 12px; font-weight: 700; }
         @media (min-width:1025px) {
-        .header .header-burger { background: #fe6c75; }
+        .header .header-burger { background: #e30613; }
         .header .header-burger span { background: #fff; }
         .header-logo-group { display: flex; align-items: center; gap: 26px; }
         .header-logo-countries { display: none; }
@@ -91,7 +91,7 @@
         }
         .header-float-icon {
             opacity: 0.35;
-            color: #fe6c75;
+            color: #e30613;
             animation: float 4s ease-in-out infinite;
             pointer-events: none;
             flex-shrink: 0;
@@ -123,13 +123,13 @@
         /* BUTTONS */
         .t-btn-red {
             display: inline-flex; align-items: center; gap: 8px;
-            background: #fe6c75; color: #fff; font-weight: 700; font-size: 16px;
+            background: #e30613; color: #fff; font-weight: 700; font-size: 16px;
             padding: 14px 28px; border-radius: 100px; text-decoration: none;
-            box-shadow: 0 6px 30px rgba(254,108,117,0.4);
+            box-shadow: 0 6px 30px rgba(227, 6, 19,0.4);
             transition: transform 0.2s, box-shadow 0.2s;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .t-btn-red:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(254,108,117,0.5); }
+        .t-btn-red:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(227, 6, 19,0.5); }
         .t-btn-ghost {
             display: inline-flex; align-items: center; gap: 8px;
             background: transparent; color: #0f1d2c; font-weight: 600; font-size: 16px;
@@ -163,12 +163,12 @@
         
         .t-hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(254,108,117,0.12); border: 1px solid rgba(254,108,117,0.3);
-            color: #fe6c75; font-size: 12px; font-weight: 700;
+            background: rgba(227, 6, 19,0.12); border: 1px solid rgba(227, 6, 19,0.3);
+            color: #e30613; font-size: 12px; font-weight: 700;
             padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
             letter-spacing: 0.04em; animation: fadeUp 0.5s ease both;
         }
-        .t-hero-badge span { width:7px; height:7px; border-radius:50%; background:#fe6c75; animation:blink 1.5s infinite; flex-shrink:0; }
+        .t-hero-badge span { width:7px; height:7px; border-radius:50%; background:#e30613; animation:blink 1.5s infinite; flex-shrink:0; }
         .t-hero-h1 {
             font-size: clamp(40px, 5.5vw, 72px); font-weight: 800;
             line-height: 1.04; color: #0f1d2c; letter-spacing: -0.03em;
@@ -186,7 +186,7 @@
         }
         .t-hero-h1 .t-letter:hover {
             transform: translateY(-6px) scale(1.1);
-            color: #fe6c75;
+            color: #e30613;
         }
         .t-hero-h1 .accent .t-letter:hover {
             color: #0f1d2c;
@@ -223,7 +223,7 @@
         }
         .t-store-logo { font-weight:800; font-size:12px; color:#0f1d2c; letter-spacing:-0.02em; }
         .t-store-nav { display:flex; gap:10px; font-size:9px; color:#8a9bb3; font-weight:600; }
-        .t-store-cart { background:#fe6c75; color:#fff; border-radius:20px; padding:3px 9px; font-size:9px; font-weight:800; }
+        .t-store-cart { background:#e30613; color:#fff; border-radius:20px; padding:3px 9px; font-size:9px; font-weight:800; }
         .t-store-products {
             display:grid; grid-template-columns:repeat(2,1fr);
             gap:8px; padding:10px; background:#f5f7fb;
@@ -232,7 +232,7 @@
         .t-mini-thumb { height:76px; display:flex; align-items:center; justify-content:center; font-size:24px; position:relative; }
         .t-mini-info { padding:7px 9px 9px; }
         .t-mini-name { font-size:8px; font-weight:700; color:#0f1d2c; margin-bottom:2px; }
-        .t-mini-price { font-size:10px; font-weight:800; color:#fe6c75; margin-bottom:5px; }
+        .t-mini-price { font-size:10px; font-weight:800; color:#e30613; margin-bottom:5px; }
         .t-mini-btn { background:#0f1d2c; color:#fff; border-radius:4px; padding:3px 7px; font-size:7px; font-weight:700; display:inline-block; }
         /* FLOATING CHIPS */
         .t-chip {
@@ -245,7 +245,7 @@
         .t-chip-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 
         /* ===================== STATS ===================== */
-        .t-stats { background:#fe6c75; padding:32px 24px; }
+        .t-stats { background:#e30613; padding:32px 24px; }
         .t-stats-inner {
             max-width:1140px; margin:0 auto;
             display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
@@ -268,7 +268,7 @@
             box-shadow:0 2px 8px rgba(0,0,0,0.04);
             transition:transform 0.2s, border-color 0.2s;
         }
-        .t-tech-pill:hover { transform:translateY(-2px); border-color:#fe6c75; }
+        .t-tech-pill:hover { transform:translateY(-2px); border-color:#e30613; }
         .t-tech-pill-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
         /* CODE WINDOW */
         .t-code-window {
@@ -287,7 +287,7 @@
         .t-code-filename { font-size:11px; color:rgba(255,255,255,0.35); font-family:monospace; }
         .t-code-body { padding:24px 28px; font-family:'Courier New',monospace; }
         .t-code-line { font-size:12px; line-height:2; display:block; }
-        .c-red { color:#fe6c75; } .c-blue { color:#74c0fc; } .c-green { color:#4dd35b; }
+        .c-red { color:#e30613; } .c-blue { color:#74c0fc; } .c-green { color:#4dd35b; }
         .c-yellow { color:#ffb421; } .c-dim { color:rgba(255,255,255,0.35); } .c-white { color:rgba(255,255,255,0.8); }
 
         /* ===================== CLIENT FEATURES ===================== */
@@ -314,7 +314,7 @@
             display:flex; align-items:center; justify-content:space-between;
         }
         .t-phone-header-logo { color:#fff; font-weight:800; font-size:11px; }
-        .t-phone-header-cart { background:#fe6c75; color:#fff; border-radius:20px; padding:2px 8px; font-size:9px; font-weight:800; }
+        .t-phone-header-cart { background:#e30613; color:#fff; border-radius:20px; padding:2px 8px; font-size:9px; font-weight:800; }
         .t-phone-products {
             padding:8px; display:grid; grid-template-columns:repeat(2,1fr);
             gap:6px; background:#f5f7fb;
@@ -323,11 +323,11 @@
         .t-phone-pthumb { height:62px; }
         .t-phone-pinfo { padding:5px 6px 7px; }
         .t-phone-pname { font-size:7px; font-weight:700; color:#0f1d2c; margin-bottom:1px; }
-        .t-phone-pprice { font-size:9px; font-weight:800; color:#fe6c75; margin-bottom:4px; }
+        .t-phone-pprice { font-size:9px; font-weight:800; color:#e30613; margin-bottom:4px; }
         .t-phone-pbtn { background:#0f1d2c; color:#fff; border-radius:4px; padding:2px 6px; font-size:7px; font-weight:700; display:inline-block; }
         .t-phone-bubble {
-            position:absolute; background:#fe6c75; border-radius:12px; padding:8px 12px;
-            box-shadow:0 8px 24px rgba(254,108,117,0.35); font-size:11px; font-weight:700; color:#fff;
+            position:absolute; background:#e30613; border-radius:12px; padding:8px 12px;
+            box-shadow:0 8px 24px rgba(227, 6, 19,0.35); font-size:11px; font-weight:700; color:#fff;
             display:flex; align-items:center; gap:6px; white-space:nowrap;
             animation:float 4s ease-in-out infinite;
         }
@@ -341,7 +341,7 @@
             border-radius:14px; padding:16px 18px;
             transition:background 0.2s, border-color 0.2s;
         }
-        .t-feat-row:hover { background:rgba(255,255,255,0.07); border-color:rgba(254,108,117,0.3); }
+        .t-feat-row:hover { background:rgba(255,255,255,0.07); border-color:rgba(227, 6, 19,0.3); }
         .t-feat-check {
             width:34px; height:34px; flex-shrink:0;
             background:rgba(77,211,91,0.15); border-radius:50%;
@@ -380,17 +380,17 @@
         .bp-home { background:#fff; padding:10px; }
         .bp-home-hero { background:linear-gradient(135deg,#0a1520,#1a2f45); border-radius:8px; height:50px; display:flex; align-items:center; padding:10px 12px; margin-bottom:8px; }
         .bp-home-logo { color:#fff; font-size:10px; font-weight:800; }
-        .bp-home-badge { background:#fe6c75; color:#fff; font-size:8px; font-weight:700; padding:2px 8px; border-radius:20px; margin-left:auto; }
+        .bp-home-badge { background:#e30613; color:#fff; font-size:8px; font-weight:700; padding:2px 8px; border-radius:20px; margin-left:auto; }
         .bp-products { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; }
         .bp-product { border-radius:5px; overflow:hidden; }
         .bp-product-img { height:36px; }
         .bp-product-name { font-size:7px; font-weight:600; color:#0f1d2c; padding:3px 4px 0; }
-        .bp-product-price { font-size:7px; font-weight:800; color:#fe6c75; padding:0 4px 3px; }
+        .bp-product-price { font-size:7px; font-weight:800; color:#e30613; padding:0 4px 3px; }
         /* SHOP preview */
         .bp-shop { background:#f5f7fb; padding:10px; display:flex; gap:8px; }
         .bp-shop-sidebar { width:56px; background:#fff; border-radius:7px; padding:8px; flex-shrink:0; }
         .bp-shop-filter { height:6px; background:#e8eef5; border-radius:3px; margin-bottom:5px; }
-        .bp-shop-filter.active { background:#fe6c75; }
+        .bp-shop-filter.active { background:#e30613; }
         .bp-shop-grid { flex:1; display:grid; grid-template-columns:repeat(2,1fr); gap:5px; }
         .bp-shop-item { background:#fff; border-radius:7px; height:52px; }
         /* BLOG preview */
@@ -401,7 +401,7 @@
         .bp-article-body { height:5px; background:#e8eef5; border-radius:3px; margin-bottom:4px; }
         .bp-article-body.s { width:60%; }
         .bp-article-meta { display:flex; gap:6px; }
-        .bp-article-tag { height:10px; width:30px; background:#fe6c75; border-radius:3px; opacity:0.6; }
+        .bp-article-tag { height:10px; width:30px; background:#e30613; border-radius:3px; opacity:0.6; }
         /* GALLERY preview */
         .bp-gallery { background:#0f1d2c; padding:10px; display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
         .bp-gitem { border-radius:5px; overflow:hidden; }
@@ -416,7 +416,7 @@
         .bp-contact { background:#f5f7fb; padding:10px; }
         .bp-field { height:16px; background:#fff; border-radius:5px; margin-bottom:5px; border:1px solid #e8eef5; }
         .bp-field.tall { height:32px; }
-        .bp-contact-btn { background:#fe6c75; color:#fff; font-size:8px; font-weight:800; border-radius:4px; padding:4px 10px; display:inline-block; margin-top:2px; }
+        .bp-contact-btn { background:#e30613; color:#fff; font-size:8px; font-weight:800; border-radius:4px; padding:4px 10px; display:inline-block; margin-top:2px; }
 
         /* ===================== ADMIN ===================== */
         .t-admin-split {
@@ -449,7 +449,7 @@
             display:flex; align-items:center; gap:5px; cursor:pointer;
             transition:color 0.15s, background 0.15s;
         }
-        .t-admin-nav.on { background:rgba(254,108,117,0.15); color:#fe6c75; border-left:2px solid #fe6c75; margin-left:-2px; }
+        .t-admin-nav.on { background:rgba(227, 6, 19,0.15); color:#e30613; border-left:2px solid #e30613; margin-left:-2px; }
         .t-admin-nav-dot { width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
         .t-admin-content { flex:1; overflow:hidden; height:100%; }
         .t-admin-scroll {
@@ -484,7 +484,7 @@
             background:#f8fafc; border:1px solid #e8eef5;
             border-left:3px solid transparent;
         }
-        .t-admin-list li:nth-child(1) { border-left-color:#fe6c75; }
+        .t-admin-list li:nth-child(1) { border-left-color:#e30613; }
         .t-admin-list li:nth-child(2) { border-left-color:#15a0da; }
         .t-admin-list li:nth-child(3) { border-left-color:#4dd35b; }
         .t-admin-list li:nth-child(4) { border-left-color:#ffb421; }
@@ -511,7 +511,7 @@
         .t-admin-bars { display:flex; align-items:flex-end; gap:4px; height:28px; }
         .t-admin-bar {
             flex:1; border-radius:2px 2px 0 0;
-            background:rgba(254,108,117,0.7);
+            background:rgba(227, 6, 19,0.7);
         }
         .t-admin-icon {
             width:54px; height:54px; flex-shrink:0; border-radius:16px;
@@ -655,7 +655,7 @@
 
         /* ===================== ADVANTAGE ===================== */
         .t-advantage {
-            background:linear-gradient(135deg,#fe6c75 0%,#e1545d 100%);
+            background:linear-gradient(135deg,#e30613 0%,#b8050f 100%);
             border-radius:24px; padding:64px 56px;
             color:#fff; text-align:center; margin-top:52px;
             position:relative; overflow:hidden;
@@ -707,7 +707,7 @@
         /* Extra icons — only visible on large desktop */
         .t-hbi:nth-child(n+13){display:none;}
         @media (min-width:1200px) {
-            .t-hbi:nth-child(13){display:block;top:20%;left:12%;width:52px;height:52px;color:#fe6c75;opacity:0.35;animation-duration:8s;animation-delay:0.3s;}
+            .t-hbi:nth-child(13){display:block;top:20%;left:12%;width:52px;height:52px;color:#e30613;opacity:0.35;animation-duration:8s;animation-delay:0.3s;}
             .t-hbi:nth-child(14){display:block;top:25%;left:55%;width:44px;height:44px;color:#ffb3ba;opacity:0.4;animation-duration:9s;animation-delay:2s;}
             .t-hbi:nth-child(15){display:block;top:18%;right:30%;width:48px;height:48px;color:#aed9f7;opacity:0.35;animation-duration:7s;animation-delay:3.5s;}
             .t-hbi:nth-child(16){display:block;bottom:20%;left:15%;width:46px;height:46px;color:#ffd4a8;opacity:0.4;animation-duration:10s;animation-delay:1s;}
@@ -736,12 +736,12 @@
         .t-marquee-item {
             display:inline-flex; align-items:center; gap:12px;
             white-space:nowrap; padding:0 32px;
-            font-size:15px; font-weight:700; color:#fe6c75;
+            font-size:15px; font-weight:700; color:#e30613;
             letter-spacing:0.02em; text-transform:uppercase;
         }
         .t-marquee-dot {
             width:6px; height:6px; border-radius:50%;
-            background:rgba(254,108,117,0.35); flex-shrink:0;
+            background:rgba(227, 6, 19,0.35); flex-shrink:0;
         }
 
         /* ===================== CODE WINDOW ANIMATION ===================== */
@@ -765,7 +765,7 @@
         .t-code-body.play .t-code-line:nth-child(15){animation:codeLine 0.28s ease forwards 2.5s}
         .t-code-body.play .t-code-line:nth-child(16){animation:codeLine 0.28s ease forwards 2.6s}
         /* Cursor blink on last visible line */
-        .t-code-cursor { display:inline-block; width:2px; height:14px; background:#fe6c75; margin-left:2px; vertical-align:middle; opacity:0; }
+        .t-code-cursor { display:inline-block; width:2px; height:14px; background:#e30613; margin-left:2px; vertical-align:middle; opacity:0; }
         .t-code-body.play .t-code-line:nth-child(16) .t-code-cursor { animation:blink 1s step-end infinite 2.85s, codeLine 0.28s ease 2.6s forwards; }
 
         /* ===================== PHONE SCREENS ===================== */
@@ -780,14 +780,14 @@
         .t-phone-scr { position:absolute; inset:0; opacity:0; transition:opacity 0.45s ease; pointer-events:none; padding:14px 12px; }
         .t-phone-scr.active { opacity:1; pointer-events:auto; }
         /* Login screen */
-        .tps-login-avatar { width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#fe6c75,#ffa8ad); margin:18px auto 10px; display:flex; align-items:center; justify-content:center; }
+        .tps-login-avatar { width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#e30613,#ffa8ad); margin:18px auto 10px; display:flex; align-items:center; justify-content:center; }
         .tps-login-avatar svg { width:24px; height:24px; stroke:#fff; fill:none; stroke-width:2; }
         .tps-login-title { text-align:center; font-size:11px; font-weight:800; color:#0f1d2c; margin-bottom:14px; }
         .tps-input { display:block; width:100%; background:#fff; border:1.5px solid #e0e6ed; border-radius:8px; padding:8px 10px; font-size:9px; color:#0f1d2c; margin-bottom:8px; box-sizing:border-box; }
-        .tps-input.focus { border-color:#fe6c75; box-shadow:0 0 0 3px rgba(254,108,117,0.12); }
-        .tps-btn { display:block; width:100%; background:#fe6c75; color:#fff; border:none; border-radius:8px; padding:9px; font-size:10px; font-weight:800; text-align:center; margin-top:4px; }
+        .tps-input.focus { border-color:#e30613; box-shadow:0 0 0 3px rgba(227, 6, 19,0.12); }
+        .tps-btn { display:block; width:100%; background:#e30613; color:#fff; border:none; border-radius:8px; padding:9px; font-size:10px; font-weight:800; text-align:center; margin-top:4px; }
         .tps-link { text-align:center; font-size:8px; color:#6b7d99; margin-top:8px; }
-        .tps-link b { color:#fe6c75; }
+        .tps-link b { color:#e30613; }
         /* Orders screen */
         .tps-order { background:#fff; border-radius:10px; padding:9px 10px; margin-bottom:6px; display:flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
         .tps-order-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -801,7 +801,7 @@
         .tps-pdf { background:#fff; border-radius:10px; padding:12px; margin:0 auto; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
         .tps-pdf-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; border-bottom:1.5px solid #f0f2f5; padding-bottom:8px; }
         .tps-pdf-logo { font-size:10px; font-weight:800; color:#0f1d2c; }
-        .tps-pdf-badge { background:#fe6c75; color:#fff; font-size:7px; font-weight:800; padding:2px 6px; border-radius:4px; }
+        .tps-pdf-badge { background:#e30613; color:#fff; font-size:7px; font-weight:800; padding:2px 6px; border-radius:4px; }
         .tps-pdf-row { display:flex; justify-content:space-between; font-size:8px; padding:3px 0; }
         .tps-pdf-row span:first-child { color:#6b7d99; }
         .tps-pdf-row span:last-child { color:#0f1d2c; font-weight:600; }
@@ -810,7 +810,7 @@
         /* Dark mode screen */
         .tps-dark-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; padding-top:20px; }
         .tps-toggle-track { width:52px; height:28px; border-radius:14px; background:#0f1d2c; position:relative; cursor:pointer; transition:background 0.3s; }
-        .tps-toggle-track.on { background:#fe6c75; }
+        .tps-toggle-track.on { background:#e30613; }
         .tps-toggle-knob { width:22px; height:22px; border-radius:50%; background:#fff; position:absolute; top:3px; left:3px; transition:transform 0.3s; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
         .tps-toggle-track.on .tps-toggle-knob { transform:translateX(24px); }
         .tps-dark-preview { width:100%; border-radius:10px; overflow:hidden; transition:background 0.4s; }
@@ -837,13 +837,13 @@
         .tps-vcard-name { font-size:11px; font-weight:800; color:#0f1d2c; }
         .tps-vcard-role { font-size:8px; color:#6b7d99; margin-bottom:10px; }
         .tps-vcard-row { display:flex; align-items:center; gap:6px; font-size:8px; color:#0f1d2c; margin-bottom:5px; justify-content:center; }
-        .tps-vcard-row svg { width:10px; height:10px; stroke:#fe6c75; fill:none; stroke-width:2; }
+        .tps-vcard-row svg { width:10px; height:10px; stroke:#e30613; fill:none; stroke-width:2; }
         .tps-vcard-dl { display:inline-block; background:#0f1d2c; color:#fff; border-radius:8px; padding:6px 16px; font-size:9px; font-weight:700; margin-top:10px; }
         /* Active feat row */
         .t-feat-row { cursor:pointer; }
-        .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
-        #to-feat .t-feat-row.active { background:rgba(254,108,117,0.08) !important; border-color:rgba(254,108,117,0.4) !important; }
-        .t-feat-row.active .t-feat-check { background:rgba(254,108,117,0.15); color:#fe6c75; }
+        .t-feat-row.active { background:rgba(227, 6, 19,0.08) !important; border-color:rgba(227, 6, 19,0.4) !important; }
+        #to-feat .t-feat-row.active { background:rgba(227, 6, 19,0.08) !important; border-color:rgba(227, 6, 19,0.4) !important; }
+        .t-feat-row.active .t-feat-check { background:rgba(227, 6, 19,0.15); color:#e30613; }
 
         /* ===================== STRUKTUR 3D INTERACTIVE CARDS ===================== */
         .ts-section-wrap { position:relative; overflow:hidden; background:#f0f4fa; padding:100px 0; }
@@ -892,12 +892,12 @@
         }
         .ts-card:hover .ts-card-inner {
             background:rgba(255,255,255,0.95);
-            box-shadow:0 20px 60px rgba(167,139,250,0.18), 0 0 40px rgba(254,108,117,0.08);
+            box-shadow:0 20px 60px rgba(167,139,250,0.18), 0 0 40px rgba(227, 6, 19,0.08);
         }
         /* Holographic shimmer */
         .ts-card-inner::after {
             content:''; position:absolute; inset:0; border-radius:18px;
-            background:linear-gradient(105deg,transparent 40%,rgba(167,139,250,0.06) 45%,rgba(254,108,117,0.08) 50%,rgba(56,189,248,0.06) 55%,transparent 60%);
+            background:linear-gradient(105deg,transparent 40%,rgba(167,139,250,0.06) 45%,rgba(227, 6, 19,0.08) 50%,rgba(56,189,248,0.06) 55%,transparent 60%);
             background-size:200% 200%; pointer-events:none;
             transition:background-position 0.3s;
         }
@@ -928,9 +928,9 @@
         /* Badge number */
         .ts-badge {
             position:absolute; top:-8px; right:-8px; width:28px; height:28px;
-            border-radius:50%; background:#fe6c75; color:#fff;
+            border-radius:50%; background:#e30613; color:#fff;
             font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center;
-            box-shadow:0 4px 12px rgba(254,108,117,0.3);
+            box-shadow:0 4px 12px rgba(227, 6, 19,0.3);
         }
         /* Text */
         .ts-card h3 {
@@ -950,11 +950,11 @@
         .ts-tag span {
             display:inline-block; padding:5px 14px; border-radius:20px;
             font-size:11px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
-            background:rgba(254,108,117,0.1); color:#fe6c75;
+            background:rgba(227, 6, 19,0.1); color:#e30613;
             transition:background 0.3s, transform 0.3s;
         }
         .ts-card:hover .ts-tag span {
-            background:rgba(254,108,117,0.18); transform:scale(1.05);
+            background:rgba(227, 6, 19,0.18); transform:scale(1.05);
         }
         /* Stagger delays */
         .ts-card:nth-child(1) { transition-delay:0.05s; }
@@ -973,12 +973,12 @@
         }
 
         /* ===================== KUNDENERLEBNIS LIGHT OVERRIDES ===================== */
-        #to-feat .t-label { color:#fe6c75; }
+        #to-feat .t-label { color:#e30613; }
         #to-feat .t-h2 { color:#0f1d2c; }
-        #to-feat .t-h2 .accent { color:#fe6c75 !important; }
+        #to-feat .t-h2 .accent { color:#e30613 !important; }
         #to-feat .t-sub { color:rgba(15,29,44,0.6); }
         #to-feat .t-feat-row { background:rgba(255,255,255,0.55); border-color:rgba(15,29,44,0.1); }
-        #to-feat .t-feat-row:hover { background:rgba(255,255,255,0.85); border-color:rgba(254,108,117,0.4); }
+        #to-feat .t-feat-row:hover { background:rgba(255,255,255,0.85); border-color:rgba(227, 6, 19,0.4); }
         #to-feat .t-feat-row h4 { color:#0f1d2c; }
         #to-feat .t-feat-row p { color:rgba(15,29,44,0.55); }
 
@@ -987,7 +987,7 @@
         body.dark-mode .t-gray { background:#151a27 !important; }
         body.dark-mode .t-h2 { color:#f1f5f9 !important; }
         body.dark-mode .t-sub { color:#94a3b8 !important; }
-        body.dark-mode .t-label { color:#fe6c75 !important; }
+        body.dark-mode .t-label { color:#e30613 !important; }
         body.dark-mode .t-tech-pill { background:#1e2536 !important; color:#e2e8f0 !important; border-color:#2d3548 !important; }
         body.dark-mode .t-bento-card { background:#1e2536 !important; border-color:#2d3548 !important; }
         body.dark-mode .t-bento-info h3 { color:#f1f5f9 !important; }
@@ -998,7 +998,7 @@
         body.dark-mode .t-target-card h3 { color:#f1f5f9 !important; }
         body.dark-mode .t-target-card p { color:#94a3b8 !important; }
         body.dark-mode .t-feat-row { background:rgba(30,37,54,0.6) !important; border-color:#2d3548 !important; }
-        body.dark-mode .t-feat-row:hover { background:rgba(30,37,54,0.9) !important; border-color:rgba(254,108,117,0.4) !important; }
+        body.dark-mode .t-feat-row:hover { background:rgba(30,37,54,0.9) !important; border-color:rgba(227, 6, 19,0.4) !important; }
         body.dark-mode .t-feat-row h4 { color:#f1f5f9 !important; }
         body.dark-mode .t-feat-row p { color:#94a3b8 !important; }
         /* Hero keeps dark already */
@@ -1014,7 +1014,7 @@
         /* 100% ADMIN banner */
         body.dark-mode .t-nocode-section { background:#151a27 !important; }
         body.dark-mode .t-nocode-phone { background:transparent !important; }
-        body.dark-mode .t-nocode-text { color:#fe6c75 !important; }
+        body.dark-mode .t-nocode-text { color:#e30613 !important; }
         /* INCLUDED PAGES section */
         body.dark-mode .ts-section-wrap { background:#1a1f2e !important; }
         body.dark-mode .ts-card-inner { background:rgba(30,37,54,0.85) !important; border-color:#2d3548 !important; }
@@ -1028,7 +1028,7 @@
         /* Admin panel */
         body.dark-mode #to-adm { background:#151a27 !important; }
         body.dark-mode .t-admin-nav-item { background:#1e2536 !important; border-color:#2d3548 !important; color:#e2e8f0 !important; }
-        body.dark-mode .t-admin-nav-item.active { border-color:#fe6c75 !important; }
+        body.dark-mode .t-admin-nav-item.active { border-color:#e30613 !important; }
         /* Code window — always dark regardless of mode */
         .t-code-window { overflow:hidden; }
         .t-code-body { overflow-x:auto; }
@@ -1140,20 +1140,20 @@
             transition:background 0.2s;
         }
         .beispiel-close:hover { background:rgba(15,29,44,0.12); }
-        .beispiel-title { font-size:22px; font-weight:800; color:#fe6c75; margin:0 0 4px; }
+        .beispiel-title { font-size:22px; font-weight:800; color:#e30613; margin:0 0 4px; }
         .beispiel-subtitle { font-size:14px; color:#64748b; margin:0 0 28px; font-weight:400; }
         .beispiel-grid { display:flex; flex-direction:column; gap:16px; }
         .beispiel-card {
             display:flex; align-items:center; gap:20px; padding:16px; border-radius:16px;
-            border:1.5px solid rgba(254,108,117,0.15); text-decoration:none; color:#0f1d2c;
+            border:1.5px solid rgba(227, 6, 19,0.15); text-decoration:none; color:#0f1d2c;
             transition:border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
-        .beispiel-card:hover { border-color:#fe6c75; box-shadow:0 8px 24px rgba(254,108,117,0.15); transform:translateY(-2px); }
-        .beispiel-img-wrap { width:80px; height:80px; border-radius:12px; overflow:hidden; flex-shrink:0; border:2px solid rgba(254,108,117,0.2); }
+        .beispiel-card:hover { border-color:#e30613; box-shadow:0 8px 24px rgba(227, 6, 19,0.15); transform:translateY(-2px); }
+        .beispiel-img-wrap { width:80px; height:80px; border-radius:12px; overflow:hidden; flex-shrink:0; border:2px solid rgba(227, 6, 19,0.2); }
         .beispiel-img { width:100%; height:100%; object-fit:cover; }
         .beispiel-card-body { display:flex; flex-direction:column; gap:4px; }
         .beispiel-card-title { font-size:15px; font-weight:700; color:#0f1d2c; }
-        .beispiel-card-sub { font-size:12px; color:#fe6c75; font-weight:600; }
+        .beispiel-card-sub { font-size:12px; color:#e30613; font-weight:600; }
         @media (max-width:600px) {
             .beispiel-modal { padding:36px 24px 28px; }
             .beispiel-title { font-size:18px; }
@@ -1336,7 +1336,7 @@
                 <p class="t-sub">Construida con los frameworks más rápidos del mercado. No "simple" — código real, código serio.</p>
                 <div class="t-tech-pills">
                     <div class="t-tech-pill">
-                        <div class="t-tech-pill-dot" style="background:#fe6c75;"></div>
+                        <div class="t-tech-pill-dot" style="background:#e30613;"></div>
                         Next.js
                     </div>
                     <div class="t-tech-pill">
@@ -1353,7 +1353,7 @@
                         <span data-i18n="to.tech.p5">Responsive Total</span>
                     </div>
                     <div class="t-tech-pill">
-                        <div class="t-tech-pill-dot" style="background:#fe6c75;"></div>
+                        <div class="t-tech-pill-dot" style="background:#e30613;"></div>
                         <span data-i18n="to.tech.p6">Seguridad Reforzada</span>
                     </div>
                     <div class="t-tech-pill">
@@ -1428,7 +1428,7 @@
                             <div class="t-phone-scr" data-screen="1">
                                 <div style="font-size:10px;font-weight:800;color:#0f1d2c;margin-bottom:8px;">Meine Bestellungen</div>
                                 <div class="tps-order">
-                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#fe6c75,#ffa8ad);">
+                                    <div class="tps-order-icon" style="background:linear-gradient(135deg,#e30613,#ffa8ad);">
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
                                     </div>
                                     <div><div class="tps-order-name">Crema Premium</div><div class="tps-order-date">12. Feb 2026</div></div>
@@ -1588,7 +1588,7 @@
     <div class="ts-particles" id="tsParticles"></div>
     <div class="t-wrap" style="position:relative; z-index:1;">
         <div style="text-align:center;">
-            <div id="to-str-label" class="t-label" style="color:#fe6c75;">Páginas incluidas</div>
+            <div id="to-str-label" class="t-label" style="color:#e30613;">Páginas incluidas</div>
             <h2 class="t-h2" style="color:#0f1d2c;">Estructura Completa<br>de la Tienda</h2>
             <p class="t-sub" style="color:#6b7d99; margin:0 auto;">Todo lo que necesita un negocio online serio, incluido desde el primer día.</p>
         </div>
@@ -1703,7 +1703,7 @@
         <!-- MIDDLE: 4 items in 2×2 grid -->
         <ul class="t-admin-list" style="margin-bottom:40px;">
             <li>
-                <div class="t-admin-icon" style="background:rgba(254,108,117,0.15);">📦</div>
+                <div class="t-admin-icon" style="background:rgba(227, 6, 19,0.15);">📦</div>
                 <div>
                     <h4>Gestión de Pedidos</h4>
                     <p>Ver, cambiar estado, enviar emails automáticos y descargar facturas PDF</p>
@@ -1753,7 +1753,7 @@
                         <div class="t-admin-panel">
                         <div class="t-admin-stats">
                             <div class="t-admin-stat">
-                                <div class="t-admin-stat-dot" style="background:#fe6c75;"></div>
+                                <div class="t-admin-stat-dot" style="background:#e30613;"></div>
                                 <div>
                                     <div class="t-admin-stat-num">12</div>
                                     <div class="t-admin-stat-lbl" data-i18n="to.mock.lbl.orders">Bestellungen</div>
@@ -1781,7 +1781,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:10px;" data-i18n="to.mock.orders.recent">Neueste Bestellungen</div>
+                        <div style="font-size:12px;font-weight:700;color:#e30613;margin-bottom:10px;" data-i18n="to.mock.orders.recent">Neueste Bestellungen</div>
                         <div class="t-admin-th">
                             <span data-i18n="to.mock.col.client">Kunde</span><span data-i18n="to.mock.col.total">Total</span><span data-i18n="to.mock.col.status">Status</span>
                         </div>
@@ -1810,7 +1810,7 @@
                             <div class="t-admin-row-price">CHF 29.90</div>
                             <div><span class="t-badge go" data-i18n="to.mock.badge.processing">In Bearbeitung</span></div>
                         </div>
-                        <div style="margin-top:10px;padding:6px 8px;background:rgba(254,108,117,0.1);border-radius:6px;font-size:11px;color:#fe6c75;font-weight:700;" data-i18n="to.mock.orders.actions">
+                        <div style="margin-top:10px;padding:6px 8px;background:rgba(227, 6, 19,0.1);border-radius:6px;font-size:11px;color:#e30613;font-weight:700;" data-i18n="to.mock.orders.actions">
                             + PDF-Rechnung · Status ändern · E-Mail senden
                         </div>
                         <div class="t-admin-barchart">
@@ -1832,9 +1832,9 @@
                             <div style="font-size:12px;font-weight:700;color:#15a0da;margin-bottom:8px;" data-i18n="to.mock.catalog">Katalog · 48 Produkte</div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px;">
-                                    <div style="height:28px;border-radius:4px;background:linear-gradient(135deg,#fe6c75,#ffa8ad);margin-bottom:5px;"></div>
+                                    <div style="height:28px;border-radius:4px;background:linear-gradient(135deg,#e30613,#ffa8ad);margin-bottom:5px;"></div>
                                     <div style="font-size:10px;font-weight:700;color:#fff;">Crema Premium</div>
-                                    <div style="font-size:10px;color:#fe6c75;">CHF 49.90</div>
+                                    <div style="font-size:10px;color:#e30613;">CHF 49.90</div>
                                 </div>
                                 <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:7px;">
                                     <div style="height:28px;border-radius:4px;background:linear-gradient(135deg,#15a0da,#74c0fc);margin-bottom:5px;"></div>
@@ -1873,7 +1873,7 @@
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:7px 9px;">
                                     <span style="font-size:11px;color:#fff;font-weight:600;" data-i18n="to.mock.ship.int">🌍 International</span>
-                                    <span style="font-size:10px;color:#fe6c75;font-weight:700;">CHF 19.90</span>
+                                    <span style="font-size:10px;color:#e30613;font-weight:700;">CHF 19.90</span>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(77,211,91,0.08);border-radius:6px;padding:7px 9px;">
                                     <span style="font-size:11px;color:#4dd35b;font-weight:700;" data-i18n="to.mock.ship.free">✦ Gratis Schweiz</span>
@@ -1884,7 +1884,7 @@
 
                         <!-- PANEL 4: PAGOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.pay.title">Zahlungsmethoden</div>
+                            <div style="font-size:12px;font-weight:700;color:#e30613;margin-bottom:8px;" data-i18n="to.mock.pay.title">Zahlungsmethoden</div>
                             <div style="display:flex;flex-direction:column;gap:5px;">
                                 <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border-radius:6px;padding:8px 10px;">
                                     <span style="font-size:11px;color:#fff;font-weight:600;">💳 Mastercard / Visa</span>
@@ -1929,13 +1929,13 @@
                         <div class="t-admin-panel">
                             <div style="font-size:12px;font-weight:700;color:#ffb421;margin-bottom:8px;" data-i18n="to.mock.gal.title">Galerie · 24 Bilder</div>
                             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;">
-                                <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#fe6c75,#ffa8ad);"></div>
+                                <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#e30613,#ffa8ad);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#15a0da,#74c0fc);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#ffb421,#ffd166);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#4dd35b,#95e89c);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#8264dc,#b09af5);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#0f1d2c,#1a3a5c);"></div>
-                                <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#fe6c75,#8264dc);"></div>
+                                <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#e30613,#8264dc);"></div>
                                 <div style="height:36px;border-radius:5px;background:linear-gradient(135deg,#4dd35b,#15a0da);"></div>
                             </div>
                             <div style="margin-top:8px;padding:5px 8px;background:rgba(255,180,33,0.1);border-radius:5px;font-size:10px;color:#ffb421;font-weight:700;" data-i18n="to.mock.gal.actions">+ Bilder hochladen · Ziehen zum Sortieren</div>
@@ -1943,10 +1943,10 @@
 
                         <!-- PANEL 7: ANUNCIOS -->
                         <div class="t-admin-panel">
-                            <div style="font-size:12px;font-weight:700;color:#fe6c75;margin-bottom:8px;" data-i18n="to.mock.ann.title">Aktive Anzeigen</div>
+                            <div style="font-size:12px;font-weight:700;color:#e30613;margin-bottom:8px;" data-i18n="to.mock.ann.title">Aktive Anzeigen</div>
                             <div style="display:flex;flex-direction:column;gap:5px;">
-                                <div style="background:rgba(254,108,117,0.1);border:1px solid rgba(254,108,117,0.2);border-radius:6px;padding:8px 10px;">
-                                    <div style="font-size:11px;font-weight:700;color:#fe6c75;margin-bottom:2px;" data-i18n="to.mock.ann.a1.title">🔥 Black Friday — 20% auf alles</div>
+                                <div style="background:rgba(227, 6, 19,0.1);border:1px solid rgba(227, 6, 19,0.2);border-radius:6px;padding:8px 10px;">
+                                    <div style="font-size:11px;font-weight:700;color:#e30613;margin-bottom:2px;" data-i18n="to.mock.ann.a1.title">🔥 Black Friday — 20% auf alles</div>
                                     <div style="font-size:10px;color:rgba(255,255,255,0.4);" data-i18n="to.mock.ann.a1.sub">Bis 5. März · Oberes Banner</div>
                                 </div>
                                 <div style="background:rgba(77,211,91,0.08);border:1px solid rgba(77,211,91,0.15);border-radius:6px;padding:8px 10px;">
