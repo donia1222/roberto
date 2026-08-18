@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181314">
+    <link rel="stylesheet" href="css/style.css?v=202608181321">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -350,8 +350,102 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl-swoosh{animation:none;transform:scaleX(1);}
 }
 </style>
+<!-- Begruessung beim ersten Besuch. CSS muss im <head> stehen,
+     sonst blitzt die Seite kurz durch, bevor der Vorhang liegt. -->
+<style>
+#lwWelcome{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  background:linear-gradient(160deg,#fffaf6 0%,#fff2f2 48%,#ffffff 100%);
+  opacity:1;transition:opacity .5s ease;
+}
+body.dark-mode #lwWelcome{background:linear-gradient(160deg,#0f1722,#121c29 55%,#0b131d);}
+#lwWelcome.is-out{opacity:0;pointer-events:none;}
+#lwWelcome .lww-mark{width:96px;height:58px;color:#e30613;overflow:visible;}
+#lwWelcome .lww-mark path,#lwWelcome .lww-mark line,#lwWelcome .lww-mark polyline{
+  stroke-dasharray:120;stroke-dashoffset:120;
+  animation:lwwDraw .62s cubic-bezier(.55,0,.35,1) forwards;
+}
+#lwWelcome .lww-mark .d2{animation-delay:.1s;}
+#lwWelcome .lww-mark .d3{animation-delay:.2s;}
+@keyframes lwwDraw{to{stroke-dashoffset:0;}}
+#lwWelcome .lww-hi{
+  font-size:clamp(26px,5vw,40px);font-weight:850;letter-spacing:-.03em;
+  color:var(--gunpowder900,#0f1d2c);margin:0;text-align:center;
+  opacity:0;transform:translateY(12px);
+  animation:lwwUp .55s .34s cubic-bezier(.22,1,.36,1) forwards;
+}
+body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
+#lwWelcome .lww-sub{
+  font-size:14.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#fe6c75;margin:0;opacity:0;
+  animation:lwwUp .55s .5s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes lwwUp{to{opacity:1;transform:none;}}
+#lwWelcome .lww-bar{
+  width:132px;height:3px;border-radius:3px;overflow:hidden;
+  background:rgba(254,108,117,.2);
+}
+#lwWelcome .lww-bar i{
+  display:block;height:100%;width:100%;border-radius:3px;
+  background:linear-gradient(90deg,#fe6c75,#f06069);
+  transform:scaleX(0);transform-origin:left;
+  animation:lwwBar 1.5s .2s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes lwwBar{to{transform:scaleX(1);}}
+@media(prefers-reduced-motion:reduce){
+  #lwWelcome *{animation-duration:.01s !important;animation-delay:0s !important;}
+}
+</style>
 </head>
 <body>
+
+<script>
+/* Begruessung — nur beim allerersten Besuch, danach nie wieder.
+   Laeuft direkt nach <body>, damit nichts durchblitzt. */
+(function(){
+    var KEY = 'lweb_welcome_seen';
+    try { if (localStorage.getItem(KEY)) return; } catch(e) { return; }
+
+    var GREET = {
+        de: ['Willkommen', 'Echter Code. Echte Leistung.'],
+        en: ['Welcome',    'Real code. Real results.'],
+        es: ['Bienvenido', 'Código real. Resultados reales.'],
+        fr: ['Bienvenue',  'Du vrai code. De vrais résultats.'],
+        it: ['Benvenuto',  'Codice vero. Risultati veri.']
+    };
+    var lang = (navigator.language || navigator.userLanguage || 'de').slice(0,2).toLowerCase();
+    var txt  = GREET[lang] || GREET.de;
+
+    var el = document.createElement('div');
+    el.id = 'lwWelcome';
+    el.setAttribute('role', 'status');
+    el.innerHTML =
+        '<svg class="lww-mark" viewBox="0 0 120 72" fill="none" aria-hidden="true">' +
+          '<g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">' +
+            '<polyline points="34 16 12 36 34 56"/>' +
+            '<polyline class="d2" points="86 16 108 36 86 56"/>' +
+            '<line class="d3" x1="68" y1="8" x2="52" y2="64"/>' +
+          '</g></svg>' +
+        '<p class="lww-hi"></p>' +
+        '<p class="lww-sub"></p>' +
+        '<span class="lww-bar"><i></i></span>';
+    el.querySelector('.lww-hi').textContent  = txt[0];
+    el.querySelector('.lww-sub').textContent = txt[1];
+    document.body.appendChild(el);
+    document.body.style.overflow = 'hidden';
+
+    try { localStorage.setItem(KEY, '1'); } catch(e) {}
+
+    function close(){
+        el.classList.add('is-out');
+        document.body.style.overflow = '';
+        setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 520);
+    }
+    setTimeout(close, 1900);
+    el.addEventListener('click', close);   // wer nicht warten will, klickt weg
+})();
+</script>
 
 <!-- HEADER -->
 <header class="header">
@@ -3324,17 +3418,16 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608181314"></script>
-<script src="js/booking-modal.js?v=202608181314"></script>
-<script src="js/main.js?v=202608181314"></script>
+<script src="js/translations.js?v=202608181321"></script>
+<script src="js/booking-modal.js?v=202608181321"></script>
+<script src="js/main.js?v=202608181321"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
   var h = window.location.hostname.replace('www.','');
-  if (h === 'lweb.ch') {
-    document.querySelectorAll('.domain-li, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
-  } else if (h === 'webseite.li') {
-    document.querySelectorAll('.domain-ch, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
+  /* Im Logo stehen immer beide Laender — auf jeder Domain.
+     Frueher blendete lweb.ch Liechtenstein aus und webseite.li die Schweiz. */
+  if (h === 'webseite.li') {
     // Replace Buchs references with Liechtenstein in marketing text
     document.title = document.title.replace(/Buchs SG & St\. Gallen/g,'Liechtenstein').replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs/g,'Liechtenstein');
     var meta = document.querySelector('meta[name="description"]');
