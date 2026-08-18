@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181305">
+    <link rel="stylesheet" href="css/style.css?v=202608181314">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -204,6 +204,152 @@
     gtag('js', new Date());
     gtag('config', 'G-CM0GM04YJ1');
   </script>
+<!-- Kritisches CSS: gehoert in den <head>. Stand im Body und der
+     Schriftzug blitzte beim Laden kurz gross und schwarz auf. -->
+<style>
+/* ══════════════════════════════════════════════════════════
+   HERO — Markenclaim: Echter Code. Echte Leistung.
+   ══════════════════════════════════════════════════════════ */
+.cl{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  gap:20px;padding:18px 0;width:100%;--cl-red:#e30613;
+}
+
+/* ── Foto-Hintergrund hinter dem Schriftzug ──
+   Bild ablegen unter: img/hero-code.jpg  (16:9, min. 1600px breit) */
+.cl--photo{
+  /* Zeichen links, Schriftzug daneben — eine Zeile unten,
+     damit Gesicht und Logo im Bild frei bleiben. */
+  flex-direction:row;align-items:flex-end;justify-content:flex-start;
+  aspect-ratio:3/2;padding:0 22px 22px;gap:12px;
+  max-width:470px;margin:0 auto;
+}
+.cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
+.cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(17px,1.8vw,23px);}
+.cl-photo{
+  position:absolute;inset:0;z-index:0;border-radius:26px;overflow:hidden;
+  pointer-events:none;
+  background:linear-gradient(135deg,#1a2433,#0d141d);
+  box-shadow:0 22px 54px rgba(15,29,44,.22);
+}
+.cl-photo::before{
+  content:'';position:absolute;inset:0;
+  background:url('img/roberto-lweb.jpg') center top/cover no-repeat;
+}
+/* Nur unten abdunkeln — die Bildmitte bleibt frei. */
+.cl-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(4,9,15,0) 34%,
+    rgba(4,9,15,.42) 58%,
+    rgba(4,9,15,.82) 82%,
+    rgba(4,9,15,.92) 100%);
+}
+/* auf dem Foto steht der Text immer hell */
+.cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.8);}
+.cl--photo .cl-text em{color:#ff3641;text-shadow:0 2px 14px rgba(0,0,0,.85);}
+.cl--photo .cl-mark{color:#ff3641;filter:drop-shadow(0 3px 12px rgba(0,0,0,.8));width:clamp(54px,5vw,68px);margin-bottom:-3px;}
+.cl--photo .cl-mark,.cl--photo .cl-text{position:relative;z-index:2;}
+.cl--photo .cl-glow{display:none;}
+
+/* weicher roter Schein dahinter */
+.cl-glow{
+  position:absolute;top:6%;left:50%;transform:translateX(-50%);
+  width:min(420px,86%);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(227,6,19,.16),rgba(227,6,19,0) 68%);
+  filter:blur(12px);animation:clBreathe 6s ease-in-out infinite;pointer-events:none;
+}
+@keyframes clBreathe{0%,100%{opacity:.75;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.09)}}
+body.dark-mode .cl-glow{background:radial-gradient(circle,rgba(227,6,19,.26),rgba(227,6,19,0) 68%);}
+
+/* das Zeichen </> */
+.cl-mark{
+  position:relative;width:clamp(150px,15vw,172px);height:auto;color:var(--cl-red);
+  filter:drop-shadow(0 10px 26px rgba(254,108,117,.24));
+}
+.cl-br{animation:clBracket 2.9s cubic-bezier(.45,0,.2,1) infinite;}
+.cl-br--l{transform-origin:22px 36px;}
+.cl-br--r{transform-origin:98px 36px;}
+.cl-br--r{animation-delay:.09s;}
+@keyframes clBracket{0%,100%{transform:translateX(0)}42%{transform:translateX(var(--d,-7px))}}
+.cl-br--r{--d:7px;}
+.cl-br--l{--d:-7px;}
+.cl-slash{animation:clSlash 2.9s cubic-bezier(.45,0,.2,1) infinite;transform-origin:60px 36px;}
+@keyframes clSlash{0%,100%{transform:scaleY(1);opacity:1}42%{transform:scaleY(1.14);opacity:.72}}
+
+/* der Text */
+.cl-text{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;}
+.cl-text b,.cl-text em{
+  font-style:normal;font-weight:900;text-transform:uppercase;
+  font-size:clamp(34px,4.2vw,48px);line-height:1.04;letter-spacing:-.032em;
+  display:block;white-space:nowrap;
+}
+.cl-text b{color:var(--gunpowder900);animation:clIn .7s cubic-bezier(.22,1,.36,1) both;}
+body.dark-mode .cl-text b{color:#f4f8fc;}
+.cl-text em{position:relative;color:var(--cl-red);padding-bottom:.22em;animation:clIn .7s .13s cubic-bezier(.22,1,.36,1) both;}
+@keyframes clIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* der rote Strich, der sich zeichnet */
+.cl-swoosh{
+  position:absolute;left:-2%;bottom:0;width:104%;height:.16em;color:var(--cl-red);
+  transform:scaleX(0);transform-origin:left center;
+  animation:clDraw .85s .6s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes clDraw{to{transform:scaleX(1)}}
+
+@media(max-width:1024px){
+  .cl{gap:16px;padding:4px 0 0;}
+  .cl-mark{width:clamp(104px,20vw,140px);}
+  .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
+}
+/* Handy: nur "Warum so günstig?" zeigen.
+   Der Erstgespräch-Button steckt unten in der fixen Leiste (.sticky-cta),
+   die genau ab 860px erscheint — deshalb dieselbe Grenze. */
+@media(max-width:860px){
+  .hero-buttons #heroPriceBtn{display:none;}
+  .hero-buttons{justify-content:flex-start;}
+  .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
+}
+
+/* Handy: kompakter und dichter am Header */
+@media(max-width:992px){
+  .hero{padding-top:20px !important;}
+  .hero-inner{gap:22px !important;}
+  .cl{gap:11px;padding:0;}
+  .cl-glow{width:min(280px,72%);top:0;}
+}
+@media(max-width:560px){
+  .cl-text b,.cl-text em{font-size:clamp(20px,6.2vw,27px);letter-spacing:-.028em;}
+  .cl-mark{width:86px;}
+  .cl{gap:9px;}
+}
+/* Foto-Karte auf dem Handy hoeher, sonst wird sie zu flach.
+   Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
+/* Handy/Tablet: Foto bleibt, aber kompakter.
+   Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
+@media(max-width:992px){
+  /* Zeichen links, Schriftzug daneben — alles in einer Zeile unten */
+  .cl--photo{
+    aspect-ratio:16/10;padding:0 18px 16px;margin-top:6px;
+    flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
+  }
+  .cl-photo{border-radius:20px;}
+  .cl--photo .cl-mark{width:56px;margin-bottom:-2px;}
+  .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:7px;text-align:left;}
+  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
+}
+@media(max-width:560px){
+  .cl--photo{aspect-ratio:16/10;padding:0 14px 13px;gap:8px;}
+  .cl-photo{border-radius:18px;}
+  .cl--photo .cl-mark{width:44px;}
+  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
+}
+@media(prefers-reduced-motion:reduce){
+  .cl-glow,.cl-br,.cl-slash{animation:none;}
+  .cl-text b,.cl-text em{animation:none;}
+  .cl-swoosh{animation:none;transform:scaleX(1);}
+}
+</style>
 </head>
 <body>
 
@@ -314,7 +460,7 @@
                 <div class="cl cl--photo" aria-label="Echter Code. Echte Leistung.">
                     <span class="cl-photo" aria-hidden="true"></span>
                     <span class="cl-glow" aria-hidden="true"></span>
-                    <svg class="cl-mark" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+                    <svg class="cl-mark" viewBox="0 0 120 72" width="68" height="41" fill="none" aria-hidden="true">
                         <g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
                             <polyline class="cl-br cl-br--l" points="34 16 12 36 34 56"/>
                             <polyline class="cl-br cl-br--r" points="86 16 108 36 86 56"/>
@@ -3178,9 +3324,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608181305"></script>
-<script src="js/booking-modal.js?v=202608181305"></script>
-<script src="js/main.js?v=202608181305"></script>
+<script src="js/translations.js?v=202608181314"></script>
+<script src="js/booking-modal.js?v=202608181314"></script>
+<script src="js/main.js?v=202608181314"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3563,150 +3709,7 @@ body.dark-mode .sticky-cta{background:#1b2635;}
 })();
 </script>
 
-<style>
-/* ══════════════════════════════════════════════════════════
-   HERO — Markenclaim: Echter Code. Echte Leistung.
-   ══════════════════════════════════════════════════════════ */
-.cl{
-  position:relative;display:flex;flex-direction:column;align-items:center;
-  gap:20px;padding:18px 0;width:100%;--cl-red:#e30613;
-}
 
-/* ── Foto-Hintergrund hinter dem Schriftzug ──
-   Bild ablegen unter: img/hero-code.jpg  (16:9, min. 1600px breit) */
-.cl--photo{
-  /* Zeichen links, Schriftzug daneben — eine Zeile unten,
-     damit Gesicht und Logo im Bild frei bleiben. */
-  flex-direction:row;align-items:flex-end;justify-content:flex-start;
-  aspect-ratio:3/2;padding:0 22px 22px;gap:12px;
-  max-width:470px;margin:0 auto;
-}
-.cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
-.cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(17px,1.8vw,23px);}
-.cl-photo{
-  position:absolute;inset:0;z-index:0;border-radius:26px;overflow:hidden;
-  pointer-events:none;
-  background:linear-gradient(135deg,#1a2433,#0d141d);
-  box-shadow:0 22px 54px rgba(15,29,44,.22);
-}
-.cl-photo::before{
-  content:'';position:absolute;inset:0;
-  background:url('img/roberto-lweb.jpg') center top/cover no-repeat;
-}
-/* Nur unten abdunkeln — die Bildmitte bleibt frei. */
-.cl-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,
-    rgba(4,9,15,0) 34%,
-    rgba(4,9,15,.42) 58%,
-    rgba(4,9,15,.82) 82%,
-    rgba(4,9,15,.92) 100%);
-}
-/* auf dem Foto steht der Text immer hell */
-.cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.8);}
-.cl--photo .cl-text em{color:#ff3641;text-shadow:0 2px 14px rgba(0,0,0,.85);}
-.cl--photo .cl-mark{color:#ff3641;filter:drop-shadow(0 3px 12px rgba(0,0,0,.8));width:clamp(54px,5vw,68px);margin-bottom:-3px;}
-.cl--photo .cl-mark,.cl--photo .cl-text{position:relative;z-index:2;}
-.cl--photo .cl-glow{display:none;}
-
-/* weicher roter Schein dahinter */
-.cl-glow{
-  position:absolute;top:6%;left:50%;transform:translateX(-50%);
-  width:min(420px,86%);aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle,rgba(227,6,19,.16),rgba(227,6,19,0) 68%);
-  filter:blur(12px);animation:clBreathe 6s ease-in-out infinite;pointer-events:none;
-}
-@keyframes clBreathe{0%,100%{opacity:.75;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.09)}}
-body.dark-mode .cl-glow{background:radial-gradient(circle,rgba(227,6,19,.26),rgba(227,6,19,0) 68%);}
-
-/* das Zeichen </> */
-.cl-mark{
-  position:relative;width:clamp(150px,15vw,172px);height:auto;color:var(--cl-red);
-  filter:drop-shadow(0 10px 26px rgba(254,108,117,.24));
-}
-.cl-br{animation:clBracket 2.9s cubic-bezier(.45,0,.2,1) infinite;}
-.cl-br--l{transform-origin:22px 36px;}
-.cl-br--r{transform-origin:98px 36px;}
-.cl-br--r{animation-delay:.09s;}
-@keyframes clBracket{0%,100%{transform:translateX(0)}42%{transform:translateX(var(--d,-7px))}}
-.cl-br--r{--d:7px;}
-.cl-br--l{--d:-7px;}
-.cl-slash{animation:clSlash 2.9s cubic-bezier(.45,0,.2,1) infinite;transform-origin:60px 36px;}
-@keyframes clSlash{0%,100%{transform:scaleY(1);opacity:1}42%{transform:scaleY(1.14);opacity:.72}}
-
-/* der Text */
-.cl-text{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;}
-.cl-text b,.cl-text em{
-  font-style:normal;font-weight:900;text-transform:uppercase;
-  font-size:clamp(34px,4.2vw,48px);line-height:1.04;letter-spacing:-.032em;
-  display:block;white-space:nowrap;
-}
-.cl-text b{color:var(--gunpowder900);animation:clIn .7s cubic-bezier(.22,1,.36,1) both;}
-body.dark-mode .cl-text b{color:#f4f8fc;}
-.cl-text em{position:relative;color:var(--cl-red);padding-bottom:.22em;animation:clIn .7s .13s cubic-bezier(.22,1,.36,1) both;}
-@keyframes clIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-/* der rote Strich, der sich zeichnet */
-.cl-swoosh{
-  position:absolute;left:-2%;bottom:0;width:104%;height:.16em;color:var(--cl-red);
-  transform:scaleX(0);transform-origin:left center;
-  animation:clDraw .85s .6s cubic-bezier(.22,1,.36,1) forwards;
-}
-@keyframes clDraw{to{transform:scaleX(1)}}
-
-@media(max-width:1024px){
-  .cl{gap:16px;padding:4px 0 0;}
-  .cl-mark{width:clamp(104px,20vw,140px);}
-  .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
-}
-/* Handy: nur "Warum so günstig?" zeigen.
-   Der Erstgespräch-Button steckt unten in der fixen Leiste (.sticky-cta),
-   die genau ab 860px erscheint — deshalb dieselbe Grenze. */
-@media(max-width:860px){
-  .hero-buttons #heroPriceBtn{display:none;}
-  .hero-buttons{justify-content:flex-start;}
-  .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
-}
-
-/* Handy: kompakter und dichter am Header */
-@media(max-width:992px){
-  .hero{padding-top:20px !important;}
-  .hero-inner{gap:22px !important;}
-  .cl{gap:11px;padding:0;}
-  .cl-glow{width:min(280px,72%);top:0;}
-}
-@media(max-width:560px){
-  .cl-text b,.cl-text em{font-size:clamp(20px,6.2vw,27px);letter-spacing:-.028em;}
-  .cl-mark{width:86px;}
-  .cl{gap:9px;}
-}
-/* Foto-Karte auf dem Handy hoeher, sonst wird sie zu flach.
-   Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
-/* Handy/Tablet: Foto bleibt, aber kompakter.
-   Muss NACH den .cl-Regeln oben stehen, die padding zuruecksetzen. */
-@media(max-width:992px){
-  /* Zeichen links, Schriftzug daneben — alles in einer Zeile unten */
-  .cl--photo{
-    aspect-ratio:16/10;padding:0 18px 16px;margin-top:6px;
-    flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
-  }
-  .cl-photo{border-radius:20px;}
-  .cl--photo .cl-mark{width:56px;margin-bottom:-2px;}
-  .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:7px;text-align:left;}
-  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
-}
-@media(max-width:560px){
-  .cl--photo{aspect-ratio:16/10;padding:0 14px 13px;gap:8px;}
-  .cl-photo{border-radius:18px;}
-  .cl--photo .cl-mark{width:44px;}
-  .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
-}
-@media(prefers-reduced-motion:reduce){
-  .cl-glow,.cl-br,.cl-slash{animation:none;}
-  .cl-text b,.cl-text em{animation:none;}
-  .cl-swoosh{animation:none;transform:scaleX(1);}
-}
-</style>
 
 </body>
 </html>
