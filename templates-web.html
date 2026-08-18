@@ -29,8 +29,8 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181235">
-    <script src="js/translations.js?v=202608181235"></script>
+    <link rel="stylesheet" href="css/style.css?v=202608181305">
+    <script src="js/translations.js?v=202608181305"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
 
@@ -279,6 +279,65 @@
             display:grid; grid-template-columns:repeat(3,1fr);
             gap:24px; margin-top:48px; position:relative; z-index:1;
             perspective:1200px;
+        }
+
+        /* --- Karten im gleichen Stil wie auf der Startseite (18.08.2026) --- */
+        .tw-gallery-grid{grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:20px;perspective:none;}
+        .br-card{
+          display:block;background:#fff;border:1px solid var(--gunpowder100);
+          border-radius:16px;overflow:hidden;text-decoration:none;position:relative;
+          transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;
+        }
+        body.dark-mode .br-card{background:#141d2b;border-color:#1e2d3d;}
+        .br-card:hover,.br-card:focus-visible{transform:translateY(-6px);border-color:rgba(254,108,117,.5);box-shadow:0 20px 46px rgba(15,29,44,.15);}
+        body.dark-mode .br-card:hover{box-shadow:0 20px 46px rgba(0,0,0,.5);}
+        .br-card:focus-visible{outline:2px solid var(--begonia400);outline-offset:3px;}
+        .br-shot{display:block;position:relative;background:var(--gunpowder50);}
+        body.dark-mode .br-shot{background:#0e1622;}
+        .br-shot-bar{display:flex;align-items:center;gap:5px;padding:8px 11px;background:var(--gunpowder50);border-bottom:1px solid var(--gunpowder100);}
+        body.dark-mode .br-shot-bar{background:#0e1622;border-bottom-color:#1e2d3d;}
+        .br-shot-bar i{width:7px;height:7px;border-radius:50%;background:var(--gunpowder150);}
+        .br-shot-bar i:first-child{background:#ff5f57;}
+        .br-shot-bar i:nth-child(2){background:#febc2e;}
+        .br-shot-bar i:nth-child(3){background:#28c840;}
+        .br-frame{display:block;position:relative;width:100%;aspect-ratio:16/11;overflow:hidden;background:#fff;}
+        body.dark-mode .br-frame{background:#0e1622;}
+        .br-frame img{
+          position:absolute;top:0;left:0;width:100%;height:100%;
+          object-fit:cover;object-position:top center;display:block;
+          transition:transform .5s cubic-bezier(.22,1,.36,1);
+        }
+        .br-card:hover .br-frame img{transform:scale(1.04);}
+        .br-hover{
+          position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+          background:rgba(15,29,44,.42);opacity:0;transition:opacity .3s ease;
+        }
+        .br-card:hover .br-hover,.br-card:focus-visible .br-hover{opacity:1;}
+        .br-hover-pill{
+          display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:100px;
+          background:#fff;color:var(--gunpowder900);font-size:14px;font-weight:800;
+          box-shadow:0 8px 24px rgba(0,0,0,.28);
+          transform:translateY(8px);transition:transform .3s cubic-bezier(.22,1,.36,1);
+        }
+        .br-hover-pill::after{content:'\2197';}
+        .br-card:hover .br-hover-pill,.br-card:focus-visible .br-hover-pill{transform:none;}
+        .br-meta{display:flex;align-items:center;justify-content:center;gap:11px;padding:13px 14px 15px;}
+        .br-name{font-size:15px;font-weight:750;color:var(--gunpowder900);letter-spacing:-.01em;line-height:1.3;text-align:center;}
+        body.dark-mode .br-name{color:#eef3f9;}
+        .tw-gallery-grid .br-card{opacity:0;transition:opacity .5s ease,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;}
+        .tw-gallery-grid .br-card.tw-visible{opacity:1;}
+        @media(max-width:520px){.tw-gallery-grid{grid-template-columns:1fr;}}
+        /* Handy: erst vier Vorlagen, der Rest auf Knopfdruck. */
+        .br-more{display:none;}
+        @media(max-width:760px){
+          .tw-gallery-grid:not(.is-open) .br-card--extra{display:none;}
+          .br-more{
+            display:flex;align-items:center;justify-content:center;gap:8px;
+            margin:22px auto 0;padding:14px 30px;border-radius:100px;cursor:pointer;
+            background:linear-gradient(135deg,var(--begonia400),var(--begonia600));
+            border:0;color:#fff;font-size:15px;font-weight:800;font-family:inherit;
+            box-shadow:0 10px 26px rgba(254,108,117,.34);
+          }
         }
         .tw-tpl-card {
             position:relative; border-radius:20px; overflow:visible;
@@ -893,193 +952,170 @@
         <p class="tw-sub" data-i18n="tw.tpl.sub">Professionelle Templates für verschiedene Branchen. Jedes Design wird individuell mit Ihren Daten, Bildern und Texten angepasst.</p>
         <div class="tw-gallery-grid" id="twGalleryGrid">
             <!-- 1. Fitness — 750 CHF -->
-            <a href="templates/fitness.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Fitness Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h3>
-                        <p data-i18n="tw.tpl5.desc">Kurse, Trainer, Preise und Standort für Studios, Praxen und Therapeuten.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/fitness.html" class="br-card" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/fitness.jpg" alt="Fitness &amp; Gesundheit" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl5.name">Fitness & Gesundheit</span>
+                </span>
             </a>
 
             <!-- Anwalt / Treuhand — Organic -->
-            <a href="templates/anwalt.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Anwalt Treuhand Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl12.name">Anwalt & Treuhand</h3>
-                        <p data-i18n="tw.tpl12.desc">Rechtsgebiete, Team, Werte und Kontakt im warmen, organischen Stil für Kanzleien und Treuhandbüros.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                            <span class="tw-tpl-tag" style="background:rgba(193,115,74,0.14);color:#c1734a">Neu</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/anwalt.html" class="br-card" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/anwalt.jpg" alt="Anwalt &amp; Treuhand" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl12.name">Anwalt & Treuhand</span>
+                </span>
             </a>
 
             <!-- Auto / Garage — Dark Premium -->
-            <a href="templates/auto.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=80" alt="Auto Garage Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl11.name">Auto & Garage</h3>
-                        <p data-i18n="tw.tpl11.desc">Leistungen, Fahrzeughandel, Ablauf und Terminbuchung im edlen Dark-Premium-Look für Garagen und Werkstätten.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                            <span class="tw-tpl-tag" style="background:rgba(212,166,74,0.14);color:#d4a64a">Neu</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/auto.html" class="br-card" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/auto.jpg" alt="Auto &amp; Garage" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl11.name">Auto & Garage</span>
+                </span>
             </a>
 
             <!-- Zahnarzt / Praxis — Glas-Look -->
-            <a href="templates/zahnarzt.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Zahnarzt Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl10.name">Zahnarzt & Praxis</h3>
-                        <p data-i18n="tw.tpl10.desc">Leistungen, Team, Galerie und Online-Terminanfrage im modernen Glas-Look für Arzt- und Zahnarztpraxen.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                            <span class="tw-tpl-tag" style="background:rgba(56,189,248,0.12);color:#0ea5e9">Neu</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/zahnarzt.html" class="br-card" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/zahnarzt.jpg" alt="Zahnarzt &amp; Praxis" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl10.name">Zahnarzt & Praxis</span>
+                </span>
             </a>
 
             <!-- 2. Coiffeur — 390 CHF -->
-            <a href="templates/coiffeur.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Coiffeur Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h3>
-                        <p data-i18n="tw.tpl2.desc">Dienstleistungen, Preise, Team-Vorstellung, Galerie und Kontakt für Ihren Salon.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/coiffeur.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/coiffeur.jpg" alt="Coiffeur &amp; Beauty" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl2.name">Coiffeur & Beauty</span>
+                </span>
             </a>
     
             <!-- 1. Restaurant — 290 CHF -->
-               <a href="templates/restaurant.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl1.name">Restaurant & Café</h3>
-                        <p data-i18n="tw.tpl1.desc">Speisekarte, Öffnungszeiten, Reservierung, Galerie und Standort auf einer eleganten Seite.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+               <a href="templates/restaurant.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/restaurant.jpg" alt="Restaurant &amp; Café" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl1.name">Restaurant & Café</span>
+                </span>
             </a>
 
             <!-- 4. Berater — 590 CHF -->
-            <a href="templates/berater.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Berater Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl4.name">Berater & Freelancer</h3>
-                        <p data-i18n="tw.tpl4.desc">Profil, Kompetenzen, Portfolio und Referenzen für unabhängige Fachleute.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/berater.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/berater.jpg" alt="Berater &amp; Freelancer" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl4.name">Berater & Freelancer</span>
+                </span>
             </a>
             <!-- 6. Lokaler Laden — 950 CHF -->
-            <a href="templates/lokales-geschaeft.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="Lokales Geschäft Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl6.name">Lokales Geschäft</h3>
-                        <p data-i18n="tw.tpl6.desc">Produkte, Öffnungszeiten, Anfahrt und Kontakt für Ihr lokales Geschäft oder Laden.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/lokales-geschaeft.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/lokales-geschaeft.jpg" alt="Lokales Geschäft" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl6.name">Lokales Geschäft</span>
+                </span>
             </a>
-            <a href="templates/event.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80" alt="Eventlocation Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl7.name">Eventlocation</h3>
-                        <p data-i18n="tw.tpl7.desc">Galerie, Anlässe, Pakete und Kontakt für Eventlocations, Hochzeiten und Galas.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/event.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/event.jpg" alt="Eventlocation" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl7.name">Eventlocation</span>
+                </span>
             </a>
-            <a href="templates/immobilien.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Immobilien Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl8.name">Immobilienbüro</h3>
-                        <p data-i18n="tw.tpl8.desc">Objekte, Leistungen, Team und Kontakt für professionelle Immobilienmakler und -berater.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/immobilien.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/immobilien.jpg" alt="Immobilienbüro" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl8.name">Immobilienbüro</span>
+                </span>
             </a>
-            <a href="templates/fotograf.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?w=600&q=80" alt="Fotograf Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl9.name">Fotograf & Studio</h3>
-                        <p data-i18n="tw.tpl9.desc">Portfolio, Leistungen, Pakete und Kontakt für professionelle Fotografen und Kreative.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/fotograf.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/fotograf.jpg" alt="Fotograf &amp; Studio" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl9.name">Fotograf & Studio</span>
+                </span>
             </a>
 
             <!-- Letzte: Handwerker — 650 CHF -->
-            <a href="templates/handwerker.html" class="tw-tpl-card" style="text-decoration:none">
-                <div class="tw-tpl-inner">
-                    <div class="tw-tpl-preview">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Handwerker Template" style="width:100%;height:100%;object-fit:cover;display:block">
-                    </div>
-                    <div class="tw-tpl-info">
-                        <h3 data-i18n="tw.tpl3.name">Handwerker & Technik</h3>
-                        <p data-i18n="tw.tpl3.desc">Leistungen, Referenzen, Einsatzgebiet und Kontaktformular für Handwerksbetriebe.</p>
-                        <div class="tw-tpl-tags">
-                            <span class="tw-tpl-tag" style="background:rgba(77,211,91,0.1);color:#4dd35b">Demo live</span>
-                        </div>
-                    </div>
-                </div>
+            <a href="templates/handwerker.html" class="br-card br-card--extra" style="text-decoration:none">
+                <span class="br-shot">
+                    <span class="br-shot-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="br-frame">
+                        <img src="img/templates/handwerker.jpg" alt="Handwerker &amp; Technik" loading="lazy" decoding="async" width="720" height="495">
+                    </span>
+                    <span class="br-hover" aria-hidden="true"><span class="br-hover-pill" data-i18n="br.open">Ansehen</span></span>
+                </span>
+                <span class="br-meta">
+                    <span class="br-name" data-i18n="tw.tpl3.name">Handwerker & Technik</span>
+                </span>
             </a>
         </div>
+        <button type="button" class="br-more" id="twMore" onclick="expandTpl(this)">
+            <span data-i18n="tw.more">Alle 12 Vorlagen zeigen</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
         <!-- Banner compra -->
         <div style="margin-top:40px;padding:32px 36px;border-radius:20px;background:linear-gradient(135deg,#1a1a2e 0%,#2a2a4e 100%);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
             <div style="flex:1;min-width:260px;">
@@ -1162,17 +1198,9 @@
                         </div>
                     </div>
                 </div>
-                <p class="tw-editor-try-label" data-i18n="tw.edt.trylabel">2 Beispiele zum Testen des Editors</p>
                 <div class="tw-editor-try-group">
                     <div class="tw-editor-try-item">
-                        <a href="https://templattelocal2.vercel.app" target="_blank" class="tw-editor-try">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                            <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
-                        </a>
-                        <span class="tw-editor-try-sub">Bella Vista Restaurant</span>
-                    </div>
-                    <div class="tw-editor-try-item">
-                        <a href="https://templattelocal.vercel.app" target="_blank" class="tw-editor-try tw-editor-try--blue">
+                        <a href="https://templattelocal.vercel.app" target="_blank" rel="noopener" class="tw-editor-try tw-editor-try--blue">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                             <span data-i18n="tw.edt.btn">Editor jetzt testen</span>
                         </a>
@@ -1728,7 +1756,7 @@
     }
 
     // Template cards
-    var cards = document.querySelectorAll('.tw-tpl-card');
+    var cards = document.querySelectorAll('.tw-gallery-grid .br-card');
     var cardsObs = new IntersectionObserver(function(entries){
         if (entries[0].isIntersecting) {
             cards.forEach(function(c, i){
@@ -1779,23 +1807,14 @@
 </script>
 
 <script>
-// ── 3D tilt on template cards ────────────────────
-(function(){
-    if (window.innerWidth < 1025) return;
-    var cards = document.querySelectorAll('.tw-tpl-card');
-    cards.forEach(function(card){
-        card.addEventListener('mousemove', function(e){
-            var rect = card.getBoundingClientRect();
-            var x = e.clientX - rect.left, y = e.clientY - rect.top;
-            var cx = rect.width / 2, cy = rect.height / 2;
-            var rx = ((y - cy) / cy) * -6, ry = ((x - cx) / cx) * 6;
-            card.style.transform = 'perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';
-        });
-        card.addEventListener('mouseleave', function(){
-            card.style.transform = '';
-        });
-    });
-})();
+// 3D-Tilt entfernt am 18.08.2026 — die neuen Karten haben ihren eigenen Hover.
+function expandTpl(btn){
+    var grid = document.getElementById('twGalleryGrid');
+    if (!grid) return;
+    grid.classList.add('is-open');
+    grid.querySelectorAll('.br-card--extra').forEach(function(c){ c.classList.add('tw-visible'); });
+    btn.style.display = 'none';
+}
 </script>
 
 

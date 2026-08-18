@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181235">
+    <link rel="stylesheet" href="css/style.css?v=202608181305">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -1027,7 +1027,33 @@ body.dark-mode .pin-head h2{color:#f1f5f9;}
 .pin-head p{font-size:16px;line-height:1.65;color:var(--gunpowder400);margin:0;}
 .pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 @media(max-width:900px){.pin-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:560px){.pin-grid{grid-template-columns:1fr;}}
+/* Handy: statt sechs gestapelter Karten ein seitliches Karussell.
+   scroll-snap sorgt dafuer, dass immer eine Karte sauber einrastet. */
+@media(max-width:760px){
+  .pin-grid{
+    display:flex;grid-template-columns:none;
+    gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scroll-padding-left:20px;
+    padding:4px 20px 16px;margin:0 -20px;
+    scrollbar-width:none;
+  }
+  .pin-grid::-webkit-scrollbar{display:none;}
+  .pin-card{
+    flex:0 0 82%;max-width:330px;scroll-snap-align:start;
+    padding:26px 22px;
+  }
+  .pin-card:hover{transform:none;}
+  /* kleiner Hinweis, dass sich die Reihe schieben laesst */
+  .pin-hint{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    margin:2px 0 0;font-size:12.5px;font-weight:700;
+    color:var(--gunpowder300);letter-spacing:.04em;
+  }
+  .pin-hint svg{animation:pinNudge 1.8s ease-in-out infinite;}
+  @keyframes pinNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+}
+.pin-hint{display:none;}
+@media(prefers-reduced-motion:reduce){.pin-hint svg{animation:none;}}
 .pin-card{position:relative;background:#fff;border:1px solid var(--gunpowder100);border-radius:20px;padding:30px 28px;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;}
 .pin-card:hover{transform:translateY(-6px);box-shadow:0 20px 54px rgba(15,29,44,.11);border-color:rgba(254,108,117,.35);}
 body.dark-mode .pin-card{background:#141d2b;border-color:#1e2d3d;}
@@ -1089,6 +1115,7 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
                 <p data-i18n="pricing.incl.local.d">Kein Agenturaufschlag, kein Zwischenhändler. Du sprichst direkt mit dem Entwickler, der deine Website von Hand baut.</p>
             </div>
         </div>
+        <p class="pin-hint" data-i18n="pin.swipe">Wischen für mehr <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></p>
     </div>
 </section>
 
@@ -1107,7 +1134,7 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
                         <span class="brc-cur">CHF</span>
                     </div>
                     <p class="brc-desc" data-i18n="br.cta.desc">Websites, die ich bereits fertig gebaut habe &mdash; mit Ihren Texten, Ihren Bildern und Ihren Farben in wenigen Tagen online. Für alle, die einfach im Internet gefunden werden wollen.</p>
-                    <a href="#branchenGrid" class="brc-btn" data-lw-event="cta_vorlagen">
+                    <a href="templates-web.html" class="brc-btn" data-lw-event="cta_vorlagen">
                         <span data-i18n="br.cta.btn">Vorlagen ansehen</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
@@ -1390,36 +1417,40 @@ body.dark-mode .brc-marquee span{color:rgba(233,240,247,.5);}
 .brc-marquee span::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--begonia400);}
 @keyframes brcMq{to{transform:translateX(-50%);}}
 
+/* Handy/Tablet: Faecher unter dem Text, Breiten in Prozent —
+   mit festen px-Breiten ragten die Handys aus der Karte heraus. */
 @media(max-width:900px){
   .brc-inner{grid-template-columns:1fr;gap:0;padding:34px 24px 0;text-align:center;}
   .brc-price{justify-content:center;}
   .brc-desc{margin-left:auto;margin-right:auto;}
-  .brc-phones{height:210px;margin-top:26px;}
-  .brc-phone img{height:196px;}
-  .brc-phone:nth-child(1){width:96px;}
-  .brc-phone:nth-child(2){width:105px;}
-  .brc-phone:nth-child(3){width:114px;}
-  .brc-phone:nth-child(4){width:114px;}
-  .brc-phone:nth-child(5){width:105px;}
-  .brc-phone:nth-child(6){width:96px;}
+  .brc-phones{height:auto;aspect-ratio:16/7;margin-top:24px;overflow:hidden;}
+  .brc-phone{bottom:0;border-width:2px;border-radius:14px;}
+  .brc-phone img{height:auto;aspect-ratio:9/17;}
+  .brc-phone:nth-child(1){left:1%;width:15%;}
+  .brc-phone:nth-child(2){left:15.5%;width:16%;}
+  .brc-phone:nth-child(3){left:30.5%;width:17.5%;}
+  .brc-phone:nth-child(4){left:46%;width:17.5%;}
+  .brc-phone:nth-child(5){left:62%;width:16%;}
+  .brc-phone:nth-child(6){left:76.5%;width:15%;}
 }
 @media(max-width:560px){
   .brc{border-radius:20px;margin-bottom:32px;}
   .brc-inner{padding:28px 18px 0;}
   .brc-btn{width:100%;justify-content:center;}
-  .brc-phones{height:150px;}
-  .brc-phone img{height:140px;}
-  .brc-phone{bottom:-24px;border-width:2px;border-radius:14px;}
-  .brc-phone:nth-child(1){width:66px;}
-  .brc-phone:nth-child(2){width:73px;}
-  .brc-phone:nth-child(3){width:80px;}
-  .brc-phone:nth-child(4){width:80px;}
-  .brc-phone:nth-child(5){width:73px;}
-  .brc-phone:nth-child(6){width:66px;}
+  .brc-phones{aspect-ratio:16/8;margin-top:20px;}
+  .brc-phone{border-radius:11px;}
 }
 @media(prefers-reduced-motion:reduce){
   .brc-marquee{animation:none;}
   .brc-phone,.brc-btn{transition:none;}
+}
+
+/* Handy: nur das CTA-Banner. Die zwoelf Vorschauen und der Fusstext
+   bleiben dem Desktop vorbehalten — auf dem Handy fuehrt der Knopf
+   direkt auf templates-web.html. */
+@media(max-width:760px){
+  .br-grid,.br-more,.br-foot{display:none !important;}
+  .brc{margin-bottom:0;}
 }
 /* --- Branchen-Karten mit echter Mini-Vorschau --- */
 .br-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:20px;max-width:1120px;margin:0 auto;}
@@ -3147,9 +3178,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608181235"></script>
-<script src="js/booking-modal.js?v=202608181235"></script>
-<script src="js/main.js?v=202608181235"></script>
+<script src="js/translations.js?v=202608181305"></script>
+<script src="js/booking-modal.js?v=202608181305"></script>
+<script src="js/main.js?v=202608181305"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
