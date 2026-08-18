@@ -508,7 +508,7 @@ var CHAT_API_URL = 'https://web.lweb.ch/bot_respuestasweb.php';
 var chatbotSystemPrompt = 'RULE #1: You MUST reply in the SAME language the user writes in. If the user writes in Spanish, reply in Spanish. If in English, reply in English. If in French, reply in French. If in German, reply in German. NEVER default to German unless the user writes in German.\n\n' +
 'Willkommen bei Lweb.ch — maßgeschneiderte Lösungen für Websites, Online-Shops, mobile Apps und Chatbot-Integrationen. Hier sind die Details:\n\n' +
 '1. **Erstellung von maßgeschneiderten Websites**: Bei Lweb.ch erstellen wir individuelle Websites, die du vollständig anpassen kannst – ohne Programmierkenntnisse. Bereits ab 990 CHF erhältst du eine Website mit einem benutzerfreundlichen Admin-Panel zur Anpassung von Bildern, Texten, Farben und mehr.\n\n' +
-'2. **Online-Shops (E-Commerce)**: Wir bieten komplette Online-Shop-Lösungen ab 2900 CHF, die von der Inventarverwaltung bis zur sicheren Zahlungsabwicklung alles abdecken.\n\n' +
+'2. **Online-Shops (E-Commerce)**: Wir bieten komplette Online-Shop-Lösungen ab 2450 CHF, die von der Inventarverwaltung bis zur sicheren Zahlungsabwicklung alles abdecken.\n\n' +
 '3. **Integration von Künstlicher Intelligenz (KI) und Chatbots**: Unser intelligenter Chatbot basiert auf modernsten KI-Technologien (wie ChatGPT) und ist speziell dafür konzipiert, häufig gestellte Fragen in Echtzeit zu beantworten.\n\n' +
 '4. **Entwicklung mit Joomla, Next.js und Remix**: Moderne Websites mit den neuesten Frameworks.\n\n' +
 '5. **Entwicklung von mobilen Anwendungen (React Native)**: Unsere mobilen Apps für iOS und Android basieren auf React Native, was die Entwicklung einer hochwertigen Anwendung mit nur einer Codebasis ermöglicht.\n\n' +

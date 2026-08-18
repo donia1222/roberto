@@ -23,16 +23,17 @@
     alt=""/></noscript>
     <!-- End Meta Pixel Code -->
 
-    <title>KI-Integration | ChatGPT & OpenAI | Lweb</title>
-    <meta name="description" content="KI-Lösungen für Ihr Unternehmen — ChatGPT, automatische Prozesse und intelligente Datenanalyse. Persönlich beraten aus Buchs SG.">
-    <link rel="canonical" href="https://www.lweb.ch/leistungen-ki.html">
-    <meta property="og:url" content="https://www.lweb.ch/leistungen-ki.html">
+    <title>Beratung & Support | Technische Beratung | Lweb</title>
+    <meta name="description" content="Technische Beratung, Architektur-Planung und langfristiger Support — persönlich beraten aus Buchs SG.">
+    <link rel="canonical" href="https://www.lweb.ch/leistungen-support.html">
+    <meta property="og:url" content="https://www.lweb.ch/leistungen-support.html">
     <meta name="author" content="Roberto Salvador — Lweb">
     <meta name="theme-color" content="#ffffff" id="themeColor">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608181235">
+    <link rel="stylesheet" href="css/style.css?v=202608181230">
+    <script src="js/translations.js?v=202608181230"></script>
     <style>
         body { padding-top: 60px; overflow-x: hidden; background: #fff; }
 
@@ -96,9 +97,9 @@
             align-items:center; justify-content:center;
             background: linear-gradient(180deg, #fff 15%, #f5f0ff 100%);
             padding: 80px 24px 80px; position: relative; overflow: hidden;
-             margin-top:-20px; 
+            margin-top:-20px; 
         }
-        @media(max-width:1024px){.tw-hero{margin-top:-40px;}}
+        @media(max-width:1024px){.tw-hero{margin-top:-20px;}}
         .tw-hero-center {
             text-align:center; max-width:780px; margin:0 auto;
         }
@@ -656,7 +657,7 @@
         .header-back-desktop svg { transition: transform 0.2s ease; }
         .header-back-desktop:hover { background:#8ecce8 !important; }
         .header-back-desktop:hover svg { transform: translateX(-4px); }
-        .header-title {
+.header-title {
             display: flex; flex-direction: column; gap: 3px; align-items: center;
             text-align: center; line-height: 1.1;
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
@@ -686,118 +687,13 @@
         }
         body.dark-mode .header-title span:first-child { color: #f1f5f9 !important; }
         .header.menu-open .header-title span:first-child { color: #fff !important; }
-
-        /* ═══ AI MODELS SECTION ══════════════════════════ */
-        .ki-models-section {
-            background: #f1f5f9;
-            padding: 90px 24px;
-            overflow: hidden;
-            position: relative;
-        }
-        body.dark-mode .ki-models-section {
-            background: linear-gradient(165deg,#060e18 0%,#0f1d2c 60%,#1a0a0d 100%);
-        }
-        .ki-models-section .tw-label { color: #fe6c75; }
-        .ki-models-section .tw-h2   { color: #0f1d2c; }
-        .ki-models-section .tw-sub  { color: #6b7d99; }
-        body.dark-mode .ki-models-section .tw-label { color: rgba(255,255,255,0.45); }
-        body.dark-mode .ki-models-section .tw-h2   { color: #fff; }
-        body.dark-mode .ki-models-section .tw-sub  { color: #8a9bb3; }
-        .ki-models-grid {
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:14px;
-            margin-top:48px;
-        }
-        .ki-model-card {
-            background: #fff;
-            border: 1px solid #e2eaf4;
-            border-radius: 18px;
-            padding: 22px 18px 20px;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.06);
-            transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
-            opacity: 0;
-            transform: translateY(28px);
-            animation: ki-model-in 0.55s ease forwards;
-        }
-        body.dark-mode .ki-model-card {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255,255,255,0.07);
-            box-shadow: none;
-        }
-        .ki-model-card:nth-child(1){animation-delay:.05s}
-        .ki-model-card:nth-child(2){animation-delay:.12s}
-        .ki-model-card:nth-child(3){animation-delay:.19s}
-        .ki-model-card:nth-child(4){animation-delay:.26s}
-        .ki-model-card:nth-child(5){animation-delay:.33s}
-        .ki-model-card:nth-child(6){animation-delay:.40s}
-        .ki-model-card:nth-child(7){animation-delay:.47s}
-        .ki-model-card:nth-child(8){animation-delay:.54s}
-        @keyframes ki-model-in { to{opacity:1;transform:translateY(0)} }
-        .ki-model-card:hover {
-            transform: translateY(-6px);
-            border-color: #fe6c75;
-            box-shadow: 0 16px 40px rgba(254,108,117,0.14);
-        }
-        body.dark-mode .ki-model-card:hover {
-            border-color: rgba(254,108,117,0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(254,108,117,0.08);
-        }
-        .ki-model-logo {
-            width: 52px; height: 52px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 14px;
-            animation: ki-logo-float 4s ease-in-out infinite;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .ki-model-card:nth-child(2n) .ki-model-logo{animation-duration:5s;animation-delay:-1.5s}
-        .ki-model-card:nth-child(3n) .ki-model-logo{animation-duration:6s;animation-delay:-3s}
-        .ki-model-card:nth-child(5n) .ki-model-logo{animation-duration:4.5s;animation-delay:-2s}
-        @keyframes ki-logo-float {
-            0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)}
-        }
-        .ki-model-logo img { width:30px; height:30px; object-fit:contain; display:block; }
-        .ki-model-logo svg { width:30px; height:30px; }
-        .ki-model-logo--openai { background:#10a37f; }
-        .ki-model-logo--claude { background:#D97757; }
-        .ki-model-logo--gemini { background:linear-gradient(135deg,#4285F4,#34A853); }
-        .ki-model-logo--grok   { background:#111; }
-        .ki-model-logo--dalle  { background:#ab68ff; }
-        .ki-model-logo--midj   { background:#1A222D; }
-        .ki-model-logo--suno   { background:#000; }
-        .ki-model-logo--sd     { background:linear-gradient(135deg,#9D39FF,#A380FF); }
-        .ki-model-name {
-            font-size: 15px; font-weight: 800; color: #0f1d2c;
-            margin-bottom: 2px; letter-spacing: -0.01em;
-        }
-        body.dark-mode .ki-model-name { color: #f1f5f9; }
-        .ki-model-provider {
-            font-size: 10.5px; color: #8a9bb3;
-            font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
-            margin-bottom: 12px;
-        }
-        body.dark-mode .ki-model-provider { color: rgba(255,255,255,0.38); }
-        .ki-model-tags { display:flex; flex-wrap:wrap; gap:5px; }
-        .ki-model-tag {
-            font-size: 10px; font-weight: 700;
-            padding: 3px 8px; border-radius: 20px;
-            color: #6b7d99;
-            background: #f1f5f9;
-            border: 1px solid #dde6f0;
-            text-transform: uppercase; letter-spacing: 0.04em;
-        }
-        body.dark-mode .ki-model-tag {
-            color: rgba(255,255,255,0.65);
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.09);
-        }
-        @media(max-width:900px){ .ki-models-grid{grid-template-columns:repeat(2,1fr)} }
-        @media(max-width:480px){
-            .ki-models-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-            .ki-model-card{padding:16px 14px}
-            .ki-model-name{font-size:13px}
-        }
+        /* ── Support page blue accent override ── */
+        .tw-accent { color: #fe6c75 !important; }
+        .tw-label { color: #fe6c75 !important; background: rgba(254,108,117,0.08) !important; border-color: rgba(254,108,117,0.20) !important; }
+        .tw-btn-red { background: #fe6c75 !important; }
+        .tw-btn-red:hover { background: #e1545d !important; }
+        .tw-stats { background: linear-gradient(135deg, #fe6c75 0%, #e1545d 100%) !important; }
+        .header-nav-item--bot { color: #fe6c75 !important; }
     </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
@@ -818,8 +714,8 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </a>
         <div class="header-title" id="headerTitle">
-            <span>KI-Integration</span>
-            <span class="accent">& Automatisierung</span>
+            <span>Support ab</span>
+            <span class="accent">85 CHF/Std.</span>
         </div>
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
             <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
@@ -849,7 +745,7 @@
     </a>
     <nav class="mobile-menu-nav">
         <a href="desarrollo.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.services.dev">Entwicklung</span><small class="mobile-menu-link-hint" data-i18n="nav.services.dev.hint">React Native · Next.js · Remix</small></a>
-        <a href="leistungen-ki.html" class="mobile-menu-link mobile-menu-link--custom active"><span data-i18n="nav.services.ki">KI-Integration</span><small class="mobile-menu-link-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></a>
+        <a href="leistungen-ki.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.services.ki">KI-Integration</span><small class="mobile-menu-link-hint" data-i18n="nav.services.ki.hint">OpenAI API, Chatbots &amp; Automatisierung</small></a>
     </nav>
     <div class="mobile-menu-footer">
         <a href="mailto:info@lweb.ch">info@lweb.ch</a>
@@ -859,153 +755,162 @@
 
 <!-- ═════════════════ HERO ═════════════════ -->
 <section class="tw-hero">
-
-    <!-- Background floating AI chips -->
-    <div class="ki-bg-chips" aria-hidden="true">
-        <span class="ki-chip ki-chip--purple ki-chip--c1">GPT-4o</span>
-        <span class="ki-chip ki-chip--blue ki-chip--c2">Neural Network</span>
-        <span class="ki-chip ki-chip--cyan ki-chip--c3">Claude 3.5</span>
-        <span class="ki-chip ki-chip--red ki-chip--c4">Automatisierung</span>
-        <span class="ki-chip ki-chip--purple ki-chip--c5">Machine Learning</span>
-        <span class="ki-chip ki-chip--blue ki-chip--c6">OpenAI API</span>
-        <span class="ki-chip ki-chip--cyan ki-chip--c7">Gemini 2.0</span>
-        <span class="ki-chip ki-chip--red ki-chip--c8">Prompt Engineering</span>
-        <span class="ki-chip ki-chip--purple ki-chip--c9">Computer Vision</span>
-        <span class="ki-chip ki-chip--blue ki-chip--c10">DALL-E 3</span>
-        <span class="ki-chip ki-chip--cyan ki-chip--c11">NLP</span>
-        <span class="ki-chip ki-chip--red ki-chip--c12">Deep Learning</span>
-        <span class="ki-chip ki-chip--purple ki-chip--c13">Chatbot</span>
-        <span class="ki-chip ki-chip--blue ki-chip--c14">RAG Pipeline</span>
-    </div>
-    <style>
-        .ki-bg-chips{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-        .ki-chip{position:absolute;display:inline-block;padding:5px 13px;border-radius:100px;font-size:11.5px;font-weight:700;letter-spacing:.02em;white-space:nowrap;opacity:0;animation:chipFadeIn .6s ease forwards, chipDrift 0s ease-in-out infinite;}
-        .ki-chip--purple{background:rgba(108,99,255,.08);border:1px solid rgba(108,99,255,.18);color:rgba(108,99,255,.7);}
-        .ki-chip--blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.18);color:rgba(59,130,246,.7);}
-        .ki-chip--cyan{background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);color:rgba(6,182,212,.75);}
-        .ki-chip--red{background:rgba(254,108,117,.08);border:1px solid rgba(254,108,117,.2);color:rgba(254,108,117,.75);}
-        body.dark-mode .ki-chip--purple{background:rgba(108,99,255,.12);border-color:rgba(108,99,255,.25);color:rgba(150,140,255,.8);}
-        body.dark-mode .ki-chip--blue{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);color:rgba(100,160,255,.8);}
-        body.dark-mode .ki-chip--cyan{background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.25);color:rgba(50,210,240,.8);}
-        body.dark-mode .ki-chip--red{background:rgba(254,108,117,.12);border-color:rgba(254,108,117,.25);color:rgba(255,140,148,.8);}
-        @keyframes chipFadeIn{from{opacity:0;}to{opacity:1;}}
-        /* Drift animations */
-        @keyframes chipDrift1{0%,100%{transform:translateY(0) translateX(0);}40%{transform:translateY(-16px) translateX(7px);}70%{transform:translateY(-6px) translateX(-5px);}}
-        @keyframes chipDrift2{0%,100%{transform:translateY(0) translateX(0);}35%{transform:translateY(12px) translateX(-9px);}65%{transform:translateY(-10px) translateX(5px);}}
-        @keyframes chipDrift3{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-18px) translateX(3px);}}
-        @keyframes chipDrift4{0%,100%{transform:translateY(0) translateX(0);}45%{transform:translateY(10px) translateX(10px);}75%{transform:translateY(-8px) translateX(-4px);}}
-        /* Positions — spread across bottom area around the AI visual */
-        .ki-chip--c1 {bottom:46%;left:6%;animation:chipFadeIn .6s .3s ease forwards,chipDrift1 5.8s 1s ease-in-out infinite;}
-        .ki-chip--c2 {bottom:30%;left:4%;animation:chipFadeIn .6s .5s ease forwards,chipDrift2 7.2s 1.2s ease-in-out infinite;}
-        .ki-chip--c3 {bottom:12%;left:6%;animation:chipFadeIn .6s .7s ease forwards,chipDrift3 6.4s 1.4s ease-in-out infinite;}
-        .ki-chip--c4 {bottom:46%;right:6%;animation:chipFadeIn .6s .4s ease forwards,chipDrift1 6.8s 0.8s ease-in-out infinite;}
-        .ki-chip--c5 {bottom:30%;right:4%;animation:chipFadeIn .6s .6s ease forwards,chipDrift2 5.5s 1.6s ease-in-out infinite;}
-        .ki-chip--c6 {bottom:12%;right:6%;animation:chipFadeIn .6s .8s ease forwards,chipDrift4 7.6s 1s ease-in-out infinite;}
-        .ki-chip--c7 {bottom:42%;left:22%;animation:chipFadeIn .6s .9s ease forwards,chipDrift3 6.2s 1.3s ease-in-out infinite;}
-        .ki-chip--c8 {bottom:42%;right:22%;animation:chipFadeIn .6s 1.1s ease forwards,chipDrift1 7s 0.6s ease-in-out infinite;}
-        .ki-chip--c9 {bottom:5%;left:20%;animation:chipFadeIn .6s 1s ease forwards,chipDrift2 5.9s 1.5s ease-in-out infinite;}
-        .ki-chip--c10{bottom:5%;right:20%;animation:chipFadeIn .6s .6s ease forwards,chipDrift4 6.5s 1.8s ease-in-out infinite;}
-        .ki-chip--c11{bottom:22%;left:18%;animation:chipFadeIn .6s .8s ease forwards,chipDrift1 7.4s 0.9s ease-in-out infinite;}
-        .ki-chip--c12{bottom:22%;right:18%;animation:chipFadeIn .6s 1.2s ease forwards,chipDrift3 5.6s 1.1s ease-in-out infinite;}
-        .ki-chip--c13{bottom:52%;left:1%;display:none;}
-        .ki-chip--c14{bottom:52%;right:1%;display:none;}
-        @media(max-width:1024px){
-            .ki-bg-chips{display:none;}
-        }
-        .tw-hero-center{position:relative;z-index:1;}
-        .ki-spark-wrap{position:relative;z-index:1;}
-    </style>
-
     <div class="tw-hero-center">
 
-        <h1 class="tw-hero-h1" data-i18n-html="ki.hero.h1">KI-Integration<br><span class="tw-accent">für Ihre App & Website</span></h1>
-        <p class="tw-hero-sub" data-i18n="ki.hero.sub">OpenAI API, intelligente Chatbots und automatisierte Prozesse — individuell für Ihr Unternehmen integriert. Smarter, schneller, effizienter.</p>
+        <h1 class="tw-hero-h1" data-i18n-html="supp.hero.h1">Beratung & Support<br><span class="tw-accent">für Ihr Projekt</span></h1>
+        <p class="tw-hero-sub" data-i18n="supp.hero.sub">Technische Beratung, Architektur-Planung und langfristiger Support nach dem Launch — persönlich begleitet aus Buchs SG.</p>
         <div class="tw-hero-ctas">
             <a href="#tw-includes" class="tw-btn-red">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                <span data-i18n="ki.hero.cta1">KI-Lösungen ansehen</span>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span data-i18n="supp.hero.cta1">Leistungen ansehen</span>
             </a>
-            <a href="#tw-cta" class="tw-btn-ghost">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                <span data-i18n="ki.hero.cta2">Beratung anfragen</span>
-            </a>
+            <button onclick="openVCardModal()" class="tw-btn-ghost" style="border:1.5px solid rgba(15,29,44,0.15);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span data-i18n="footer.vcard">Kontakt speichern</span>
+            </button>
         </div>
         <div class="tw-hero-pills">
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ki.hero.pill1">ChatGPT & OpenAI</span></span>
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ki.hero.pill2">Automatisierung</span></span>
-            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="ki.hero.pill3">Datenanalyse & Reporting</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="supp.hero.pill1">Technische Beratung</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="supp.hero.pill2">Code-Review</span></span>
+            <span class="tw-hero-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="supp.hero.pill3">Ab CHF 85 / Std.</span></span>
         </div>
     </div>
 
-    <!-- KI Sparkle Visual -->
-    <div class="ki-spark-wrap">
-        <div class="ki-spark-scene">
-            <!-- Centro: texto AI con gradiente -->
-            <div class="ki-spark-center">
-                <span class="ki-ai-text">AI</span>
+    <!-- Support Hero Visual — dashboard mockup -->
+    <div class="supp-hero-wrap">
+        <div class="supp-dash">
+            <!-- Window bar -->
+            <div class="supp-dash-bar">
+                <div class="supp-dash-dots">
+                    <span class="sd-dot sd-dot--r"></span>
+                    <span class="sd-dot sd-dot--y"></span>
+                    <span class="sd-dot sd-dot--g"></span>
+                </div>
+                <span class="supp-dash-bar-title">Lweb · Beratung & Support</span>
+                <span class="supp-dash-live-wrap"><span class="supp-dash-live-dot"></span>Live</span>
             </div>
-            <!-- Estrellas de 4 puntas -->
-            <svg class="ki-star ki-star--1" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="url(#g1)"/><defs><linearGradient id="g1" x1="0" y1="0" x2="51" y2="51" gradientUnits="userSpaceOnUse"><stop stop-color="#6c63ff"/><stop offset="1" stop-color="#fe6c75"/></linearGradient></defs></svg>
-            <svg class="ki-star ki-star--2" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="url(#g2)"/><defs><linearGradient id="g2" x1="0" y1="0" x2="51" y2="51"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
-            <svg class="ki-star ki-star--3" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="url(#g3)"/><defs><linearGradient id="g3" x1="0" y1="0" x2="51" y2="51"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#fe6c75"/></linearGradient></defs></svg>
-            <svg class="ki-star ki-star--4" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="none" stroke="url(#g4)" stroke-width="2.5"/><defs><linearGradient id="g4" x1="0" y1="0" x2="51" y2="51"><stop stop-color="#6c63ff"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs></svg>
-            <svg class="ki-star ki-star--5" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="none" stroke="url(#g5)" stroke-width="2.5"/><defs><linearGradient id="g5" x1="0" y1="0" x2="51" y2="51"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs></svg>
-            <svg class="ki-star ki-star--6" viewBox="0 0 51 51" fill="none"><path d="M25.5,0 C25.5,0 27.3,18.7 51,25.5 C27.3,32.3 25.5,51 25.5,51 C25.5,51 23.7,32.3 0,25.5 C23.7,18.7 25.5,0 25.5,0Z" fill="url(#g6)"/><defs><linearGradient id="g6" x1="0" y1="0" x2="51" y2="51"><stop stop-color="#fe6c75"/><stop offset="1" stop-color="#f97316"/></linearGradient></defs></svg>
+            <!-- Body: chat + stats -->
+            <div class="supp-dash-body">
+                <div class="supp-dash-chat">
+                    <div class="supp-chat-row supp-chat-row--in">
+                        <div class="supp-chat-av">R</div>
+                        <div class="supp-chat-bub supp-chat-bub--in">Ich habe Probleme mit meiner App-Performance. Können Sie helfen?</div>
+                    </div>
+                    <div class="supp-chat-row supp-chat-row--out supp-anim-d1">
+                        <div class="supp-chat-bub supp-chat-bub--out">Natürlich! Schicken Sie mir kurz den Fehlerbericht und wir schauen es zusammen an 👍</div>
+                        <div class="supp-chat-av supp-chat-av--l">L</div>
+                    </div>
+                    <div class="supp-chat-row supp-chat-row--in supp-anim-d2">
+                        <div class="supp-chat-av">R</div>
+                        <div class="supp-chat-bub supp-chat-bub--in">Super, danke! Wann haben Sie Zeit?</div>
+                    </div>
+                    <div class="supp-chat-typing supp-anim-d3">
+                        <div class="supp-chat-av supp-chat-av--l">L</div>
+                        <div class="supp-typing-dots"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+                <div class="supp-dash-stats">
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">&lt; 2h</div>
+                        <div class="supp-ds-l">Antwortzeit</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">6+</div>
+                        <div class="supp-ds-l">Jahre</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">100%</div>
+                        <div class="supp-ds-l">Persönlich</div>
+                    </div>
+                    <div class="supp-ds-stat">
+                        <div class="supp-ds-n">85 CHF</div>
+                        <div class="supp-ds-l">Ab / Std.</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <style>
-        .ki-spark-wrap{width:100%;display:flex;justify-content:center;margin-top:44px;animation:fadeUp .8s .5s ease both;}
-        .ki-spark-scene{position:relative;width:380px;height:220px;display:flex;align-items:center;justify-content:center;}
-        .ki-spark-center{display:flex;align-items:center;justify-content:center;z-index:3;}
-        .ki-ai-text{font-size:96px;font-weight:900;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,#6c63ff 0%,#3b82f6 40%,#06b6d4 70%,#fe6c75 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 24px rgba(108,99,255,.3));animation:aiGlow 3s ease-in-out infinite;}
-        @keyframes aiGlow{0%,100%{filter:drop-shadow(0 4px 24px rgba(108,99,255,.3));}50%{filter:drop-shadow(0 4px 40px rgba(108,99,255,.6));}}
-        .ki-star{position:absolute;pointer-events:none;}
-        /* Estrella 1 — grande arriba-izquierda */
-        .ki-star--1{width:64px;height:64px;top:-10px;left:30px;animation:starFloat1 3.2s ease-in-out infinite;}
-        /* Estrella 2 — mediana abajo-izquierda */
-        .ki-star--2{width:44px;height:44px;bottom:10px;left:10px;animation:starFloat2 2.8s ease-in-out infinite .4s;}
-        /* Estrella 3 — pequeña centro-izquierda */
-        .ki-star--3{width:30px;height:30px;top:50%;left:90px;transform:translateY(-50%);animation:starFloat3 2.4s ease-in-out infinite .8s;}
-        /* Estrella 4 — outline grande arriba-derecha */
-        .ki-star--4{width:52px;height:52px;top:-5px;right:40px;animation:starFloat1 3.6s ease-in-out infinite .2s;}
-        /* Estrella 5 — outline mediana abajo-derecha */
-        .ki-star--5{width:38px;height:38px;bottom:8px;right:20px;animation:starFloat2 3s ease-in-out infinite .6s;}
-        /* Estrella 6 — pequeña centro-derecha */
-        .ki-star--6{width:24px;height:24px;top:40%;right:95px;animation:starFloat3 2.6s ease-in-out infinite 1s;}
-        @keyframes starFloat1{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-12px) rotate(15deg);}}
-        @keyframes starFloat2{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-8px) rotate(-10deg);}}
-        @keyframes starFloat3{0%,100%{transform:translateY(-50%) rotate(0deg);}50%{transform:translateY(calc(-50% - 10px)) rotate(20deg);}}
-        @media(max-width:640px){.ki-spark-scene{width:280px;height:170px;}.ki-ai-text{font-size:72px;}.ki-star--1{width:48px;height:48px;}.ki-star--2{width:34px;height:34px;}.ki-star--3{width:24px;height:24px;left:60px;}.ki-star--4{width:40px;height:40px;right:28px;}.ki-star--5{width:30px;height:30px;right:14px;}.ki-star--6{width:20px;height:20px;right:68px;}}
-        body.dark-mode .ki-spark-scene{opacity:.9;}
+        /* ── Support Hero Dashboard ───────────────── */
+        .supp-hero-wrap{width:100%;display:flex;justify-content:center;margin-top:52px;animation:fadeUp .8s .5s ease both;}
+        .supp-dash{width:100%;max-width:580px;border-radius:18px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.16);border:1px solid rgba(0,0,0,.07);}
+        body.dark-mode .supp-dash{border-color:rgba(255,255,255,.07);box-shadow:0 32px 80px rgba(0,0,0,.55);}
+        /* Title bar */
+        .supp-dash-bar{display:flex;align-items:center;gap:10px;padding:11px 16px;background:#0f1d2c;}
+        body.dark-mode .supp-dash-bar{background:#07101a;}
+        .supp-dash-dots{display:flex;gap:6px;flex-shrink:0;}
+        .sd-dot{width:12px;height:12px;border-radius:50%;display:block;}
+        .sd-dot--r{background:#ff5f57;}.sd-dot--y{background:#febc2e;}.sd-dot--g{background:#28c840;}
+        .supp-dash-bar-title{flex:1;text-align:center;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.02em;}
+        .supp-dash-live-wrap{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#28c840;flex-shrink:0;}
+        .supp-dash-live-dot{width:7px;height:7px;border-radius:50%;background:#28c840;animation:suppLivePulse 1.5s ease-in-out infinite;}
+        @keyframes suppLivePulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+        /* Body */
+        .supp-dash-body{display:flex;background:#fff;}
+        body.dark-mode .supp-dash-body{background:#111827;}
+        /* Chat pane */
+        .supp-dash-chat{flex:1;padding:18px 16px;display:flex;flex-direction:column;gap:11px;border-right:1px solid #f1f5f9;min-height:220px;}
+        body.dark-mode .supp-dash-chat{border-right-color:#1e2d3d;}
+        .supp-chat-row{display:flex;align-items:flex-end;gap:8px;animation:suppChatIn .45s ease both;opacity:0;}
+        .supp-chat-row--in{flex-direction:row;}
+        .supp-chat-row--out{flex-direction:row-reverse;}
+        .supp-chat-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;background:#eef2f7;color:#0f1d2c;}
+        .supp-chat-av--l{background:#fe6c75;color:#fff;}
+        body.dark-mode .supp-chat-av{background:#1e2d3d;color:#f1f5f9;}
+        .supp-chat-bub{font-size:12.5px;line-height:1.55;padding:9px 13px;border-radius:16px;max-width:82%;}
+        .supp-chat-bub--in{background:#f1f5f9;color:#0f1d2c;border-bottom-left-radius:4px;}
+        .supp-chat-bub--out{background:#fe6c75;color:#fff;border-bottom-right-radius:4px;}
+        body.dark-mode .supp-chat-bub--in{background:#1e2d3d;color:#f1f5f9;}
+        .supp-chat-typing{display:flex;align-items:center;gap:8px;animation:suppChatIn .45s ease both;opacity:0;}
+        .supp-typing-dots{display:flex;gap:4px;background:#f1f5f9;padding:10px 13px;border-radius:16px;border-bottom-left-radius:4px;}
+        body.dark-mode .supp-typing-dots{background:#1e2d3d;}
+        .supp-typing-dots span{width:6px;height:6px;border-radius:50%;background:#94a3b8;display:block;animation:suppDotBounce 1.3s ease-in-out infinite;}
+        .supp-typing-dots span:nth-child(2){animation-delay:.22s;}
+        .supp-typing-dots span:nth-child(3){animation-delay:.44s;}
+        @keyframes suppDotBounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-7px);}}
+        @keyframes suppChatIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+        .supp-chat-row:first-child{animation-delay:.6s;}
+        .supp-anim-d1{animation-delay:1.2s;}
+        .supp-anim-d2{animation-delay:2s;}
+        .supp-anim-d3{animation-delay:2.9s;}
+        /* Stats panel */
+        .supp-dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f1f5f9;flex-shrink:0;width:168px;}
+        body.dark-mode .supp-dash-stats{background:#1e2d3d;}
+        .supp-ds-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 8px;background:#fff;gap:5px;text-align:center;}
+        body.dark-mode .supp-ds-stat{background:#111827;}
+        .supp-ds-n{font-size:17px;font-weight:800;color:#0f1d2c;line-height:1;}
+        body.dark-mode .supp-ds-n{color:#f1f5f9;}
+        .supp-ds-l{font-size:10px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;}
+        @media(max-width:540px){
+            .supp-dash-stats{width:130px;}
+            .supp-ds-n{font-size:14px;}
+            .supp-ds-stat{padding:16px 6px;}
+            .supp-chat-bub{font-size:11.5px;}
+        }
     </style>
-
 </section>
 
 <!-- ═════════════════ MARQUEE ═════════════════ -->
 <div class="tw-marquee-wrap">
     <div class="tw-marquee">
-        <span class="tw-marquee-item">ChatGPT & GPT-4o</span>
-        <span class="tw-marquee-item">Claude</span>
-        <span class="tw-marquee-item">Gemini</span>
-        <span class="tw-marquee-item">OpenAI API</span>
-        <span class="tw-marquee-item">Automatisierung</span>
-        <span class="tw-marquee-item">Datenanalyse</span>
-        <span class="tw-marquee-item">NLP</span>
-        <span class="tw-marquee-item">Computer Vision</span>
-        <span class="tw-marquee-item">Machine Learning</span>
-        <span class="tw-marquee-item">DSGVO-konform</span>
-        <span class="tw-marquee-item">Prompt Engineering</span>
-        <span class="tw-marquee-item">ChatGPT & GPT-4o</span>
-        <span class="tw-marquee-item">Claude</span>
-        <span class="tw-marquee-item">Gemini</span>
-        <span class="tw-marquee-item">OpenAI API</span>
-        <span class="tw-marquee-item">Automatisierung</span>
-        <span class="tw-marquee-item">Datenanalyse</span>
-        <span class="tw-marquee-item">NLP</span>
-        <span class="tw-marquee-item">Computer Vision</span>
-        <span class="tw-marquee-item">Machine Learning</span>
-        <span class="tw-marquee-item">DSGVO-konform</span>
-        <span class="tw-marquee-item">Prompt Engineering</span>
+        <span class="tw-marquee-item">Technische Beratung</span>
+        <span class="tw-marquee-item">Code-Review</span>
+        <span class="tw-marquee-item">Architektur-Planung</span>
+        <span class="tw-marquee-item">Performance-Optimierung</span>
+        <span class="tw-marquee-item">Schulungen & Workshops</span>
+        <span class="tw-marquee-item">Langfristiger Support</span>
+        <span class="tw-marquee-item">Wartung & Updates</span>
+        <span class="tw-marquee-item">Ab CHF 85 / Std.</span>
+        <span class="tw-marquee-item">Pauschalpaket verfügbar</span>
+        <span class="tw-marquee-item">Technische Beratung</span>
+        <span class="tw-marquee-item">Code-Review</span>
+        <span class="tw-marquee-item">Architektur-Planung</span>
+        <span class="tw-marquee-item">Performance-Optimierung</span>
+        <span class="tw-marquee-item">Schulungen & Workshops</span>
+        <span class="tw-marquee-item">Langfristiger Support</span>
+        <span class="tw-marquee-item">Wartung & Updates</span>
+        <span class="tw-marquee-item">Ab CHF 85 / Std.</span>
+        <span class="tw-marquee-item">Pauschalpaket verfügbar</span>
     </div>
 </div>
 
@@ -1013,278 +918,174 @@
 
 
 
-<!-- ═════════════════ KI FEATURES ═════════════════ -->
+<!-- ═════════════════ SERVICES GRID ═════════════════ -->
 <style>
-.ki-features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-@media(max-width:900px){.ki-features-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:580px){.ki-features-grid{grid-template-columns:1fr;}}
-.ki-feat-card{background:#fff;border:1.5px solid #eef2f7;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s,transform .25s,border-color .25s;}
-.ki-feat-card:hover{box-shadow:0 12px 36px rgba(0,0,0,0.09);transform:translateY(-4px);border-color:#e0e8f4;}
-.ki-feat-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ki-feat-icon svg{width:24px;height:24px;}
-.ki-feat-card h4{font-size:17px;font-weight:800;color:#0f1d2c;margin:0;}
-.ki-feat-card p{font-size:14px;line-height:1.65;color:#6b7d99;margin:0;flex:1;}
-.ki-feat-tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#fe6c75;background:rgba(254,108,117,.07);border-radius:50px;padding:4px 12px;width:fit-content;}
-body.dark-mode .ki-feat-card{background:#141d2b;border-color:#1e2a3a;}
-body.dark-mode .ki-feat-card:hover{border-color:#2a3a52;box-shadow:0 12px 36px rgba(0,0,0,0.3);}
-body.dark-mode .ki-feat-card h4{color:#f1f5f9;}
+.supp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+@media(max-width:900px){.supp-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:580px){.supp-grid{grid-template-columns:1fr;}}
+.supp-card{background:#fff;border:1.5px solid #eef2f7;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s,transform .25s,border-color .25s;}
+.supp-card:hover{box-shadow:0 12px 40px rgba(254,108,117,.12);transform:translateY(-4px);border-color:rgba(254,108,117,.25);}
+body.dark-mode .supp-card{background:#111827;border-color:#1e2d3d;}
+.supp-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.supp-card-icon svg{width:24px;height:24px;}
+.supp-card h3{font-size:16px;font-weight:800;color:#0f1d2c;margin:0;}
+body.dark-mode .supp-card h3{color:#f1f5f9;}
+.supp-card p{font-size:14px;color:#64748b;line-height:1.6;margin:0;}
+body.dark-mode .supp-card p{color:#94a3b8;}
 </style>
 <section class="tw-section tw-inc-section" id="tw-includes" style="background:#f8fafc;">
 <style>body.dark-mode .tw-inc-section{background:#0a1018!important;}</style>
     <div class="tw-wrap">
-        <div class="tw-label" data-i18n="ki.inc.label">KI-INTEGRATION</div>
-        <h2 class="tw-h2" data-i18n-html="ki.inc.h2">Was ich<br><span class="tw-accent">integriere</span></h2>
-        <p class="tw-sub" data-i18n="ki.inc.sub">OpenAI API, intelligente Chatbots und automatisierte Prozesse für Ihre App oder Website.</p>
-        <div class="ki-features-grid">
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#fff0f1,#ffd6d9);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0110 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="3" fill="#ffe4e6" stroke="#fe6c75"/></svg>
+        <div class="tw-label" data-i18n="supp.inc.label">BERATUNG & SUPPORT</div>
+        <h2 class="tw-h2" data-i18n-html="supp.inc.h2">Was ich<br><span class="tw-accent">anbiete</span></h2>
+        <p class="tw-sub" data-i18n="supp.inc.sub">Technische Expertise, langfristige Begleitung und faire Preise — ab CHF 85 / Std. oder als Pauschalpaket.</p>
+        <div class="supp-grid">
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(254,108,117,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f1.h">OpenAI API & GPT-Integration</h4>
-                <p data-i18n="ki.inc.f1.p">Direkte Anbindung an GPT-4, GPT-4o und weitere Modelle. Prompt-Engineering, Kontext-Management und sichere API-Verwaltung inklusive.</p>
-                <span class="ki-feat-tag">GPT-4 · GPT-4o</span>
+                <h3 data-i18n="supp.inc.c1.h">Technische Beratung & Consulting</h3>
+                <p data-i18n="supp.inc.c1.p">Individuelle Beratung zu Technologie-Entscheidungen, Stack-Wahl und digitaler Strategie für Ihr Unternehmen.</p>
             </div>
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(139,92,246,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h7"/><path d="M7 12h10"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f2.h">Intelligente Chatbots für Ihre Website</h4>
-                <p data-i18n="ki.inc.f2.p">KI-Assistenten, die Kundenfragen in Echtzeit beantworten. Trainiert auf Ihre Inhalte, Produkte und FAQs — 24/7 verfügbar.</p>
-                <span class="ki-feat-tag" style="color:#0891b2;background:rgba(8,145,178,.07)">24/7 verfügbar</span>
+                <h3 data-i18n="supp.inc.c2.h">Architektur- & Projekt-Planung</h3>
+                <p data-i18n="supp.inc.c2.p">System-Architektur, Datenbankdesign und Projektstruktur — durchdacht geplant vor dem ersten Code.</p>
             </div>
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(16,185,129,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f3.h">Automatisierte Workflows & Prozesse</h4>
-                <p data-i18n="ki.inc.f3.p">Wiederholende Aufgaben automatisieren: Dokumente verarbeiten, E-Mails klassifizieren, Berichte erstellen — alles ohne manuellen Aufwand.</p>
-                <span class="ki-feat-tag" style="color:#059669;background:rgba(5,150,105,.07)">Zeitersparnis</span>
+                <h3 data-i18n="supp.inc.c3.h">Code-Review & Performance-Optimierung</h3>
+                <p data-i18n="supp.inc.c3.p">Ihr Code geprüft von einem erfahrenen Entwickler — mit konkreten Verbesserungsvorschlägen und Refactoring.</p>
             </div>
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(245,158,11,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f4.h">Bild- und Texterkennung</h4>
-                <p data-i18n="ki.inc.f4.p">OCR, Bildanalyse und Computer Vision — Dokumente digitalisieren, Inhalte klassifizieren und visuelle Daten automatisch auswerten.</p>
-                <span class="ki-feat-tag" style="color:#7c3aed;background:rgba(124,58,237,.07)">Vision AI</span>
+                <h3 data-i18n="supp.inc.c4.h">Langfristiger Support nach dem Launch</h3>
+                <p data-i18n="supp.inc.c4.p">Ich begleite Sie nach dem Go-live — Fehlerbehebung, Updates und Weiterentwicklung auf Abruf.</p>
             </div>
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(239,68,68,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f5.h">Personalisierte Empfehlungen</h4>
-                <p data-i18n="ki.inc.f5.p">KI-gestützte Empfehlungssysteme, die das Verhalten Ihrer Nutzer analysieren und passende Produkte, Inhalte oder Aktionen vorschlagen.</p>
-                <span class="ki-feat-tag" style="color:#d97706;background:rgba(217,119,6,.07)">Conversion+</span>
+                <h3 data-i18n="supp.inc.c5.h">Schulungen & Workshops</h3>
+                <p data-i18n="supp.inc.c5.p">Praxisnahe Schulungen für Ihr Team — React Native, Web-Technologien, KI-Integration und mehr.</p>
             </div>
-
-            <div class="ki-feat-card">
-                <div class="ki-feat-icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <div class="supp-card">
+                <div class="supp-card-icon" style="background:rgba(14,165,233,.1);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
                 </div>
-                <h4 data-i18n="ki.inc.f6.h">Datenanalyse & Reporting</h4>
-                <p data-i18n="ki.inc.f6.p">Automatische Auswertung Ihrer Geschäftsdaten. KI erkennt Muster, erstellt Berichte und liefert verwertbare Insights in Echtzeit.</p>
-                <span class="ki-feat-tag" style="color:#db2777;background:rgba(219,39,119,.07)">Echtzeit</span>
+                <h3 data-i18n="supp.inc.c6.h">Regelmässige Wartung & Updates</h3>
+                <p data-i18n="supp.inc.c6.p">Sicherheits-Updates, Dependency-Management und regelmässige Checks für Ihre App oder Website.</p>
             </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- ═════════════════ AI MODELS ═════════════════ -->
-<section class="ki-models-section">
-    <div class="tw-wrap">
-        <div class="tw-label" data-i18n="ki.models.label">KI-MODELLE</div>
-        <h2 class="tw-h2" data-i18n-html="ki.models.h2">Die führenden<br><span class="tw-accent">KI-Modelle</span></h2>
-        <p class="tw-sub" data-i18n="ki.models.sub">Ich integriere die mächtigsten KI-Modelle der Welt — individuell abgestimmt auf Ihren Use Case.</p>
-        <div class="ki-models-grid">
-
-            <!-- ChatGPT / OpenAI -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--openai">
-                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
-                </div>
-                <div class="ki-model-name">ChatGPT</div>
-                <div class="ki-model-provider">OpenAI</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Text</span>
-                    <span class="ki-model-tag">Code</span>
-                    <span class="ki-model-tag">Vision</span>
-                </div>
-            </div>
-
-            <!-- Claude / Anthropic -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--claude">
-                    <img src="https://cdn.simpleicons.org/claude/ffffff" alt="Claude" loading="lazy">
-                </div>
-                <div class="ki-model-name">Claude</div>
-                <div class="ki-model-provider">Anthropic</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Analyse</span>
-                    <span class="ki-model-tag">Code</span>
-                    <span class="ki-model-tag">Reasoning</span>
-                </div>
-            </div>
-
-            <!-- Gemini / Google -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--gemini">
-                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>
-                </div>
-                <div class="ki-model-name">Gemini</div>
-                <div class="ki-model-provider">Google</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Multimodal</span>
-                    <span class="ki-model-tag">Vision</span>
-                </div>
-            </div>
-
-            <!-- Grok / xAI -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--grok">
-                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M395.479 633.828L735.91 381.105C752.599 368.715 776.454 373.548 784.406 392.792C826.26 494.285 807.561 616.253 724.288 699.996C641.016 783.739 525.151 802.104 419.247 760.277L303.556 814.143C469.49 928.202 670.987 899.995 796.901 773.282C896.776 672.843 927.708 535.937 898.785 412.476L899.047 412.739C857.105 231.37 909.358 158.874 1016.4 10.6326C1018.93 7.11771 1021.47 3.60279 1024 0L883.144 141.651V141.212L395.392 633.916" fill="white"/><path d="M325.226 695.251C206.128 580.84 226.662 403.776 328.285 301.668C403.431 226.097 526.549 195.254 634.026 240.596L749.454 186.994C728.657 171.88 702.007 155.623 671.424 144.2C533.19 86.9942 367.693 115.465 255.323 228.382C147.234 337.081 113.244 504.215 171.613 646.833C215.216 753.423 143.739 828.818 71.7385 904.916C46.2237 931.893 20.6216 958.87 0 987.429L325.139 695.339" fill="white"/></svg>
-                </div>
-                <div class="ki-model-name">Grok</div>
-                <div class="ki-model-provider">xAI</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Text</span>
-                    <span class="ki-model-tag">Reasoning</span>
-                    <span class="ki-model-tag">Real-time</span>
-                </div>
-            </div>
-
-            <!-- DALL-E 3 / OpenAI -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--dalle">
-                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
-                </div>
-                <div class="ki-model-name">DALL-E 3</div>
-                <div class="ki-model-provider">OpenAI</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Bilder</span>
-                    <span class="ki-model-tag">Generativ</span>
-                </div>
-            </div>
-
-            <!-- Midjourney -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--midj">
-                    <svg viewBox="0 0 100 83" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 L100 83 H0 Z"/></svg>
-                </div>
-                <div class="ki-model-name">Midjourney</div>
-                <div class="ki-model-provider">Midjourney Inc.</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Art</span>
-                    <span class="ki-model-tag">Design</span>
-                </div>
-            </div>
-
-            <!-- Suno -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--suno">
-                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 0C20.642 0 24 5.373 24 12h-9c0 6.627-3.358 12-7.5 12C3.358 24 0 18.627 0 12h9c0-6.627 3.358-12 7.5-12Z"/></svg>
-                </div>
-                <div class="ki-model-name">Suno</div>
-                <div class="ki-model-provider">Suno AI</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Musik</span>
-                    <span class="ki-model-tag">Audio</span>
-                </div>
-            </div>
-
-            <!-- Stable Diffusion / Stability AI -->
-            <div class="ki-model-card">
-                <div class="ki-model-logo ki-model-logo--sd">
-                    <svg viewBox="0 0 256 213" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M72.418 212.45c49.478 0 81.658-26.205 81.658-65.626 0-30.572-19.572-49.998-54.569-58.043l-22.469-6.74c-19.71-4.424-31.215-9.738-28.505-23.312 2.255-11.292 9.002-17.667 24.69-17.667 49.872 0 68.35 17.667 68.35 17.667V16.237S123.583 0 73.223 0C25.757 0 0 24.424 0 62.236c0 30.571 17.85 48.35 54.052 56.798 2.534.633 3.83.959 3.885.976 5.507 1.704 12.938 3.956 22.293 6.755 18.504 4.425 23.262 9.121 23.262 23.2 0 12.872-13.374 20.19-31.074 20.19C21.432 170.154 0 144.36 0 144.36v47.078s13.402 21.01 72.418 21.01Z"/><circle fill="#E80000" cx="225.442" cy="179.454" r="30.185"/></svg>
-                </div>
-                <div class="ki-model-name">Stable Diffusion</div>
-                <div class="ki-model-provider">Stability AI</div>
-                <div class="ki-model-tags">
-                    <span class="ki-model-tag">Bilder</span>
-                    <span class="ki-model-tag">Open Source</span>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
 <!-- ═════════════════ STEPS ═════════════════ -->
-<section class="ki-steps-section" id="ki-steps" style="padding:80px 24px 90px;">
+<section id="supp-steps" style="padding:80px 24px 90px;background:#fff;">
 <style>
-    .ki-steps-section{background:#f1f5f9;}
-    body.dark-mode .ki-steps-section{background:#0f1d2c;}
-    .ki-steps-h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:#0f1d2c;text-align:center;line-height:1.15;margin:0 0 12px;}
-    body.dark-mode .ki-steps-h2{color:#fff;}
-    .ki-steps-h2 span{background:linear-gradient(90deg,#6c63ff,#fe6c75);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .ki-steps-sub{font-size:16px;color:#64748b;max-width:520px;margin:0 auto 60px;line-height:1.6;text-align:center;}
-    body.dark-mode .ki-steps-sub{color:#8a9bb3;}
-    .ki-steps{display:flex;gap:0;max-width:860px;margin:0 auto 52px;position:relative;}
-    .ki-steps::before{content:'';position:absolute;top:36px;left:calc(16.666% + 18px);right:calc(16.666% + 18px);height:2px;background:linear-gradient(90deg,#6c63ff,#fe6c75);z-index:0;}
-    @media(max-width:640px){.ki-steps{flex-direction:column;gap:32px;}.ki-steps::before{display:none;}}
-    .ki-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
-    .ki-step-num{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;margin:0 auto 20px;position:relative;}
-    .ki-step-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;z-index:-1;opacity:.3;}
-    .ki-step--1 .ki-step-num{background:linear-gradient(135deg,#6c63ff,#3b82f6);color:#fff;box-shadow:0 8px 28px rgba(108,99,255,.4);}
-    .ki-step--1 .ki-step-num::after{background:linear-gradient(135deg,#6c63ff,#3b82f6);}
-    .ki-step--2 .ki-step-num{background:linear-gradient(135deg,#8b5cf6,#06b6d4);color:#fff;box-shadow:0 8px 28px rgba(139,92,246,.4);}
-    .ki-step--2 .ki-step-num::after{background:linear-gradient(135deg,#8b5cf6,#06b6d4);}
-    .ki-step--3 .ki-step-num{background:linear-gradient(135deg,#fe6c75,#f97316);color:#fff;box-shadow:0 8px 28px rgba(254,108,117,.4);}
-    .ki-step--3 .ki-step-num::after{background:linear-gradient(135deg,#fe6c75,#f97316);}
-    .ki-step h4{font-size:17px;font-weight:800;color:#0f1d2c;margin:0 0 8px;}
-    body.dark-mode .ki-step h4{color:#f1f5f9;}
-    .ki-step p{font-size:14px;color:#64748b;line-height:1.6;max-width:220px;margin:0 auto;}
-    body.dark-mode .ki-step p{color:#8a9bb3;}
-    .ki-steps-cta{text-align:center;}
-    .ki-steps-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border-radius:60px;background:linear-gradient(135deg,#6c63ff,#fe6c75);color:#fff;font-size:16px;font-weight:700;cursor:pointer;border:none;font-family:inherit;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 8px 28px rgba(108,99,255,.35);}
-    .ki-steps-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(108,99,255,.5);}
+    body.dark-mode #supp-steps{background:#0a1018!important;}
+    .supp-tl-h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:#0f1d2c;text-align:center;line-height:1.15;margin:0 0 12px;}
+    body.dark-mode .supp-tl-h2{color:#f1f5f9!important;-webkit-text-fill-color:#f1f5f9!important;}
+    .supp-tl-h2 em{font-style:normal;background:linear-gradient(90deg,#fe6c75,#6c63ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    body.dark-mode .supp-tl-h2 em{-webkit-text-fill-color:transparent!important;}
+    .supp-tl-sub{font-size:16px;color:#64748b;max-width:500px;margin:0 auto 64px;line-height:1.6;text-align:center;}
+    body.dark-mode .supp-tl-sub{color:#8a9bb3!important;}
+    .supp-tl{max-width:720px;margin:0 auto 52px;display:flex;flex-direction:column;position:relative;}
+    .supp-tl::before{content:"";position:absolute;left:31px;top:16px;bottom:16px;width:2px;background:linear-gradient(180deg,#fe6c75,#6c63ff,#8b5cf6);border-radius:2px;}
+    .supp-tl-item{display:flex;gap:28px;align-items:flex-start;padding:0 0 48px 0;position:relative;}
+    .supp-tl-item:last-child{padding-bottom:0;}
+    .supp-tl-dot{width:64px;height:64px;border-radius:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+    .supp-tl-dot span{font-size:22px;font-weight:900;color:#fff;}
+    .supp-tl-item--1 .supp-tl-dot{background:linear-gradient(135deg,#fe6c75,#6c63ff);box-shadow:0 8px 24px rgba(254,108,117,.35);}
+    .supp-tl-item--2 .supp-tl-dot{background:linear-gradient(135deg,#6c63ff,#8b5cf6);box-shadow:0 8px 24px rgba(108,99,255,.35);}
+    .supp-tl-item--3 .supp-tl-dot{background:linear-gradient(135deg,#8b5cf6,#fe6c75);box-shadow:0 8px 24px rgba(139,92,246,.35);}
+    .supp-tl-body{background:#f8fafc;border:1.5px solid #eef2f7;border-radius:18px;padding:24px 28px;flex:1;transition:box-shadow .25s,border-color .25s;}
+    .supp-tl-body:hover{box-shadow:0 8px 32px rgba(254,108,117,.1);border-color:rgba(254,108,117,.2);}
+    body.dark-mode .supp-tl-body{background:#111827;border-color:#1e2d3d;}
+    .supp-tl-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.6px;color:#fe6c75;background:rgba(254,108,117,.08);border:1px solid rgba(254,108,117,.18);border-radius:20px;padding:3px 10px;margin-bottom:10px;text-transform:uppercase;}
+    .supp-tl-body h4{font-size:18px;font-weight:800;color:#0f1d2c;margin:0 0 8px;}
+    body.dark-mode .supp-tl-body h4{color:#f1f5f9;}
+    .supp-tl-body p{font-size:14px;color:#64748b;line-height:1.7;margin:0;}
+    body.dark-mode .supp-tl-body p{color:#94a3b8;}
+    .supp-tl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+    .supp-tl-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;background:#f1f5f9;color:#475569;}
+    body.dark-mode .supp-tl-chip{background:#1e2d3d;color:#94a3b8;}
+    @media(max-width:580px){.supp-tl::before{left:23px;}.supp-tl-dot{width:48px;height:48px;border-radius:14px;}.supp-tl-dot span{font-size:17px;}}
 </style>
     <div class="tw-wrap">
-        <h2 class="ki-steps-h2" data-i18n-html="ki.steps.h2">Ihr KI-Projekt in<br><span>3 Schritten</span></h2>
-        <p class="ki-steps-sub" data-i18n="ki.steps.sub">Von der ersten Analyse bis zur fertigen Integration — persönlich begleitet aus Buchs SG.</p>
-        <div class="ki-steps">
-            <div class="ki-step ki-step--1">
-                <div class="ki-step-num">01</div>
-                <h4 data-i18n="ki.steps.s1.h">Prozess-Analyse</h4>
-                <p data-i18n="ki.steps.s1.p">Ich analysiere Ihre Abläufe und identifiziere das grösste KI-Potenzial.</p>
+        <h2 class="supp-tl-h2" data-i18n-html="supp.tl.h2">So arbeite<br><em>ich für Sie</em></h2>
+        <p class="supp-tl-sub" data-i18n="supp.tl.sub">Einfach, transparent und persönlich — von der ersten Kontaktaufnahme bis zum laufenden Betrieb.</p>
+        <div class="supp-tl">
+            <div class="supp-tl-item supp-tl-item--1">
+                <div class="supp-tl-dot"><span>01</span></div>
+                <div class="supp-tl-body">
+                    <span class="supp-tl-tag" data-i18n="supp.tl.t1.tag">Kostenlos</span>
+                    <h4 data-i18n="supp.tl.t1.h">Erstgespräch & Analyse</h4>
+                    <p data-i18n="supp.tl.t1.p">Ich bespreche Ihre aktuelle Situation, Ziele und technischen Anforderungen — völlig unverbindlich und ohne versteckte Kosten.</p>
+                    <div class="supp-tl-chips">
+                        <span class="supp-tl-chip">30 Min. Gespräch</span>
+                        <span class="supp-tl-chip">Bedarfsanalyse</span>
+                        <span class="supp-tl-chip">Kostenvoranschlag</span>
+                    </div>
+                </div>
             </div>
-            <div class="ki-step ki-step--2">
-                <div class="ki-step-num">02</div>
-                <h4 data-i18n="ki.steps.s2.h">KI-Integration</h4>
-                <p data-i18n="ki.steps.s2.p">API-Anbindung, Prompt-Engineering und DSGVO-konforme Implementierung.</p>
+            <div class="supp-tl-item supp-tl-item--2">
+                <div class="supp-tl-dot"><span>02</span></div>
+                <div class="supp-tl-body">
+                    <span class="supp-tl-tag" data-i18n="supp.tl.t2.tag">Flexibel</span>
+                    <h4 data-i18n="supp.tl.t2.h">Beratung & Umsetzung</h4>
+                    <p data-i18n="supp.tl.t2.p">Code-Review, Architektur-Planung, Performance-Optimierung oder direkte Implementierung — flexibel nach Ihrem Bedarf, auf Stunden- oder Pauschalbasis.</p>
+                    <div class="supp-tl-chips">
+                        <span class="supp-tl-chip">Code-Review</span>
+                        <span class="supp-tl-chip">Architektur</span>
+                        <span class="supp-tl-chip">ab 85 CHF/Std.</span>
+                    </div>
+                </div>
             </div>
-            <div class="ki-step ki-step--3">
-                <div class="ki-step-num">03</div>
-                <h4 data-i18n="ki.steps.s3.h">Launch & Support</h4>
-                <p data-i18n="ki.steps.s3.p">Go-live, Monitoring und 30 Tage persönlicher Support nach dem Launch.</p>
+            <div class="supp-tl-item supp-tl-item--3">
+                <div class="supp-tl-dot"><span>03</span></div>
+                <div class="supp-tl-body">
+                    <span class="supp-tl-tag" data-i18n="supp.tl.t3.tag">Langfristig</span>
+                    <h4 data-i18n="supp.tl.t3.h">Support & Wartung</h4>
+                    <p data-i18n="supp.tl.t3.p">Nach dem Launch begleite ich Sie weiter — Fehlerbehebung, Updates, Sicherheits-Patches und Weiterentwicklung auf Abruf.</p>
+                    <div class="supp-tl-chips">
+                        <span class="supp-tl-chip">Wartung & Updates</span>
+                        <span class="supp-tl-chip">Schulungen</span>
+                        <span class="supp-tl-chip">Pauschalpaket</span>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div style="text-align:center;margin-top:8px;">
+            <button onclick="openVCardModal()" class="tw-btn-ghost" style="border:1.5px solid rgba(15,29,44,0.15);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span data-i18n="footer.vcard">Kontakt speichern</span>
+            </button>
         </div>
     </div>
 </section>
 
-
-
-
 <!-- ═════════════════ STATS ═════════════════ -->
 <div class="tw-stats">
-    <div class="tw-stat"><div class="tw-stat-n">10+</div><div class="tw-stat-l">KI-Projekte</div></div>
-    <div class="tw-stat"><div class="tw-stat-n">6+</div><div class="tw-stat-l">Jahre Erfahrung</div></div>
-    <div class="tw-stat"><div class="tw-stat-n">GPT-4o</div><div class="tw-stat-l">& mehr APIs</div></div>
-    <div class="tw-stat"><div class="tw-stat-n">100%</div><div class="tw-stat-l">Persönlich beraten</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">ab 85</div><div class="tw-stat-l" data-i18n="supp.stats.l1">CHF / Std.</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">6+</div><div class="tw-stat-l" data-i18n="supp.stats.l2">Jahre Erfahrung</div></div>
+    <div class="tw-stat"><div class="tw-stat-n">100%</div><div class="tw-stat-l" data-i18n="supp.stats.l3">Persönlich beraten</div></div>
+    <div class="tw-stat"><div class="tw-stat-n" data-i18n="supp.stats.n4">Pauschal</div><div class="tw-stat-l" data-i18n="supp.stats.l4">Paket verfügbar</div></div>
 </div>
 
 <!-- ═════════════════ CTA ═════════════════ -->
 <section class="tw-cta" id="tw-cta">
     <div class="tw-wrap">
-        <div class="tw-label" data-i18n="ki.cta.label">BEREIT ZU STARTEN?</div>
-        <h2 class="tw-h2" data-i18n-html="ki.cta.h2">Ihre intelligente KI-Lösung<br><span class="tw-accent">ab 800 CHF.</span></h2>
-        <p class="tw-sub" data-i18n="ki.cta.sub">Von der Prozessanalyse bis zur fertigen Integration. Messbare Effizienzgewinne — persönlich beraten aus Buchs SG.</p>
+        <div class="tw-label" data-i18n="supp.cta.label">BEREIT ZU STARTEN?</div>
+        <h2 class="tw-h2" data-i18n-html="supp.cta.h2">Ihr persönlicher Support<br><span class="tw-accent">ab CHF 85 / Std.</span></h2>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);margin:-4px 0 18px;letter-spacing:.5px;" data-i18n="supp.cta.price">Faire Preise — auch als Pauschalpaket verfügbar</p>
+        <p class="tw-sub" data-i18n="supp.cta.sub">Technische Beratung, Code-Review und langfristiger Support — persönlich begleitet aus Buchs SG.</p>
         <div class="tw-cta-btns">
             <a href="booking.html" class="gbcta gbcta--primary" style="font-size:18px;height:58px;padding:0 36px;">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -1293,7 +1094,7 @@ body.dark-mode .ki-feat-card h4{color:#f1f5f9;}
         </div>
         <div class="tw-cta-note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-i18n="ki.cta.note">Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung</span>
+            <span data-i18n="supp.cta.note">Kostenlose Erstberatung — unverbindlich und ohne Verpflichtung</span>
         </div>
     </div>
 </section>
@@ -1330,7 +1131,6 @@ body.dark-mode .ki-feat-card h4{color:#f1f5f9;}
         var key = el.getAttribute('data-i18n-html');
         if (t[key]) el.innerHTML = t[key];
     });
-    // header title fixed for KI page — not overridden by translations
 })();
 </script>
 
@@ -1657,35 +1457,35 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         <!-- Step 1: Choose Template -->
         <div class="om-body om-active" data-step="1" id="omStep1">
             <div class="om-templates">
-                <div class="om-tpl" data-template="handwerker" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="handwerker" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=70" alt="Handwerker"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl3.name">Handwerker & Technik</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl3.name">Handwerker & Technik</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="coiffeur" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="coiffeur" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70" alt="Coiffeur"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl2.name">Coiffeur & Beauty</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="restaurant" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="restaurant" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=70" alt="Restaurant"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl1.name">Restaurant & Café</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl1.name">Restaurant & Café</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="berater" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="berater" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=70" alt="Berater"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl4.name">Berater & Freelancer</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl4.name">Berater & Freelancer</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="fitness" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="fitness" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=70" alt="Fitness"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl5.name">Fitness & Gesundheit</h4><span>Ab 450 CHF</span></div>
                 </div>
-                <div class="om-tpl" data-template="lokales-geschaeft" data-price="650" onclick="selectTemplate(this)">
+                <div class="om-tpl" data-template="lokales-geschaeft" data-price="450" onclick="selectTemplate(this)">
                     <div class="om-tpl-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="om-tpl-img"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&q=70" alt="Lokales Geschäft"></div>
-                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span>Ab 650 CHF</span></div>
+                    <div class="om-tpl-info"><h4 data-i18n="tw.tpl6.name">Lokales Geschäft</h4><span>Ab 450 CHF</span></div>
                 </div>
             </div>
         </div>
@@ -1751,7 +1551,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
             </div>
             <div class="om-extras-total" id="omExtrasTotal">
                 <span data-i18n="om.extras.total">Gesamtpreis</span>
-                <span id="omTotalPrice">Ab 650 CHF</span>
+                <span id="omTotalPrice">Ab 450 CHF</span>
             </div>
         </div>
 
@@ -1913,7 +1713,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     function updateExtrasTotal() {
         var total = order.price + order.extras_total;
         var el = document.getElementById('omTotalPrice');
-        if (el) el.textContent = 'Ab ' + (total || 650) + ' CHF';
+        if (el) el.textContent = 'Ab ' + (total || 450) + ' CHF';
     }
     window.closeOrderModal = function() {
         var m = document.getElementById('orderModal');
@@ -2031,7 +1831,7 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
         } else if (step === 2) {
             var total = order.price + order.extras_total;
             nextBtn.className = 'om-btn om-btn-next';
-            nextBtn.textContent = t('om.btn.next','Next') + ' — Ab ' + (total || 650) + ' CHF';
+            nextBtn.textContent = t('om.btn.next','Next') + ' — Ab ' + (total || 450) + ' CHF';
         } else {
             nextBtn.className = 'om-btn om-btn-next';
             nextBtn.textContent = t('om.btn.next','Next');
@@ -2212,7 +2012,6 @@ body.dark-mode .om-footer{background:#1a1f2e;border-top-color:#2a3040}
     </div>
 </div>
 
-
 <!-- ═════════════════ BOOKING MODAL ═════════════════ -->
 <style>
 .bk-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
@@ -2342,7 +2141,7 @@ body.dark-mode .bk-progress{background:#2a3040}
       <div class="bk-topics">
         <div class="bk-topic" data-topic="KI-Integration &amp; Chatbot" onclick="bkSelectTopic(this)">
           <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(59,130,246,.15))">🤖</div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(108,99,255,.15))">🤖</div>
           <div class="bk-topic-text"><h4>KI-Integration</h4><p>OpenAI, Chatbot, Automatisierung</p></div>
         </div>
         <div class="bk-topic" data-topic="Webseite / App Entwicklung" onclick="bkSelectTopic(this)">
@@ -2352,7 +2151,7 @@ body.dark-mode .bk-progress{background:#2a3040}
         </div>
         <div class="bk-topic" data-topic="Beratung &amp; Support" onclick="bkSelectTopic(this)">
           <div class="bk-topic-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(8,145,178,.15),rgba(139,92,246,.15))">💬</div>
+          <div class="bk-topic-icon" style="background:linear-gradient(135deg,rgba(254,108,117,.15),rgba(139,92,246,.15))">💬</div>
           <div class="bk-topic-text"><h4>Beratung &amp; Support</h4><p>Code-Review, Architektur, Wartung</p></div>
         </div>
         <div class="bk-topic" data-topic="Anderes Thema" onclick="bkSelectTopic(this)">
@@ -2581,30 +2380,86 @@ body.dark-mode .bk-progress{background:#2a3040}
 })();
 </script>
 
-<script src="js/translations.js?v=202608181235"></script>
+<script src="js/chatbot.js?v=202608181230"></script>
+
+<!-- VCard Modal -->
+<div class="vcard-modal-overlay" id="vcardModalOverlay" onclick="closeVCardModal()"></div>
+<div class="vcard-modal" id="vcardModal">
+    <button class="vcard-modal-close" onclick="closeVCardModal()" aria-label="Schliessen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="vcard-modal-card">
+        <div class="vcard-modal-logo">
+            <img src="img/logolweb.png" alt="Lweb Logo">
+        </div>
+        <h3 class="vcard-modal-name">Lweb Schweiz</h3>
+        <p class="vcard-modal-role">App & Web Entwicklung</p>
+        <div class="vcard-modal-info">
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>info@lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>+41 76 560 86 45</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                <span>lweb.ch</span>
+            </div>
+            <div class="vcard-modal-info-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>9475 Sevelen, Schweiz</span>
+            </div>
+        </div>
+        <button class="vcard-modal-download" onclick="downloadVCard()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="footer.vcard">Kontakt speichern</span>
+        </button>
+    </div>
+</div>
+
 <script>
-(function(){
-    var savedLang = localStorage.getItem('lweb_lang');
-    var lang;
-    if (savedLang) { lang = savedLang; }
-    else {
-        var browserLang = (navigator.language || 'de').slice(0, 2).toLowerCase();
-        var supported = ['de', 'en', 'es', 'fr', 'it'];
-        lang = supported.indexOf(browserLang) !== -1 ? browserLang : 'de';
-    }
-    if (typeof translations === 'undefined' || !translations[lang] || lang === 'de') return;
-    var t = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-html');
-        if (t[key]) el.innerHTML = t[key];
-    });
-})();
+function openVCardModal() {
+    document.getElementById('vcardModalOverlay').classList.add('active');
+    document.getElementById('vcardModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeVCardModal() {
+    document.getElementById('vcardModalOverlay').classList.remove('active');
+    document.getElementById('vcardModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function downloadVCard() {
+    fetch('img/logolweb.png')
+        .then(function(res) { if (!res.ok) throw new Error(); return res.blob(); })
+        .then(function(blob) {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                var base64data = reader.result.split(',')[1];
+                var vCardContent = 'BEGIN:VCARD\nVERSION:3.0\nFN:Lweb Schweiz\nORG:Lweb\nTITLE:App & Web Entwicklung\nADR:;;Sevelen;Sevelen;SG;9475;Switzerland\nTEL:+41765608645\nEMAIL:info@lweb.ch\nURL:https://lweb.ch\nNOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\nPHOTO;ENCODING=b;TYPE=PNG:' + base64data + '\nEND:VCARD';
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' }));
+                link.download = 'Lweb_Visitenkarte.vcf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+            reader.onerror = function() { downloadVCardFallback(); };
+            reader.readAsDataURL(blob);
+        })
+        .catch(function() { downloadVCardFallback(); });
+}
+function downloadVCardFallback() {
+    var vCardContent = 'BEGIN:VCARD\nVERSION:3.0\nFN:Lweb Schweiz\nORG:Lweb\nTITLE:App & Web Entwicklung\nADR:;;Sevelen;Sevelen;SG;9475;Switzerland\nTEL:+41765608645\nEMAIL:info@lweb.ch\nURL:https://lweb.ch\nNOTE:App Entwickler & Full-Stack Developer in Buchs SG. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\nEND:VCARD';
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' }));
+    link.download = 'Lweb_Visitenkarte.vcf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 </script>
-<script src="js/chatbot.js?v=202608181235"></script>
 
 </body>
 </html>
