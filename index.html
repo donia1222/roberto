@@ -226,11 +226,22 @@
 }
 .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
 .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(17px,1.8vw,23px);}
+/* Weiche Kanten: das Bild soll in den Seitenhintergrund auslaufen,
+   statt als Karte mit harter Kante darauf zu liegen. Zwei Verlaeufe
+   (senkrecht + waagrecht) werden zu einem Rahmen verschnitten.
+   Darum auch kein Schlagschatten — der braucht eine harte Kante. */
 .cl-photo{
-  position:absolute;inset:0;z-index:0;border-radius:26px;overflow:hidden;
+  position:absolute;inset:0;z-index:0;border-radius:34px;overflow:hidden;
   pointer-events:none;
   background:linear-gradient(135deg,#1a2433,#0d141d);
-  box-shadow:0 22px 54px rgba(15,29,44,.22);
+  -webkit-mask-image:
+    linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+  mask-image:
+    linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
 }
 /* Tagmodus: helles Bild mit Lweb-Schriftzug.
    Nachtmodus: das dunkle Portraet — siehe body.dark-mode weiter unten. */
@@ -241,14 +252,14 @@
 body.dark-mode .cl-photo::before{
   background-image:url('img/roberto-lweb.jpg');
 }
-/* Nur unten abdunkeln — die Bildmitte bleibt frei. */
+/* Nur ein Hauch Abdunklung unten. Der kraeftige Verlauf war fuer den
+   weissen Schriftzug noetig — ohne Text macht er das Bild nur duester. */
 .cl-photo::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,
-    rgba(4,9,15,0) 34%,
-    rgba(4,9,15,.42) 58%,
-    rgba(4,9,15,.82) 82%,
-    rgba(4,9,15,.92) 100%);
+    rgba(4,9,15,0) 62%,
+    rgba(4,9,15,.10) 84%,
+    rgba(4,9,15,.20) 100%);
 }
 /* auf dem Foto steht der Text immer hell */
 .cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.8);}
@@ -338,14 +349,14 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
     aspect-ratio:16/10;padding:0 18px 16px;margin-top:6px;
     flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
   }
-  .cl-photo{border-radius:20px;}
+  .cl-photo{border-radius:26px;}
   .cl--photo .cl-mark{width:56px;margin-bottom:-2px;}
   .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:7px;text-align:left;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
 }
 @media(max-width:560px){
   .cl--photo{aspect-ratio:16/10;padding:0 14px 13px;gap:8px;}
-  .cl-photo{border-radius:18px;}
+  .cl-photo{border-radius:23px;}
   .cl--photo .cl-mark{width:44px;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
 }
