@@ -232,9 +232,14 @@
   background:linear-gradient(135deg,#1a2433,#0d141d);
   box-shadow:0 22px 54px rgba(15,29,44,.22);
 }
+/* Tagmodus: helles Bild mit Lweb-Schriftzug.
+   Nachtmodus: das dunkle Portraet — siehe body.dark-mode weiter unten. */
 .cl-photo::before{
   content:'';position:absolute;inset:0;
-  background:url('img/roberto-lweb.jpg') center top/cover no-repeat;
+  background:url('img/hero-lweb-hell.jpg') center top/cover no-repeat;
+}
+body.dark-mode .cl-photo::before{
+  background-image:url('img/roberto-lweb.jpg');
 }
 /* Nur unten abdunkeln — die Bildmitte bleibt frei. */
 .cl-photo::after{
