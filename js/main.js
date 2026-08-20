@@ -1884,7 +1884,7 @@ var legalContent = {
         title: 'Impressum',
         icon: 'svc-modal-icon--web',
         html: '<h4>Angaben gemäss Schweizer Recht</h4>' +
-            '<p><strong>Lweb</strong><br>Roberto Salvador Lopez<br>9475 Sevelen<br>Schweiz</p>' +
+            '<p><strong>Lweb — Salvador Lopez</strong><br>Inhaber: Roberto Salvador Lopez<br>9475 Sevelen<br>Schweiz</p>' +
             '<h4>Kontakt</h4>' +
             '<p>Telefon: +41 76 560 86 45<br>E-Mail: info@lweb.ch<br>Website: <a href="https://lweb.ch" style="color:var(--cerulean500)">lweb.ch</a></p>' +
             '<h4>Unternehmensform</h4>' +
@@ -1903,7 +1903,7 @@ var legalContent = {
         html: '<h4>Allgemeines</h4>' +
             '<p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung Ihrer personenbezogenen Daten auf unserer Website lweb.ch.</p>' +
             '<h4>Verantwortliche Stelle</h4>' +
-            '<p>Lweb — Roberto Salvador Lopez<br>9475 Sevelen, Schweiz<br>E-Mail: info@lweb.ch</p>' +
+            '<p>Lweb — Salvador Lopez<br>9475 Sevelen, Schweiz<br>E-Mail: info@lweb.ch</p>' +
             '<h4>Erhobene Daten</h4>' +
             '<p>Beim Besuch unserer Website werden folgende Daten automatisch erfasst:</p>' +
             '<ul><li>IP-Adresse (anonymisiert)</li><li>Datum und Uhrzeit des Zugriffs</li><li>Aufgerufene Seiten</li><li>Verwendeter Browser und Betriebssystem</li></ul>' +
@@ -1923,7 +1923,7 @@ var legalContent = {
         title: 'Allgemeine Geschäftsbedingungen',
         icon: 'svc-modal-icon--support',
         html: '<h4>1. Geltungsbereich</h4>' +
-            '<p>Diese AGB gelten für alle Dienstleistungen von Lweb (Roberto Salvador Lopez, 9475 Sevelen, Schweiz) im Bereich App-Entwicklung, Webentwicklung und KI-Lösungen.</p>' +
+            '<p>Diese AGB gelten für alle Dienstleistungen von Lweb — Salvador Lopez, 9475 Sevelen, Schweiz, im Bereich App-Entwicklung, Webentwicklung und KI-Lösungen.</p>' +
             '<h4>2. Angebote & Vertragsschluss</h4>' +
             '<p>Alle Angebote sind freibleibend. Ein Vertrag kommt erst durch schriftliche Auftragsbestätigung (auch per E-Mail) zustande. Der Preiskalkulator auf der Website dient als unverbindliche Schätzung.</p>' +
             '<h4>3. Leistungen</h4>' +
