@@ -130,6 +130,20 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     flex-direction: column;
     line-height: 1;
 }
+/* Wortmarke und Personenname in einer Zeile — der Name klein,
+   in derselben Optik wie "Schweiz" darunter. */
+.header-logo-name {
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+}
+.header-logo-person {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gunpowder400);
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+}
 .header-logo-countries {
     display: flex;
     flex-direction: column;
@@ -576,7 +590,8 @@ body.dark-mode .header-nav-sub-hint {
 .header.menu-open .header-logo {
     color: #fff;
 }
-.header.menu-open .header-logo-subtitle {
+.header.menu-open .header-logo-subtitle,
+.header.menu-open .header-logo-person {
     color: rgba(255,255,255,0.6);
 }
 .header.menu-open .header-icon-btn {
@@ -4374,7 +4389,8 @@ body.dark-mode .header.scrolled {
 body.dark-mode .header-logo {
     color: #fff;
 }
-body.dark-mode .header-logo-subtitle {
+body.dark-mode .header-logo-subtitle,
+body.dark-mode .header-logo-person {
     color: rgba(255,255,255,0.5);
 }
 body.dark-mode .header-logo-sep {
