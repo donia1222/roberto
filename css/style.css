@@ -130,19 +130,23 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     flex-direction: column;
     line-height: 1;
 }
-/* Wortmarke und Personenname in einer Zeile — der Name klein,
-   in derselben Optik wie "Schweiz" darunter. */
-.header-logo-name {
-    display: flex;
-    align-items: baseline;
-    gap: 1px;
-}
+/* Personenname als kleine Zeile unter der Wortmarke —
+   steht dort, wo vorher Schweiz/Liechtenstein standen. */
 .header-logo-person {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-size: 12px;
     font-weight: 600;
     color: var(--gunpowder400);
     letter-spacing: 0.07em;
     white-space: nowrap;
+    margin-top: 2px;
+}
+.header-logo-person svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
 }
 .header-logo-countries {
     display: flex;
