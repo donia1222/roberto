@@ -1477,10 +1477,12 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 }
 /* Featured card content (right side) */
 .app-featured-content {
-    padding: 40px 40px 40px 32px;
+    /* Oben ausgerichtet statt zentriert — zentriert blieb unter den
+       Sternen eine grosse leere Flaeche stehen. */
+    padding: 44px 40px 36px 32px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     background: #fff;
 }
 .app-featured-content .app-card-tech {
@@ -5591,4 +5593,50 @@ body.dark-mode .pagefade { background: #1a1f2e; }
 body.a11y-reduce-motion .pagefade { display: none; }
 @media (prefers-reduced-motion: reduce) {
     .pagefade { display: none; }
+}
+
+/* ═══ STORE-BADGES ════════════════════════════════════════════
+   Zwei dunkle Schaltflaechen unter der Bewertung. Bewusst als
+   Markup statt als Bild: bleibt scharf und laesst sich faerben. */
+.store-badges {
+    /* Grid statt Flex: die Spalte ist so breit wie der laengste Knopf,
+       beide werden automatisch gleich breit — ohne feste min-width,
+       die rechts schwarzen Leerraum stehen liess. */
+    display: grid;
+    gap: 10px;
+    width: fit-content;
+    margin-top: auto;
+    padding-top: 14px;
+}
+.store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px 9px 13px;
+    border-radius: 12px;
+    background: var(--gunpowder900);
+    color: #fff;
+    line-height: 1.1;
+    /* Rein dekorativ - kein Link, kein Hover-Zustand. */
+    cursor: default;
+    user-select: none;
+}
+.store-badge svg { width: 21px; height: 21px; flex-shrink: 0; }
+.store-badge-txt { display: flex; flex-direction: column; }
+.store-badge-txt small {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    opacity: .72;
+}
+.store-badge-txt strong {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+body.dark-mode .store-badge { background: #2a3347; }
+@media (max-width: 480px) {
+    .store-badges { width: 100%; }
+    .store-badge { justify-content: center; }
 }
