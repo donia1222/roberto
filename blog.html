@@ -600,24 +600,24 @@
     <!-- FEATURED -->
     <div class="bl-featured" id="blFeatured">
         <!-- featured large: post 1 -->
-        <div class="bl-feat-large" data-post="8" data-cat="webdev" onclick="openPost(8)">
-            <img class="bl-feat-large-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1100&auto=format&fit=crop&q=80" alt="Was kostet eine Website" loading="lazy">
+        <div class="bl-feat-large" data-post="9" data-cat="ki" onclick="openPost(9)">
+            <img class="bl-feat-large-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1100&auto=format&fit=crop&q=80" alt="KI beim Programmieren" loading="lazy">
             <div class="bl-feat-large-body">
-                <span class="bl-cat bl-cat--webdev">Web Dev</span>
-                <div class="bl-title">Was kostet eine Website 2026? Ehrliche Zahlen aus der Region Werdenberg</div>
-                <div class="bl-excerpt">Keine Preise &laquo;auf Anfrage&raquo;: was eine Website f&uuml;r einen Betrieb in Sevelen, Buchs oder Vaduz wirklich kostet &mdash; und warum eine Agentur daf&uuml;r das Vierfache verlangt.</div>
+                <span class="bl-cat bl-cat--ki">KI &amp; Tech</span>
+                <div class="bl-title">KI beim Programmieren: schneller arbeiten, ohne die Kontrolle abzugeben</div>
+                <div class="bl-excerpt">Moderne Modelle machen mich als Freelancer so schnell wie ein kleines Team. Gebaut wird ein Projekt aber weiterhin vom Entwickler &mdash; und warum das so bleiben muss.</div>
                 <div class="bl-feat-points">
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Drei echte Beispiele aus der Region, mit Preis</div>
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Was den Preis wirklich bestimmt &mdash; und was nicht</div>
-                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Die zwei Fragen, die Sie jedem Anbieter stellen sollten</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Was die KI mir wirklich abnimmt &mdash; und was nicht</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Warum Next.js und React Native die Kontrolle erzwingen</div>
+                    <div class="bl-feat-point"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4dd35b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Der Massstab: Es muss aussehen, als h&auml;tte es ein Mensch gebaut</div>
                 </div>
                 <div class="bl-readmore">Weiterlesen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
                 <div class="bl-meta">
                     <span>Roberto Salvador</span>
                     <span class="bl-meta-dot"></span>
-                    <span>17. August 2026</span>
+                    <span>21. August 2026</span>
                     <span class="bl-meta-dot"></span>
-                    <span>8 Min.</span>
+                    <span>6 Min.</span>
                 </div>
             </div>
         </div>
@@ -662,6 +662,17 @@
     <!-- POST GRID -->
     <div class="bl-grid-section">
         <div class="bl-grid" id="blGrid">
+            <div class="bl-card" data-post="8" data-cat="webdev" onclick="openPost(8)">
+                <img class="bl-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&auto=format&fit=crop&q=80" alt="Was kostet eine Website" loading="lazy">
+                <div class="bl-card-body">
+                    <span class="bl-cat bl-cat--webdev">Web Dev</span>
+                    <div class="bl-title">Was kostet eine Website 2026? Ehrliche Zahlen aus der Region Werdenberg</div>
+                    <div class="bl-excerpt">Keine Preise &laquo;auf Anfrage&raquo;: was eine Website f&uuml;r einen Betrieb in Sevelen, Buchs oder Vaduz wirklich kostet.</div>
+                    <div class="bl-meta">
+                        <span>17. Aug. 2026</span><span class="bl-meta-dot"></span><span>8 Min.</span>
+                    </div>
+                </div>
+            </div>
             <div class="bl-card" data-post="0" data-cat="webdev" onclick="openPost(0)">
                 <img class="bl-card-img" src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=700&auto=format&fit=crop&q=80" alt="Next.js vs Remix" loading="lazy">
                 <div class="bl-card-body">
@@ -1053,6 +1064,52 @@ var POSTS = [
 
 <h3>Mein Rat</h3>
 <p>Holen Sie zwei bis drei Offerten ein und vergleichen Sie nicht nur die Zahl unten rechts, sondern auch, wer Ihr Ansprechpartner ist und wem am Ende der Code gehört. Und wenn Sie einfach wissen wollen, was Ihr konkreter Fall kosten würde: Das Erstgespräch ist kostenlos und unverbindlich — auch wenn Sie sich danach für jemand anderen entscheiden.</p>
+        `
+    },
+    {
+        id: 9,
+        cat: 'ki',
+        catLabel: 'KI & Tech',
+        catClass: 'bl-cat--ki',
+        title: 'KI beim Programmieren: schneller arbeiten, ohne die Kontrolle abzugeben',
+        date: '21. August 2026',
+        readTime: '6 Min.',
+        img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1100&auto=format&fit=crop&q=80',
+        body: `
+<p>Seit gut zwei Jahren arbeite ich täglich mit KI-Modellen. Die ehrliche Bilanz vorweg: Sie haben meine Arbeit schneller gemacht, nicht einfacher. Und sie haben nichts daran geändert, wer am Ende die Verantwortung für ein Projekt trägt.</p>
+
+<h3>Was sich wirklich verändert hat</h3>
+<p>Als Freelancer war die knappste Ressource immer die Zeit. Ein Betrieb in Buchs bekommt keine schlechtere Website als einer in Zürich, aber früher hat dieselbe Arbeit schlicht länger gedauert, weil ich sie allein gemacht habe.</p>
+<p>Moderne Modelle ändern genau das. Sie nehmen mir die Wiederholungen ab: das Gerüst einer Komponente, eine Formularvalidierung, die dritte Variante eines Layouts, eine Testreihe. Arbeiten, die ich hundertmal gemacht habe und die trotzdem jedes Mal eine Stunde kosten. Es fühlt sich an, als hätte ich ein kleines Team im Rücken.</p>
+
+<h3>Warum die KI trotzdem kein Projekt baut</h3>
+<p>Hier fängt der Teil an, den die Werbung gerne weglässt. Eine KI schreibt Code, der auf den ersten Blick funktioniert. Das ist etwas völlig anderes, als ein Projekt zu bauen.</p>
+<p>Ein Projekt bedeutet: zu wissen, warum eine Entscheidung heute richtig ist und in achtzehn Monaten immer noch. Zu wissen, welcher Teil später wachsen wird und welcher nicht. Zu wissen, wie sich eine Änderung an einer Stelle drei Bildschirme weiter auswirkt. Diesen Zusammenhang hat kein Modell, weil es das Gespräch mit dem Kunden nicht geführt hat.</p>
+
+<div class="bl-callout"><strong>Kurz gesagt:</strong> Die KI hilft mir, schneller zu bauen. Was gebaut wird und wie es zusammenhängt, entscheide ich.</div>
+
+<h3>Die Technik lässt gar nichts anderes zu</h3>
+<p>Bei Lweb arbeite ich mit Next.js, Remix und React Native. Das sind keine Baukästen, in die man fertige Bausteine hineinlegt. Rendering-Strategie, Datenfluss, Zustandsverwaltung, Navigation — das hängt alles zusammen, und zwar projektspezifisch.</p>
+<p>Ein Modell kennt diese Frameworks im Allgemeinen sehr gut. Es kennt aber nicht Ihr Projekt: nicht die Struktur, die ich vor drei Wochen angelegt habe, nicht den Grund, warum eine Seite statisch ausgeliefert wird und die daneben nicht. Wer den Vorschlag ungeprüft übernimmt, baut sich innerhalb weniger Wochen ein Projekt, das niemand mehr sauber weiterentwickeln kann.</p>
+
+<h3>Geprüft wird alles</h3>
+<p>Jede Zeile, die aus einem Modell kommt, geht bei mir durch denselben Filter wie mein eigener Code: lesen, verstehen, einordnen, testen. Sehr oft schreibe ich sie um — nicht weil sie falsch wäre, sondern weil sie nicht zum Rest des Projekts passt.</p>
+<ul>
+<li><strong>Passt es zur Architektur?</strong> Ein Vorschlag, der für sich genommen elegant ist, kann die Struktur des Projekts zerlegen.</li>
+<li><strong>Ist es wirklich schnell?</strong> Ladezeiten entscheiden auf dem Handy über die Anfrage. Da zählt Messen, nicht Vermuten.</li>
+<li><strong>Funktioniert es für alle?</strong> Tastaturbedienung, Kontraste, Screenreader — das fällt in generiertem Code fast immer hinten runter.</li>
+<li><strong>Ist es sicher?</strong> Formulare, Zahlungen und Kundendaten prüfe ich grundsätzlich von Hand.</li>
+</ul>
+
+<h3>Der Massstab bleibt derselbe</h3>
+<p>Am Ende eines Projekts darf man dem Ergebnis nicht ansehen, mit welchen Werkzeugen es entstanden ist. Es muss aussehen, sich anfühlen und aufgebaut sein, als hätte es ein Mensch von Hand geschrieben — weil genau das der Fall ist. Die KI hat mir Zeit geschenkt, die Entscheidungen sind meine geblieben.</p>
+<p>Das ist auch der Grund, warum der Quellcode bei mir offen auf GitHub liegt. Sie können ihn jederzeit von jemand anderem prüfen lassen. Diese Offenheit funktioniert nur, wenn man hinter jeder Zeile stehen kann.</p>
+
+<h3>Was das für Sie bedeutet</h3>
+<p>Konkret dreierlei. Ihr Projekt ist schneller fertig, weil ich weniger Zeit mit Routine verliere. Es wird nicht billiger, weil die Sorgfalt geblieben ist, aber Sie bekommen für dasselbe Budget mehr. Und Sie haben weiterhin einen einzigen Ansprechpartner, der jede Entscheidung im Projekt erklären kann.</p>
+
+<h3>Fazit</h3>
+<p>Die Frage ist nicht, ob KI Entwickler ersetzt. Sie ersetzt einen Teil der Arbeit, den ohnehin niemand vermisst. Was sie nicht ersetzt, ist die Person, die versteht, was Sie brauchen, die Entscheidungen trifft und dafür geradesteht. Ich nutze diese Werkzeuge täglich und intensiv — und genau deshalb weiss ich ziemlich genau, wo ihre Grenze verläuft.</p>
         `
     }
 ];
