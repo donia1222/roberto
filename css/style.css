@@ -1185,12 +1185,40 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 }
 
 /* ===== METRICS BAR ===== */
+/* ═══ KENNZAHLEN ══════════════════════════════════════════════
+   Pastellfarbene Kacheln: grosse Zahl in Dunkelblau, darunter die
+   Beschriftung. Die Farbe je Kachel kommt aus --tint. */
 .metrics-bar { background: linear-gradient(180deg, #fffcf5 0%, #fff 100%); padding: 60px 0; }
-.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-.metric-item { padding: 32px 12px; }
-.metric-number { font-size: 52px; font-weight: 800; color: var(--begonia400); line-height: 1.1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
-.metric-label { font-size: 15px; font-weight: 500; color: var(--gunpowder500); line-height: 1.4; }
-@media (max-width: 900px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .metric-item { padding: 22px 8px; } .metric-number { font-size: 40px; } .metric-label { font-size: 13.5px; } }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+.metric-item {
+    --tint: #e4f1fc;
+    background: var(--tint);
+    border-radius: 26px;
+    padding: 38px 22px 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform .25s cubic-bezier(.22,1,.36,1);
+}
+.metric-item:hover { transform: translateY(-4px); }
+.metric-item:nth-child(2) { --tint: #fdf1cf; }
+.metric-item:nth-child(3) { --tint: #ffe4e6; }
+.metric-item:nth-child(4) { --tint: #dff2e6; }
+.metric-number {
+    font-size: 50px; font-weight: 800; color: var(--gunpowder900);
+    line-height: 1.05; margin-bottom: 10px;
+    font-variant-numeric: tabular-nums; letter-spacing: -.03em;
+}
+.metric-label {
+    font-size: 14px; font-weight: 600; color: var(--gunpowder700);
+    line-height: 1.35; max-width: 15em; margin: 0 auto;
+}
+@media (max-width: 900px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .metric-item { padding: 26px 14px 24px; border-radius: 22px; }
+    .metric-number { font-size: 40px; }
+    .metric-label { font-size: 13px; }
+}
 
 /* ===== SECTIONS ===== */
 .section { padding: 100px 0; overflow: hidden; }
@@ -4458,8 +4486,15 @@ body.dark-mode .hero-orbit-inner {
 body.dark-mode .metrics-bar {
     background: linear-gradient(180deg, #1a1f2e 0%, #1e2436 100%);
 }
+/* Pastell wuerde auf dunklem Grund blenden — dieselben Farbtoene,
+   nur als leiser Schleier. */
+body.dark-mode .metric-item    { --tint: rgba(91,184,232,.13); }
+body.dark-mode .metric-item:nth-child(2) { --tint: rgba(253,203,110,.13); }
+body.dark-mode .metric-item:nth-child(3) { --tint: rgba(254,108,117,.13); }
+body.dark-mode .metric-item:nth-child(4) { --tint: rgba(77,211,91,.13); }
+body.dark-mode .metric-number { color: #f4f8fc; }
 body.dark-mode .metric-label {
-    color: #8a9bb3;
+    color: #9aabc2;
 }
 
 /* Sections general */
@@ -5450,7 +5485,6 @@ body.dark-mode .chatbot-mic { background: rgba(255,255,255,.06); }
 /* Auf dunklem Grund ist reines Rot zu dumpf — eine Spur heller. */
 body.dark-mode .hero-content h1 span,
 body.dark-mode .hero-subtitle strong,
-body.dark-mode .metric-number,
 body.dark-mode [style*="var(--begonia400)"],
 body.dark-mode .pin-head h2 span,
 body.dark-mode .section-header h2 span,
