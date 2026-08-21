@@ -1606,6 +1606,16 @@ var webProjects = {
         features: ['Produktkatalog mit Kategorien & Filter', 'Warenkorb & Checkout', 'Online-Zahlung', 'Bestellverwaltung', 'Kundenkonto', 'Responsive Design'],
         price: 'CHF 2\'800 – 5\'000'
     },
+    sabitas: {
+        title: 'Sabitas',
+        url: 'https://sabitas.ch',
+        image: 'img/sabitas.jpeg',
+        complexity: 'medium',
+        desc: 'Taschen aus geliebtem Jeansstoff, kuschelige Hoodies und liebevolle Deko \u2013 jedes St\u00fcck ein Unikat, mit viel Herz f\u00fcr dich gefertigt.',
+        techs: ['HTML', 'CSS', 'JavaScript'],
+        features: ['Produktgalerie der Unikate', 'Warenkorb & Bestellung', 'Handgeschrieben ohne Framework', 'Schnelle Ladezeiten', 'Responsive Design', 'SEO-optimiert'],
+        price: 'CHF 990 \u2013 1\'900'
+    },
     ledershop: {
         title: 'Leder-Shop',
         url: 'https://leder-shop.ch',
