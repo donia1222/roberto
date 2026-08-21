@@ -5532,3 +5532,29 @@ body.dark-mode .about-shot{box-shadow:0 24px 60px rgba(0,0,0,.55);}
 /* Portraet mit Lweb-Logo im Kreis: dunkles Foto, deshalb kein
    weisser Rahmen und kein Innenabstand. */
 .about-image-ring > img { padding: 0; background: #0a0f16; }
+
+/* ═══ SEITENWECHSEL PER FADE ══════════════════════════════════
+   Statt die Seite sichtbar durchzuscrollen, legt sich kurz ein
+   Schleier in Hintergrundfarbe darueber, dahinter springt die
+   Seite hart an die Zielstelle und der Schleier verschwindet.
+   Ruhiger als eine lange Scroll-Animation. */
+.pagefade {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0;
+    background: #fff;
+    transition: opacity 230ms cubic-bezier(.4, 0, .2, 1);
+}
+.pagefade.is-on {
+    opacity: 1;
+    transition-duration: 190ms;
+}
+body.dark-mode .pagefade { background: #1a1f2e; }
+
+/* Wer Bewegung reduziert haben will, bekommt gar keinen Effekt. */
+body.a11y-reduce-motion .pagefade { display: none; }
+@media (prefers-reduced-motion: reduce) {
+    .pagefade { display: none; }
+}

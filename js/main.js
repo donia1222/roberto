@@ -99,23 +99,53 @@ function closeMobileMenu() {
     document.querySelector('.header').classList.remove('menu-open');
 }
 
-// Smooth scroll for nav
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        var href = this.getAttribute('href');
-        if (!href || !href.startsWith('#') || href === '#' || href.length < 2) return;
-        // Dropdown trigger items (Leistungen, Mobile Apps, Websites) only open the
-        // submenu — never scroll the page.
-        if (this.classList.contains('header-nav-item')) { e.preventDefault(); return; }
-        e.preventDefault();
-        try {
-            var target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        } catch(err) {}
-    });
-});
+// ── SPRUNG MIT FADE STATT SCROLL-ANIMATION ──────────────────────
+// Ein Schleier in Hintergrundfarbe blendet auf, dahinter springt die
+// Seite ohne Animation ans Ziel, danach blendet er wieder ab. Wirkt
+// ruhiger als ein langer Scroll und ist bei weiten Wegen viel kuerzer.
+var lwFade = (function() {
+    var overlay = null;
+
+    function noMotion() {
+        return document.body.classList.contains('a11y-reduce-motion') ||
+               (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    }
+
+    // Harter Sprung ohne jede Animation. scrollIntoView erbt sonst das
+    // scroll-behavior:smooth aus dem CSS, darum kurz abschalten.
+    function hardJump(target, block) {
+        var root = document.documentElement;
+        var prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        if (typeof target === 'number') window.scrollTo(0, target);
+        else target.scrollIntoView({ block: block || 'start' });
+        root.style.scrollBehavior = prev;
+    }
+
+    fadeTo.hard = hardJump;
+
+    function fadeTo(target, block) {
+        var go = function() { hardJump(target, block); };
+        if (noMotion()) { go(); return; }
+
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'pagefade';
+            document.body.appendChild(overlay);
+        }
+        overlay.classList.add('is-on');
+        setTimeout(function() {
+            go();
+            requestAnimationFrame(function() { overlay.classList.remove('is-on'); });
+        }, 200);
+    }
+
+    return fadeTo;
+})();
+
+// Anker-Links werden zentral in index.html behandelt: dort sitzt der
+// Handler, der den Header-Versatz kennt, das Mobilmenue schliesst und
+// per lwFade() springt. Hier gibt es bewusst keinen zweiten.
 
 // Intersection Observer fade-in
 const observer = new IntersectionObserver((entries) => {
@@ -1560,7 +1590,7 @@ function calcBuildWhatsAppMsg(price, tags) {
 function calcGoToContact() {
     closePriceCalc();
     setTimeout(function() {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        lwFade(document.getElementById('contact'), 'start');
     }, 300);
 }
 
@@ -2304,7 +2334,7 @@ function analyzerGoToContact() {
     closeAnalyzerModal();
     setTimeout(function() {
         var el = document.getElementById('contact');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) lwFade(el, 'start');
     }, 300);
 }
 
@@ -2492,16 +2522,49 @@ document.addEventListener('keydown', function(e) {
         obs.observe(wrapper);
     }
 })();
-// Scroll to saved anchor when returning from subpages
-window.addEventListener("pageshow", function() {
-    var anchor = sessionStorage.getItem('scrollTo');
-    if (anchor) {
-        sessionStorage.removeItem('scrollTo');
-        setTimeout(function() {
-            var el = document.getElementById(anchor);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-    }
+// ── RUECKKEHR ZUM BANNER ────────────────────────────────────────
+// Wer ueber ein Banner mitten auf der Startseite auf eine Unterseite
+// geht, soll beim Zurueckkommen wieder bei diesem Banner landen und
+// nicht ganz oben. Wer die Unterseite ueber Menue, Footer oder einen
+// Link von aussen betritt, bekommt wie bisher den Seitenanfang.
+// Der Ausloeser ist data-back-to="<id>" am Link.
+document.addEventListener('click', function(e) {
+    var link = e.target.closest && e.target.closest('a[data-back-to]');
+    if (link) sessionStorage.setItem('backTo', link.getAttribute('data-back-to'));
+});
+
+window.addEventListener('pageshow', function() {
+    var anchor = sessionStorage.getItem('backTo');
+    if (!anchor) return;
+
+    // Das Banner gibt es nur auf der Startseite. Fehlt es, sind wir
+    // woanders — Schluessel liegen lassen, nicht verbrauchen.
+    var el = document.getElementById(anchor);
+    if (!el) return;
+
+    // Kommt der Besucher von aussen (Google, Social), faengt er oben an.
+    // Ein leerer Referrer zaehlt als in Ordnung: den liefern file://,
+    // Lesezeichen und Browser mit strenger Referrer-Policy ebenfalls.
+    var fromOutside = false;
+    try {
+        fromOutside = !!document.referrer &&
+                      new URL(document.referrer).origin !== window.location.origin;
+    } catch (err) { fromOutside = false; }
+    sessionStorage.removeItem('backTo');
+    if (fromOutside) return;
+
+    // Zweimal springen: einmal sofort, einmal wenn Bilder und Videos
+    // ihre Hoehe haben. Sonst zielt der erste Sprung ins Leere.
+    var jump = function(withFade) {
+        var box = el.getBoundingClientRect();
+        var visible = box.top > 0 && box.bottom < window.innerHeight;
+        if (visible) return;
+        if (withFade) lwFade(el, 'center');
+        else lwFade.hard(el, 'center');
+    };
+    requestAnimationFrame(function() { jump(false); });
+    setTimeout(function() { jump(true); }, 450);
+    window.addEventListener('load', function() { setTimeout(function() { jump(true); }, 200); }, { once: true });
 });
 // Open price calculator when returning from subpages
 (function() {

@@ -466,7 +466,7 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <!-- HEADER -->
 <header class="header">
     <div class="header-inner">
-        <a href="#" class="header-logo" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">
+        <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)">
             <span class="header-logo-text">Lweb<span class="header-logo-person"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Salvador Lopez</span></span>
         </a>
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
@@ -1166,7 +1166,7 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
 <!-- ONLINE-SHOP BANNER (ersetzt die alten zwei Tabs, 18.08.2026) -->
 <section class="shopb-section" id="webTabs">
     <div class="container">
-        <div class="shopb">
+        <div class="shopb" id="shop-banner">
             <div class="shopb-text">
                 <span class="shopb-eyebrow" data-i18n="shopb.eyebrow">E-Commerce</span>
                 <h2 data-i18n-html="shopb.title">Der perfekte <span>Online-Shop</span></h2>
@@ -1176,7 +1176,7 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
                     <li data-i18n="wb.shop.f2">Zahlungsintegration</li>
                     <li data-i18n="wb.shop.f3">Produkt-Management</li>
                 </ul>
-                <a href="tienda-online.html" class="shopb-cta" data-lw-event="cta_shop">
+                <a href="tienda-online.html" class="shopb-cta" data-lw-event="cta_shop" data-back-to="shop-banner">
                     <span data-i18n="wb.shop.cta">Mehr erfahren</span>
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -1365,7 +1365,7 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
 <section class="section br-section" id="branchen" style="scroll-margin-top:90px;">
     <div class="container">
         <!-- CTA-Banner statt Titel + Preisplakette (18.08.2026) -->
-        <div class="brc">
+        <div class="brc" id="vorlagen-banner">
             <div class="brc-inner">
                 <div class="brc-text">
                     <span class="brc-eyebrow" data-i18n="br.eyebrow">Fertige Vorlagen &mdash; die günstigste Variante</span>
@@ -1375,7 +1375,7 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
                         <span class="brc-cur">CHF</span>
                     </div>
                     <p class="brc-desc" data-i18n="br.cta.desc">Websites, die ich bereits fertig gebaut habe &mdash; mit Ihren Texten, Ihren Bildern und Ihren Farben in wenigen Tagen online. Für alle, die einfach im Internet gefunden werden wollen.</p>
-                    <a href="templates-web.html" class="brc-btn" data-lw-event="cta_vorlagen">
+                    <a href="templates-web.html" class="brc-btn" data-lw-event="cta_vorlagen" data-back-to="vorlagen-banner">
                         <span data-i18n="br.cta.btn">Vorlagen ansehen</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
@@ -2252,7 +2252,7 @@ function expandBranchen(btn){
                     <h3 data-i18n="apps.cta.h">Ihre App-Idee umsetzen?</h3>
                     <p data-i18n="apps.cta.p">Native iOS & Android — React Native — ab CHF 3 500</p>
                 </div>
-                <a href="extensions-apps.html" class="apps-cta-btn" onclick="sessionStorage.setItem('scrollTo','apps-cta')">
+                <a href="extensions-apps.html" class="apps-cta-btn" data-back-to="apps-cta">
                     <span data-i18n="apps.cta">App erstellen</span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -2386,7 +2386,7 @@ function expandBranchen(btn){
                         Mehrsprachig: Deutsch, Spanisch, Englisch
                     </div>
                 </div>
-                <a href="blog.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:#fe6c75;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+                <a href="blog.html" data-back-to="about" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:#fe6c75;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     Blog
                 </a>
@@ -3420,7 +3420,7 @@ function askFromList(q){
 </div>
 <script src="js/translations.js?v=202608181346"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608181346"></script>
+<script src="js/main.js?v=202608211615"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3733,7 +3733,9 @@ body.dark-mode .sticky-cta{background:#1b2635;}
     ev.preventDefault();
     if (typeof closeMobileMenu === 'function') closeMobileMenu();
     var y = target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
-    window.scrollTo({top: y, behavior: 'smooth'});
+    // Fade statt Scroll-Animation. lwFade kommt aus main.js.
+    if (typeof lwFade === 'function') lwFade(y);
+    else window.scrollTo(0, y);
     history.replaceState(null, '', id);
   });
 
