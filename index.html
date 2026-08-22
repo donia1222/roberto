@@ -3756,18 +3756,42 @@ body.dark-mode .sticky-cta{background:#1b2635;}
     if (typeof lwFade === 'function') lwFade(y);
     else window.scrollTo(0, y);
     history.replaceState(null, '', id);
+    // Sofort markieren; der Fade blendet sonst waehrend des Sprungs
+    // noch den alten Punkt ein.
+    setTimeout(function(){ if (typeof updateActive === 'function') updateActive(); }, 260);
   });
 
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.header-nav--onepage .header-nav-item[href^="#"]'));
+  /* "Frag den Bot" hat href="#". document.querySelector('#') wirft
+     einen SyntaxError — der hat frueher diesen ganzen Block gekillt,
+     darum wurde nie ein Menuepunkt markiert. Solche Links raus. */
+  var navLinks = Array.prototype.slice.call(
+    document.querySelectorAll('.header-nav--onepage .header-nav-item[href^="#"]')
+  ).filter(function(l){
+    var h = l.getAttribute('href');
+    return h && h.length > 1;
+  });
+
   var watched = navLinks.map(function(l){
-    return {link: l, el: document.querySelector(l.getAttribute('href'))};
+    var el = null;
+    try { el = document.querySelector(l.getAttribute('href')); } catch(e) {}
+    return {link: l, el: el};
   }).filter(function(w){ return w.el; });
+
+  function docTop(el){
+    return el.getBoundingClientRect().top + window.pageYOffset;
+  }
 
   function updateActive(){
     var pos = window.pageYOffset + HEADER_OFFSET + 40, current = null;
     watched.forEach(function(w){
-      if (w.el.offsetTop <= pos) current = w;
+      if (docTop(w.el) <= pos) current = w;
     });
+    // Ganz unten immer den letzten Punkt markieren — die letzte Sektion
+    // ist oft kuerzer als der Bildschirm und wird sonst nie erreicht.
+    var atEnd = window.innerHeight + window.pageYOffset >=
+                document.documentElement.scrollHeight - 2;
+    if (atEnd && watched.length) current = watched[watched.length - 1];
+
     navLinks.forEach(function(l){ l.classList.remove('is-active'); });
     if (current) current.link.classList.add('is-active');
   }
