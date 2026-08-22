@@ -1206,7 +1206,9 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 .metric-item:nth-child(4) { --tint: #dff2e6; }
 .metric-number {
     font-size: 50px; font-weight: 800; color: var(--gunpowder900);
-    line-height: 1.05; margin-bottom: 10px;
+    /* 1.05 war knapper als die Versalhoehe - die Ziffern wirkten oben
+       abgeschnitten. Etwas Luft im Zeilenkasten behebt das. */
+    line-height: 1.2; margin-bottom: 8px;
     font-variant-numeric: tabular-nums; letter-spacing: -.03em;
 }
 .metric-label {
