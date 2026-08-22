@@ -3647,6 +3647,8 @@ function askFromList(q){
 }
 /* --- scroll progress --- */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1200;background:linear-gradient(90deg,var(--begonia400),var(--begonia600));transition:width .1s linear;pointer-events:none;}
+/* Auf dem Handy stoert der Balken direkt unter der Statusleiste — dort weg, am Desktop bleibt er. */
+@media(max-width:860px){.scroll-progress{display:none;}}
 </style>
 
 <script>
