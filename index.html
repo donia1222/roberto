@@ -318,12 +318,12 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl-mark{width:clamp(104px,20vw,140px);}
   .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
 }
-/* Handy: nur "Warum so günstig?" zeigen.
-   Der Erstgespräch-Button steckt unten in der fixen Leiste (.sticky-cta),
-   die genau ab 860px erscheint — deshalb dieselbe Grenze. */
+/* Handy: beide Knoepfe untereinander, volle Breite. Frueher war der
+   Erstgespraech-Knopf hier versteckt, weil ihn die fixe Leiste unten
+   trug — die gibt es nicht mehr. */
 @media(max-width:860px){
-  .hero-buttons #heroPriceBtn{display:none;}
-  .hero-buttons{justify-content:flex-start;}
+  .hero-buttons{flex-direction:column;align-items:stretch;}
+  .hero-buttons #heroPriceBtn,
   .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
 }
 
@@ -3605,18 +3605,6 @@ function askFromList(q){
     </div>
 </div>
 
-<!-- STICKY MOBILE CTA -->
-<div class="sticky-cta" id="stickyCta" aria-hidden="true">
-    <div class="sticky-cta-text">
-        <strong data-i18n="sticky.title">Website ab 990 CHF</strong>
-        <small data-i18n="sticky.sub">Erstgespräch kostenlos</small>
-    </div>
-    <a href="booking.html" class="sticky-cta-btn" data-lw-event="cta_sticky">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <span data-i18n="sticky.btn">Anfragen</span>
-    </a>
-</div>
-
 <style>
 /* --- Fusszeile: kompakte Linkleiste zu den Unterseiten --- */
 .footer-more{
@@ -3659,29 +3647,6 @@ function askFromList(q){
 }
 /* --- scroll progress --- */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1200;background:linear-gradient(90deg,var(--begonia400),var(--begonia600));transition:width .1s linear;pointer-events:none;}
-/* --- sticky mobile CTA --- */
-.sticky-cta{
-  position:fixed;left:12px;right:12px;bottom:12px;z-index:900;
-  display:none;align-items:center;gap:12px;
-  background:var(--gunpowder900);color:#fff;border-radius:16px;
-  padding:11px 12px 11px 18px;
-  box-shadow:0 14px 38px rgba(15,29,44,.34);
-  transform:translateY(140%);transition:transform .38s cubic-bezier(.22,1,.36,1);
-}
-body.dark-mode .sticky-cta{background:#1b2635;}
-.sticky-cta.is-visible{transform:translateY(0);}
-.sticky-cta-text{display:flex;flex-direction:column;line-height:1.25;min-width:0;}
-.sticky-cta-text strong{font-size:14.5px;font-weight:750;}
-.sticky-cta-text small{font-size:11.5px;opacity:.72;}
-.sticky-cta-btn{
-  margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;
-  background:var(--begonia400);color:#fff;text-decoration:none;
-  font-size:14px;font-weight:750;padding:11px 17px;border-radius:11px;
-  transition:background .22s;
-}
-.sticky-cta-btn:hover{background:var(--begonia500);}
-@media(max-width:860px){.sticky-cta{display:flex;}}
-@media(prefers-reduced-motion:reduce){.sticky-cta{transition:none;}}
 </style>
 
 <script>
@@ -3797,25 +3762,16 @@ body.dark-mode .sticky-cta{background:#1b2635;}
   }
 
   /* ---------------------------------------------------------------
-     3. SCROLL-FORTSCHRITT + STICKY CTA
+     3. SCROLL-FORTSCHRITT
   ----------------------------------------------------------------*/
   var bar = document.createElement('div');
   bar.className = 'scroll-progress';
   document.body.appendChild(bar);
 
-  var sticky = document.getElementById('stickyCta');
-  var hero   = document.querySelector('.hero');
-
   function onScroll(){
     var h = document.documentElement;
     var max = h.scrollHeight - h.clientHeight;
     bar.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
-
-    if (sticky && hero){
-      var past = window.pageYOffset > (hero.offsetHeight * 0.8);
-      sticky.classList.toggle('is-visible', past);
-      sticky.setAttribute('aria-hidden', past ? 'false' : 'true');
-    }
     updateActive();
     onScrollDepth();
   }
