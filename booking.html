@@ -589,6 +589,21 @@ function pickSvc(i){
     document.getElementById('bkErrSvc').classList.remove('show');
 }
 
+/* Wer aus dem Preisrechner kommt, hat den Service schon gewaehlt:
+   booking.html?svc=0 waehlt ihn hier vor, damit nur noch "Weiter"
+   fehlt. Ohne oder mit unbekanntem Parameter aendert sich nichts. */
+(function(){
+    var raw = new URLSearchParams(window.location.search).get('svc');
+    if (raw === null) return;
+    var i = parseInt(raw, 10);
+    if (isNaN(i) || i < 0 || i >= SVC_NAMES.length) return;
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function(){ pickSvc(i); });
+    } else {
+        pickSvc(i);
+    }
+})();
+
 /* ── Calendar ── */
 function renderCal(){
     var now=new Date(), y=state.calY, m=state.calM;

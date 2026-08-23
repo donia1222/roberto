@@ -1186,16 +1186,52 @@ function openAppPriceCalc() {
     calcGoToStep(2);
 }
 
-function openPriceCalc() {
-    calcState = { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+// Ohne Argument startet der Rechner bei Schritt 1. Mit einem Umfang
+// ("small", "medium", "shop") kommt der Besucher von einer Preiskarte:
+// Art und Umfang sind dann schon beantwortet und er landet direkt in
+// Schritt 2 mit der passenden Vorauswahl.
+var CALC_SCOPES = ['landing', 'small', 'medium', 'large', 'shop'];
+
+function openPriceCalc(scope) {
+    var preset = CALC_SCOPES.indexOf(scope) > -1 ? scope : '';
+
+    // Vorbelegt heisst: die guenstigste Variante dieses Umfangs, also
+    // vorhandenes Design und keine KI. Genau das meint das "ab" auf der
+    // Preiskarte — der Betrag stimmt dadurch ueberein.
+    calcState = preset
+        ? { step: calcTotalSteps + 1, type: 'website', scope: preset,
+            features: [], design: 'ready', ai: 'no' }
+        : { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+
+    // Erst alles abwaehlen, dann die Vorauswahl setzen — sonst loescht
+    // das Aufraeumen die gerade gesetzte Markierung wieder.
+    var opts = document.querySelectorAll('.calc-option');
+    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+
     calcRenderStep1();
-    calcGoToStep(1);
+    if (preset) {
+        // Alle vorbelegten Schritte mitmarkieren, damit der Besucher beim
+        // Zurueckblaettern seine Auswahl sieht und aendern kann.
+        calcMarkSelected('#calcTypeOptions', 'website');
+        calcMarkSelected('#calcDesignOptions', 'ready');
+        calcMarkSelected('#calcAiOptions', 'no');
+    }
+
     document.getElementById('calcOverlay').classList.add('open');
     document.getElementById('calcModal').classList.add('open');
     document.body.classList.add('calc-open');
-    var opts = document.querySelectorAll('.calc-option');
-    for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
-    document.getElementById('calcNextBtn').disabled = true;
+
+    calcGoToStep(calcState.step);
+}
+
+// Markiert in einem Optionsblock genau den Eintrag mit diesem Wert.
+function calcMarkSelected(containerSel, value) {
+    var box = document.querySelector(containerSel);
+    if (!box) return;
+    var opts = box.querySelectorAll('.calc-option');
+    for (var i = 0; i < opts.length; i++) {
+        opts[i].classList.toggle('selected', opts[i].getAttribute('data-value') === value);
+    }
 }
 
 function closePriceCalc() {
@@ -1260,7 +1296,8 @@ function calcRenderResultLabels() {
     var resultStep = document.querySelector('.calc-step[data-step="result"]');
     resultStep.querySelector('.calc-result h3').textContent = cT('calc.result.title');
     resultStep.querySelector('.calc-result-note').textContent = cT('calc.result.note');
-    document.getElementById('calcResultWhatsapp').textContent = cT('calc.result.whatsapp');
+    document.getElementById('calcResultChoose').textContent = cT('calc.result.choose');
+    document.getElementById('calcResultMore').textContent = cT('calc.nav.more');
 }
 
 function calcGoToStep(step) {
@@ -1290,10 +1327,13 @@ function calcGoToStep(step) {
     var navEl = document.getElementById('calcNav');
 
     if (isResult) {
+        // Die untere Leiste bleibt weg — die beiden Knoepfe stehen im
+        // Ergebnis selbst nebeneinander.
         navEl.style.display = 'none';
         calcRenderResultLabels();
         calcShowResult();
     } else {
+        nextBtn.style.display = '';
         navEl.style.display = 'flex';
         backBtn.classList.toggle('visible', step > 1);
         backBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> ' + cT('calc.nav.back');
@@ -1452,10 +1492,10 @@ function calcComputePrice() {
     if (calcState.type === 'website') {
         switch (calcState.scope) {
             case 'landing': min = 700; max = 1200; weeksRange = '1–2'; break;
-            case 'small':   min = 900; max = 1800; weeksRange = '2–3'; break;
-            case 'medium':  min = 1800; max = 3200; weeksRange = '3–5'; break;
+            case 'small':   min = 990; max = 1800; weeksRange = '2–3'; break;
+            case 'medium':  min = 1900; max = 3200; weeksRange = '3–5'; break;
             case 'large':   min = 3200; max = 5500; weeksRange = '5–8'; break;
-            case 'shop':    min = 2800; max = 6000; weeksRange = '5–9'; break;
+            case 'shop':    min = 2900; max = 6000; weeksRange = '5–9'; break;
         }
         var webFeaturePrices = {
             contact: [100, 200], cms: [400, 700], multilang: [400, 900],
@@ -1537,10 +1577,11 @@ function calcShowResult() {
     calcState.waUrl = 'https://wa.me/41765608645?text=' + encodeURIComponent(msg);
 }
 
-function calcOpenWhatsApp() {
-    if (calcState.waUrl) {
-        window.open(calcState.waUrl, '_blank');
-    }
+// Weiter zur Terminbuchung. svc=0 ist dort "Website / Webseite" —
+// booking.html liest den Parameter und waehlt ihn vor, damit der
+// Besucher nur noch auf Weiter tippen muss.
+function calcChooseOffer() {
+    window.location.href = 'booking.html?svc=0';
 }
 
 function calcBuildWhatsAppMsg(price, tags) {

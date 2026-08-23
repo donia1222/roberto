@@ -3952,9 +3952,17 @@ body.svc-modal-open {
 }
 .calc-result-actions {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+}
+/* Handy: untereinander, das Angebot oben. column-reverse dreht die
+   Reihenfolge um, ohne das Markup anzufassen — am Desktop steht der
+   Hauptknopf so rechts, auf dem Handy oben. */
+@media (max-width: 560px) {
+    .calc-result-actions { flex-direction: column-reverse; align-items: stretch; }
+    .calc-result-actions button { justify-content: center; width: 100%; }
 }
 .calc-result-whatsapp {
     display: inline-flex;
@@ -5641,4 +5649,55 @@ body.dark-mode .store-badge { background: #2a3347; }
 @media (max-width: 480px) {
     .store-badges { width: 100%; }
     .store-badge { justify-content: center; }
+}
+
+/* ═══ ERGEBNIS-KNOPF DES PREISRECHNERS ════════════════════════
+   Fuehrt zur Terminbuchung. Bewusst nicht .calc-result-whatsapp —
+   die Klasse traegt WhatsApp-Gruen und wird im Projekt-Modal noch
+   fuer den echten WhatsApp-Knopf gebraucht. */
+.calc-result-choose {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 26px;
+    border-radius: 100px;
+    background: var(--begonia400);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    box-shadow: 0 4px 16px rgba(254, 108, 117, .32);
+}
+.calc-result-choose:hover {
+    background: var(--begonia500);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(254, 108, 117, .42);
+}
+
+/* Sekundaerer Knopf daneben: gleiche Hoehe, aber zurueckhaltend. */
+.calc-result-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--gunpowder500);
+    font-size: 14.5px;
+    font-weight: 700;
+    font-family: inherit;
+    border: 1.5px solid var(--gunpowder150);
+    cursor: pointer;
+    transition: border-color 200ms ease, color 200ms ease;
+}
+.calc-result-more:hover {
+    border-color: var(--begonia400);
+    color: var(--begonia400);
+}
+body.dark-mode .calc-result-more {
+    color: #9aabc2;
+    border-color: #2a3347;
 }
