@@ -1164,17 +1164,16 @@ var calcState = {
     type: '',
     scope: '',
     features: [],
-    design: '',
     ai: ''
 };
 
-var calcTotalSteps = 5;
+var calcTotalSteps = 4;
 var arrowSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 
 function cT(key) { return svcT(key); }
 
 function openAppPriceCalc() {
-    calcState = { step: 2, type: 'app-landing', scope: '', features: [], design: '', ai: '' };
+    calcState = { step: 2, type: 'app-landing', scope: '', features: [], ai: '' };
     var opts = document.querySelectorAll('#calcTypeOptions .calc-option');
     for (var i = 0; i < opts.length; i++) {
         opts[i].classList.toggle('selected', opts[i].getAttribute('data-value') === 'app-landing');
@@ -1200,8 +1199,8 @@ function openPriceCalc(scope) {
     // Preiskarte — der Betrag stimmt dadurch ueberein.
     calcState = preset
         ? { step: calcTotalSteps + 1, type: 'website', scope: preset,
-            features: [], design: 'ready', ai: 'no' }
-        : { step: 1, type: '', scope: '', features: [], design: '', ai: '' };
+            features: [], ai: 'no' }
+        : { step: 1, type: '', scope: '', features: [], ai: '' };
 
     // Erst alles abwaehlen, dann die Vorauswahl setzen — sonst loescht
     // das Aufraeumen die gerade gesetzte Markierung wieder.
@@ -1213,7 +1212,6 @@ function openPriceCalc(scope) {
         // Alle vorbelegten Schritte mitmarkieren, damit der Besucher beim
         // Zurueckblaettern seine Auswahl sieht und aendern kann.
         calcMarkSelected('#calcTypeOptions', 'website');
-        calcMarkSelected('#calcDesignOptions', 'ready');
         calcMarkSelected('#calcAiOptions', 'no');
     }
 
@@ -1245,7 +1243,7 @@ function calcRenderStep1() {
     var badge = step1.querySelector('.calc-step-badge');
     var h3 = step1.querySelector('.calc-step-header h3');
     var p = step1.querySelector('.calc-step-header p');
-    badge.textContent = cT('calc.step') + ' 1 ' + cT('calc.of') + ' 5';
+    badge.textContent = cT('calc.step') + ' 1 ' + cT('calc.of') + ' ' + calcTotalSteps;
     h3.textContent = cT('calc.s1.title');
     p.textContent = cT('calc.s1.desc');
 
@@ -1263,29 +1261,12 @@ function calcRenderStep4() {
     var badge = step4.querySelector('.calc-step-badge');
     var h3 = step4.querySelector('.calc-step-header h3');
     var p = step4.querySelector('.calc-step-header p');
-    badge.textContent = cT('calc.step') + ' 4 ' + cT('calc.of') + ' 5';
-    h3.textContent = cT('calc.s4.title');
-    p.textContent = cT('calc.s4.desc');
-
-    var opts = step4.querySelectorAll('.calc-option');
-    var keys = ['ready', 'idea', 'scratch'];
-    for (var i = 0; i < opts.length; i++) {
-        opts[i].querySelector('.calc-option-text strong').textContent = cT('calc.design.' + keys[i]);
-        opts[i].querySelector('.calc-option-text span').textContent = cT('calc.design.' + keys[i] + '.desc');
-    }
-}
-
-function calcRenderStep5() {
-    var step5 = document.querySelector('.calc-step[data-step="5"]');
-    var badge = step5.querySelector('.calc-step-badge');
-    var h3 = step5.querySelector('.calc-step-header h3');
-    var p = step5.querySelector('.calc-step-header p');
-    badge.textContent = cT('calc.step') + ' 5 ' + cT('calc.of') + ' 5';
+    badge.textContent = cT('calc.step') + ' 4 ' + cT('calc.of') + ' ' + calcTotalSteps;
     h3.textContent = cT('calc.s5.title');
     p.textContent = cT('calc.s5.desc');
 
-    var opts = step5.querySelectorAll('.calc-option');
-    var keys = ['yes', 'no', 'maybe'];
+    var opts = step4.querySelectorAll('.calc-option');
+    var keys = ['yes', 'no'];
     for (var i = 0; i < opts.length; i++) {
         opts[i].querySelector('.calc-option-text strong').textContent = cT('calc.ai.' + keys[i]);
         opts[i].querySelector('.calc-option-text span').textContent = cT('calc.ai.' + keys[i] + '.desc');
@@ -1350,7 +1331,6 @@ function calcGoToStep(step) {
     if (step === 2) calcBuildScopeStep();
     if (step === 3) calcBuildFeatureStep();
     if (step === 4) calcRenderStep4();
-    if (step === 5) calcRenderStep5();
 }
 
 function calcStepValid(step) {
@@ -1358,8 +1338,7 @@ function calcStepValid(step) {
         case 1: return calcState.type !== '';
         case 2: return calcState.scope !== '';
         case 3: return true;
-        case 4: return calcState.design !== '';
-        case 5: return calcState.ai !== '';
+        case 4: return calcState.ai !== '';
         default: return true;
     }
 }
@@ -1409,7 +1388,7 @@ function calcBuildScopeStep() {
     var options = [];
 
     var badge = document.querySelector('.calc-step[data-step="2"] .calc-step-badge');
-    badge.textContent = cT('calc.step') + ' 2 ' + cT('calc.of') + ' 5';
+    badge.textContent = cT('calc.step') + ' 2 ' + cT('calc.of') + ' ' + calcTotalSteps;
 
     if (calcState.type === 'website') {
         document.getElementById('calcStep2Title').textContent = cT('calc.s2w.title');
@@ -1455,7 +1434,7 @@ function calcBuildFeatureStep() {
     var featureKeys = [];
 
     var badge = document.querySelector('.calc-step[data-step="3"] .calc-step-badge');
-    badge.textContent = cT('calc.step') + ' 3 ' + cT('calc.of') + ' 5';
+    badge.textContent = cT('calc.step') + ' 3 ' + cT('calc.of') + ' ' + calcTotalSteps;
     document.querySelector('.calc-step[data-step="3"] .calc-step-header p').textContent = cT('calc.s3.desc');
 
     if (calcState.type === 'website') {
@@ -1525,14 +1504,9 @@ function calcComputePrice() {
         if (isCombo) { min += 950; max += 2000; }
     }
 
-    switch (calcState.design) {
-        case 'ready': break;
-        case 'idea': min += 300; max += 600; break;
-        case 'scratch': min += 600; max += 1500; break;
-    }
-
+    // Kein Design-Zuschlag mehr: das Design mache ohnehin immer ich,
+    // es steckt im Grundpreis. Die Frage danach ist raus.
     if (calcState.ai === 'yes') { min += 1500; max += 3500; }
-    if (calcState.ai === 'maybe') { min += 500; max += 1500; }
 
     return { min: min, max: max, weeksRange: weeksRange };
 }
@@ -1559,7 +1533,6 @@ function calcShowResult() {
 
     if (calcState.features.length > 0) tags.push(calcState.features.length + ' ' + cT('calc.result.features'));
     if (calcState.ai === 'yes') tags.push(cT('calc.result.withAI'));
-    if (calcState.design === 'scratch') tags.push(cT('calc.result.newDesign'));
 
     summaryEl.innerHTML = '';
     for (var i = 0; i < tags.length; i++) {
@@ -1600,8 +1573,7 @@ function calcBuildWhatsAppMsg(price, tags) {
         camera: 'Kamera/Scanner', gps: 'GPS/Standort', chat: 'Chat/Messaging',
         api: 'Backend/API', admin: 'Admin-Panel', stores: 'Store-Veröffentlichung'
     };
-    var designLabels = { ready: 'Design vorhanden', idea: 'Ungefähre Vorstellung', scratch: 'Design von Grund auf' };
-    var aiLabels = { yes: 'Ja', no: 'Nein', maybe: 'Unsicher' };
+    var aiLabels = { yes: 'Ja', no: 'Nein' };
 
     var lines = [];
     lines.push('Hallo! Ich habe den Preisrechner auf lweb.ch benutzt. Hier meine Angaben:');
@@ -1617,7 +1589,6 @@ function calcBuildWhatsAppMsg(price, tags) {
         lines.push('Funktionen: ' + fList.join(', '));
     }
 
-    lines.push('Design: ' + (designLabels[calcState.design] || calcState.design));
     lines.push('KI: ' + (aiLabels[calcState.ai] || calcState.ai));
     lines.push('');
     lines.push('Geschätztes Budget: ' + calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max));

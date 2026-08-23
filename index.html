@@ -3220,7 +3220,7 @@ function askFromList(q){
         <!-- STEP 1: Project type -->
         <div class="calc-step active" data-step="1">
             <div class="calc-step-header">
-                <span class="calc-step-badge">Schritt 1 von 5</span>
+                <span class="calc-step-badge">Schritt 1 von 4</span>
                 <h3>Was möchten Sie erstellen?</h3>
                 <p>Wählen Sie den Projekttyp, der am besten zu Ihnen passt.</p>
             </div>
@@ -3269,7 +3269,7 @@ function askFromList(q){
         <!-- STEP 2: Scope (dynamic based on type) -->
         <div class="calc-step" data-step="2">
             <div class="calc-step-header">
-                <span class="calc-step-badge">Schritt 2 von 5</span>
+                <span class="calc-step-badge">Schritt 2 von 4</span>
                 <h3 id="calcStep2Title">Wie gross ist Ihr Projekt?</h3>
                 <p id="calcStep2Desc">Wählen Sie den ungefähren Umfang.</p>
             </div>
@@ -3279,7 +3279,7 @@ function askFromList(q){
         <!-- STEP 3: Features (multi-select) -->
         <div class="calc-step" data-step="3">
             <div class="calc-step-header">
-                <span class="calc-step-badge">Schritt 3 von 5</span>
+                <span class="calc-step-badge">Schritt 3 von 4</span>
                 <h3 id="calcStep3Title">Welche Funktionen brauchen Sie?</h3>
                 <p>Wählen Sie alle gewünschten Funktionen aus.</p>
             </div>
@@ -3289,48 +3289,7 @@ function askFromList(q){
         <!-- STEP 4: Design -->
         <div class="calc-step" data-step="4">
             <div class="calc-step-header">
-                <span class="calc-step-badge">Schritt 4 von 5</span>
-                <h3>Haben Sie bereits ein Design?</h3>
-                <p>Das beeinflusst den Aufwand und die Kosten.</p>
-            </div>
-            <div class="calc-options" id="calcDesignOptions">
-                <button class="calc-option" data-value="ready" onclick="calcSelectSingle(this,'design')">
-                    <div class="calc-option-icon calc-option-icon--design">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                    </div>
-                    <div class="calc-option-text">
-                        <strong>Design vorhanden</strong>
-                        <span>Figma, Sketch, PSD oder ähnliches</span>
-                    </div>
-                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
-                </button>
-                <button class="calc-option" data-value="idea" onclick="calcSelectSingle(this,'design')">
-                    <div class="calc-option-icon calc-option-icon--design">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                    </div>
-                    <div class="calc-option-text">
-                        <strong>Ungefähre Vorstellung</strong>
-                        <span>Ich habe Ideen, aber kein fertiges Design</span>
-                    </div>
-                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
-                </button>
-                <button class="calc-option" data-value="scratch" onclick="calcSelectSingle(this,'design')">
-                    <div class="calc-option-icon calc-option-icon--design">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="calc-option-text">
-                        <strong>Design von Grund auf</strong>
-                        <span>Komplettes UI/UX Design benötigt</span>
-                    </div>
-                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 5: AI -->
-        <div class="calc-step" data-step="5">
-            <div class="calc-step-header">
-                <span class="calc-step-badge">Schritt 5 von 5</span>
+                <span class="calc-step-badge">Schritt 4 von 4</span>
                 <h3>Brauchen Sie KI-Funktionen?</h3>
                 <p>Chatbots, Texterkennung, automatisierte Prozesse und mehr.</p>
             </div>
@@ -3355,17 +3314,7 @@ function askFromList(q){
                     </div>
                     <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
                 </button>
-                <button class="calc-option" data-value="maybe" onclick="calcSelectSingle(this,'ai')">
-                    <div class="calc-option-icon calc-option-icon--ai">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    </div>
-                    <div class="calc-option-text">
-                        <strong>Bin mir unsicher</strong>
-                        <span>Möchte mich beraten lassen</span>
-                    </div>
-                    <div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>
-                </button>
-            </div>
+                            </div>
         </div>
 
         <!-- RESULT STEP -->
@@ -3443,7 +3392,7 @@ function askFromList(q){
 </div>
 <script src="js/translations.js?v=202608181346"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608221600"></script>
+<script src="js/main.js?v=202608221730"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
