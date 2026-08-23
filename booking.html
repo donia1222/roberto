@@ -100,6 +100,25 @@
         @media(max-width:720px){ .bk-body { padding: 16px 20px 8px; } }
 
         /* Steps */
+        .bk-offer {
+            background: #fff5f5; border: 1px solid #ffd9dc; border-radius: 14px;
+            padding: 14px 16px; margin-bottom: 16px;
+        }
+        .bk-offer-hd {
+            display: flex; align-items: center; gap: 7px; font-size: 11px;
+            font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+            color: #fe6c75; margin-bottom: 10px;
+        }
+        .bk-offer-row {
+            display: flex; justify-content: space-between; gap: 14px;
+            font-size: 13.5px; padding: 3px 0;
+        }
+        .bk-offer-row span { color: #6b7280; }
+        .bk-offer-row strong { color: #111827; font-weight: 700; text-align: right; }
+        .bk-offer-row--price strong { color: #fe6c75; font-size: 15px; }
+        body.dark-mode .bk-offer { background: rgba(254,108,117,.09); border-color: rgba(254,108,117,.25); }
+        body.dark-mode .bk-offer-row span { color: #9aabc2; }
+        body.dark-mode .bk-offer-row strong { color: #f4f8fc; }
         .bk-step { display: none; }
         .bk-step.active { display: block; animation: bkIn .22s ease; }
         @keyframes bkIn { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
@@ -355,6 +374,9 @@
 
             <!-- Step 1: Service -->
             <div class="bk-step active" id="bkS1">
+                <!-- Aus dem Preisrechner mitgebrachte Offerte. Leer,
+                     wenn der Besucher direkt hierher kommt. -->
+                <div class="bk-offer" id="bkOffer" hidden></div>
                 <div class="bk-svcs">
                     <button class="bk-svc" onclick="pickSvc(0)">
                         <div class="bk-svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
@@ -589,20 +611,52 @@ function pickSvc(i){
     document.getElementById('bkErrSvc').classList.remove('show');
 }
 
-/* Wer aus dem Preisrechner kommt, hat den Service schon gewaehlt:
-   booking.html?svc=0 waehlt ihn hier vor, damit nur noch "Weiter"
-   fehlt. Ohne oder mit unbekanntem Parameter aendert sich nichts. */
+/* ── Offerte aus dem Preisrechner ───────────────────────────────
+   Von dort kommt man mit ?svc=0 und einer Offerte im sessionStorage:
+   Service vorwaehlen, Offerte anzeigen und spaeter der Anfrage
+   anhaengen. Ohne beides aendert sich hier nichts. */
+var bkOffer = null;
+try {
+    var rawOffer = sessionStorage.getItem('lwOffer');
+    if (rawOffer) bkOffer = JSON.parse(rawOffer);
+} catch(e) { bkOffer = null; }
+
+function renderOffer(){
+    var box = document.getElementById('bkOffer');
+    if (!box || !bkOffer || !bkOffer.lines) return;
+    var html = '<div class="bk-offer-hd">' +
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+        'Ihre Auswahl aus dem Preisrechner</div>';
+    bkOffer.lines.forEach(function(r){
+        var cls = r[0] === 'Budget' ? ' bk-offer-row--price' : '';
+        html += '<div class="bk-offer-row' + cls + '"><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>';
+    });
+    box.innerHTML = html;
+    box.hidden = false;
+}
+
 (function(){
     var raw = new URLSearchParams(window.location.search).get('svc');
-    if (raw === null) return;
-    var i = parseInt(raw, 10);
-    if (isNaN(i) || i < 0 || i >= SVC_NAMES.length) return;
+    var i = raw === null ? NaN : parseInt(raw, 10);
+    var valid = !isNaN(i) && i >= 0 && i < SVC_NAMES.length;
+    if (!valid && !bkOffer) return;
+
+    function apply(){
+        if (valid) pickSvc(i);
+        renderOffer();
+    }
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function(){ pickSvc(i); });
+        document.addEventListener('DOMContentLoaded', apply);
     } else {
-        pickSvc(i);
+        apply();
     }
 })();
+
+/* Die Offerte als Textblock — identisch fuer E-Mail und WhatsApp. */
+function offerText(){
+    if (!bkOffer || !bkOffer.lines) return '';
+    return bkOffer.lines.map(function(r){ return r[0] + ': ' + r[1]; }).join('\n');
+}
 
 /* ── Calendar ── */
 function renderCal(){
@@ -717,6 +771,8 @@ function doSend(channel){
 
     var rows=[['Service',d.svcName],['Datum',d.dateFmt],['Uhrzeit',state.time],['Name',d.name],['E-Mail',d.email]];
     if(d.phone) rows.push(['Telefon',d.phone]);
+    // Offerte aus dem Preisrechner mit anzeigen, falls vorhanden.
+    if(bkOffer && bkOffer.lines) bkOffer.lines.forEach(function(r){ rows.push(r); });
 
     if(channel==='whatsapp'){
         var waText='Neue Terminanfrage%0A'+
@@ -726,7 +782,8 @@ function doSend(channel){
             'Datum: '+encodeURIComponent(d.dateFmt)+'%0A'+
             'Uhrzeit: '+encodeURIComponent(state.time)+
             (d.phone?'%0ATelefon: '+encodeURIComponent(d.phone):'')+
-            (d.msg?'%0ANachricht: '+encodeURIComponent(d.msg):'');
+            (d.msg?'%0ANachricht: '+encodeURIComponent(d.msg):'')+
+            (offerText()?'%0A%0AAus dem Preisrechner:%0A'+encodeURIComponent(offerText()):'');
         window.open('https://wa.me/41765608645?text='+waText,'_blank');
         showConfirm(rows); btn.disabled=false;
     } else {
@@ -742,7 +799,8 @@ function doSend(channel){
                 date:    d.dateFmt,
                 rawDate: state.date,
                 time:    state.time,
-                message: d.msg || ''
+                message: d.msg || '',
+                offer:   offerText()
             })
         }).then(function(r){ return r.json(); })
           .then(function(r){ console.log('[booking] email sent:', r); })

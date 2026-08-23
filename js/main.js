@@ -1470,11 +1470,11 @@ function calcComputePrice() {
 
     if (calcState.type === 'website') {
         switch (calcState.scope) {
-            case 'landing': min = 700; max = 1200; weeksRange = '1–2'; break;
-            case 'small':   min = 990; max = 1800; weeksRange = '2–3'; break;
-            case 'medium':  min = 1900; max = 3200; weeksRange = '3–5'; break;
-            case 'large':   min = 3200; max = 5500; weeksRange = '5–8'; break;
-            case 'shop':    min = 2900; max = 6000; weeksRange = '5–9'; break;
+            case 'landing': min = 700; max = 1200; weeksRange = '1'; break;
+            case 'small':   min = 990; max = 1800; weeksRange = '1–2'; break;
+            case 'medium':  min = 1900; max = 3200; weeksRange = '2–3'; break;
+            case 'large':   min = 3200; max = 5500; weeksRange = '3–4'; break;
+            case 'shop':    min = 2900; max = 6000; weeksRange = '4'; break;
         }
         var webFeaturePrices = {
             contact: [100, 200], cms: [400, 700], multilang: [400, 900],
@@ -1511,6 +1511,11 @@ function calcComputePrice() {
     return { min: min, max: max, weeksRange: weeksRange };
 }
 
+// "1 Wochen" waere falsch - bei genau einer Woche die Einzahl nehmen.
+function calcWeeksLabel(range) {
+    return range + ' ' + cT(range === '1' ? 'calc.week' : 'calc.weeks');
+}
+
 function calcFormatCHF(n) {
     return 'CHF ' + n.toLocaleString('de-CH');
 }
@@ -1543,17 +1548,48 @@ function calcShowResult() {
 
     document.getElementById('calcResultTime').innerHTML =
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
-        cT('calc.result.duration') + ': ' + price.weeksRange + ' ' + cT('calc.weeks');
+        cT('calc.result.duration') + ': ' + calcWeeksLabel(price.weeksRange);
 
     // Build WhatsApp message with all selected data
     var msg = calcBuildWhatsAppMsg(price, tags);
     calcState.waUrl = 'https://wa.me/41765608645?text=' + encodeURIComponent(msg);
+
+    // Schnappschuss fuer die Terminseite: dort wird die gewaehlte
+    // Offerte angezeigt und spaeter der Anfrage angehaengt.
+    calcLastOffer = {
+        tags: tags.slice(),
+        price: calcFormatCHF(price.min) + ' \u2013 ' + calcFormatCHF(price.max),
+        weeks: calcWeeksLabel(price.weeksRange),
+        lines: calcBuildOfferLines(price)
+    };
+}
+
+// Die Auswahl als kurze Beschriftung/Wert-Paare - fuer die Anzeige
+// auf der Terminseite und fuer E-Mail und WhatsApp von dort.
+var calcLastOffer = null;
+
+function calcBuildOfferLines(price) {
+    var scopeLabels = {
+        landing: 'Landing Page', small: 'Kleine Website (1-3 Seiten)',
+        medium: 'Mittlere Website (4-7 Seiten)', large: 'Grosse Website (8+ Seiten)',
+        shop: 'Online-Shop', simple: 'Einfache App', complex: 'Komplexe App'
+    };
+    var out = [['Umfang', scopeLabels[calcState.scope] || calcState.scope]];
+    if (calcState.features.length > 0) out.push(['Funktionen', String(calcState.features.length)]);
+    out.push(['KI', calcState.ai === 'yes' ? 'Ja' : 'Nein']);
+    // Ein CHF reicht - die Box auf der Terminseite ist schmal.
+    out.push(['Budget', calcFormatCHF(price.min) + ' \u2013 ' + price.max.toLocaleString('de-CH')]);
+    out.push(['Dauer', calcWeeksLabel(price.weeksRange)]);
+    return out;
 }
 
 // Weiter zur Terminbuchung. svc=0 ist dort "Website / Webseite" —
 // booking.html liest den Parameter und waehlt ihn vor, damit der
 // Besucher nur noch auf Weiter tippen muss.
 function calcChooseOffer() {
+    try {
+        if (calcLastOffer) sessionStorage.setItem('lwOffer', JSON.stringify(calcLastOffer));
+    } catch (e) {}
     window.location.href = 'booking.html?svc=0';
 }
 
@@ -1592,7 +1628,7 @@ function calcBuildWhatsAppMsg(price, tags) {
     lines.push('KI: ' + (aiLabels[calcState.ai] || calcState.ai));
     lines.push('');
     lines.push('Geschätztes Budget: ' + calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max));
-    lines.push('Geschätzte Dauer: ' + price.weeksRange + ' Wochen');
+    lines.push('Geschätzte Dauer: ' + calcWeeksLabel(price.weeksRange));
     lines.push('');
     lines.push('Ich freue mich auf Ihre Rückmeldung!');
 
