@@ -1556,7 +1556,7 @@ function calcShowResult() {
         summaryEl.innerHTML += '<span class="calc-result-tag web-modal-stagger" style="animation-delay:' + (i * 70) + 'ms">' + tags[i] + '</span>';
     }
 
-    document.getElementById('calcResultPrice').textContent = calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max);
+    document.getElementById('calcResultPrice').textContent = cT('calc.result.from') + ' ' + calcFormatCHF(price.min);
 
     document.getElementById('calcResultTime').innerHTML =
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
@@ -1590,7 +1590,7 @@ function calcBuildOfferLines(price) {
     if (calcState.features.length > 0) out.push(['Funktionen', String(calcState.features.length)]);
     out.push(['KI', calcState.ai === 'yes' ? 'Ja' : 'Nein']);
     // Ein CHF reicht - die Box auf der Terminseite ist schmal.
-    out.push(['Budget', calcFormatCHF(price.min) + ' \u2013 ' + price.max.toLocaleString('de-CH')]);
+    out.push(['Budget', 'ab ' + calcFormatCHF(price.min)]);
     out.push(['Dauer', calcWeeksLabel(price.weeksRange)]);
     return out;
 }
@@ -1646,7 +1646,7 @@ function calcBuildWhatsAppMsg(price, tags) {
 
     lines.push('KI: ' + (aiLabels[calcState.ai] || calcState.ai));
     lines.push('');
-    lines.push('Geschätztes Budget: ' + calcFormatCHF(price.min) + ' – ' + calcFormatCHF(price.max));
+    lines.push('Geschätztes Budget: ab ' + calcFormatCHF(price.min));
     lines.push('Geschätzte Dauer: ' + calcWeeksLabel(price.weeksRange));
     lines.push('');
     lines.push('Ich freue mich auf Ihre Rückmeldung!');

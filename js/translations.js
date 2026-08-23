@@ -810,6 +810,7 @@ var translations = {
         'calc.s3.inclItems': 'Handgeschriebener Code · Kontaktformular · Eigene Texte & Bilder · Domain · SSL-Zertifikat · Responsive Design',
         'calc.weeks': 'Wochen',
         'calc.week': 'Woche',
+        'calc.result.from': 'ab',
         'calc.result.whatsapp': 'Per WhatsApp kontaktieren',
         // Testimonials & Booking
         'testi.label': 'Kundenstimmen', 'testi.h2': 'Was Kunden \u00fcber <span class="accent">Lweb</span> sagen', 'testi.sub': 'Echte Projekte. Echte Ergebnisse. Direkte Zusammenarbeit.',
@@ -1780,6 +1781,7 @@ var translations = {
         'calc.s3.inclItems': 'Hand-written code · Contact form · Your own texts & images · Domain · SSL certificate · Responsive design',
         'calc.weeks': 'weeks',
         'calc.week': 'week',
+        'calc.result.from': 'from',
         'calc.result.whatsapp': 'Contact via WhatsApp',
         // Testimonials & Booking
         'testi.label': 'Client Reviews', 'testi.h2': 'What clients say about <span class="accent">Lweb</span>', 'testi.sub': 'Real projects. Real results. Direct collaboration.',
@@ -2879,6 +2881,7 @@ var translations = {
         'calc.s3.inclItems': 'C\u00f3digo escrito a mano · Formulario de contacto · Textos e im\u00e1genes propios · Dominio · Certificado SSL · Dise\u00f1o responsive',
         'calc.weeks': 'semanas',
         'calc.week': 'semana',
+        'calc.result.from': 'desde',
         'calc.result.whatsapp': 'Contactar por WhatsApp',
         // Testimonials & Booking
         'testi.label': 'Opiniones de clientes', 'testi.h2': 'Lo que dicen los clientes sobre <span class="accent">Lweb</span>', 'testi.sub': 'Proyectos reales. Resultados reales. Colaboraci\u00f3n directa.',
@@ -3978,6 +3981,7 @@ var translations = {
         'calc.s3.inclItems': 'Code \u00e9crit \u00e0 la main · Formulaire de contact · Vos textes et images · Domaine · Certificat SSL · Design responsive',
         'calc.weeks': 'semaines',
         'calc.week': 'semaine',
+        'calc.result.from': '\u00e0 partir de',
         'calc.result.whatsapp': 'Contacter par WhatsApp',
         // Testimonials & Booking
         'testi.label': 'Avis clients', 'testi.h2': 'Ce que les clients disent de <span class="accent">Lweb</span>', 'testi.sub': 'Vrais projets. Vrais r\u00e9sultats. Collaboration directe.',
@@ -5077,6 +5081,7 @@ var translations = {
         'calc.s3.inclItems': 'Codice scritto a mano · Modulo di contatto · Testi e immagini propri · Dominio · Certificato SSL · Design responsive',
         'calc.weeks': 'settimane',
         'calc.week': 'settimana',
+        'calc.result.from': 'a partire da',
         'calc.result.whatsapp': 'Contattare via WhatsApp',
         // Testimonials & Booking
         'testi.label': 'Recensioni clienti', 'testi.h2': 'Cosa dicono i clienti di <span class="accent">Lweb</span>', 'testi.sub': 'Progetti reali. Risultati reali. Collaborazione diretta.',

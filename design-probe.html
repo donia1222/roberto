@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1750437386268481');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1750437386268481&ev=PageView&noscript=1"
+    alt=""/></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <title>Design-Probe — In 3 Minuten sehen, wie Ihre Website aussieht | Lweb</title>
+    <meta name="description" content="Farben und Schrift wählen, Vorschau live mitwachsen sehen — und eine echte, kostenlose Musterseite anfordern. In 3 Minuten, ohne Formular-Marathon.">
+    <meta name="author" content="Roberto Salvador — Lweb">
+    <meta name="theme-color" content="#ffffff" id="themeColor">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+
+    <!-- Plus Jakarta Sans traegt die Seite. Fraunces, Bricolage und
+         JetBrains Mono werden NUR in der Vorschau gebraucht: auf
+         dieser Seite ist die Schriftwahl der Inhalt, nicht Dekoration. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css?v=202608231000">
+    <script src="js/translations.js?v=202608231000"></script>
+    <script src="js/design-probe-status.js?v=202608231000"></script>
+
+<style>
+body { padding-top: 60px; overflow-x: hidden; background: #fff; }
+
+/* ═══ HERO ══════════════════════════════════════════════════ */
+.dp-hero { padding: 54px 24px 34px; text-align: center; }
+.dp-hero-inner { max-width: 720px; margin: 0 auto; }
+.dp-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--begonia400); background: rgba(254,108,117,.10);
+    border: 1px solid rgba(254,108,117,.28);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+}
+.dp-hero h1 {
+    font-size: clamp(32px, 6vw, 50px); font-weight: 800; line-height: 1.06;
+    letter-spacing: -.032em; color: var(--gunpowder900); margin: 0 0 16px;
+}
+.dp-hero h1 span { color: var(--begonia400); }
+.dp-promise {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px;
+    margin: 0 0 8px; padding: 0; list-style: none;
+}
+.dp-promise li {
+    font-size: 14.5px; font-weight: 700; color: var(--gunpowder700);
+    background: var(--gunpowder50); border-radius: 999px; padding: 7px 16px;
+}
+.dp-hero p.dp-lead {
+    font-size: 16.5px; line-height: 1.6; color: var(--gunpowder500);
+    max-width: 52ch; margin: 18px auto 0;
+}
+
+/* ═══ GRUNDGERUEST ══════════════════════════════════════════ */
+.dp-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 90px; }
+.dp-grid { display: grid; gap: 26px; }
+@media (min-width: 1000px) {
+    .dp-grid { grid-template-columns: minmax(0,1fr) minmax(0,1.05fr); gap: 40px; align-items: start; }
+    .dp-preview-col { position: sticky; top: 84px; }
+}
+
+/* ═══ SCHRITTE ══════════════════════════════════════════════ */
+.dp-panel {
+    background: #fff; border: 1px solid #e4ebf3; border-radius: 20px;
+    padding: 24px 24px 22px; box-shadow: 0 1px 2px rgba(15,29,44,.04), 0 12px 34px rgba(15,29,44,.06);
+}
+.dp-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.dp-progress-bar { flex: 1; height: 5px; border-radius: 999px; background: #e8eef5; overflow: hidden; }
+.dp-progress-fill {
+    height: 100%; width: 20%; border-radius: 999px;
+    background: linear-gradient(90deg, var(--begonia400), var(--begonia600));
+    transition: width .35s cubic-bezier(.22,1,.36,1);
+}
+.dp-progress-txt {
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--gunpowder400); white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.dp-step { display: none; }
+.dp-step.active { display: block; animation: dpIn .26s ease; }
+@keyframes dpIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.dp-step h2 {
+    font-size: 21px; font-weight: 800; letter-spacing: -.018em;
+    color: var(--gunpowder900); margin: 0 0 5px;
+}
+.dp-step > p.dp-hint { font-size: 14.5px; color: var(--gunpowder500); margin: 0 0 18px; }
+
+.dp-label {
+    display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--gunpowder400); margin: 22px 0 10px;
+}
+.dp-label:first-child { margin-top: 0; }
+
+/* ── Auswahlkacheln ─────────────────────────────────────── */
+.dp-opts { display: grid; gap: 9px; }
+.dp-opts--2 { grid-template-columns: 1fr 1fr; }
+.dp-opts--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 420px) { .dp-opts--3 { grid-template-columns: 1fr 1fr; } }
+
+.dp-opt {
+    display: flex; align-items: center; gap: 11px; width: 100%;
+    text-align: left; font-family: inherit; cursor: pointer;
+    background: #fff; border: 1.5px solid #e2e9f1; border-radius: 14px;
+    padding: 12px 14px; transition: border-color .18s, background .18s, transform .18s;
+}
+.dp-opt:hover { border-color: #c8d7e6; transform: translateY(-1px); }
+.dp-opt.sel { border-color: var(--begonia400); background: rgba(254,108,117,.06); }
+.dp-opt-txt { min-width: 0; }
+.dp-opt-txt strong { display: block; font-size: 14.5px; font-weight: 700; color: var(--gunpowder900); }
+.dp-opt-txt span { display: block; font-size: 12.5px; color: var(--gunpowder500); line-height: 1.35; }
+.dp-opt-ico {
+    width: 34px; height: 34px; flex: none; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--gunpowder50); color: var(--gunpowder400);
+}
+.dp-opt.sel .dp-opt-ico { background: rgba(254,108,117,.14); color: var(--begonia400); }
+
+/* Farbkacheln */
+.dp-opt--pal { flex-direction: column; align-items: stretch; gap: 9px; padding: 11px; }
+.dp-pal-strip { display: flex; height: 34px; border-radius: 9px; overflow: hidden; }
+.dp-pal-strip i { flex: 1; }
+.dp-opt--pal .dp-opt-txt strong { font-size: 13.5px; }
+.dp-opt--pal .dp-opt-txt span { font-size: 11.5px; }
+
+/* Schriftkacheln */
+.dp-opt--font { flex-direction: column; align-items: stretch; gap: 4px; padding: 13px 15px; }
+.dp-font-demo { font-size: 22px; line-height: 1.15; color: var(--gunpowder900); letter-spacing: -.02em; }
+.dp-opt--font .dp-opt-txt span { font-size: 11.5px; margin-top: 3px; }
+
+/* Aufbaukacheln */
+.dp-opt--lay { flex-direction: column; align-items: stretch; gap: 9px; padding: 11px; }
+.dp-lay-mini { height: 64px; border-radius: 9px; background: var(--gunpowder50); padding: 9px; }
+.dp-lay-mini i { display: block; background: var(--gunpowder200); border-radius: 3px; }
+.dp-lay-mini--ruhig i:nth-child(1) { height: 6px; width: 40%; margin: 0 auto 6px; }
+.dp-lay-mini--ruhig i:nth-child(2) { height: 5px; width: 70%; margin: 0 auto 6px; }
+.dp-lay-mini--ruhig i:nth-child(3) { height: 13px; width: 44%; margin: 0 auto; border-radius: 999px; }
+.dp-lay-mini--kraeftig i:nth-child(1) { height: 17px; width: 86%; margin-bottom: 6px; }
+.dp-lay-mini--kraeftig i:nth-child(2) { height: 5px; width: 58%; margin-bottom: 7px; }
+.dp-lay-mini--kraeftig i:nth-child(3) { height: 13px; width: 40%; border-radius: 999px; }
+.dp-lay-mini--karten { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dp-lay-mini--karten i { height: 100%; border-radius: 5px; }
+
+/* ── Felder ─────────────────────────────────────────────── */
+.dp-field { margin-bottom: 14px; }
+.dp-field label {
+    display: block; font-size: 13px; font-weight: 700; color: var(--gunpowder700); margin-bottom: 6px;
+}
+.dp-field label small { font-weight: 600; color: var(--gunpowder300); }
+.dp-field input, .dp-field textarea {
+    width: 100%; font-family: inherit; font-size: 15px; color: var(--gunpowder900);
+    background: #fff; border: 1.5px solid #e2e9f1; border-radius: 12px;
+    padding: 11px 14px; outline: none; transition: border-color .18s;
+}
+.dp-field input:focus, .dp-field textarea:focus { border-color: var(--begonia400); }
+.dp-field textarea { resize: vertical; min-height: 74px; line-height: 1.5; }
+.dp-err { display: none; font-size: 13px; font-weight: 600; color: var(--begonia500); margin-top: 7px; }
+.dp-err.show { display: block; }
+
+/* ── Domain ─────────────────────────────────────────────── */
+.dp-dom-row { display: flex; gap: 8px; }
+.dp-dom-row input { flex: 1; }
+.dp-dom-btn {
+    flex: none; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+    background: var(--gunpowder900); color: #fff; border: none; border-radius: 12px; padding: 0 18px;
+    transition: background .18s;
+}
+.dp-dom-btn:hover { background: var(--gunpowder800); }
+.dp-dom-btn:disabled { opacity: .5; cursor: default; }
+.dp-dom-res {
+    display: none; align-items: center; gap: 8px; margin-top: 10px;
+    font-size: 14px; font-weight: 700; padding: 10px 14px; border-radius: 12px;
+}
+.dp-dom-res.free { display: flex; background: rgba(77,211,91,.11); color: #2f7d3a; }
+.dp-dom-res.taken { display: flex; background: rgba(254,108,117,.10); color: var(--begonia500); }
+.dp-dom-res.wait { display: flex; background: var(--gunpowder50); color: var(--gunpowder500); }
+.dp-alt { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+.dp-alt button {
+    font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+    background: rgba(77,211,91,.10); color: #2f7d3a;
+    border: 1px solid rgba(77,211,91,.3); border-radius: 999px; padding: 6px 13px;
+}
+.dp-alt button:hover { background: rgba(77,211,91,.18); }
+.dp-skip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.dp-skip button {
+    font-family: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
+    background: #fff; color: var(--gunpowder500);
+    border: 1.5px solid #e2e9f1; border-radius: 999px; padding: 8px 15px;
+}
+.dp-skip button.sel { border-color: var(--begonia400); color: var(--begonia400); background: rgba(254,108,117,.06); }
+
+/* ── Navigation ─────────────────────────────────────────── */
+.dp-nav { display: flex; gap: 10px; margin-top: 22px; }
+.dp-btn {
+    font-family: inherit; font-size: 15px; font-weight: 750; cursor: pointer;
+    border-radius: 999px; padding: 13px 24px; border: none; transition: background .18s, transform .18s;
+}
+.dp-btn--next { flex: 1; background: var(--begonia400); color: #fff; }
+.dp-btn--next:hover { background: var(--begonia500); transform: translateY(-1px); }
+.dp-btn--next:disabled { background: #f0b6ba; cursor: default; transform: none; }
+.dp-btn--back { background: var(--gunpowder50); color: var(--gunpowder500); }
+.dp-btn--back:hover { background: #e4ebf3; }
+
+/* ── Hinweiskasten (Warteliste) ─────────────────────────── */
+.dp-note {
+    background: #fff8e6; border: 1px solid #f5dda0; border-radius: 14px;
+    padding: 15px 17px; margin-top: 18px;
+}
+.dp-note strong { display: block; font-size: 14.5px; color: #8a6100; margin-bottom: 4px; }
+.dp-note span { font-size: 13.5px; color: #9a7420; line-height: 1.5; }
+
+/* ═══ VORSCHAU ══════════════════════════════════════════════ */
+.dp-preview-hd {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 11px;
+}
+.dp-preview-hd span {
+    font-size: 11.5px; font-weight: 800; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--gunpowder400);
+}
+.dp-code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 700;
+    color: var(--gunpowder500); background: var(--gunpowder50);
+    border-radius: 999px; padding: 4px 11px; letter-spacing: .04em;
+}
+.dp-browser {
+    border-radius: 16px; overflow: hidden; border: 1px solid #dbe4ee;
+    box-shadow: 0 18px 46px rgba(15,29,44,.14); background: #fff;
+}
+.dp-browser-bar {
+    display: flex; align-items: center; gap: 6px;
+    background: #eef2f7; padding: 9px 13px; border-bottom: 1px solid #dbe4ee;
+}
+.dp-browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; }
+.dp-browser-url {
+    margin-left: 8px; font-size: 11.5px; color: #7e8b9b; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Die Mustersite. Alles haengt an diesen Variablen — ein Klick
+   im Formular setzt sie neu und die ganze Vorschau kippt um. */
+.dp-site {
+    --c-dark: #123a5a; --c-mid: #2f7fae; --c-soft: #8fc4dd; --c-paper: #eef4f8;
+    --f-display: 'Plus Jakarta Sans', sans-serif; --f-body: 'Plus Jakarta Sans', sans-serif;
+    background: var(--c-paper); color: var(--c-dark);
+    font-family: var(--f-body); padding: 0 0 20px; min-height: 380px;
+    transition: background .3s ease, color .3s ease;
+}
+.dp-site-nav {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 18px; background: var(--c-dark);
+}
+.dp-site-logo {
+    font-family: var(--f-display); font-weight: 800; font-size: 14px;
+    color: #fff; letter-spacing: -.01em; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; max-width: 55%;
+}
+.dp-site-nav i { height: 5px; width: 26px; border-radius: 3px; background: rgba(255,255,255,.32); }
+.dp-site-nav i:first-of-type { margin-left: auto; }
+.dp-site-navcta {
+    font-size: 10.5px; font-weight: 700; color: var(--c-dark);
+    background: var(--c-soft); border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+}
+.dp-site-hero { padding: 30px 22px 26px; }
+.dp-site-eyebrow {
+    font-size: 10.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--c-mid); margin: 0 0 9px;
+}
+.dp-site-h1 {
+    font-family: var(--f-display); font-size: 27px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -.025em; margin: 0 0 9px; color: var(--c-dark); word-break: break-word;
+}
+.dp-site-sub { font-size: 13.5px; line-height: 1.55; color: var(--c-dark); opacity: .78; margin: 0 0 17px; }
+.dp-site-btn {
+    display: inline-block; font-size: 12.5px; font-weight: 750; color: #fff;
+    background: var(--c-mid); border-radius: 999px; padding: 9px 20px;
+}
+.dp-site-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; padding: 0 22px; }
+.dp-site-card {
+    background: #fff; border-radius: 11px; padding: 13px 11px; text-align: center;
+    font-size: 11.5px; font-weight: 700; color: var(--c-dark);
+    box-shadow: 0 2px 9px rgba(0,0,0,.06);
+}
+.dp-site-card i {
+    display: block; width: 22px; height: 22px; border-radius: 7px;
+    background: var(--c-soft); margin: 0 auto 8px;
+}
+
+/* Aufbau: ruhig — zentriert, viel Luft, eine Aktion */
+.dp-site.lay-ruhig .dp-site-hero { text-align: center; padding: 40px 24px 34px; }
+.dp-site.lay-ruhig .dp-site-cards { grid-template-columns: 1fr; }
+.dp-site.lay-ruhig .dp-site-card { display: flex; align-items: center; gap: 10px; text-align: left; }
+.dp-site.lay-ruhig .dp-site-card i { margin: 0; }
+
+/* Aufbau: kraeftig — grosse Type, dunkler Block, hoher Kontrast */
+.dp-site.lay-kraeftig .dp-site-hero { background: var(--c-dark); padding: 34px 22px 30px; }
+.dp-site.lay-kraeftig .dp-site-h1 { color: #fff; font-size: 33px; }
+.dp-site.lay-kraeftig .dp-site-sub { color: #fff; opacity: .8; }
+.dp-site.lay-kraeftig .dp-site-eyebrow { color: var(--c-soft); }
+.dp-site.lay-kraeftig .dp-site-btn { background: var(--c-soft); color: var(--c-dark); }
+.dp-site.lay-kraeftig .dp-site-cards { margin-top: 16px; }
+
+/* Aufbau: karten — Raster, fuer Kataloge und Listen */
+.dp-site.lay-karten .dp-site-hero { padding: 24px 22px 18px; }
+.dp-site.lay-karten .dp-site-h1 { font-size: 23px; }
+.dp-site.lay-karten .dp-site-cards { grid-template-columns: repeat(2,1fr); }
+.dp-site.lay-karten .dp-site-card { padding: 18px 12px; }
+
+/* ═══ ERGEBNIS ══════════════════════════════════════════════ */
+.dp-done { text-align: center; padding: 8px 0 4px; }
+.dp-done-ico {
+    width: 58px; height: 58px; border-radius: 50%; margin: 0 auto 16px;
+    background: rgba(77,211,91,.13); color: #4dd35b;
+    display: flex; align-items: center; justify-content: center;
+}
+.dp-done h2 { font-size: 23px; margin-bottom: 8px; }
+.dp-done p { font-size: 14.5px; color: var(--gunpowder500); margin: 0 auto 18px; max-width: 40ch; }
+.dp-done-code {
+    display: inline-block; font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 17px; font-weight: 700; letter-spacing: .08em; color: var(--gunpowder900);
+    background: var(--gunpowder50); border-radius: 12px; padding: 11px 20px; margin-bottom: 20px;
+}
+
+/* Kanalwahl auf dem Handy */
+.dp-choice {
+    display: none; position: fixed; inset: 0; z-index: 3000;
+    background: rgba(9,17,26,.55); align-items: flex-end; justify-content: center;
+}
+.dp-choice.open { display: flex; }
+.dp-choice-box {
+    background: #fff; border-radius: 22px 22px 0 0; padding: 24px 22px 30px;
+    width: 100%; max-width: 480px; animation: dpUp .26s cubic-bezier(.22,1,.36,1);
+}
+@keyframes dpUp { from { transform: translateY(100%); } to { transform: none; } }
+.dp-choice-box h3 { font-size: 18px; font-weight: 800; margin: 0 0 4px; color: var(--gunpowder900); }
+.dp-choice-box p { font-size: 14px; color: var(--gunpowder500); margin: 0 0 18px; }
+.dp-choice-btn {
+    display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%;
+    font-family: inherit; font-size: 15px; font-weight: 750; cursor: pointer;
+    border: none; border-radius: 14px; padding: 14px; margin-bottom: 9px; color: #fff;
+}
+.dp-choice-btn--wa { background: #25D366; }
+.dp-choice-btn--mail { background: var(--gunpowder900); }
+.dp-choice-cancel {
+    width: 100%; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+    background: none; border: none; color: var(--gunpowder400); padding: 10px;
+}
+
+/* ═══ GESCHLOSSEN ═══════════════════════════════════════════ */
+.dp-closed { max-width: 560px; margin: 40px auto 90px; text-align: center; padding: 0 24px; }
+.dp-closed h2 { font-size: 26px; font-weight: 800; color: var(--gunpowder900); margin-bottom: 12px; }
+.dp-closed p { font-size: 16px; color: var(--gunpowder500); line-height: 1.6; margin-bottom: 22px; }
+
+/* ═══ NACHTMODUS ════════════════════════════════════════════ */
+body.dark-mode .dp-panel { background: #1a1f2e; border-color: #2a3040; }
+body.dark-mode .dp-hero h1, body.dark-mode .dp-step h2,
+body.dark-mode .dp-opt-txt strong, body.dark-mode .dp-done h2,
+body.dark-mode .dp-closed h2, body.dark-mode .dp-choice-box h3 { color: #f1f5f9; }
+body.dark-mode .dp-promise li { background: #232a3a; color: #cbd7e6; }
+body.dark-mode .dp-opt { background: #151b28; border-color: #2a3040; }
+body.dark-mode .dp-opt.sel { border-color: var(--begonia400); background: rgba(254,108,117,.10); }
+body.dark-mode .dp-opt-ico { background: #232a3a; }
+body.dark-mode .dp-font-demo { color: #f1f5f9; }
+body.dark-mode .dp-field input, body.dark-mode .dp-field textarea,
+body.dark-mode .dp-skip button { background: #111827; border-color: #2a3040; color: #e2e8f0; }
+body.dark-mode .dp-field label { color: #cbd7e6; }
+body.dark-mode .dp-progress-bar, body.dark-mode .dp-btn--back,
+body.dark-mode .dp-code, body.dark-mode .dp-done-code { background: #232a3a; }
+body.dark-mode .dp-done-code { color: #f1f5f9; }
+body.dark-mode .dp-btn--back { color: #cbd7e6; }
+body.dark-mode .dp-lay-mini { background: #232a3a; }
+body.dark-mode .dp-lay-mini i { background: #3c4759; }
+body.dark-mode .dp-browser { border-color: #2a3040; }
+body.dark-mode .dp-choice-box { background: #1a1f2e; }
+body.dark-mode .dp-note { background: rgba(245,221,160,.09); border-color: rgba(245,221,160,.28); }
+body.dark-mode .dp-note strong { color: #f0cf7a; }
+body.dark-mode .dp-note span { color: #d8c08f; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="header-icon-btn header-back-desktop" aria-label="Zurück zur Startseite">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <div class="header-title" id="headerTitle">
+            <span>Design</span>
+            <span class="accent">Probe</span>
+        </div>
+        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
+            <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
+            <a href="index.html#vergleich" class="header-nav-item"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
+            <a href="index.html#preise" class="header-nav-item"><span data-i18n="nav.op.preise">Preise</span></a>
+            <a href="index.html#branchen" class="header-nav-item"><span data-i18n="nav.op.branchen">Ihre Branche</span></a>
+            <a href="index.html#websites" class="header-nav-item"><span data-i18n="nav.op.projekte">Projekte</span></a>
+            <a href="templates-web.html" class="header-nav-item"><span data-i18n="footer.p3">Website-Templates</span></a>
+        </nav>
+        <div class="header-actions">
+            <a href="booking.html" class="header-icon-btn header-icon-btn--primary" aria-label="Termin">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+            </a>
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-panel-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="nav.back.main">Hauptmenü</span>
+    </a>
+    <nav class="mobile-menu-nav">
+        <a href="templates-web.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="footer.p3">Website-Templates ab 650 CHF</span></a>
+        <a href="webs-publicadas.html" class="mobile-menu-link mobile-menu-link--custom"><span data-i18n="nav.websites.published">Projekte</span></a>
+        <a href="booking.html" class="mobile-menu-link mobile-menu-link--custom"><span>Termin buchen</span></a>
+    </nav>
+    <div class="mobile-menu-footer">
+        <a href="mailto:info@lweb.ch">info@lweb.ch</a>
+        <a href="tel:+41765608645">+41 76 560 86 45</a>
+    </div>
+</div>
+
+<!-- ═════════════════ HERO ═════════════════ -->
+<section class="dp-hero">
+    <div class="dp-hero-inner">
+        <span class="dp-badge">Kostenlos &amp; unverbindlich</span>
+        <h1>Sehen Sie Ihre Website,<br><span>bevor sie existiert.</span></h1>
+        <ul class="dp-promise">
+            <li>In 3 Minuten</li>
+            <li>Kostenlos</li>
+            <li>Ohne Formular-Marathon</li>
+        </ul>
+        <p class="dp-lead">Farben und Schrift auswählen, rechts wächst Ihre Seite live mit. Am Ende baue ich Ihnen eine echte Musterseite mit Ihrem Namen — geschenkt, ohne Bedingungen.</p>
+    </div>
+</section>
+
+<!-- ═════════════════ GESCHLOSSEN ═════════════════ -->
+<div class="dp-closed" id="dpClosed" style="display:none">
+    <h2>Gerade geschlossen</h2>
+    <p>Die Design-Probe pausiert für ein paar Tage, weil ich alle offenen Muster zuerst fertig bauen möchte. Schauen Sie bald wieder vorbei — oder schreiben Sie mir direkt, dann melde ich mich.</p>
+    <a href="booking.html" class="dp-btn dp-btn--next" style="display:inline-block;text-decoration:none">Termin buchen</a>
+</div>
+
+<!-- ═════════════════ KONFIGURATOR ═════════════════ -->
+<div class="dp-wrap" id="dpWrap">
+  <div class="dp-grid">
+
+    <!-- ── Formularspalte ─────────────────────────────── -->
+    <div>
+      <div class="dp-panel">
+        <div class="dp-progress">
+            <div class="dp-progress-bar"><div class="dp-progress-fill" id="dpFill"></div></div>
+            <div class="dp-progress-txt" id="dpCount">Schritt 1 von 5</div>
+        </div>
+
+        <!-- Schritt 1 — Branche -->
+        <div class="dp-step active" data-step="1">
+            <h2>Was für ein Betrieb sind Sie?</h2>
+            <p class="dp-hint">Danach richtet sich alles Weitere — die Farbvorschläge, die Texte, der Aufbau.</p>
+            <div class="dp-opts" id="dpBranchen"></div>
+        </div>
+
+        <!-- Schritt 2 — Stil -->
+        <div class="dp-step" data-step="2">
+            <h2>Ihr Stil</h2>
+            <p class="dp-hint">Drei Entscheidungen. Die Vorschau ändert sich sofort mit.</p>
+            <span class="dp-label">Farbwelt</span>
+            <div class="dp-opts dp-opts--2" id="dpPaletten"></div>
+            <span class="dp-label">Schrift</span>
+            <div class="dp-opts dp-opts--2" id="dpSchriften"></div>
+            <span class="dp-label">Aufbau</span>
+            <div class="dp-opts dp-opts--3" id="dpAufbau"></div>
+        </div>
+
+        <!-- Schritt 3 — Betrieb -->
+        <div class="dp-step" data-step="3">
+            <h2>Ihr Betrieb</h2>
+            <p class="dp-hint">Diese drei Angaben landen direkt in der Vorschau rechts.</p>
+            <div class="dp-field">
+                <label for="dpName">Name des Betriebs</label>
+                <input type="text" id="dpName" placeholder="Müller Gartenbau" autocomplete="organization" maxlength="60">
+            </div>
+            <div class="dp-field">
+                <label for="dpOrt">Ort</label>
+                <input type="text" id="dpOrt" placeholder="Sevelen" autocomplete="address-level2" maxlength="40">
+            </div>
+            <div class="dp-field">
+                <label for="dpSatz">Was Sie anbieten <small>— ein Satz</small></label>
+                <textarea id="dpSatz" placeholder="Gartenpflege und Neugestaltung in der Region Werdenberg." maxlength="140"></textarea>
+            </div>
+            <div class="dp-err" id="dpErrBetrieb">Bitte geben Sie mindestens den Namen Ihres Betriebs an.</div>
+        </div>
+
+        <!-- Schritt 4 — Domain -->
+        <div class="dp-step" data-step="4">
+            <h2>Domain wählen</h2>
+            <p class="dp-hint">Optional. Ich habe einen Vorschlag aus Ihrem Namen gebaut — prüfen Sie, ob er frei ist.</p>
+            <div class="dp-dom-row">
+                <input type="text" id="dpDomain" placeholder="mueller-gartenbau.ch" autocomplete="off" spellcheck="false">
+                <button class="dp-dom-btn" id="dpDomBtn" type="button">Prüfen</button>
+            </div>
+            <div class="dp-dom-res" id="dpDomRes"></div>
+            <div class="dp-alt" id="dpDomAlt"></div>
+            <div class="dp-skip">
+                <button type="button" data-dom="own">Ich habe schon eine Domain</button>
+                <button type="button" data-dom="later">Entscheide ich später</button>
+            </div>
+        </div>
+
+        <!-- Schritt 5 — Kontakt -->
+        <div class="dp-step" data-step="5">
+            <h2>Wohin schicke ich die Probe?</h2>
+            <p class="dp-hint">Ich baue Ihre Musterseite von Hand und melde mich, sobald sie steht. Keine Newsletter, keine Weitergabe.</p>
+            <div class="dp-field">
+                <label for="dpVorname">Ihr Name</label>
+                <input type="text" id="dpVorname" placeholder="Anna Müller" autocomplete="name" maxlength="60">
+            </div>
+            <div class="dp-field">
+                <label for="dpMail">E-Mail</label>
+                <input type="email" id="dpMail" placeholder="anna@mueller-gartenbau.ch" autocomplete="email" maxlength="90">
+            </div>
+            <div class="dp-field">
+                <label for="dpTel">Telefon <small>— optional</small></label>
+                <input type="tel" id="dpTel" placeholder="+41 79 000 00 00" autocomplete="tel" maxlength="30">
+            </div>
+            <!-- Spam-Falle: Menschen sehen dieses Feld nie. -->
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+                <label for="dpWebsite">Website</label>
+                <input type="text" id="dpWebsite" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="dp-err" id="dpErrKontakt">Bitte Name und eine gültige E-Mail-Adresse angeben.</div>
+            <div class="dp-note" id="dpWait" style="display:none">
+                <strong>Gerade viele Anfragen</strong>
+                <span>Ich baue jede Probe von Hand und komme im Moment nicht hinterher. Schauen Sie in ein paar Tagen wieder vorbei — Ihre Auswahl bleibt hier gespeichert.</span>
+            </div>
+        </div>
+
+        <!-- Ergebnis -->
+        <div class="dp-step" data-step="6">
+            <div class="dp-done">
+                <div class="dp-done-ico">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h2>Angekommen</h2>
+                <p>Ich baue Ihre Musterseite und schicke Ihnen den Link. Merken Sie sich diesen Code — damit wissen wir beide, worüber wir sprechen.</p>
+                <div class="dp-done-code" id="dpDoneCode">LW-0000</div>
+                <p style="font-size:13.5px">Solange Sie warten: schauen Sie sich an, <a href="webs-publicadas.html" style="color:var(--begonia400);font-weight:700">was ich zuletzt gebaut habe</a>.</p>
+            </div>
+        </div>
+
+        <div class="dp-nav" id="dpNav">
+            <button class="dp-btn dp-btn--back" id="dpBack" type="button" style="display:none">Zurück</button>
+            <button class="dp-btn dp-btn--next" id="dpNext" type="button">Weiter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Vorschauspalte ─────────────────────────────── -->
+    <div class="dp-preview-col">
+        <div class="dp-preview-hd">
+            <span>Ihre Vorschau</span>
+            <span class="dp-code" id="dpCode">LW-0000</span>
+        </div>
+        <div class="dp-browser">
+            <div class="dp-browser-bar">
+                <i></i><i></i><i></i>
+                <span class="dp-browser-url" id="dpUrl">ihre-domain.ch</span>
+            </div>
+            <div class="dp-site lay-ruhig" id="dpSite">
+                <div class="dp-site-nav">
+                    <span class="dp-site-logo" id="dpSiteLogo">Ihr Betrieb</span>
+                    <i></i><i></i>
+                    <span class="dp-site-navcta">Kontakt</span>
+                </div>
+                <div class="dp-site-hero">
+                    <p class="dp-site-eyebrow" id="dpSiteOrt">Ihre Region</p>
+                    <h1 class="dp-site-h1" id="dpSiteH1">Ihr Betrieb</h1>
+                    <p class="dp-site-sub" id="dpSiteSub">Hier steht in einem Satz, was Sie anbieten.</p>
+                    <span class="dp-site-btn">Jetzt anfragen</span>
+                </div>
+                <div class="dp-site-cards" id="dpSiteCards"></div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Kanalwahl (nur Handy) -->
+<div class="dp-choice" id="dpChoice">
+    <div class="dp-choice-box">
+        <h3>Wie soll ich mich melden?</h3>
+        <p>Beides kommt bei mir an — WhatsApp ist meist schneller.</p>
+        <button class="dp-choice-btn dp-choice-btn--wa" type="button" onclick="dpSend('whatsapp')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            WhatsApp
+        </button>
+        <button class="dp-choice-btn dp-choice-btn--mail" type="button" onclick="dpSend('email')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            E-Mail
+        </button>
+        <button class="dp-choice-cancel" type="button" onclick="document.getElementById('dpChoice').classList.remove('open')">Abbrechen</button>
+    </div>
+</div>
+
+<!-- ═════════════════ SCRIPTS ═════════════════ -->
+<script>
+/* Nachtmodus, Barrierefreiheit und Sprache — gleiche Logik wie auf
+   den anderen Unterseiten. */
+(function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeColor').setAttribute('content', '#0a1520');
+    }
+    ['text','motion','lh','spacing'].forEach(function(cat){
+        var val = localStorage.getItem('a11y-' + cat);
+        if (val && val !== 'normal') document.body.classList.add('a11y-' + cat + '-' + val);
+    });
+    var lang = localStorage.getItem('lweb_lang');
+    if (!lang) {
+        var b = (navigator.language || 'de').slice(0,2).toLowerCase();
+        lang = ['de','en','es','fr','it'].indexOf(b) !== -1 ? b : 'de';
+    }
+    if (typeof translations === 'undefined' || !translations[lang]) return;
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var k = el.getAttribute('data-i18n');
+        if (t[k]) el.textContent = t[k];
+    });
+})();
+
+/* Mobiles Menue */
+(function(){
+    var burger = document.getElementById('menuBurger');
+    var menu = document.getElementById('mobileMenu');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', function(){
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+        var open = menu.classList.contains('open');
+        document.body.style.overflow = open ? 'hidden' : '';
+        document.querySelector('.header').classList.toggle('menu-open', open);
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+            burger.classList.remove('open'); menu.classList.remove('open');
+            document.body.style.overflow = '';
+            document.querySelector('.header').classList.remove('menu-open');
+        });
+    });
+})();
+</script>
+
+<script>
+(function(){
+'use strict';
+
+var STATUS = (typeof DESIGN_PROBE_STATUS !== 'undefined') ? DESIGN_PROBE_STATUS : 'offen';
+
+/* Ganz zu: Konfigurator gar nicht erst aufbauen. */
+if (STATUS === 'zu') {
+    document.getElementById('dpWrap').style.display = 'none';
+    document.getElementById('dpClosed').style.display = 'block';
+    return;
+}
+
+/* ── Datenbestand ───────────────────────────────────────── */
+var BRANCHEN = [
+    { id:'gastro',   name:'Gastronomie',            desc:'Restaurant, Café, Bar',        satz:'Frische Küche aus der Region, jeden Mittag neu.',        karten:['Speisekarte','Reservieren','Öffnungszeiten'], pal:'terracotta' },
+    { id:'handwerk', name:'Handwerk & Bau',         desc:'Maler, Gärtner, Schreiner',    satz:'Sauber gearbeitet, termingerecht geliefert.',            karten:['Leistungen','Referenzen','Offerte'],          pal:'wald' },
+    { id:'beauty',   name:'Schönheit & Gesundheit', desc:'Coiffeur, Praxis, Studio',     satz:'Zeit für sich — mitten in der Region.',                  karten:['Behandlungen','Team','Termin buchen'],        pal:'sand' },
+    { id:'buero',    name:'Beratung & Büro',        desc:'Treuhand, Anwalt, Immobilien', satz:'Persönliche Beratung und klare Antworten.',              karten:['Leistungen','Über uns','Kontakt'],            pal:'alpin' },
+    { id:'handel',   name:'Handel & Shop',          desc:'Laden, Online-Shop',           satz:'Ausgewählte Produkte, direkt aus der Schweiz.',          karten:['Produkte','Versand','Warenkorb'],             pal:'nacht' },
+    { id:'andere',   name:'Etwas anderes',          desc:'Verein, Projekt, Idee',        satz:'Was wir machen — und für wen.',                          karten:['Angebot','Über uns','Kontakt'],               pal:'alpin' }
+];
+
+var PALETTEN = [
+    { id:'alpin',      name:'Alpin',      fuer:'Ruhig und seriös',   c:['#123a5a','#2f7fae','#8fc4dd','#eef4f8'] },
+    { id:'terracotta', name:'Terracotta', fuer:'Warm und nah',       c:['#7a3423','#c2683f','#e8b48d','#faf1e8'] },
+    { id:'wald',       name:'Waldgrün',   fuer:'Solide und natürlich',c:['#1e4632','#3f8a5c','#9ccbaf','#eef5f0'] },
+    { id:'nacht',      name:'Nacht',      fuer:'Modern mit Kante',   c:['#111721','#2b3444','#ff8579','#f2f4f7'] },
+    { id:'sand',       name:'Sand',       fuer:'Leicht und offen',   c:['#4a3f35','#9c8266','#dcc6a8','#faf7f2'] }
+];
+
+var SCHRIFTEN = [
+    { id:'klar',      name:'Klar und heutig',      demo:"'Plus Jakarta Sans', sans-serif",  stack:"'Plus Jakarta Sans', system-ui, sans-serif" },
+    { id:'warm',      name:'Warm und vertraut',    demo:"'Fraunces', Georgia, serif",       stack:"'Fraunces', Georgia, serif" },
+    { id:'kraeftig',  name:'Kräftig und laut',     demo:"'Bricolage Grotesque', sans-serif",stack:"'Bricolage Grotesque', system-ui, sans-serif" },
+    { id:'technisch', name:'Technisch und präzise',demo:"'JetBrains Mono', monospace",      stack:"'JetBrains Mono', ui-monospace, monospace" }
+];
+
+var AUFBAU = [
+    { id:'ruhig',    name:'Ruhig',        desc:'Viel Luft, eine Aktion' },
+    { id:'kraeftig', name:'Kräftig',      desc:'Grosse Titel, viel Kontrast' },
+    { id:'karten',   name:'Übersichtlich',desc:'Raster für Listen' }
+];
+
+/* ── Zustand ────────────────────────────────────────────── */
+var S = {
+    schritt: 1,
+    branche: '', palette: '', schrift: '', aufbau: 'ruhig',
+    name: '', ort: '', satz: '',
+    domain: '', domainStatus: '',
+    kontakt: '', mail: '', tel: '',
+    code: ''
+};
+
+function code() {
+    var z = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', out = '';
+    for (var i = 0; i < 4; i++) out += z[Math.floor(Math.random() * z.length)];
+    return 'LW-' + out;
+}
+
+function laden() {
+    try {
+        var raw = localStorage.getItem('dp_state');
+        if (raw) {
+            var alt = JSON.parse(raw);
+            Object.keys(S).forEach(function(k){ if (alt[k] !== undefined) S[k] = alt[k]; });
+        }
+    } catch (e) {}
+    if (!S.code) S.code = code();
+    S.schritt = 1;   // immer vorne anfangen, nie mitten im Formular
+}
+function sichern() {
+    try { localStorage.setItem('dp_state', JSON.stringify(S)); } catch (e) {}
+}
+
+/* ── Kacheln bauen ──────────────────────────────────────── */
+var el = function(id){ return document.getElementById(id); };
+
+function opt(cls, inner, aktiv, klick) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dp-opt' + (cls ? ' ' + cls : '') + (aktiv ? ' sel' : '');
+    b.innerHTML = inner;
+    b.addEventListener('click', klick);
+    return b;
+}
+
+function baueBranchen() {
+    var box = el('dpBranchen'); box.innerHTML = '';
+    BRANCHEN.forEach(function(b){
+        box.appendChild(opt('',
+            '<div class="dp-opt-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>' +
+            '<div class="dp-opt-txt"><strong>' + b.name + '</strong><span>' + b.desc + '</span></div>',
+            S.branche === b.id,
+            function(){
+                var neu = S.branche !== b.id;
+                S.branche = b.id;
+                /* Beim ersten Mal die passende Farbwelt vorschlagen —
+                   aber nie eine schon getroffene Wahl ueberschreiben. */
+                if (neu && !S.palette) S.palette = b.pal;
+                if (neu && !S.satz) el('dpSatz').placeholder = b.satz;
+                baueBranchen(); baueStil(); zeichne(); pruefeWeiter(); sichern();
+            }
+        ));
+    });
+}
+
+function baueStil() {
+    var p = el('dpPaletten'); p.innerHTML = '';
+    PALETTEN.forEach(function(x){
+        var strip = x.c.map(function(f){ return '<i style="background:' + f + '"></i>'; }).join('');
+        p.appendChild(opt('dp-opt--pal',
+            '<div class="dp-pal-strip">' + strip + '</div>' +
+            '<div class="dp-opt-txt"><strong>' + x.name + '</strong><span>' + x.fuer + '</span></div>',
+            S.palette === x.id,
+            function(){ S.palette = x.id; baueStil(); zeichne(); pruefeWeiter(); sichern(); }
+        ));
+    });
+
+    var s = el('dpSchriften'); s.innerHTML = '';
+    SCHRIFTEN.forEach(function(x){
+        s.appendChild(opt('dp-opt--font',
+            '<div class="dp-font-demo" style="font-family:' + x.demo + '">Ihr Betrieb</div>' +
+            '<div class="dp-opt-txt"><span>' + x.name + '</span></div>',
+            S.schrift === x.id,
+            function(){ S.schrift = x.id; baueStil(); zeichne(); pruefeWeiter(); sichern(); }
+        ));
+    });
+
+    var a = el('dpAufbau'); a.innerHTML = '';
+    AUFBAU.forEach(function(x){
+        var mini = x.id === 'karten'
+            ? '<div class="dp-lay-mini dp-lay-mini--karten"><i></i><i></i><i></i><i></i></div>'
+            : '<div class="dp-lay-mini dp-lay-mini--' + x.id + '"><i></i><i></i><i></i></div>';
+        a.appendChild(opt('dp-opt--lay',
+            mini + '<div class="dp-opt-txt"><strong>' + x.name + '</strong><span>' + x.desc + '</span></div>',
+            S.aufbau === x.id,
+            function(){ S.aufbau = x.id; baueStil(); zeichne(); pruefeWeiter(); sichern(); }
+        ));
+    });
+}
+
+/* ── Vorschau ───────────────────────────────────────────── */
+function branche() { return BRANCHEN.filter(function(b){ return b.id === S.branche; })[0] || BRANCHEN[5]; }
+function palette() { return PALETTEN.filter(function(p){ return p.id === S.palette; })[0] || PALETTEN[0]; }
+function schrift() { return SCHRIFTEN.filter(function(f){ return f.id === S.schrift; })[0] || SCHRIFTEN[0]; }
+
+function zeichne() {
+    var site = el('dpSite'), p = palette(), f = schrift(), b = branche();
+
+    site.style.setProperty('--c-dark', p.c[0]);
+    site.style.setProperty('--c-mid', p.c[1]);
+    site.style.setProperty('--c-soft', p.c[2]);
+    site.style.setProperty('--c-paper', p.c[3]);
+    site.style.setProperty('--f-display', f.stack);
+
+    site.className = 'dp-site lay-' + S.aufbau;
+
+    var name = S.name.trim() || 'Ihr Betrieb';
+    el('dpSiteLogo').textContent = name;
+    el('dpSiteH1').textContent = name;
+    el('dpSiteOrt').textContent = S.ort.trim() || 'Ihre Region';
+    el('dpSiteSub').textContent = S.satz.trim() || b.satz;
+    el('dpUrl').textContent = S.domain || vorschlag() || 'ihre-domain.ch';
+
+    var karten = el('dpSiteCards');
+    karten.innerHTML = b.karten.map(function(k){
+        return '<div class="dp-site-card"><i></i>' + k + '</div>';
+    }).join('');
+
+    el('dpCode').textContent = S.code;
+}
+
+/* ── Domain ─────────────────────────────────────────────── */
+var API = 'https://web.lweb.ch/lowtemplattes';
+
+function slug(txt) {
+    return (txt || '').toLowerCase()
+        .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
+        .replace(/[^a-z0-9]+/g,'-')
+        .replace(/^-+|-+$/g,'');
+}
+function vorschlag() {
+    var s = slug(S.name);
+    return s ? s + '.ch' : '';
+}
+
+function domRes(kl, txt) {
+    var r = el('dpDomRes');
+    r.className = 'dp-dom-res ' + kl;
+    r.textContent = txt;
+}
+
+function pruefeDomain(wert, still) {
+    var d = (wert || el('dpDomain').value).trim().toLowerCase();
+    if (!d) return;
+    if (d.indexOf('.') === -1) d += '.ch';
+    el('dpDomain').value = d;
+
+    var btn = el('dpDomBtn');
+    btn.disabled = true;
+    domRes('wait', 'Wird geprüft …');
+    el('dpDomAlt').innerHTML = '';
+
+    fetch(API + '/domain-check.php?domain=' + encodeURIComponent(d))
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+            btn.disabled = false;
+            if (data.available === true) {
+                domRes('free', data.domain + ' ist frei');
+                S.domain = data.domain; S.domainStatus = 'frei';
+            } else if (data.available === false) {
+                domRes('taken', data.domain + ' ist schon vergeben');
+                S.domain = ''; S.domainStatus = 'vergeben';
+                if (!still) alternativen(d);
+            } else {
+                domRes('wait', 'Konnte gerade nicht geprüft werden.');
+            }
+            zeichne(); sichern();
+        })
+        .catch(function(){
+            btn.disabled = false;
+            /* Kein Drama: die Domain ist optional, das Formular laeuft
+               weiter. Der Wunsch wird trotzdem mitgeschickt. */
+            domRes('wait', 'Prüfung gerade nicht möglich — ich schaue für Sie nach.');
+            S.domain = d; S.domainStatus = 'ungeprüft';
+            zeichne(); sichern();
+        });
+}
+
+/* Wenn .ch weg ist, gleich drei Auswege anbieten. */
+function alternativen(basis) {
+    var stamm = basis.replace(/\.[a-z.]+$/, '');
+    var ort = slug(S.ort);
+    var kand = [stamm + '.li', ort ? stamm + '-' + ort + '.ch' : '', stamm + '-schweiz.ch']
+        .filter(function(x){ return x; });
+
+    var box = el('dpDomAlt');
+    kand.forEach(function(d){
+        fetch(API + '/domain-check.php?domain=' + encodeURIComponent(d))
+            .then(function(r){ return r.json(); })
+            .then(function(data){
+                if (data.available !== true) return;
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.textContent = data.domain + ' ist frei';
+                b.addEventListener('click', function(){
+                    el('dpDomain').value = data.domain;
+                    S.domain = data.domain; S.domainStatus = 'frei';
+                    domRes('free', data.domain + ' ist frei');
+                    box.innerHTML = '';
+                    zeichne(); sichern();
+                });
+                box.appendChild(b);
+            })
+            .catch(function(){});
+    });
+}
+
+/* ── Schritte ───────────────────────────────────────────── */
+var LETZTER = 5;
+
+function gueltig(n) {
+    if (n === 1) return !!S.branche;
+    if (n === 2) return !!S.palette && !!S.schrift && !!S.aufbau;
+    if (n === 3) return S.name.trim().length > 1;
+    if (n === 4) return true;                    // Domain ist optional
+    if (n === 5) return S.kontakt.trim().length > 1 && /.+@.+\..+/.test(S.mail);
+    return true;
+}
+
+function pruefeWeiter() {
+    el('dpNext').disabled = !gueltig(S.schritt);
+}
+
+function zeige(n) {
+    S.schritt = n;
+    document.querySelectorAll('.dp-step').forEach(function(s){
+        s.classList.toggle('active', +s.getAttribute('data-step') === n);
+    });
+
+    var fertig = n > LETZTER;
+    el('dpNav').style.display = fertig ? 'none' : 'flex';
+    el('dpBack').style.display = (n > 1 && !fertig) ? 'block' : 'none';
+    el('dpFill').style.width = Math.min(100, (n / LETZTER) * 100) + '%';
+    el('dpCount').textContent = fertig ? 'Fertig' : 'Schritt ' + n + ' von ' + LETZTER;
+
+    if (n === LETZTER) {
+        el('dpNext').textContent = STATUS === 'warteliste'
+            ? 'Gerade geschlossen'
+            : 'Kostenlose Probe anfordern';
+        el('dpNext').disabled = STATUS === 'warteliste' || !gueltig(n);
+        el('dpWait').style.display = STATUS === 'warteliste' ? 'block' : 'none';
+    } else {
+        el('dpNext').textContent = 'Weiter';
+        pruefeWeiter();
+    }
+
+    /* Auf dem Handy steht die Vorschau unter dem Formular — beim
+       Stil-Schritt gehoert sie ins Bild, sonst waehlt man blind. */
+    if (n === 2 && window.innerWidth < 1000) {
+        setTimeout(function(){
+            document.querySelector('.dp-preview-col').scrollIntoView({ behavior:'smooth', block:'center' });
+        }, 120);
+    }
+    sichern();
+}
+
+/* ── Absenden ───────────────────────────────────────────── */
+function tokens() {
+    var p = palette(), f = schrift();
+    return [
+        '/* Design-Probe ' + S.code + ' · ' + (S.name || '—') + ' · ' + (S.ort || '—') + ' */',
+        '/* ' + p.name + ' · ' + f.name + ' · Aufbau: ' + S.aufbau + ' */',
+        ':root {',
+        '  --brand-900: ' + p.c[0] + ';',
+        '  --brand-500: ' + p.c[1] + ';',
+        '  --brand-200: ' + p.c[2] + ';',
+        '  --paper:     ' + p.c[3] + ';',
+        '  --font-display: ' + f.stack + ';',
+        "  --font-body:    'Plus Jakarta Sans', sans-serif;",
+        '}'
+    ].join('\n');
+}
+
+function textblock() {
+    var b = branche();
+    var dom = S.domain
+        ? S.domain + ' (' + (S.domainStatus || 'ungeprüft') + ')'
+        : (S.domainStatus === 'own' ? 'hat schon eine Domain'
+          : S.domainStatus === 'later' ? 'entscheidet später' : '—');
+    return [
+        'DESIGN-PROBE ' + S.code,
+        '',
+        'Betrieb:  ' + (S.name || '—'),
+        'Ort:      ' + (S.ort || '—'),
+        'Branche:  ' + b.name,
+        'Angebot:  ' + (S.satz || b.satz),
+        'Domain:   ' + dom,
+        '',
+        'Farbwelt: ' + palette().name,
+        'Schrift:  ' + schrift().name,
+        'Aufbau:   ' + S.aufbau,
+        '',
+        tokens()
+    ].join('\n');
+}
+
+window.dpSend = function(kanal) {
+    el('dpChoice').classList.remove('open');
+    var btn = el('dpNext');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet …';
+
+    var txt = textblock();
+
+    if (kanal === 'whatsapp') {
+        var wa = 'Hallo! Ich habe die Design-Probe auf lweb.ch ausgefüllt.\n\n' + txt +
+                 '\n\nName: ' + S.kontakt + '\nE-Mail: ' + S.mail + (S.tel ? '\nTelefon: ' + S.tel : '');
+        window.open('https://wa.me/41765608645?text=' + encodeURIComponent(wa), '_blank');
+        fertig();
+        return;
+    }
+
+    fetch('https://web.lweb.ch/remail/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name:    S.kontakt,
+            email:   S.mail,
+            phone:   S.tel || '',
+            service: 'Design-Probe ' + S.code,
+            date:    new Date().toLocaleDateString('de-CH'),
+            time:    '',
+            message: txt
+        })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(r){ console.log('[design-probe] gesendet:', r); })
+    .catch(function(e){ console.error('[design-probe] Fehler:', e); });
+
+    fertig();
+};
+
+function fertig() {
+    if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: 'design-probe', content_category: branche().name });
+    }
+    el('dpDoneCode').textContent = S.code;
+    zeige(LETZTER + 1);
+    try { localStorage.removeItem('dp_state'); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function absenden() {
+    if (el('dpWebsite').value) return;          // Spam-Falle zugeschnappt
+    if (!gueltig(LETZTER)) { el('dpErrKontakt').classList.add('show'); return; }
+    el('dpErrKontakt').classList.remove('show');
+
+    var handy = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    if (handy) el('dpChoice').classList.add('open');
+    else dpSend('email');
+}
+
+/* ── Verdrahtung ────────────────────────────────────────── */
+el('dpNext').addEventListener('click', function(){
+    if (S.schritt === LETZTER) { absenden(); return; }
+    if (!gueltig(S.schritt)) {
+        if (S.schritt === 3) el('dpErrBetrieb').classList.add('show');
+        return;
+    }
+    el('dpErrBetrieb').classList.remove('show');
+    if (S.schritt === 3 && !el('dpDomain').value) el('dpDomain').value = vorschlag();
+    zeige(S.schritt + 1);
+});
+el('dpBack').addEventListener('click', function(){ if (S.schritt > 1) zeige(S.schritt - 1); });
+
+[['dpName','name'], ['dpOrt','ort'], ['dpSatz','satz'],
+ ['dpVorname','kontakt'], ['dpMail','mail'], ['dpTel','tel']].forEach(function(par){
+    var input = el(par[0]);
+    input.addEventListener('input', function(){
+        S[par[1]] = input.value;
+        zeichne(); pruefeWeiter(); sichern();
+    });
+});
+
+el('dpDomBtn').addEventListener('click', function(){ pruefeDomain(); });
+el('dpDomain').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') { e.preventDefault(); pruefeDomain(); }
+});
+document.querySelectorAll('.dp-skip button').forEach(function(b){
+    b.addEventListener('click', function(){
+        var wahl = b.getAttribute('data-dom');
+        var schonAn = b.classList.contains('sel');
+        document.querySelectorAll('.dp-skip button').forEach(function(x){ x.classList.remove('sel'); });
+        if (schonAn) { S.domainStatus = ''; }
+        else { b.classList.add('sel'); S.domain = ''; S.domainStatus = wahl; el('dpDomRes').className = 'dp-dom-res'; }
+        sichern();
+    });
+});
+
+/* ── Start ──────────────────────────────────────────────── */
+laden();
+el('dpName').value = S.name;
+el('dpOrt').value = S.ort;
+el('dpSatz').value = S.satz;
+el('dpVorname').value = S.kontakt;
+el('dpMail').value = S.mail;
+el('dpTel').value = S.tel;
+baueBranchen(); baueStil(); zeichne(); zeige(1);
+
+})();
+</script>
+
+</body>
+</html>
