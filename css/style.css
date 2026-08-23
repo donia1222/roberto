@@ -5738,3 +5738,27 @@ body.dark-mode .calc-result-more {
 body.dark-mode .calc-included { background: rgba(77, 211, 91, .12); }
 body.dark-mode .calc-included-hd { color: #7fd98c; }
 body.dark-mode .calc-included-list li { color: #cbd7e6; }
+
+/* ═══ NICHT WAEHLBARE STUFE IM PREISRECHNER ═══════════════════
+   Sieht aus wie die anderen Optionen, hat aber kein Haekchen und
+   reagiert nicht auf Klicks: dafuer gibt es keinen Pauschalpreis. */
+.calc-option--ask {
+    cursor: default;
+    border-style: dashed;
+    opacity: .92;
+}
+.calc-option--ask:hover { transform: none; }
+.calc-ask-tag {
+    margin-left: auto;
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    color: var(--cerulean500);
+    background: var(--cerulean50);
+    border-radius: 999px;
+    padding: 5px 12px;
+    white-space: nowrap;
+}
+body.dark-mode .calc-ask-tag { background: rgba(91,184,232,.14); color: #7cc7ea; }

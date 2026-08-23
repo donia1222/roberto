@@ -1367,17 +1367,46 @@ function calcSelectSingle(el, field) {
     for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('selected');
     el.classList.add('selected');
     calcState[field] = el.getAttribute('data-value');
+
+    // Wer vom Shop auf eine normale Website wechselt, soll keine
+    // Shop-Extras mitschleppen - die gibt es dort gar nicht.
+    if (field === 'scope') {
+        var weg = calcState.scope === 'shop'
+            ? ['cms']                                  // steckt im Shop drin
+            : ['adminpro', 'prod100', 'prod1000'];     // gibt es nur im Shop
+        calcState.features = calcState.features.filter(function(f) {
+            return weg.indexOf(f) === -1;
+        });
+    }
     document.getElementById('calcNextBtn').disabled = false;
 }
 
+// Stufen, von denen immer nur eine gelten kann. 100 UND 1000 Produkte
+// gleichzeitig zu berechnen waere Unsinn.
+var CALC_EXCLUSIVE = [['prod100', 'prod1000']];
+
 function calcToggleFeature(el) {
-    el.classList.toggle('selected');
     var val = el.getAttribute('data-value');
     var idx = calcState.features.indexOf(val);
+
     if (idx > -1) {
+        el.classList.remove('selected');
         calcState.features.splice(idx, 1);
     } else {
+        el.classList.add('selected');
         calcState.features.push(val);
+
+        // Die Geschwister derselben Stufe abwaehlen.
+        CALC_EXCLUSIVE.forEach(function(gruppe) {
+            if (gruppe.indexOf(val) === -1) return;
+            gruppe.forEach(function(anderer) {
+                if (anderer === val) return;
+                var i = calcState.features.indexOf(anderer);
+                if (i > -1) calcState.features.splice(i, 1);
+                var btn = document.querySelector('#calcFeatureOptions .calc-option[data-value="' + anderer + '"]');
+                if (btn) btn.classList.remove('selected');
+            });
+        });
     }
     document.getElementById('calcNextBtn').disabled = false;
 }
@@ -1441,8 +1470,21 @@ function calcBuildFeatureStep() {
     if (calcState.type === 'website') {
         document.getElementById('calcStep3Title').textContent = cT('calc.s3.title');
         featureKeys = ['cms', 'multilang', 'blog', 'booking', 'seo', 'analytics', 'vcard'];
-        var check = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
         var items = cT('calc.s3.inclItems').split(' \u00b7 ');
+
+        // Beim Online-Shop kommt Shop-Eigenes dazu: was drin ist steht
+        // oben, die Stufen darueber hinaus stehen zur Wahl. Und 'cms'
+        // faellt raus - das Admin-Panel Standard ist genau das und
+        // ist im Shop-Preis schon enthalten.
+        if (calcState.scope === 'shop') {
+            items = items.concat(cT('calc.s3.inclShop').split(' \u00b7 '));
+            // Das Profi-Panel nimmt den Platz von 'cms' ganz oben ein:
+            // es ist die naechstgroessere Stufe desselben Gedankens.
+            featureKeys = featureKeys.map(function(k) { return k === 'cms' ? 'adminpro' : k; });
+            featureKeys = featureKeys.concat(['prod100', 'prod1000']);
+        }
+
+        var check = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
         var html = '<div class="calc-included-hd">' + cT('calc.s3.inclTitle') + '</div><ul class="calc-included-list">';
         for (var n = 0; n < items.length; n++) {
             html += '<li>' + check + items[n] + '</li>';
@@ -1471,6 +1513,22 @@ function calcBuildFeatureStep() {
         btn.onclick = (function(b) { return function() { calcToggleFeature(b); }; })(btn);
         container.appendChild(btn);
     }
+
+    // Ganz unten beim Shop: alles ueber 1000 Produkte. Bewusst ohne
+    // Haekchen — dafuer gibt es keinen Pauschalpreis, das bespreche
+    // ich lieber persoenlich.
+    if (calcState.type === 'website' && calcState.scope === 'shop') {
+        var ask = document.createElement('div');
+        ask.className = 'calc-option calc-option--ask web-modal-stagger';
+        ask.style.animationDelay = (featureKeys.length * 70) + 'ms';
+        ask.innerHTML =
+            '<div class="calc-option-icon calc-option-icon--feature">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>' +
+            '</div>' +
+            '<div class="calc-option-text"><strong>' + cT('calc.feat.prodmax') + '</strong><span>' + cT('calc.feat.prodmax.desc') + '</span></div>' +
+            '<span class="calc-ask-tag">' + cT('calc.feat.ask') + '</span>';
+        container.appendChild(ask);
+    }
 }
 
 function calcComputePrice() {
@@ -1491,7 +1549,10 @@ function calcComputePrice() {
         var webFeaturePrices = {
             cms: [400, 700], multilang: [400, 900],
             blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200],
-            vcard: [150, 300]
+            vcard: [150, 300],
+            // Nur beim Online-Shop waehlbar. 50 Produkte und das
+            // Standard-Panel sind im Grundpreis enthalten.
+            adminpro: [500, 900], prod100: [300, 500], prod1000: [700, 1200]
         };
         for (var i = 0; i < calcState.features.length; i++) {
             var fp = webFeaturePrices[calcState.features[i]];
@@ -1626,7 +1687,8 @@ function calcBuildWhatsAppMsg(price, tags) {
         booking: 'Buchungssystem', seo: 'SEO', analytics: 'Analytics', vcard: 'Digitale Visitenkarte',
         auth: 'Login/Benutzer', push: 'Push-Benachrichtigungen', payment: 'In-App Zahlung',
         camera: 'Kamera/Scanner', gps: 'GPS/Standort', chat: 'Chat/Messaging',
-        api: 'Backend/API', admin: 'Admin-Panel', stores: 'Store-Veröffentlichung'
+        api: 'Backend/API', admin: 'Admin-Panel', stores: 'Store-Veröffentlichung',
+        adminpro: 'Admin-Panel Professional', prod100: 'Bis 150 Produkte', prod1000: 'Bis 1000 Produkte'
     };
     var aiLabels = { yes: 'Ja', no: 'Nein' };
 
