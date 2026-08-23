@@ -1586,6 +1586,13 @@ function calcBuildOfferLines(price) {
 // Weiter zur Terminbuchung. svc=0 ist dort "Website / Webseite" —
 // booking.html liest den Parameter und waehlt ihn vor, damit der
 // Besucher nur noch auf Weiter tippen muss.
+// "Weitere Optionen hinzufuegen" springt zurueck auf Schritt 2 und
+// nicht Schritt fuer Schritt rueckwaerts: von dort arbeitet man sich
+// mit Weiter wieder nach vorne, so wie beim ersten Durchgang.
+function calcAddOptions() {
+    calcGoToStep(2);
+}
+
 function calcChooseOffer() {
     try {
         if (calcLastOffer) sessionStorage.setItem('lwOffer', JSON.stringify(calcLastOffer));
