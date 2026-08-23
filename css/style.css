@@ -5701,3 +5701,40 @@ body.dark-mode .calc-result-more {
     color: #9aabc2;
     border-color: #2a3347;
 }
+
+/* Was in jedem Paket steckt - steht ueber den waehlbaren Extras,
+   damit niemand fuer Selbstverstaendliches ein Haekchen sucht. */
+.calc-included {
+    margin-bottom: 16px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    background: rgba(77, 211, 91, .09);
+}
+.calc-included-hd {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #2f7d3a;
+    margin-bottom: 9px;
+}
+.calc-included-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.calc-included-list li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--gunpowder700);
+}
+.calc-included-list svg { flex-shrink: 0; color: #4dd35b; }
+body.dark-mode .calc-included { background: rgba(77, 211, 91, .12); }
+body.dark-mode .calc-included-hd { color: #7fd98c; }
+body.dark-mode .calc-included-list li { color: #cbd7e6; }

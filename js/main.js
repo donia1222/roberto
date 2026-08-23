@@ -1437,12 +1437,22 @@ function calcBuildFeatureStep() {
     badge.textContent = cT('calc.step') + ' 3 ' + cT('calc.of') + ' ' + calcTotalSteps;
     document.querySelector('.calc-step[data-step="3"] .calc-step-header p').textContent = cT('calc.s3.desc');
 
+    var included = document.getElementById('calcIncluded');
     if (calcState.type === 'website') {
         document.getElementById('calcStep3Title').textContent = cT('calc.s3.title');
-        featureKeys = ['contact', 'cms', 'multilang', 'blog', 'booking', 'seo', 'analytics', 'vcard'];
+        featureKeys = ['cms', 'multilang', 'blog', 'booking', 'seo', 'analytics', 'vcard'];
+        var check = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+        var items = cT('calc.s3.inclItems').split(' \u00b7 ');
+        var html = '<div class="calc-included-hd">' + cT('calc.s3.inclTitle') + '</div><ul class="calc-included-list">';
+        for (var n = 0; n < items.length; n++) {
+            html += '<li>' + check + items[n] + '</li>';
+        }
+        included.innerHTML = html + '</ul>';
+        included.hidden = false;
     } else {
         document.getElementById('calcStep3Title').textContent = cT('calc.s3.titleApp');
         featureKeys = ['auth', 'push', 'payment', 'camera', 'gps', 'chat', 'api', 'admin', 'stores'];
+        included.hidden = true;
     }
 
     for (var i = 0; i < featureKeys.length; i++) {
@@ -1476,8 +1486,10 @@ function calcComputePrice() {
             case 'large':   min = 3200; max = 5500; weeksRange = '3–4'; break;
             case 'shop':    min = 2900; max = 6000; weeksRange = '4'; break;
         }
+        // 'contact' fehlt hier absichtlich: das Kontaktformular ist in
+        // jedem Paket enthalten und wird nicht extra berechnet.
         var webFeaturePrices = {
-            contact: [100, 200], cms: [400, 700], multilang: [400, 900],
+            cms: [400, 700], multilang: [400, 900],
             blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200],
             vcard: [150, 300]
         };
@@ -1610,7 +1622,7 @@ function calcBuildWhatsAppMsg(price, tags) {
     if (calcState.scope === 'medium' && calcState.type !== 'website') scopeLabels.medium = 'Mittlere App';
 
     var featureLabels = {
-        contact: 'Kontaktformular', cms: 'CMS', multilang: 'Mehrsprachig', blog: 'Blog',
+        cms: 'CMS', multilang: 'Mehrsprachig', blog: 'Blog',
         booking: 'Buchungssystem', seo: 'SEO', analytics: 'Analytics', vcard: 'Digitale Visitenkarte',
         auth: 'Login/Benutzer', push: 'Push-Benachrichtigungen', payment: 'In-App Zahlung',
         camera: 'Kamera/Scanner', gps: 'GPS/Standort', chat: 'Chat/Messaging',

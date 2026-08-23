@@ -3283,10 +3283,12 @@ function askFromList(q){
                 <h3 id="calcStep3Title">Welche Funktionen brauchen Sie?</h3>
                 <p>Wählen Sie alle gewünschten Funktionen aus.</p>
             </div>
+            <!-- Nur bei Websites sichtbar: sagt, was ohnehin dabei ist. -->
+            <div class="calc-included" id="calcIncluded" hidden></div>
             <div class="calc-options calc-options--multi" id="calcFeatureOptions"></div>
         </div>
 
-        <!-- STEP 4: Design -->
+        <!-- STEP 4: KI -->
         <div class="calc-step" data-step="4">
             <div class="calc-step-header">
                 <span class="calc-step-badge">Schritt 4 von 4</span>
@@ -3392,7 +3394,7 @@ function askFromList(q){
 </div>
 <script src="js/translations.js?v=202608181346"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608222115"></script>
+<script src="js/main.js?v=202608222330"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
