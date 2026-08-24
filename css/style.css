@@ -5797,12 +5797,26 @@ body.dark-mode .hero-direct { border-top-color: #2a3040; }
     border-bottom: 1.5px solid transparent;
     transition: color .18s, border-color .18s;
 }
+.hero-direct-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
 .hero-direct-link:hover { color: var(--begonia400); border-bottom-color: var(--begonia400); }
 .hero-direct-link svg { color: #25D366; flex-shrink: 0; }
 .hero-direct-sep { color: var(--gunpowder200); }
 body.dark-mode .hero-direct { color: #8a9bb3; }
 body.dark-mode .hero-direct-link { color: #cbd7e6; }
-@media (max-width: 860px) { .hero-direct { justify-content: center; margin-top: 20px; } }
+/* Handy: Frage oben, die beiden Kanaele darunter in einer Zeile.
+   Nebeneinander passte es nicht und brach an der falschen Stelle um. */
+@media (max-width: 860px) {
+    .hero-direct {
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        margin-top: 20px;
+    }
+}
 
 /* ═══ HAEKCHEN IM HERO: EINS NACH DEM ANDEREN ═════════════════
    Nur die gruenen Punkte bewegen sich, der Text steht sofort da —
