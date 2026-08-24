@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608241330">
+    <link rel="stylesheet" href="css/style.css?v=202608241630">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -451,12 +451,23 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
     document.body.appendChild(el);
     document.body.style.overflow = 'hidden';
 
+    // Andere Animationen sollen warten, bis der Vorhang weg ist —
+    // sonst laufen sie dahinter ab und niemand sieht sie.
+    window.lwWelcomeActive = true;
+
     try { localStorage.setItem(KEY, '1'); } catch(e) {}
 
+    var schonZu = false;
     function close(){
+        if (schonZu) return;            // Klick + Timer koennen sich ueberholen
+        schonZu = true;
         el.classList.add('is-out');
         document.body.style.overflow = '';
-        setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 520);
+        setTimeout(function(){
+            if (el.parentNode) el.parentNode.removeChild(el);
+            window.lwWelcomeActive = false;
+            document.dispatchEvent(new CustomEvent('lw:welcome-done'));
+        }, 520);
     }
     setTimeout(close, 1900);
     el.addEventListener('click', close);   // wer nicht warten will, klickt weg
@@ -3405,9 +3416,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608241330"></script>
+<script src="js/translations.js?v=202608241630"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608241330"></script>
+<script src="js/main.js?v=202608241630"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
@@ -3773,6 +3784,46 @@ function askFromList(q){
   } else {
     document.querySelectorAll('.vgl-section').forEach(function(el){ el.classList.add('is-seen'); });
   }
+
+  /* ---------------------------------------------------------------
+     4b. HAEKCHEN IM HERO NACHEINANDER EINBLENDEN
+     Am Desktop steht die Liste beim Laden im Bild und laeuft sofort;
+     auf dem Handy sitzt sie unter dem Foto, dort startet sie beim
+     Hinscrollen. Ein Beobachter deckt beide Faelle ab.
+  ----------------------------------------------------------------*/
+  (function(){
+    var liste = document.querySelector('.hero-features');
+    if (!liste) return;
+
+    var wenigerBewegung = document.body.classList.contains('a11y-reduce-motion') ||
+        (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (wenigerBewegung) return;          // Punkte bleiben schlicht sichtbar
+
+    liste.classList.add('js-anim');
+
+    var los = function(){ liste.classList.add('is-in'); };
+
+    function beobachten(){
+      if (!('IntersectionObserver' in window)) { los(); return; }
+      var beo = new IntersectionObserver(function(eintraege){
+        if (!eintraege[0].isIntersecting) return;
+        los();
+        beo.disconnect();
+      }, { threshold: 0.45 });
+      beo.observe(liste);
+    }
+
+    // Beim allerersten Besuch liegt die Begruessung darueber. Erst
+    // wenn sie weg ist, darf die Liste loslaufen.
+    if (window.lwWelcomeActive) {
+      var gestartet = false;
+      var start = function(){ if (gestartet) return; gestartet = true; beobachten(); };
+      document.addEventListener('lw:welcome-done', start, { once: true });
+      setTimeout(start, 3500);          // Notausgang, falls das Signal ausbleibt
+    } else {
+      beobachten();
+    }
+  })();
 
   onScroll();
 })();

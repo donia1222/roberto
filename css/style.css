@@ -4082,6 +4082,10 @@ body.calc-open {
        unterschiedlich langen Texten sah die Liste ausgefranst aus.
        Jetzt steht der Block mittig, die Zeilen aber buendig links. */
     .hero-features { align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
+    /* .hero-content zentriert allen Text — die Punkte-Liste braucht
+       aber linksbuendige Zeilen, sonst rutscht jede Umbruchzeile in
+       die Mitte und die Liste franst wieder aus. */
+    .hero-feature { text-align: left; }
     .hero-image { order: -1; }
     .hero-anim { width: 380px; height: 380px; }
     .hero-orbit { width: 340px; height: 340px; }
@@ -5799,3 +5803,42 @@ body.dark-mode .hero-direct { border-top-color: #2a3040; }
 body.dark-mode .hero-direct { color: #8a9bb3; }
 body.dark-mode .hero-direct-link { color: #cbd7e6; }
 @media (max-width: 860px) { .hero-direct { justify-content: center; margin-top: 20px; } }
+
+/* ═══ HAEKCHEN IM HERO: EINS NACH DEM ANDEREN ═════════════════
+   Nur die gruenen Punkte bewegen sich, der Text steht sofort da —
+   springender Text ist unruhig und schlecht lesbar.
+   Die Klasse js-anim setzt erst JavaScript: ohne JS bleiben die
+   Punkte einfach sichtbar, statt unsichtbar haengen zu bleiben. */
+.hero-features.js-anim .hero-feature-icon {
+    opacity: 0;
+    transform: scale(.3);
+}
+.hero-features.js-anim.is-in .hero-feature-icon {
+    animation: heroCheckIn .44s cubic-bezier(.34, 1.56, .64, 1) forwards;
+}
+.hero-features.js-anim.is-in .hero-feature:nth-child(1) .hero-feature-icon { animation-delay: .06s; }
+.hero-features.js-anim.is-in .hero-feature:nth-child(2) .hero-feature-icon { animation-delay: .18s; }
+.hero-features.js-anim.is-in .hero-feature:nth-child(3) .hero-feature-icon { animation-delay: .30s; }
+.hero-features.js-anim.is-in .hero-feature:nth-child(4) .hero-feature-icon { animation-delay: .42s; }
+
+@keyframes heroCheckIn {
+    from { opacity: 0; transform: scale(.3); }
+    60%  { opacity: 1; transform: scale(1.14); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Wer weniger Bewegung will, sieht die Punkte einfach da. */
+body.a11y-reduce-motion .hero-features.js-anim .hero-feature-icon,
+body.a11y-reduce-motion .hero-features.js-anim.is-in .hero-feature-icon {
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-features.js-anim .hero-feature-icon,
+    .hero-features.js-anim.is-in .hero-feature-icon {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
