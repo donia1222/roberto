@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608241715">
+    <link rel="stylesheet" href="css/style.css?v=202608241800">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -318,12 +318,12 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl-mark{width:clamp(104px,20vw,140px);}
   .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
 }
-/* Handy: beide Knoepfe untereinander, volle Breite. Frueher war der
-   Erstgespraech-Knopf hier versteckt, weil ihn die fixe Leiste unten
-   trug — die gibt es nicht mehr. */
+/* Handy: nur "Warum so guenstig?" zeigen. Einen Termin mit Datum und
+   Uhrzeit bucht am Handy kaum jemand — wer Kontakt sucht, nimmt die
+   WhatsApp-Zeile unter den Haekchen. */
 @media(max-width:860px){
   .hero-buttons{flex-direction:column;align-items:stretch;}
-  .hero-buttons #heroPriceBtn,
+  .hero-buttons #heroPriceBtn{display:none;}
   .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
 }
 
@@ -3421,9 +3421,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608241715"></script>
+<script src="js/translations.js?v=202608241800"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608241715"></script>
+<script src="js/main.js?v=202608241800"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
