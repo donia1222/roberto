@@ -5762,3 +5762,32 @@ body.dark-mode .calc-included-list li { color: #cbd7e6; }
     white-space: nowrap;
 }
 body.dark-mode .calc-ask-tag { background: rgba(91,184,232,.14); color: #7cc7ea; }
+
+/* ═══ DIREKTER DRAHT IM HERO ══════════════════════════════════
+   Steht bewusst kleiner unter den Knoepfen: eine Terminbuchung ist
+   viel verlangt, eine kurze Nachricht nicht. */
+.hero-direct {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin: 16px 0 0;
+    font-size: 14.5px;
+    color: var(--gunpowder400);
+}
+.hero-direct-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--gunpowder700);
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+    transition: color .18s, border-color .18s;
+}
+.hero-direct-link:hover { color: var(--begonia400); border-bottom-color: var(--begonia400); }
+.hero-direct-link svg { color: #25D366; flex-shrink: 0; }
+.hero-direct-sep { color: var(--gunpowder200); }
+body.dark-mode .hero-direct { color: #8a9bb3; }
+body.dark-mode .hero-direct-link { color: #cbd7e6; }
+@media (max-width: 860px) { .hero-direct { justify-content: center; margin-top: 14px; } }
