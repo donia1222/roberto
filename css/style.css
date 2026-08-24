@@ -4078,7 +4078,10 @@ body.calc-open {
     .hero-inner, .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-content { max-width: 100%; text-align: center; }
     .hero-buttons { justify-content: center; display: flex; flex-direction: column; flex-direction: column-reverse; }
-    .hero-features { align-items: center; }
+    /* align-items:center zentrierte jede Zeile einzeln — bei
+       unterschiedlich langen Texten sah die Liste ausgefranst aus.
+       Jetzt steht der Block mittig, die Zeilen aber buendig links. */
+    .hero-features { align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
     .hero-image { order: -1; }
     .hero-anim { width: 380px; height: 380px; }
     .hero-orbit { width: 340px; height: 340px; }
@@ -5771,10 +5774,15 @@ body.dark-mode .calc-ask-tag { background: rgba(91,184,232,.14); color: #7cc7ea;
     flex-wrap: wrap;
     align-items: center;
     gap: 6px 10px;
-    margin: 16px 0 0;
+    /* Steht unter der Haekchen-Liste und braucht eine sichtbare Fuge,
+       sonst liest es sich als weiterer Listenpunkt. */
+    margin: 22px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--gunpowder100);
     font-size: 14.5px;
     color: var(--gunpowder400);
 }
+body.dark-mode .hero-direct { border-top-color: #2a3040; }
 .hero-direct-link {
     display: inline-flex;
     align-items: center;
@@ -5790,4 +5798,4 @@ body.dark-mode .calc-ask-tag { background: rgba(91,184,232,.14); color: #7cc7ea;
 .hero-direct-sep { color: var(--gunpowder200); }
 body.dark-mode .hero-direct { color: #8a9bb3; }
 body.dark-mode .hero-direct-link { color: #cbd7e6; }
-@media (max-width: 860px) { .hero-direct { justify-content: center; margin-top: 14px; } }
+@media (max-width: 860px) { .hero-direct { justify-content: center; margin-top: 20px; } }
