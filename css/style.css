@@ -5856,3 +5856,19 @@ body.a11y-reduce-motion .hero-features.js-anim.is-in .hero-feature-icon {
         animation: none;
     }
 }
+
+/* ═══ AUFPREIS AN DER OPTION ══════════════════════════════════
+   Steht klein unter der Beschreibung, damit man beim Waehlen sieht,
+   was es kostet — und nicht erst auf der Ergebnisseite. */
+.calc-option-price {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: .01em;
+    color: var(--gunpowder400);
+    font-variant-numeric: tabular-nums;
+}
+.calc-option.selected .calc-option-price { color: var(--begonia400); }
+body.dark-mode .calc-option-price { color: #8a9bb3; }
+body.dark-mode .calc-option.selected .calc-option-price { color: var(--begonia400); }

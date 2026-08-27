@@ -1457,6 +1457,29 @@ function calcBuildScopeStep() {
     }
 }
 
+// ── Aufpreise der Zusatzfunktionen ──────────────────────────────
+// Stehen hier oben, weil sie an zwei Stellen gebraucht werden: zum
+// Rechnen und um in Schritt 3 gleich neben jeder Option zu stehen.
+// Niemand soll erst am Ende erfahren, was etwas kostet.
+// 'contact' fehlt absichtlich: das Kontaktformular ist in jedem
+// Paket enthalten. 50 Produkte und das Standard-Panel ebenso.
+var CALC_WEB_FEATURE_PRICES = {
+    cms: [400, 700], multilang: [400, 900],
+    blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200],
+    vcard: [150, 300],
+    adminpro: [500, 900], prod100: [300, 500], prod1000: [700, 1200]
+};
+var CALC_APP_FEATURE_PRICES = {
+    auth: [500, 900], push: [300, 600], payment: [900, 1800],
+    camera: [400, 800], gps: [400, 800], chat: [1200, 2500],
+    api: [1500, 3500], admin: [1500, 3000], stores: [300, 600]
+};
+
+function calcFeaturePrice(key) {
+    var t = calcState.type === 'website' ? CALC_WEB_FEATURE_PRICES : CALC_APP_FEATURE_PRICES;
+    return t[key] ? t[key][0] : 0;
+}
+
 function calcBuildFeatureStep() {
     var container = document.getElementById('calcFeatureOptions');
     container.innerHTML = '';
@@ -1508,7 +1531,9 @@ function calcBuildFeatureStep() {
             '<div class="calc-option-icon calc-option-icon--feature">' +
                 '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>' +
             '</div>' +
-            '<div class="calc-option-text"><strong>' + cT('calc.feat.' + k) + '</strong><span>' + cT('calc.feat.' + k + '.desc') + '</span></div>' +
+            '<div class="calc-option-text"><strong>' + cT('calc.feat.' + k) + '</strong><span>' + cT('calc.feat.' + k + '.desc') + '</span>' +
+                '<span class="calc-option-price">+ ' + calcFormatCHF(calcFeaturePrice(k)) + '</span>' +
+            '</div>' +
             '<div class="calc-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div>';
         btn.onclick = (function(b) { return function() { calcToggleFeature(b); }; })(btn);
         container.appendChild(btn);
@@ -1544,16 +1569,7 @@ function calcComputePrice() {
             case 'large':   min = 3200; max = 5500; weeksRange = '3–4'; break;
             case 'shop':    min = 2900; max = 6000; weeksRange = '4'; break;
         }
-        // 'contact' fehlt hier absichtlich: das Kontaktformular ist in
-        // jedem Paket enthalten und wird nicht extra berechnet.
-        var webFeaturePrices = {
-            cms: [400, 700], multilang: [400, 900],
-            blog: [250, 500], booking: [500, 1000], seo: [300, 600], analytics: [100, 200],
-            vcard: [150, 300],
-            // Nur beim Online-Shop waehlbar. 50 Produkte und das
-            // Standard-Panel sind im Grundpreis enthalten.
-            adminpro: [500, 900], prod100: [300, 500], prod1000: [700, 1200]
-        };
+        var webFeaturePrices = CALC_WEB_FEATURE_PRICES;
         for (var i = 0; i < calcState.features.length; i++) {
             var fp = webFeaturePrices[calcState.features[i]];
             if (fp) { min += fp[0]; max += fp[1]; }
@@ -1565,11 +1581,7 @@ function calcComputePrice() {
             case 'medium':  min = 7500; max = 14000; weeksRange = '6–10'; break;
             case 'complex': min = 14000; max = 25000; weeksRange = '10–16'; break;
         }
-        var appFeaturePrices = {
-            auth: [500, 900], push: [300, 600], payment: [900, 1800],
-            camera: [400, 800], gps: [400, 800], chat: [1200, 2500],
-            api: [1500, 3500], admin: [1500, 3000], stores: [300, 600]
-        };
+        var appFeaturePrices = CALC_APP_FEATURE_PRICES;
         for (var i = 0; i < calcState.features.length; i++) {
             var ap = appFeaturePrices[calcState.features[i]];
             if (ap) { min += ap[0]; max += ap[1]; }
@@ -2053,11 +2065,11 @@ var legalContent = {
         title: 'Impressum',
         icon: 'svc-modal-icon--web',
         html: '<h4>Angaben gemäss Schweizer Recht</h4>' +
-            '<p><strong>Lweb — Salvador Lopez</strong><br>Inhaber: Roberto Salvador Lopez<br>9475 Sevelen<br>Schweiz</p>' +
+            '<p><strong>Lweb — Salvador Lopez</strong><br>Inhaber: Roberto Salvador Lopez<br>Chalberweidstrasse 38<br>9475 Sevelen<br>Schweiz</p>' +
             '<h4>Kontakt</h4>' +
             '<p>Telefon: +41 76 560 86 45<br>E-Mail: info@lweb.ch<br>Website: <a href="https://lweb.ch" style="color:var(--cerulean500)">lweb.ch</a></p>' +
             '<h4>Unternehmensform</h4>' +
-            '<p>Einzelunternehmen</p>' +
+            '<p>Einzelunternehmen<br>UID: CHE-449.145.794</p>' +
             '<h4>Verantwortlich für den Inhalt</h4>' +
             '<p>Roberto Salvador Lopez, 9475 Sevelen, Schweiz</p>' +
             '<h4>Haftungsausschluss</h4>' +
@@ -2072,7 +2084,7 @@ var legalContent = {
         html: '<h4>Allgemeines</h4>' +
             '<p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung Ihrer personenbezogenen Daten auf unserer Website lweb.ch.</p>' +
             '<h4>Verantwortliche Stelle</h4>' +
-            '<p>Lweb — Salvador Lopez<br>9475 Sevelen, Schweiz<br>E-Mail: info@lweb.ch</p>' +
+            '<p>Lweb — Salvador Lopez<br>9475 Sevelen, Schweiz<br>UID: CHE-449.145.794<br>E-Mail: info@lweb.ch</p>' +
             '<h4>Erhobene Daten</h4>' +
             '<p>Beim Besuch unserer Website werden folgende Daten automatisch erfasst:</p>' +
             '<ul><li>IP-Adresse (anonymisiert)</li><li>Datum und Uhrzeit des Zugriffs</li><li>Aufgerufene Seiten</li><li>Verwendeter Browser und Betriebssystem</li></ul>' +
@@ -2092,7 +2104,7 @@ var legalContent = {
         title: 'Allgemeine Geschäftsbedingungen',
         icon: 'svc-modal-icon--support',
         html: '<h4>1. Geltungsbereich</h4>' +
-            '<p>Diese AGB gelten für alle Dienstleistungen von Lweb — Salvador Lopez, 9475 Sevelen, Schweiz, im Bereich App-Entwicklung, Webentwicklung und KI-Lösungen.</p>' +
+            '<p>Diese AGB gelten für alle Dienstleistungen von Lweb — Salvador Lopez, 9475 Sevelen, Schweiz (UID: CHE-449.145.794), im Bereich App-Entwicklung, Webentwicklung und KI-Lösungen.</p>' +
             '<h4>2. Angebote & Vertragsschluss</h4>' +
             '<p>Alle Angebote sind freibleibend. Ein Vertrag kommt erst durch schriftliche Auftragsbestätigung (auch per E-Mail) zustande. Der Preiskalkulator auf der Website dient als unverbindliche Schätzung.</p>' +
             '<h4>3. Leistungen</h4>' +
