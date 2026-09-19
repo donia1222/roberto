@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202608241900">
+    <link rel="stylesheet" href="css/style.css?v=202609191010">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -478,16 +478,16 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <header class="header">
     <div class="header-inner">
         <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)">
-            <span class="header-logo-text">Lweb<span class="header-logo-person"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Salvador Lopez</span></span>
+            <span class="header-logo-text">Lweb<span class="header-logo-person"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Salvador / Webs</span></span>
         </a>
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
             <a href="#vergleich" class="header-nav-item onep-link"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
             <a href="#preise" class="header-nav-item onep-link"><span data-i18n="nav.op.preise">Preise</span></a>
-            <a href="#branchen" class="header-nav-item onep-link"><span data-i18n="nav.op.branchen">Am günstigsten</span></a>
+            <!-- Am günstigsten (ausgeblendet 19.09.2026, zum Reaktivieren Kommentar entfernen): <a href="#branchen" class="header-nav-item onep-link"><span data-i18n="nav.op.branchen">Am günstigsten</span></a> -->
             <a href="#websites" class="header-nav-item onep-link"><span data-i18n="nav.op.projekte">Projekte</span></a>
-            <a href="#apps" class="header-nav-item onep-link"><span data-i18n="nav.apps">Mobile Apps</span></a>
             <a href="#about" class="header-nav-item onep-link"><span data-i18n="nav.about">Über mich</span></a>
             <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
+            <a href="https://www.ihreapp.ch/?from=lweb" class="header-nav-item header-nav-item--apps" aria-label="ihreapp.ch – unsere App-Seite" data-lw-event="nav_ihreapp"><span class="ia-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span>ihreapp.ch</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </nav>
         <div class="header-actions">
             <button class="header-icon-btn" id="darkModeToggle" aria-label="Barrierefreiheit">
@@ -512,11 +512,11 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
         <nav class="mobile-menu-nav">
             <a href="#vergleich" class="mobile-menu-link onep-link" data-i18n="nav.op.vergleich">Warum günstiger</a>
             <a href="#preise" class="mobile-menu-link onep-link" data-i18n="nav.op.preise">Preise</a>
-            <a href="#branchen" class="mobile-menu-link onep-link" data-i18n="nav.op.branchen">Am günstigsten</a>
+            <!-- Am günstigsten (ausgeblendet 19.09.2026, zum Reaktivieren Kommentar entfernen): <a href="#branchen" class="mobile-menu-link onep-link" data-i18n="nav.op.branchen">Am günstigsten</a> -->
             <a href="#websites" class="mobile-menu-link onep-link" data-i18n="nav.op.projekte">Projekte</a>
-            <a href="#apps" class="mobile-menu-link onep-link" data-i18n="nav.apps">Mobile Apps</a>
             <a href="#about" class="mobile-menu-link onep-link" data-i18n="nav.about">Über mich</a>
             <a href="#faq" class="mobile-menu-link onep-link" data-i18n="nav.op.faq">Häufige Fragen</a>
+            <a href="https://www.ihreapp.ch/?from=lweb" class="mobile-menu-link mobile-menu-link--apps" data-lw-event="nav_ihreapp_mobile"><span>ihreapp.ch</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
             <a href="booking.html" class="mobile-menu-link mobile-menu-link--cta mobile-menu-link--cta-red" data-lw-event="cta_menu_mobile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="nav.contact">Kontakt</span></a>
         </nav>
         <div class="mobile-menu-footer">
@@ -1390,8 +1390,9 @@ body.dark-mode .pin-tag{background:#1e2d3d;color:#c8d5e3;}
 </section>
 
 
-<!-- BRANCHEN: SEHEN SIE IHRE WEBSITE -->
-<section class="section br-section" id="branchen" style="scroll-margin-top:90px;">
+<!-- BRANCHEN: SEHEN SIE IHRE WEBSITE — seit 19.09.2026 AUSGEBLENDET (Nav-Button "Am günstigsten" ist ebenfalls auskommentiert).
+     Zum Reaktivieren: display:none entfernen und die beiden Nav-Links (Desktop + Mobile) wieder einkommentieren. -->
+<section class="section br-section" id="branchen" style="display:none;scroll-margin-top:90px;">
     <div class="container">
         <!-- CTA-Banner statt Titel + Preisplakette (18.08.2026) -->
         <div class="brc" id="vorlagen-banner">
@@ -2062,8 +2063,192 @@ function expandBranchen(btn){
 <!-- SCROLL PARALLAX CARDS -->
 
 
-<!-- MOBILE APPS -->
-<section class="section apps" id="apps" style="scroll-margin-top:90px;">
+<!-- IHREAPP.CH – Teaser (ersetzt die Sektion "Meine veröffentlichten Apps") -->
+<section class="section ihreapp" id="ihreapp" style="scroll-margin-top:90px;">
+    <div class="container">
+        <div class="ia-grid">
+            <div class="ia-text">
+                <span class="ia-badge"><span class="ia-badge-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span data-i18n="ia.badge">Unsere App-Seite</span></span>
+                <h2 data-i18n="ia.h">Alles rund um Apps finden Sie auf ihreapp.ch</h2>
+                <p class="ia-lead" data-i18n="ia.p">Für App-Entwicklung habe ich eine eigene Seite gebaut: echte, veröffentlichte Apps, klare Preise ab CHF 3.500 und ein kostenloses Erstgespräch – direkt vom Entwickler, ohne Agenturaufschlag.</p>
+                <ul class="ia-list">
+                    <li><span class="ia-ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="ia.l1">Echte Apps im App Store und bei Google Play</span></li>
+                    <li><span class="ia-ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="ia.l2">Fester Preis ab CHF 3.500, klarer Umfang</span></li>
+                    <li><span class="ia-ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="ia.l3">Kostenloses Erstgespräch, persönlicher Kontakt</span></li>
+                </ul>
+                <div class="ia-actions">
+                    <a href="https://www.ihreapp.ch/?from=lweb" class="ia-btn" data-lw-event="ihreapp_teaser"><span data-i18n="ia.cta">Zu ihreapp.ch</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+                    <span class="ia-url">www.ihreapp.ch</span>
+                </div>
+            </div>
+            <div class="ia-art" aria-hidden="false">
+<svg viewBox="0 0 520 560" role="img" aria-label="Animierte Illustration: Smartphone mit App, Push-Nachricht, Statistiken und Chat" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="ia-hBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf7ff"/><stop offset="1" stop-color="#fff1f2"/></linearGradient>
+ <linearGradient id="ia-hCoral" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fe6c75"/><stop offset="1" stop-color="#ff9d8f"/></linearGradient>
+ <radialGradient id="ia-hGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fe6c75" stop-opacity=".22"/><stop offset="1" stop-color="#fe6c75" stop-opacity="0"/></radialGradient>
+ <radialGradient id="ia-hGlow2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5ccfff" stop-opacity=".28"/><stop offset="1" stop-color="#5ccfff" stop-opacity="0"/></radialGradient>
+ <pattern id="ia-hDots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#1c2a39" opacity=".07"/></pattern>
+ <filter id="ia-hSh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1c2a39" flood-opacity=".2"/></filter>
+ <filter id="ia-hShS" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1c2a39" flood-opacity=".16"/></filter>
+ <clipPath id="ia-hScreen"><rect x="172" y="72" width="176" height="396" rx="26"/></clipPath>
+ <symbol id="ia-h-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1112 0v5l2 2H4l2-2zM10 21h4"/></symbol>
+ <symbol id="ia-h-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+ <symbol id="ia-h-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6"/></symbol>
+ <symbol id="ia-h-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+ <symbol id="ia-h-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></symbol>
+ <symbol id="ia-h-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M13 16V8M18 16v-6"/></symbol>
+ <symbol id="ia-h-apple" viewBox="0 0 24 24"><path d="M12 7c1-2 3-2 3-2s0 2-1.5 3M8 9c-2 0-3.5 2-3.5 5 0 3 2 6 4 6 1 0 1.5-.5 3.5-.5s2.5.5 3.5.5c2 0 4-3 4-4-2-.5-3-4 0-5.5-1-1.5-2.5-1.5-3.5-1.5-1.5 0-2 .5-4 .5S9.5 9 8 9z"/></symbol>
+ <symbol id="ia-h-android" viewBox="0 0 24 24"><path d="M5 16a7 7 0 0114 0H5zM8 6l1.5 2.5M16 6l-1.5 2.5M6 17v3M18 17v3M10 20h4"/><circle cx="9.5" cy="13" r=".6"/><circle cx="14.5" cy="13" r=".6"/></symbol>
+ <symbol id="ia-h-spark" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></symbol>
+ <symbol id="ia-h-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+</defs>
+
+<!-- Hintergrund -->
+<rect x="14" y="20" width="492" height="520" rx="56" fill="url(#ia-hBg)"/>
+<rect x="14" y="20" width="492" height="520" rx="56" fill="url(#ia-hDots)"/>
+<circle cx="430" cy="110" r="150" fill="url(#ia-hGlow)"/>
+<circle cx="90" cy="470" r="150" fill="url(#ia-hGlow2)"/>
+
+<!-- Umlaufbahnen -->
+<g fill="none" stroke="#b9d0e7" stroke-width="1.4" stroke-dasharray="3 8" stroke-linecap="round" opacity=".9">
+ <circle cx="260" cy="270" r="228"/><circle cx="260" cy="270" r="176"/>
+</g>
+<g><animateTransform attributeName="transform" type="rotate" from="0 260 270" to="360 260 270" dur="60s" repeatCount="indefinite"/>
+ <circle cx="488" cy="270" r="7" fill="#fe6c75"/><circle cx="32" cy="270" r="5" fill="#1c2a39"/><circle cx="260" cy="42" r="4" fill="#0a9b7c"/>
+</g>
+<g><animateTransform attributeName="transform" type="rotate" from="360 260 270" to="0 260 270" dur="44s" repeatCount="indefinite"/>
+ <circle cx="436" cy="270" r="5" fill="#ffb703"/><circle cx="260" cy="446" r="4" fill="#8a63d2"/>
+</g>
+
+<!-- Smartphone -->
+<g filter="url(#ia-hSh)">
+ <rect x="160" y="60" width="200" height="420" rx="36" fill="#fff" stroke="#e3e7ee" stroke-width="1.5"/>
+</g>
+<g clip-path="url(#ia-hScreen)">
+ <rect x="172" y="72" width="176" height="396" fill="#fbfcfe"/>
+ <rect x="232" y="82" width="56" height="14" rx="7" fill="#1c2a39"/>
+ <circle cx="196" cy="128" r="14" fill="#ffe9eb"/><circle cx="196" cy="125" r="4.5" fill="#fe6c75"/><path d="M187.5 136c1.6-4 4.4-5.6 8.5-5.6s6.9 1.6 8.5 5.6" fill="#fe6c75"/>
+ <rect x="218" y="117" width="70" height="8" rx="4" fill="#1c2a39" opacity=".88"/><rect x="218" y="131" width="46" height="6" rx="3" fill="#d9dee7"/>
+ <!-- Hauptkarte -->
+ <rect x="184" y="152" width="152" height="96" rx="18" fill="url(#ia-hCoral)"/>
+ <circle cx="226" cy="200" r="26" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="7"/>
+ <circle cx="226" cy="200" r="26" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="163" transform="rotate(-90 226 200)">
+  <animate attributeName="stroke-dashoffset" values="163;24;24;163" keyTimes="0;.32;.9;1" dur="9s" repeatCount="indefinite"/>
+ </circle>
+ <use href="#ia-h-spark" x="214" y="188" width="24" height="24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/>
+ <rect x="264" y="182" width="56" height="8" rx="4" fill="#fff"/><rect x="264" y="198" width="42" height="6" rx="3" fill="#fff" opacity=".6"/><rect x="264" y="212" width="48" height="6" rx="3" fill="#fff" opacity=".6"/>
+ <!-- Kacheln -->
+ <g fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+  <g class="ia-tile" style="animation-delay:.0s"><rect x="188" y="262" width="44" height="44" rx="14" fill="#ffe9eb" stroke="none"/><use href="#ia-h-bell" x="198" y="272" width="24" height="24" stroke="#fe6c75"/></g>
+  <g class="ia-tile" style="animation-delay:.18s"><rect x="244" y="262" width="44" height="44" rx="14" fill="#dff6ff" stroke="none"/><use href="#ia-h-pin" x="254" y="272" width="24" height="24" stroke="#1a9fd8"/></g>
+  <g class="ia-tile" style="animation-delay:.36s"><rect x="300" y="262" width="44" height="44" rx="14" fill="#fff2bd" stroke="none"/><use href="#ia-h-cart" x="310" y="272" width="24" height="24" stroke="#c48a00"/></g>
+  <g class="ia-tile" style="animation-delay:.54s"><rect x="188" y="318" width="44" height="44" rx="14" fill="#d1fff4" stroke="none"/><use href="#ia-h-cal" x="198" y="328" width="24" height="24" stroke="#0a9b7c"/></g>
+  <g class="ia-tile" style="animation-delay:.72s"><rect x="244" y="318" width="44" height="44" rx="14" fill="#f1ecfc" stroke="none"/><use href="#ia-h-chat" x="254" y="328" width="24" height="24" stroke="#8a63d2"/></g>
+  <g class="ia-tile" style="animation-delay:.9s"><rect x="300" y="318" width="44" height="44" rx="14" fill="#fff2e3" stroke="none"/><use href="#ia-h-chart" x="310" y="328" width="24" height="24" stroke="#f08a3c"/></g>
+ </g>
+ <rect x="188" y="374" width="100" height="8" rx="4" fill="#e6eaf1"/><rect x="188" y="390" width="64" height="6" rx="3" fill="#eef0f4"/>
+ <!-- Tab-Leiste -->
+ <rect x="184" y="414" width="152" height="44" rx="22" fill="#1c2a39"/>
+ <circle cx="214" cy="436" r="17" fill="#fe6c75" opacity=".95"><animate attributeName="cx" values="214;250;286;322;214" keyTimes="0;.22;.5;.78;1" dur="9s" repeatCount="indefinite"/></circle>
+ <g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <use href="#ia-h-cal" x="204" y="426" width="20" height="20"/><use href="#ia-h-pin" x="240" y="426" width="20" height="20"/><use href="#ia-h-chat" x="276" y="426" width="20" height="20"/><use href="#ia-h-chart" x="312" y="426" width="20" height="20"/>
+ </g>
+</g>
+
+<!-- Push-Nachricht -->
+<g transform="translate(322 38)"><g class="ia-fl" style="animation-duration:6.4s"><g class="ia-push">
+ <g filter="url(#ia-hShS)"><rect width="176" height="64" rx="18" fill="#fff"/></g>
+ <circle cx="34" cy="32" r="18" fill="url(#ia-hCoral)"/><use href="#ia-h-bell" x="24" y="22" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="60" y="28" font-size="12" font-weight="800" fill="#1c2a39">Neue Bestellung</text>
+ <text x="60" y="45" font-size="10.5" font-weight="600" fill="#8a93a6">Push · gerade eben</text>
+ <circle cx="160" cy="16" r="5" fill="#fe6c75"><animate attributeName="opacity" values="1;.25;1" dur="1.6s" repeatCount="indefinite"/></circle>
+</g></g></g>
+
+<!-- Statistik-Karte -->
+<g transform="translate(22 356)"><g class="ia-fl" style="animation-duration:7.2s;animation-delay:-2s">
+ <g filter="url(#ia-hShS)"><rect width="150" height="104" rx="18" fill="#fff"/></g>
+ <text x="16" y="26" font-size="11.5" font-weight="800" fill="#1c2a39">Statistiken</text>
+ <g fill="#fe6c75">
+  <rect x="16" y="56" width="16" height="30" rx="5" opacity=".35"><animate attributeName="height" values="30;44;30" dur="3.6s" repeatCount="indefinite"/><animate attributeName="y" values="56;42;56" dur="3.6s" repeatCount="indefinite"/></rect>
+  <rect x="40" y="46" width="16" height="40" rx="5" opacity=".55"><animate attributeName="height" values="40;26;40" dur="3.6s" begin="-.9s" repeatCount="indefinite"/><animate attributeName="y" values="46;60;46" dur="3.6s" begin="-.9s" repeatCount="indefinite"/></rect>
+  <rect x="64" y="38" width="16" height="48" rx="5" opacity=".75"><animate attributeName="height" values="48;34;48" dur="3.6s" begin="-1.8s" repeatCount="indefinite"/><animate attributeName="y" values="38;52;38" dur="3.6s" begin="-1.8s" repeatCount="indefinite"/></rect>
+  <rect x="88" y="52" width="16" height="34" rx="5" opacity=".55"><animate attributeName="height" values="34;50;34" dur="3.6s" begin="-2.7s" repeatCount="indefinite"/><animate attributeName="y" values="52;36;52" dur="3.6s" begin="-2.7s" repeatCount="indefinite"/></rect>
+  <rect x="112" y="34" width="16" height="52" rx="5"><animate attributeName="height" values="52;38;52" dur="3.6s" begin="-.4s" repeatCount="indefinite"/><animate attributeName="y" values="34;48;34" dur="3.6s" begin="-.4s" repeatCount="indefinite"/></rect>
+ </g>
+</g></g>
+
+<!-- iOS / Android / Code Chips -->
+<g transform="translate(38 168)"><g class="ia-fl" style="animation-duration:5.4s;animation-delay:-1s">
+ <g filter="url(#ia-hShS)"><rect width="52" height="52" rx="16" fill="#fff"/></g>
+ <use href="#ia-h-apple" x="12" y="12" width="28" height="28" fill="none" stroke="#1c2a39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</g></g>
+<g transform="translate(434 214)"><g class="ia-fl" style="animation-duration:6.1s;animation-delay:-3s">
+ <g filter="url(#ia-hShS)"><rect width="52" height="52" rx="16" fill="#fff"/></g>
+ <use href="#ia-h-android" x="12" y="12" width="28" height="28" fill="none" stroke="#0a9b7c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</g></g>
+<g transform="translate(410 300)"><g class="ia-fl" style="animation-duration:6.8s;animation-delay:-4s">
+ <g filter="url(#ia-hShS)"><rect width="76" height="40" rx="14" fill="#1c2a39"/></g>
+ <use href="#ia-h-code" x="10" y="9" width="22" height="22" fill="none" stroke="#fe6c75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="38" y="25" font-size="12" font-weight="800" fill="#fff">PWA</text>
+</g></g>
+
+<!-- Chat-Blase -->
+<g transform="translate(330 400)"><g class="ia-fl" style="animation-duration:5.8s;animation-delay:-2.4s">
+ <g filter="url(#ia-hShS)"><path d="M22 0h84a22 22 0 0122 22v0a22 22 0 01-22 22H44l-22 14v-14A22 22 0 010 22v0A22 22 0 0122 0z" fill="url(#ia-hCoral)"/></g>
+ <use href="#ia-h-spark" x="16" y="10" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+ <circle cx="60" cy="22" r="4" fill="#fff"><animate attributeName="opacity" values=".35;1;.35" dur="1.4s" repeatCount="indefinite"/></circle>
+ <circle cx="76" cy="22" r="4" fill="#fff"><animate attributeName="opacity" values=".35;1;.35" dur="1.4s" begin=".2s" repeatCount="indefinite"/></circle>
+ <circle cx="92" cy="22" r="4" fill="#fff"><animate attributeName="opacity" values=".35;1;.35" dur="1.4s" begin=".4s" repeatCount="indefinite"/></circle>
+</g></g>
+
+<!-- Funken -->
+<g fill="#fe6c75"><path class="ia-tw" style="animation-delay:0s" d="M110 96l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+<g fill="#5ccfff"><path class="ia-tw" style="animation-delay:-1.2s" d="M462 420l2.5 6.5 6.5 2.5-6.5 2.5-2.5 6.5-2.5-6.5-6.5-2.5 6.5-2.5z"/></g>
+<g fill="#ffb703"><path class="ia-tw" style="animation-delay:-2.1s" d="M96 300l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g>
+</svg>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .ihreapp{position:relative;background:linear-gradient(180deg,#fff 0%,#fff7f7 100%);}
+    .ia-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+    .ia-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px;background:rgba(254,108,117,.1);border:1px solid rgba(254,108,117,.25);color:var(--begonia400);font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px;}
+    .ia-badge-ico{width:26px;height:26px;border-radius:50%;background:var(--begonia400);color:#fff;display:inline-flex;align-items:center;justify-content:center;}
+    .ia-text h2{margin:0 0 18px;color:var(--gunpowder900);}
+    .ia-lead{font-size:17px;line-height:1.65;color:var(--gunpowder500);margin:0 0 22px;max-width:560px;}
+    .ia-list{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;gap:12px;}
+    .ia-list li{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--gunpowder900);font-size:15.5px;}
+    .ia-ck{width:22px;height:22px;border-radius:50%;background:#d1fff4;color:#0a9b7c;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .ia-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+    .ia-btn{display:inline-flex;align-items:center;gap:10px;background:var(--begonia400);color:#fff;font-size:16px;font-weight:700;padding:15px 30px;border-radius:100px;text-decoration:none;white-space:nowrap;box-shadow:0 10px 28px rgba(254,108,117,.4);transition:transform .2s ease,box-shadow .2s ease;}
+    .ia-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(254,108,117,.5);}
+    .ia-btn svg{transition:transform .2s ease;}
+    .ia-btn:hover svg{transform:translate(2px,-2px);}
+    .ia-url{font-size:14px;font-weight:600;color:var(--gunpowder400);}
+    .ia-art{width:100%;max-width:470px;margin:0 auto;}
+    .ia-art svg{width:100%;height:auto;display:block;overflow:visible;font-family:'Plus Jakarta Sans',Arial,sans-serif;}
+    .ia-art .ia-fl{animation:iaFloat 6s ease-in-out infinite;}
+    @keyframes iaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    .ia-art .ia-tile{transform-box:fill-box;transform-origin:center;animation:iaTilePop 9s ease-in-out infinite both;}
+    @keyframes iaTilePop{0%,3%{transform:scale(.3);opacity:0}11%{transform:scale(1.08);opacity:1}14%,88%{transform:scale(1);opacity:1}96%,100%{transform:scale(.3);opacity:0}}
+    .ia-art .ia-push{animation:iaPushIn 9s ease-in-out infinite both;}
+    @keyframes iaPushIn{0%,10%{transform:translateX(46px);opacity:0}18%,90%{transform:none;opacity:1}97%,100%{transform:translateX(46px);opacity:0}}
+    .ia-art .ia-tw{transform-box:fill-box;transform-origin:center;animation:iaTwinkle 3.4s ease-in-out infinite;}
+    @keyframes iaTwinkle{0%,100%{transform:scale(.4) rotate(0);opacity:.25}50%{transform:scale(1.1) rotate(45deg);opacity:1}}
+    @media (prefers-reduced-motion:reduce){.ia-art .ia-fl,.ia-art .ia-tile,.ia-art .ia-push,.ia-art .ia-tw{animation:none}}
+    body.dark-mode .ihreapp{background:linear-gradient(180deg,var(--gunpowder900) 0%,#1a0f2e 100%);}
+    body.dark-mode .ia-text h2,body.dark-mode .ia-list li{color:#fff;}
+    body.dark-mode .ia-lead{color:rgba(255,255,255,.62);}
+    body.dark-mode .ia-url{color:rgba(255,255,255,.45);}
+    body.dark-mode .ia-ck{background:rgba(10,155,124,.2);color:#3ee6bf;}
+    @media(max-width:900px){.ia-grid{grid-template-columns:1fr;gap:36px;}.ia-art{max-width:380px;order:2;}.ia-btn{width:100%;justify-content:center;}}
+</style>
+
+<!-- MOBILE APPS: seit 19.09.2026 ausgeblendet (ersetzt durch den ihreapp.ch-Teaser oben).
+     Zum Reaktivieren: display:none entfernen und den Nav-Link #apps wieder einfügen. -->
+<section class="section apps" id="apps" style="display:none;scroll-margin-top:90px;">
     <div class="container">
         <div class="section-header">
             <h2>Meine veröffentlichten <span style="color:var(--begonia400)">Apps</span></h2>
@@ -2076,9 +2261,9 @@ function expandBranchen(btn){
                 <div class="bento-featured-visual" id="appShowcase">
                     <div class="app-featured-phone">
                         <div class="app-featured-slider" id="phoneSlider">
-                            <img src="capturas/Captura 2026-01-19 a las 0.09.30.png" alt="Keto Scanner Home" class="app-featured-slide active">
-                            <img src="capturas/Captura 2026-01-19 a las 0.09.47.png" alt="Keto Scanner Explore" class="app-featured-slide">
-                            <img src="capturas/Captura 2026-01-19 a las 0.10.11.png" alt="Keto Scanner Analyse" class="app-featured-slide">
+                            <img loading="lazy" src="capturas/Captura 2026-01-19 a las 0.09.30.png" alt="Keto Scanner Home" class="app-featured-slide active">
+                            <img loading="lazy" src="capturas/Captura 2026-01-19 a las 0.09.47.png" alt="Keto Scanner Explore" class="app-featured-slide">
+                            <img loading="lazy" src="capturas/Captura 2026-01-19 a las 0.10.11.png" alt="Keto Scanner Analyse" class="app-featured-slide">
                         </div>
                     </div>
                     <div class="app-featured-dots" id="phoneDots">
@@ -2115,7 +2300,7 @@ function expandBranchen(btn){
             <!-- BUYVOICE — col 3, row 1-2 (tall) -->
             <div class="bento-card bento-card--tall" style="--bento-bg:linear-gradient(145deg,#f0edf8 0%,#e5dff5 100%);">
                 <div class="bento-card-inner">
-                    <div class="bento-icon"><img src="img/buyvoice.png" alt="BuyVoice"></div>
+                    <div class="bento-icon"><img loading="lazy" src="img/buyvoice.png" alt="BuyVoice"></div>
                     <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
                     <h4>BuyVoice</h4>
                     <p class="bento-app-desc" style="flex-grow:0">Sprechen Sie und die Einkaufsliste wird automatisch erstellt. KI-gestützte Spracherkennung.</p>
@@ -2156,7 +2341,7 @@ function expandBranchen(btn){
                 <!-- FOODSCAN AI — col 1 -->
                 <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#fdf0e6 0%,#f5e4d0 100%);">
                     <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/foodscan.png" alt="FoodScan AI"></div>
+                        <div class="bento-icon"><img loading="lazy" src="img/foodscan.png" alt="FoodScan AI"></div>
                         <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
                         <h4>FoodScan AI</h4>
                         <p class="bento-app-desc">KI generiert Rezeptvorschläge aus Ihren Kühlschrankzutaten.</p>
@@ -2166,7 +2351,7 @@ function expandBranchen(btn){
                 <!-- DOGMENTOR — col 2 -->
                 <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e8f0e4 0%,#d8e9d0 100%);">
                     <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/dogmentor.jpg" alt="DogMentor KI"></div>
+                        <div class="bento-icon"><img loading="lazy" src="img/dogmentor.jpg" alt="DogMentor KI"></div>
                         <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
                         <h4>DogMentor KI</h4>
                         <p class="bento-app-desc">KI-gestütztes Wissen rund um Hundeerziehung.</p>
@@ -2176,7 +2361,7 @@ function expandBranchen(btn){
                 <!-- HUNDEZONEN — col 3 -->
                 <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e0f5f0 0%,#cceee5 100%);">
                     <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/hundezonen.png" alt="Hundezonen Schweiz"></div>
+                        <div class="bento-icon"><img loading="lazy" src="img/hundezonen.png" alt="Hundezonen Schweiz"></div>
                         <div class="app-card-tech"><span>React Native</span></div>
                         <h4>Hundezonen</h4>
                         <p class="bento-app-desc">Finden Sie Hundezonen in Ihrer Nähe in der ganzen Schweiz.</p>
@@ -2186,7 +2371,7 @@ function expandBranchen(btn){
                 <!-- KETORECIPELAB — col 1-2 wide -->
                 <div class="bento-card bento-card--wide" style="--bento-bg:linear-gradient(145deg,#fdf6e3 0%,#f5ecd4 100%);">
                     <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/ketorecipe.png" alt="KetoRecipeLab"></div>
+                        <div class="bento-icon"><img loading="lazy" src="img/ketorecipe.png" alt="KetoRecipeLab"></div>
                         <div class="app-card-tech"><span>React Native</span><span class="ai-tag">OpenAI</span></div>
                         <h4>KetoRecipeLab</h4>
                         <p class="bento-app-desc">Einzigartige Keto- und Paleo-Rezepte mit künstlicher Intelligenz erstellen.</p>
@@ -2196,7 +2381,7 @@ function expandBranchen(btn){
                 <!-- WORK TI — col 3 -->
                 <div class="bento-card bento-card--sm" style="--bento-bg:linear-gradient(145deg,#e4eef8 0%,#d0e4f5 100%);">
                     <div class="bento-card-inner">
-                        <div class="bento-icon"><img src="img/workti.png" alt="Work Ti"></div>
+                        <div class="bento-icon"><img loading="lazy" src="img/workti.png" alt="Work Ti"></div>
                         <div class="app-card-tech"><span>React Native</span></div>
                         <h4>Work Ti</h4>
                         <p class="bento-app-desc">Intelligente Zeiterfassung für Teams und Freelancer.</p>
@@ -2220,11 +2405,11 @@ function expandBranchen(btn){
                 </div>
                 <div class="bento-more-right">
                     <div class="bento-more-stack" id="bentoMoreSub">
-                        <img src="img/foodscan.png" alt="FoodScan AI">
-                        <img src="img/dogmentor.jpg" alt="DogMentor KI">
-                        <img src="img/hundezonen.png" alt="Hundezonen">
-                        <img src="img/ketorecipe.png" alt="KetoRecipeLab">
-                        <img src="img/workti.png" alt="Work Ti">
+                        <img loading="lazy" src="img/foodscan.png" alt="FoodScan AI">
+                        <img loading="lazy" src="img/dogmentor.jpg" alt="DogMentor KI">
+                        <img loading="lazy" src="img/hundezonen.png" alt="Hundezonen">
+                        <img loading="lazy" src="img/ketorecipe.png" alt="KetoRecipeLab">
+                        <img loading="lazy" src="img/workti.png" alt="Work Ti">
                     </div>
                     <span class="bento-more-cta">Apps anzeigen <svg id="bentoMoreIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;transition:transform .35s ease;"><polyline points="6 9 12 15 18 9"/></svg></span>
                 </div>
@@ -3086,7 +3271,7 @@ function askFromList(q){
             <div class="footer-brand">
                 <div style="font-size:22px;font-weight:800;display:flex;flex-direction:column;line-height:1;">
                     Lweb
-                    <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Salvador Lopez</span>
+                    <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Salvador / Webs</span>
                 </div>
                 <p>Webentwickler in Sevelen &mdash; für Betriebe in Buchs SG, Werdenberg, Sargans und Liechtenstein. Websites, Apps und KI-Lösungen zu fairen Preisen, direkt vom Entwickler.</p>
                 <div class="footer-contact-item">
@@ -3422,9 +3607,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202608241900"></script>
+<script src="js/translations.js?v=202609191010"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202608241900"></script>
+<script src="js/main.js?v=202609191010"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
