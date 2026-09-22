@@ -836,7 +836,7 @@ var translations = {
         'calc.result.from': 'ab',
         'calc.result.whatsapp': 'Per WhatsApp kontaktieren',
         // Testimonials & Booking
-        'testi.label': 'Kundenstimmen', 'testi.h2': 'Was Kunden \u00fcber <span class="accent">Lweb</span> sagen', 'testi.sub': 'Echte Projekte. Echte Ergebnisse. Direkte Zusammenarbeit.',
+        'testi.label': 'Kundenstimmen', 'testi.h2': 'Was Kunden \u00fcber <span class="accent">Lweb</span> sagen', 'testi.sub': 'Echte Projekte. Echte Ergebnisse. Direkte Zusammenarbeit.', 'testi.google': '6 Bewertungen auf Google', 'testi.mehr': 'Mehr lesen', 'testi.weniger': 'Weniger anzeigen',
         'booking.label': 'Kostenloses Erstgespr\u00e4ch', 'booking.h2': 'Termin direkt <span class="accent">buchen</span>', 'booking.sub': 'W\u00e4hlen Sie einfach einen freien Termin \u2014 30 Minuten, kostenlos und ohne Verpflichtung. Ich berate Sie pers\u00f6nlich zu Website, App oder KI-Integration.',
         'booking.b1': '30 Min \u00b7 Kostenlos', 'booking.b2': 'Keine Verpflichtung', 'booking.b3': 'Deutsch \u00b7 Spanisch \u00b7 Englisch',
         'booking.whatsapp': 'Termin per WhatsApp vereinbaren', 'booking.email': 'Termin per E-Mail anfragen',
@@ -1830,7 +1830,7 @@ var translations = {
         'calc.result.from': 'from',
         'calc.result.whatsapp': 'Contact via WhatsApp',
         // Testimonials & Booking
-        'testi.label': 'Client Reviews', 'testi.h2': 'What clients say about <span class="accent">Lweb</span>', 'testi.sub': 'Real projects. Real results. Direct collaboration.',
+        'testi.label': 'Client Reviews', 'testi.h2': 'What clients say about <span class="accent">Lweb</span>', 'testi.sub': 'Real projects. Real results. Direct collaboration.', 'testi.google': '6 reviews on Google', 'testi.mehr': 'Read more', 'testi.weniger': 'Show less',
         'booking.label': 'Free Consultation', 'booking.h2': 'Book a meeting <span class="accent">directly</span>', 'booking.sub': 'Choose a free slot \u2014 30 minutes, free and non-binding. I will personally advise you on your website, app or AI integration.',
         'booking.b1': '30 min \u00b7 Free', 'booking.b2': 'No obligation', 'booking.b3': 'German \u00b7 Spanish \u00b7 English',
         'booking.whatsapp': 'Book via WhatsApp', 'booking.email': 'Request via email',
@@ -2953,7 +2953,7 @@ var translations = {
         'calc.result.from': 'desde',
         'calc.result.whatsapp': 'Contactar por WhatsApp',
         // Testimonials & Booking
-        'testi.label': 'Opiniones de clientes', 'testi.h2': 'Lo que dicen los clientes sobre <span class="accent">Lweb</span>', 'testi.sub': 'Proyectos reales. Resultados reales. Colaboraci\u00f3n directa.',
+        'testi.label': 'Opiniones de clientes', 'testi.h2': 'Lo que dicen los clientes sobre <span class="accent">Lweb</span>', 'testi.sub': 'Proyectos reales. Resultados reales. Colaboraci\u00f3n directa.', 'testi.google': '6 rese\u00f1as en Google', 'testi.mehr': 'Leer m\u00e1s', 'testi.weniger': 'Mostrar menos',
         'booking.label': 'Consulta gratuita', 'booking.h2': 'Reserva una cita <span class="accent">directamente</span>', 'booking.sub': 'Elige un horario libre \u2014 30 minutos, gratis y sin compromiso. Te asesoro personalmente sobre tu web, app o integraci\u00f3n de IA.',
         'booking.b1': '30 min \u00b7 Gratis', 'booking.b2': 'Sin compromiso', 'booking.b3': 'Alem\u00e1n \u00b7 Espa\u00f1ol \u00b7 Ingl\u00e9s',
         'booking.whatsapp': 'Reservar por WhatsApp', 'booking.email': 'Solicitar por e-mail',
@@ -4076,7 +4076,7 @@ var translations = {
         'calc.result.from': '\u00e0 partir de',
         'calc.result.whatsapp': 'Contacter par WhatsApp',
         // Testimonials & Booking
-        'testi.label': 'Avis clients', 'testi.h2': 'Ce que les clients disent de <span class="accent">Lweb</span>', 'testi.sub': 'Vrais projets. Vrais r\u00e9sultats. Collaboration directe.',
+        'testi.label': 'Avis clients', 'testi.h2': 'Ce que les clients disent de <span class="accent">Lweb</span>', 'testi.sub': 'Vrais projets. Vrais r\u00e9sultats. Collaboration directe.', 'testi.google': '6 avis sur Google', 'testi.mehr': 'Lire la suite', 'testi.weniger': 'Afficher moins',
         'booking.label': 'Consultation gratuite', 'booking.h2': 'Prenez rendez-vous <span class="accent">directement</span>', 'booking.sub': 'Choisissez un cr\u00e9neau libre \u2014 30 minutes, gratuit et sans engagement. Je vous conseille personnellement sur votre site, app ou int\u00e9gration IA.',
         'booking.b1': '30 min \u00b7 Gratuit', 'booking.b2': 'Sans engagement', 'booking.b3': 'Allemand \u00b7 Espagnol \u00b7 Anglais',
         'booking.whatsapp': 'R\u00e9server par WhatsApp', 'booking.email': 'Demander par e-mail',
@@ -5199,7 +5199,7 @@ var translations = {
         'calc.result.from': 'a partire da',
         'calc.result.whatsapp': 'Contattare via WhatsApp',
         // Testimonials & Booking
-        'testi.label': 'Recensioni clienti', 'testi.h2': 'Cosa dicono i clienti di <span class="accent">Lweb</span>', 'testi.sub': 'Progetti reali. Risultati reali. Collaborazione diretta.',
+        'testi.label': 'Recensioni clienti', 'testi.h2': 'Cosa dicono i clienti di <span class="accent">Lweb</span>', 'testi.sub': 'Progetti reali. Risultati reali. Collaborazione diretta.', 'testi.google': '6 recensioni su Google', 'testi.mehr': 'Leggi di pi\u00f9', 'testi.weniger': 'Mostra meno',
         'booking.label': 'Consulenza gratuita', 'booking.h2': 'Prenota un appuntamento <span class="accent">direttamente</span>', 'booking.sub': 'Scegli uno slot libero \u2014 30 minuti, gratuito e senza impegno. Ti consiglier\u00f2 personalmente su sito web, app o integrazione IA.',
         'booking.b1': '30 min \u00b7 Gratuito', 'booking.b2': 'Senza impegno', 'booking.b3': 'Tedesco \u00b7 Spagnolo \u00b7 Inglese',
         'booking.whatsapp': 'Prenotare via WhatsApp', 'booking.email': 'Richiedere via e-mail',
