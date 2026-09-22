@@ -147,7 +147,7 @@ var translations = {
         'nav.onlineshop': 'Online Shop',
         'nav.shoplink': 'Perfekter Online-Shop',
         'nav.tech': 'Technologien',
-        'nav.about': 'Über mich',
+        'nav.about': 'Wer wir sind',
         'nav.bot': 'Frag den Bot',
         'm2.s1': 'Kein Agenturaufschlag',
         'm2.s2': 'Klare Preise, fester Umfang',

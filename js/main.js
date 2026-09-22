@@ -280,7 +280,7 @@ phoneDots.forEach(function(dot, index) {
 setInterval(function() { slidePhone(1); }, 4000);
 
 // Typing animation for "Entwickler"
-var typingWords = ['Entwickler', 'App-Profi', 'Partner', 'Entwickler'];
+var typingWords = ['wir sind', 'Ihr Team', 'Ihre Ansprechpartner', 'wir sind'];
 var typingIndex = 0;
 var typingCharIndex = 0;
 var typingDeleting = false;

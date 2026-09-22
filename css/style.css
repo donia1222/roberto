@@ -2412,6 +2412,44 @@ body.dark-mode .website-card--shop {
     align-items: center;
     justify-content: center;
 }
+.about-image--duo {
+    gap: 56px;
+    flex-wrap: wrap;
+}
+.about-image--duo .about-image-ring {
+    width: 180px;
+    height: 180px;
+}
+.about-image--duo .about-image-ring > img {
+    width: 172px;
+    height: 172px;
+}
+.about-image--duo .about-ring-text {
+    width: 220px;
+    height: 220px;
+    top: -20px;
+    left: -20px;
+}
+.about-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.about-person-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gunpowder900);
+    margin: 0;
+}
+.about-person-role {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--begonia400);
+    text-transform: uppercase;
+    margin: 0;
+}
 .about-image-ring > img {
     width: 232px;
     height: 232px;
@@ -2454,6 +2492,9 @@ body.dark-mode .website-card--shop {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+.about-ring-text--reverse {
+    animation-direction: reverse;
+}
 .about-image-ring::before {
     content: '';
     position: absolute;
@@ -2461,6 +2502,10 @@ body.dark-mode .website-card--shop {
     border-radius: 50%;
     background: conic-gradient(from var(--ring-angle, 0deg), var(--begonia400), var(--accent-orange), transparent, var(--begonia400));
     animation: ringSpin 2.5s linear infinite;
+}
+.about-image-ring--alt::before {
+    background: conic-gradient(from var(--ring-angle, 0deg), var(--accent-orange), var(--begonia400), transparent, var(--accent-orange));
+    animation-direction: reverse;
 }
 @keyframes ringSpin {
     to { --ring-angle: 360deg; }
