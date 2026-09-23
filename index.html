@@ -2621,8 +2621,8 @@ function expandBranchen(btn){
     <div class="container">
         <div class="about-inner">
             <div class="about-content">
-                <h2>Andrea &amp; Roberto 👋 </h2>
-                <p>Seit 2020 entwickeln wir Apps und Websites für Unternehmen in Buchs SG, im Rheintal, Kanton St. Gallen und Liechtenstein. Roberto schreibt den Code, Andrea kümmert sich ums Büro und den direkten Kontakt zu Ihnen &mdash; ohne teure Agentur dazwischen. Persönlich, unkompliziert und zu fairen Preisen.</p>
+                <h2>Ihr Team<br><span class="accent">aus der Region.</span></h2>
+                <p>Seit 2020 bauen wir Apps und Websites für Unternehmen in Buchs SG, im Rheintal, im Kanton St. Gallen und in Liechtenstein. Andrea ist hier aufgewachsen und kennt die Region und die Leute &mdash; bei ihr f&auml;ngt alles an: sie h&ouml;rt zu und kl&auml;rt in Ruhe, was Sie wirklich brauchen. Roberto schreibt danach den Code. Sie reden immer direkt mit uns.</p>
                 <div class="about-points">
                     <div class="about-point">
                         <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
@@ -2638,7 +2638,7 @@ function expandBranchen(btn){
                     </div>
                     <div class="about-point">
                         <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Mehrsprachig: Deutsch, Spanisch, Englisch
+                        Deutsch, Schweizerdeutsch, Spanisch und Englisch
                     </div>
                 </div>
                 <a href="blog.html" data-back-to="about" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:#fe6c75;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
@@ -2646,38 +2646,24 @@ function expandBranchen(btn){
                     Blog
                 </a>
             </div>
-            <div class="about-image about-image--duo">
-                <div class="about-person">
-                    <div class="about-image-ring">
-                        <svg class="about-ring-text" viewBox="0 0 300 300">
-                            <defs>
-                                <path id="ringPath" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/>
-                            </defs>
-                            <text>
-                                <textPath href="#ringPath" startOffset="0%">React Native &bull; Expo &bull; Next.js &bull; TypeScript &bull; Xcode &bull; OpenAI &bull; Node.js &bull;</textPath>
-                            </text>
-                        </svg>
-                        <img src="img/roberto-circle.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
+            <div class="about-image about-team">
+                <figure class="about-team-panel">
+                    <span class="about-team-fuge" aria-hidden="true"><i></i><i></i></span>
+                    <div class="about-team-half">
+                        <img class="about-team-photo about-team-photo--andrea" src="img/andrea-circle.jpg" alt="Andrea Salvador, B&uuml;ro und Kundenkontakt bei Lweb in Sevelen" loading="lazy" decoding="async">
+                        <figcaption class="about-team-cap">
+                            <span class="about-team-name">Andrea</span>
+                            <span class="about-team-role" data-i18n="about.role.andrea">B&uuml;ro &amp; Kundenkontakt</span>
+                        </figcaption>
                     </div>
-                    <p class="about-person-name">Roberto Salvador</p>
-                    <p class="about-person-role">Developer</p>
-                </div>
-                <div class="about-person">
-                    <div class="about-image-ring about-image-ring--alt">
-                        <svg class="about-ring-text about-ring-text--reverse" viewBox="0 0 300 300">
-                            <defs>
-                                <path id="ringPathAlt" d="M150,150 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0"/>
-                            </defs>
-                            <text>
-                                <textPath href="#ringPathAlt" startOffset="0%">Büro &bull; Kundenkontakt &bull; Organisation &bull; Beratung &bull; Terminplanung &bull;</textPath>
-                            </text>
-                        </svg>
-                        <img src="img/andrea-circle.jpg" alt="Andrea Salvador, Büro und Kundenkontakt bei Lweb in Sevelen" loading="lazy" decoding="async">
+                    <div class="about-team-half">
+                        <img class="about-team-photo about-team-photo--roberto" src="img/roberto-circle.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
+                        <figcaption class="about-team-cap">
+                            <span class="about-team-name">Roberto</span>
+                            <span class="about-team-role" data-i18n="about.role.roberto">Entwicklung</span>
+                        </figcaption>
                     </div>
-                    <p class="about-person-name">Andrea Salvador</p>
-                    <p class="about-person-role">Büro &amp; Kundenkontakt</p>
-                </div>
-            </div>
+                </figure>
         </div>
     </div>
 </section>

@@ -6054,3 +6054,99 @@ body.menu-sheet.dark-mode .header-burger span { background: #fff; }
 body.menu-sheet.dark-mode .header-burger.open { background: #fff; border-color: #fff; }
 body.menu-sheet.dark-mode .header-burger.open span { background: #0f1d2c; }
 body.menu-sheet.dark-mode .pm-tile { fill: #1d2a3d; }
+
+/* ===== ABOUT: Andrea & Roberto (23.09.2026) =====
+   Zwei Fotos mit sehr unterschiedlichem Licht (Studio dunkel / Buero hell).
+   Statt sie einzeln zu zeigen, stecken sie in EINER Tafel: so liest sich der
+   Unterschied als Absicht. Der dunkle Verlauf unten traegt beide Namen und
+   funktioniert auf hellem wie auf dunklem Bild. */
+.about-team { justify-content: flex-end; }
+.about-team-panel {
+    margin: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    width: min(100%, 460px);
+    border-radius: 28px;
+    overflow: hidden;
+    background: #0b0f14;
+    box-shadow: 0 24px 60px rgba(16, 24, 40, 0.16);
+}
+/* Die Fuge: schwarzer Streifen mit kleinen roten Punkten, die nach oben ziehen.
+   Bewegt wird mit transform (Grafikkarte), nicht mit background-position — sonst
+   ruckelt es bei so langsamer Bewegung sichtbar. Zwei Ebenen, zwei Tempi. */
+.about-team-fuge {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 7px;
+    margin-left: -3.5px;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+}
+.about-team-fuge i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 200%;
+    will-change: transform;
+}
+.about-team-fuge i:first-child {
+    background-image: radial-gradient(circle, rgba(254, 108, 117, 1) 1.5px, transparent 2px);
+    background-size: 7px 46px;
+    animation: aboutTeamFuge1 2.6s linear infinite;
+}
+.about-team-fuge i:last-child {
+    background-image: radial-gradient(circle, rgba(254, 108, 117, 0.45) 1.1px, transparent 1.6px);
+    background-size: 7px 27px;
+    animation: aboutTeamFuge2 1.9s linear infinite;
+}
+@keyframes aboutTeamFuge1 {
+    from { transform: translateY(0); }
+    to { transform: translateY(-46px); }
+}
+@keyframes aboutTeamFuge2 {
+    from { transform: translateY(0); }
+    to { transform: translateY(-27px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .about-team-fuge i { animation: none; }
+}
+.about-team-half {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #0d1117;
+}
+.about-team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/* Ihr Gesicht sitzt weiter oben und kleiner im Originalbild: naeher heran,
+   damit beide Koepfe gleich gross wirken. */
+.about-team-photo--andrea { transform: scale(1.24); transform-origin: 55% 28%; }
+/* Etwas naeher heran, damit der Schriftzug im Hintergrund aus dem Bild faellt. */
+.about-team-photo--roberto { transform: scale(1.12); transform-origin: 50% 40%; }
+.about-content h2 .accent { color: var(--begonia400); }
+.about-team-cap {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 46px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: linear-gradient(to top, rgba(10, 14, 20, 0.85), rgba(10, 14, 20, 0));
+    color: #fff;
+}
+.about-team-name { font-size: 17px; font-weight: 700; line-height: 1.2; }
+.about-team-role { font-size: 12.5px; font-weight: 600; line-height: 1.3; color: rgba(255, 255, 255, 0.78); }
+@media (max-width: 991px) {
+    .about-team { justify-content: center; }
+    .about-team-panel { width: min(100%, 420px); }
+}
