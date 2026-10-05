@@ -221,7 +221,7 @@
   /* Zeichen links, Schriftzug daneben — eine Zeile unten,
      damit Gesicht und Logo im Bild frei bleiben. */
   flex-direction:row;align-items:flex-end;justify-content:flex-start;
-  aspect-ratio:3/2;padding:0 22px 22px;gap:12px;
+  aspect-ratio:1521/1034;padding:0 22px 22px;gap:12px;
   max-width:470px;margin:0 auto;
 }
 .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
@@ -247,9 +247,12 @@
    Nachtmodus: das dunkle Portraet — siehe body.dark-mode weiter unten. */
 .cl-photo::before{
   content:'';position:absolute;inset:0;
-  /* 05/10/2026: foto nueva, la de la sonrisa. La anterior sigue en
-     img/hero-lweb-hell.jpg por si hay que volver. */
-  background:url('img/hero-lweb-hell-2.jpg') center center/cover no-repeat;
+  /* 05/10/2026: la foto que el eligio. Las anteriores siguen ahi por si hay
+     que volver: hero-lweb-hell.jpg, -2 y -3.
+     El hueco tiene la proporcion EXACTA de la foto (1521x1034), asi que
+     `cover` no recorta nada: se ve entera y sin ampliar. Cambiar ese
+     aspect-ratio es lo que antes le cortaba el pelo o la barbilla. */
+  background:url('img/hero-lweb-hell-4.jpg') center center/cover no-repeat;
 }
 body.dark-mode .cl-photo::before{
   background-image:url('img/roberto-lweb.jpg');
@@ -258,10 +261,12 @@ body.dark-mode .cl-photo::before{
    weissen Schriftzug noetig — ohne Text macht er das Bild nur duester. */
 .cl-photo::after{
   content:'';position:absolute;inset:0;
+  /* Casi nada. El velo venia de cuando habia texto blanco encima; sin texto
+     solo oscurecia una foto que ya es clara. */
   background:linear-gradient(180deg,
-    rgba(4,9,15,0) 62%,
-    rgba(4,9,15,.10) 84%,
-    rgba(4,9,15,.20) 100%);
+    rgba(4,9,15,0) 78%,
+    rgba(4,9,15,.05) 92%,
+    rgba(4,9,15,.09) 100%);
 }
 /* auf dem Foto steht der Text immer hell */
 .cl--photo .cl-text b{color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.8);}
@@ -351,7 +356,11 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
 @media(max-width:992px){
   /* Zeichen links, Schriftzug daneben — alles in einer Zeile unten */
   .cl--photo{
-    aspect-ratio:16/10;padding:0 18px 16px;margin-top:6px;
+    /* 16/9 en vez de 16/10: la tarjeta baja de alto y el sello de Google
+       entra en pantalla sin desplazar. El margin auto a los lados es lo que
+       la centra de verdad — antes se iba hacia la derecha. */
+    aspect-ratio:1521/1034;padding:0 18px 16px;
+    max-width:92%;margin:6px auto 12px;
     flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
   }
   .cl-photo{border-radius:26px;}
@@ -360,7 +369,7 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
 }
 @media(max-width:560px){
-  .cl--photo{aspect-ratio:16/10;padding:0 14px 13px;gap:8px;}
+  .cl--photo{aspect-ratio:1521/1034;padding:0 14px 13px;gap:8px;max-width:94%;margin:4px auto 12px;}
   .cl-photo{border-radius:23px;}
   .cl--photo .cl-mark{width:44px;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
