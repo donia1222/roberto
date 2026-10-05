@@ -361,6 +361,10 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
        la centra de verdad — antes se iba hacia la derecha. */
     aspect-ratio:1521/1034;padding:0 18px 16px;
     max-width:92%;margin:6px auto 12px;
+    /* Correccion optica, no geometrica: la tarjeta YA esta centrada, pero el
+       difuminado del borde se come la pared blanca de la izquierda y no el
+       cuerpo oscuro de la derecha, asi que el ojo la ve corrida. */
+    transform:translateX(-2%);
     flex-direction:row;align-items:flex-end;justify-content:flex-start;gap:11px;
   }
   .cl-photo{border-radius:26px;}
@@ -369,7 +373,7 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
 }
 @media(max-width:560px){
-  .cl--photo{aspect-ratio:1521/1034;padding:0 14px 13px;gap:8px;max-width:94%;margin:4px auto 12px;}
+  .cl--photo{aspect-ratio:1521/1034;padding:0 14px 13px;gap:8px;max-width:94%;margin:4px auto 12px;transform:translateX(-2%);}
   .cl-photo{border-radius:23px;}
   .cl--photo .cl-mark{width:44px;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
