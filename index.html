@@ -2752,6 +2752,8 @@ function expandBranchen(btn){
 .testi-track-wrap { max-width:1160px; margin:0 auto; padding:0 24px; }
 .testi-track { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; align-items:stretch; }
 .testi-card.ancha { grid-column:span 2; }
+.testi-card.completa { grid-column:1/-1; }
+.testi-card.completa.recortada .testi-text { -webkit-line-clamp:4; }
 .testi-card.corta { padding:26px 24px; }
 .testi-card.corta .testi-text { margin-bottom:16px; }
 .testi-card.corta .testi-author { margin-top:auto; }
@@ -2841,12 +2843,31 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
                 <svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <span class="nota">5,0</span>
                 <span class="estrellas"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-                <span class="cuenta"><u data-i18n="testi.google">6 Bewertungen auf Google</u></span>
+                <span class="cuenta"><u data-i18n="testi.google">7 Bewertungen auf Google</u></span>
             </a>
         </div>
     </div>
     <div class="testi-track-wrap">
         <div class="testi-track" id="testiTrack">
+            <div class="testi-card completa larga recortada">
+                <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
+                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <p class="testi-text">Ich bin rundum begeistert von der Zusammenarbeit mit Roberto von Lweb. Er hat für mein Restaurant und meine Bar die komplette Homepage, das Design sowie das Reservierungstool aufgebaut und umgesetzt. Von der ersten Beratung bis zur Fertigstellung war die Zusammenarbeit professionell, zuverlässig und unkompliziert. Roberto hat meine Wünsche und Vorstellungen sehr gut verstanden und diese mit viel Liebe zum Detail umgesetzt. Besonders das moderne und ansprechende Design sowie die einfache Bedienung des Reservierungstools haben mich überzeugt.
+
+Die Kommunikation war jederzeit freundlich und lösungsorientiert, und auch bei Fragen oder Anpassungen wurde schnell reagiert. Das Ergebnis entspricht genau meinen Vorstellungen und gibt meinem Restaurant einen deutlich professionelleren und moderneren Auftritt.
+
+Ich bin mit der gesamten Arbeit sehr zufrieden und kann Roberto und Lweb uneingeschränkt weiterempfehlen. Vielen Dank für die tolle Arbeit und die professionelle Umsetzung.
+
+Gerne wieder!</p>
+                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
+                <div class="testi-author">
+                    <div class="testi-avatar foto">NB</div>
+                    <div>
+                        <div class="testi-name">Nikq Besnik</div>
+                        <div class="testi-role">Restaurant &amp; Bar, Website mit Reservierungstool · August 2026</div>
+                    </div>
+                </div>
+            </div>
             <div class="testi-card ancha larga recortada">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
@@ -2864,22 +2885,16 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                     </div>
                 </div>
             </div>
-            <div class="testi-card ancha larga recortada">
+            <div class="testi-card ancha">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <p class="testi-text">Ich bin rundum begeistert von der Zusammenarbeit mit Roberto von Lweb. Er hat für mein Restaurant und meine Bar die komplette Homepage, das Design sowie das Reservierungstool aufgebaut und umgesetzt. Von der ersten Beratung bis zur Fertigstellung war die Zusammenarbeit professionell, zuverlässig und unkompliziert. Roberto hat meine Wünsche und Vorstellungen sehr gut verstanden und diese mit viel Liebe zum Detail umgesetzt. Besonders das moderne und ansprechende Design sowie die einfache Bedienung des Reservierungstools haben mich überzeugt.
-
-Die Kommunikation war jederzeit freundlich und lösungsorientiert, und auch bei Fragen oder Anpassungen wurde schnell reagiert. Das Ergebnis entspricht genau meinen Vorstellungen und gibt meinem Restaurant einen deutlich professionelleren und moderneren Auftritt.
-
-Ich bin mit der gesamten Arbeit sehr zufrieden und kann Roberto und Lweb uneingeschränkt weiterempfehlen. Vielen Dank für die tolle Arbeit und die professionelle Umsetzung.
-
-Gerne wieder!</p>
+                <p class="testi-text">Hervorragende Arbeit. Kann die Firma nur empfelen. Sie h&ouml;ren zu und stetzen alles so um wie gew&uuml;nscht. Danke</p>
                 <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
                 <div class="testi-author">
-                    <div class="testi-avatar foto">NB</div>
+                    <div class="testi-avatar" style="background:#B4714A">CT</div>
                     <div>
-                        <div class="testi-name">Nikq Besnik</div>
-                        <div class="testi-role">Restaurant &amp; Bar, Website mit Reservierungstool · August 2026</div>
+                        <div class="testi-name">Carlos Teixeira</div>
+                        <div class="testi-role">leder-shop.ch, Online-Shop &middot; Oktober 2026</div>
                     </div>
                 </div>
             </div>
