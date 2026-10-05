@@ -247,7 +247,9 @@
    Nachtmodus: das dunkle Portraet — siehe body.dark-mode weiter unten. */
 .cl-photo::before{
   content:'';position:absolute;inset:0;
-  background:url('img/hero-lweb-hell.jpg') center top/cover no-repeat;
+  /* 05/10/2026: foto nueva, la de la sonrisa. La anterior sigue en
+     img/hero-lweb-hell.jpg por si hay que volver. */
+  background:url('img/hero-lweb-hell-2.jpg') center center/cover no-repeat;
 }
 body.dark-mode .cl-photo::before{
   background-image:url('img/roberto-lweb.jpg');
@@ -318,12 +320,15 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl-mark{width:clamp(104px,20vw,140px);}
   .cl-text b,.cl-text em{font-size:clamp(24px,5.2vw,34px);}
 }
-/* Handy: nur "Warum so guenstig?" zeigen. Einen Termin mit Datum und
-   Uhrzeit bucht am Handy kaum jemand — wer Kontakt sucht, nimmt die
-   WhatsApp-Zeile unter den Haekchen. */
+/* Handy: Google-Siegel oben, Termin-Button darunter. */
 @media(max-width:860px){
   .hero-buttons{flex-direction:column;align-items:stretch;}
-  .hero-buttons #heroPriceBtn{display:none;}
+  /* 05/10/2026: el boton de cita vuelve al movil. Antes estaba escondido
+     porque nadie reserva hora desde el telefono, pero con el sello de Google
+     arriba el hero se quedaba sin ninguna llamada a la accion.
+     El sello va primero: primero la prueba, despues la peticion. */
+  .hero-buttons .hero-google{order:1;}
+  .hero-buttons #heroPriceBtn{display:inline-flex;order:2;width:100%;}
   .hero-buttons .hero-why-btn{width:100%;justify-content:center;}
 }
 
@@ -574,9 +579,14 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
                         <span data-i18n="hero.erstgespraech.btn">Kostenloses Erstgespräch</span>
                     </a>
-                    <a href="#vergleich" class="gbcta gbcta--secondarygunpowder hero-why-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        <span data-i18n="hero.why.btn">Warum so günstig?</span>
+                    <!-- Antes habia aqui «Warum so günstig?». La prueba social
+                         convence mas que una promesa, y ademas lleva a las
+                         reseñas, que es donde esta la prueba. -->
+                    <a href="#testimonials" class="testi-google hero-why-btn hero-google" aria-label="Zu den Bewertungen">
+                        <svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
+                        <span class="nota">5,0</span>
+                        <span class="estrellas"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+                        <span class="cuenta"><u data-i18n="testi.google">7 Bewertungen auf Google</u></span>
                     </a>
                 </div>
                 <ul class="hero-features">
@@ -2756,16 +2766,43 @@ function expandBranchen(btn){
 .testi-card.completa.recortada .testi-text { -webkit-line-clamp:4; }
 .testi-card.corta { padding:26px 24px; }
 .testi-card.corta .testi-text { margin-bottom:16px; }
-.testi-card.corta .testi-author { margin-top:auto; }
+.testi-card.corta .testi-author { margin-top:0; }
 .testi-card { display:flex; flex-direction:column; width:auto; min-width:0; }
 .testi-mas { align-self:flex-start; }
-.testi-card .testi-author { margin-top:auto; }
+/* El autor va ARRIBA: primero se ve quien lo dice y luego lo que dice.
+   El padding de la derecha deja sitio a la G, que va absoluta en la esquina. */
+.testi-card .testi-author { margin-top:0; margin-bottom:18px; padding-right:34px; }
 @media(max-width:960px){ .testi-track { grid-template-columns:repeat(2,minmax(0,1fr)); } .testi-card.ancha { grid-column:1/-1; } }
 @media(max-width:560px){ .testi-track { grid-template-columns:1fr; } }
 
 /* Insignia de Google: nota, estrellas y enlace a la ficha */
 .testi-google { display:inline-flex; flex-wrap:wrap; justify-content:center; max-width:100%; align-items:center; gap:10px 14px; margin-top:22px; padding:12px 22px 12px 16px; border-radius:999px; background:var(--card-bg,#fff); border:1.5px solid var(--gunpowder100,#eef0f4); text-decoration:none; color:inherit; transition:box-shadow .3s, transform .3s; }
 .testi-google:hover { box-shadow:0 12px 36px rgba(15,29,44,0.10); transform:translateY(-2px); }
+/* En el hero va al lado del boton de cita, asi que tiene que medir lo mismo
+   que el (58 px) y caber en UNA linea. Con el flex-wrap de la insignia de la
+   seccion de reseñas se partia en dos y quedaba un sello achaparrado. */
+/* Los dos no siempre caben de lado: que el sello baje a su propia linea en
+   vez de meterse debajo de la foto. */
+.hero-buttons { flex-wrap:wrap; }
+.hero-google { margin-top:0; height:58px; flex-wrap:nowrap; white-space:nowrap; gap:10px; padding:0 26px 0 20px; }
+.hero-google .g { width:26px; height:26px; }
+.hero-google .nota { font-size:21px; }
+.hero-google .estrellas svg { width:14px; height:14px; }
+.hero-google .cuenta { font-size:13px; }
+@media(max-width:1200px){
+  /* Entre 860 y 1200 la columna de texto es estrecha: solo nota y estrellas. */
+  .hero-google .cuenta { display:none; }
+}
+@media(max-width:860px){
+  .hero-google .cuenta { display:inline; }
+}
+@media(max-width:860px){
+  .hero-google { justify-content:center; padding:0 18px; gap:8px; }
+}
+@media(max-width:400px){
+  /* En pantallas muy estrechas el texto largo no cabe: manda la nota. */
+  .hero-google .cuenta { display:none; }
+}
 .testi-google .g { width:30px; height:30px; flex-shrink:0; }
 .testi-google .nota { font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--gunpowder900,#0f1d2c); line-height:1; }
 .testi-google .estrellas { display:flex; gap:2px; }
@@ -2851,6 +2888,13 @@ body.dark-mode .testi-role { color:rgba(255,255,255,0.5); }
         <div class="testi-track" id="testiTrack">
             <div class="testi-card completa larga recortada">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
+                <div class="testi-author">
+                    <div class="testi-avatar foto">NB</div>
+                    <div>
+                        <div class="testi-name">Nikq Besnik</div>
+                        <div class="testi-role">Restaurant &amp; Bar, Website mit Reservierungstool · August 2026</div>
+                    </div>
+                </div>
                 <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 <p class="testi-text">Ich bin rundum begeistert von der Zusammenarbeit mit Roberto von Lweb. Er hat für mein Restaurant und meine Bar die komplette Homepage, das Design sowie das Reservierungstool aufgebaut und umgesetzt. Von der ersten Beratung bis zur Fertigstellung war die Zusammenarbeit professionell, zuverlässig und unkompliziert. Roberto hat meine Wünsche und Vorstellungen sehr gut verstanden und diese mit viel Liebe zum Detail umgesetzt. Besonders das moderne und ansprechende Design sowie die einfache Bedienung des Reservierungstools haben mich überzeugt.
 
@@ -2860,23 +2904,9 @@ Ich bin mit der gesamten Arbeit sehr zufrieden und kann Roberto und Lweb uneinge
 
 Gerne wieder!</p>
                 <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
-                <div class="testi-author">
-                    <div class="testi-avatar foto">NB</div>
-                    <div>
-                        <div class="testi-name">Nikq Besnik</div>
-                        <div class="testi-role">Restaurant &amp; Bar, Website mit Reservierungstool · August 2026</div>
-                    </div>
-                </div>
             </div>
             <div class="testi-card ancha larga recortada">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
-                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <p class="testi-text">Roberto hat unsere Erwartungen bei Weitem übertroffen. Egal welche Herausforderung anstand: Er hat sich immer voll reingehängt und teils ganze Tage investiert, um unsere Website (rrapi.ch) und die Mail-Konten sauber und zuverlässig aufzusetzen.
-
-Wir schätzen Roberto nicht nur fachlich, sondern auch menschlich sehr. Ein echter Profi, auf den immer Verlass ist!
-
-Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele weitere gemeinsame Projekte. 100 % Weiterempfehlung!</p>
-                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
                 <div class="testi-author">
                     <div class="testi-avatar foto">BR</div>
                     <div>
@@ -2884,12 +2914,16 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">rrapi.ch, Website &amp; E-Mail · September 2026</div>
                     </div>
                 </div>
+                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <p class="testi-text">Roberto hat unsere Erwartungen bei Weitem übertroffen. Egal welche Herausforderung anstand: Er hat sich immer voll reingehängt und teils ganze Tage investiert, um unsere Website (rrapi.ch) und die Mail-Konten sauber und zuverlässig aufzusetzen.
+
+Wir schätzen Roberto nicht nur fachlich, sondern auch menschlich sehr. Ein echter Profi, auf den immer Verlass ist!
+
+Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele weitere gemeinsame Projekte. 100 % Weiterempfehlung!</p>
+                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
             </div>
             <div class="testi-card ancha">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
-                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <p class="testi-text">Hervorragende Arbeit. Kann die Firma nur empfelen. Sie h&ouml;ren zu und stetzen alles so um wie gew&uuml;nscht. Danke</p>
-                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
                 <div class="testi-author">
                     <div class="testi-avatar" style="background:#B4714A">CT</div>
                     <div>
@@ -2897,12 +2931,12 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">leder-shop.ch, Online-Shop &middot; Oktober 2026</div>
                     </div>
                 </div>
+                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <p class="testi-text">Hervorragende Arbeit. Kann die Firma nur empfelen. Sie h&ouml;ren zu und stetzen alles so um wie gew&uuml;nscht. Danke</p>
+                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
             </div>
             <div class="testi-card corta">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
-                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <p class="testi-text">moderne und hochwertige Webseiten!</p>
-                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
                 <div class="testi-author">
                     <div class="testi-avatar">AD</div>
                     <div>
@@ -2910,12 +2944,12 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">Local Guide · 2022</div>
                     </div>
                 </div>
+                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <p class="testi-text">moderne und hochwertige Webseiten!</p>
+                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
             </div>
             <div class="testi-card corta">
                 <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
-                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <p class="testi-text testi-solo" data-i18n="testi.nurSterne">5 Sterne, ohne Kommentar</p>
-                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
                 <div class="testi-author">
                     <div class="testi-avatar" style="background:#8E6BD6">SS</div>
                     <div>
@@ -2923,12 +2957,12 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">Blog &amp; Shop für Handgemachtes · September 2026</div>
                     </div>
                 </div>
-            </div>
-            <div class="testi-card corta">
-                <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 <p class="testi-text testi-solo" data-i18n="testi.nurSterne">5 Sterne, ohne Kommentar</p>
                 <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
+            </div>
+            <div class="testi-card corta">
+                <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-author">
                     <div class="testi-avatar" style="background:#5B6ABF">MB</div>
                     <div>
@@ -2936,12 +2970,12 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">Sport-App · September 2026</div>
                     </div>
                 </div>
-            </div>
-            <div class="testi-card corta">
-                <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                 <p class="testi-text testi-solo" data-i18n="testi.nurSterne">5 Sterne, ohne Kommentar</p>
                 <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
+            </div>
+            <div class="testi-card corta">
+                <svg class="testi-fuente" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.5 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 2.9-2.2 5.4-4.7 7.1l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.5z"/><path fill="#FBBC04" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.5 0 20.1 0 24s1 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.3 0 11.7-2.1 15.6-5.7l-7.6-5.9c-2.1 1.4-4.8 2.3-8 2.3-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
                 <div class="testi-author">
                     <div class="testi-avatar" style="background:#3D8B6E">MM</div>
                     <div>
@@ -2949,6 +2983,9 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
                         <div class="testi-role">Restaurant, Zürich · 2024</div>
                     </div>
                 </div>
+                <div class="testi-stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <p class="testi-text testi-solo" data-i18n="testi.nurSterne">5 Sterne, ohne Kommentar</p>
+                <button type="button" class="testi-mas" data-i18n="testi.mehr">Mehr lesen</button>
             </div>
         </div>
     </div>
