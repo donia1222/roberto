@@ -640,6 +640,20 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                 </p>
             </div>
             <div class="hero-image">
+                <!-- El hueco de la derecha estaba vacio: halo coral que respira y tres
+                     aros de puntos girando a distinta velocidad, con un satelite cada uno.
+                     Todo CSS y SVG — ni una imagen mas que cargar. -->
+                <div class="hero-fondo" aria-hidden="true">
+                    <span class="hf-halo"></span>
+                    <svg class="hf-orbitas" viewBox="0 0 700 700" focusable="false">
+                        <g fill="none" stroke="var(--gunpowder150,#c8d5e3)" stroke-width="1.6" stroke-linecap="round">
+                                        <circle class="hf-anillo hf-a2" cx="350" cy="350" r="252" stroke-dasharray="2 10" opacity=".9"/>
+                <circle class="hf-anillo hf-a3" cx="350" cy="350" r="188" stroke="rgba(254,108,117,.45)" stroke-dasharray="2 9"/>
+                                    </g>
+                                    <g class="hf-sat hf-s2"><circle cx="350" cy="98" r="5" fill="var(--gunpowder300,#8a9bb3)"/></g>
+            <g class="hf-sat hf-s3"><circle cx="162" cy="350" r="5" fill="var(--begonia400,#fe6c75)"/></g>
+                                </svg>
+                </div>
                 <!-- Nur das Bild mit dem dunklen Verlauf unten —
                      Schriftzug und Code-Zeichen stehen bereits im Bild. -->
                 <div class="cl cl--photo" role="img" aria-label="Lweb Schweiz — Webdesign & App Development">
@@ -655,6 +669,48 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 </section>
 
 <style>
+/* ---- Fondo del hero ---------------------------------------------------- */
+.hero{position:relative;}
+/* La capa cuelga de .hero-image y se centra sobre la FOTO, no sobre la
+   pantalla. Anclada al hero se descolocaba cada vez que cambiaba el ancho. */
+.hero-image{position:relative;}
+.hero-image .cl{position:relative;z-index:1;}
+.hero-fondo{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:168%;aspect-ratio:1;z-index:0;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.hf-halo{
+  position:absolute;width:100%;aspect-ratio:1;
+  background:radial-gradient(circle at 50% 50%,
+    rgba(254,108,117,.22), rgba(254,108,117,.07) 45%, transparent 68%);
+  filter:blur(8px);animation:hfRespirar 9s ease-in-out infinite;
+}
+.hf-orbitas{
+  position:absolute;width:100%;height:auto;display:block;
+}
+/* transform-origin en el centro del viewBox, no de la caja: si se usa `center`
+   el anillo describe una orbita en vez de girar sobre si mismo. */
+.hf-anillo,.hf-sat{transform-origin:350px 350px;}
+.hf-a3{animation:hfGirar 38s linear infinite;}
+.hf-a2{animation:hfGirarAtras 52s linear infinite;}
+.hf-s3{animation:hfGirar 44s linear infinite;}
+.hf-s2{animation:hfGirarAtras 31s linear infinite;}
+@keyframes hfGirar{to{transform:rotate(360deg)}}
+@keyframes hfGirarAtras{to{transform:rotate(-360deg)}}
+@keyframes hfRespirar{0%,100%{opacity:.55;transform:scale(1)}
+                      50%{opacity:.9;transform:scale(1.06)}}
+body.dark-mode .hf-halo{opacity:.75;}
+@media(max-width:992px){
+  /* Fuera entero en el movil. Probado el 05/10/2026 con los aros, y luego
+     solo con el halo: ahi la foto va arriba del todo y cualquier cosa detras
+     se le echa encima. El fondo es un arreglo de escritorio. */
+  .hero-fondo{display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  .hf-anillo,.hf-sat,.hf-halo{animation:none;}
+}
+
 .hero-badge-new{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--begonia400);background:rgba(254,108,117,.10);border:1px solid rgba(254,108,117,.28);padding:7px 15px;border-radius:999px;margin-bottom:20px;}
 .hero-badge-new::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--begonia400);box-shadow:0 0 0 0 rgba(254,108,117,.6);animation:heroBadgePulse 2.2s infinite;}
 @keyframes heroBadgePulse{0%{box-shadow:0 0 0 0 rgba(254,108,117,.55)}70%{box-shadow:0 0 0 9px rgba(254,108,117,0)}100%{box-shadow:0 0 0 0 rgba(254,108,117,0)}}
