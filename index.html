@@ -650,8 +650,23 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                                         <circle class="hf-anillo hf-a2" cx="350" cy="350" r="252" stroke-dasharray="2 10" opacity=".9"/>
                 <circle class="hf-anillo hf-a3" cx="350" cy="350" r="188" stroke="rgba(254,108,117,.45)" stroke-dasharray="2 9"/>
                                     </g>
-                                    <g class="hf-sat hf-s2"><circle cx="350" cy="98" r="5" fill="var(--gunpowder300,#8a9bb3)"/></g>
-            <g class="hf-sat hf-s3"><circle cx="162" cy="350" r="5" fill="var(--begonia400,#fe6c75)"/></g>
+                                    <!-- Los dos satelites ya no son bolas: son chips que dicen lo que
+                 haces. Giran con su aro sin compensar, asi que el chip va
+                 siempre tangente a la linea en vez de quedarse horizontal. -->
+            <g class="hf-sat hf-s2">
+                <g transform="translate(350,98)">
+                        <rect x="-36" y="-11" width="72" height="22" rx="11" fill="var(--begonia400,#fe6c75)"/>
+                        <text x="0" y="4" text-anchor="middle" font-family="'Plus Jakarta Sans',system-ui,sans-serif"
+                              font-size="10" font-weight="700" fill="#ffffff" letter-spacing=".02em">Websites</text>
+                </g>
+            </g>
+            <g class="hf-sat hf-s3">
+                <g transform="translate(350,538)">
+                        <rect x="-46" y="-11" width="92" height="22" rx="11" fill="var(--gunpowder400,#6b7d99)"/>
+                        <text x="0" y="4" text-anchor="middle" font-family="'Plus Jakarta Sans',system-ui,sans-serif"
+                              font-size="10" font-weight="700" fill="#ffffff" letter-spacing=".02em">Native Apps</text>
+                </g>
+            </g>
                                 </svg>
                 </div>
                 <!-- Nur das Bild mit dem dunklen Verlauf unten —
@@ -695,7 +710,9 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 .hf-a3{animation:hfGirar 38s linear infinite;}
 .hf-a2{animation:hfGirarAtras 52s linear infinite;}
 .hf-s3{animation:hfGirar 44s linear infinite;}
-.hf-s2{animation:hfGirarAtras 31s linear infinite;}
+/* Los dos chips, en el mismo sentido; cada uno a su ritmo. */
+.hf-s2{animation:hfGirar 31s linear infinite;}
+
 @keyframes hfGirar{to{transform:rotate(360deg)}}
 @keyframes hfGirarAtras{to{transform:rotate(-360deg)}}
 @keyframes hfRespirar{0%,100%{opacity:.55;transform:scale(1)}
@@ -710,6 +727,18 @@ body.dark-mode .hf-halo{opacity:.75;}
 @media(prefers-reduced-motion:reduce){
   .hf-anillo,.hf-sat,.hf-halo{animation:none;}
 }
+
+/* La foto, un punto mas pequeña en el escritorio: asi respira dentro de los
+   aros en vez de rozarlos. Va en min-width para no tocar el movil, cuyas
+   reglas estan mas abajo en el fichero. Los aros no se mueven: miden 168% de
+   la COLUMNA, no de la foto. */
+@media(min-width:993px){
+  /* Para que la tarjeta quepa ENTERA dentro del aro pequeño manda su diagonal,
+     no su ancho: con la proporcion 1521/1034 la diagonal es el ancho x1,21, y
+     el aro mide el 90% de la columna. De ahi sale el 74%. */
+  .cl--photo{max-width:min(400px,74%);}
+}
+
 
 .hero-badge-new{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--begonia400);background:rgba(254,108,117,.10);border:1px solid rgba(254,108,117,.28);padding:7px 15px;border-radius:999px;margin-bottom:20px;}
 .hero-badge-new::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--begonia400);box-shadow:0 0 0 0 rgba(254,108,117,.6);animation:heroBadgePulse 2.2s infinite;}
