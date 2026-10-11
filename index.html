@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202609191110">
+    <link rel="stylesheet" href="css/style.css?v=202610111945">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -759,6 +759,150 @@ body.dark-mode .hero-badge-new{background:rgba(254,108,117,.14);border-color:rgb
 body.dark-mode .hero-scroll-hint{border-color:#1e2d3d;color:#94a3b8;}
 @media(prefers-reduced-motion:reduce){.hero-strike::after{animation:none;transform:scaleX(1)}.hero-scroll-hint svg,.hero-badge-new::before{animation:none}}
 </style>
+
+<!-- NEU: Interaktive Websites. Zeigt die Live-Demo Atelier Firn (Next.js auf Vercel).
+     Die Vorschau rechts ist reines CSS: vier Szenen, die nacheinander in ihr "Portal" zoomen. -->
+<section class="ia-section" id="interaktiv" aria-labelledby="ia-title">
+    <div class="container">
+        <div class="ia-card">
+            <div class="ia-copy">
+                <span class="ia-badge" data-i18n="interaktiv.badge">Neu</span>
+                <h2 class="ia-title" id="ia-title" data-i18n-html="interaktiv.title">Interaktive Websites, <span>die man erlebt.</span></h2>
+                <p class="ia-desc" data-i18n="interaktiv.desc">Scrollen wird zur Reise: Kamerafahrten durch Bilder und Animationen, wie man sie sonst nur von grossen Marken kennt. Schnell, flüssig auf dem Handy und ganz ohne schwere Videos.</p>
+                <ul class="ia-features">
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 15l6 6 6-6"/></svg><span data-i18n="interaktiv.f1">Scroll-Animationen</span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg><span data-i18n="interaktiv.f2">Kamerafahrten durch Bilder</span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span data-i18n="interaktiv.f3">Flüssig auf dem Handy</span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg><span data-i18n="interaktiv.f4">Ohne schwere Videos</span></li>
+                </ul>
+                <div class="ia-buttons">
+                    <a href="https://atelier-firn.vercel.app" class="gbcta gbcta--primary ia-cta" target="_blank" rel="noopener">
+                        <span data-i18n="interaktiv.cta">Hier ausprobieren</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+                    </a>
+                    <a href="booking.html" class="ia-link" data-i18n="interaktiv.cta2">Projekt anfragen</a>
+                </div>
+                <p class="ia-hint">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+                    <span data-i18n="interaktiv.hint">Am besten auch auf dem Handy testen</span>
+                </p>
+            </div>
+
+            <a class="ia-preview" href="https://atelier-firn.vercel.app" target="_blank" rel="noopener" aria-label="Atelier Firn – Live-Demo öffnen">
+                <div class="ia-browser">
+                    <div class="ia-bar">
+                        <i></i><i></i><i></i>
+                        <span class="ia-url">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                            atelier-firn.vercel.app
+                        </span>
+                    </div>
+                    <div class="ia-stage">
+                        <img src="img/interaktiv/1-exterior.webp" alt="" style="transform-origin:49.6% 49.4%" loading="lazy" decoding="async">
+                        <img src="img/interaktiv/2-banco.webp" alt="" style="transform-origin:50% 60%" loading="lazy" decoding="async">
+                        <img src="img/interaktiv/3-mecanismo.webp" alt="" style="transform-origin:49.5% 43.6%" loading="lazy" decoding="async">
+                        <img src="img/interaktiv/5-cielo-en-el-volante.webp" alt="" style="transform-origin:49.6% 47%" loading="lazy" decoding="async">
+                        <div class="ia-veil"></div>
+                        <div class="ia-overlay">
+                            <span class="ia-live"><i></i><span data-i18n="interaktiv.demo">Live-Demo</span></span>
+                            <span class="ia-name">Atelier Firn</span>
+                            <span class="ia-credit" data-i18n="interaktiv.credit">Gestaltet von Lweb</span>
+                        </div>
+                        <span class="ia-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.ia-section{padding:28px 0 8px;}
+.ia-card{position:relative;display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding:48px;border-radius:32px;background:radial-gradient(120% 140% at 0% 0%,#1b2240 0%,#0b1020 55%,#070a14 100%);color:#eef1f6;overflow:hidden;box-shadow:0 30px 80px rgba(15,29,44,.18);isolation:isolate;}
+.ia-card::before{content:'';position:absolute;inset:-40% 30% auto -10%;height:120%;background:radial-gradient(closest-side,rgba(254,108,117,.22),transparent);filter:blur(10px);z-index:-1;animation:iaGlow 9s ease-in-out infinite alternate;}
+@keyframes iaGlow{to{transform:translate(18%,12%) scale(1.15)}}
+.ia-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fe6c75;background:rgba(254,108,117,.12);border:1px solid rgba(254,108,117,.35);padding:7px 14px;border-radius:999px;}
+.ia-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#fe6c75;animation:heroBadgePulse 2.2s infinite;}
+.ia-title{margin:18px 0 0;font-size:clamp(32px,4.2vw,52px);line-height:1.02;letter-spacing:-.035em;font-weight:800;color:#fff;}
+.ia-title span{display:block;background:linear-gradient(90deg,#fe6c75,#ffb4a2);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.ia-desc{margin:18px 0 0;font-size:16.5px;line-height:1.6;color:rgba(238,241,246,.72);max-width:470px;}
+.ia-features{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;}
+.ia-features li{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:rgba(238,241,246,.9);}
+.ia-features svg,.ia-hint svg,.ia-url svg{width:18px;height:18px;flex:none;fill:none;stroke:#fe6c75;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ia-features li svg{padding:7px;width:32px;height:32px;border-radius:10px;background:rgba(254,108,117,.12);}
+.ia-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:30px;}
+.ia-cta{gap:10px;}
+.ia-cta svg{transition:transform .35s cubic-bezier(.22,1,.36,1);}
+.ia-cta:hover svg{transform:translate(3px,-3px);}
+.ia-link{font-size:15px;font-weight:700;color:#eef1f6;text-decoration:underline;text-decoration-color:rgba(238,241,246,.3);text-underline-offset:5px;transition:color .25s,text-decoration-color .25s;}
+.ia-link:hover{color:#fe6c75;text-decoration-color:#fe6c75;}
+.ia-hint{display:flex;align-items:center;gap:8px;margin:18px 0 0;font-size:13px;color:rgba(238,241,246,.5);}
+.ia-hint svg{width:15px;height:15px;stroke:rgba(238,241,246,.5);}
+.ia-preview{display:block;text-decoration:none;color:inherit;transform:perspective(1400px) rotateY(-7deg) rotateX(3deg);transition:transform .8s cubic-bezier(.22,1,.36,1);}
+.ia-preview:hover{transform:perspective(1400px) rotateY(0) rotateX(0) translateY(-4px);}
+.ia-browser{border-radius:18px;overflow:hidden;background:#0d1324;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 90px rgba(0,0,0,.55),0 0 80px rgba(254,108,117,.15);}
+.ia-bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;background:#0a0f1d;border-bottom:1px solid rgba(255,255,255,.06);}
+.ia-bar>i{width:10px;height:10px;border-radius:50%;background:#2a3352;}
+.ia-bar>i:nth-child(1){background:#ff5f57}.ia-bar>i:nth-child(2){background:#febc2e}.ia-bar>i:nth-child(3){background:#28c840}
+.ia-url{display:flex;align-items:center;gap:6px;margin:0 auto;padding:5px 14px;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis;border-radius:8px;background:rgba(255,255,255,.05);font-size:12.5px;color:rgba(238,241,246,.65);font-family:ui-monospace,Menlo,monospace;}
+.ia-url svg{width:12px;height:12px;stroke:rgba(238,241,246,.5);}
+.ia-stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#070a14;}
+.ia-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:iaPortal 16s linear infinite;will-change:transform,opacity;}
+.ia-stage img:nth-child(1){animation-delay:0s}
+.ia-stage img:nth-child(2){animation-delay:4s}
+.ia-stage img:nth-child(3){animation-delay:8s}
+.ia-stage img:nth-child(4){animation-delay:12s}
+/* Cada escena: aparece, la cámara se acerca a su portal y se funde con la siguiente, que ya está dentro. */
+@keyframes iaPortal{
+    0%{opacity:0;transform:scale(1)}
+    4%{opacity:1}
+    25%{opacity:1;transform:scale(2.4)}
+    30%{opacity:0;transform:scale(3.4)}
+    100%{opacity:0;transform:scale(3.4)}
+}
+.ia-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,20,.85),rgba(7,10,20,0) 55%),radial-gradient(ellipse at center,transparent 50%,rgba(7,10,20,.45));pointer-events:none;}
+.ia-overlay{position:absolute;left:22px;right:22px;bottom:18px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;}
+.ia-live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(7,10,20,.55);border:1px solid rgba(255,255,255,.15);padding:5px 11px;border-radius:999px;backdrop-filter:blur(8px);}
+.ia-live i{width:7px;height:7px;border-radius:50%;background:#4dd35b;box-shadow:0 0 10px #4dd35b;animation:heroBadgePulse 2.2s infinite;}
+.ia-name{margin-top:8px;font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.03em;color:#fff;}
+.ia-credit{font-size:13px;color:rgba(238,241,246,.7);}
+.ia-play{position:absolute;top:50%;left:50%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;display:grid;place-items:center;background:rgba(254,108,117,.92);box-shadow:0 10px 40px rgba(254,108,117,.5);transform:scale(.85);opacity:0;transition:opacity .4s,transform .4s cubic-bezier(.22,1,.36,1);}
+.ia-play svg{width:26px;height:26px;fill:#fff;margin-left:3px;}
+.ia-preview:hover .ia-play,.ia-preview:focus-visible .ia-play{opacity:1;transform:scale(1);}
+/* Entrada al aparecer en pantalla. */
+.ia-card.ia-pending .ia-copy>*{opacity:0;transform:translateY(24px);}
+.ia-card.ia-pending .ia-preview{opacity:0;transform:perspective(1400px) rotateY(-18deg) rotateX(6deg) translateY(40px);}
+.ia-card .ia-copy>*{transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1);}
+.ia-card .ia-copy>*:nth-child(2){transition-delay:.08s}.ia-card .ia-copy>*:nth-child(3){transition-delay:.16s}.ia-card .ia-copy>*:nth-child(4){transition-delay:.24s}.ia-card .ia-copy>*:nth-child(5){transition-delay:.32s}.ia-card .ia-copy>*:nth-child(6){transition-delay:.4s}
+.ia-card .ia-preview{transition:opacity 1s ease .15s,transform 1.2s cubic-bezier(.22,1,.36,1) .15s;}
+body.dark-mode .ia-card{box-shadow:0 0 0 1px #1e2d3d,0 30px 80px rgba(0,0,0,.45);}
+@media(max-width:900px){
+    .ia-card{grid-template-columns:1fr;padding:28px 22px 26px;gap:30px;border-radius:26px;}
+    .ia-preview,.ia-preview:hover{transform:none;}
+    .ia-card.ia-pending .ia-preview{transform:translateY(30px);}
+    .ia-features{grid-template-columns:1fr;}
+    /* En táctil no hay hover: sin botón de play, que tapaba la etiqueta de la demo. */
+    .ia-play{display:none;}
+    .ia-url{font-size:11.5px;padding:5px 10px;}
+}
+@media(prefers-reduced-motion:reduce){
+    .ia-stage img{animation:none;}
+    .ia-stage img:nth-child(1){opacity:1;}
+    .ia-card::before,.ia-badge::before,.ia-live i{animation:none;}
+    .ia-card.ia-pending .ia-copy>*,.ia-card.ia-pending .ia-preview{opacity:1;transform:none;}
+}
+</style>
+<script>
+(function(){
+    var card=document.querySelector('.ia-card');
+    if(!card||!('IntersectionObserver' in window))return;
+    card.classList.add('ia-pending');
+    var io=new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){card.classList.remove('ia-pending');io.disconnect();}
+    },{threshold:.15});
+    io.observe(card);
+})();
+</script>
 
 <!-- METRICS -->
 <section class="metrics-bar">
@@ -3729,9 +3873,9 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202609191110"></script>
+<script src="js/translations.js?v=202610111945"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
-<script src="js/main.js?v=202609191110"></script>
+<script src="js/main.js?v=202610111945"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){
