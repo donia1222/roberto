@@ -694,10 +694,8 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                         <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19"/><circle class="hb-ring" cx="22" cy="22" r="19"/></svg>
                         <b>100</b><small>Performance</small>
                     </div>
-                    <!-- Solo en el movil (los aros del escritorio no caben): chips que flotan
-                         sobre los bordes de la foto. El aura de color va en .cl--photo::before. -->
-                    <span class="hm-chip hm-chip--web" aria-hidden="true">Websites</span>
-                    <span class="hm-chip hm-chip--app" aria-hidden="true">Native Apps</span>
+                    <!-- Solo en el movil: el chip </> flota sobre el borde. "Websites" y "Native Apps"
+                         se quitaron el 12/10/2026 (se salian de la pantalla). El aura va en .cl--photo::before. -->
                     <span class="hm-chip hm-chip--code" aria-hidden="true">&lt;/&gt;</span>
                 </div>
             </div>
@@ -817,8 +815,6 @@ body.dark-mode .hf-halo{opacity:.75;}
     box-shadow:0 8px 22px -8px rgba(15,23,42,.45);
     animation:hmFlotar 5.5s ease-in-out infinite alternate;
   }
-  .hm-chip--web{top:14%;left:-11%;background:var(--begonia400,#fe6c75);--r:-8deg;}
-  .hm-chip--app{bottom:16%;right:-13%;background:var(--gunpowder400,#6b7d99);--r:6deg;animation-delay:-2.2s;animation-duration:6.5s;}
   .hm-chip--code{top:-10px;right:10%;background:#fff;color:var(--begonia400,#fe6c75);
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;--r:4deg;animation-delay:-4s;}
   body.dark-mode .hm-chip--code{background:#1a2433;}
