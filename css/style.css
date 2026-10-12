@@ -6055,66 +6055,102 @@ body.menu-sheet.dark-mode .header-burger.open { background: #fff; border-color: 
 body.menu-sheet.dark-mode .header-burger.open span { background: #0f1d2c; }
 body.menu-sheet.dark-mode .pm-tile { fill: #1d2a3d; }
 
-/* ===== ABOUT: Andrea & Roberto (23.09.2026) =====
-   Zwei Fotos mit sehr unterschiedlichem Licht (Studio dunkel / Buero hell).
-   Statt sie einzeln zu zeigen, stecken sie in EINER Tafel: so liest sich der
-   Unterschied als Absicht. Der dunkle Verlauf unten traegt beide Namen und
-   funktioniert auf hellem wie auf dunklem Bild. */
+/* ===== ABOUT: Andrea & Roberto (12.10.2026) =====
+   Una sola tarjeta, mitad y mitad. Entre las dos fotos ya no hay una franja
+   negra: una costura de luz fina con un "&" en el centro (los dos, juntos), y
+   un brillo que la recorre de vez en cuando. Los nombres van en cristal. */
 .about-team { justify-content: flex-end; }
 .about-team-panel {
     margin: 0;
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 7px;
-    width: min(100%, 460px);
-    border-radius: 28px;
+    gap: 0;
+    width: min(100%, 470px);
+    border-radius: 30px;
     overflow: hidden;
+    isolation: isolate;
     background: #0b0f14;
-    box-shadow: 0 24px 60px rgba(16, 24, 40, 0.16);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.6),
+        0 30px 70px -20px rgba(16, 24, 40, 0.28),
+        0 20px 80px -30px rgba(254, 108, 117, 0.45);
 }
-/* Die Fuge: schwarzer Streifen mit kleinen roten Punkten, die nach oben ziehen.
-   Bewegt wird mit transform (Grafikkarte), nicht mit background-position — sonst
-   ruckelt es bei so langsamer Bewegung sichtbar. Zwei Ebenen, zwei Tempi. */
-.about-team-fuge {
+/* Halo coral detras de la tarjeta, que respira despacio. */
+.about-team { position: relative; }
+.about-team::before {
+    content: '';
+    position: absolute;
+    inset: 8% 4% -2% auto;
+    width: min(100%, 470px);
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(254, 108, 117, 0.22), rgba(157, 184, 255, 0.12) 60%, transparent);
+    filter: blur(30px);
+    z-index: -1;
+    animation: aboutTeamHalo 8s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes aboutTeamHalo {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.06); opacity: 1; }
+}
+/* La costura: una linea de luz que se desvanece arriba y abajo. */
+.about-team-seam {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 7px;
-    margin-left: -3.5px;
-    overflow: hidden;
-    z-index: 2;
+    width: 2px;
+    margin-left: -1px;
+    z-index: 3;
     pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.85) 18%, rgba(255, 255, 255, 0.85) 82%, transparent);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.55);
+    overflow: visible;
 }
-.about-team-fuge i {
+/* El brillo que la recorre de arriba abajo cada pocos segundos. */
+.about-team-seam::before {
+    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 200%;
-    will-change: transform;
+    left: -2px;
+    right: -2px;
+    top: -30%;
+    height: 30%;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, transparent, #fe6c75, transparent);
+    box-shadow: 0 0 18px 2px rgba(254, 108, 117, 0.8);
+    animation: aboutTeamBrillo 5.5s cubic-bezier(.45, 0, .2, 1) infinite;
 }
-.about-team-fuge i:first-child {
-    background-image: radial-gradient(circle, rgba(254, 108, 117, 1) 1.5px, transparent 2px);
-    background-size: 7px 46px;
-    animation: aboutTeamFuge1 2.6s linear infinite;
+@keyframes aboutTeamBrillo {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    55% { transform: translateY(430%); opacity: 1; }
+    65%, 100% { transform: translateY(430%); opacity: 0; }
 }
-.about-team-fuge i:last-child {
-    background-image: radial-gradient(circle, rgba(254, 108, 117, 0.45) 1.1px, transparent 1.6px);
-    background-size: 7px 27px;
-    animation: aboutTeamFuge2 1.9s linear infinite;
+/* El "&" en el centro: un medallon blanco con un aro que late. */
+.about-team-amp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    color: #fe6c75;
+    font: italic 600 25px/1 Georgia, 'Times New Roman', serif;
+    padding-bottom: 2px;
+    box-shadow: 0 10px 28px -6px rgba(10, 14, 20, 0.55), 0 0 0 5px rgba(255, 255, 255, 0.22);
+    animation: aboutTeamLatido 2.8s ease-out infinite;
 }
-@keyframes aboutTeamFuge1 {
-    from { transform: translateY(0); }
-    to { transform: translateY(-46px); }
-}
-@keyframes aboutTeamFuge2 {
-    from { transform: translateY(0); }
-    to { transform: translateY(-27px); }
+@keyframes aboutTeamLatido {
+    0% { box-shadow: 0 10px 28px -6px rgba(10, 14, 20, 0.55), 0 0 0 0 rgba(254, 108, 117, 0.55); }
+    70%, 100% { box-shadow: 0 10px 28px -6px rgba(10, 14, 20, 0.55), 0 0 0 16px rgba(254, 108, 117, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-    .about-team-fuge i { animation: none; }
+    .about-team-seam::before, .about-team-amp, .about-team::before { animation: none; }
 }
 .about-team-half {
     position: relative;
@@ -6127,26 +6163,42 @@ body.menu-sheet.dark-mode .pm-tile { fill: #1d2a3d; }
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 1.2s cubic-bezier(.22, 1, .36, 1);
 }
 /* Ihr Gesicht sitzt weiter oben und kleiner im Originalbild: naeher heran,
    damit beide Koepfe gleich gross wirken. */
 .about-team-photo--andrea { transform: scale(1.24); transform-origin: 55% 28%; }
-/* Etwas naeher heran, damit der Schriftzug im Hintergrund aus dem Bild faellt. */
-.about-team-photo--roberto { transform: scale(1.12); transform-origin: 50% 40%; }
+/* Foto nueva (hero-roberto-neu.jpg): la cara esta a la izquierda, el monitor a la derecha. */
+.about-team-photo--roberto { object-position: 8% 30%; transform: scale(1.04); transform-origin: 40% 35%; }
+.about-team-half:hover .about-team-photo--andrea { transform: scale(1.3); }
+.about-team-half:hover .about-team-photo--roberto { transform: scale(1.1); }
 .about-content h2 .accent { color: var(--begonia400); }
 .about-team-cap {
     position: absolute;
-    inset: auto 0 0 0;
-    padding: 46px 16px 14px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
     display: flex;
     flex-direction: column;
     gap: 2px;
-    background: linear-gradient(to top, rgba(10, 14, 20, 0.85), rgba(10, 14, 20, 0));
+    border-radius: 16px;
+    background: rgba(10, 14, 20, 0.42);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    backdrop-filter: blur(12px) saturate(1.3);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
     color: #fff;
 }
-.about-team-name { font-size: 17px; font-weight: 700; line-height: 1.2; }
-.about-team-role { font-size: 12.5px; font-weight: 600; line-height: 1.3; color: rgba(255, 255, 255, 0.78); }
+.about-team-name { font-size: 16px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+.about-team-role { font-size: 12px; font-weight: 600; line-height: 1.3; color: rgba(255, 255, 255, 0.8); }
 @media (max-width: 991px) {
     .about-team { justify-content: center; }
     .about-team-panel { width: min(100%, 420px); }
+    .about-team::before { inset: 8% 0 -2% 0; margin: 0 auto; width: min(100%, 420px); }
+}
+@media (max-width: 560px) {
+    .about-team-cap { left: 8px; right: 8px; bottom: 8px; padding: 8px 10px; border-radius: 12px; }
+    .about-team-name { font-size: 14px; }
+    .about-team-role { font-size: 11px; }
+    .about-team-amp { width: 40px; height: 40px; margin: -20px 0 0 -20px; font-size: 22px; }
 }

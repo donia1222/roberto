@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202610120945">
+    <link rel="stylesheet" href="css/style.css?v=202610122140">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -221,7 +221,7 @@
   /* Zeichen links, Schriftzug daneben — eine Zeile unten,
      damit Gesicht und Logo im Bild frei bleiben. */
   flex-direction:row;align-items:flex-end;justify-content:flex-start;
-  aspect-ratio:1521/1034;padding:0 22px 22px;gap:12px;
+  aspect-ratio:904/960;padding:0 22px 22px;gap:12px;
   max-width:470px;margin:0 auto;
 }
 .cl--photo .cl-text{flex-direction:row;align-items:baseline;flex-wrap:nowrap;gap:9px;text-align:left;}
@@ -247,12 +247,13 @@
    Nachtmodus: das dunkle Portraet — siehe body.dark-mode weiter unten. */
 .cl-photo::before{
   content:'';position:absolute;inset:0;
-  /* 05/10/2026: la foto que el eligio. Las anteriores siguen ahi por si hay
-     que volver: hero-lweb-hell.jpg, -2 y -3.
-     El hueco tiene la proporcion EXACTA de la foto (1521x1034), asi que
+  /* 12/10/2026: foto nueva, casi cuadrada (hero-roberto-neu.jpg, recortada de
+     heronew.jpg sin la "G." roja del borde). La anterior era hero-lweb-hell-4.jpg
+     (1521x1034) por si hay que volver.
+     El hueco tiene la proporcion EXACTA de la foto (904x960), asi que
      `cover` no recorta nada: se ve entera y sin ampliar. Cambiar ese
      aspect-ratio es lo que antes le cortaba el pelo o la barbilla. */
-  background:url('img/hero-lweb-hell-4.jpg') center center/cover no-repeat;
+  background:url('img/hero-roberto-neu.jpg') center center/cover no-repeat;
 }
 body.dark-mode .cl-photo::before{
   background-image:url('img/roberto-lweb.jpg');
@@ -359,8 +360,8 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
     /* 16/9 en vez de 16/10: la tarjeta baja de alto y el sello de Google
        entra en pantalla sin desplazar. El margin auto a los lados es lo que
        la centra de verdad — antes se iba hacia la derecha. */
-    aspect-ratio:1521/1034;padding:0 18px 16px;
-    max-width:92%;margin:6px auto 12px;
+    aspect-ratio:904/960;padding:0 18px 16px;
+    max-width:min(340px,72%);margin:6px auto 12px;
     /* Correccion optica, no geometrica: la tarjeta YA esta centrada, pero el
        difuminado del borde se come la pared blanca de la izquierda y no el
        cuerpo oscuro de la derecha, asi que el ojo la ve corrida. */
@@ -373,7 +374,7 @@ body.dark-mode .cl-text b{color:#f4f8fc;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(15px,3.6vw,20px);}
 }
 @media(max-width:560px){
-  .cl--photo{aspect-ratio:1521/1034;padding:0 14px 13px;gap:8px;max-width:94%;margin:4px auto 12px;transform:translateX(-2%);}
+  .cl--photo{aspect-ratio:904/960;padding:0 14px 13px;gap:8px;max-width:min(290px,74%);margin:4px auto 12px;transform:translateX(-2%);}
   .cl-photo{border-radius:23px;}
   .cl--photo .cl-mark{width:44px;}
   .cl--photo .cl-text b,.cl--photo .cl-text em{font-size:clamp(13px,4vw,17px);letter-spacing:-.02em;}
@@ -671,11 +672,77 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                 </div>
                 <!-- Nur das Bild mit dem dunklen Verlauf unten —
                      Schriftzug und Code-Zeichen stehen bereits im Bild. -->
-                <div class="cl cl--photo" role="img" aria-label="Lweb Schweiz — Webdesign & App Development">
-                    <span class="cl-photo" aria-hidden="true"></span>
+                <!-- 12/10/2026: en lugar de la foto, una web que se construye sola: el codigo
+                     se escribe en el editor y, linea a linea, la pagina aparece en la vista
+                     previa. Al final, Performance 100 y "Live". La foto paso a "Sobre nosotros".
+                     Volver a la foto: quitar cl--build y poner <span class="cl-photo"></span>. -->
+                <div class="cl cl--photo cl--build" role="img" aria-label="Lweb Schweiz — Webdesign & App Development">
+                    <div class="hb-editor" aria-hidden="true">
+                        <div class="hb-bar"><i></i><i></i><i></i><span class="hb-tab">index.html</span></div>
+                        <pre class="hb-code"><code></code><span class="hb-caret"></span></pre>
+                    </div>
+                    <div class="hb-preview" aria-hidden="true">
+                        <div class="hb-url"><span class="hb-lock"></span>ihre-firma.ch</div>
+                        <div class="hb-site">
+                            <div class="hb-nav" data-hb="1"><b></b><span></span><span></span><span></span></div>
+                            <div class="hb-title" data-hb="2"><span></span><span></span></div>
+                            <div class="hb-cta" data-hb="3"></div>
+                            <div class="hb-grid" data-hb="4"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                    <div class="hb-score" data-hb="5" aria-hidden="true">
+                        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19"/><circle class="hb-ring" cx="22" cy="22" r="19"/></svg>
+                        <b>100</b><small>Performance</small>
+                    </div>
+                    <!-- Solo en el movil (los aros del escritorio no caben): chips que flotan
+                         sobre los bordes de la foto. El aura de color va en .cl--photo::before. -->
+                    <span class="hm-chip hm-chip--web" aria-hidden="true">Websites</span>
+                    <span class="hm-chip hm-chip--app" aria-hidden="true">Native Apps</span>
+                    <span class="hm-chip hm-chip--code" aria-hidden="true">&lt;/&gt;</span>
                 </div>
             </div>
         </div>
+        <script>
+        /* Hero: escribe el codigo letra a letra y, al acabar cada linea, enciende su parte
+           de la vista previa. Al final, Performance 100. Pausa y vuelve a empezar. */
+        (function(){
+          var box=document.querySelector('.cl--build'); if(!box) return;
+          var code=box.querySelector('.hb-code code'), partes=box.querySelectorAll('[data-hb]');
+          // Cada linea: trozos [clase, texto] y la parte de la vista previa que enciende.
+          var L=[
+            [[['k','<nav'],['',' '],['p','class'],['','='],['s','"lweb"'],['k','>']],1],
+            [[['',' '],['k','<h1>'],['','Swiss Made'],['k','</h1>']],2],
+            [[['',' '],['k','<a'],['',' '],['p','class'],['','='],['s','"cta"'],['k','>']],3],
+            [[['p','.grid'],['',' { '],['p','display'],['',': '],['s','grid'],['',' }']],4],
+            [[['c','// 100% code, no templates']],0],
+            [[['k','deploy'],['',' '],['s','--region ch']],5]
+          ];
+          var quieto=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+          function html(trozos,n){var out='',q=n;for(var i=0;i<trozos.length&&q>0;i++){var t=trozos[i][1].slice(0,q);q-=t.length;
+            out+=trozos[i][0]?'<span class="'+trozos[i][0]+'">'+esc(t)+'</span>':esc(t);}return out;}
+          function encender(n){for(var i=0;i<partes.length;i++){if(+partes[i].getAttribute('data-hb')===n)partes[i].classList.add('is-on');}}
+          function pintar(hechas,linea,n){var out='';for(var i=0;i<hechas;i++)out+='<span class="l">'+html(L[i][0],1e9)+'</span>';
+            if(linea!=null)out+='<span class="l">'+html(L[linea][0],n)+'</span>';code.innerHTML=out;}
+          if(quieto){pintar(L.length);for(var j=1;j<=5;j++)encender(j);return;}
+          var vivo=true;
+          new IntersectionObserver(function(e){vivo=e[0].isIntersecting;}).observe(box);
+          function ronda(){
+            for(var i=0;i<partes.length;i++)partes[i].classList.remove('is-on');
+            var linea=0,n=0;
+            (function paso(){
+              if(!vivo){setTimeout(paso,400);return;}
+              var largo=L[linea][0].reduce(function(a,t){return a+t[1].length;},0);
+              n++;pintar(linea,linea,n);
+              if(n>=largo){if(L[linea][1])encender(L[linea][1]);linea++;n=0;
+                if(linea>=L.length){pintar(L.length);setTimeout(ronda,7000);return;}
+                setTimeout(paso,380);return;}
+              setTimeout(paso,32+Math.random()*40);
+            })();
+          }
+          setTimeout(ronda,600);
+        })();
+        </script>
         <a href="#vergleich" class="hero-scroll-hint" aria-label="Weiter scrollen">
             <span data-i18n="hero.scroll.hint">Mehr erfahren</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -728,15 +795,126 @@ body.dark-mode .hf-halo{opacity:.75;}
   .hf-anillo,.hf-sat,.hf-halo{animation:none;}
 }
 
+/* Movil: algo vivo alrededor de la foto (12/10/2026). Un aura de color que gira
+   despacio detras y asoma por los bordes difuminados, y tres chips que se mecen
+   encima de los bordes. En el escritorio no: alli estan los aros. */
+@property --hm-a{syntax:'<angle>';inherits:false;initial-value:0deg;}
+.hm-chip{display:none;}
+@media(max-width:992px){
+  .cl--photo::before{
+    /* Empieza 44px por debajo del borde de arriba de la foto: si el brillo sube
+       hasta el borde del hero, este lo corta en seco y se ve una linea entre el
+       header y el hero. (Una mascara no sirve: recorta tambien el desenfoque.) */
+    content:'';position:absolute;inset:44px -14px -14px;z-index:-1;border-radius:36px;
+    background:conic-gradient(from var(--hm-a),#fe6c75,#ffb38a,#9db8ff,#fe6c75);
+    filter:blur(24px);opacity:.5;
+    animation:hmAura 9s linear infinite,hmLatir 6s ease-in-out infinite;
+  }
+  .hm-chip{
+    display:inline-flex;align-items:center;position:absolute;z-index:3;
+    padding:6px 12px;border-radius:999px;
+    font:700 11px/1 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:.02em;color:#fff;
+    box-shadow:0 8px 22px -8px rgba(15,23,42,.45);
+    animation:hmFlotar 5.5s ease-in-out infinite alternate;
+  }
+  .hm-chip--web{top:14%;left:-11%;background:var(--begonia400,#fe6c75);--r:-8deg;}
+  .hm-chip--app{bottom:16%;right:-13%;background:var(--gunpowder400,#6b7d99);--r:6deg;animation-delay:-2.2s;animation-duration:6.5s;}
+  .hm-chip--code{top:-10px;right:10%;background:#fff;color:var(--begonia400,#fe6c75);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;--r:4deg;animation-delay:-4s;}
+  body.dark-mode .hm-chip--code{background:#1a2433;}
+}
+@keyframes hmAura{to{--hm-a:360deg}}
+
+/* ---- Hero: la web que se construye sola (12/10/2026) ---------------------
+   Editor oscuro detras, vista previa clara delante y algo girada, y el
+   indicador de rendimiento. El script de abajo escribe el codigo y enciende
+   cada parte de la vista previa (data-hb) al terminar su linea. */
+.cl--build{aspect-ratio:1/1.02;padding:0;display:block;}
+.cl--build .hb-editor{
+  position:absolute;left:0;top:4%;width:84%;height:62%;
+  border-radius:18px;overflow:hidden;
+  background:linear-gradient(160deg,#16202f,#0b121c 70%);
+  box-shadow:0 30px 60px -24px rgba(11,18,28,.55),inset 0 0 0 1px rgba(255,255,255,.08);
+  transform:perspective(1200px) rotateY(9deg) rotateX(3deg);transform-origin:left center;
+}
+.hb-bar{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.06);}
+.hb-bar i{width:9px;height:9px;border-radius:50%;background:#ff5f57;}
+.hb-bar i:nth-child(2){background:#febc2e;}
+.hb-bar i:nth-child(3){background:#28c840;}
+.hb-tab{margin-left:10px;padding:4px 10px;border-radius:7px;background:rgba(255,255,255,.06);
+  font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:rgba(255,255,255,.7);}
+.hb-code{margin:0;padding:14px 16px;font:500 clamp(10.5px,1.05vw,13px)/1.75 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#c9d4e3;white-space:pre;overflow:hidden;counter-reset:hbl;}
+.hb-code .l{display:block;}
+.hb-code .l::before{counter-increment:hbl;content:counter(hbl);display:inline-block;width:1.6em;margin-right:.9em;
+  text-align:right;color:rgba(255,255,255,.22);}
+.hb-code .k{color:#fe6c75;}  .hb-code .s{color:#7ee0a8;}  .hb-code .p{color:#8fb6ff;}  .hb-code .c{color:rgba(255,255,255,.35);}
+.hb-caret{display:inline-block;width:7px;height:1.2em;margin-left:1px;vertical-align:-.2em;background:#fe6c75;
+  animation:hbCaret 1s steps(1) infinite;}
+@keyframes hbCaret{50%{opacity:0}}
+.cl--build .hb-preview{
+  position:absolute;right:0;bottom:2%;width:62%;height:62%;
+  border-radius:16px;overflow:hidden;background:#fff;
+  box-shadow:0 40px 70px -26px rgba(16,24,40,.45),0 0 0 1px rgba(16,24,40,.06);
+  transform:perspective(1200px) rotateY(-10deg) rotateX(2deg);transform-origin:right center;
+}
+.hb-url{display:flex;align-items:center;gap:6px;margin:9px 10px 0;padding:6px 10px;border-radius:8px;background:#f1f4f8;
+  font:600 10px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#6b7d99;}
+.hb-lock{width:7px;height:8px;border-radius:2px;background:#28c840;}
+.hb-site{position:relative;padding:12px 14px;display:flex;flex-direction:column;gap:12px;}
+.hb-site [data-hb],.hb-score{opacity:0;transform:translateY(10px) scale(.98);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+.cl--build .is-on{opacity:1;transform:none;}
+.hb-nav{display:flex;align-items:center;gap:8px;}
+.hb-nav b{width:22px;height:8px;border-radius:4px;background:#0f1d2c;margin-right:auto;}
+.hb-nav span{width:16px;height:5px;border-radius:3px;background:#d5dde8;}
+.hb-title{display:flex;flex-direction:column;gap:6px;padding-top:6px;}
+.hb-title span{height:11px;border-radius:6px;background:#0f1d2c;width:86%;}
+.hb-title span+span{width:60%;background:linear-gradient(90deg,#fe6c75,#ffb38a);}
+.hb-cta{width:42%;height:18px;border-radius:999px;background:#fe6c75;box-shadow:0 8px 18px -8px rgba(254,108,117,.9);}
+.hb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.hb-grid span{aspect-ratio:1/1.1;border-radius:9px;background:linear-gradient(160deg,#eef2f7,#dfe6ef);}
+.hb-grid span:nth-child(2){background:linear-gradient(160deg,#ffe3e5,#ffd0d4);}
+.cl--build .hb-score{
+  position:absolute;left:4%;bottom:6%;z-index:4;display:grid;grid-template-columns:auto auto;align-items:center;column-gap:8px;
+  padding:9px 14px 9px 9px;border-radius:16px;background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 18px 40px -16px rgba(16,24,40,.45),0 0 0 1px rgba(16,24,40,.05);
+}
+.hb-score svg{grid-row:span 2;width:40px;height:40px;transform:rotate(-90deg);}
+.hb-score circle{fill:none;stroke:#e3f7ea;stroke-width:4;}
+.hb-score .hb-ring{stroke:#16a34a;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1) .2s;}
+.hb-score.is-on .hb-ring{stroke-dashoffset:0;}
+.hb-score b{font:800 20px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#16a34a;}
+.hb-score small{font:700 10px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#6b7d99;letter-spacing:.04em;text-transform:uppercase;}
+body.dark-mode .cl--build .hb-score{background:rgba(22,32,47,.92);}
+body.dark-mode .cl--build .hb-preview{box-shadow:0 40px 70px -26px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);}
+/* Escritorio: dentro de los aros. */
+@media(min-width:993px){.cl--photo.cl--build{max-width:min(520px,86%);}}
+/* Movil: algo mas grande que la foto y sin girar tanto. */
+@media(max-width:992px){
+  .cl--photo.cl--build{max-width:min(380px,90%);transform:none;}
+  .cl--build .hb-editor{transform:perspective(1200px) rotateY(6deg);}
+  .cl--build .hb-preview{transform:perspective(1200px) rotateY(-6deg);}
+}
+@media(max-width:560px){.cl--photo.cl--build{max-width:min(350px,88%);aspect-ratio:1/0.96;}}
+@media(prefers-reduced-motion:reduce){.hb-caret{animation:none;}}
+@keyframes hmLatir{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.62;transform:scale(1.04)}}
+@keyframes hmFlotar{from{transform:translateY(0) rotate(var(--r,0deg))}to{transform:translateY(-7px) rotate(calc(var(--r,0deg) * -.4))}}
+@media(prefers-reduced-motion:reduce){
+  .cl--photo::before,.hm-chip{animation:none;}
+}
+
 /* La foto, un punto mas pequeña en el escritorio: asi respira dentro de los
    aros en vez de rozarlos. Va en min-width para no tocar el movil, cuyas
    reglas estan mas abajo en el fichero. Los aros no se mueven: miden 168% de
    la COLUMNA, no de la foto. */
 @media(min-width:993px){
   /* Para que la tarjeta quepa ENTERA dentro del aro pequeño manda su diagonal,
-     no su ancho: con la proporcion 1521/1034 la diagonal es el ancho x1,21, y
-     el aro mide el 90% de la columna. De ahi sale el 74%. */
-  .cl--photo{max-width:min(400px,74%);}
+     no su ancho: con la proporcion 904/960 (foto del 12/10/2026) la diagonal es
+     el ancho x1,46, pero las esquinas van redondeadas y difuminadas, asi que
+     basta con un 62%. Con la foto anterior (1521/1034) era el 74%. */
+  .cl--photo{max-width:min(380px,62%);}
 }
 
 
@@ -772,7 +950,7 @@ body.dark-mode .hero-scroll-hint{border-color:#1e2d3d;color:#94a3b8;}
             <div class="ia-copy">
                 <span class="ia-badge" data-i18n="interaktiv.badge">Neu</span>
                 <h2 class="ia-title" id="ia-title" data-i18n-html="interaktiv.title">Interaktive Websites, <span>die man erlebt.</span></h2>
-               
+                <p class="ia-desc" data-i18n="interaktiv.desc">Mein neues Angebot: Websites mit Kamerafahrten, Scroll-Animationen und Effekten, wie man sie sonst nur von grossen Marken kennt. Alles darüber, mit Beispielen zum Ausprobieren, auf interactive-web.ch.</p>
                 <ul class="ia-features">
                     <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 15l6 6 6-6"/></svg><span data-i18n="interaktiv.f1">Scroll-Animationen</span></li>
                     <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg><span data-i18n="interaktiv.f2">Kamerafahrten durch Bilder</span></li>
@@ -2941,7 +3119,7 @@ function expandBranchen(btn){
             </div>
             <div class="about-image about-team">
                 <figure class="about-team-panel">
-                    <span class="about-team-fuge" aria-hidden="true"><i></i><i></i></span>
+                    <span class="about-team-seam" aria-hidden="true"><span class="about-team-amp">&amp;</span></span>
                     <div class="about-team-half">
                         <img class="about-team-photo about-team-photo--andrea" src="img/andrea-circle.jpg" alt="Andrea Salvador, B&uuml;ro und Kundenkontakt bei Lweb in Sevelen" loading="lazy" decoding="async">
                         <figcaption class="about-team-cap">
@@ -2950,7 +3128,7 @@ function expandBranchen(btn){
                         </figcaption>
                     </div>
                     <div class="about-team-half">
-                        <img class="about-team-photo about-team-photo--roberto" src="img/roberto-circle.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
+                        <img class="about-team-photo about-team-photo--roberto" src="img/hero-roberto-neu.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
                         <figcaption class="about-team-cap">
                             <span class="about-team-name">Roberto</span>
                             <span class="about-team-role" data-i18n="about.role.roberto">Entwicklung</span>
