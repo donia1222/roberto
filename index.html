@@ -982,10 +982,21 @@ body.dark-mode .hw-tab{background:#0f1a26;color:#9fb0c7;}
 body.dark-mode .hw,body.dark-mode .hw-view,body.dark-mode .hw-build{background:#0f1a26;}
 body.dark-mode .hw-h1{background:#e7edf5;}
 @media(min-width:993px){.cl--photo.cl--web{max-width:min(540px,92%);}}
-@media(max-width:992px){.cl--photo.cl--web{max-width:min(420px,92%);transform:none;}}
-@media(max-width:560px){.cl--photo.cl--web{max-width:min(360px,94%);}
-  .cl--web .hb-score{right:-4px;bottom:40px;padding:7px 11px 7px 7px;}
-  .hb-score svg{width:32px;height:32px;} .hb-score b{font-size:17px;}}
+@media(max-width:992px){
+  /* Centrado a mano y no «lo centra el flex»: en el movil se veia corrido a
+     la derecha. Con margin auto y align-self no depende de como interprete
+     cada navegador el ancho maximo dentro de la columna. */
+  .cl--photo.cl--web{max-width:min(420px,92%);transform:none;
+    margin-left:auto;margin-right:auto;align-self:center;}
+}
+@media(max-width:560px){
+  .cl--photo.cl--web{max-width:min(360px,94%);}
+  /* La chapa, dentro de la tarjeta. Asomando por la derecha —y sin nada que
+     la compense por la izquierda— el conjunto parecia descolocado aunque
+     estuviera centrado al milimetro. */
+  .cl--web .hb-score{right:8px;bottom:46px;padding:7px 11px 7px 7px;}
+  .hb-score svg{width:32px;height:32px;} .hb-score b{font-size:17px;}
+}
 @media(prefers-reduced-motion:reduce){.hw-img{animation:none;}}
 
 /* ---- Lo de antes: el editor con el codigo (12/10/2026) -------------------
