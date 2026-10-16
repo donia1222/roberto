@@ -15,6 +15,14 @@
        OJO: el rojo de la bandera suiza (#d52b1e) NO sale de aqui y no se
        toca. Es la bandera, no la marca.
        ------------------------------------------------------------------ */
+    /* El segundo color: gris pizarra. El coral se queda de marca —es el de
+       las tarjetas de visita— y este va en los botones que NO son «pide
+       cita»: la consulta gratuita, el blog, el bot y la tarjeta de visita.
+       Asi el rojo solo sale donde de verdad se quiere que pulse. */
+    --pizarra-rgb: 71,85,105;
+    --pizarra: rgb(var(--pizarra-rgb));
+    --pizarra-claro: rgb(87,102,124);
+
     --acento-rgb: 254,108,117;
     --acento-2-rgb: 225,84,93;
     --acento-3-rgb: 240,96,105;
@@ -93,6 +101,16 @@ h4 { font-size: 18px; line-height: 1.25; font-weight: 700; }
     background: var(--begonia400);
     color: #fff;
     box-shadow: 0 6px 30px rgba(var(--acento-rgb), 0.35);
+}
+/* Variante en pizarra del boton grande. Se pone a mano, boton por boton: el
+   de «Termin vereinbaren» de abajo del todo sigue en coral a proposito. */
+.gbcta--pizarra {
+    background: var(--pizarra);
+    box-shadow: 0 6px 30px rgba(var(--pizarra-rgb), 0.35);
+}
+.gbcta--pizarra:hover {
+    background: var(--pizarra-claro);
+    box-shadow: 0 4px 20px rgba(var(--pizarra-rgb), 0.25);
 }
 .gbcta--primary:hover {
     background: #ff8a91;
@@ -746,8 +764,8 @@ body.dark-mode .header-nav-sub-hint {
     letter-spacing: 0.03em;
 }
 .mobile-menu-action-btn:hover {
-    background: var(--begonia400);
-    border-color: var(--begonia400);
+    background: var(--pizarra);
+    border-color: var(--pizarra);
 }
 
 /* vCard button */
@@ -756,7 +774,7 @@ body.dark-mode .header-nav-sub-hint {
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    background: var(--begonia400);
+    background: var(--pizarra);
     color: #fff;
     border: none;
     border-radius: 1000px;
@@ -930,7 +948,7 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
     align-items: center;
 }
 .hero-content { max-width: 600px; }
-.hero-content h1 { color: var(--gunpowder900); margin-bottom: 24px; }
+.hero-content h1 { color: var(--pizarra); margin-bottom: 24px; }
 .hero-content h1 span { color: var(--begonia400); }
 .hero-badge {
     display: inline-flex;
@@ -1244,7 +1262,7 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 /* ===== SECTIONS ===== */
 .section { padding: 100px 0; overflow: hidden; }
 .section-header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
-.section-header h2 { margin-bottom: 20px; color: var(--gunpowder900); }
+.section-header h2 { margin-bottom: 20px; color: var(--pizarra); }
 .section-header p { font-size: 18px; line-height: 1.6; color: var(--gunpowder500); }
 
 /* ===== SERVICES ===== */
@@ -1877,7 +1895,7 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 
 /* ===== WEBSITES ===== */
 .websites { background: var(--gunpowder50); overflow: hidden; }
-.websites .section-header h2 { color: var(--gunpowder900); }
+.websites .section-header h2 { color: var(--pizarra); }
 .websites .section-header p { color: var(--gunpowder500); }
 .websites-filter-tabs {
     display: flex;
@@ -2264,8 +2282,10 @@ body.dark-mode .website-card--shop {
     width: max-content;
     will-change: transform;
 }
-.clients-marquee--left .clients-track { animation: clientsLeft 60s linear infinite; }
-.clients-marquee--right .clients-track { animation: clientsRight 60s linear infinite; }
+/* 16/10/2026 · Las dos cintas de logos se han cambiado por un bloque de chips
+   (el <style> va con ellos, en el index). Lo de aqui abajo se queda por si
+   hiciera falta volver. */
+
 @keyframes clientsLeft {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -2420,7 +2440,7 @@ body.dark-mode .website-card--shop {
 /* ===== ABOUT ===== */
 .about { background: var(--gunpowder50); overflow: hidden; }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.about-content h2 { margin-bottom: 20px; color: var(--gunpowder900); }
+.about-content h2 { margin-bottom: 20px; color: var(--pizarra); }
 .about-content > p { font-size: 17px; line-height: 1.7; color: var(--gunpowder500); margin-bottom: 28px; }
 .about-points { display: flex; flex-direction: column; gap: 14px; }
 .about-point { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; color: var(--gunpowder600); }
@@ -2867,7 +2887,7 @@ body.dark-mode .hire-banner-text { color: #94a3b8; }
     align-items: center;
     gap: 10px;
     padding: 14px 28px;
-    background: var(--begonia400);
+    background: var(--pizarra);
     color: #fff;
     border: none;
     border-radius: 1000px;
@@ -2876,12 +2896,12 @@ body.dark-mode .hire-banner-text { color: #94a3b8; }
     font-family: 'Plus Jakarta Sans', Arial, sans-serif;
     cursor: pointer;
     transition: all 200ms ease;
-    box-shadow: 0 6px 24px rgba(var(--acento-rgb), 0.3);
+    box-shadow: 0 6px 24px rgba(var(--pizarra-rgb), 0.3);
 }
 .faq-bot-btn:hover {
-    background: var(--begonia500);
+    background: var(--pizarra-claro);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(var(--acento-rgb), 0.4);
+    box-shadow: 0 8px 30px rgba(var(--pizarra-rgb), 0.4);
 }
 
 /* ===== CHATBOT MODAL ===== */

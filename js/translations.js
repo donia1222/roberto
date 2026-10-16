@@ -369,7 +369,8 @@ var translations = {
         'bk.cb.done.title': 'Anfrage gesendet! 📞',
         'bk.cb.done.text': 'Roberto ruft Sie so bald wie möglich zurück.',
         // Clients Trust
-        'clients.title': 'Letzte Projekte von <span style="color:var(--begonia400)">Lweb</span>',
+        'clients.title': 'Referenzen von <span style="color:var(--begonia400)">Lweb</span>',
+        'refs.obra': 'In Arbeit',
         'clients.desc': 'Betriebe aus Buchs SG, Vaduz und Sevelen, deren Website ich gebaut habe und weiter betreue.',
         // Tech Stack
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Modernste Technologien',
@@ -1399,7 +1400,8 @@ var translations = {
         'bk.cb.done.title': 'Request sent! 📞',
         'bk.cb.done.text': 'Roberto will call you back as soon as possible.',
         // Clients Trust
-        'clients.title': 'Latest projects by <span style="color:var(--begonia400)">Lweb</span>',
+        'clients.title': 'References from <span style="color:var(--begonia400)">Lweb</span>',
+        'refs.obra': 'In progress',
         'clients.desc': 'Businesses in Buchs SG, Vaduz and Sevelen whose websites I built and still look after.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Latest Technologies',
         'tech.desc': 'I work with the latest frameworks and tools for maximum performance and future-proofing.',
@@ -2549,7 +2551,8 @@ var translations = {
         'bk.cb.done.title': '¡Solicitud enviada! 📞',
         'bk.cb.done.text': 'Roberto te llamará lo antes posible.',
         // Clients Trust
-        'clients.title': 'Últimos proyectos de <span style="color:var(--begonia400)">Lweb</span>',
+        'clients.title': 'Referencias de <span style="color:var(--begonia400)">Lweb</span>',
+        'refs.obra': 'En proceso',
         'clients.desc': 'Negocios de Buchs SG, Vaduz y Sevelen a los que les hice la web y a los que sigo atendiendo.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Tecnologías modernas',
         'tech.desc': 'Trabajo con los frameworks y herramientas más recientes para máximo rendimiento y preparación para el futuro.',
@@ -3699,7 +3702,8 @@ var translations = {
         'bk.cb.done.title': 'Demande envoyée ! 📞',
         'bk.cb.done.text': 'Roberto vous rappellera dès que possible.',
         // Clients Trust
-        'clients.title': 'Derniers projets de <span style="color:var(--begonia400)">Lweb</span>',
+        'clients.title': 'Références de <span style="color:var(--begonia400)">Lweb</span>',
+        'refs.obra': 'En cours',
         'clients.desc': 'Des entreprises de Buchs SG, Vaduz et Sevelen dont j\'ai construit le site et dont je m\'occupe encore.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Technologies modernes',
         'tech.desc': 'Je travaille avec les frameworks et outils les plus récents pour des performances maximales.',
@@ -4849,7 +4853,8 @@ var translations = {
         'bk.cb.done.title': 'Richiesta inviata! 📞',
         'bk.cb.done.text': 'Roberto ti richiamerà il prima possibile.',
         // Clients Trust
-        'clients.title': 'Ultimi progetti di <span style="color:var(--begonia400)">Lweb</span>',
+        'clients.title': 'Referenze di <span style="color:var(--begonia400)">Lweb</span>',
+        'refs.obra': 'In corso',
         'clients.desc': 'Aziende di Buchs SG, Vaduz e Sevelen di cui ho costruito il sito e che seguo tuttora.',
         'tech.title': '<svg style="display:inline-block;vertical-align:middle;margin-right:10px;color:var(--accent-orange)" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Tecnologie moderne',
         'tech.desc': 'Lavoro con i framework e gli strumenti più recenti per le massime prestazioni.',
