@@ -2023,10 +2023,13 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
         .prs-name{margin:18px 0 0;
           font:800 17px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;
           letter-spacing:-.01em;color:var(--pizarra);}
-        /* Lo unico de color en todo el bloque. */
+        /* Los precios, en pizarra. El coral se queda para uno solo: el de la
+           tarjeta del medio. Tres cifras rojas seguidas son las que hacian
+           que el bloque pareciera una oferta de supermercado. */
         .prs-price{margin:8px 0 0;
           font:800 clamp(28px,3.2vw,34px)/1.1 'Plus Jakarta Sans',system-ui,sans-serif;
-          letter-spacing:-.03em;color:var(--begonia400);}
+          letter-spacing:-.03em;color:var(--pizarra);}
+        .prs-card--top .prs-price{color:var(--begonia400);}
         /* El margen de abajo del texto es el hueco minimo hasta el boton;
            el boton se pega al suelo con margin-top:auto para que los tres
            queden a la misma altura aunque los textos midan distinto. */
@@ -2047,6 +2050,8 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
 
         body.dark-mode .prs-card{background:#16202f;border-color:rgba(255,255,255,.08);}
         body.dark-mode .prs-name{color:#eef3f9;}
+        body.dark-mode .prs-price{color:#eef3f9;}
+        body.dark-mode .prs-card--top .prs-price{color:var(--begonia400);}
         body.dark-mode .prs-ico{background:rgba(255,255,255,.07);color:#c6d3e4;}
         body.dark-mode .prs-cta{color:#dce5f0;background:transparent;border-color:rgba(255,255,255,.22);}
         body.dark-mode .prs-cta:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.45);}
