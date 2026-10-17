@@ -195,7 +195,7 @@
     
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=202610161620">
+    <link rel="stylesheet" href="css/style.css?v=202610170910">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM0GM04YJ1"></script>
   <script>
@@ -1929,145 +1929,139 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
             <h2 data-i18n-html="pricing.title">Transparente <span style="color:var(--begonia400)">Preise</span> <svg class="pricing-diamond-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--begonia400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:6px;animation:diamondShine 2.5s ease-in-out infinite;"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-2 6 4 13 4-13-2-6"/></svg></h2>
             <p data-i18n="pricing.desc">Faire Preise, keine versteckten Kosten. Direkt vom Entwickler, ohne Agenturaufschlag.</p>
         </div>
-        <!-- Tabs for Desktop -->
-        <div style="margin-top:32px;">
-            <div class="pricing-tabs websites-filter-tabs">
-                <button class="pricing-tab website-filter-tab tab-visible active" onclick="showPricingTab(0)">Web Starter</button>
-                <button class="pricing-tab website-filter-tab tab-visible" onclick="showPricingTab(1)">Business Website</button>
-                <button class="pricing-tab website-filter-tab tab-visible" onclick="showPricingTab(2)">Online Shop</button>
-            </div>
+        <!-- =================================================================
+             LOS PRECIOS · 17/10/2026
+             Antes eran tres pestañas y una tarjeta con el borde coral
+             parpadeando. Llamaba la atencion, si, pero de la manera en que
+             la llama un juguete: mucho color y poco precio.
+             Ahora las tres estan a la vista a la vez y se comparan de un
+             vistazo, que es lo unico que se quiere hacer en un bloque de
+             precios. El color vivo se guarda para una sola cosa: el precio.
+             Todo lo demas va en el azul pizarra de los botones nuevos.
+             La del medio lleva el rotulo de «la mas elegida» y el boton
+             relleno; es la que interesa vender. Para moverlo, cambiar la
+             clase prs-card--top de sitio.
+             Lo anterior (pestañas, carrusel y showPricingTab) esta en
+             index.html.antes-precios.
+             ================================================================= -->
+        <div class="prs">
 
-            <!-- Desktop Grid -->
-            <div class="services-grid desktop-grid" style="grid-template-columns:repeat(3,1fr);margin-top:32px;display:grid;">
-                <div class="service-card pricing-card pricing-card-active" id="pricing-card-0" style="text-align:center;border:2px solid var(--begonia400);">
-                    <div class="service-icon service-icon--web" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.starter.title">Starter Website</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.starter.price">ab 990 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.starter.desc">Perfekt für kleine Unternehmen. Responsive Design, bis zu 5 Seiten, Kontaktformular und SEO-Grundlagen.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('small')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-                <div class="service-card pricing-card" id="pricing-card-1" style="text-align:center;">
-                    <div class="service-icon service-icon--mobile" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.business.title">Business Website</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.business.price">ab 1900 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.business.desc">Für KMU und Gewerbe. Individuelles Design, CMS, Animationen, SEO-Optimierung und persönliche Beratung.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('medium')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-                <div class="service-card pricing-card" id="pricing-card-2" style="text-align:center;">
-                    <div class="service-icon service-icon--ai" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.shop.title">Online Shop</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.shop.price">ab 2900 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.shop.desc">Professioneller E-Commerce. Produktverwaltung, Zahlungsabwicklung, Admin-Panel und volle Kontrolle.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('shop')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-            </div>
+            <!-- 1 · Starter -->
+            <article class="prs-card">
+                <span class="prs-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </span>
+                <h4 class="prs-name" data-i18n="pricing.starter.title">Starter Website</h4>
+                <div class="prs-price" data-i18n="pricing.starter.price">ab 990 CHF</div>
+                <p class="prs-desc" data-i18n="pricing.starter.desc">Perfekt für kleine Unternehmen. Responsive Design, bis zu 5 Seiten, Kontaktformular und SEO-Grundlagen.</p>
+                <a href="javascript:void(0)" onclick="openPriceCalc('small')" class="prs-cta">
+                    <span data-i18n="pricing.cta">Preis berechnen</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </article>
 
-            <!-- Mobile Carousel -->
-            <div class="pricing-carousel-mobile" style="display:none;overflow-x:auto;gap:16px;padding:16px 0;-webkit-overflow-scrolling:touch;">
-                <div class="service-card pricing-card pricing-card-active" id="pricing-card-mobile-0" style="text-align:center;flex:0 0 calc(100% - 32px);margin:0 16px;border:2px solid var(--begonia400);">
-                    <div class="service-icon service-icon--web" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.starter.title">Starter Website</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.starter.price">ab 990 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.starter.desc">Perfekt für kleine Unternehmen. Responsive Design, bis zu 5 Seiten, Kontaktformular und SEO-Grundlagen.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('small')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-                <div class="service-card pricing-card" id="pricing-card-mobile-1" style="text-align:center;flex:0 0 calc(100% - 32px);margin:0 16px;">
-                    <div class="service-icon service-icon--mobile" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.business.title">Business Website</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.business.price">ab 1900 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.business.desc">Für KMU und Gewerbe. Individuelles Design, CMS, Animationen, SEO-Optimierung und persönliche Beratung.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('medium')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-                <div class="service-card pricing-card" id="pricing-card-mobile-2" style="text-align:center;flex:0 0 calc(100% - 32px);margin:0 16px;">
-                    <div class="service-icon service-icon--ai" style="width:64px;height:64px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-                    </div>
-                    <h4 style="font-size:1.5rem;color:#4b5563;font-weight:700;" data-i18n="pricing.shop.title">Online Shop</h4>
-                    <div style="font-size:2.4rem;font-weight:800;color:var(--begonia400);margin:12px 0 4px;" data-i18n="pricing.shop.price">ab 2900 CHF</div>
-                    <p style="font-size:0.92rem;" data-i18n="pricing.shop.desc">Professioneller E-Commerce. Produktverwaltung, Zahlungsabwicklung, Admin-Panel und volle Kontrolle.</p>
-                    <a href="javascript:void(0)" onclick="openPriceCalc('shop')" class="service-link" data-i18n="pricing.cta">Preis berechnen <span>&rarr;</span></a>
-                </div>
-            </div>
+            <!-- 2 · Business · la que se quiere vender -->
+            <article class="prs-card prs-card--top">
+                <span class="prs-tag" data-i18n="pricing.badge">Am häufigsten gewählt</span>
+                <span class="prs-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                </span>
+                <h4 class="prs-name" data-i18n="pricing.business.title">Business Website</h4>
+                <div class="prs-price" data-i18n="pricing.business.price">ab 1900 CHF</div>
+                <p class="prs-desc" data-i18n="pricing.business.desc">Für KMU und Gewerbe. Individuelles Design, CMS, Animationen, SEO-Optimierung und persönliche Beratung.</p>
+                <a href="javascript:void(0)" onclick="openPriceCalc('medium')" class="prs-cta prs-cta--lleno">
+                    <span data-i18n="pricing.cta">Preis berechnen</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </article>
 
-            <style>
-                @media(max-width:768px) {
-                    .desktop-grid { display:none!important; }
-                    .pricing-carousel-mobile { display:flex!important; }
-                    .pricing-tabs { display:flex!important; }
-                }
-                @media(min-width:769px) {
-                    .pricing-carousel-mobile { display:none!important; }
-                    .desktop-grid { display:grid!important; }
-                    .pricing-tabs { display:flex!important; }
-                }
-                @keyframes cardPulse {
-                    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--acento-rgb), 0.7), 0 0 20px rgba(var(--acento-rgb), 0.3); }
-                    50% { box-shadow: 0 0 0 15px rgba(var(--acento-rgb), 0), 0 0 40px rgba(var(--acento-rgb), 0.6); }
-                }
-                .pricing-card-active {
-                    animation: cardPulse 2.5s ease-in-out infinite !important;
-                }
-            </style>
+            <!-- 3 · Online Shop -->
+            <article class="prs-card">
+                <span class="prs-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                </span>
+                <h4 class="prs-name" data-i18n="pricing.shop.title">Online Shop</h4>
+                <div class="prs-price" data-i18n="pricing.shop.price">ab 2900 CHF</div>
+                <p class="prs-desc" data-i18n="pricing.shop.desc">Professioneller E-Commerce. Produktverwaltung, Zahlungsabwicklung, Admin-Panel und volle Kontrolle.</p>
+                <a href="javascript:void(0)" onclick="openPriceCalc('shop')" class="prs-cta">
+                    <span data-i18n="pricing.cta">Preis berechnen</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </article>
 
-            <script>
-                function showPricingTab(index) {
-                    var tabs = document.querySelectorAll('.pricing-tab');
-                    var desktopCards = document.querySelectorAll('[id^="pricing-card-"]:not([id*="mobile"])');
-                    var mobileCards = document.querySelectorAll('[id^="pricing-card-mobile-"]');
-                    var mobileCarousel = document.querySelector('.pricing-carousel-mobile');
-
-                    tabs.forEach(function(tab, i) {
-                        if (i === index) {
-                            tab.style.borderColor = 'var(--begonia400)';
-                            tab.style.background = 'var(--begonia400)';
-                            tab.style.color = '#fff';
-                        } else {
-                            tab.style.borderColor = 'var(--gunpowder200)';
-                            tab.style.background = '#fff';
-                            tab.style.color = 'var(--gunpowder600)';
-                        }
-                    });
-
-                    desktopCards.forEach(function(card, i) {
-                        if (i === index) {
-                            card.style.border = '2px solid var(--begonia400)';
-                            card.classList.add('pricing-card-active');
-                        } else {
-                            card.style.border = 'none';
-                            card.classList.remove('pricing-card-active');
-                        }
-                    });
-
-                    mobileCards.forEach(function(card, i) {
-                        if (i === index) {
-                            card.style.border = '2px solid var(--begonia400)';
-                            card.classList.add('pricing-card-active');
-                        } else {
-                            card.style.border = 'none';
-                            card.classList.remove('pricing-card-active');
-                        }
-                    });
-
-                    if (mobileCarousel && mobileCards[index]) {
-                        var scrollLeft = mobileCards[index].offsetLeft - mobileCarousel.offsetLeft;
-                        mobileCarousel.scrollTo({
-                            left: scrollLeft - 16,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            </script>
         </div>
+
+        <style>
+        .prs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+          gap:clamp(14px,1.8vw,22px);align-items:stretch;margin-top:34px;}
+
+        .prs-card{position:relative;display:flex;flex-direction:column;
+          padding:30px 26px 26px;border-radius:22px;background:#fff;
+          border:1px solid rgba(16,24,40,.08);
+          box-shadow:0 14px 40px -30px rgba(16,24,40,.65);
+          transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,border-color .25s;}
+        .prs-card:hover{transform:translateY(-3px);
+          border-color:rgba(var(--pizarra-rgb),.28);
+          box-shadow:0 26px 56px -32px rgba(16,24,40,.6);}
+
+        /* La del medio: un poco mas alta y con el borde pizarra. Nada de
+           parpadeos; que destaque por el borde y por el boton relleno. */
+        .prs-card--top{border-color:rgba(var(--pizarra-rgb),.38);
+          box-shadow:0 22px 54px -30px rgba(var(--pizarra-rgb),.75);}
+        .prs-tag{position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+          white-space:nowrap;padding:5px 14px;border-radius:999px;
+          background:var(--pizarra);color:#fff;
+          font:800 10.5px/1 'Plus Jakarta Sans',system-ui,sans-serif;
+          letter-spacing:.09em;text-transform:uppercase;
+          box-shadow:0 8px 20px -10px rgba(var(--pizarra-rgb),.9);}
+
+        .prs-ico{display:inline-flex;align-items:center;justify-content:center;
+          width:46px;height:46px;border-radius:14px;
+          background:rgba(var(--pizarra-rgb),.08);color:var(--pizarra);}
+        .prs-ico svg{width:23px;height:23px;}
+
+        .prs-name{margin:18px 0 0;
+          font:800 17px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;
+          letter-spacing:-.01em;color:var(--pizarra);}
+        /* Lo unico de color en todo el bloque. */
+        .prs-price{margin:8px 0 0;
+          font:800 clamp(28px,3.2vw,34px)/1.1 'Plus Jakarta Sans',system-ui,sans-serif;
+          letter-spacing:-.03em;color:var(--begonia400);}
+        /* El margen de abajo del texto es el hueco minimo hasta el boton;
+           el boton se pega al suelo con margin-top:auto para que los tres
+           queden a la misma altura aunque los textos midan distinto. */
+        .prs-desc{margin:12px 0 24px;
+          font:500 14px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;
+          color:var(--gunpowder400);}
+
+        .prs-cta{margin-top:auto;display:flex;align-items:center;justify-content:center;
+          gap:8px;padding:13px 18px;border-radius:999px;box-sizing:border-box;
+          border:1.5px solid rgba(var(--pizarra-rgb),.3);background:#fff;
+          color:var(--pizarra);text-decoration:none;
+          font:800 14.5px/1 'Plus Jakarta Sans',system-ui,sans-serif;
+          transition:background .25s,border-color .25s,color .25s;}
+        .prs-cta:hover{border-color:var(--pizarra);background:rgba(var(--pizarra-rgb),.06);}
+        .prs-cta--lleno{background:var(--pizarra);border-color:var(--pizarra);color:#fff;
+          box-shadow:0 10px 26px -14px rgba(var(--pizarra-rgb),.95);}
+        .prs-cta--lleno:hover{background:var(--pizarra-claro);border-color:var(--pizarra-claro);}
+
+        body.dark-mode .prs-card{background:#16202f;border-color:rgba(255,255,255,.08);}
+        body.dark-mode .prs-name{color:#eef3f9;}
+        body.dark-mode .prs-ico{background:rgba(255,255,255,.07);color:#c6d3e4;}
+        body.dark-mode .prs-cta{color:#dce5f0;background:transparent;border-color:rgba(255,255,255,.22);}
+        body.dark-mode .prs-cta:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.45);}
+        body.dark-mode .prs-cta--lleno{color:#0f1d2c;background:#eef3f9;border-color:#eef3f9;}
+        body.dark-mode .prs-cta--lleno:hover{background:#fff;border-color:#fff;}
+
+        @media(max-width:900px){
+          .prs{grid-template-columns:1fr;gap:26px;max-width:460px;margin-left:auto;margin-right:auto;}
+          .prs-card{padding:26px 22px 22px;}
+        }
+        @media(prefers-reduced-motion:reduce){
+          .prs-card{transition:none;}
+          .prs-card:hover{transform:none;}
+        }
+        </style>
     </div>
 </section>
 
@@ -4442,7 +4436,7 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202610161620"></script>
+<script src="js/translations.js?v=202610170910"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
 <script src="js/main.js?v=202610120945"></script>
 <script defer src="/_vercel/insights/script.js"></script>
