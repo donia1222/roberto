@@ -497,7 +497,12 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <header class="header">
     <div class="header-inner">
         <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)">
-            <span class="header-logo-text">Lweb<span class="header-logo-person"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Sevelen</span></span>
+            <span class="header-logo-text">Lweb<span class="header-logo-person"><!--
+     19/10/2026 · el rotulo de debajo depende del dominio: lweb.ch dice
+     Sevelen con la cruz suiza, webseite.li dice Liechtenstein con su
+     bandera. El de Liechtenstein nace escondido por CSS, asi que en
+     lweb.ch no parpadea.
+  --><span class="domain-ch"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Sevelen</span><span class="domain-li"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#002b7f"/><rect y="16" width="32" height="16" fill="#ce1126"/><path d="M10 11h4V9.2a1.4 1.4 0 111.4-.2V11h4v2.2H10z" fill="#ffd83d"/></svg>Liechtenstein</span></span></span>
         </a>
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
             <a href="#vergleich" class="header-nav-item onep-link"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
@@ -1934,6 +1939,11 @@ document.querySelectorAll('.vn-sl').forEach(function (caja) {
   font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gunpowder300);}
 .vn-sl-rotulos .es-hoy{color:var(--begonia400);}
+/* El rotulo de Liechtenstein solo aparece en webseite.li (lo enciende el
+   interruptor del final de la pagina). Asi en lweb.ch no se ve ni un
+   parpadeo. */
+.header-logo-person .domain-li{display:none;align-items:center;gap:4px;}
+.header-logo-person .domain-ch{display:inline-flex;align-items:center;gap:4px;}
 .vn-fuente{display:block;margin-top:4px;font-size:13.5px;color:var(--gunpowder300);}
 .vn-sl{position:relative;max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;
   border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);
@@ -4793,12 +4803,23 @@ function askFromList(q){
 <script>
 (function(){
   var h = window.location.hostname.replace('www.','');
-  /* Logo passt sich der Domain an: lweb.ch zeigt Schweiz,
-     webseite.li zeigt Liechtenstein. Lokal erscheinen beide. */
+  if (h !== 'lweb.ch' && h !== 'webseite.li') return;   // en local, se ve todo
+
   if (h === 'lweb.ch') {
     document.querySelectorAll('.domain-li, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
-  } else if (h === 'webseite.li') {
+    return;
+  }
+
+  /* webseite.li.
+     OJO (19/10/2026): esto TIENE que correr DESPUES del traductor. El
+     traductor reescribe los mismos parrafos al aplicar el idioma y al
+     cambiarlo, asi que si se ajusta solo una vez al cargar, los textos de
+     Liechtenstein duran un suspiro y luego vuelven a los generales. Por eso
+     se envuelve switchLang y se vuelve a pasar en cada cambio de idioma. */
+  function ajustar() {
+
     document.querySelectorAll('.domain-ch, .domain-sep').forEach(function(el){ el.style.display = 'none'; });
+    document.querySelectorAll('.domain-li').forEach(function(el){ el.style.display = 'inline-flex'; });
     // Replace Buchs references with Liechtenstein in marketing text
     document.title = document.title.replace(/Buchs SG & St\. Gallen/g,'Liechtenstein').replace(/Buchs SG/g,'Liechtenstein').replace(/Buchs/g,'Liechtenstein');
     var meta = document.querySelector('meta[name="description"]');
@@ -4811,11 +4832,15 @@ function askFromList(q){
     if(twT) twT.content = twT.content.replace(/Buchs SG/g,'Liechtenstein');
     var twD = document.querySelector('meta[name="twitter:description"]');
     if(twD) twD.content = twD.content.replace(/Buchs SG/g,'Liechtenstein');
-    // Hero
-    var h1 = document.querySelector('[data-i18n-html="hero.title"]');
-    if(h1) h1.innerHTML = 'Webseiten für Unternehmen in<br><span>Liechtenstein</span>';
-    var sub = document.querySelector('[data-i18n="hero.subtitle"]');
-    if(sub) sub.textContent = 'Moderne Websites und Apps für lokale Unternehmen — schnell, professionell und zu fairen Preisen. Ihr persönlicher Ansprechpartner vor Ort in Liechtenstein, Vaduz und Umgebung.';
+    /* El titular NO se cambia (19/10/2026): «Websites und Apps. Genau so,
+       wie Sie sie wollen.» es el que vende, y se queda igual en los dos
+       dominios. Liechtenstein sigue nombrado debajo, en la frase de apoyo y
+       en la cuarta ventaja, que es donde cuenta para que Google lo lea sin
+       robarle el sitio al titular. */
+    /* Ojo: el parrafo lleva data-i18n-HTML, no data-i18n, asi que hay que
+       buscarlo por su clase o no se encuentra. */
+    var sub = document.querySelector('.hero-subtitle');
+    if(sub) sub.textContent = 'Websites und Apps von Hand gebaut, für lokale Unternehmen in Liechtenstein, Vaduz und Umgebung — mit einem persönlichen Ansprechpartner statt einer Agentur.';
     var f4 = document.querySelector('[data-i18n="hero.feature4"]');
     if(f4) f4.textContent = 'Persönlicher Ansprechpartner vor Ort in Liechtenstein';
     // Services
@@ -4850,6 +4875,22 @@ function askFromList(q){
         });
       });
     }
+    }
+
+  function cuandoToque() {
+    ajustar();
+    if (typeof window.switchLang === 'function' && !window.switchLang.__conDominio) {
+      var original = window.switchLang;
+      var envuelta = function (idioma) { original(idioma); ajustar(); };
+      envuelta.__conDominio = true;
+      window.switchLang = envuelta;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(cuandoToque, 0); });
+  } else {
+    setTimeout(cuandoToque, 0);
   }
 })();
 </script>
