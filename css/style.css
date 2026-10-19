@@ -1031,6 +1031,65 @@ body.dark-mode .vcard-modal-download:hover { background: var(--begonia500); }
 .hero-feature-icon svg { width: 14px; height: 14px; fill: #fff; }
 .hero-image { display: flex; justify-content: center; align-items: center; }
 
+/* ===== LA FOTO DEL HERO · 19/10/2026 =====================================
+   Dos recortes con fondo transparente sobre un fondo de la casa. Ella
+   delante —es quien escribe los correos—, el detras. Ninguno cortado por el
+   borde. El dibujo animado de antes sigue en el HTML con la clase «oculto».
+   ========================================================================= */
+.hero-anim.oculto { display: none; }
+.hero-foto{position:relative;width:100%;max-width:560px;aspect-ratio:4/3.1;
+  border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 78% 4%, rgba(var(--acento-rgb),.16) 0%, rgba(var(--acento-rgb),0) 55%),
+    radial-gradient(100% 80% at 8% 100%, rgba(15,29,44,.10) 0%, rgba(15,29,44,0) 60%),
+    linear-gradient(170deg,#f7fafd 0%,#e9eff7 100%);
+  border:1px solid var(--gunpowder100);
+  box-shadow:0 30px 70px -40px rgba(15,29,44,.6);}
+body.dark-mode .hero-foto{
+  background:
+    radial-gradient(120% 90% at 78% 4%, rgba(var(--acento-rgb),.2) 0%, rgba(var(--acento-rgb),0) 55%),
+    linear-gradient(170deg,#16202f 0%,#0f1826 100%);
+  border-color:#1e2d3d;}
+/* Una reticula finisima detras: profundidad sin competir con las caras. */
+.hero-foto::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(15,29,44,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(15,29,44,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(85% 70% at 50% 35%,#000 35%,transparent 100%);
+  mask-image:radial-gradient(85% 70% at 50% 35%,#000 35%,transparent 100%);}
+body.dark-mode .hero-foto::before{
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);}
+.hero-foto img{position:absolute;bottom:0;width:auto;height:auto;
+  filter:drop-shadow(0 18px 26px rgba(15,29,44,.22));}
+/* Mas juntos y un poco mas grandes: separados en los dos bordes parecian dos
+   pegatinas. Y bajan menos del borde, para que a el no se lo corte el pie
+   justo por debajo de la barbilla. */
+/* Cambiados de lado (19/10/2026): la foto de Roberto viene recortada por su
+   izquierda —la oreja queda justo en el borde—, asi que se pone a la
+   izquierda del cuadro y ese corte se sale por fuera. Si se pone a la
+   derecha, se le ve la oreja cortada en recto. */
+.hero-foto .hfo-roberto{left:-6%;height:86%;z-index:1;}
+.hero-foto .hfo-andrea{right:0;height:80%;z-index:2;}
+.hfo-pie{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:center;
+  padding:46px 10px 12px;
+  background:linear-gradient(180deg,rgba(244,248,252,0) 0%,rgba(244,248,252,.25) 62%,rgba(241,246,251,.9) 100%);}
+body.dark-mode .hfo-pie{
+  background:linear-gradient(180deg,rgba(15,24,38,0) 0%,rgba(15,24,38,.6) 55%,rgba(15,24,38,.96) 100%);}
+.hfo-pie span{display:inline-flex;align-items:center;gap:9px;background:#fff;
+  border:1px solid var(--gunpowder100);border-radius:999px;padding:8px 16px;
+  font-size:14px;font-weight:700;color:var(--gunpowder900);
+  box-shadow:0 10px 26px -14px rgba(15,29,44,.5);}
+body.dark-mode .hfo-pie span{background:#16202f;border-color:#243448;color:#eef3f9;}
+.hfo-pie svg{width:15px;height:15px;flex:none;}
+@media (max-width: 768px){
+  /* En el movil la foto va primero y mas baja: las caras tienen que caber
+     en la primera pantalla junto al titular, no empujarlo fuera. */
+  .hero-foto{max-width:420px;aspect-ratio:4/3.15;border-radius:20px;}
+  .hfo-pie{padding:22px 10px 11px;}
+  .hfo-pie span{font-size:12.5px;padding:7px 13px;}
+}
+
 /* ===== HERO ANIMATION ===== */
 .hero-anim {
     position: relative;
@@ -2800,19 +2859,23 @@ body.dark-mode .hire-banner-text { color: #94a3b8; }
 
 /* ===== COOKIE BANNER ===== */
 .cookie-banner {
+    /* 19/10/2026 · en fila y del ancho de su contenido. Antes era una tarjeta
+       de 380 px en columna y tapaba la cuarta ventaja del hero, que es justo
+       lo primero que lee el que llega. */
     position: fixed;
     bottom: 24px;
     left: 24px;
-    max-width: 380px;
+    max-width: min(560px, calc(100vw - 48px));
+    align-items: center;
     background: var(--gunpowder900);
     color: #fff;
     border-radius: var(--radius-M);
-    padding: 20px 24px;
+    padding: 12px 14px 12px 18px;
     z-index: 950;
     box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    gap: 14px;
     opacity: 0;
     transform: translateY(20px);
     animation: cookieSlideIn 0.5s ease 1s forwards;
@@ -2858,11 +2921,35 @@ body.dark-mode .hire-banner-text { color: #94a3b8; }
     color: #fff;
 }
 @media (max-width: 768px) {
+    /* 19/10/2026 · en el movil este cartel tapaba un tercio de la pantalla
+       justo cuando el visitante esta leyendo. Pasa a ser una barra fina de
+       una sola linea: se sigue viendo y se puede contestar, pero ya no se
+       come la pagina. Es lo primero que ve quien llega desde un correo. */
     .cookie-banner {
-        left: 12px;
-        right: 12px;
+        left: 8px;
+        right: 8px;
         max-width: none;
-        bottom: 12px;
+        bottom: 8px;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+    }
+    .cookie-banner p {
+        font-size: 12px;
+        line-height: 1.45;
+        flex: 1;
+        min-width: 0;
+    }
+    .cookie-actions {
+        flex: none;
+        gap: 6px;
+    }
+    .cookie-btn {
+        padding: 7px 13px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 }
 

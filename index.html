@@ -641,6 +641,29 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                 </p>
             </div>
             <div class="hero-image">
+                <!-- =====================================================
+                     LA FOTO · 19/10/2026
+                     Arriba cabe una idea, y la idea es «somos dos personas
+                     de Sevelen y existimos». Quien llega desde un correo de
+                     Andrea reconoce la cara antes de leer nada.
+                     El dibujo animado NO se ha borrado: sigue aqui debajo,
+                     escondido. Para volver atras: quitar el div .hero-foto y
+                     la clase «oculto» del bloque de abajo.
+                     Las dos fotos van recortadas con fondo transparente, asi
+                     que el fondo lo decide la web y no la foto.
+                     ===================================================== -->
+                <div class="hero-foto">
+                    <img class="hfo-andrea" src="img/hero-andrea-recorte.webp" alt="Andrea" width="1400" height="1400" fetchpriority="high">
+                    <img class="hfo-roberto" src="img/hero-roberto-recorte.webp" alt="Roberto" width="823" height="1400" fetchpriority="high">
+                    <div class="hfo-pie">
+                        <span>
+                            <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>
+                            Andrea &amp; Roberto · Sevelen
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-anim oculto">
                 <!-- El hueco de la derecha estaba vacio: halo coral que respira y tres
                      aros de puntos girando a distinta velocidad, con un satelite cada uno.
                      Todo CSS y SVG — ni una imagen mas que cargar. -->
@@ -712,6 +735,7 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                         <b>100</b><small>Performance</small>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         <script>
@@ -1786,6 +1810,59 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
 </style>
 
 <!-- VERGLEICH: FREELANCER VS AGENTUR -->
+<!-- =========================================================================
+     ANTES Y DESPUES · 19/10/2026 · ESCONDIDO HASTA QUE URS DIGA QUE SI
+     Es lo que mas convence al que llega desde un correo («tu web es vieja»):
+     ver una web vieja de verdad al lado de como quedo. Las dos capturas son
+     del shop de Urs — la de 2021 sale del archivo de internet.
+     Urs ya dijo de palabra que se puede usar su web como ejemplo; falta
+     pedirselo bien cuando le pida la reseña de Google.
+
+     *** OJO · 19/10/2026 ***
+     Ahora mismo esta ENCENDIDO, pero solo para verlo en local.
+     ANTES DE PUBLICAR hay que volver a ponerle  style="display:none;"
+     a la linea de abajo, y no quitarselo hasta que Urs diga que si.
+     ========================================================================= -->
+<section class="section vn-section" id="vorher-nachher" style="display:none;scroll-margin-top:90px;">
+    <div class="container">
+        <div class="section-header">
+            <span class="vn-kick" data-i18n="vn.eyebrow">Vorher / Nachher</span>
+            <h2 data-i18n-html="vn.title">Dieselbe Firma, dieselbe Adresse &mdash; <span style="color:var(--begonia400)">neu gebaut</span></h2>
+            <p data-i18n="vn.desc">US-Fishing &amp; Huntingshop in Sevelen: oben der Shop, wie er 2021 aussah, unten derselbe Shop heute. Gleiche Produkte, gleicher Name — nur übersichtlicher, schneller und auf dem Handy wirklich benutzbar.</p>
+        </div>
+
+        <div class="vn">
+            <figure class="vn-card">
+                <span class="vn-tag vn-tag--alt" data-i18n="vn.before">2021</span>
+                <img src="img/vorher-nachher/usfh-vorher.jpg" alt="US-Fishing &amp; Huntingshop, 2021" loading="lazy" decoding="async" width="1100" height="739">
+            </figure>
+            <figure class="vn-card">
+                <span class="vn-tag" data-i18n="vn.after">Heute</span>
+                <img src="img/vorher-nachher/usfh-nachher.jpg" alt="US-Fishing &amp; Huntingshop, heute" loading="lazy" decoding="async" width="1100" height="739">
+            </figure>
+        </div>
+
+        <p class="vn-note" data-i18n="vn.note">Der Shop läuft weiter wie vorher — Urs verwaltet seine über 800 Artikel selbst, und neue Funktionen kommen dazu, wenn er sie braucht.</p>
+    </div>
+</section>
+
+<style>
+.vn-kick{display:inline-block;margin-bottom:10px;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--begonia400);}
+.vn{max-width:900px;margin:30px auto 0;display:grid;gap:18px;}
+.vn-card{position:relative;margin:0;border-radius:18px;overflow:hidden;
+  border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);background:#fff;}
+body.dark-mode .vn-card{border-color:#1e2d3d;background:#141d2b;}
+.vn-card img{display:block;width:100%;height:auto;}
+.vn-tag{position:absolute;top:12px;left:12px;z-index:2;padding:5px 12px;border-radius:999px;
+  font-size:12px;font-weight:700;letter-spacing:.06em;background:var(--begonia400);color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);}
+.vn-tag--alt{background:rgba(15,29,44,.86);}
+.vn-note{max-width:62ch;margin:18px auto 0;text-align:center;
+  font:500 15px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder400);}
+@media(min-width:820px){.vn{grid-template-columns:1fr 1fr;gap:16px;}}
+</style>
+
 <section class="section vgl-section" id="vergleich" style="scroll-margin-top:90px;">
     <div class="container">
         <div class="section-header">
@@ -1793,42 +1870,25 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
             <p data-i18n="vgl.desc">Kein Trick und keine versteckten Kosten: Sie sprechen direkt mit dem, der Ihre Website baut. Was eine grössere Agentur zusätzlich für Büro, Projektleitung und Verkauf einrechnen muss, fällt hier einfach weg.</p>
         </div>
 
-        <div class="vgl-table" role="table" aria-label="Vergleich Agentur und Lweb">
-            <div class="vgl-row vgl-row--head" role="row">
-                <div class="vgl-cell vgl-cell--label" role="columnheader"><span class="vgl-sr">Kriterium</span></div>
-                <div class="vgl-cell vgl-cell--them" role="columnheader" data-i18n="vgl.col.agency">Agentur</div>
-                <div class="vgl-cell vgl-cell--me" role="columnheader">
-                    <span class="vgl-logo">
-                        <span class="vgl-logo-l">L</span><span class="vgl-logo-web">web</span><span class="vgl-logo-ch">.ch</span>
-                        <svg class="vgl-logo-flag" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>
-                    </span>
-                </div>
+        <!-- =====================================================================
+             19/10/2026 · LA COMPARACION, EN DOS LINEAS
+             Aqui habia una tabla de seis filas contra «Agentur». Decia cosas
+             ciertas, pero una tabla comparativa tiene un problema: parece que
+             uno se defiende, y el que la lee se pregunta que esconde. Dicho en
+             dos lineas tranquilas suena mas fuerte y se lee en el movil de un
+             vistazo, que es como llega casi todo el mundo.
+             La tabla entera esta en index.html.antes-escalera.
+             ===================================================================== -->
+        <div class="vglb">
+            <div class="vglb-col vglb-col--them">
+                <span class="vglb-tag" data-i18n="vgl.col.agency">Agentur</span>
+                <p class="vglb-txt" data-i18n="vglb.them">4'000 &ndash; 8'000 CHF, ein Projektleiter dazwischen, und für jede kleine Änderung ein Ticket.</p>
             </div>
-
-            <div class="vgl-row" role="row">
-                <div class="vgl-cell vgl-cell--label" role="cell" data-i18n="vgl.r1.k">Preis Business-Website</div>
-                <div class="vgl-cell vgl-cell--them" role="cell"><span class="vgl-mob-tag" data-i18n="vgl.col.agency">Agentur</span><span class="vgl-num">4'000 &ndash; 8'000 CHF</span></div>
-                <div class="vgl-cell vgl-cell--me" role="cell"><span class="vgl-mob-tag">Lweb</span><span class="vgl-num">ab 1'900 CHF</span></div>
-            </div>
-            <div class="vgl-row" role="row">
-                <div class="vgl-cell vgl-cell--label" role="cell" data-i18n="vgl.r2.k">Ihr Ansprechpartner</div>
-                <div class="vgl-cell vgl-cell--them" role="cell"><span class="vgl-mob-tag" data-i18n="vgl.col.agency">Agentur</span><span data-i18n="vgl.r2.a">Projektmanager, wechselnd</span></div>
-                <div class="vgl-cell vgl-cell--me" role="cell"><span class="vgl-mob-tag">Lweb</span><span data-i18n="vgl.r2.b">Roberto &mdash; immer derselbe</span></div>
-            </div>
-            <div class="vgl-row" role="row">
-                <div class="vgl-cell vgl-cell--label" role="cell" data-i18n="vgl.r3.k">Kleine Änderung</div>
-                <div class="vgl-cell vgl-cell--them" role="cell"><span class="vgl-mob-tag" data-i18n="vgl.col.agency">Agentur</span><span data-i18n="vgl.r3.a">Ticket, 3&ndash;5 Tage, verrechnet</span></div>
-                <div class="vgl-cell vgl-cell--me" role="cell"><span class="vgl-mob-tag">Lweb</span><span data-i18n="vgl.r3.b">WhatsApp, oft am selben Tag</span></div>
-            </div>
-            <div class="vgl-row" role="row">
-                <div class="vgl-cell vgl-cell--label" role="cell" data-i18n="vgl.r4.k">Der Code gehört…</div>
-                <div class="vgl-cell vgl-cell--them" role="cell"><span class="vgl-mob-tag" data-i18n="vgl.col.agency">Agentur</span><span data-i18n="vgl.r4.a">der Agentur</span></div>
-                <div class="vgl-cell vgl-cell--me" role="cell"><span class="vgl-mob-tag">Lweb</span><span data-i18n="vgl.r4.b">Ihnen &mdash; offen auf GitHub</span></div>
-            </div>
-            <div class="vgl-row" role="row">
-                <div class="vgl-cell vgl-cell--label" role="cell" data-i18n="vgl.r6.k">Wo Ihre Daten liegen</div>
-                <div class="vgl-cell vgl-cell--them" role="cell"><span class="vgl-mob-tag" data-i18n="vgl.col.agency">Agentur</span><span data-i18n="vgl.r6.a">meist im Ausland</span></div>
-                <div class="vgl-cell vgl-cell--me" role="cell"><span class="vgl-mob-tag">Lweb</span><span data-i18n="vgl.r6.b">Hostpoint, Schweiz</span></div>
+            <div class="vglb-col vglb-col--me">
+                <span class="vglb-tag vglb-tag--me">
+                    <span class="vgl-logo"><span class="vgl-logo-l">L</span><span class="vgl-logo-web">web</span></span>
+                </span>
+                <p class="vglb-txt" data-i18n="vglb.me">Ab 990 CHF, Sie sprechen direkt mit mir, und eine kleine Änderung ist oft am selben Tag erledigt.</p>
             </div>
         </div>
 
@@ -1851,6 +1911,29 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
 
 <style>
 .vgl-section{padding-top:20px;}
+/* El banner de la comparacion (19/10/2026). Dos columnas en el ordenador,
+   una debajo de otra en el movil. La de la derecha es la que tiene que
+   quedarse en la cabeza: fondo con el color de la casa y texto mas firme. */
+.vglb{max-width:900px;margin:26px auto 0;display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border:1px solid var(--gunpowder100);border-radius:18px;overflow:hidden;
+  background:#fff;box-shadow:0 18px 48px rgba(15,29,44,.07);}
+body.dark-mode .vglb{background:#141d2b;border-color:#1e2d3d;box-shadow:0 18px 48px rgba(0,0,0,.4);}
+.vglb-col{padding:20px 22px;display:flex;flex-direction:column;gap:9px;}
+.vglb-col--me{background:rgba(var(--acento-rgb),.07);}
+body.dark-mode .vglb-col--me{background:rgba(var(--acento-rgb),.11);}
+.vglb-col--them + .vglb-col--me{border-left:1px solid var(--gunpowder100);}
+body.dark-mode .vglb-col--them + .vglb-col--me{border-left-color:#1e2d3d;}
+.vglb-tag{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gunpowder300);}
+.vglb-tag--me{letter-spacing:normal;text-transform:none;}
+.vglb-txt{margin:0;font-size:15.5px;line-height:1.6;color:var(--gunpowder400);}
+.vglb-col--me .vglb-txt{color:var(--gunpowder900);font-weight:600;}
+body.dark-mode .vglb-col--me .vglb-txt{color:#f1f5f9;}
+@media(max-width:720px){
+  .vglb{grid-template-columns:1fr;}
+  .vglb-col--them + .vglb-col--me{border-left:0;border-top:1px solid var(--gunpowder100);}
+  body.dark-mode .vglb-col--them + .vglb-col--me{border-top-color:#1e2d3d;}
+}
 .vgl-note{max-width:62ch;margin:22px auto 0;text-align:center;
   font:500 15px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder400,#6b7d99);}
 .vgl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
@@ -2069,6 +2152,96 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
         </style>
     </div>
 </section>
+
+<!-- =========================================================================
+     LA ESCALERA · 19/10/2026
+     Lo que mas frena a un negocio pequeño no es el precio: es tener que
+     decidirlo todo hoy. Esto le dice que puede empezar por abajo y subir
+     cuando quiera, pagando solo la diferencia — que es verdad, porque las
+     webs estan escritas a mano y se pueden ampliar pieza a pieza.
+     Va justo despues de los precios a proposito: primero el numero, y
+     enseguida «no hace falta que lo decidas todo hoy».
+     ========================================================================= -->
+<section class="section esc-section" id="wachsen" style="scroll-margin-top:90px;">
+    <div class="container">
+        <div class="section-header">
+            <h2 data-i18n-html="esc.title">Sie müssen nicht alles <span style="color:var(--begonia400)">heute</span> entscheiden</h2>
+            <p data-i18n="esc.desc">Meine Websites sind von Hand gebaut und nicht aus einem Baukasten gekauft. Darum lässt sich später jedes Stück dazunehmen, ohne von vorne anzufangen. Sie starten klein — und wenn der Betrieb mehr braucht, wächst die Seite mit.</p>
+        </div>
+
+        <ol class="esc">
+            <li class="esc-step">
+                <span class="esc-n">1</span>
+                <h3 class="esc-t" data-i18n="esc.s1.t">Klein anfangen</h3>
+                <p class="esc-d" data-i18n="esc.s1.d">Ihre Seite mit Ihren Produkten oder Leistungen. Anfragen kommen per WhatsApp oder E-Mail — ohne Kasse, ohne Technik.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">2</span>
+                <h3 class="esc-t" data-i18n="esc.s2.t">Selber ändern</h3>
+                <p class="esc-d" data-i18n="esc.s2.d">Sie bekommen einen eigenen Bereich und ändern Preise, Bilder und Texte selbst — ohne mich anzurufen und ohne Zusatzkosten.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">3</span>
+                <h3 class="esc-t" data-i18n="esc.s3.t">Richtig verkaufen</h3>
+                <p class="esc-d" data-i18n="esc.s3.d">Bestellungen, Zahlung, Versand und Lager. Ab hier ist es ein richtiger Shop, der auch nachts arbeitet.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">4</span>
+                <h3 class="esc-t" data-i18n="esc.s4.t">Nach Mass</h3>
+                <p class="esc-d" data-i18n="esc.s4.d">Varianten, Statistiken, Excel-Import, eigene Abläufe: was Ihr Betrieb wirklich braucht, und sonst nichts.</p>
+            </li>
+        </ol>
+
+        <p class="esc-key" data-i18n-html="esc.key">Wechseln Sie später eine Stufe höher, zahlen Sie <b>nur die Differenz</b> — nicht alles noch einmal.</p>
+        <p class="esc-note" data-i18n="esc.note">Das Gleiche gilt für eine normale Website: mit ein paar Seiten anfangen und später Terminbuchung, Blog oder Shop dazunehmen. Was heute gebaut wird, bleibt bestehen.</p>
+    </div>
+</section>
+
+<style>
+.esc-section{padding-top:8px;}
+.esc{list-style:none;max-width:1000px;margin:30px auto 0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+  border:1px solid var(--gunpowder100);border-radius:20px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 48px rgba(15,29,44,.07);}
+body.dark-mode .esc{background:#141d2b;border-color:#1e2d3d;box-shadow:0 18px 48px rgba(0,0,0,.4);}
+.esc-step{position:relative;padding:22px 20px 24px;display:flex;flex-direction:column;gap:8px;
+  border-right:1px solid var(--gunpowder100);}
+body.dark-mode .esc-step{border-right-color:#1e2d3d;}
+.esc-step:last-child{border-right:0;}
+/* Cada peldaño, un poco mas «encendido» que el anterior: se ve que es una
+   escalera sin tener que dibujar flechas. */
+.esc-step:nth-child(1){background:transparent;}
+.esc-step:nth-child(2){background:rgba(var(--acento-rgb),.04);}
+.esc-step:nth-child(3){background:rgba(var(--acento-rgb),.08);}
+.esc-step:nth-child(4){background:rgba(var(--acento-rgb),.13);}
+.esc-n{width:30px;height:30px;flex:none;border-radius:10px;display:grid;place-items:center;
+  font:800 14px/1 'Plus Jakarta Sans',system-ui,sans-serif;
+  background:var(--gunpowder900);color:#fff;}
+body.dark-mode .esc-n{background:#e6edf5;color:#0f1d2c;}
+.esc-step:nth-child(4) .esc-n{background:var(--begonia400);color:#fff;}
+.esc-t{margin:2px 0 0;font:750 16.5px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;
+  color:var(--gunpowder900);}
+body.dark-mode .esc-t{color:#f1f5f9;}
+.esc-d{margin:0;font-size:14.5px;line-height:1.6;color:var(--gunpowder400);}
+.esc-key{max-width:68ch;margin:24px auto 0;text-align:center;
+  font:600 17px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder900);}
+body.dark-mode .esc-key{color:#e6edf5;}
+.esc-key b{color:var(--begonia400);font-weight:800;}
+.esc-note{max-width:62ch;margin:10px auto 0;text-align:center;
+  font:500 15px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder400);}
+@media(max-width:860px){
+  .esc{grid-template-columns:1fr 1fr;}
+  .esc-step:nth-child(2n){border-right:0;}
+  .esc-step:nth-child(-n+2){border-bottom:1px solid var(--gunpowder100);}
+  body.dark-mode .esc-step:nth-child(-n+2){border-bottom-color:#1e2d3d;}
+}
+@media(max-width:560px){
+  .esc{grid-template-columns:1fr;}
+  .esc-step{border-right:0;border-bottom:1px solid var(--gunpowder100);}
+  body.dark-mode .esc-step{border-bottom-color:#1e2d3d;}
+  .esc-step:last-child{border-bottom:0;}
+}
+</style>
 
 <!-- =========================================================================
      LOS TRES BANNERS · 15/10/2026
@@ -3821,6 +3994,48 @@ Vielen Dank für die tolle Unterstützung, weiterhin viel Erfolg und auf viele w
             <h2>Häufig gestellte Fragen</h2>
         </div>
         <div class="faq-list">
+            <!-- =============================================================
+                 19/10/2026 · LAS CINCO PREGUNTAS QUE NADIE HACE EN VOZ ALTA
+                 Aqui solo habia preguntas sobre apps. Pero quien llega desde
+                 un correo viene por su web, y lo que le frena no es el precio:
+                 es perder su correo, no tener fotos, y que le dejen tirado.
+                 Van las primeras a proposito.
+                 ============================================================= -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Verliere ich meine Domain oder meine E-Mail-Adresse?</h4>
+                    <svg class="faq-question-arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="faq-answer"><p>Nein. Ihre Domain bleibt auf Ihren Namen eingetragen und Ihre E-Mail-Adressen laufen weiter wie bisher. Umgestellt wird erst, wenn die neue Seite fertig ist und Sie sie gesehen haben — an einem Abend, damit tagsüber nichts ausfällt.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Was muss ich liefern?</h4>
+                    <svg class="faq-question-arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="faq-answer"><p>Das, was Sie haben: Logo, ein paar Bilder, Öffnungszeiten, Ihre Leistungen. Die Texte schreibe ich und Sie korrigieren sie — das geht schneller, als vor einem leeren Blatt zu sitzen. Wenn die Bilder fehlen, finden wir eine Lösung; daran ist noch keine Website gescheitert.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Werde ich bei Google weiter gefunden?</h4>
+                    <svg class="faq-question-arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="faq-answer"><p>Ja. Die alten Adressen leiten auf die neuen Seiten weiter, damit nichts ins Leere läuft, und Ihr Google-Eintrag bleibt derselbe. Das gehört dazu und wird nicht extra verrechnet.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Wie lange dauert es?</h4>
+                    <svg class="faq-question-arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="faq-answer"><p>Eine kleine Seite steht in wenigen Tagen, eine Firmenseite meist in ein bis zwei Wochen. Was es länger macht, sind fast immer die Texte und die Bilder — nicht die Technik. Sie sehen die Seite, bevor sie online geht.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Und wenn ich später mehr brauche?</h4>
+                    <svg class="faq-question-arrow" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="faq-answer"><p>Dann kommt das Stück einfach dazu: Terminbuchung, ein eigener Verwaltungsbereich, ein Shop. Weil die Seite von Hand gebaut ist, muss nichts neu gemacht werden — Sie zahlen nur die Differenz. <a href="#wachsen">So funktioniert das Schritt für Schritt</a>.</p></div>
+            </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <h4>Was kostet eine App Entwicklung?</h4>
@@ -4435,7 +4650,7 @@ function askFromList(q){
 </div>
 
 <div class="cookie-banner" id="cookieBanner">
-    <p>Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.</p>
+    <p>Diese Website verwendet Cookies.</p>
     <div class="cookie-actions">
         <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies()">Akzeptieren</button>
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>

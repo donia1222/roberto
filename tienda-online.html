@@ -2074,6 +2074,82 @@
 </section>
 
 <!-- ===================== CTA ===================== -->
+<!-- =========================================================================
+     LOS CUATRO PELDAÑOS · 19/10/2026
+     Esta pagina enseñaba UNA tienda, la grande. El que entra pensando «yo no
+     necesito tanto» se iba. Ahora enseña la escalera: por donde se puede
+     empezar y hasta donde llega, con la promesa que de verdad desbloquea la
+     decision — si subes de peldaño, pagas solo la diferencia.
+     Los cuatro peldaños son los que existen de verdad: la tienda de Sabitas
+     empezo en el 1, hoy esta en el 2; la de Urs es el 3 y va camino del 4.
+     ========================================================================= -->
+<section id="to-escalera" class="t-section" style="background:#e8f5e9;">
+    <div class="t-container">
+        <h2 class="t-h2" style="color:#0f1d2c;text-align:center;" data-i18n-html="esct.title">No hace falta empezar<br>por la tienda entera</h2>
+        <p class="esct-desc" data-i18n="esct.desc">Una tienda online se puede montar por partes. Empieza por donde te haga falta hoy y sube de peldaño cuando el negocio lo pida: lo que ya está hecho no se tira, y solo se paga la diferencia.</p>
+
+        <ol class="esc">
+            <li class="esc-step">
+                <span class="esc-n">1</span>
+                <h3 class="esc-t" data-i18n="esct.s1.t">Enseñar y recibir pedidos</h3>
+                <p class="esc-d" data-i18n="esct.s1.d">Tus productos con fotos y precios. El cliente elige y te escribe por WhatsApp. Sin caja, sin cuentas de usuario.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">2</span>
+                <h3 class="esc-t" data-i18n="esct.s2.t">Con tu propio panel</h3>
+                <p class="esct-d esc-d" data-i18n="esct.s2.d">Añades productos, cambias precios y subes fotos tú mismo, desde el móvil. Los pedidos siguen llegando por WhatsApp.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">3</span>
+                <h3 class="esc-t" data-i18n="esct.s3.t">La tienda entera</h3>
+                <p class="esc-d" data-i18n="esct.s3.d">Carrito, pago, envío, stock y correos automáticos. Vende de noche y los domingos, sin que tengas que contestar.</p>
+            </li>
+            <li class="esc-step">
+                <span class="esc-n">4</span>
+                <h3 class="esc-t" data-i18n="esct.s4.t">A tu medida</h3>
+                <p class="esc-d" data-i18n="esct.s4.d">Variantes de producto, estadísticas de visitas, importar desde Excel, un artículo en varias secciones… lo que pida tu negocio.</p>
+            </li>
+        </ol>
+
+        <p class="esc-key" data-i18n-html="esct.key">Del peldaño 1 al 2, o del 2 al 3, pagas <b>solo la diferencia</b> — no la tienda otra vez.</p>
+    </div>
+</section>
+
+<style>
+/* La escalera, igual que en la portada. Se copia el estilo aqui porque cada
+   pagina lleva el suyo; si algun dia se junta todo, este bloque sale. */
+.esct-desc{max-width:66ch;margin:14px auto 0;text-align:center;
+  font-size:16.5px;line-height:1.65;color:#50607a;}
+.esc{list-style:none;max-width:1000px;margin:34px auto 0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+  border:1px solid rgba(15,29,44,.1);border-radius:20px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 48px rgba(15,29,44,.09);}
+.esc-step{padding:22px 20px 24px;display:flex;flex-direction:column;gap:8px;
+  border-right:1px solid rgba(15,29,44,.1);}
+.esc-step:last-child{border-right:0;}
+.esc-step:nth-child(2){background:rgba(16,118,74,.04);}
+.esc-step:nth-child(3){background:rgba(16,118,74,.08);}
+.esc-step:nth-child(4){background:rgba(16,118,74,.13);}
+.esc-n{width:30px;height:30px;flex:none;border-radius:10px;display:grid;place-items:center;
+  font:800 14px/1 'Plus Jakarta Sans',system-ui,sans-serif;background:#0f1d2c;color:#fff;}
+.esc-step:nth-child(4) .esc-n{background:#10764a;}
+.esc-t{margin:2px 0 0;font:750 16.5px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;color:#0f1d2c;}
+.esc-d{margin:0;font-size:14.5px;line-height:1.6;color:#50607a;}
+.esc-key{max-width:68ch;margin:24px auto 0;text-align:center;
+  font:600 17px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:#0f1d2c;}
+.esc-key b{color:#10764a;font-weight:800;}
+@media(max-width:860px){
+  .esc{grid-template-columns:1fr 1fr;}
+  .esc-step:nth-child(2n){border-right:0;}
+  .esc-step:nth-child(-n+2){border-bottom:1px solid rgba(15,29,44,.1);}
+}
+@media(max-width:560px){
+  .esc{grid-template-columns:1fr;}
+  .esc-step{border-right:0;border-bottom:1px solid rgba(15,29,44,.1);}
+  .esc-step:last-child{border-bottom:0;}
+}
+</style>
+
 <section id="to-cta" class="t-cta">
     <div class="t-wrap">
         <div class="t-label" style="justify-content:center;color:rgba(255,255,255,0.4);margin-bottom:20px;">

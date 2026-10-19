@@ -112,6 +112,53 @@ h1{font-size:34px;font-weight:850;letter-spacing:-.03em;color:var(--gunpowder900
   .c-chip--price{left:0;top:-12px}
   .c-chip--ch{right:0}
 }
+
+/* ══════════ OPCIÓN D — vosotros dos ══════════ */
+.d{width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.d-txt h3{margin:0 0 12px;font-size:38px;line-height:1.1;font-weight:850;letter-spacing:-.03em;
+  color:var(--gunpowder900)}
+.d-txt h3 span{color:var(--begonia400)}
+.d-txt p{margin:0 0 20px;font-size:16.5px;max-width:46ch}
+.d-cta{display:inline-flex;align-items:center;gap:9px;background:var(--gunpowder900);color:#fff;
+  text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px}
+.d-g{display:inline-flex;align-items:center;gap:8px;margin-left:14px;font-size:14px;
+  color:var(--gunpowder400);font-weight:600}
+.d-g b{color:var(--gunpowder900)}
+/* El escenario de la foto: fondo de la casa, nada de paisajes comprados.
+   Los dos recortes se apoyan en el borde de abajo, que es lo que hace que
+   parezcan de verdad y no dos pegatinas flotando. */
+.d-foto{position:relative;aspect-ratio:4/3.1;border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 78% 4%, rgba(227,6,19,.14) 0%, rgba(227,6,19,0) 55%),
+    radial-gradient(100% 80% at 8% 100%, rgba(15,29,44,.10) 0%, rgba(15,29,44,0) 60%),
+    linear-gradient(170deg,#f7fafd 0%,#e9eff7 100%);
+  border:1px solid var(--gunpowder100);
+  box-shadow:0 30px 70px -40px rgba(15,29,44,.6)}
+/* Una reticula finisima detras: da profundidad sin competir con las caras. */
+.d-foto::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(15,29,44,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(15,29,44,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+  -webkit-mask-image:radial-gradient(85% 70% at 50% 35%,#000 35%,transparent 100%);
+  mask-image:radial-gradient(85% 70% at 50% 35%,#000 35%,transparent 100%)}
+.d-foto img{position:absolute;bottom:0;width:auto;filter:drop-shadow(0 18px 26px rgba(15,29,44,.22))}
+/* Ella delante y un poco mas baja, el detras y un poco mas alto: asi se nota
+   quien contesta el correo. Ninguno de los dos se sale del cuadro — una cara
+   cortada por el borde parece un descuido. */
+.d-foto .andrea{left:0;height:74%;z-index:2}
+.d-foto .roberto{right:0;height:80%;z-index:1}
+.d-pie{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;justify-content:center;
+  padding:30px 10px 14px;
+  background:linear-gradient(180deg,rgba(244,248,252,0) 0%,rgba(244,248,252,.55) 55%,rgba(241,246,251,.95) 100%)}
+.d-pie span{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--gunpowder100);
+  border-radius:999px;padding:8px 16px;font-size:14px;font-weight:700;color:var(--gunpowder900);
+  box-shadow:0 10px 26px -14px rgba(15,29,44,.5)}
+.d-pie svg{width:15px;height:15px;flex:none}
+@media(max-width:860px){
+  .d{grid-template-columns:1fr;gap:22px}
+  .d-txt h3{font-size:30px}
+  .d-foto{aspect-ratio:4/3.2}
+}
 </style>
 </head>
 <body>
@@ -246,6 +293,32 @@ h1{font-size:34px;font-weight:850;letter-spacing:-.03em;color:var(--gunpowder900
         <span class="slog-t"><b>Echter Code.</b><em>Echte Leistung.</em>
           <svg class="slog-sw" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8.5C46 3.4 120 1.6 198 5.2 130 5.6 60 6.6 2 9.6Z" fill="currentColor"/></svg>
         </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OPCIÓN D ══════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción D</span><h2>Vosotros dos, lo primero que se ve</h2></div>
+  <p class="why">Nada de dibujos: las dos caras de verdad, sobre un fondo de la casa. Quien llega desde el correo de Andrea reconoce al instante a quién le ha escrito, y la pregunta de «¿quién hay detrás de esto?» queda contestada antes de leer una palabra. El dibujo animado no se tira: se baja a donde se habla de cómo trabajas. Las fotos van recortadas de verdad, con el fondo transparente, así que el fondo lo decide la web y no la foto.</p>
+  <div class="stage">
+    <div class="d">
+      <div class="d-txt">
+        <h3>Websites und Apps.<br><span>Genau so, wie Sie sie wollen.</span></h3>
+        <p>Andere Entwickler stapeln Templates. Ich schreibe Ihren Code von Hand — damit Ihre Website wirklich Ihre ist, nicht die von hundert anderen.</p>
+        <a class="d-cta" href="#">Kostenloses Erstgespräch</a>
+        <span class="d-g">★★★★★ <b>5,0</b> · 7 Bewertungen</span>
+      </div>
+      <div class="d-foto">
+        <img class="andrea" src="img/hero-andrea-recorte.webp" alt="Andrea">
+        <img class="roberto" src="img/hero-roberto-recorte.webp" alt="Roberto">
+        <div class="d-pie">
+          <span>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>
+            Andrea &amp; Roberto · Sevelen
+          </span>
+        </div>
       </div>
     </div>
   </div>
