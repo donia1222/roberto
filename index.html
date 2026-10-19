@@ -2394,7 +2394,11 @@ body.dark-mode .esc-key{color:#e6edf5;}
      interactivas y apps. Cada uno en una linea, con su enlace.
      Los bloques largos estaban en el commit anterior a este.
      ========================================================================= -->
-<section class="section bnrs-section" id="angebote" style="scroll-margin-top:90px;">
+<!-- 19/10/2026 · ESCONDIDOS. Los dos banners (la tienda y las apps) alargaban
+     mucho el scroll de la portada y, para verlos, habia que salir de ella.
+     Ahora viven en el pie, como dos enlaces. Para devolverlos: quitar el
+     display:none de la linea de abajo. -->
+<section class="section bnrs-section" id="angebote" style="display:none;scroll-margin-top:90px;">
     <div class="container">
         <div class="bnrs">
 
@@ -4487,6 +4491,7 @@ function askFromList(q){
                     <li><a href="#services" data-i18n="footer.s4">Beratung &amp; Support</a></li>
                     <li><a href="ubermich.html" data-i18n="footer.s6">Externer Entwickler</a></li>
                     <li><a href="tienda-online.html" data-i18n="footer.s5" >Perfekter Online-Shop</a></li>
+<li><a href="https://www.ihreapp.ch/?from=lweb" target="_blank" rel="noopener" data-i18n="footer.apps">Apps auf ihreapp.ch</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -4514,19 +4519,6 @@ function askFromList(q){
                 </ul>
             </div>
         </div>
-        <nav class="footer-more" aria-label="Weitere Seiten">
-            <span class="footer-more-label" data-i18n="footer.more">Mehr entdecken</span>
-            <span class="footer-more-links">
-                <a href="webs-publicadas.html" data-i18n="footer.p1">Referenzen &amp; Kundenprojekte</a>
-                <a href="apps-publicadas.html" data-i18n="footer.p2">Meine Apps im Store</a>
-                <a href="templates-web.html" data-i18n="footer.p3">Website-Templates ab 650 CHF</a>
-                <a href="desarrollo.html" data-i18n="footer.p4">So entsteht Ihre App</a>
-                <a href="leistungen-ki.html" data-i18n="footer.p5">Chatbots &amp; Automatisierung</a>
-                <a href="leistungen-support.html" data-i18n="footer.p6">Wartung nach dem Launch</a>
-                <a href="extensions-apps.html" data-i18n="footer.p7">Funktionen für Ihre App</a>
-                <a href="technologien.html" data-i18n="footer.p8">Eingesetzte Technologien</a>
-            </span>
-        </nav>
 
   <div class="footer-lang">
     <button class="lang-btn active" onclick="switchLang('de')">DE</button>
@@ -4997,30 +4989,6 @@ function askFromList(q){
 
 <style>
 /* --- Fusszeile: kompakte Linkleiste zu den Unterseiten --- */
-.footer-more{
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-  gap:14px;margin-top:34px;padding-top:24px;padding-bottom:8px;
-  border-top:1px solid rgba(255,255,255,.09);
-}
-/* Doppelte Trennlinie direkt darunter vermeiden */
-.footer-more + .footer-lang{border-top:0;padding-top:8px;}
-.footer-more-label{
-  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.42);
-}
-.footer-more-links{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;
-  gap:12px 28px;max-width:900px;
-}
-.footer-more-links a{
-  font-size:14px;color:rgba(255,255,255,.62);text-decoration:none;
-  transition:color .2s;
-}
-.footer-more-links a:hover{color:var(--begonia400);}
-.footer-more-links a:focus-visible{outline:2px solid var(--begonia400);outline-offset:3px;border-radius:3px;}
-@media(max-width:640px){
-  .footer-more{gap:12px;margin-top:26px;}
-  .footer-more-links{flex-direction:column;gap:11px;}
 }
 
 /* --- one-page nav: active state ---

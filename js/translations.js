@@ -1,5 +1,7 @@
 var translations = {
     de: {
+        'footer.shop': 'Der perfekte Online-Shop',
+        'footer.apps': 'Apps auf ihreapp.ch',
         'pricing.budget': 'Uns ist eine gute Bewertung wichtiger als ein hoher Preis. Sagen Sie uns einfach, was bei Ihnen drin liegt — wir richten uns nach Ihrem Budget.',
         'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: links 2017, rechts heute. Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und schieben, und genau dort sucht man ein Restaurant. <span class=\"vn-fuente\">Alte Ansicht aus dem Internet-Archiv.</span>',
         'vn.before2': '2017',
@@ -1086,6 +1088,8 @@ var translations = {
         'lp.tag1': 'Neu online',
     },
     en: {
+        'footer.shop': 'The perfect online shop',
+        'footer.apps': 'Apps on ihreapp.ch',
         'pricing.budget': 'A good review matters more to us than a high price. Just tell us what you can spend — we work with your budget.',
         'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: 2017 on the left, today on the right. The old site was 1050 pixels wide — on a phone you had to zoom and drag, and that is exactly where people look for a restaurant. <span class=\"vn-fuente\">Old view from the Internet Archive.</span>',
         'vn.before2': '2017',
@@ -2283,6 +2287,8 @@ var translations = {
         'lp.tag1': 'New online',
     },
     es: {
+        'footer.shop': 'La tienda online perfecta',
+        'footer.apps': 'Apps en ihreapp.ch',
         'pricing.budget': 'Para nosotros vale más una buena valoración que un precio alto. Dinos qué presupuesto tienes y nos adaptamos.',
         'vn.desc2': 'Cantina Tex-Mex en Bad Ragaz: a la izquierda 2017, a la derecha hoy. La web vieja medía 1050 píxeles — en el móvil había que hacer zoom y arrastrar, y es justo ahí donde se busca un restaurante. <span class=\"vn-fuente\">Vista antigua del archivo de internet.</span>',
         'vn.before2': '2017',
@@ -3480,6 +3486,8 @@ var translations = {
         'lp.tag1': 'Nuevo online',
     },
     fr: {
+        'footer.shop': 'La boutique en ligne parfaite',
+        'footer.apps': 'Applications sur ihreapp.ch',
         'pricing.budget': 'Un bon avis compte plus pour nous qu\'un prix élevé. Dites-nous simplement votre budget — on s\'y adapte.',
         'vn.desc2': 'Cantina Tex-Mex à Bad Ragaz : à gauche 2017, à droite aujourd\'hui. L\'ancien site faisait 1050 pixels — sur le téléphone il fallait zoomer et glisser, et c\'est justement là qu\'on cherche un restaurant. <span class=\"vn-fuente\">Vue ancienne tirée des archives du web.</span>',
         'vn.before2': '2017',
@@ -4677,6 +4685,8 @@ var translations = {
         'lp.tag1': 'Nouveau en ligne',
     },
     it: {
+        'footer.shop': 'Il negozio online perfetto',
+        'footer.apps': 'App su ihreapp.ch',
         'pricing.budget': 'Per noi vale più una buona recensione che un prezzo alto. Ci dica il suo budget — ci adattiamo.',
         'vn.desc2': 'Cantina Tex-Mex a Bad Ragaz: a sinistra il 2017, a destra oggi. Il vecchio sito era largo 1050 pixel — dal telefono bisognava ingrandire e trascinare, ed è proprio lì che si cerca un ristorante. <span class=\"vn-fuente\">Vista vecchia dall\'archivio di internet.</span>',
         'vn.before2': '2017',
