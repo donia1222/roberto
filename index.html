@@ -652,9 +652,16 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                      Las dos fotos van recortadas con fondo transparente, asi
                      que el fondo lo decide la web y no la foto.
                      ===================================================== -->
-                <div class="hero-foto">
-                    <img class="hfo-andrea" src="img/hero-andrea-recorte.webp" alt="Andrea" width="1400" height="1400" fetchpriority="high">
-                    <img class="hfo-roberto" src="img/hero-roberto-recorte.webp" alt="Roberto" width="823" height="1400" fetchpriority="high">
+                <div class="hero-foto hero-foto--entera">
+                    <!-- 19/10/2026 · foto de los dos con su propio fondo, en vez
+                         de los dos recortes sobre un degradado. Los recortes
+                         siguen en img/ por si se vuelve atras. -->
+                    <picture>
+                        <source srcset="img/hero-andrea-roberto.webp" type="image/webp">
+                        <img class="hfo-entera" src="img/hero-andrea-roberto.jpg"
+                             alt="Andrea und Roberto von Lweb in Sevelen"
+                             width="1400" height="933" fetchpriority="high">
+                    </picture>
                     <div class="hfo-pie">
                         <span>
                             <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>
@@ -1833,40 +1840,101 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
 
         <!-- La Cantina. Roberto es el encargado del restaurante, asi que de
              este ejemplo no hay que pedirle permiso a nadie. -->
-        <div class="vn">
-            <figure class="vn-card">
-                <span class="vn-tag vn-tag--alt" data-i18n="vn.before2">2017</span>
-                <img src="img/vorher-nachher/cantina-vorher.jpg" alt="Cantina Tex-Mex, 2017" loading="lazy" decoding="async" width="1100" height="631">
-            </figure>
-            <figure class="vn-card">
-                <span class="vn-tag" data-i18n="vn.after">Heute</span>
-                <img src="img/vorher-nachher/cantina-nachher.jpg" alt="Cantina Tex-Mex, heute" loading="lazy" decoding="async" width="1100" height="631">
-            </figure>
+        <!-- El tirador: se arrastra y aparece la de hoy. Es un input de rango
+             puesto encima y transparente, asi que funciona con el raton, con
+             el dedo y con las flechas del teclado sin escribir un solo
+             manejador de eventos. La linea y el agarre se dibujan aparte. -->
+        <div class="vn-sl-rotulos">
+            <span data-i18n="vn.before2">2017</span>
+            <span class="es-hoy" data-i18n="vn.after">Heute</span>
+        </div>
+        <div class="vn-sl" style="--pos:52%">
+            <img class="vn-sl-a" src="img/vorher-nachher/cantina-vorher.jpg" alt="Cantina Tex-Mex, 2017" loading="lazy" decoding="async" width="1100" height="631">
+            <img class="vn-sl-b" src="img/vorher-nachher/cantina-nachher.jpg" alt="Cantina Tex-Mex, heute" loading="lazy" decoding="async" width="1100" height="631">
+            <span class="vn-sl-linea" aria-hidden="true"><i></i></span>
+            <input class="vn-sl-rango" type="range" min="0" max="100" value="52" step="0.1"
+                   aria-label="Vorher und nachher vergleichen">
         </div>
         <p class="vn-note" data-i18n="vn.note2">Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und seitlich schieben. Der Spruch von damals, «Lust auf Tex-Mex?», steht heute gross über dem Foto des Lokals. Alte Ansicht aus dem Internet-Archiv; einzelne Bilder von damals sind dort nicht erhalten.</p>
 
         <!-- US-Fishing & Huntingshop · ESCONDIDO hasta que Urs diga que si.
              Para encenderlo: quitar la clase «oculto» de este div. -->
         <div class="vn-caso oculto">
-            <div class="vn">
-                <figure class="vn-card">
-                    <span class="vn-tag vn-tag--alt" data-i18n="vn.before">2021</span>
-                    <img src="img/vorher-nachher/usfh-vorher.jpg" alt="US-Fishing &amp; Huntingshop, 2021" loading="lazy" decoding="async" width="1100" height="631">
-                </figure>
-                <figure class="vn-card">
-                    <span class="vn-tag" data-i18n="vn.after">Heute</span>
-                    <img src="img/vorher-nachher/usfh-nachher.jpg" alt="US-Fishing &amp; Huntingshop, heute" loading="lazy" decoding="async" width="1100" height="631">
-                </figure>
+            <div class="vn-sl-rotulos">
+                <span data-i18n="vn.before">2021</span>
+                <span class="es-hoy" data-i18n="vn.after">Heute</span>
+            </div>
+            <div class="vn-sl" style="--pos:52%">
+                <img class="vn-sl-a" src="img/vorher-nachher/usfh-vorher.jpg" alt="US-Fishing &amp; Huntingshop, 2021" loading="lazy" decoding="async" width="1100" height="631">
+                <img class="vn-sl-b" src="img/vorher-nachher/usfh-nachher.jpg" alt="US-Fishing &amp; Huntingshop, heute" loading="lazy" decoding="async" width="1100" height="631">
+                <span class="vn-sl-linea" aria-hidden="true"><i></i></span>
+                <input class="vn-sl-rango" type="range" min="0" max="100" value="52" step="0.1"
+                       aria-label="Vorher und nachher vergleichen">
             </div>
             <p class="vn-note" data-i18n="vn.note">Der Shop läuft weiter wie vorher — Urs verwaltet seine über 800 Artikel selbst, und neue Funktionen kommen dazu, wenn er sie braucht.</p>
         </div>
     </div>
 </section>
 
+<script>
+/* Mueve el recorte con el mando. Una linea por comparador; lo demas lo hace
+   el propio input de rango (raton, dedo y teclado). */
+document.querySelectorAll('.vn-sl').forEach(function (caja) {
+    var mando = caja.querySelector('.vn-sl-rango');
+    if (!mando) return;
+    var pinta = function () { caja.style.setProperty('--pos', mando.value + '%'); };
+    mando.addEventListener('input', pinta);
+    pinta();
+});
+</script>
+
 <style>
 .vn-kick{display:inline-block;margin-bottom:10px;font-size:12px;font-weight:700;
   letter-spacing:.14em;text-transform:uppercase;color:var(--begonia400);}
 .vn{max-width:900px;margin:30px auto 0;display:grid;gap:18px;}
+
+/* ---------- el comparador que se arrastra ---------- */
+/* Los rotulos, FUERA de la imagen (19/10/2026): dentro tapaban justo la
+   esquina donde cada web pone su logotipo. */
+.vn-sl-rotulos{max-width:900px;margin:30px auto 9px;display:flex;
+  justify-content:space-between;align-items:baseline;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gunpowder300);}
+.vn-sl-rotulos .es-hoy{color:var(--begonia400);}
+.vn-sl{position:relative;max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;
+  border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);
+  background:#fff;line-height:0;touch-action:pan-y;}
+body.dark-mode .vn-sl{border-color:#1e2d3d;background:#141d2b;}
+.vn-sl img{display:block;width:100%;height:auto;}
+/* La de hoy va encima, recortada por donde este el tirador. */
+.vn-sl .vn-sl-b{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos));}
+/* La linea y el agarre, en el mismo sitio que el recorte. */
+.vn-sl-linea{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;
+  background:#fff;box-shadow:0 0 0 1px rgba(15,29,44,.18);pointer-events:none;z-index:3;}
+.vn-sl-linea i{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:42px;height:42px;border-radius:50%;background:#fff;
+  box-shadow:0 6px 18px rgba(15,29,44,.28);
+  display:block;}
+/* Las dos flechitas del agarre, dibujadas con bordes: ni un icono que cargar. */
+.vn-sl-linea i::before,.vn-sl-linea i::after{content:"";position:absolute;top:50%;
+  width:0;height:0;border:5px solid transparent;}
+.vn-sl-linea i::before{left:9px;transform:translateY(-50%);border-right-color:var(--gunpowder900);}
+.vn-sl-linea i::after{right:9px;transform:translateY(-50%);border-left-color:var(--gunpowder900);}
+/* El mando: invisible y del tamaño de la caja. Asi se arrastra con el raton,
+   con el dedo y con las flechas, sin escribir un manejador. */
+.vn-sl-rango{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
+  -webkit-appearance:none;appearance:none;background:none;cursor:ew-resize;z-index:4;
+  /* En el movil: de lado mueve el tirador, hacia abajo hace scroll de la
+     pagina. Sin esto, el dedo se queda atrapado en la imagen. */
+  touch-action:pan-y;}
+.vn-sl-rango:focus-visible{outline:3px solid var(--begonia400);outline-offset:-3px;}
+.vn-sl-rango::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;
+  background:transparent;cursor:ew-resize;}
+.vn-sl-rango::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent;cursor:ew-resize;}
+.vn-sl-rango::-moz-range-track{background:none;}
+@media(max-width:560px){
+  .vn-sl-linea i{width:36px;height:36px;}
+}
 .vn-card{position:relative;margin:0;border-radius:18px;overflow:hidden;
   border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);background:#fff;}
 body.dark-mode .vn-card{border-color:#1e2d3d;background:#141d2b;}
@@ -2093,7 +2161,14 @@ body.dark-mode .vgl-legend b{color:#e6edf5;}
 
         </div>
 
+        <!-- 19/10/2026 · lo que de verdad quiere decir en un bloque de precios
+             un taller de una persona: que el numero no es una barrera. -->
+        <p class="prs-nota" data-i18n="pricing.budget">Uns ist eine gute Bewertung wichtiger als ein hoher Preis. Sagen Sie uns einfach, was bei Ihnen drin liegt — wir richten uns nach Ihrem Budget.</p>
+
         <style>
+        .prs-nota{max-width:60ch;margin:26px auto 0;text-align:center;
+          font:600 16px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;
+          color:var(--gunpowder400);}
         .prs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
           gap:clamp(14px,1.8vw,22px);align-items:stretch;margin-top:34px;}
 
