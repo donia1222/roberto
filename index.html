@@ -1818,31 +1818,48 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
      Urs ya dijo de palabra que se puede usar su web como ejemplo; falta
      pedirselo bien cuando le pida la reseña de Google.
 
-     *** OJO · 19/10/2026 ***
-     Ahora mismo esta ENCENDIDO, pero solo para verlo en local.
-     ANTES DE PUBLICAR hay que volver a ponerle  style="display:none;"
-     a la linea de abajo, y no quitarselo hasta que Urs diga que si.
+     *** COMO ESTA (19/10/2026) ***
+     El bloque se ve, pero con el ejemplo de LA CANTINA, que es de casa.
+     El par de URS esta dentro, escondido con la clase «oculto»: en cuanto
+     el diga que si, se le quita esa clase y aparecen los dos ejemplos.
      ========================================================================= -->
-<section class="section vn-section" id="vorher-nachher" style="display:none;scroll-margin-top:90px;">
+<section class="section vn-section" id="vorher-nachher" style="scroll-margin-top:90px;">
     <div class="container">
         <div class="section-header">
             <span class="vn-kick" data-i18n="vn.eyebrow">Vorher / Nachher</span>
             <h2 data-i18n-html="vn.title">Dieselbe Firma, dieselbe Adresse &mdash; <span style="color:var(--begonia400)">neu gebaut</span></h2>
-            <p data-i18n="vn.desc">US-Fishing &amp; Huntingshop in Sevelen: oben der Shop, wie er 2021 aussah, unten derselbe Shop heute. Gleiche Produkte, gleicher Name — nur übersichtlicher, schneller und auf dem Handy wirklich benutzbar.</p>
+            <p data-i18n="vn.desc2">Cantina Tex-Mex in Bad Ragaz: links die Website von 2017, rechts dieselbe Cantina heute. Gleiches Restaurant, gleicher Slogan — nur dass die neue Seite auch auf dem Handy funktioniert, und genau dort suchen die Leute ein Restaurant.</p>
         </div>
 
+        <!-- La Cantina. Roberto es el encargado del restaurante, asi que de
+             este ejemplo no hay que pedirle permiso a nadie. -->
         <div class="vn">
             <figure class="vn-card">
-                <span class="vn-tag vn-tag--alt" data-i18n="vn.before">2021</span>
-                <img src="img/vorher-nachher/usfh-vorher.jpg" alt="US-Fishing &amp; Huntingshop, 2021" loading="lazy" decoding="async" width="1100" height="739">
+                <span class="vn-tag vn-tag--alt" data-i18n="vn.before2">2017</span>
+                <img src="img/vorher-nachher/cantina-vorher.jpg" alt="Cantina Tex-Mex, 2017" loading="lazy" decoding="async" width="1100" height="631">
             </figure>
             <figure class="vn-card">
                 <span class="vn-tag" data-i18n="vn.after">Heute</span>
-                <img src="img/vorher-nachher/usfh-nachher.jpg" alt="US-Fishing &amp; Huntingshop, heute" loading="lazy" decoding="async" width="1100" height="739">
+                <img src="img/vorher-nachher/cantina-nachher.jpg" alt="Cantina Tex-Mex, heute" loading="lazy" decoding="async" width="1100" height="631">
             </figure>
         </div>
+        <p class="vn-note" data-i18n="vn.note2">Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und seitlich schieben. Der Spruch von damals, «Lust auf Tex-Mex?», steht heute gross über dem Foto des Lokals. Alte Ansicht aus dem Internet-Archiv; einzelne Bilder von damals sind dort nicht erhalten.</p>
 
-        <p class="vn-note" data-i18n="vn.note">Der Shop läuft weiter wie vorher — Urs verwaltet seine über 800 Artikel selbst, und neue Funktionen kommen dazu, wenn er sie braucht.</p>
+        <!-- US-Fishing & Huntingshop · ESCONDIDO hasta que Urs diga que si.
+             Para encenderlo: quitar la clase «oculto» de este div. -->
+        <div class="vn-caso oculto">
+            <div class="vn">
+                <figure class="vn-card">
+                    <span class="vn-tag vn-tag--alt" data-i18n="vn.before">2021</span>
+                    <img src="img/vorher-nachher/usfh-vorher.jpg" alt="US-Fishing &amp; Huntingshop, 2021" loading="lazy" decoding="async" width="1100" height="631">
+                </figure>
+                <figure class="vn-card">
+                    <span class="vn-tag" data-i18n="vn.after">Heute</span>
+                    <img src="img/vorher-nachher/usfh-nachher.jpg" alt="US-Fishing &amp; Huntingshop, heute" loading="lazy" decoding="async" width="1100" height="631">
+                </figure>
+            </div>
+            <p class="vn-note" data-i18n="vn.note">Der Shop läuft weiter wie vorher — Urs verwaltet seine über 800 Artikel selbst, und neue Funktionen kommen dazu, wenn er sie braucht.</p>
+        </div>
     </div>
 </section>
 
@@ -1858,6 +1875,8 @@ body.dark-mode .vn-card{border-color:#1e2d3d;background:#141d2b;}
   font-size:12px;font-weight:700;letter-spacing:.06em;background:var(--begonia400);color:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.18);}
 .vn-tag--alt{background:rgba(15,29,44,.86);}
+.vn-caso{margin-top:34px;}
+.vn-caso.oculto{display:none;}
 .vn-note{max-width:62ch;margin:18px auto 0;text-align:center;
   font:500 15px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder400);}
 @media(min-width:820px){.vn{grid-template-columns:1fr 1fr;gap:16px;}}
