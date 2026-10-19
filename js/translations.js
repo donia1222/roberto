@@ -1,7 +1,7 @@
 var translations = {
     de: {
         'pricing.budget': 'Uns ist eine gute Bewertung wichtiger als ein hoher Preis. Sagen Sie uns einfach, was bei Ihnen drin liegt — wir richten uns nach Ihrem Budget.',
-        'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: links die Website von 2017, rechts dieselbe Cantina heute. Gleiches Restaurant, gleicher Slogan — nur dass die neue Seite auch auf dem Handy funktioniert, und genau dort suchen die Leute ein Restaurant.',
+        'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: links 2017, rechts heute. Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und schieben, und genau dort sucht man ein Restaurant. <span class=\"vn-fuente\">Alte Ansicht aus dem Internet-Archiv.</span>',
         'vn.before2': '2017',
         'vn.note2': 'Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und seitlich schieben. Der Spruch von damals, «Lust auf Tex-Mex?», steht heute gross über dem Foto des Lokals. Alte Ansicht aus dem Internet-Archiv; einzelne Bilder von damals sind dort nicht erhalten.',
         'vn.eyebrow': 'Vorher / Nachher',
@@ -1087,7 +1087,7 @@ var translations = {
     },
     en: {
         'pricing.budget': 'A good review matters more to us than a high price. Just tell us what you can spend — we work with your budget.',
-        'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: on the left the website from 2017, on the right the same Cantina today. Same restaurant, same slogan — except the new site also works on a phone, which is exactly where people look for somewhere to eat.',
+        'vn.desc2': 'Cantina Tex-Mex in Bad Ragaz: 2017 on the left, today on the right. The old site was 1050 pixels wide — on a phone you had to zoom and drag, and that is exactly where people look for a restaurant. <span class=\"vn-fuente\">Old view from the Internet Archive.</span>',
         'vn.before2': '2017',
         'vn.note2': 'The old site was 1050 pixels wide — on a phone you had to zoom and drag sideways. The line from back then, "Lust auf Tex-Mex?", is now the big headline over the photo of the restaurant. Old view from the Internet Archive; some images from that time are not kept there.',
         'vn.eyebrow': 'Before / After',
@@ -2284,7 +2284,7 @@ var translations = {
     },
     es: {
         'pricing.budget': 'Para nosotros vale más una buena valoración que un precio alto. Dinos qué presupuesto tienes y nos adaptamos.',
-        'vn.desc2': 'Cantina Tex-Mex en Bad Ragaz: a la izquierda la web de 2017, a la derecha la misma Cantina hoy. El mismo restaurante y el mismo lema — solo que la nueva también funciona en el móvil, que es justo donde la gente busca dónde comer.',
+        'vn.desc2': 'Cantina Tex-Mex en Bad Ragaz: a la izquierda 2017, a la derecha hoy. La web vieja medía 1050 píxeles — en el móvil había que hacer zoom y arrastrar, y es justo ahí donde se busca un restaurante. <span class=\"vn-fuente\">Vista antigua del archivo de internet.</span>',
         'vn.before2': '2017',
         'vn.note2': 'La web vieja medía 1050 píxeles de ancho: en el móvil había que hacer zoom y arrastrar de lado. La frase de entonces, «Lust auf Tex-Mex?», es hoy el rótulo grande sobre la foto del local. Vista antigua del archivo de internet; algunas imágenes de entonces no se conservan allí.',
         'vn.eyebrow': 'Antes / Después',
@@ -3481,7 +3481,7 @@ var translations = {
     },
     fr: {
         'pricing.budget': 'Un bon avis compte plus pour nous qu\'un prix élevé. Dites-nous simplement votre budget — on s\'y adapte.',
-        'vn.desc2': 'Cantina Tex-Mex à Bad Ragaz : à gauche le site de 2017, à droite la même Cantina aujourd\'hui. Même restaurant, même slogan — sauf que le nouveau site fonctionne aussi sur le téléphone, et c\'est justement là que les gens cherchent où manger.',
+        'vn.desc2': 'Cantina Tex-Mex à Bad Ragaz : à gauche 2017, à droite aujourd\'hui. L\'ancien site faisait 1050 pixels — sur le téléphone il fallait zoomer et glisser, et c\'est justement là qu\'on cherche un restaurant. <span class=\"vn-fuente\">Vue ancienne tirée des archives du web.</span>',
         'vn.before2': '2017',
         'vn.note2': 'L\'ancien site faisait 1050 pixels de large : sur le téléphone, il fallait zoomer et glisser sur le côté. La phrase de l\'époque, « Lust auf Tex-Mex ? », est aujourd\'hui le grand titre sur la photo du restaurant. Vue ancienne tirée des archives du web ; certaines images de l\'époque n\'y sont pas conservées.',
         'vn.eyebrow': 'Avant / Après',
@@ -4678,7 +4678,7 @@ var translations = {
     },
     it: {
         'pricing.budget': 'Per noi vale più una buona recensione che un prezzo alto. Ci dica il suo budget — ci adattiamo.',
-        'vn.desc2': 'Cantina Tex-Mex a Bad Ragaz: a sinistra il sito del 2017, a destra la stessa Cantina oggi. Stesso ristorante, stesso slogan — solo che il sito nuovo funziona anche dal telefono, ed è proprio lì che la gente cerca dove mangiare.',
+        'vn.desc2': 'Cantina Tex-Mex a Bad Ragaz: a sinistra il 2017, a destra oggi. Il vecchio sito era largo 1050 pixel — dal telefono bisognava ingrandire e trascinare, ed è proprio lì che si cerca un ristorante. <span class=\"vn-fuente\">Vista vecchia dall\'archivio di internet.</span>',
         'vn.before2': '2017',
         'vn.note2': 'Il vecchio sito era largo 1050 pixel: dal telefono bisognava ingrandire e trascinare di lato. La frase di allora, «Lust auf Tex-Mex?», oggi è il titolo grande sopra la foto del locale. Vista vecchia dall\'archivio di internet; alcune immagini di allora non sono conservate.',
         'vn.eyebrow': 'Prima / Dopo',

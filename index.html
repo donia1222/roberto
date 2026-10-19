@@ -1835,7 +1835,7 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
         <div class="section-header">
             <span class="vn-kick" data-i18n="vn.eyebrow">Vorher / Nachher</span>
             <h2 data-i18n-html="vn.title">Dieselbe Firma, dieselbe Adresse &mdash; <span style="color:var(--begonia400)">neu gebaut</span></h2>
-            <p data-i18n="vn.desc2">Cantina Tex-Mex in Bad Ragaz: links die Website von 2017, rechts dieselbe Cantina heute. Gleiches Restaurant, gleicher Slogan — nur dass die neue Seite auch auf dem Handy funktioniert, und genau dort suchen die Leute ein Restaurant.</p>
+            <p data-i18n-html="vn.desc2">Cantina Tex-Mex in Bad Ragaz: links 2017, rechts heute. Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und schieben, und genau dort sucht man ein Restaurant. <span class="vn-fuente">Alte Ansicht aus dem Internet-Archiv.</span></p>
         </div>
 
         <!-- La Cantina. Roberto es el encargado del restaurante, asi que de
@@ -1855,8 +1855,6 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
             <input class="vn-sl-rango" type="range" min="0" max="100" value="52" step="0.1"
                    aria-label="Vorher und nachher vergleichen">
         </div>
-        <p class="vn-note" data-i18n="vn.note2">Die alte Seite war 1050 Pixel breit — auf dem Handy musste man zoomen und seitlich schieben. Der Spruch von damals, «Lust auf Tex-Mex?», steht heute gross über dem Foto des Lokals. Alte Ansicht aus dem Internet-Archiv; einzelne Bilder von damals sind dort nicht erhalten.</p>
-
         <!-- US-Fishing & Huntingshop · ESCONDIDO hasta que Urs diga que si.
              Para encenderlo: quitar la clase «oculto» de este div. -->
         <div class="vn-caso oculto">
@@ -1877,14 +1875,49 @@ body.dark-mode .ia-url{color:rgba(238,241,246,.75);box-shadow:0 0 0 1px rgba(255
 </section>
 
 <script>
-/* Mueve el recorte con el mando. Una linea por comparador; lo demas lo hace
-   el propio input de rango (raton, dedo y teclado). */
+/* El comparador.
+   La primera version se apoyaba solo en un input de rango invisible puesto
+   encima. En el ordenador iba bien, pero EN EL MOVIL NO: ahi un rango solo se
+   mueve si agarras exactamente el punto, y el punto no se ve. Resultado: se
+   arrastraba el dedo y no pasaba nada.
+   Ahora el arrastre se escucha en la caja entera (pointer events, que valen
+   igual para raton, dedo y lapiz) y el rango se queda solo para el teclado,
+   con pointer-events:none para no robar el toque.
+   La caja lleva touch-action:pan-y: si el dedo va hacia abajo, el navegador
+   se queda el gesto y la pagina hace scroll; si va de lado, es nuestro. */
 document.querySelectorAll('.vn-sl').forEach(function (caja) {
     var mando = caja.querySelector('.vn-sl-rango');
-    if (!mando) return;
-    var pinta = function () { caja.style.setProperty('--pos', mando.value + '%'); };
-    mando.addEventListener('input', pinta);
-    pinta();
+    var puesto = false;
+
+    var pon = function (x) {
+        var c = caja.getBoundingClientRect();
+        var p = ((x - c.left) / c.width) * 100;
+        p = Math.max(0, Math.min(100, p));
+        caja.style.setProperty('--pos', p + '%');
+        if (mando) mando.value = p;
+    };
+
+    caja.addEventListener('pointerdown', function (e) {
+        puesto = true;
+        caja.classList.add('arrastrando');
+        if (caja.setPointerCapture) { try { caja.setPointerCapture(e.pointerId); } catch (err) {} }
+        pon(e.clientX);
+    });
+    caja.addEventListener('pointermove', function (e) {
+        if (!puesto) return;
+        pon(e.clientX);
+        e.preventDefault();
+    });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) {
+        caja.addEventListener(ev, function () { puesto = false; caja.classList.remove('arrastrando'); });
+    });
+
+    // El teclado: las flechas sobre el rango enfocado.
+    if (mando) {
+        mando.addEventListener('input', function () {
+            caja.style.setProperty('--pos', mando.value + '%');
+        });
+    }
 });
 </script>
 
@@ -1901,9 +1934,13 @@ document.querySelectorAll('.vn-sl').forEach(function (caja) {
   font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gunpowder300);}
 .vn-sl-rotulos .es-hoy{color:var(--begonia400);}
+.vn-fuente{display:block;margin-top:4px;font-size:13.5px;color:var(--gunpowder300);}
 .vn-sl{position:relative;max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;
   border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);
-  background:#fff;line-height:0;touch-action:pan-y;}
+  background:#fff;line-height:0;cursor:ew-resize;
+  /* de lado lo cogemos nosotros, hacia abajo lo deja pasar al navegador */
+  touch-action:pan-y;-webkit-user-select:none;user-select:none;}
+.vn-sl img{pointer-events:none;-webkit-user-drag:none;}
 body.dark-mode .vn-sl{border-color:#1e2d3d;background:#141d2b;}
 .vn-sl img{display:block;width:100%;height:auto;}
 /* La de hoy va encima, recortada por donde este el tirador. */
@@ -1922,16 +1959,15 @@ body.dark-mode .vn-sl{border-color:#1e2d3d;background:#141d2b;}
 .vn-sl-linea i::after{right:9px;transform:translateY(-50%);border-left-color:var(--gunpowder900);}
 /* El mando: invisible y del tamaño de la caja. Asi se arrastra con el raton,
    con el dedo y con las flechas, sin escribir un manejador. */
+/* El rango se queda SOLO para el teclado: no recibe toques (si los recibiera,
+   se comeria el arrastre del dedo, que es justo lo que fallaba en el movil). */
 .vn-sl-rango{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
-  -webkit-appearance:none;appearance:none;background:none;cursor:ew-resize;z-index:4;
-  /* En el movil: de lado mueve el tirador, hacia abajo hace scroll de la
-     pagina. Sin esto, el dedo se queda atrapado en la imagen. */
-  touch-action:pan-y;}
-.vn-sl-rango:focus-visible{outline:3px solid var(--begonia400);outline-offset:-3px;}
-.vn-sl-rango::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;
-  background:transparent;cursor:ew-resize;}
-.vn-sl-rango::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent;cursor:ew-resize;}
-.vn-sl-rango::-moz-range-track{background:none;}
+  -webkit-appearance:none;appearance:none;background:none;opacity:0;
+  pointer-events:none;z-index:4;}
+.vn-sl:focus-within{outline:3px solid var(--begonia400);outline-offset:-3px;}
+.vn-sl.arrastrando{cursor:grabbing;}
+.vn-sl.arrastrando .vn-sl-linea i{transform:translate(-50%,-50%) scale(1.08);}
+.vn-sl-linea i{transition:transform .12s;}
 @media(max-width:560px){
   .vn-sl-linea i{width:36px;height:36px;}
 }
