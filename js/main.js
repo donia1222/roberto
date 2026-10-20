@@ -562,7 +562,7 @@ var chatbotSystemPrompt = 'RULE #1: You MUST reply in the SAME language the user
 'Wenn der Benutzer einen Termin vereinbaren oder buchen möchte, genügt es, „termin vereinbaren" oder „termin buchen" zu schreiben, um den Prozess zur Terminreservierung über WhatsApp zu starten.\n\n' +
 '**Kontakt**:\n' +
 '- 📧 E-Mail: info@lweb.ch\n' +
-'- 📞 Telefon: +41 76 560 86 45\n' +
+'- 📞 Telefon: +41 79 374 90 32\n' +
 '- 🏢 Adresse: Chalberweidstrasse 38, 9475 Sevelen, Schweiz (Region Werdenberg — Buchs SG, Vaduz, Sargans)\n' +
 '- 🌐 Website: www.lweb.ch';
 
@@ -1028,7 +1028,7 @@ function downloadVCard() {
                     'ORG:Lweb\n' +
                     'TITLE:App & Web Entwicklung\n' +
                     'ADR:;;Sevelen;Sevelen;SG;9475;Switzerland\n' +
-                    'TEL:+41765608645\n' +
+                    'TEL:+41793749032\n' +
                     'EMAIL:info@lweb.ch\n' +
                     'URL:https://lweb.ch\n' +
                     'NOTE:App Entwickler & Full-Stack Developer in Sevelen. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\n' +
@@ -1060,7 +1060,7 @@ function downloadVCardNoImage() {
         'ORG:Lweb\n' +
         'TITLE:App & Web Entwicklung\n' +
         'ADR:;;Sevelen;Sevelen;SG;9475;Switzerland\n' +
-        'TEL:+41765608645\n' +
+        'TEL:+41793749032\n' +
         'EMAIL:info@lweb.ch\n' +
         'URL:https://lweb.ch\n' +
         'NOTE:App Entwickler & Full-Stack Developer in Sevelen. Native iOS & Android Apps\\, moderne Websites und KI-Loesungen.\n' +
@@ -1647,7 +1647,7 @@ function calcShowResult() {
 
     // Build WhatsApp message with all selected data
     var msg = calcBuildWhatsAppMsg(price, tags);
-    calcState.waUrl = 'https://wa.me/41765608645?text=' + encodeURIComponent(msg);
+    calcState.waUrl = 'https://wa.me/41793749032?text=' + encodeURIComponent(msg);
 
     // Schnappschuss fuer die Terminseite: dort wird die gewaehlte
     // Offerte angezeigt und spaeter der Anfrage angehaengt.
@@ -2029,7 +2029,7 @@ function webModalWhatsApp() {
     var msg = 'Hallo! Ich habe auf lweb.ch das Projekt «' + project.title + '» gesehen und hätte gerne ein ähnliches Projekt.\n\n' +
               'Geschätzter Preis: ' + project.price + '\n\n' +
               'Ich freue mich auf Ihre Rückmeldung!';
-    window.open('https://wa.me/41765608645?text=' + encodeURIComponent(msg), '_blank');
+    window.open('https://wa.me/41793749032?text=' + encodeURIComponent(msg), '_blank');
 }
 
 // ===== WEBSITE FILTER TABS =====
@@ -2077,7 +2077,7 @@ var legalContent = {
         html: '<h4>Angaben gemäss Schweizer Recht</h4>' +
             '<p><strong>Lweb — Salvador Lopez</strong><br>Inhaber: Roberto Salvador Lopez<br>Chalberweidstrasse 38<br>9475 Sevelen<br>Schweiz</p>' +
             '<h4>Kontakt</h4>' +
-            '<p>Telefon: +41 76 560 86 45<br>E-Mail: info@lweb.ch<br>Website: <a href="https://lweb.ch" style="color:var(--cerulean500)">lweb.ch</a></p>' +
+            '<p>Telefon: +41 79 374 90 32<br>E-Mail: info@lweb.ch<br>Website: <a href="https://lweb.ch" style="color:var(--cerulean500)">lweb.ch</a></p>' +
             '<h4>Unternehmensform</h4>' +
             '<p>Einzelunternehmen<br>UID: CHE-449.145.794</p>' +
             '<h4>Verantwortlich für den Inhalt</h4>' +

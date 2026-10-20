@@ -40,7 +40,7 @@ var chatbotSystemPrompt = [
 '',
 '=== CONTACT ===',
 '- E-Mail: info@lweb.ch',
-'- Telefon / WhatsApp: +41 76 560 86 45',
+'- Telefon / WhatsApp: +41 79 374 90 32 (Andrea)',
 '- Adresse: Chalberweidstrasse 38, 9475 Sevelen, Schweiz',
 '- Website: www.lweb.ch'
 ].join('\n');
