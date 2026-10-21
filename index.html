@@ -2388,6 +2388,121 @@ body.dark-mode .esc-key{color:#e6edf5;}
 </style>
 
 <!-- =========================================================================
+     EL PROGRAMA DE ADMINISTRACION QUE VA CON LA WEB · 21/10/2026
+     Sale de mirar lumabill.ch y las otras ocho plataformas suizas: ahi no se
+     entra (abono, bancos, cierre fiscal, y el hueco esta lleno). Lo que si se
+     vende es esto: que al hacerle la web ya se sabe como trabaja, asi que el
+     programa se le hace a su medida, se paga una vez y es suyo.
+
+     DOS REGLAS DE ESTE BLOQUE
+     -------------------------
+     1) No aparece la palabra «Buchhaltung» en ningun idioma. El panel hace
+        facturas, gastos, horas y resumen; si el cliente lee «contabilidad»
+        entiende cierre y MWST y luego se lleva el chasco. La linea pequeña de
+        abajo (vpr.fine) lo dice expresamente.
+     2) No lleva precio. Los 150.— son el programa suelto; dentro de una oferta
+        de web vale otra cosa y eso esta sin decidir.
+
+     Va justo despues de la escalera a proposito: alli se cuenta que la web
+     crece, y aqui que ademas puede llevar su propio programa. La rejilla es la
+     misma que la de la escalera (.esc) para que no choque.
+     Las cinco maquetas que se probaron: panel-opciones.html (sin enlazar).
+     ========================================================================= -->
+<section class="section vpr-section" id="verwaltung" style="scroll-margin-top:90px;">
+    <div class="container">
+        <div class="section-header">
+            <h2 data-i18n-html="vpr.title">Zur Website gibt's auch das <span style="color:var(--begonia400)">Büro dahinter</span></h2>
+            <p data-i18n="vpr.desc">Viele Betriebe haben eine schöne Website — und schreiben die Rechnungen danach in Word. Das muss nicht sein. Zur Website baue ich Ihnen auf Wunsch Ihr eigenes Programm für das, was jeden Monat anfällt — gebaut für Ihren Betrieb, nicht für irgendeinen.</p>
+        </div>
+
+        <ul class="vpr">
+            <li class="vpr-cell">
+                <span class="vpr-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
+                <h3 class="vpr-t" data-i18n="vpr.c1.t">Rechnungen</h3>
+                <p class="vpr-d" data-i18n="vpr.c1.d">Rechnung schreiben, als PDF speichern, per Mail raus. Mit Ihrem Logo und Ihrer Nummerierung. Wer bezahlt hat und wer nicht, sehen Sie auf einen Blick.</p>
+            </li>
+            <li class="vpr-cell">
+                <span class="vpr-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v12H3z"/><path d="M3 11h18M7 15h4"/></svg></span>
+                <h3 class="vpr-t" data-i18n="vpr.c2.t">Ausgaben</h3>
+                <p class="vpr-d" data-i18n="vpr.c2.d">Beleg abfotografieren, Kategorie wählen, fertig. Am Jahresende müssen Sie keinen Schuhkarton mehr sortieren.</p>
+            </li>
+            <li class="vpr-cell">
+                <span class="vpr-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg></span>
+                <h3 class="vpr-t" data-i18n="vpr.c3.t">Arbeitsstunden</h3>
+                <p class="vpr-d" data-i18n="vpr.c3.d">Wer war wann wo, und wie viele Stunden sind das. Direkt in die Rechnung übernehmen — oder als Liste für die Lohnabrechnung.</p>
+            </li>
+            <li class="vpr-cell">
+                <span class="vpr-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg></span>
+                <h3 class="vpr-t" data-i18n="vpr.c4.t">Überblick</h3>
+                <p class="vpr-d" data-i18n="vpr.c4.d">Was ist diesen Monat reingekommen, was rausgegangen, was ist noch offen. Die Zahl, die Sie wissen wollen, ohne zu rechnen.</p>
+            </li>
+        </ul>
+
+        <p class="vpr-key" data-i18n-html="vpr.key">Einmal bezahlen — dann gehört es Ihnen, <b>wie die Website</b>. Kein Abo, keine monatliche Rechnung, Ihre Daten auf Ihrem eigenen Hosting.</p>
+
+        <div class="vpr-foot">
+            <a class="gbcta gbcta--primary" href="https://web.lweb.ch/demo" target="_blank" rel="noopener" data-lw-event="cta_verwaltung">
+                <span data-i18n="vpr.cta">Beispiel ansehen</span>
+                <svg class="vpr-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+        <p class="vpr-note" data-i18n="vpr.fine">Kein Buchhaltungsabschluss und keine MWST-Abrechnung — dafür bleibt Ihr Treuhänder. Hier geht es um das, was jeden Monat anfällt.</p>
+    </div>
+</section>
+
+<style>
+.vpr-section{padding-top:8px;}
+.vpr{list-style:none;max-width:1000px;margin:30px auto 0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+  border:1px solid var(--gunpowder100);border-radius:20px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 48px rgba(15,29,44,.07);}
+body.dark-mode .vpr{background:#141d2b;border-color:#1e2d3d;box-shadow:0 18px 48px rgba(0,0,0,.4);}
+.vpr-cell{position:relative;padding:24px 20px 26px;display:flex;flex-direction:column;gap:9px;
+  border-right:1px solid var(--gunpowder100);}
+body.dark-mode .vpr-cell{border-right-color:#1e2d3d;}
+.vpr-cell:last-child{border-right:0;}
+/* El mismo degradado que la escalera: se nota que son de la misma familia. */
+.vpr-cell:nth-child(1){background:transparent;}
+.vpr-cell:nth-child(2){background:rgba(var(--acento-rgb),.04);}
+.vpr-cell:nth-child(3){background:rgba(var(--acento-rgb),.08);}
+.vpr-cell:nth-child(4){background:rgba(var(--acento-rgb),.13);}
+.vpr-ic{width:36px;height:36px;flex:none;border-radius:11px;display:grid;place-items:center;
+  background:var(--gunpowder900);color:#fff;}
+body.dark-mode .vpr-ic{background:#e6edf5;color:#0f1d2c;}
+.vpr-cell:nth-child(4) .vpr-ic{background:var(--begonia400);color:#fff;}
+.vpr-ic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;}
+.vpr-t{margin:3px 0 0;font:750 16.5px/1.3 'Plus Jakarta Sans',system-ui,sans-serif;
+  color:var(--gunpowder900);}
+body.dark-mode .vpr-t{color:#f1f5f9;}
+.vpr-d{margin:0;font-size:14.5px;line-height:1.6;color:var(--gunpowder400);}
+.vpr-key{max-width:68ch;margin:26px auto 0;text-align:center;
+  font:600 17px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder900);}
+body.dark-mode .vpr-key{color:#e6edf5;}
+.vpr-key b{color:var(--begonia400);font-weight:800;}
+.vpr-foot{text-align:center;margin-top:24px;}
+.vpr-arrow{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;}
+.vpr-note{max-width:62ch;margin:14px auto 0;text-align:center;
+  font:500 14px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--gunpowder300);}
+@media(max-width:860px){
+  .vpr{grid-template-columns:1fr 1fr;}
+  .vpr-cell:nth-child(2n){border-right:0;}
+  .vpr-cell:nth-child(-n+2){border-bottom:1px solid var(--gunpowder100);}
+  body.dark-mode .vpr-cell:nth-child(-n+2){border-bottom-color:#1e2d3d;}
+}
+@media(max-width:560px){
+  .vpr{grid-template-columns:1fr;}
+  .vpr-cell{border-right:0;border-bottom:1px solid var(--gunpowder100);}
+  body.dark-mode .vpr-cell{border-bottom-color:#1e2d3d;}
+  .vpr-cell:last-child{border-bottom:0;}
+  /* El boton no cabe de una linea en 390: se le deja partir. */
+  .vpr-foot .gbcta{white-space:normal;height:auto;min-height:54px;padding:12px 22px;
+    font-size:16px;line-height:1.3;text-align:center;}
+}
+</style>
+
+<!-- =========================================================================
      LOS TRES BANNERS · 15/10/2026
      Antes cada uno de estos tres tenia su bloque grande repartido por la
      pagina: la tienda online, las webs interactivas y las apps. Tres bloques
