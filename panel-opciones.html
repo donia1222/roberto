@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     OPCIONES DE BLOQUE · «Panel de administración con tu web»
+     Fichero: panel-opciones.html   (igual que hero-opciones.html: esto es
+     SOLO para mirar. No esta enlazado desde ningun sitio y lleva noindex.)
+
+     Hecho el 21/10/2026. Cinco maneras de contar lo mismo:
+     que aparte de la web puedes hacerle su propio programa de gestion.
+
+     Todas usan los colores, la tipografia y las clases de la casa
+     (--begonia400, --gunpowder*, .section, .container, .gbcta), asi que
+     la que el elija se pega en index.html casi tal cual.
+
+     LO QUE NO SE PROMETE, A PROPOSITO
+     ---------------------------------
+     En ningun texto dice «Buchhaltung», ni balance, ni MWST. El panel hace
+     facturas, gastos, horas y resumen. Si un cliente lee «contabilidad»
+     entiende cierre fiscal y luego se lleva el chasco. Decidido el 14/10.
+
+     DONDE ESTA EL PRECIO
+     --------------------
+     Marcado con la palabra PREIS en la opcion E. No hay cifra puesta: los
+     150.— son el programa suelto, dentro de una oferta de web es otra cosa
+     y eso lo decide el.
+     ===================================================================== -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Opciones de bloque · Verwaltungsprogramm — Lweb</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Los colores de la casa, copiados de css/style.css ────────────── */
+:root{
+  --acento-rgb:254,108,117;
+  --begonia400:rgb(254,108,117); --begonia500:rgb(225,84,93);
+  --pizarra-rgb:71,85,105; --pizarra:rgb(71,85,105);
+  --gunpowder50:#f4f7fb; --gunpowder100:#dfeefb; --gunpowder150:#c8d5e3;
+  --gunpowder200:#a8b8cc; --gunpowder300:#8a9bb3; --gunpowder400:#6b7d99;
+  --gunpowder600:#3f4960; --gunpowder900:#0f1d2c;
+  --accent-green:#4dd35b; --accent-orange:#ffb421;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#fbfcfe;color:var(--gunpowder400);
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.5;padding:0 20px 110px}
+img{max-width:100%;height:auto;display:block}
+ul,ol{list-style:none}
+a{text-decoration:none;color:inherit}
+
+/* ── El andamio de esta pagina de pruebas (no va a la landing) ───── */
+.wrap{max-width:1180px;margin:0 auto}
+.top{padding:54px 0 0;max-width:72ch}
+.top h1{font:800 34px/1.15 'Plus Jakarta Sans';letter-spacing:-.03em;color:var(--gunpowder900);margin-bottom:10px}
+.top p{font-size:16.5px;margin-bottom:10px}
+.top .aviso{margin-top:18px;padding:13px 16px;border-radius:14px;font-size:14.5px;
+  background:rgba(var(--acento-rgb),.07);border:1px solid rgba(var(--acento-rgb),.25);color:var(--gunpowder600)}
+.opt{margin-top:62px;border-top:1px solid var(--gunpowder100);padding-top:32px}
+.opt-head{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:7px}
+.opt-tag{font:800 11px/1 'Plus Jakarta Sans';letter-spacing:.14em;text-transform:uppercase;
+  color:var(--begonia400);background:rgba(var(--acento-rgb),.1);
+  border:1px solid rgba(var(--acento-rgb),.3);border-radius:999px;padding:6px 13px}
+.opt-head h2{font:800 23px/1.2 'Plus Jakarta Sans';letter-spacing:-.02em;color:var(--gunpowder900)}
+.why{max-width:74ch;font-size:15.5px;margin-bottom:8px}
+.why b{color:var(--gunpowder600)}
+.pros{display:flex;gap:20px;flex-wrap:wrap;max-width:74ch;margin:12px 0 28px;font-size:14.5px}
+.pros div{flex:1 1 260px}
+.pros span{display:block;font:800 10.5px/1 'Plus Jakarta Sans';letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:5px}
+.pros .si span{color:#2f9e41}
+.pros .no span{color:var(--gunpowder300)}
+.stage{background:#fff;border:1px solid var(--gunpowder100);border-radius:24px;
+  padding:14px;box-shadow:0 20px 54px rgba(15,29,44,.07);overflow:hidden}
+
+/* ── Piezas comunes a las cinco: la seccion y el boton de la casa ── */
+.section{padding:64px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-header{max-width:760px;margin:0 auto 34px;text-align:center}
+.section-header h2{font:800 clamp(28px,4vw,42px)/1.14 'Plus Jakarta Sans';
+  letter-spacing:-.02em;color:var(--gunpowder900);margin-bottom:14px}
+.section-header p{font-size:17px;line-height:1.65}
+.gbcta{display:inline-flex;align-items:center;justify-content:center;height:56px;
+  padding:0 30px;border-radius:1000px;font:600 17px/1 'Plus Jakarta Sans';
+  cursor:pointer;border:none;gap:9px;transition:all .2s ease-in-out;white-space:nowrap}
+.gbcta--primary{background:var(--begonia400);color:#fff;box-shadow:0 6px 30px rgba(var(--acento-rgb),.35)}
+.gbcta--primary:hover{background:#ff8a91;transform:translateY(-1px)}
+.gbcta--ghost{background:#fff;color:var(--gunpowder900);border:1.5px solid var(--gunpowder150)}
+.gbcta--ghost:hover{border-color:var(--gunpowder300)}
+.ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ══════════════════════════════════════════════════════════════════
+   LA MAQUETA DEL PANEL, dibujada a mano
+   Se usa en las opciones A, C y D. Cuando el elija una, aqui va la
+   captura de verdad del panel (con datos inventados, nunca de Doris).
+   ══════════════════════════════════════════════════════════════════ */
+.mock{border-radius:16px;overflow:hidden;background:#fff;
+  border:1px solid var(--gunpowder150);box-shadow:0 24px 58px rgba(15,29,44,.16)}
+.mock-bar{display:flex;align-items:center;gap:6px;padding:10px 13px;
+  background:#f2f5f9;border-bottom:1px solid var(--gunpowder100)}
+.mock-dot{width:9px;height:9px;border-radius:50%;flex:none}
+.mock-url{flex:1;margin-left:7px;background:#fff;border:1px solid var(--gunpowder100);
+  border-radius:6px;padding:4px 9px;font:500 10.5px ui-monospace,Menlo,monospace;
+  color:var(--gunpowder300);white-space:nowrap;overflow:hidden}
+.mock-body{display:flex;min-height:286px}
+.mock-side{width:148px;flex:none;background:#fff;border-right:1px solid #eef2f7;padding:12px 9px}
+.mock-brand{display:flex;align-items:center;gap:7px;padding:2px 5px 12px;
+  font:800 11.5px/1 'Plus Jakarta Sans';color:var(--gunpowder900);letter-spacing:-.01em}
+.mock-brand i{width:19px;height:19px;border-radius:6px;background:var(--begonia400);flex:none}
+.mock-gl{font:800 8.5px/1 'Plus Jakarta Sans';letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gunpowder200);padding:9px 6px 5px}
+.mock-mi{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:8px;
+  font:600 11px/1.2 'Plus Jakarta Sans';color:var(--gunpowder400)}
+.mock-mi svg{width:13px;height:13px;flex:none;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.mock-mi.on{background:rgba(var(--acento-rgb),.12);color:var(--begonia500);font-weight:800}
+.mock-main{flex:1;min-width:0;background:#fafbfd;padding:14px}
+.mock-h{font:800 13px/1.2 'Plus Jakarta Sans';color:var(--gunpowder900);margin-bottom:11px}
+.mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:11px}
+.mock-k{background:#fff;border:1px solid #eef2f7;border-radius:10px;padding:9px 10px}
+.mock-k b{display:block;font:800 14px/1 'Plus Jakarta Sans';color:var(--gunpowder900);margin-bottom:3px}
+.mock-k span{font:600 8.5px/1 'Plus Jakarta Sans';letter-spacing:.07em;text-transform:uppercase;color:var(--gunpowder300)}
+.mock-k.g b{color:#2f9e41}
+.mock-tbl{background:#fff;border:1px solid #eef2f7;border-radius:10px;overflow:hidden}
+.mock-tr{display:grid;grid-template-columns:1fr 54px 52px;gap:8px;padding:7px 10px;
+  font:600 10px/1.3 'Plus Jakarta Sans';color:var(--gunpowder400);border-bottom:1px solid #f3f6fa}
+.mock-tr:last-child{border-bottom:0}
+.mock-tr.head{background:#f7f9fc;color:var(--gunpowder300);font-weight:800;font-size:8.5px;
+  letter-spacing:.08em;text-transform:uppercase}
+.mock-tr i{font-style:normal;color:var(--gunpowder900);font-weight:700;white-space:nowrap}
+.pill{display:inline-block;font:800 8.5px/1 'Plus Jakarta Sans';padding:3px 7px;border-radius:999px}
+.pill.ok{background:rgba(77,211,91,.17);color:#1f7a2c}
+.pill.wait{background:rgba(255,180,33,.2);color:#8a5d00}
+
+/* En el movil la ventana del panel no cabe: 390 menos los margenes del
+   cuerpo, del escenario y del contenedor dejan unos 270 px, y la barra
+   lateral sola ya se come 148. Asi que en pantalla estrecha la barra se
+   esconde y la tabla se aprieta. Sin esto la pagina se va de ancho y el
+   texto sale cortado por la derecha. */
+@media(max-width:640px){
+  body{padding:0 14px 80px}
+  .container{padding:0 16px}
+  .section{padding:40px 0}
+  .stage{padding:8px;border-radius:18px}
+  .mock-side{display:none}
+  .mock-main{padding:11px}
+  .mock-kpis{grid-template-columns:1fr 1fr}
+  .mock-k b{font-size:13px}
+  .mock-tr{grid-template-columns:1fr 50px 46px;gap:6px;font-size:9.5px}
+  /* Las celdas de una rejilla no bajan de su contenido si no se les dice:
+     sin estos min-width:0 la ventana del panel estira la columna de la
+     opcion D y el texto queda cortado por la derecha. */
+  .mock-url{min-width:0}
+  .d-left,.d-right{min-width:0}
+  .d-left{padding:30px 20px 32px}
+  .d-right{padding:20px 16px}
+  /* El boton largo («Das Gleiche fur meinen Betrieb») no cabe de una
+     linea en 390: aqui se le deja partir y crecer a lo alto. */
+  .gbcta{white-space:normal;text-align:center;height:auto;min-height:54px;
+    padding:12px 22px;font-size:16px;line-height:1.3}
+}
+
+/* ══════════════ A · dos columnas, la web y su trastienda ══════════ */
+.a-grid{display:grid;grid-template-columns:1fr 1.06fr;gap:52px;align-items:center;max-width:1120px;margin:0 auto}
+.a-kicker{display:inline-flex;align-items:center;gap:8px;font:800 12px/1 'Plus Jakarta Sans';
+  letter-spacing:.1em;text-transform:uppercase;color:var(--begonia400);
+  background:rgba(var(--acento-rgb),.1);border-radius:999px;padding:8px 15px;margin-bottom:18px}
+.a-grid h2{font:800 clamp(27px,3.4vw,40px)/1.13 'Plus Jakarta Sans';letter-spacing:-.025em;
+  color:var(--gunpowder900);margin-bottom:16px}
+.a-grid h2 em{font-style:normal;color:var(--begonia400)}
+.a-lede{font-size:17px;line-height:1.68;margin-bottom:22px;max-width:52ch}
+.a-list{display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
+.a-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55}
+.a-list li svg{width:21px;height:21px;flex:none;margin-top:1px;color:var(--begonia400);
+  stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.a-list li b{color:var(--gunpowder900);font-weight:750}
+.a-cta{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.a-fine{font-size:14px;color:var(--gunpowder300);margin-top:14px}
+@media(max-width:900px){.a-grid{grid-template-columns:1fr;gap:34px}.a-grid .mock{order:2}}
+
+/* ══════════════ B · cuatro piezas, como la escalera ══════════════ */
+.b-head{max-width:720px;margin:0 auto 32px;text-align:center}
+.b-head h2{font:800 clamp(27px,3.6vw,40px)/1.14 'Plus Jakarta Sans';letter-spacing:-.025em;
+  color:var(--gunpowder900);margin-bottom:14px}
+.b-head h2 em{font-style:normal;color:var(--begonia400)}
+.b-head p{font-size:17px;line-height:1.66}
+.b-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1020px;margin:0 auto;
+  border:1px solid var(--gunpowder100);border-radius:20px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 48px rgba(15,29,44,.07)}
+.b-cell{padding:24px 20px 26px;border-right:1px solid var(--gunpowder100);
+  display:flex;flex-direction:column;gap:9px}
+.b-cell:last-child{border-right:0}
+.b-cell:nth-child(1){background:transparent}
+.b-cell:nth-child(2){background:rgba(var(--acento-rgb),.04)}
+.b-cell:nth-child(3){background:rgba(var(--acento-rgb),.08)}
+.b-cell:nth-child(4){background:rgba(var(--acento-rgb),.13)}
+.b-ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+  background:var(--gunpowder900);color:#fff;flex:none}
+.b-cell:nth-child(4) .b-ic{background:var(--begonia400)}
+.b-ic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.b-cell h3{font:750 16.5px/1.3 'Plus Jakarta Sans';color:var(--gunpowder900);margin-top:3px}
+.b-cell p{font-size:14.5px;line-height:1.6}
+.b-key{max-width:68ch;margin:26px auto 0;text-align:center;
+  font:600 17px/1.6 'Plus Jakarta Sans';color:var(--gunpowder900)}
+.b-key b{color:var(--begonia400);font-weight:800}
+.b-foot{text-align:center;margin-top:24px}
+@media(max-width:860px){.b-grid{grid-template-columns:1fr 1fr}
+  .b-cell:nth-child(2n){border-right:0}
+  .b-cell:nth-child(-n+2){border-bottom:1px solid var(--gunpowder100)}}
+@media(max-width:520px){.b-grid{grid-template-columns:1fr}
+  .b-cell{border-right:0;border-bottom:1px solid var(--gunpowder100)}
+  .b-cell:last-child{border-bottom:0}}
+
+/* ══════════════ C · el antes y el despues ═══════════════════════ */
+.c-head{max-width:730px;margin:0 auto 34px;text-align:center}
+.c-head h2{font:800 clamp(27px,3.6vw,40px)/1.14 'Plus Jakarta Sans';letter-spacing:-.025em;
+  color:var(--gunpowder900);margin-bottom:13px}
+.c-head p{font-size:17px;line-height:1.66}
+.c-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1000px;margin:0 auto;align-items:stretch}
+.c-card{border-radius:20px;padding:26px 24px 28px;border:1px solid var(--gunpowder100);background:#fff}
+.c-card.now{background:var(--gunpowder50);border-style:dashed;border-color:var(--gunpowder150)}
+.c-card.next{box-shadow:0 20px 50px rgba(var(--acento-rgb),.16);border-color:rgba(var(--acento-rgb),.3)}
+.c-lab{display:inline-flex;align-items:center;gap:7px;font:800 10.5px/1 'Plus Jakarta Sans';
+  letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:6px 12px;margin-bottom:15px}
+.c-card.now .c-lab{background:var(--gunpowder100);color:var(--gunpowder400)}
+.c-card.next .c-lab{background:var(--begonia400);color:#fff}
+.c-card h3{font:800 20px/1.25 'Plus Jakarta Sans';color:var(--gunpowder900);margin-bottom:14px}
+.c-li{display:flex;flex-direction:column;gap:11px}
+.c-li li{display:flex;gap:10px;font-size:15.5px;line-height:1.5}
+.c-li li svg{width:19px;height:19px;flex:none;margin-top:2px;stroke:currentColor;fill:none;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.c-card.now .c-li li svg{color:var(--gunpowder200)}
+.c-card.next .c-li li svg{color:#2f9e41}
+.c-card.next .c-li li b{color:var(--gunpowder900);font-weight:750}
+.c-shot{margin-top:20px;border-radius:12px;overflow:hidden}
+.c-foot{max-width:66ch;margin:30px auto 0;text-align:center;font-size:16.5px;line-height:1.65}
+.c-foot b{color:var(--gunpowder900);font-weight:800}
+.c-btn{text-align:center;margin-top:22px}
+@media(max-width:860px){.c-pair{grid-template-columns:1fr}}
+
+/* ══════════════ D · el caso de Doris, con su frase ══════════════ */
+.d-wrap{max-width:1060px;margin:0 auto;background:#fff;border:1px solid var(--gunpowder100);
+  border-radius:26px;overflow:hidden;box-shadow:0 22px 56px rgba(15,29,44,.08);
+  display:grid;grid-template-columns:1.02fr .98fr}
+.d-left{padding:40px 38px 42px}
+.d-tag{display:inline-flex;align-items:center;gap:8px;font:800 11px/1 'Plus Jakarta Sans';
+  letter-spacing:.13em;text-transform:uppercase;color:var(--gunpowder400);
+  background:var(--gunpowder50);border:1px solid var(--gunpowder100);
+  border-radius:999px;padding:7px 13px;margin-bottom:20px}
+.d-left h2{font:800 clamp(25px,3vw,34px)/1.16 'Plus Jakarta Sans';letter-spacing:-.025em;
+  color:var(--gunpowder900);margin-bottom:16px}
+.d-quote{position:relative;padding-left:19px;margin-bottom:22px;
+  font:500 17.5px/1.62 'Plus Jakarta Sans';color:var(--gunpowder600);font-style:italic}
+.d-quote::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;
+  border-radius:4px;background:var(--begonia400)}
+.d-quote cite{display:block;margin-top:11px;font-style:normal;
+  font:700 13.5px/1.4 'Plus Jakarta Sans';color:var(--gunpowder300)}
+.d-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.d-chip{display:inline-flex;align-items:center;gap:7px;background:var(--gunpowder50);
+  border:1px solid var(--gunpowder100);border-radius:999px;padding:8px 14px;
+  font:650 13.5px/1 'Plus Jakarta Sans';color:var(--gunpowder600)}
+.d-chip svg{width:14px;height:14px;color:var(--begonia400);stroke:currentColor;fill:none;
+  stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.d-right{background:linear-gradient(160deg,var(--gunpowder50) 0%,#eaf2fb 100%);
+  padding:34px 30px;display:flex;align-items:center;border-left:1px solid var(--gunpowder100)}
+.d-fine{font-size:14px;color:var(--gunpowder300);margin-top:15px}
+@media(max-width:900px){.d-wrap{grid-template-columns:1fr}
+  .d-right{border-left:0;border-top:1px solid var(--gunpowder100);padding:26px 22px}}
+
+/* ══════════════ E · la cuenta: cuota contra pago unico ══════════ */
+.e-head{max-width:700px;margin:0 auto 34px;text-align:center}
+.e-head h2{font:800 clamp(27px,3.6vw,40px)/1.14 'Plus Jakarta Sans';letter-spacing:-.025em;
+  color:var(--gunpowder900);margin-bottom:13px}
+.e-head h2 em{font-style:normal;color:var(--begonia400)}
+.e-head p{font-size:17px;line-height:1.66}
+.e-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;
+  max-width:940px;margin:0 auto}
+.e-col{border-radius:20px;padding:28px 26px;text-align:center}
+.e-col.abo{background:var(--gunpowder50);border:1px dashed var(--gunpowder150)}
+.e-col.mine{background:var(--gunpowder900);color:#fff;box-shadow:0 22px 54px rgba(15,29,44,.26)}
+.e-lab{font:800 10.5px/1 'Plus Jakarta Sans';letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:14px;color:var(--gunpowder300)}
+.e-col.mine .e-lab{color:rgba(255,255,255,.62)}
+.e-big{font:800 40px/1 'Plus Jakarta Sans';letter-spacing:-.03em;color:var(--gunpowder900);margin-bottom:6px}
+.e-col.mine .e-big{color:#fff}
+.e-sub{font-size:14.5px;line-height:1.5}
+.e-col.mine .e-sub{color:rgba(255,255,255,.76)}
+.e-sum{margin-top:17px;padding-top:15px;border-top:1px solid var(--gunpowder150);
+  font:700 15px/1.45 'Plus Jakarta Sans';color:var(--gunpowder600)}
+.e-col.mine .e-sum{border-top-color:rgba(255,255,255,.16);color:#fff}
+.e-col.mine .e-sum b{color:var(--begonia400);font-weight:800}
+.e-vs{font:800 13px/1 'Plus Jakarta Sans';letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gunpowder200);text-align:center}
+.e-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 26px;
+  max-width:760px;margin:34px auto 0}
+.e-list li{display:flex;gap:11px;font-size:15.5px;line-height:1.5}
+.e-list li svg{width:19px;height:19px;flex:none;margin-top:2px;color:#2f9e41;
+  stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.e-list li b{color:var(--gunpowder900);font-weight:750}
+.e-btn{text-align:center;margin-top:30px}
+.e-fine{text-align:center;font-size:14px;color:var(--gunpowder300);margin-top:13px}
+@media(max-width:860px){.e-pair{grid-template-columns:1fr}.e-vs{padding:4px 0}
+  .e-list{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <h1>Cinco maneras de contar el panel en el portafolio</h1>
+  <p>Todas dicen lo mismo —<em>aparte de la web te hacemos tu propio programa de
+  gestión, se paga una vez y es tuyo</em>— pero cada una entra por un sitio distinto.
+  Están en alemán y con los colores, la tipografía y los botones de lweb.ch, así que la
+  que elijas se pega en <code>index.html</code> casi tal cual.</p>
+  <p>La ventana del panel está <strong>dibujada a mano</strong>, no es una captura. Cuando
+  elijas una, ahí va una captura de verdad con datos inventados.</p>
+  <div class="aviso">
+    <strong>Dos cosas que dejé fuera a propósito.</strong> No aparece la palabra
+    «Buchhaltung» en ningún sitio: el panel hace facturas, gastos, horas y resumen, y si
+    el cliente lee «contabilidad» entiende cierre fiscal y MWST. Y no hay ningún precio
+    puesto: el hueco está marcado con <code>PREIS</code> en la opción E, porque los 150.—
+    son el programa suelto y dentro de una oferta de web vale otra cosa.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     A — «La web es la mitad». La trastienda es la otra.
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción A</span>
+    <h2>La web por delante, tu programa por detrás</h2></div>
+  <p class="why">La más directa y la que yo pondría primero: <b>una columna de texto y la
+  ventana del programa al lado</b>. Se entiende en tres segundos de qué va, incluso sin
+  leer. Es el formato que mejor encaja donde tienes hoy la escalera y la comparación con
+  las agencias.</p>
+  <div class="pros">
+    <div class="si"><span>A favor</span>Se ve el producto, no se cuenta. Funciona igual en
+    móvil (la ventana pasa debajo). Cabe en cualquier punto de la página.</div>
+    <div class="no"><span>En contra</span>Necesita una captura buena de verdad; con una
+    mala pierde toda la fuerza.</div>
+  </div>
+
+  <div class="stage">
+  <section class="section">
+    <div class="container">
+      <div class="a-grid">
+        <div>
+          <span class="a-kicker">
+            <svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg>
+            Ihr eigenes Verwaltungsprogramm
+          </span>
+          <h2>Die Website sehen Ihre Kunden. Den <em>Rest</em> erledigen Sie hier.</h2>
+          <p class="a-lede">Zur Website bekommen Sie auf Wunsch Ihr eigenes Programm — gebaut
+          für Ihren Betrieb, nicht für irgendeinen. Rechnungen, Ausgaben, Arbeitsstunden und
+          Kunden an einem Ort, vom Handy und vom Computer aus.</p>
+          <ul class="a-list">
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Nach Ihrem Betrieb gebaut.</b> Ich weiss ja schon, wie Sie arbeiten
+              und was Sie verrechnen — genau das kommt rein, der Rest nicht.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Kein Abo.</b> Einmal bezahlen, dann gehört es Ihnen — wie die
+              Website. Keine monatliche Rechnung, die jedes Jahr teurer wird.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Ihre Daten bleiben bei Ihnen.</b> Alles liegt auf Ihrem eigenen
+              Schweizer Hosting, nicht bei einer Plattform.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Und wenn etwas fehlt, rufen Sie an.</b> Dann baue ich es dazu. Bei
+              einer Plattform gibt es dieses Gespräch nicht.</span>
+            </li>
+          </ul>
+          <div class="a-cta">
+            <a class="gbcta gbcta--primary" href="#">Beispiel ansehen
+              <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="gbcta gbcta--ghost" href="#">Unverbindlich fragen</a>
+          </div>
+          <p class="a-fine">Läuft im Browser — kein Programm zum Installieren, keine App nötig.</p>
+        </div>
+
+        <!-- La ventana del panel. Aqui ira la captura de verdad. -->
+        <div class="mock">
+          <div class="mock-bar">
+            <span class="mock-dot" style="background:#ff5f57"></span>
+            <span class="mock-dot" style="background:#febc2e"></span>
+            <span class="mock-dot" style="background:#28c840"></span>
+            <span class="mock-url">ihrbetrieb.ch/verwaltung</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-side">
+              <div class="mock-brand"><i></i> Verwaltung</div>
+              <div class="mock-gl">Betrieb</div>
+              <div class="mock-mi on"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg> Übersicht</div>
+              <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Rechnungen</div>
+              <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/></svg> Ausgaben</div>
+              <div class="mock-mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg> Stunden</div>
+              <div class="mock-gl">Kunden</div>
+              <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="8" r="4"/></svg> Adressen</div>
+              <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/></svg> Notizen</div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-h">Übersicht · Oktober</div>
+              <div class="mock-kpis">
+                <div class="mock-k g"><b>18 420.–</b><span>Umsatz</span></div>
+                <div class="mock-k"><b>4 760.–</b><span>Ausgaben</span></div>
+                <div class="mock-k"><b>146 Std</b><span>Arbeitszeit</span></div>
+              </div>
+              <div class="mock-tbl">
+                <div class="mock-tr head"><span>Rechnung</span><span>Betrag</span><span>Status</span></div>
+                <div class="mock-tr"><span>Muster GmbH</span><i>2 480.–</i><span><span class="pill ok">bezahlt</span></span></div>
+                <div class="mock-tr"><span>Garage Steiner</span><i>890.–</i><span><span class="pill ok">bezahlt</span></span></div>
+                <div class="mock-tr"><span>Hotel Sonne</span><i>1 350.–</i><span><span class="pill wait">offen</span></span></div>
+                <div class="mock-tr"><span>Bäckerei Frei</span><i>420.–</i><span><span class="pill ok">bezahlt</span></span></div>
+                <div class="mock-tr"><span>Malerei Brunner</span><i>3 100.–</i><span><span class="pill wait">offen</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     B — Cuatro piezas, con la misma rejilla que la escalera
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción B</span>
+    <h2>Cuatro piezas, como la escalera que ya tienes</h2></div>
+  <p class="why">Esta <b>reutiliza la rejilla de la escalera</b> (<code>.esc</code>): la
+  misma caja, el mismo degradado de peldaño a peldaño. Visualmente queda clavada con lo
+  que hay y es la que menos CSS nuevo mete. En lugar de explicar el programa, enseña las
+  cuatro cosas que hace y se entiende el alcance de un vistazo.</p>
+  <div class="pros">
+    <div class="si"><span>A favor</span>Cero riesgo de que choque con el diseño. Ocupa poco
+    alto. No necesita capturas.</div>
+    <div class="no"><span>En contra</span>No se ve el producto, así que impresiona menos.
+    Y en la página ya hay una rejilla igual: pueden parecer repetidas.</div>
+  </div>
+
+  <div class="stage">
+  <section class="section">
+    <div class="container">
+      <div class="b-head">
+        <h2>Zur Website gibt's auch das <em>Büro dahinter</em></h2>
+        <p>Viele Betriebe haben eine schöne Website — und schreiben die Rechnungen danach
+        in Word. Das muss nicht sein. Ich baue Ihnen zur Website Ihr eigenes Programm für
+        das, was jeden Monat anfällt.</p>
+      </div>
+
+      <ol class="b-grid">
+        <li class="b-cell">
+          <span class="b-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
+          <h3>Rechnungen</h3>
+          <p>Rechnung schreiben, als PDF speichern, per Mail raus. Mit Ihrem Logo und
+          Ihrer Nummerierung. Wer bezahlt hat und wer nicht, sehen Sie auf einen Blick.</p>
+        </li>
+        <li class="b-cell">
+          <span class="b-ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v12H3z"/><path d="M3 11h18M7 15h4"/></svg></span>
+          <h3>Ausgaben</h3>
+          <p>Beleg abfotografieren, Kategorie wählen, fertig. Am Jahresende müssen Sie
+          keinen Schuhkarton mehr sortieren.</p>
+        </li>
+        <li class="b-cell">
+          <span class="b-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg></span>
+          <h3>Arbeitsstunden</h3>
+          <p>Wer war wann wo, und wie viele Stunden sind das. Direkt in die Rechnung
+          übernehmen — oder als Liste für die Lohnabrechnung.</p>
+        </li>
+        <li class="b-cell">
+          <span class="b-ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 4-6"/></svg></span>
+          <h3>Überblick</h3>
+          <p>Was ist diesen Monat reingekommen, was rausgegangen, was ist noch offen. Die
+          Zahl, die Sie wissen wollen, ohne zu rechnen.</p>
+        </li>
+      </ol>
+
+      <p class="b-key">Einmal bezahlen — dann gehört es Ihnen, <b>wie die Website</b>.
+      Kein Abo, keine monatliche Rechnung, Ihre Daten auf Ihrem eigenen Hosting.</p>
+      <div class="b-foot">
+        <a class="gbcta gbcta--primary" href="#">Beispiel ansehen
+          <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     C — El antes y el despues (el dolor, y luego el remedio)
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción C</span>
+    <h2>Lo de hoy, y lo de después</h2></div>
+  <p class="why">Esta entra por <b>el problema, no por el producto</b>: la tarjeta de la
+  izquierda es la vida del cliente hoy (Word, Excel, papeles, el móvil de la mujer), la de
+  la derecha es con el panel. Es la que más vende a quien no sabía que esto existía, y en
+  el portafolio tiene su lógica porque ya tienes el antes/después de la Cantina — la misma
+  idea de contar.</p>
+  <div class="pros">
+    <div class="si"><span>A favor</span>El cliente se reconoce en la columna izquierda, y
+    eso es lo que hace que pulse. Pega con el lenguaje de la página.</div>
+    <div class="no"><span>En contra</span>Hay que medir el tono: no se trata de hacerle
+    sentir mal por usar Excel. Y ocupa bastante alto.</div>
+  </div>
+
+  <div class="stage">
+  <section class="section">
+    <div class="container">
+      <div class="c-head">
+        <h2>Die Website läuft. Und die Büroarbeit?</h2>
+        <p>Das Schaufenster ist das eine. Was danach jeden Monat liegen bleibt, ist das
+        andere — und dafür baue ich Ihnen das passende Werkzeug.</p>
+      </div>
+
+      <div class="c-pair">
+        <div class="c-card now">
+          <span class="c-lab">Heute</span>
+          <h3>Drei Programme und ein Zettel</h3>
+          <ul class="c-li">
+            <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Rechnungen in Word, jede Nummer von Hand nachgeschaut</li>
+            <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Belege im Couvert, sortiert wird im Januar</li>
+            <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Stunden auf einem Zettel im Auto</li>
+            <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Wer noch nicht bezahlt hat? Müssten Sie nachrechnen</li>
+            <li><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Oder: ein Abo für 15–40 Franken im Monat, für immer</li>
+          </ul>
+        </div>
+
+        <div class="c-card next">
+          <span class="c-lab">Mit Ihrem Programm</span>
+          <h3>Ein Ort, Ihre Abläufe</h3>
+          <ul class="c-li">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Rechnung in zwei Minuten</b>, Nummer und PDF automatisch</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Beleg abfotografiert</b> und abgelegt, vom Handy aus</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Stunden pro Person</b>, direkt in die Rechnung</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Offene Posten</b> stehen auf der ersten Seite</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><b>Einmal bezahlen</b> — danach gehört es Ihnen</span></li>
+          </ul>
+
+          <!-- Mini vista del panel, aqui la captura de verdad -->
+          <div class="c-shot mock">
+            <div class="mock-bar">
+              <span class="mock-dot" style="background:#ff5f57"></span>
+              <span class="mock-dot" style="background:#febc2e"></span>
+              <span class="mock-dot" style="background:#28c840"></span>
+              <span class="mock-url">ihrbetrieb.ch/verwaltung</span>
+            </div>
+            <div class="mock-body" style="min-height:0">
+              <div class="mock-main" style="padding:12px">
+                <div class="mock-kpis" style="margin-bottom:0">
+                  <div class="mock-k g"><b>18 420.–</b><span>Umsatz</span></div>
+                  <div class="mock-k"><b>4 760.–</b><span>Ausgaben</span></div>
+                  <div class="mock-k"><b>146 Std</b><span>Stunden</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="c-foot">Gebaut auf Ihren Betrieb — <b>nicht Sie auf das Programm</b>. Weil
+      ich beim Bauen der Website schon weiss, wie Sie arbeiten.</p>
+      <div class="c-btn">
+        <a class="gbcta gbcta--primary" href="#">Beispiel ansehen
+          <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     D — El caso de Doris. La prueba, no la promesa.
+     OJO: la frase es un EJEMPLO escrito por mi. Antes de publicar esto
+     hay que pedirle a Doris su frase de verdad (ya dijo si a la reseña
+     de Google), o quitar el nombre y dejarlo en «eine Kundin aus ...».
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción D</span>
+    <h2>El caso de Doris: la prueba, no la promesa</h2></div>
+  <p class="why">Esta no explica nada: <b>cuenta que ya pasó</b>. Doris vio tu panel y lo
+  quiso, y eso es exactamente lo que le va a pasar al siguiente. Encaja con lo que ya
+  tienes pensado para Projekte (el comentario de Google bajo cada proyecto) y es la que da
+  más confianza de las cinco.</p>
+  <div class="pros">
+    <div class="si"><span>A favor</span>Una cita de un cliente real vale más que cualquier
+    lista de funciones. Y es verdad, no hay que inventar nada.</div>
+    <div class="no"><span>En contra</span><strong>No se puede publicar hasta que Doris te
+    dé su frase.</strong> La de aquí la escribí yo de ejemplo. Y es un solo caso: si lo
+    pones solo, parece que solo lo has hecho una vez.</div>
+  </div>
+
+  <div class="stage">
+  <section class="section">
+    <div class="container">
+      <div class="d-wrap">
+        <div class="d-left">
+          <span class="d-tag">
+            <svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M12 2l2.9 6.3 6.9.8-5 4.8 1.3 6.8L12 17.5 5.9 20.7 7.2 13.9l-5-4.8 6.9-.8z"/></svg>
+            So ist es bei DF Flink Sauber gelaufen
+          </span>
+          <h2>Erst die Website. Dann wollte sie das Programm auch.</h2>
+          <p class="d-quote">
+            «Ich habe die Rechnungen immer am Sonntagabend von Hand geschrieben. Jetzt
+            trage ich die Stunden der Mitarbeiterinnen ein und die Rechnung ist in zwei
+            Minuten fertig — mit QR-Code.»
+            <cite>Doris F. · DF Flink Sauber, Reinigungen</cite>
+          </p>
+          <div class="d-chips">
+            <span class="d-chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Rechnungen mit QR</span>
+            <span class="d-chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Stunden pro Mitarbeiterin</span>
+            <span class="d-chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Offerten</span>
+            <span class="d-chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Ausgaben &amp; Belege</span>
+            <span class="d-chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Auf dem Handy</span>
+          </div>
+          <a class="gbcta gbcta--primary" href="#">Das Gleiche für meinen Betrieb
+            <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="d-fine">Ihr Programm wird auf Ihren Betrieb gebaut — einmal bezahlen,
+          dann gehört es Ihnen.</p>
+        </div>
+
+        <div class="d-right">
+          <div class="mock" style="width:100%">
+            <div class="mock-bar">
+              <span class="mock-dot" style="background:#ff5f57"></span>
+              <span class="mock-dot" style="background:#febc2e"></span>
+              <span class="mock-dot" style="background:#28c840"></span>
+              <span class="mock-url">flink-sauber.ch/panel</span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-side">
+                <div class="mock-brand"><i></i> Verwaltung</div>
+                <div class="mock-gl">Betrieb</div>
+                <div class="mock-mi on"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> Rechnungen</div>
+                <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg> Offerten</div>
+                <div class="mock-mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg> Stunden</div>
+                <div class="mock-mi"><svg viewBox="0 0 24 24"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/></svg> Ausgaben</div>
+              </div>
+              <div class="mock-main">
+                <div class="mock-h">Rechnung · Oktober</div>
+                <div class="mock-tbl" style="margin-bottom:9px">
+                  <div class="mock-tr head"><span>Leistung</span><span>Zeit</span><span>Betrag</span></div>
+                  <div class="mock-tr"><span>Treppenhaus</span><span>3 Std</span><i>162.–</i></div>
+                  <div class="mock-tr"><span>Büro 1. OG</span><span>2 Std</span><i>108.–</i></div>
+                  <div class="mock-tr"><span>Fenster aussen</span><span>4 Std</span><i>216.–</i></div>
+                </div>
+                <div class="mock-kpis" style="grid-template-columns:1fr 1fr">
+                  <div class="mock-k"><b>9 Std</b><span>Arbeitszeit</span></div>
+                  <div class="mock-k g"><b>486.–</b><span>Total</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     E — La cuenta. El argumento que ellos no pueden copiar.
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Opción E</span>
+    <h2>La cuenta: cuota para siempre contra pago único</h2></div>
+  <p class="why">Esta pone <b>el único argumento que ninguna plataforma puede copiar</b>
+  en el centro del bloque: la cuota no se acaba nunca. Los 540 de tres años son reales
+  (el plan medio de LumaBill son 190 al año; Bexio pasa de 420). La columna oscura lleva
+  tu precio y es la que se mira.</p>
+  <div class="pros">
+    <div class="si"><span>A favor</span>Un número frente a otro número no se discute. Es
+    la que más convierte a quien ya está pagando una cuota.</div>
+    <div class="no"><span>En contra</span>Obliga a poner un precio en la página, y eso
+    todavía no lo has decidido para el paquete. Y compite por precio, no por lo que haces
+    mejor, que es lo de «a tu medida».</div>
+  </div>
+
+  <div class="stage">
+  <section class="section">
+    <div class="container">
+      <div class="e-head">
+        <h2>Software zum <em>Kaufen</em>, nicht zum Mieten</h2>
+        <p>Die meisten Programme für Rechnungen und Ausgaben kosten jeden Monat Geld —
+        solange Sie sie brauchen. Bei mir ist es wie bei der Website: einmal bezahlen,
+        dann gehört es Ihnen.</p>
+      </div>
+
+      <div class="e-pair">
+        <div class="e-col abo">
+          <div class="e-lab">Plattform mit Abo</div>
+          <div class="e-big">15.–</div>
+          <p class="e-sub">pro Monat, Jahr für Jahr. Standardfunktionen, Ihre Daten auf
+          deren Servern.</p>
+          <div class="e-sum">Nach 3 Jahren: 540.–<br>und es läuft weiter</div>
+        </div>
+
+        <div class="e-vs">statt</div>
+
+        <div class="e-col mine">
+          <div class="e-lab">Ihr eigenes Programm</div>
+          <!-- PREIS · aqui va la cifra que el decida. Si entra en la oferta de web,
+               puede ir «ab ...» o quitar la cifra y dejar «im Paket». -->
+          <div class="e-big">einmalig</div>
+          <p class="e-sub">Auf Ihren Betrieb gebaut, auf Ihrem eigenen Hosting,
+          Installation inbegriffen.</p>
+          <div class="e-sum">Nach 3 Jahren: <b>nichts mehr</b><br>es gehört Ihnen</div>
+        </div>
+      </div>
+
+      <ul class="e-list">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><b>Rechnungen, Ausgaben, Stunden und Überblick</b> — und was Ihr Betrieb
+          sonst braucht</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><b>Ihre Daten auf Ihrem Hosting</b>, in der Schweiz, nicht bei einer
+          Plattform</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><b>Läuft im Browser</b>, am Computer und am Handy — nichts zu
+          installieren</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><b>Jemand, den Sie kennen</b>, wenn etwas fehlt oder nicht geht</span></li>
+      </ul>
+
+      <div class="e-btn">
+        <a class="gbcta gbcta--primary" href="#">Beispiel ansehen
+          <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="e-fine">Kein Buchhaltungsabschluss und keine MWST-Abrechnung — dafür
+      bleibt Ihr Treuhänder. Hier geht es um das, was jeden Monat anfällt.</p>
+    </div>
+  </section>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────── Mi recomendacion ─────────────────── -->
+<section class="opt">
+  <div class="opt-head"><span class="opt-tag">Lo que yo haría</span>
+    <h2>La A, y la E un poco más abajo</h2></div>
+  <p class="why">La <b>A</b> es la que mejor funciona de primera: se ve el programa y se
+  entiende solo, igual en móvil, y cabe donde quieras. Luego, cuando Doris te dé su frase,
+  la <b>D</b> se pone justo debajo como prueba — ese par (lo que es + a quién le funcionó)
+  es lo más fuerte que se puede montar. La <b>E</b> la guardaría para cuando decidas el
+  precio del paquete; es un buen cierre, pero antes hay que tener la cifra. La <b>B</b> si
+  lo que quieres es que ocupe poco, y la <b>C</b> si te apetece entrar por el problema —
+  pero ojo con el tono.</p>
+  <p class="why" style="margin-top:14px">Lo que falta en todas, y es lo mismo:
+  <b>una captura de verdad</b> del panel con datos inventados (la de la demo de Muster
+  GmbH sirve), y su versión hecha a 390 px para el móvil — que ya sabemos lo que pasa si
+  no, que no se lee nada.</p>
+</section>
+
+</div>
+</body>
+</html>

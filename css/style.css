@@ -6056,33 +6056,42 @@ body.dark-mode .calc-option-price { color: #8a9bb3; }
 body.dark-mode .calc-option.selected .calc-option-price { color: var(--begonia400); }
 
 
-/* ===== ihreapp.ch – Nav-Chip (Desktop + Mobile) ===== */
+/* ===== ihreapp.ch – Nav-Chip (Desktop + Mobile) =====
+   03/11/2026 · Sin el degradado coral-azul. Era lo unico con dos colores
+   mezclados de toda la cabecera, y al lado de un menu sobrio parecia un
+   anuncio pegado encima. Ahora es la misma pastilla que los chips de las
+   referencias: blanca, filo fino, el icono en pizarra y la flecha que se
+   enciende en coral al pasar por encima. Destaca por ser la unica con
+   forma de pastilla, no por el color. */
 .header-nav-item--apps {
     margin-left: 12px;
-    padding: 5px 12px 5px 6px;
+    padding: 5px 12px 5px 5px;
     gap: 8px;
     border-radius: 999px;
-    background: linear-gradient(135deg, rgba(var(--acento-rgb),.12), rgba(91,184,232,.16));
-    border: 1.5px solid rgba(var(--acento-rgb),.35);
+    background: #fff;
+    border: 1px solid rgba(16,24,40,.12);
+    box-shadow: 0 4px 14px -10px rgba(16,24,40,.55);
     color: var(--gunpowder900);
     font-weight: 700;
     transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 .header-nav-item--apps:hover {
-    background: linear-gradient(135deg, rgba(var(--acento-rgb),.18), rgba(91,184,232,.22));
-    border-color: var(--begonia400);
-    box-shadow: 0 8px 20px rgba(var(--acento-rgb),.25);
+    border-color: rgba(var(--pizarra-rgb),.38);
+    box-shadow: 0 10px 22px -14px rgba(16,24,40,.6);
     transform: translateY(-1px);
 }
 .header-nav-item--apps .ia-ico {
     width: 24px; height: 24px; border-radius: 50%;
-    background: var(--begonia400); color: #fff;
+    background: var(--pizarra); color: #fff;
     display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .header-nav-item--apps .ia-ico svg { color: #fff; }
-.header-nav-item--apps > svg { color: var(--begonia400); transition: transform 200ms ease; }
-.header-nav-item--apps:hover > svg { transform: translate(2px,-2px); }
-body.dark-mode .header-nav-item--apps { color: #fff; background: linear-gradient(135deg, rgba(var(--acento-rgb),.22), rgba(91,184,232,.18)); }
+.header-nav-item--apps > svg { color: var(--gunpowder300); transition: transform 200ms ease, color 200ms ease; }
+.header-nav-item--apps:hover > svg { transform: translate(2px,-2px); color: var(--begonia400); }
+body.dark-mode .header-nav-item--apps { color: #eef3f9; background: #232838; border-color: rgba(255,255,255,.1); }
+body.dark-mode .header-nav-item--apps:hover { border-color: rgba(255,255,255,.28); }
+body.dark-mode .header-nav-item--apps .ia-ico { background: #eef3f9; }
+body.dark-mode .header-nav-item--apps .ia-ico svg { color: #0f1d2c; }
 .mobile-menu-link--apps { margin-top: 0; }
 .mobile-menu-link--apps > svg { color: var(--begonia400); }
 .mobile-menu-link--apps:hover > svg { color: var(--begonia400); }
