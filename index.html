@@ -507,9 +507,13 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
             <a href="#handarbeit" class="header-nav-item onep-link"><span data-i18n="nav.op.handarbeit">Handarbeit</span></a>
             <!-- Am günstigsten (ausgeblendet 19.09.2026, zum Reaktivieren Kommentar entfernen): <a href="#branchen" class="header-nav-item onep-link"><span data-i18n="nav.op.branchen">Am günstigsten</span></a> -->
-            <a href="#referenzen" class="header-nav-item onep-link"><span data-i18n="nav.op.projekte">Projekte</span></a>
+            <a href="#referenzen" class="header-nav-item onep-link"><span data-i18n="nav.op.projekte">Referenzen</span></a>
+            <a href="#services" class="header-nav-item onep-link"><span data-i18n="nav.op.leistungen">Leistungen</span></a>
             <a href="#about" class="header-nav-item onep-link"><span data-i18n="nav.about">Wer wir sind</span></a>
-            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a>
+            <!-- «Frag den Bot» quitado del menu el 03/11/2026: en su sitio va
+                 «Leistungen». Al bot se sigue llegando desde el boton «Frage den Bot»
+                 del final del FAQ.
+            <a href="#" class="header-nav-item header-nav-item--bot" onclick="event.preventDefault();openChatBot()"><span data-i18n="nav.bot">Frag den Bot</span></a> -->
             <a href="https://www.ihreapp.ch/?from=lweb" class="header-nav-item header-nav-item--apps" aria-label="ihreapp.ch – unsere App-Seite" data-lw-event="nav_ihreapp"><span class="ia-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span>ihreapp.ch</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </nav>
         <div class="header-actions">
@@ -557,8 +561,9 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
     <div class="mobile-panel mobile-panel--main" id="mobilePanelMain">
         <nav class="mobile-menu-nav pm-list">
             <a href="#handarbeit" class="mobile-menu-link onep-link pm-row" style="--i:0"><span class="pm-t"><span data-i18n="nav.op.handarbeit">Handarbeit</span><small data-i18n="m2.s1">Von Hand gebaut, nicht aus dem Baukasten</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="#referenzen" class="mobile-menu-link onep-link pm-row" style="--i:2"><span class="pm-t"><span data-i18n="nav.op.projekte">Projekte</span><small data-i18n="m2.s3">Meine Websites im Einsatz</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#referenzen" class="mobile-menu-link onep-link pm-row" style="--i:1"><span class="pm-t"><span data-i18n="nav.op.projekte">Referenzen</span><small data-i18n="m2.s3">Meine Websites im Einsatz</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <!-- Am günstigsten (ausgeblendet 19.09.2026, zum Reaktivieren Kommentar entfernen): <a href="#branchen" class="mobile-menu-link onep-link" data-i18n="nav.op.branchen">Am günstigsten</a> -->
+            <a href="#services" class="mobile-menu-link onep-link pm-row" style="--i:2"><span class="pm-t"><span data-i18n="nav.op.leistungen">Leistungen</span><small data-i18n="m2.leist">Websites, Shops und Apps</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a href="#about" class="mobile-menu-link onep-link pm-row" style="--i:3"><span class="pm-t"><span data-i18n="nav.about">Wer wir sind</span><small>Andrea &amp; Roberto Salvador · Sevelen</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a href="#faq" class="mobile-menu-link onep-link pm-row" style="--i:4"><span class="pm-t"><span data-i18n="nav.op.faq">Häufige Fragen</span><small data-i18n="m2.s5">Die wichtigsten Antworten</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a href="https://www.ihreapp.ch/?from=lweb" class="mobile-menu-link mobile-menu-link--apps pm-row" style="--i:5" data-lw-event="nav_ihreapp_mobile"><span class="pm-t"><span>ihreapp.ch</span><small data-i18n="m2.s6">Apps für Schweizer KMU</small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -3492,10 +3497,14 @@ function expandBranchen(btn){
 </script>
 
 <!-- SERVICES -->
-<section class="section services" id="services">
+<section class="section services" id="services" style="scroll-margin-top:90px;">
     <div class="container">
         <div class="section-header">
-            <h2>Meine Leistungen</h2>
+            <!-- El cohete viene de «So einfach geht's», que se escondio el
+                 03/11/2026. El texto va en su propio <span>: el cambio de
+                 idioma sustituye el texto del elemento traducido, y si fuera
+                 el <h2> entero se llevaria el cohete por delante. -->
+            <h2><span data-i18n="services.title">Meine Leistungen</span> <img src="img/section-ai-cta-rocket.f0d163deb419.gif" alt="" aria-hidden="true" width="40" height="40" style="height:1.4em;width:auto;vertical-align:middle;display:inline-block;margin-left:4px;"></h2>
             <p>Von der Idee bis zur Veröffentlichung &mdash; alles aus einer Hand, zum fairen Preis. Kein Agenturaufschlag, direkt vom Entwickler in Sevelen.</p>
         </div>
         <div class="services-grid">
@@ -3543,6 +3552,59 @@ function expandBranchen(btn){
                 <p>Technische Beratung, Architektur-Planung und langfristiger Support nach dem Launch. Persönlich und unkompliziert.</p>
                 <span class="service-link">Beratung anfragen <span>&rarr;</span></span>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about" style="scroll-margin-top:90px;margin-top:48px;">
+    <div class="container">
+        <div class="about-inner">
+            <div class="about-content">
+                <h2>Ihr Team<br><span class="accent">aus der Region.</span></h2>
+                <p>Seit 2019 bauen wir Apps und Websites für Unternehmen in Buchs SG, im Rheintal, im Kanton St. Gallen und in Liechtenstein. Andrea ist hier aufgewachsen und kennt die Region und die Leute &mdash; bei ihr f&auml;ngt alles an: sie h&ouml;rt zu und kl&auml;rt in Ruhe, was Sie wirklich brauchen. Roberto schreibt danach den Code. Sie reden immer direkt mit uns.</p>
+                <div class="about-points">
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        Ansässig in Sevelen, Kanton St. Gallen (Schweiz)
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        30+ veröffentlichte Apps im App Store &amp; Play Store
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        Spezialisiert auf KI-gestützte Anwendungen mit OpenAI
+                    </div>
+                    <div class="about-point">
+                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        Deutsch, Schweizerdeutsch, Spanisch und Englisch
+                    </div>
+                </div>
+                <!-- Blog escondido el 19/10/2026, mismo motivo. -->
+                <a href="blog.html" data-back-to="about" style="display:none;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:var(--pizarra);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    Blog
+                </a>
+            </div>
+            <div class="about-image about-team">
+                <figure class="about-team-panel">
+                    <span class="about-team-seam" aria-hidden="true"><span class="about-team-amp">&amp;</span></span>
+                    <div class="about-team-half">
+                        <img class="about-team-photo about-team-photo--andrea" src="img/andrea-circle.jpg" alt="Andrea Salvador, B&uuml;ro und Kundenkontakt bei Lweb in Sevelen" loading="lazy" decoding="async">
+                        <figcaption class="about-team-cap">
+                            <span class="about-team-name">Andrea</span>
+                            <span class="about-team-role" data-i18n="about.role.andrea">B&uuml;ro &amp; Kundenkontakt</span>
+                        </figcaption>
+                    </div>
+                    <div class="about-team-half">
+                        <img class="about-team-photo about-team-photo--roberto" src="img/hero-roberto-neu.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
+                        <figcaption class="about-team-cap">
+                            <span class="about-team-name">Roberto</span>
+                            <span class="about-team-role" data-i18n="about.role.roberto">Entwicklung</span>
+                        </figcaption>
+                    </div>
+                </figure>
         </div>
     </div>
 </section>
@@ -4045,7 +4107,10 @@ function expandBranchen(btn){
 </section>
 
 <!-- WORKFLOW -->
-<section class="section workflow">
+<!-- «So einfach geht's», ESCONDIDO el 03/11/2026 a peticion suya. Su cohete
+     se fue al titulo de «Meine Leistungen». Para volver a enseñarlo, quitar
+     el `display:none` de aqui. -->
+<section class="section workflow" style="display:none;" aria-hidden="true">
     <div class="container">
         <div class="section-header">
             <h2>So einfach geht's <img src="img/section-ai-cta-rocket.f0d163deb419.gif" alt="Rocket" style="height: 1.8em; vertical-align: middle; display: inline-block;"></h2>
@@ -4127,58 +4192,6 @@ function expandBranchen(btn){
     </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section about" id="about" style="scroll-margin-top:90px;">
-    <div class="container">
-        <div class="about-inner">
-            <div class="about-content">
-                <h2>Ihr Team<br><span class="accent">aus der Region.</span></h2>
-                <p>Seit 2019 bauen wir Apps und Websites für Unternehmen in Buchs SG, im Rheintal, im Kanton St. Gallen und in Liechtenstein. Andrea ist hier aufgewachsen und kennt die Region und die Leute &mdash; bei ihr f&auml;ngt alles an: sie h&ouml;rt zu und kl&auml;rt in Ruhe, was Sie wirklich brauchen. Roberto schreibt danach den Code. Sie reden immer direkt mit uns.</p>
-                <div class="about-points">
-                    <div class="about-point">
-                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Ansässig in Sevelen, Kanton St. Gallen (Schweiz)
-                    </div>
-                    <div class="about-point">
-                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        30+ veröffentlichte Apps im App Store &amp; Play Store
-                    </div>
-                    <div class="about-point">
-                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Spezialisiert auf KI-gestützte Anwendungen mit OpenAI
-                    </div>
-                    <div class="about-point">
-                        <span class="about-point-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
-                        Deutsch, Schweizerdeutsch, Spanisch und Englisch
-                    </div>
-                </div>
-                <!-- Blog escondido el 19/10/2026, mismo motivo. -->
-                <a href="blog.html" data-back-to="about" style="display:none;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:var(--pizarra);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                    Blog
-                </a>
-            </div>
-            <div class="about-image about-team">
-                <figure class="about-team-panel">
-                    <span class="about-team-seam" aria-hidden="true"><span class="about-team-amp">&amp;</span></span>
-                    <div class="about-team-half">
-                        <img class="about-team-photo about-team-photo--andrea" src="img/andrea-circle.jpg" alt="Andrea Salvador, B&uuml;ro und Kundenkontakt bei Lweb in Sevelen" loading="lazy" decoding="async">
-                        <figcaption class="about-team-cap">
-                            <span class="about-team-name">Andrea</span>
-                            <span class="about-team-role" data-i18n="about.role.andrea">B&uuml;ro &amp; Kundenkontakt</span>
-                        </figcaption>
-                    </div>
-                    <div class="about-team-half">
-                        <img class="about-team-photo about-team-photo--roberto" src="img/hero-roberto-neu.jpg" alt="Roberto Salvador, Web- und App-Entwickler in Sevelen, Region Werdenberg" loading="lazy" decoding="async">
-                        <figcaption class="about-team-cap">
-                            <span class="about-team-name">Roberto</span>
-                            <span class="about-team-role" data-i18n="about.role.roberto">Entwicklung</span>
-                        </figcaption>
-                    </div>
-                </figure>
-        </div>
-    </div>
-</section>
 
 <!-- TRUST -->
 <!-- Ausgeblendet am 17.08.2026: die Zahlen (6+ Jahre, 20+ Apps, 50+ Websites)
@@ -5482,16 +5495,26 @@ function askFromList(q){
     return el.getBoundingClientRect().top + window.pageYOffset;
   }
 
+  /* Gana la seccion que ya ha pasado y que esta MAS ABAJO en la pagina,
+     no la ultima del menu. Antes se daba por hecho que el menu va en el
+     mismo orden que la pagina, y no es asi: «Referenzen» va antes que
+     «Handarbeit» en la pagina y al reves en el menu. Al llegar a
+     Handarbeit las dos ya habian pasado, ganaba la ultima del menu y se
+     marcaba Referenzen (03/11/2026). Ahora el orden del menu da igual. */
   function updateActive(){
-    var pos = window.pageYOffset + HEADER_OFFSET + 40, current = null;
+    var pos = window.pageYOffset + HEADER_OFFSET + 40, current = null, mejor = -Infinity;
     watched.forEach(function(w){
-      if (docTop(w.el) <= pos) current = w;
+      var t = docTop(w.el);
+      if (t <= pos && t > mejor) { mejor = t; current = w; }
     });
     // Ganz unten immer den letzten Punkt markieren — die letzte Sektion
     // ist oft kuerzer als der Bildschirm und wird sonst nie erreicht.
+    // «Letzte» heisst: die am weitesten unten auf der Seite, nicht im Menue.
     var atEnd = window.innerHeight + window.pageYOffset >=
                 document.documentElement.scrollHeight - 2;
-    if (atEnd && watched.length) current = watched[watched.length - 1];
+    if (atEnd && watched.length) {
+      current = watched.reduce(function(a, b){ return docTop(b.el) > docTop(a.el) ? b : a; });
+    }
 
     navLinks.forEach(function(l){ l.classList.remove('is-active'); });
     if (current) current.link.classList.add('is-active');

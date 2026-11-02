@@ -338,7 +338,8 @@ var i18nMap = [
     // Metrics: die Labels haengen jetzt an data-i18n (metric.1 - metric.4).
     // Der alte Selektor-Eintrag hat sie beim Sprachwechsel ueberschrieben.
     // Services
-    {s: '.services .section-header h2', k: 'services.title'},
+    // services.title va ahora por data-i18n en su <span>: este selector
+    // apuntaba al <h2> entero y se llevaba el cohete al cambiar de idioma.
     {s: '.services .section-header p', k: 'services.desc'},
     {s: '#services .service-card:nth-child(1) h4', k: 'service1.title'},
     {s: '#services .service-card:nth-child(1) p', k: 'service1.desc'},
