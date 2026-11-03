@@ -1412,17 +1412,17 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
 
         <!-- EL SOFTWARE PARA MAC · 03/11/2026
              Dos programas de escritorio, enlazados a su web como las apps.
-             Las dos son todavia direcciones de Vercel (*.vercel.app): cuando
-             tengan dominio propio, se cambia aqui.
+             Steuerhilfe SG ya va a su dominio, steuerhilfe.sg (comprado el
+             03/11/2026). Forja sigue en su direccion de Vercel.
              El icono va sin recorte: los iconos de Mac ya traen su forma y su
              margen transparente, y recortarlos en cuadrado los dejaba con un
              filo raro. -->
         <div class="cchips-sep" role="presentation"></div>
         <h3 class="cchips-titulo"><span data-i18n="clients.mac">Software für macOS</span><span class="cchips-marcas"><svg class="cm-mac" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg></span></h3>
         <div class="cchips">
-            <a class="cchip" href="https://steuerhilfe-sg-landing.vercel.app" target="_blank" rel="noopener">
+            <a class="cchip" href="https://steuerhilfe.sg" target="_blank" rel="noopener">
                 <span class="cchip-logo cchip-logo--mac"><img src="apps-icon/steuerhilfe-sg.png" alt="Steuerhilfe SG" loading="lazy" decoding="async" width="128" height="128"></span>
-                <span class="cchip-t">Steuerhilfe SG<small data-i18n="clients.mac.steuer">Steuererklärung St. Gallen</small><small class="cchip-gratis" data-i18n="clients.mac.gratis">Gratis herunterladen</small></span>
+                <span class="cchip-t">Steuerhilfe SG<small>steuerhilfe.sg</small><small class="cchip-dom cchip-gratis" data-i18n="clients.mac.gratis">Gratis herunterladen</small></span>
                 <svg class="cchip-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
             <!-- Forja, quitada de momento (03/11/2026). Para volver a ponerla:
@@ -1457,7 +1457,11 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
     a.cchip{text-decoration:none;color:inherit;padding-right:16px;}
     /* «Gratis» en verde: es lo que hace pulsar, y en el gris de las demas
        lineas pequeñas pasaba como un dato mas. */
-    .cchip-t small.cchip-gratis{color:#16a34a;margin-top:2px;font-size:9.5px;}
+    /* «Gratis» debajo del dominio, en pequeño y en verde. */
+    .cchip-t small.cchip-dom{margin-top:2px;font-size:9.5px;}
+    /* `.cchip-t small` ya pinta en gris todas las lineas pequeñas, y con
+       una sola clase el verde perdia contra ella: hace falta el mismo peso. */
+    .cchip-t small.cchip-gratis{color:#16a34a;}
     body.dark-mode .cchip-t small.cchip-gratis{color:#4ade80;}
     /* La flecha dice «esto se abre»: sin ella, un chip enlazado es igual a
        uno que no hace nada, y nadie pulsa lo que no parece pulsable. Se
