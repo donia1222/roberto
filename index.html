@@ -1869,6 +1869,63 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
 </section>
 
 
+<!-- CLASICA O INTERACTIVA · 05/11/2026
+     La misma web (Braids & Tips) hecha de las dos maneras, para que el
+     cliente vea la diferencia de un vistazo. Cada imagen abre su version. -->
+<section class="section estilo-section" id="klassisch-interaktiv" style="scroll-margin-top:90px;">
+    <div class="container">
+        <h3 class="cchips-titulo"><span data-i18n="estilo.titulo">Klassisch oder interaktiv?</span></h3>
+        <p class="estilo-sub" data-i18n="estilo.sub">Dieselbe Website, zwei Stile. Tippen Sie auf ein Bild und sehen Sie den Unterschied selbst.</p>
+        <div class="estilo-grid">
+            <a class="estilo-card" href="https://web.lweb.ch/braidzntips/" target="_blank" rel="noopener" data-lw-event="estilo_klassisch">
+                <img src="img/stil/klassisch.webp" alt="Braids &amp; Tips, klassische Website" loading="lazy" decoding="async" width="1000" height="624">
+                <span class="estilo-txt">
+                    <span class="estilo-h" data-i18n="estilo.clasica">Klassisch</span>
+                    <span class="estilo-p" data-i18n="estilo.clasica.p">Klar, schnell, alles auf einen Blick</span>
+                </span>
+                <svg class="estilo-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a class="estilo-card" href="https://braidzntips.vercel.app" target="_blank" rel="noopener" data-lw-event="estilo_interaktiv">
+                <img src="img/stil/interaktiv.webp" alt="Braids &amp; Tips, interaktive Website" loading="lazy" decoding="async" width="1000" height="624">
+                <span class="estilo-txt">
+                    <span class="estilo-h" data-i18n="estilo.interactiva">Interaktiv</span>
+                    <span class="estilo-p" data-i18n="estilo.interactiva.p">Bewegung und Effekte beim Scrollen</span>
+                </span>
+                <svg class="estilo-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+        </div>
+    </div>
+    <style>
+    .estilo-section{padding-top:8px;}
+    /* El titulo, mas grande que los de los chips y en el rojo de la casa. */
+    .estilo-section .cchips-titulo{font-size:16px;color:var(--begonia400,#fe6c75);}
+    .estilo-sub{text-align:center;margin:-6px auto 22px;max-width:520px;font-size:15.5px;line-height:1.55;color:var(--gunpowder500,#64748b);}
+    .estilo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1040px;margin:0 auto;}
+    .estilo-card{position:relative;display:block;border-radius:22px;overflow:hidden;aspect-ratio:16/10;
+      box-shadow:0 0 0 1px rgba(16,24,40,.06),0 18px 40px -24px rgba(16,24,40,.55);
+      transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
+    .estilo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1);}
+    /* El rotulo va arriba: abajo las capturas ya traen su propio titular y
+       se pisaban. Velo de arriba abajo para que el blanco se lea. */
+    .estilo-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,22,.72) 0%,rgba(10,14,22,.2) 38%,rgba(10,14,22,0) 60%);}
+    .estilo-card:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(16,24,40,.08),0 26px 50px -24px rgba(16,24,40,.6);}
+    .estilo-card:hover img{transform:scale(1.04);}
+    .estilo-txt{position:absolute;left:24px;right:24px;top:20px;z-index:1;display:flex;flex-direction:column;gap:4px;color:#fff;}
+    .estilo-h{font:800 clamp(26px,3vw,34px)/1.05 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:-.02em;}
+    .estilo-p{font-size:14.5px;line-height:1.4;opacity:.88;}
+    .estilo-ir{position:absolute;right:20px;bottom:22px;z-index:1;width:40px;height:40px;padding:10px;border-radius:50%;
+      background:rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s;}
+    .estilo-card:hover .estilo-ir{transform:translate(2px,-2px);background:rgba(255,255,255,.3);}
+    body.dark-mode .estilo-sub{color:#9aa6b8;}
+    @media (max-width:640px){
+      .estilo-grid{grid-template-columns:1fr;gap:14px;}
+      .estilo-txt{left:18px;top:16px;}
+      .estilo-ir{right:16px;bottom:18px;}
+    }
+    </style>
+</section>
+
 <!-- 15/10/2026 · «Webs interactivas» baja aqui.
      Arriba, entre el hero y los primeros datos, cortaba el hilo: quien acaba
      de llegar todavia esta decidiendo si le sirves, y ahi le hablabas de una
