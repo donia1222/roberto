@@ -1926,6 +1926,51 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
     </style>
 </section>
 
+<!-- APARICION SUAVE de Referenzen y de «Klassisch oder interaktiv?» (05/11/2026).
+     El resto de secciones ya entraba con un fundido (js/main.js); estas dos
+     salian de golpe. Los chips entran uno detras de otro. Solo con JS: sin
+     el, todo esta visible desde el principio. -->
+<style>
+.js-rv .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1);}
+.js-rv .cchip.rv{transform:translateY(14px) scale(.96);transition-duration:.5s;}
+.js-rv .rv.rv-in{opacity:1;transform:none;}
+</style>
+<script>
+(function(){
+  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ref = document.getElementById('referenzen');
+  var est = document.getElementById('klassisch-interaktiv');
+  if (!('IntersectionObserver' in window) || quieto) return;
+  document.documentElement.classList.add('js-rv');
+  var piezas = [];
+  [ref, est].forEach(function(sec){
+    if (!sec) return;
+    sec.querySelectorAll('.cchips-titulo, .cchips-sep, .estilo-sub, .estilo-card').forEach(function(el){ piezas.push(el); });
+    // los chips de cada grupo, escalonados
+    sec.querySelectorAll('.cchips').forEach(function(g){
+      [].slice.call(g.children).forEach(function(c, i){
+        if (!c.classList.contains('cchip')) return;
+        c.style.transitionDelay = Math.min(i * 70, 700) + 'ms';
+        piezas.push(c);
+      });
+    });
+  });
+  piezas.forEach(function(el){ el.classList.add('rv'); });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('rv-in');
+      io.unobserve(el);
+      // al terminar se quitan las clases: el chip recupera su propio hover
+      var espera = (parseFloat(el.style.transitionDelay) || 0) + 800;
+      setTimeout(function(){ el.classList.remove('rv', 'rv-in'); el.style.transitionDelay = ''; }, espera);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  piezas.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
 <!-- 15/10/2026 · «Webs interactivas» baja aqui.
      Arriba, entre el hero y los primeros datos, cortaba el hilo: quien acaba
      de llegar todavia esta decidiendo si le sirves, y ahi le hablabas de una
