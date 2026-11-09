@@ -1425,22 +1425,21 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
                 <span class="cchip-t">Steuerhilfe SG<small>steuerhilfe.sg</small><small class="cchip-dom cchip-gratis" data-i18n="clients.mac.gratis">Gratis herunterladen</small></span>
                 <svg class="cchip-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
-            <!-- Steuerhilfe LI (04/11/2026): el mismo programa, con su landing
-                 de Liechtenstein. Icono y «Gratis» en azul, como esa web. -->
-            <a class="cchip" href="https://steuerhilfe.li" target="_blank" rel="noopener">
-                <span class="cchip-logo cchip-logo--mac"><img src="apps-icon/steuerhilfe-li.png" alt="Steuerhilfe LI" loading="lazy" decoding="async" width="128" height="128"></span>
-                <span class="cchip-t">Steuerhilfe LI<small>steuerhilfe.li</small><small class="cchip-dom cchip-gratis cchip-gratis--azul" data-i18n="clients.mac.gratis">Gratis herunterladen</small></span>
-                <svg class="cchip-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
-            </a>
-            <!-- Forja · App Creator (04/11/2026): logo, nombre y subtitulo como
+            <!-- Steuerhilfe LI: quitada de la web el 09/11/2026 (lo pidió él;
+                 la versión de Liechtenstein aún no existe). Para volver, ver el
+                 chip de Steuerhilfe SG con href="https://steuerhilfe.li",
+                 apps-icon/steuerhilfe-li.png y cchip-gratis--azul. -->
+            <!-- Forja · App Creator: quitada de la web el 09/11/2026 (lo pidió él).
+            Forja · App Creator (04/11/2026): logo, nombre y subtitulo como
                  los de Steuerhilfe. Aun es un proyecto: no se descarga ni se
                  da a probar, por eso pone «Demnächst» en lila. Cuando este
-                 listo, se pide contactando (no es «herunterladen»). -->
+                 listo, se pide contactando (no es «herunterladen»). ~~>
             <a class="cchip" href="https://forja-app-woad-nu.vercel.app" target="_blank" rel="noopener">
                 <span class="cchip-logo cchip-logo--mac"><img src="apps-icon/forja-logo.png" alt="Forja" loading="lazy" decoding="async" width="128" height="128"></span>
                 <span class="cchip-t">Forja<small>App Creator</small><small class="cchip-dom cchip-gratis cchip-gratis--lila" data-i18n="clients.mac.pronto">Demnächst</small></span>
                 <svg class="cchip-ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
+            -->
             <!-- Forja, quitada de momento (03/11/2026). Para volver a ponerla:
             <a class="cchip" href="https://forja-app-woad-nu.vercel.app" target="_blank" rel="noopener">
                 <span class="cchip-logo cchip-logo--mac"><img src="apps-icon/forja.png" alt="Forja" loading="lazy" decoding="async" width="128" height="128"></span>
@@ -1482,6 +1481,9 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
     /* El de Liechtenstein, en el azul de steuerhilfe.li. */
     .cchip-t small.cchip-gratis.cchip-gratis--azul{color:#1d3f94;}
     body.dark-mode .cchip-t small.cchip-gratis.cchip-gratis--azul{color:#7aa2f0;}
+    /* Apagado: algo que aun no se puede abrir (Steuerhilfe LI, 09/11/2026). */
+    .cchip.cchip--off{opacity:.55;filter:grayscale(1);cursor:default;box-shadow:none;}
+    .cchip.cchip--off:hover{transform:none;border-color:rgba(16,24,40,.08);box-shadow:none;}
     /* Forja: el «Gratis» en el lila de su logo. */
     .cchip-t small.cchip-gratis.cchip-gratis--lila{color:#7c3aed;}
     body.dark-mode .cchip-t small.cchip-gratis.cchip-gratis--lila{color:#c4b5fd;}
@@ -5318,7 +5320,7 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202611091000"></script>
+<script src="js/translations.js?v=202611091200"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
 <script src="js/main.js?v=202610120945"></script>
 <script defer src="/_vercel/insights/script.js"></script>
