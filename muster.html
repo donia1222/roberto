@@ -478,6 +478,13 @@ textarea.inp-sm{min-height:76px}
 }
 @media (hover:none){.bs h5 button{opacity:1}.th button{opacity:1}}
 
+/* lo que faltaba, resaltado un momento al llegar desde «Noch offen» */
+.foco:not(.grp){border-radius:16px;animation:foco 2.4s ease-out}
+.grp.foco{animation:focoT 2.4s ease-out}
+@keyframes foco{0%,30%{box-shadow:0 0 0 4px rgba(var(--acc-rgb),.55),0 0 0 14px rgba(var(--acc-rgb),.12)}100%{box-shadow:0 0 0 4px rgba(var(--acc-rgb),0),0 0 0 14px rgba(var(--acc-rgb),0)}}
+@keyframes focoT{0%,40%{color:var(--acc2)}100%{color:var(--mut2)}}
+@media (prefers-reduced-motion:reduce){.foco,.grp.foco{animation:none}}
+
 /* ═══════════════ Solo la versión web (Gratis-Muster) ═══════════════ */
 .req{font-style:normal;color:var(--acc)}
 .opt{font-weight:600;color:var(--mut3);margin-left:4px}
@@ -1067,7 +1074,7 @@ const VIEWS = {
       <input class="hp" data-hp tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="consent"><input type="checkbox" data-ok${P.ok ? ' checked' : ''}><span>Ich bin einverstanden, dass Lweb mich zu dieser Anfrage per E-Mail oder Telefon kontaktiert. Meine Angaben werden nur dafür verwendet.</span></label>
       <div class="err hidden" id="err"></div>
-      ${todo.length ? `<div class="todo"><b>${ic('info')}Noch offen – Sie können trotzdem absenden</b><div>${todo.map((t) => `<button data-go="${t[1]}">${t[0]}</button>`).join('')}</div></div>` : ''}
+      ${todo.length ? `<div class="todo"><b>${ic('info')}Noch offen – Sie können trotzdem absenden</b><div>${todo.map((t) => `<button data-go="${t[1]}" data-foco="${t[3] || ''}">${t[0]}</button>`).join('')}</div></div>` : ''}
       <div class="only-narrow">${secciones().map(secHTML).join('')}</div>
       <div class="promise">${ic('check')}<span><b>Kostenlos und unverbindlich.</b> Wir gestalten Ihre Muster-Seite von Hand und melden uns innert 2–3 Arbeitstagen.</span></div>`;
   },
@@ -1083,14 +1090,33 @@ function featCount() {
 }
 function offen() {
   return [
-    ['Name des Geschäfts', 'kunde', !P.kunde.name.trim()],
-    ['Branche', 'kunde', !P.kunde.branche],
-    ['Ziele', 'kunde', !P.ziele.length],
-    ['Farben', 'farben', !pal()],
-    ['Schrift', 'texte', !font()],
-    ['Tonalität', 'texte', !P.ton],
-    ['Funktionen', 'funktionen', !featsBy('ja').length],
+    ['Name des Geschäfts', 'kunde', !P.kunde.name.trim(), 'name'],
+    ['Branche', 'kunde', !P.kunde.branche, 'branche'],
+    ['Ziele', 'kunde', !P.ziele.length, 'ziele'],
+    ['Farben', 'farben', !pal(), 'farben'],
+    ['Schrift', 'texte', !font(), 'schrift'],
+    ['Tonalität', 'texte', !P.ton, 'ton'],
+    ['Funktionen', 'funktionen', !featsBy('ja').length, 'funktionen'],
   ].filter((x) => x[2]);
+}
+/* «Noch offen»: además de ir al paso, baja hasta lo que falta y lo resalta un momento */
+const FOCO_SEL = {
+  name: ['[data-k="name"]', '.fld'], branche: ['.tiles', null], ziele: ['[data-ziel]', '.chips'], person: ['[data-k="person"]', '.fld'],
+  farben: ['.pal', null], schrift: ['.fonts', null], ton: ['.tones', null], anrede: ['[data-anrede]', '.seg'], wer: ['[data-wer]', '.chips'],
+  funktionen: ['.fgrid', null],
+};
+function marcar(clave) {
+  const def = FOCO_SEL[clave]; if (!def) return;
+  let el = document.querySelector('#ctl ' + def[0]);
+  if (el && def[1]) el = el.closest(def[1]);
+  if (!el) return;
+  const titulo = el.previousElementSibling && el.previousElementSibling.classList.contains('grp') ? el.previousElementSibling : null;
+  setTimeout(() => {
+    (titulo || el).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    [titulo, el].forEach((x) => { if (!x) return; x.classList.remove('foco'); void x.offsetWidth; x.classList.add('foco'); });
+    setTimeout(() => [titulo, el].forEach((x) => x && x.classList.remove('foco')), 2600);
+    if (clave === 'name' || clave === 'person') { const i = el.querySelector('input'); if (i) i.focus({ preventScroll: true }); }
+  }, 120);
 }
 function renderStep(keepScroll) {
   if (!P.visited.includes(step)) P.visited.push(step);
@@ -1182,7 +1208,7 @@ function bind() {
     if (!b) return;
     const d = b.dataset;
     const fin = (rerender = true) => { if (rerender) renderStep(true); renderBrief(); persist(); };
-    if (d.go) return go(d.go);
+    if (d.go) { go(d.go); if (d.foco) marcar(d.foco); return; }
     if (d.branche) { P.kunde.branche = d.branche; fin(); if (d.branche === 'andere') setTimeout(() => { const i = $('[data-k="andere"]'); if (i) i.focus(); }, 30); return; }
     if (d.ziel) { const i = P.ziele.indexOf(d.ziel); if (i >= 0) P.ziele.splice(i, 1); else P.ziele.push(d.ziel); return fin(); }
     if (d.pal) { P.pal = d.pal; P.custom = null; return fin(); }
