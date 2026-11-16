@@ -1929,16 +1929,18 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
                      <span class="mu-kick"><span data-i18n="mu.kick">Gratis-Muster</span></span>
                      <p class="mu-p" data-i18n="mu.text">Sagen Sie uns in fünf Minuten, …</p> -->
                 <h2 class="mu-h" data-i18n-html="mu.title">Wie könnte Ihre Website aussehen? <em>Wir zeigen es Ihnen – gratis.</em></h2>
-                <!-- EL VIDEO · 15/11/2026 — «So entsteht Ihre Website», hecho con
-                     codigo (fuentes en ~/lweb-video). En el ordenador el 16:9 y en
-                     el movil el 4:5: lo elige el script de abajo, porque <source
-                     media> no lo respetan todos los navegadores. No baja ni un
-                     byte hasta que el bloque esta cerca de la pantalla. -->
+                <!-- EL VIDEO · 16/11/2026 — «Ihr Betrieb. Hier in der Region.»
+                     (lo hizo Roberto; original en ~/Desktop/Lweb-Video-Werbung).
+                     Es 4:5 y sirve igual en el ordenador y en el movil, asi que
+                     los dos data-* apuntan al mismo fichero. El de ayer
+                     («So entsteht Ihre Website», 16:9 + 4:5) sigue en video/ por
+                     si se quiere volver. No baja ni un byte hasta que el bloque
+                     esta cerca de la pantalla. -->
                 <div class="mu-vid">
                     <video id="muVid" muted loop playsinline preload="none"
-                           aria-label="So entsteht Ihre Website – in 4 Schritten"
-                           data-pc="video/so-gehts-16x9.mp4" data-pc-poster="video/so-gehts-16x9.jpg"
-                           data-movil="video/so-gehts-4x5.mp4" data-movil-poster="video/so-gehts-4x5.jpg"></video>
+                           aria-label="Ihr Betrieb. Hier in der Region. – Websites von Lweb"
+                           data-pc="video/lweb-betriebe-4x5.mp4" data-pc-poster="video/lweb-betriebe-4x5.jpg"
+                           data-movil="video/lweb-betriebe-4x5.mp4" data-movil-poster="video/lweb-betriebe-4x5.jpg"></video>
                 </div>
                 <ul class="mu-pts">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="mu.p1">Kostenlos und unverbindlich</span></li>
@@ -1973,10 +1975,11 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
     .mu-cta:hover{transform:translateY(-2px);box-shadow:0 22px 36px -14px rgba(254,108,117,.95);}
     .mu-cta:hover svg{transform:translateX(3px);}
     .mu-time{display:block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.55);}
-    /* el video: 16:9 en el ordenador, 4:5 en el movil. El hueco se reserva
-       con aspect-ratio para que la pagina no salte cuando carga. */
+    /* el video: 4:5 en todas partes (16/11/2026). En el ordenador, estrecho
+       para que no ocupe toda la pantalla de alto. El hueco se reserva con
+       aspect-ratio para que la pagina no salte cuando carga. */
     .mu-card .mu-h{margin-top:0;margin-bottom:24px;}   /* sin chip encima, el titulo abre la tarjeta */
-    .mu-vid{position:relative;margin:2px auto 26px;max-width:720px;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+    .mu-vid{position:relative;margin:2px auto 26px;max-width:420px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
       background:#0a1020;box-shadow:0 30px 60px -28px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);cursor:pointer;}
     .mu-vid video{display:block;width:100%;height:100%;object-fit:cover;}
     /* la herramienta, abierta encima de la página */
@@ -1995,7 +1998,7 @@ body.dark-mode .lp{box-shadow:0 30px 60px -26px rgba(0,0,0,.75),0 0 0 1px rgba(2
       .mu-cta{display:flex;justify-content:center;width:100%;padding:16px 18px;}
       .mu-time{text-align:center;}
       .mu-pts{flex-direction:column;align-items:center;gap:8px;}
-      .mu-vid{aspect-ratio:4/5;border-radius:16px;margin-bottom:22px;}
+      .mu-vid{max-width:none;border-radius:16px;margin-bottom:22px;}
     }
     @media(prefers-reduced-motion:reduce){.mu-cta,.mu-cta svg{transition:none;}}
     </style>
