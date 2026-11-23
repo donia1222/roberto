@@ -3183,11 +3183,11 @@ body.dark-mode .vn-card{border-color:#1e2d3d;background:#141d2b;}
 /* 23/11/2026: en el móvil, las tarjetas en fila con desplazamiento lateral (lo pidió él),
    no una debajo de otra. Asoma la siguiente para que se vea que hay más. */
 @media(max-width:700px){
-  .ink{display:flex;max-width:none;margin:24px -24px 0;padding:6px 24px 20px;gap:12px;
+  .ink{display:flex;max-width:none;margin:24px -24px 0;padding:6px 24px 6px;gap:12px;
     overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .ink::-webkit-scrollbar{display:none;}
-  .ink>.ink-card{flex:0 0 84%;scroll-snap-align:start;}
-  .ink-card:hover{transform:none;}
+  .ink>.ink-card{flex:0 0 84%;scroll-snap-align:start;box-shadow:none;}  /* la fila recorta la sombra y dejaba una franja gris */
+  .ink>.ink-card:hover,.ink>.ink-card:active{transform:none;box-shadow:none;}  /* al tocar, el :hover (declarado más abajo) se quedaba con sombra */
 }
 
 .ink-card{position:relative;display:flex;flex-direction:column;gap:10px;
