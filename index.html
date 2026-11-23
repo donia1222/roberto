@@ -5,9 +5,6 @@
     <script>if(location.hostname.replace('www.','')==='webseite.li')document.documentElement.classList.add('dom-li');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 23/11/2026: Meta Pixel y Google Analytics SOLO con permiso (ver js/consent.js) -->
-    <script>window.LW_GA = true;</script>
-    <script src="js/consent.js?v=202611240100"></script>
 
 
     <!-- SEO Title -->
@@ -183,7 +180,6 @@
     <!-- Fonts & CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=202610170910">
-  <!-- Google Analytics: ahora lo carga js/consent.js solo con permiso (23/11/2026) -->
 <!-- Kritisches CSS: gehoert in den <head>. Stand im Body und der
      Schriftzug blitzte beim Laden kurz gross und schwarz auf. -->
 <style>
@@ -5508,7 +5504,6 @@ function askFromList(q){
         <div class="footer-legal">
             <a href="javascript:void(0)" onclick="openLegalModal('impressum')">Impressum</a>
             <a href="javascript:void(0)" onclick="openLegalModal('datenschutz')">Datenschutz</a>
-            <a href="javascript:void(0)" onclick="openCookieBanner()">Cookies</a>
             <a href="javascript:void(0)" onclick="openLegalModal('agb')">AGB</a>
         </div>
         <div class="footer-bottom">
@@ -5758,13 +5753,7 @@ function askFromList(q){
     </div>
 </div>
 
-<div class="cookie-banner" id="cookieBanner">
-    <p>Mit Ihrer Zustimmung nutzen wir Google Analytics und das Meta Pixel (Cookies), um die Website und unsere Werbung auszuwerten. <a href="javascript:void(0)" onclick="openLegalModal('datenschutz')" style="color:inherit;text-decoration:underline">Datenschutz</a></p>
-    <div class="cookie-actions">
-        <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies()">Akzeptieren</button>
-        <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
-    </div>
-</div>
+<!-- 23/11/2026: aviso de cookies quitado: la web ya no pone ninguna cookie (sin Meta Pixel ni Google Analytics). -->
 <script src="js/translations.js?v=202611240110"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
 <script>
@@ -5773,7 +5762,7 @@ function askFromList(q){
  if(!('IntersectionObserver' in window)){b.classList.add('nx-on');return;}
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){b.classList.add('nx-on');io.disconnect();}});},{threshold:.3});io.observe(b);})();
 </script>
-<script src="js/main.js?v=202611240115"></script>
+<script src="js/main.js?v=202611240130"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
 (function(){

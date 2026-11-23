@@ -317,7 +317,7 @@ function typeLoop() {
 }
 setTimeout(typeLoop, 1500);
 
-// Cookie banner — 23/11/2026: ahora decide de verdad (ver js/consent.js).
+// Cookie banner — 23/11/2026: el aviso ya no existe (la web no pone cookies); esto queda inofensivo.
 // «Akzeptieren» carga el píxel de Meta y Google Analytics; «Ablehnen» no los carga
 // (y si ya estaban cargados en esta página, se recarga para quitarlos).
 function closeCookieBanner() {
@@ -2173,14 +2173,14 @@ var legalContent = {
             '<p>Ihre Fragen an den Chat-Assistenten werden über unseren Server an OpenAI (USA) übermittelt, damit eine Antwort erstellt werden kann. Bitte geben Sie dort keine vertraulichen Daten ein. Der Gesprächsverlauf wird nur in Ihrem Browser gespeichert.</p>' +
             '<h4>Anonyme Besucherstatistik</h4>' +
             '<p>Um die Website zu verbessern, zählen wir anonym, welche Bereiche angesehen und welche Schaltflächen angeklickt werden, wie weit gescrollt wird und woher ein Besuch kommt (z. B. Suchmaschine oder Werbung). Dafür werden weder Cookies gesetzt noch IP-Adressen gespeichert; pro Besuch wird nur eine zufällige Nummer verwendet, die beim Schliessen des Tabs verloren geht. Die Daten liegen auf unserem Server in der Schweiz und werden nach spätestens 400 Tagen gelöscht. Zusätzlich nutzen wir Vercel Web Analytics, das ebenfalls ohne Cookies auskommt und nur zusammengefasste Besucherzahlen liefert.</p>' +
-            '<h4>Google Analytics und Meta Pixel – nur mit Ihrer Einwilligung</h4>' +
-            '<p>Wenn Sie im Cookie-Hinweis auf «Akzeptieren» klicken, verwenden wir Google Analytics 4 (Google Ireland Ltd. / Google LLC, USA), um die Nutzung der Website auszuwerten, und das Meta Pixel (Meta Platforms Ireland Ltd. / Meta Platforms Inc., USA), um die Wirkung unserer Werbung auf Facebook und Instagram zu messen. Dabei werden Cookies gesetzt und Daten wie IP-Adresse, Gerätedaten und Ihre Interaktionen auf der Website an Google bzw. Meta übermittelt, auch in die USA. Ohne Ihre Einwilligung werden diese Dienste nicht geladen. Ihre Wahl können Sie jederzeit über den Link «Cookies» am Ende der Seite ändern.</p>' +
+            '<h4>Cookies</h4>' +
+            '<p>Diese Website setzt keine Cookies. Wir verwenden weder Google Analytics noch das Meta Pixel oder andere Werbe-Tracker.</p>' +
             '<h4>Google Fonts</h4>' +
             '<p>Für die Schrift laden wir Schriftdateien von Google (Google Fonts). Dabei wird Ihre IP-Adresse an Google übermittelt.</p>' +
             '<h4>Im Browser gespeichert</h4>' +
-            '<p>Einige Einstellungen speichern wir nur lokal in Ihrem Browser (z. B. Sprache, Dunkelmodus, Ihre Wahl im Cookie-Hinweis, Chat-Verlauf). Diese Daten werden nicht an uns übermittelt; Sie können sie über die Browsereinstellungen löschen.</p>' +
+            '<p>Einige Einstellungen speichern wir nur lokal in Ihrem Browser (z. B. Sprache, Dunkelmodus, Chat-Verlauf). Diese Daten werden nicht an uns übermittelt; Sie können sie über die Browsereinstellungen löschen.</p>' +
             '<h4>Datenübermittlung ins Ausland</h4>' +
-            '<p>Einige der genannten Anbieter (Vercel, Google, Meta, OpenAI) haben ihren Sitz in den USA. Die Übermittlung erfolgt auf Grundlage der vom EDÖB anerkannten Garantien (z. B. Swiss-U.S. Data Privacy Framework oder Standardvertragsklauseln).</p>' +
+            '<p>Einige der genannten Anbieter (Vercel, Google, OpenAI) haben ihren Sitz in den USA. Die Übermittlung erfolgt auf Grundlage der vom EDÖB anerkannten Garantien (z. B. Swiss-U.S. Data Privacy Framework oder Standardvertragsklauseln).</p>' +
             '<h4>Aufbewahrung</h4>' +
             '<p>Wir bewahren Personendaten nur so lange auf, wie es für den jeweiligen Zweck nötig ist oder das Gesetz es verlangt (z. B. Buchhaltungsunterlagen 10 Jahre).</p>' +
             '<h4>Ihre Rechte</h4>' +
