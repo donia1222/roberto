@@ -2,6 +2,7 @@
 <html lang="de-CH">
 <head>
     <meta charset="UTF-8">
+    <script>if(location.hostname.replace('www.','')==='webseite.li')document.documentElement.classList.add('dom-li');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Meta Pixel Code -->
@@ -497,13 +498,15 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <!-- HEADER -->
 <header class="header">
     <div class="header-inner">
-        <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)">
+        <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)" aria-label="Lweb Schweiz">
+            <img class="lw-logo lw-logo--dia" src="img/logo-lweb-ch-dia.webp" alt="Lweb Schweiz" width="305" height="160">
+            <img class="lw-logo lw-logo--noche" src="img/logo-lweb-ch-noche.webp" alt="" width="313" height="160">
             <span class="header-logo-text">Lweb<span class="header-logo-person"><!--
      19/10/2026 · el rotulo de debajo depende del dominio: lweb.ch dice
-     Rheintal (antes Sevelen, cambiado el 23/11/2026) con la cruz suiza, webseite.li dice Liechtenstein con su
+     Schweiz (antes Sevelen y luego Rheintal; Schweiz desde el 23/11/2026) con la cruz suiza, webseite.li dice Liechtenstein con su
      bandera. El de Liechtenstein nace escondido por CSS, asi que en
      lweb.ch no parpadea.
-  --><span class="domain-ch"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Rheintal</span><span class="domain-li"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#002b7f"/><rect y="16" width="32" height="16" fill="#ce1126"/><path d="M10 11h4V9.2a1.4 1.4 0 111.4-.2V11h4v2.2H10z" fill="#ffd83d"/></svg>Liechtenstein</span></span></span>
+  --><span class="domain-ch"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span><span class="domain-li"><svg width="9" height="9" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#002b7f"/><rect y="16" width="32" height="16" fill="#ce1126"/><path d="M10 11h4V9.2a1.4 1.4 0 111.4-.2V11h4v2.2H10z" fill="#ffd83d"/></svg>Liechtenstein</span></span></span>
         </a>
         <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
             <a href="#handarbeit" class="header-nav-item onep-link"><span data-i18n="nav.op.handarbeit">Handarbeit</span></a>
@@ -592,6 +595,10 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
     <div class="container">
         <div class="hero-inner">
             <div class="hero-content">
+                <div class="dev-pills">
+                    <span class="ios-pill"><img src="img/apple-blanco.webp" alt="" width="20" height="24" class="ios-pill-a ios-a-blanco"><img src="img/apple-negro.webp" alt="" width="20" height="24" class="ios-pill-a ios-a-negro">iOS Developer Program</span>
+                    <span class="g-pill"><span class="g-word" aria-label="Google"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> Developer Program</span>
+                </div>
                 <h1 data-i18n-html="hero.title">Websites und Apps.<br><span>Aus der Region,<br>für die Region.</span></h1>
                 <p class="hero-subtitle" data-i18n-html="hero.subtitle">Andere Entwickler stapeln Templates. Ich schreibe Ihren Code von Hand &mdash; damit Ihre Website wirklich Ihre ist, nicht die von hundert anderen.</p>
                 <div class="hero-buttons">
@@ -2448,6 +2455,50 @@ document.querySelectorAll('.vn-sl').forEach(function (caja) {
    parpadeo. */
 .header-logo-person .domain-li{display:none;align-items:center;gap:4px;}
 .header-logo-person .domain-ch{display:inline-flex;align-items:center;gap:4px;}
+/* Logo de imagen «Lweb Schweiz» (23/11/2026). Oscuro de día, blanco de noche y
+   con el menú abierto (fondo azul noche). En webseite.li (html.dom-li) vuelve
+   el logo de texto, porque la imagen dice Schweiz. */
+.lw-logo{height:52px;width:auto;display:block;}
+.lw-logo--noche{display:none;}
+body.dark-mode .lw-logo--dia,.header.menu-open .lw-logo--dia{display:none;}
+body.dark-mode .lw-logo--noche,.header.menu-open .lw-logo--noche{display:block;}
+html:not(.dom-li) .header-logo-text,html:not(.dom-li) .lw-logo-pie-texto{display:none !important;}
+html.dom-li .lw-logo,html.dom-li .lw-logo-pie{display:none !important;}
+.lw-logo-pie{height:56px;width:auto;display:block;}
+@media (max-width:768px){.lw-logo{height:44px;}}
+/* «iOS Developer» (23/11/2026). Letra del sistema: en Apple sale la San Francisco
+   sin alojarla nosotros (su licencia no deja servirla en una web). */
+.ios-pill,.ios-banner{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,Arial,sans-serif;}
+.ios-pill{display:inline-flex;align-items:center;gap:7px;background:#000;color:#fff;font-size:14px;font-weight:600;letter-spacing:-.01em;padding:7px 15px 7px 12px;border-radius:999px;margin-bottom:18px;}
+.ios-pill-a{height:16px;width:auto;margin-top:-2px;}
+.ios-a-negro{display:none;}
+body.dark-mode .ios-pill{background:#fff;color:#000;}
+body.dark-mode .ios-pill .ios-a-blanco{display:none;}
+body.dark-mode .ios-pill .ios-a-negro{display:block;}
+.dev-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.dev-pills .ios-pill{margin-bottom:0;}
+.g-pill,.g-banner{font-family:"Google Sans","Product Sans",'Plus Jakarta Sans',Arial,sans-serif;}
+.g-word b{font-weight:600;}
+.g-pill{display:inline-flex;align-items:center;gap:5px;background:#fff;color:#3c4043;font-size:14px;font-weight:600;padding:7px 15px;border-radius:999px;box-shadow:inset 0 0 0 1px #dadce0;}
+.g-pill .g-word{font-size:15px;letter-spacing:-.01em;}
+body.dark-mode .g-pill{background:#202124;color:#e8eaed;box-shadow:inset 0 0 0 1px #3c4043;}
+.dev-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;max-width:400px;}
+.ios-banner,.g-banner{display:flex;flex-direction:column;align-items:flex-start;border-radius:14px;padding:13px 15px;}
+.ios-banner{background:#000;color:#fff;}
+.ios-banner-a{height:21px;width:auto;margin-bottom:7px;}
+.g-banner{background:#fff;color:#202124;box-shadow:inset 0 0 0 1px #dadce0;}
+.g-banner .g-word{font-size:19px;line-height:21px;margin-bottom:7px;letter-spacing:-.02em;}
+.ios-banner strong,.g-banner strong{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.25;}
+.ios-banner span,.g-banner span:not(.g-word){display:block;font-size:11.5px;margin-top:3px;line-height:1.35;}
+.ios-banner span{color:#a1a1a6;}
+.g-banner span:not(.g-word){color:#5f6368;}
+body.dark-mode .ios-banner{box-shadow:0 0 0 1px rgba(255,255,255,.14);}
+body.dark-mode .g-banner{background:#202124;color:#e8eaed;box-shadow:inset 0 0 0 1px #3c4043;}
+body.dark-mode .g-banner span:not(.g-word){color:#9aa0a6;}
+@media (max-width:768px){.ios-pill,.g-pill{font-size:12.5px;padding:6px 12px}.dev-pills{justify-content:center;margin-bottom:14px}.dev-cards{gap:8px;max-width:none}.ios-banner,.g-banner{padding:12px 13px}.ios-banner strong,.g-banner strong{font-size:13.5px}.ios-banner-a{height:19px}.g-banner .g-word{font-size:17px;line-height:19px}}
+/* El menú en hoja (móvil) es claro de día: ahí vuelve el logo oscuro. */
+body.menu-sheet:not(.dark-mode) .header.menu-open .lw-logo--dia{display:block;}
+body.menu-sheet:not(.dark-mode) .header.menu-open .lw-logo--noche{display:none;}
 .vn-fuente{display:block;margin-top:4px;font-size:13.5px;color:var(--gunpowder300);}
 .vn-sl{position:relative;max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;
   border:1px solid var(--gunpowder100);box-shadow:0 18px 48px rgba(15,29,44,.1);
@@ -3980,6 +4031,18 @@ function expandBranchen(btn){
                         Deutsch, Schweizerdeutsch, Spanisch und Englisch
                     </div>
                 </div>
+                <div class="dev-cards">
+                    <div class="ios-banner">
+                        <img src="img/apple-blanco.webp" alt="" width="40" height="48" class="ios-banner-a">
+                        <strong>iOS Developer Program</strong>
+                        <span data-i18n="about.ios.sub">Eigene Apps im App Store</span>
+                    </div>
+                    <div class="g-banner">
+                        <span class="g-word" aria-label="Google"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span>
+                        <strong>Developer Program</strong>
+                        <span data-i18n="about.gdp.sub">Eigene Apps bei Google Play</span>
+                    </div>
+                </div>
                 <!-- Blog escondido el 19/10/2026, mismo motivo. -->
                 <a href="blog.html" data-back-to="about" style="display:none;align-items:center;gap:8px;margin-top:24px;padding:11px 24px;border-radius:50px;background:var(--pizarra);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.18)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
@@ -5253,9 +5316,10 @@ function askFromList(q){
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <div style="font-size:22px;font-weight:800;display:flex;flex-direction:column;line-height:1;">
+                <img class="lw-logo-pie" src="img/logo-lweb-ch-noche.webp" alt="Lweb Schweiz" width="313" height="160">
+                <div class="lw-logo-pie-texto" style="font-size:22px;font-weight:800;display:flex;flex-direction:column;line-height:1;">
                     Lweb
-                    <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Rheintal</span>
+                    <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span>
                 </div>
                 <p>Webentwickler in Sevelen &mdash; für Betriebe in Buchs SG, Werdenberg, Sargans und Liechtenstein. Websites, Apps und KI-Lösungen zu fairen Preisen, direkt vom Entwickler.</p>
                 <div class="footer-contact-item">
@@ -5577,7 +5641,7 @@ function askFromList(q){
         <button class="cookie-btn cookie-btn--decline" onclick="declineCookies()">Ablehnen</button>
     </div>
 </div>
-<script src="js/translations.js?v=202611121600"></script>
+<script src="js/translations.js?v=202611232230"></script>
 <script src="js/booking-modal.js?v=202608181346"></script>
 <script src="js/main.js?v=202611121130"></script>
 <script defer src="/_vercel/insights/script.js"></script>
