@@ -499,7 +499,7 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <header class="header">
     <div class="header-inner">
         <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)" aria-label="Lweb Schweiz">
-            <span class="lw-txt" aria-hidden="true"><span class="lw-txt-1">Lweb<svg class="lw-flag" viewBox="0 0 32 32" role="img" aria-label="Schweiz"><rect width="32" height="32" rx="6" fill="#e30613"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
+            <span class="lw-txt" aria-hidden="true"><span class="lw-txt-1">Lweb <em>Schweiz</em></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
             <span class="header-logo-text">Lweb<span class="header-logo-person"><!--
      19/10/2026 · el rotulo de debajo depende del dominio: lweb.ch dice
      Schweiz (antes Sevelen y luego Rheintal; Schweiz desde el 23/11/2026) con la cruz suiza, webseite.li dice Liechtenstein con su
@@ -759,6 +759,12 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
                     </div>
                 </div>
             </div>
+                <!-- 23/11/2026: en el ordenador, las pastillas van debajo de la foto (copia; la de la columna de texto se ve en el móvil). -->
+                <div class="dev-pills dev-pills--foto" aria-hidden="true">
+                    <span class="ios-pill"><img src="img/apple-blanco.webp" alt="" width="20" height="24" class="ios-pill-a ios-a-blanco"><img src="img/apple-negro.webp" alt="" width="20" height="24" class="ios-pill-a ios-a-negro">iOS Developer</span>
+                    <span class="g-pill"><span class="g-word" aria-label="Google"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span> Developer</span>
+                    <span class="nx-pill">Next<i>.js</i></span>
+                </div>
             </div>
         </div>
         <script>
@@ -2369,9 +2375,6 @@ body.menu-sheet:not(.dark-mode) .header.menu-open .lw-txt em{color:#e30613;}
 .lw-txt--pie .lw-txt-2{font-size:10.3px;}
 html.dom-li .lw-txt{display:none !important;}
 @media (max-width:768px){.lw-txt-1{font-size:24px}.lw-txt-2{font-size:8px}}
-/* 23/11/2026: bandera suiza en lugar de la palabra «Schweiz» (prueba para verla en el teléfono). */
-.lw-txt-1{display:inline-flex;align-items:center;}
-.lw-flag{width:.74em;height:.74em;margin-left:.16em;margin-top:.04em;flex-shrink:0;}
 /* ═══ NEXT.JS (23/11/2026): banner con malla low-poly y letras dibujadas. Mismo aspecto de día y de noche. ═══ */
 .nx-banner{position:relative;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:8px;margin:24px 0 8px;padding:26px 40px 26px 18px;border-radius:28px;overflow:hidden;color:#e6f6ff;
   background:radial-gradient(90% 120% at 22% 30%,#0c3766 0%,#081f3f 42%,#040c1b 100%);isolation:isolate;}
@@ -2423,6 +2426,16 @@ html.dom-li .lw-txt{display:none !important;}
 @media (max-width:768px){.dev-pills{gap:5px}.dev-pills .ios-pill,.dev-pills .g-pill,.dev-pills .nx-pill{font-size:11.5px;padding:5px 9px;gap:4px}.dev-pills .ios-pill-a{height:12px}.dev-pills .g-pill .g-word{font-size:12.5px}}
 @media (max-width:359px){.dev-pills{flex-wrap:wrap}}
 .dev-pills .nx-pill{gap:0 !important;}
+/* Ordenador: pastillas debajo de la foto y algo más pequeñas; móvil: donde estaban (23/11/2026). */
+@media (min-width:993px){
+  .hero-content > .dev-pills{display:none;}
+  .hero-image{flex-direction:column;}
+  .dev-pills--foto{position:relative;z-index:2;justify-content:center;margin:26px 0 0;gap:7px;}
+  .dev-pills--foto .ios-pill,.dev-pills--foto .g-pill,.dev-pills--foto .nx-pill{font-size:12.5px;padding:6px 12px;}
+  .dev-pills--foto .ios-pill-a{height:13px;}
+  .dev-pills--foto .g-pill .g-word{font-size:13.5px;}
+}
+@media (max-width:992px){.dev-pills--foto{display:none !important;}}
 /* Pastilla «Next.js» del hero */
 .nx-pill{display:inline-flex;align-items:center;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Inter,Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:-.03em;color:#000;background:#fff;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px #d4d4d4;white-space:nowrap;}
 .nx-pill i{font-style:normal;font-weight:500;color:#666;letter-spacing:0;}
@@ -3015,6 +3028,20 @@ body.dark-mode .vn-card{border-color:#1e2d3d;background:#141d2b;}
     .mu-cta:hover{transform:translateY(-2px);box-shadow:0 22px 36px -14px rgba(254,108,117,.95);}
     .mu-cta:hover svg{transform:translateX(3px);}
     .mu-time{display:block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.55);}
+    /* 23/11/2026: en el ordenador, texto a la izquierda y vídeo a la derecha (lo pidió él),
+       en vez de todo en una columna. En el móvil sigue igual. */
+    @media (min-width:900px){
+      .mu-card{max-width:1060px;text-align:left;padding:52px 60px;}
+      .mu-txt{display:grid;grid-template-columns:minmax(0,1fr) 360px;column-gap:64px;
+        grid-template-rows:1fr auto auto auto auto 1fr;
+        grid-template-areas:". vid" "h vid" "pts vid" "cta vid" "time vid" ". vid";}
+      .mu-card .mu-h{grid-area:h;margin:0 0 26px;font-size:clamp(34px,3.4vw,46px);}
+      .mu-vid{grid-area:vid;margin:0;max-width:none;width:360px;}
+      .mu-pts{grid-area:pts;flex-direction:column;align-items:flex-start;gap:12px;margin:0 0 30px;}
+      .mu-pts li{font-size:16px;}
+      .mu-cta{grid-area:cta;justify-self:start;}
+      .mu-time{grid-area:time;}
+    }
     /* el video: 4:5 en todas partes (16/11/2026). En el ordenador, estrecho
        para que no ocupe toda la pantalla de alto. El hueco se reserva con
        aspect-ratio para que la pagina no salte cuando carga. */
@@ -5432,7 +5459,7 @@ function askFromList(q){
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <span class="lw-txt lw-txt--pie" aria-label="Lweb Schweiz"><span class="lw-txt-1">Lweb<svg class="lw-flag" viewBox="0 0 32 32" role="img" aria-label="Schweiz"><rect width="32" height="32" rx="6" fill="#e30613"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
+                <span class="lw-txt lw-txt--pie" aria-label="Lweb Schweiz"><span class="lw-txt-1">Lweb <em>Schweiz</em></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
                 <div class="lw-logo-pie-texto" style="font-size:22px;font-weight:800;display:flex;flex-direction:column;line-height:1;">
                     Lweb
                     <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span>
