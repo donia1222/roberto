@@ -25,8 +25,11 @@
         updateIcons(isDark);
     }
 
-    document.getElementById('darkModeToggle').addEventListener('click', function() { openA11yModal(); });
-    document.getElementById('darkModeToggleMobile').addEventListener('click', function() { openA11yModal(); });
+    // 23/11/2026: con comprobación; en booking.html no existe el botón del móvil y daba error
+    ['darkModeToggle','darkModeToggleMobile'].forEach(function(id){
+        var b = document.getElementById(id);
+        if (b) b.addEventListener('click', function() { openA11yModal(); });
+    });
 })();
 
 // FAQ Accordion
@@ -255,6 +258,7 @@ function updateShowcaseBg() {
 }
 
 function slidePhone(direction) {
+    if (!phoneSlides.length || !phoneDots.length) return;   // 23/11/2026: en páginas sin el carrusel (contacto) daba error cada 4 s
     phoneSlides[phoneSlideIndex].classList.remove('active');
     phoneDots[phoneSlideIndex].classList.remove('active');
     phoneSlideIndex += direction;
@@ -2148,6 +2152,8 @@ var legalContent = {
             '<ul><li>IP-Adresse (anonymisiert)</li><li>Datum und Uhrzeit des Zugriffs</li><li>Aufgerufene Seiten</li><li>Verwendeter Browser und Betriebssystem</li></ul>' +
             '<h4>Kontaktformular & WhatsApp</h4>' +
             '<p>Wenn Sie uns über das Kontaktformular oder WhatsApp kontaktieren, werden Ihre Angaben (Name, E-Mail, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert. Diese Daten werden nicht an Dritte weitergegeben.</p>' +
+            '<h4>Anonyme Besucherstatistik</h4>' +
+            '<p>Um die Website zu verbessern, zählen wir anonym, welche Bereiche angesehen und welche Schaltflächen angeklickt werden, wie weit gescrollt wird und woher ein Besuch kommt (z. B. Suchmaschine oder Werbung). Dafür werden weder Cookies gesetzt noch IP-Adressen gespeichert; pro Besuch wird nur eine zufällige Nummer verwendet, die beim Schliessen des Tabs verloren geht. Die Daten liegen auf unserem Server in der Schweiz (Hostpoint) und werden nach spätestens 400 Tagen gelöscht.</p>' +
             '<h4>Cookies</h4>' +
             '<p>Diese Website verwendet keine Tracking-Cookies. Es werden lediglich technisch notwendige Cookies eingesetzt, die für die Funktionalität der Website erforderlich sind.</p>' +
             '<h4>Externe Dienste</h4>' +

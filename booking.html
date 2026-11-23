@@ -713,6 +713,7 @@ var TITLES=['','Service wählen','Datum & Uhrzeit','Kontaktdaten','Bestätigung'
 var SUBS=['','Für welches Thema möchten Sie einen Termin?','Wählen Sie einen freien Termin aus.','Wie soll ich Sie erreichen?',''];
 
 function toStep(n){
+    try{ if(n>1 && window.lwMetrik) lwMetrik('termin_schritt_'+n); }catch(e){}
     document.getElementById('bkS'+state.step).classList.remove('active');
     state.step=n;
     document.getElementById('bkS'+n).classList.add('active');
@@ -820,6 +821,7 @@ function doSend(channel){
 }
 
 function showConfirm(rows){
+    try{ window.lwMetrik && lwMetrik('termin_gesendet'); }catch(e){}
     /* --- Konversion an Meta Pixel + GA4 melden --- */
     try{
         if (typeof fbq === 'function') fbq('track', 'Lead', {
@@ -874,13 +876,14 @@ function submitCallback(){
             service:'Rückruf / Callback'
         })
     }).catch(function(e){console.error('[callback]',e);});
+    try{ window.lwMetrik && lwMetrik('rueckruf_gesendet'); }catch(e){}
     document.getElementById('bkCbForm').style.display='none';
     document.getElementById('bkCbConfirm').style.display='';
 }
 
 /* ── Init ── */
 toStep(1);
-document.getElementById('bkChoiceOverlay').style.display='none';
+/* 23/11/2026: fuera la línea que escondía bkChoiceOverlay: aquí aún no existe (está más abajo y ya nace con display:none) y el error cortaba el script, así que lo de abajo no corría. */
 
 /* ── Header scroll title ── */
 (function(){
@@ -1052,7 +1055,7 @@ document.getElementById('bkChoiceOverlay').style.display='none';
     if(t['bk.back']) window.BK_BACK=t['bk.back'];
 })();
 </script>
-<script src="js/main.js?v=202611121130"></script>
+<script src="js/main.js?v=202611240010"></script>
 <script>
 // Burger fallback — in case main.js doesn't bind it
 (function(){
@@ -1083,5 +1086,7 @@ document.getElementById('bkChoiceOverlay').style.display='none';
 </script>
 <script src="js/chatbot.js?v=202611121130"></script>
 
+<!-- Metrik propia, anónima (23/11/2026): ver js/metrik.js -->
+<script src="js/metrik.js?v=202611240030" defer></script>
 </body>
 </html>
