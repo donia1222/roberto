@@ -149,7 +149,7 @@ var translations = {
         'footer.more': 'Mehr entdecken',
         /* --- Home de una sola pagina --- */
         'hero.badge.new': 'Freelancer in Sevelen &amp; Buchs SG · seit 2019',
-        'hero.title': 'Websites und Apps.<br><span>Aus der Region,<br>für die Region.</span>',
+        'hero.title': 'Aus der Region,<br><span>für die Region.</span>',
         'hero.subtitle': 'Andere Entwickler stapeln Templates. Ich schreibe Ihren Code von Hand — damit Ihre Website wirklich Ihre ist, nicht die von hundert anderen.',
         'hero.feature1': 'Kein Agenturaufschlag — Sie zahlen die Arbeit, nicht das Büro',
         'hero.feature2': 'Vom kleinen Projekt bis zur Unternehmenssoftware',
@@ -1303,7 +1303,7 @@ var translations = {
         'footer.more': 'Discover more',
         /* --- Home de una sola pagina --- */
         'hero.badge.new': 'Freelancer in Sevelen &amp; Buchs SG · since 2019',
-        'hero.title': 'Websites and apps.<br><span>From the region,<br>for the region.</span>',
+        'hero.title': 'From the region,<br><span>for the region.</span>',
         'hero.subtitle': 'Other developers stack templates. I write your code by hand — so your website is truly yours, not the same as a hundred others.',
         'hero.feature1': 'No agency markup — you pay for the work, not the office',
         'hero.feature2': 'From small projects to business software',
@@ -2568,7 +2568,7 @@ var translations = {
         'footer.more': 'Descubre más',
         /* --- Home de una sola pagina --- */
         'hero.badge.new': 'Freelance en Sevelen y Buchs SG · desde 2019',
-        'hero.title': 'Páginas web y apps.<br><span>De la región,<br>para la región.</span>',
+        'hero.title': 'De la región,<br><span>para la región.</span>',
         'hero.subtitle': 'Otros desarrolladores apilan plantillas. Yo escribo tu código a mano — para que tu página web sea de verdad tuya, no la de otros cien.',
         'hero.feature1': 'Sin recargo de agencia — pagas el trabajo, no la oficina',
         'hero.feature2': 'De proyectos pequeños a software para empresas',
@@ -3833,7 +3833,7 @@ var translations = {
         'footer.more': 'En savoir plus',
         /* --- Home de una sola pagina --- */
         'hero.badge.new': 'Indépendant à Sevelen &amp; Buchs SG · depuis 2019',
-        'hero.title': 'Sites web et applications.<br><span>De la région,<br>pour la région.</span>',
+        'hero.title': 'De la région,<br><span>pour la région.</span>',
         'hero.subtitle': 'D\'autres développeurs empilent des templates. J\'écris votre code à la main — pour que votre site soit vraiment le vôtre, pas celui de cent autres.',
         'hero.feature1': 'Pas de marge d\'agence — vous payez le travail, pas les bureaux',
         'hero.feature2': 'Du petit projet au logiciel d’entreprise',
@@ -5098,7 +5098,7 @@ var translations = {
         'footer.more': 'Scopri di più',
         /* --- Home de una sola pagina --- */
         'hero.badge.new': 'Freelance a Sevelen e Buchs SG · dal 2019',
-        'hero.title': 'Siti web e app.<br><span>Dalla regione,<br>per la regione.</span>',
+        'hero.title': 'Dalla regione,<br><span>per la regione.</span>',
         'hero.subtitle': 'Altri sviluppatori impilano template. Io scrivo il tuo codice a mano — così il tuo sito è davvero tuo, non uguale a quello di altri cento.',
         'hero.feature1': 'Nessun ricarico da agenzia — paghi il lavoro, non l’ufficio',
         'hero.feature2': 'Dai piccoli progetti al software aziendale',
