@@ -499,7 +499,7 @@ body.dark-mode #lwWelcome .lww-hi{color:#f2f7fc;}
 <header class="header">
     <div class="header-inner">
         <a href="#" class="header-logo" onclick="event.preventDefault();lwFade(0)" aria-label="Lweb Schweiz">
-            <span class="lw-txt" aria-hidden="true"><span class="lw-txt-1">Lweb <em>Schweiz</em></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
+            <span class="lw-txt" aria-hidden="true"><span class="lw-txt-1">Lweb<svg class="lw-flag" viewBox="0 0 32 32" role="img" aria-label="Schweiz"><rect width="32" height="32" rx="6" fill="#e30613"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
             <span class="header-logo-text">Lweb<span class="header-logo-person"><!--
      19/10/2026 · el rotulo de debajo depende del dominio: lweb.ch dice
      Schweiz (antes Sevelen y luego Rheintal; Schweiz desde el 23/11/2026) con la cruz suiza, webseite.li dice Liechtenstein con su
@@ -2508,6 +2508,9 @@ body.menu-sheet:not(.dark-mode) .header.menu-open .lw-txt em{color:#e30613;}
 .lw-txt--pie .lw-txt-2{font-size:10.3px;}
 html.dom-li .lw-txt{display:none !important;}
 @media (max-width:768px){.lw-txt-1{font-size:24px}.lw-txt-2{font-size:8px}}
+/* 23/11/2026: bandera suiza en lugar de la palabra «Schweiz» (prueba para verla en el teléfono). */
+.lw-txt-1{display:inline-flex;align-items:center;}
+.lw-flag{width:.74em;height:.74em;margin-left:.16em;margin-top:.04em;flex-shrink:0;}
 /* El menú en hoja (móvil) es claro de día: ahí vuelve el logo oscuro. */
 body.menu-sheet:not(.dark-mode) .header.menu-open .lw-logo--dia{display:block;}
 body.menu-sheet:not(.dark-mode) .header.menu-open .lw-logo--noche{display:none;}
@@ -5328,7 +5331,7 @@ function askFromList(q){
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <span class="lw-txt lw-txt--pie" aria-label="Lweb Schweiz"><span class="lw-txt-1">Lweb <em>Schweiz</em></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
+                <span class="lw-txt lw-txt--pie" aria-label="Lweb Schweiz"><span class="lw-txt-1">Lweb<svg class="lw-flag" viewBox="0 0 32 32" role="img" aria-label="Schweiz"><rect width="32" height="32" rx="6" fill="#e30613"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
                 <div class="lw-logo-pie-texto" style="font-size:22px;font-weight:800;display:flex;flex-direction:column;line-height:1;">
                     Lweb
                     <span class="footer-logo-person" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--gunpowder400);letter-spacing:0.08em;margin-top:3px;"><svg width="12" height="12" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#d52b1e"/><rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/><rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/></svg>Schweiz</span>
