@@ -39,6 +39,17 @@
         @media(max-width: 720px) { .bk-page { padding: 0px 12px 48px; } }
 
         /* ── INFO BANNER ── */
+        /* Logo de letras, igual que en la cabecera de la portada (23/11/2026) */
+        .lw-txt{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#0f1d2c;}
+        body.dark-mode .lw-txt{color:#fff;}
+        .lw-txt em{font-style:normal;color:#e30613;}
+        body.dark-mode .lw-txt em{color:#ff2d37;}
+        .bk-info-ident2{display:flex;flex-direction:column;align-items:flex-start;gap:14px;width:200px;flex:none;}
+        .bk-info-ident2 .lw-txt{margin-top:4px;}
+        .bk-info-foto{display:block;width:200px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px;border:1px solid #e8ecf0;}
+        body.dark-mode .bk-info-foto{border-color:#2d3548;}
+        .bk-info .lw-txt-1{font-size:30px;font-weight:800;letter-spacing:-.035em;white-space:nowrap;}
+        .bk-info .lw-txt-2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-right:-.1em;margin-top:6px;white-space:nowrap;}
         .bk-info { background: #fff; border: 1px solid #e8ecf0; border-radius: 16px; padding: 26px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
         body.dark-mode .bk-info { background: #1e2536; border-color: #2d3548; }
         @media(max-width:720px){
@@ -306,7 +317,8 @@
             <span data-i18n="bk.header.line1">Termin</span>
             <span class="accent" data-i18n="bk.header.line2">vereinbaren</span>
         </div>
-        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation">
+        <!-- 23/11/2026: menú escondido (no coincidía con el de la portada); solo quedan «volver» y el título. -->
+        <nav class="header-nav header-nav--onepage" aria-label="Hauptnavigation" style="display:none">
             <a href="index.html" class="header-nav-item"><span data-i18n="nav.op.home">Startseite</span></a>
             <a href="index.html#vergleich" class="header-nav-item"><span data-i18n="nav.op.vergleich">Warum günstiger</span></a>
             <a href="index.html#preise" class="header-nav-item"><span data-i18n="nav.op.preise">Preise</span></a>
@@ -319,7 +331,8 @@
             <a href="tel:+41793749032" class="header-icon-btn header-icon-btn--primary" aria-label="Anrufen">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             </a>
-            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen">
+            <!-- 23/11/2026: sin botón de menú en esta página (lo pidió él); el elemento sigue porque main.js lo busca. -->
+            <button class="header-burger" id="menuBurger" aria-label="Menü öffnen" style="display:none !important">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -547,12 +560,9 @@
 
     <!-- INFO BANNER -->
     <div class="bk-info">
-        <div class="bk-info-logo">
-            <img src="img/logolweb.png" alt="Lweb Logo" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:2px solid #e8ecf0;">
-        </div>
-        <div class="bk-info-identity">
-            <div class="bk-info-name">Lweb <span style="font-size:12px;font-weight:700;color:#fe6c75;">Schweiz 🇨🇭</span></div>
-            <div class="bk-info-role" data-i18n="bk.role">Web & App Entwicklung</div>
+        <!-- 23/11/2026: el logo de letras de la cabecera, sin foto (lo decidió él tras probar con foto). -->
+        <div class="bk-info-identity bk-info-ident2">
+            <span class="lw-txt" aria-label="Lweb Schweiz – Webdesign &amp; App Development"><span class="lw-txt-1">Lweb <em>Schweiz</em></span><span class="lw-txt-2">Webdesign &amp; App <em>Development</em></span></span>
         </div>
         <div class="bk-info-list">
             <div class="bk-info-row">
@@ -926,27 +936,29 @@ document.getElementById('bkChoiceOverlay').style.display='none';
 <!-- TRUST STATS -->
 <section class="trust">
     <div class="container">
+        <!-- 23/11/2026: las mismas cifras que la portada (lo pidió él). Antes: 6+ años, 20+ apps, 7 en el App Store, 50+ webs. -->
         <div class="trust-grid" id="bkTrustGrid">
             <div class="trust-stat">
-                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                <div class="trust-stat-number" data-target="6" data-suffix="+">0</div>
-                <div class="trust-stat-label" data-i18n="trust.label1">Jahre Erfahrung</div>
-            </div>
-            <div class="trust-stat">
-                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
                 <div class="trust-stat-number" data-target="20" data-suffix="+">0</div>
-                <div class="trust-stat-label" data-i18n="trust.label2">Apps entwickelt</div>
+                <div class="trust-stat-label" data-i18n="metric.1">Projekte in Sevelen, Buchs, Vaduz</div>
             </div>
             <div class="trust-stat">
-                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-                <div class="trust-stat-number" data-target="7" data-suffix="">0</div>
-                <div class="trust-stat-label" data-i18n="trust.label3">Apps im App Store</div>
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                <div class="trust-stat-number" data-target="100" data-suffix="%">0</div>
+                <div class="trust-stat-label" data-i18n="metric.2">zufriedene Kunden</div>
             </div>
             <div class="trust-stat">
                 <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
                 <div class="trust-stat-number" data-target="50" data-suffix="+">0</div>
-                <div class="trust-stat-label" data-i18n="trust.label4">Websites online</div>
+                <div class="trust-stat-label" data-i18n="metric.3">Websites online</div>
             </div>
+            <div class="trust-stat">
+                <div class="trust-stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="trust-stat-number" data-target="24" data-prefix="&lt;" data-suffix="h">0</div>
+                <div class="trust-stat-label" data-i18n="metric.4">Antwortzeit auf Anfragen</div>
+            </div>
+        </div>
         </div>
     </div>
     <script>
@@ -957,13 +969,14 @@ document.getElementById('bkChoiceOverlay').style.display='none';
         function countUp(el) {
             var target = parseInt(el.dataset.target, 10);
             var suffix = el.dataset.suffix || '';
+            var prefix = el.dataset.prefix || '';
             var duration = 1200;
             var start = performance.now();
             function step(now) {
                 var elapsed = now - start;
                 var progress = Math.min(elapsed / duration, 1);
                 var eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.round(eased * target) + suffix;
+                el.textContent = prefix + Math.round(eased * target) + suffix;
                 if (progress < 1) requestAnimationFrame(step);
             }
             requestAnimationFrame(step);
