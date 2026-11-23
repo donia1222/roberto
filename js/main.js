@@ -317,25 +317,40 @@ function typeLoop() {
 }
 setTimeout(typeLoop, 1500);
 
-// Cookie banner
+// Cookie banner — 23/11/2026: ahora decide de verdad (ver js/consent.js).
+// «Akzeptieren» carga el píxel de Meta y Google Analytics; «Ablehnen» no los carga
+// (y si ya estaban cargados en esta página, se recarga para quitarlos).
 function closeCookieBanner() {
     var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
     banner.style.opacity = '0';
     banner.style.transform = 'translateY(20px)';
     banner.style.pointerEvents = 'none';
     setTimeout(function() { banner.style.display = 'none'; }, 300);
 }
+function openCookieBanner() {
+    var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    banner.style.display = '';
+    banner.style.pointerEvents = '';
+    requestAnimationFrame(function() { banner.style.opacity = '1'; banner.style.transform = ''; });
+}
 function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
+    try { localStorage.setItem('cookieConsent', 'accepted'); } catch (e) {}
     closeCookieBanner();
+    if (window.lwCargarTerceros) window.lwCargarTerceros();
 }
 function declineCookies() {
-    localStorage.setItem('cookieConsent', 'declined');
+    try { localStorage.setItem('cookieConsent', 'declined'); } catch (e) {}
     closeCookieBanner();
+    if (window.__lwTerceros) location.reload();
 }
-if (localStorage.getItem('cookieConsent')) {
-    document.getElementById('cookieBanner').style.display = 'none';
-}
+(function() {
+    var banner = document.getElementById('cookieBanner');
+    var elegido = null;
+    try { elegido = localStorage.getItem('cookieConsent'); } catch (e) {}
+    if (banner && elegido) banner.style.display = 'none';   // en booking.html no hay aviso: antes daba error aquí
+})();
 
 // Language switcher
 var i18nMap = [
@@ -466,7 +481,7 @@ var i18nMap = [
     {s: '.footer-col:nth-child(2) li:nth-child(4) a', k: 'footer.s4'},
     {s: '.footer-col:nth-child(4) h4', k: 'footer.col3'},
     // Cookie
-    {s: '.cookie-banner > p', k: 'cookie.text'},
+    {s: '.cookie-banner > p', k: 'cookie.text', html: true},   // 23/11/2026: lleva enlace a Datenschutz
     {s: '.cookie-btn--accept', k: 'cookie.accept'},
     {s: '.cookie-btn--decline', k: 'cookie.decline'},
 ];
@@ -2143,26 +2158,35 @@ var legalContent = {
     datenschutz: {
         title: 'Datenschutzerklärung',
         icon: 'svc-modal-icon--ai',
+        // 23/11/2026: rehecha según lo que carga de verdad la web (fuente: ~/Desktop/Datenschutz-lweb-NEU.txt)
         html: '<h4>Allgemeines</h4>' +
-            '<p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung Ihrer personenbezogenen Daten auf unserer Website lweb.ch.</p>' +
-            '<h4>Verantwortliche Stelle</h4>' +
+            '<p>Der Schutz Ihrer Personendaten ist uns wichtig. Hier erklären wir, welche Daten beim Besuch von lweb.ch bearbeitet werden, wozu und wohin sie gehen. Massgebend ist das Schweizer Datenschutzgesetz (DSG).</p>' +
+            '<h4>Verantwortlich</h4>' +
             '<p>Lweb — Salvador Lopez<br>9475 Sevelen, Schweiz<br>UID: CHE-449.145.794<br>E-Mail: info@lweb.ch</p>' +
-            '<h4>Erhobene Daten</h4>' +
-            '<p>Beim Besuch unserer Website werden folgende Daten automatisch erfasst:</p>' +
-            '<ul><li>IP-Adresse (anonymisiert)</li><li>Datum und Uhrzeit des Zugriffs</li><li>Aufgerufene Seiten</li><li>Verwendeter Browser und Betriebssystem</li></ul>' +
-            '<h4>Kontaktformular & WhatsApp</h4>' +
-            '<p>Wenn Sie uns über das Kontaktformular oder WhatsApp kontaktieren, werden Ihre Angaben (Name, E-Mail, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert. Diese Daten werden nicht an Dritte weitergegeben.</p>' +
+            '<h4>Hosting und Server</h4>' +
+            '<p>Die Website wird über Vercel Inc. (USA) ausgeliefert. Beim Aufruf verarbeitet Vercel technisch notwendige Daten wie IP-Adresse, Datum und Uhrzeit, aufgerufene Seite sowie Browser und Betriebssystem, um die Seite auszuliefern und vor Missbrauch zu schützen. Formulare, der Chat-Assistent und unsere eigene Besucherstatistik laufen über unseren Server bei Hostpoint AG in der Schweiz.</p>' +
+            '<h4>Kontakt- und Terminanfragen</h4>' +
+            '<p>Wenn Sie uns über das Formular schreiben oder einen Termin anfragen, werden Ihre Angaben (z. B. Name, E-Mail, Telefon, Nachricht, Wunschtermin) auf unserem Server in der Schweiz gespeichert und uns per E-Mail zugestellt. Wir verwenden sie nur, um Ihre Anfrage zu bearbeiten, und geben sie nicht an Dritte weiter. Wählen Sie WhatsApp, gelten zusätzlich die Datenschutzbestimmungen von WhatsApp (Meta).</p>' +
+            '<h4>Gratis-Muster</h4>' +
+            '<p>Wenn Sie das Formular für ein Gratis-Muster ausfüllen, speichern wir Ihre Angaben und allfällige Fotos auf unserem Server in der Schweiz, um das Muster zu erstellen und Sie zu kontaktieren. Auf Wunsch löschen wir die Daten jederzeit.</p>' +
+            '<h4>Chat-Assistent</h4>' +
+            '<p>Ihre Fragen an den Chat-Assistenten werden über unseren Server an OpenAI (USA) übermittelt, damit eine Antwort erstellt werden kann. Bitte geben Sie dort keine vertraulichen Daten ein. Der Gesprächsverlauf wird nur in Ihrem Browser gespeichert.</p>' +
             '<h4>Anonyme Besucherstatistik</h4>' +
-            '<p>Um die Website zu verbessern, zählen wir anonym, welche Bereiche angesehen und welche Schaltflächen angeklickt werden, wie weit gescrollt wird und woher ein Besuch kommt (z. B. Suchmaschine oder Werbung). Dafür werden weder Cookies gesetzt noch IP-Adressen gespeichert; pro Besuch wird nur eine zufällige Nummer verwendet, die beim Schliessen des Tabs verloren geht. Die Daten liegen auf unserem Server in der Schweiz (Hostpoint) und werden nach spätestens 400 Tagen gelöscht.</p>' +
-            '<h4>Cookies</h4>' +
-            '<p>Diese Website verwendet keine Tracking-Cookies. Es werden lediglich technisch notwendige Cookies eingesetzt, die für die Funktionalität der Website erforderlich sind.</p>' +
-            '<h4>Externe Dienste</h4>' +
-            '<p>Unsere Website nutzt folgende externe Dienste:</p>' +
-            '<ul><li>Google Fonts — zum Laden von Schriftarten</li><li>Vercel — als Hosting-Plattform</li></ul>' +
+            '<p>Um die Website zu verbessern, zählen wir anonym, welche Bereiche angesehen und welche Schaltflächen angeklickt werden, wie weit gescrollt wird und woher ein Besuch kommt (z. B. Suchmaschine oder Werbung). Dafür werden weder Cookies gesetzt noch IP-Adressen gespeichert; pro Besuch wird nur eine zufällige Nummer verwendet, die beim Schliessen des Tabs verloren geht. Die Daten liegen auf unserem Server in der Schweiz und werden nach spätestens 400 Tagen gelöscht. Zusätzlich nutzen wir Vercel Web Analytics, das ebenfalls ohne Cookies auskommt und nur zusammengefasste Besucherzahlen liefert.</p>' +
+            '<h4>Google Analytics und Meta Pixel – nur mit Ihrer Einwilligung</h4>' +
+            '<p>Wenn Sie im Cookie-Hinweis auf «Akzeptieren» klicken, verwenden wir Google Analytics 4 (Google Ireland Ltd. / Google LLC, USA), um die Nutzung der Website auszuwerten, und das Meta Pixel (Meta Platforms Ireland Ltd. / Meta Platforms Inc., USA), um die Wirkung unserer Werbung auf Facebook und Instagram zu messen. Dabei werden Cookies gesetzt und Daten wie IP-Adresse, Gerätedaten und Ihre Interaktionen auf der Website an Google bzw. Meta übermittelt, auch in die USA. Ohne Ihre Einwilligung werden diese Dienste nicht geladen. Ihre Wahl können Sie jederzeit über den Link «Cookies» am Ende der Seite ändern.</p>' +
+            '<h4>Google Fonts</h4>' +
+            '<p>Für die Schrift laden wir Schriftdateien von Google (Google Fonts). Dabei wird Ihre IP-Adresse an Google übermittelt.</p>' +
+            '<h4>Im Browser gespeichert</h4>' +
+            '<p>Einige Einstellungen speichern wir nur lokal in Ihrem Browser (z. B. Sprache, Dunkelmodus, Ihre Wahl im Cookie-Hinweis, Chat-Verlauf). Diese Daten werden nicht an uns übermittelt; Sie können sie über die Browsereinstellungen löschen.</p>' +
+            '<h4>Datenübermittlung ins Ausland</h4>' +
+            '<p>Einige der genannten Anbieter (Vercel, Google, Meta, OpenAI) haben ihren Sitz in den USA. Die Übermittlung erfolgt auf Grundlage der vom EDÖB anerkannten Garantien (z. B. Swiss-U.S. Data Privacy Framework oder Standardvertragsklauseln).</p>' +
+            '<h4>Aufbewahrung</h4>' +
+            '<p>Wir bewahren Personendaten nur so lange auf, wie es für den jeweiligen Zweck nötig ist oder das Gesetz es verlangt (z. B. Buchhaltungsunterlagen 10 Jahre).</p>' +
             '<h4>Ihre Rechte</h4>' +
-            '<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Kontaktieren Sie uns unter info@lweb.ch.</p>' +
+            '<p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie das Recht, einer Bearbeitung zu widersprechen. Schreiben Sie uns an info@lweb.ch. Sie können sich zudem beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) beschweren.</p>' +
             '<h4>Änderungen</h4>' +
-            '<p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Die aktuelle Fassung gilt ab dem Zeitpunkt der Veröffentlichung auf der Website.</p>'
+            '<p>Wir passen diese Erklärung an, wenn sich unsere Website oder die Rechtslage ändert. Es gilt die jeweils hier veröffentlichte Fassung. Stand: November 2026.</p>'
     },
     agb: {
         title: 'Allgemeine Geschäftsbedingungen',

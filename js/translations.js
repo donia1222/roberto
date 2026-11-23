@@ -811,7 +811,7 @@ var translations = {
         'footer.col3': 'Region',
         'footer.copy': '© 2026 Lweb — Salvador Lopez. Webentwickler in Sevelen SG, Schweiz. Alle Rechte vorbehalten.',
         // Cookie
-        'cookie.text': 'Diese Website verwendet Cookies.',
+        'cookie.text': 'Mit Ihrer Zustimmung nutzen wir Google Analytics und das Meta Pixel (Cookies), um die Website und unsere Werbung auszuwerten. <a href="javascript:void(0)" onclick="openLegalModal(\'datenschutz\')" style="color:inherit;text-decoration:underline">Datenschutz</a>',
         'cookie.accept': 'Akzeptieren',
         'cookie.decline': 'Ablehnen',
         // Service Modals
@@ -1952,7 +1952,7 @@ var translations = {
         'om.error.connection': 'Connection error. Please try again later.',
         'footer.col3': 'Region',
         'footer.copy': '© 2026 Lweb — Salvador Lopez. Web developer in Sevelen SG, Switzerland. All rights reserved.',
-        'cookie.text': 'This website uses cookies.',
+        'cookie.text': 'With your consent we use Google Analytics and the Meta Pixel (cookies) to measure the website and our advertising. <a href="javascript:void(0)" onclick="openLegalModal(\'datenschutz\')" style="color:inherit;text-decoration:underline">Privacy</a>',
         'cookie.accept': 'Accept',
         'cookie.decline': 'Decline',
         // Service Modals
@@ -3222,7 +3222,7 @@ var translations = {
         'om.error.connection': 'Error de conexi\u00f3n. Int\u00e9ntalo m\u00e1s tarde.',
         'footer.col3': 'Regi\u00f3n',
         'footer.copy': '© 2026 Lweb — Salvador Lopez. Desarrollador web en Sevelen SG, Suiza. Todos los derechos reservados.',
-        'cookie.text': 'Esta web usa cookies.',
+        'cookie.text': 'Con tu permiso usamos Google Analytics y el píxel de Meta (cookies) para medir la web y nuestra publicidad. <a href="javascript:void(0)" onclick="openLegalModal(\'datenschutz\')" style="color:inherit;text-decoration:underline">Privacidad</a>',
         'cookie.accept': 'Aceptar',
         'cookie.decline': 'Rechazar',
         // Service Modals
@@ -4492,7 +4492,7 @@ var translations = {
         'om.error.connection': 'Erreur de connexion. Veuillez r\u00e9essayer plus tard.',
         'footer.col3': 'R\u00e9gion',
         'footer.copy': '© 2026 Lweb — Salvador Lopez. Développeur web à Sevelen SG, Suisse. Tous droits réservés.',
-        'cookie.text': 'Ce site utilise des cookies.',
+        'cookie.text': 'Avec votre accord, nous utilisons Google Analytics et le pixel Meta (cookies) pour mesurer le site et notre publicité. <a href="javascript:void(0)" onclick="openLegalModal(\'datenschutz\')" style="color:inherit;text-decoration:underline">Confidentialité</a>',
         'cookie.accept': 'Accepter',
         'cookie.decline': 'Refuser',
         // Service Modals
@@ -5762,7 +5762,7 @@ var translations = {
         'om.error.connection': 'Errore di connessione. Riprova pi\u00f9 tardi.',
         'footer.col3': 'Regione',
         'footer.copy': '© 2026 Lweb — Salvador Lopez. Sviluppatore web a Sevelen SG, Svizzera. Tutti i diritti riservati.',
-        'cookie.text': 'Questo sito usa i cookie.',
+        'cookie.text': 'Con il vostro consenso usiamo Google Analytics e il pixel di Meta (cookie) per misurare il sito e la nostra pubblicità. <a href="javascript:void(0)" onclick="openLegalModal(\'datenschutz\')" style="color:inherit;text-decoration:underline">Privacy</a>',
         'cookie.accept': 'Accetta',
         'cookie.decline': 'Rifiuta',
         // Service Modals

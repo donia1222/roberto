@@ -5,23 +5,8 @@
     <script>if(localStorage.getItem('darkMode')==='true')document.write('<style>html,body{background:#1a1f2e!important}</style>');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1750437386268481');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1750437386268481&ev=PageView&noscript=1"
-    alt=""/></noscript>
-    <!-- End Meta Pixel Code -->
+    <!-- 23/11/2026: Meta Pixel SOLO con permiso (ver js/consent.js) -->
+    <script src="js/consent.js?v=202611240100"></script>
 
     <title>Termin vereinbaren | Lweb</title>
     <meta name="description" content="Kostenloses Beratungsgespräch mit Lweb — 30 Minuten, keine Verpflichtung.">
@@ -1020,7 +1005,7 @@ toStep(1);
 </section>
 <div class="bk-copy">&copy; 2026 Lweb — Roberto Salvador. App Entwickler in Sevelen, Schweiz.</div>
 
-<script src="js/translations.js?v=202608181346"></script>
+<script src="js/translations.js?v=202611240110"></script>
 <script>
 (function(){
     var savedLang=localStorage.getItem('lweb_lang');
@@ -1055,7 +1040,7 @@ toStep(1);
     if(t['bk.back']) window.BK_BACK=t['bk.back'];
 })();
 </script>
-<script src="js/main.js?v=202611240010"></script>
+<script src="js/main.js?v=202611240115"></script>
 <script>
 // Burger fallback — in case main.js doesn't bind it
 (function(){
