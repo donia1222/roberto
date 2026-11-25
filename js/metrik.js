@@ -6,6 +6,29 @@
    defina window.LW_METRIK_URL para probar. */
 (function () {
   'use strict';
+  /* LOS DE CASA NO CUENTAN (25/11/2026). Abrir una vez lweb.ch/#nometrik en cada
+     móvil/navegador deja una marca en ESE aparato (localStorage) y desde entonces no
+     se manda nada desde él. lweb.ch/#metrik la quita. No depende de la IP, así que
+     da igual que el router la cambie; y no guardamos nada de nadie. */
+  function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { return null; } }
+  if (location.hash === '#nometrik' || location.hash === '#metrik') {
+    var fuera = location.hash === '#nometrik';
+    ls('lwm_yo', fuera ? '1' : null);
+    var ok = (ls('lwm_yo') === '1') === fuera;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    var aviso = function () {
+      var d = document.createElement('div');
+      d.textContent = !ok ? 'No se ha podido guardar (¿ventana privada?). Ábrelo en una ventana normal.'
+        : fuera ? '✓ Este aparato ya no cuenta en la estadística de lweb.ch.' : '✓ Este aparato vuelve a contar en la estadística.';
+      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2147483647;max-width:calc(100% - 32px);' +
+        'background:' + (ok ? '#0f1d2c' : '#e30613') + ';color:#fff;font:600 15px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;padding:14px 18px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);text-align:center';
+      document.body.appendChild(d);
+      setTimeout(function () { d.remove(); }, 6000);
+    };
+    if (document.body) aviso(); else document.addEventListener('DOMContentLoaded', aviso);
+  }
+  if (ls('lwm_yo') === '1') { window.lwMetrik = function () {}; return; }
+
   var host = location.hostname.replace(/^www\./, '');
   var URL_M = window.LW_METRIK_URL || (host === 'lweb.ch' ? 'https://web.lweb.ch/metrik/m.php' : '');
   if (!URL_M || !navigator.sendBeacon) { window.lwMetrik = function () {}; return; }
