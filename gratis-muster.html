@@ -81,15 +81,25 @@ h1,h2,h3{color:var(--ink);letter-spacing:-.025em;line-height:1.12}
 .stars{color:#f5b301;letter-spacing:1px;font-size:12px}
 
 /* los tres móviles con webs de verdad */
-.fan{position:relative;height:430px;max-width:440px;margin:0 auto;width:100%}
-.ph{position:absolute;top:20px;width:190px;aspect-ratio:390/844;border-radius:30px;background:#0b1220;padding:7px;box-shadow:0 30px 60px -28px rgba(15,29,44,.55),0 0 0 1px rgba(15,29,44,.06)}
-.ph img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:24px}
-.ph::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:54px;height:15px;border-radius:10px;background:#0b1220;z-index:2}
-.ph--c{left:50%;transform:translateX(-50%);z-index:3;top:0;width:200px}
-.ph--l{left:0;transform:rotate(-7deg);z-index:2}
-.ph--r{right:0;transform:rotate(7deg);z-index:1}
-.fan-tag{position:absolute;z-index:4;left:50%;bottom:6px;transform:translateX(-50%);white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--ink);box-shadow:var(--sh)}
-.fan-tag i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(31,157,85,.15)}
+.show{position:relative;max-width:540px;margin:0 auto;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sh-br{width:88%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(15,29,44,.55),0 0 0 1px rgba(15,29,44,.07)}
+.sh-br .ref-bar{height:26px}
+.sh-pant{position:relative;aspect-ratio:16/10;background:#eef1f5;overflow:hidden}
+.sh-pant img,.sh-scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.04);transition:opacity .9s ease,transform 5s ease}
+.sh-pant img.on,.sh-scr img.on{opacity:1;transform:scale(1)}
+.sh-ph{position:absolute;right:0;bottom:0;width:30%;aspect-ratio:390/844;border-radius:24px;background:#0b1220;padding:5px;box-shadow:0 26px 50px -20px rgba(15,29,44,.6);z-index:2}
+.sh-ph::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:30%;height:9px;border-radius:6px;background:#0b1220;z-index:3}
+.sh-scr{position:relative;width:100%;height:100%;border-radius:19px;overflow:hidden;background:#eef1f5}
+.sh-foot{padding:18px 34% 4px 2px;min-height:104px}
+.sh-cap{transition:opacity .25s ease}
+.sh-cap.fuera{opacity:0}
+.sh-cap small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--coral)}
+.sh-cap b{display:block;font-size:19px;font-weight:800;color:var(--ink);margin-top:3px}
+.sh-seg{display:flex;gap:5px;margin-top:12px;max-width:210px}
+.sh-seg i{flex:1;height:3px;border-radius:3px;background:rgba(15,29,44,.12);overflow:hidden}
+.sh-seg i::after{content:"";display:block;height:100%;width:0;background:var(--coral);border-radius:3px}
+.sh-seg i.done::after{width:100%}
+.sh-seg i.on::after{width:100%;transition:width 4.2s linear}
 
 /* ── secciones ── */
 section{padding:64px 0}
@@ -234,7 +244,7 @@ section{padding:64px 0}
 /* aparecer al bajar (solo si hay JS; si el observador no llega, se ven igual) */
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .js .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sh-pant img,.sh-scr img{transition:none;transform:none}.js .rv{opacity:1;transform:none;transition:none}}
 
 /* ── tablet / ordenador ── */
 @media (min-width:600px){
@@ -248,8 +258,6 @@ section{padding:64px 0}
   .lw-1{font-size:26px}.lw-2{font-size:8.6px}
   .hero{padding:56px 0 30px}
   .hero .wrap{grid-template-columns:1.05fr .95fr;align-items:center;gap:40px}
-  .fan{height:520px;max-width:500px}
-  .ph{width:215px}.ph--c{width:232px}
   .refs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible;margin:0;padding:0}
   .ref:hover{transform:translateY(-4px);box-shadow:var(--sh)}
   .swipe,.dots{display:none}
@@ -264,7 +272,6 @@ section{padding:64px 0}
   .pie .wrap{grid-template-columns:1fr auto;align-items:start}
 }
 @media (max-width:370px){
-  .ph{width:160px}.ph--c{width:172px}.fan{height:370px}
   .top-wa b{display:none}.top-wa{padding:8px}
 }
 </style>
@@ -300,11 +307,29 @@ section{padding:64px 0}
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>Von Hand programmiert</span>
       </div>
     </div>
-    <div class="fan" aria-hidden="true">
-      <div class="ph ph--l"><img src="img/lp/cantina-m.webp" alt="" width="390" height="844"></div>
-      <div class="ph ph--r"><img src="img/lp/flink-m.webp" alt="" width="390" height="844"></div>
-      <div class="ph ph--c"><img src="img/lp/nikqi-m.webp" alt="" width="390" height="844" fetchpriority="high"></div>
-      <span class="fan-tag"><i></i>Echte Websites aus der Region</span>
+    <div class="show" id="show" aria-hidden="true">
+      <div class="sh-br"><div class="ref-bar"><i></i><i></i><i></i><span id="shUrl">braidzntips.li</span></div>
+        <div class="sh-pant">
+          <img src="img/lp/braidz-d.webp" alt="" width="960" height="600" class="on" fetchpriority="high" decoding="async">
+          <img data-src="img/lp/bouquet-d.webp" alt="" width="960" height="600" decoding="async">
+          <img data-src="img/lp/nikqi-d.webp" alt="" width="960" height="600" decoding="async">
+          <img data-src="img/lp/flink-d.webp" alt="" width="960" height="600" decoding="async">
+          <img data-src="img/lp/leder-d.webp" alt="" width="960" height="600" decoding="async">
+          <img data-src="img/lp/usfh-d.webp" alt="" width="960" height="600" decoding="async">
+        </div>
+      </div>
+      <div class="sh-ph"><div class="sh-scr">
+        <img src="img/lp/braidz-m.webp" alt="" width="390" height="844" class="on" fetchpriority="high" decoding="async">
+        <img data-src="img/lp/bouquet-m.webp" alt="" width="390" height="844" decoding="async">
+        <img data-src="img/lp/nikqi-m.webp" alt="" width="390" height="844" decoding="async">
+        <img data-src="img/lp/flink-m.webp" alt="" width="390" height="844" decoding="async">
+        <img data-src="img/lp/leder-m.webp" alt="" width="390" height="844" decoding="async">
+        <img data-src="img/lp/usfh-m.webp" alt="" width="390" height="844" decoding="async">
+      </div></div>
+      <div class="sh-foot">
+        <div class="sh-cap" id="shCap"><small id="shOrt">Beauty · Schaan FL</small><b id="shNom">Braidz’n Tips</b></div>
+        <div class="sh-seg"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
     </div>
   </div>
 </section>
@@ -322,21 +347,21 @@ section{padding:64px 0}
         <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>nikqi.ch</span></div><img src="img/lp/nikqi-d.webp" alt="Website von Nick Renovation" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/nikqi-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
         <div class="ref-tx"><small>Handwerk · Sevelen</small><b>Nick Renovation</b><p>Bad, Heizung und Wärmepumpen – mit Projekten und Angebots-Anfrage direkt auf der Website.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
       </a>
+      <a class="ref" href="https://web.lweb.ch/braidzntips/" target="_blank" rel="noopener" data-lw-event="lp_ref_braidz">
+        <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>braidzntips.li</span></div><img src="img/lp/braidz-d.webp" alt="Website von Braidz’n Tips" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/braidz-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
+        <div class="ref-tx"><small>Beauty · Schaan FL</small><b>Braidz’n Tips</b><p>Braids, Nägel und Extensions – Leistungen, Nail-Designs und Preise auf einen Blick.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+      </a>
       <a class="ref" href="https://www.flink-sauber.li" target="_blank" rel="noopener" data-lw-event="lp_ref_flink">
         <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>flink-sauber.li</span></div><img src="img/lp/flink-d.webp" alt="Website von Flink Sauber" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/flink-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
         <div class="ref-tx"><small>Reinigung · Vaduz</small><b>Flink Sauber</b><p>Reinigungsfirma mit Bildergalerie und Offerte-Formular, das die Inhaberin selbst pflegt.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
       </a>
-      <a class="ref" href="https://www.cantinatexmex.ch" target="_blank" rel="noopener" data-lw-event="lp_ref_cantina">
-        <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>cantinatexmex.ch</span></div><img src="img/lp/cantina-d.webp" alt="Website der Cantina Tex-Mex" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/cantina-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
-        <div class="ref-tx"><small>Restaurant · Buchs SG</small><b>Cantina Tex-Mex</b><p>Mexikanisches Restaurant mit Speisekarte und Tischreservierung online.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
+      <a class="ref" href="https://pizzeria-website-info-lwebchs-projects.vercel.app" target="_blank" rel="noopener" data-lw-event="lp_ref_bouquet">
+        <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>Bouquet Mediterraneo</span></div><img src="img/lp/bouquet-d.webp" alt="Website von Bouquet Mediterraneo" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/bouquet-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
+        <div class="ref-tx"><small>Restaurant · Sevelen</small><b>Bouquet Mediterraneo</b><p>Pizzeria mit Holzofen – Speisekarte, Bildergalerie und Tischreservierung.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
       </a>
       <a class="ref" href="https://www.usfh.ch" target="_blank" rel="noopener" data-lw-event="lp_ref_usfh">
         <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>usfh.ch</span></div><img src="img/lp/usfh-d.webp" alt="Online-Shop von US Fishing &amp; Hunting" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/usfh-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
         <div class="ref-tx"><small>Online-Shop · Sevelen</small><b>US Fishing &amp; Hunting</b><p>Online-Shop für Jagd, Angeln und Outdoor – mit über 800 Artikeln.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
-      </a>
-      <a class="ref" href="https://inotecengineering.ch" target="_blank" rel="noopener" data-lw-event="lp_ref_inotec">
-        <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>inotecengineering.ch</span></div><img src="img/lp/inotec-d.webp" alt="Website von Inotec Engineering" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/inotec-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
-        <div class="ref-tx"><small>Engineering · Sevelen</small><b>Inotec Engineering</b><p>Anlagenbau und Konstruktion – Leistungen, Ablauf und Projekte klar präsentiert.</p><span class="ref-go">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div>
       </a>
       <a class="ref" href="https://leder-shop.ch" target="_blank" rel="noopener" data-lw-event="lp_ref_leder">
         <div class="ref-vis"><div class="ref-br"><div class="ref-bar"><i></i><i></i><i></i><span>leder-shop.ch</span></div><img src="img/lp/leder-d.webp" alt="Online-Shop Leder-Shop" width="960" height="600" loading="lazy" decoding="async"></div><div class="ref-mini"><img src="img/lp/leder-m.webp" alt="" width="390" height="844" loading="lazy" decoding="async"></div></div>
@@ -537,6 +562,32 @@ section{padding:64px 0}
     rv.forEach(function (el) { io.observe(el); });
   }
   setTimeout(function () { rv.forEach(function (el) { el.classList.add('in'); }); }, 2500);
+
+  /* el escaparate de la portada: una web detrás de otra (26/11/2026) */
+  (function () {
+    var show = $('#show'); if (!show) return;
+    var D = [['braidzntips.li', 'Braidz’n Tips', 'Beauty · Schaan FL'], ['Bouquet Mediterraneo', 'Bouquet Mediterraneo', 'Restaurant · Sevelen'], ['nikqi.ch', 'Nick Renovation', 'Handwerk · Sevelen'], ['flink-sauber.li', 'Flink Sauber', 'Reinigung · Vaduz'], ['leder-shop.ch', 'Leder-Shop', 'Online-Shop · Sax'], ['usfh.ch', 'US Fishing & Hunting', 'Online-Shop · Sevelen']];
+    var pc = show.querySelectorAll('.sh-pant img'), pm = show.querySelectorAll('.sh-scr img'), seg = show.querySelectorAll('.sh-seg i');
+    var cap = $('#shCap'), i = 0, t = null, DUR = 4200, visible = true;
+    var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function cargar() { show.querySelectorAll('img[data-src]').forEach(function (im) { im.src = im.getAttribute('data-src'); im.removeAttribute('data-src'); }); }
+    if (document.readyState === 'complete') cargar(); else addEventListener('load', cargar);
+    function listo(k) { return pc[k].complete && pc[k].naturalWidth && pm[k].complete && pm[k].naturalWidth; }
+    function barra() { seg.forEach(function (s, n) { s.className = n < i ? 'done' : ''; }); void seg[i].offsetWidth; seg[i].className = (quieto || !visible || document.hidden) ? 'done' : 'on'; }
+    function programar() { clearTimeout(t); if (quieto || !visible || document.hidden) return; t = setTimeout(siguiente, DUR); }
+    function ir(k) {
+      pc[i].classList.remove('on'); pm[i].classList.remove('on');
+      i = k; pc[i].classList.add('on'); pm[i].classList.add('on');
+      cap.classList.add('fuera');
+      setTimeout(function () { $('#shUrl').textContent = D[i][0]; $('#shNom').textContent = D[i][1]; $('#shOrt').textContent = D[i][2]; cap.classList.remove('fuera'); }, 250);
+      barra(); programar();
+    }
+    function siguiente() { var k = (i + 1) % pc.length; if (listo(k)) ir(k); else programar(); }
+    show.addEventListener('click', function () { var k = (i + 1) % pc.length; if (listo(k)) ir(k); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; barra(); programar(); }).observe(show);
+    document.addEventListener('visibilitychange', function () { barra(); programar(); });
+    barra(); programar();
+  })();
 
   /* puntos del carrusel de webs (solo se ven en el móvil) */
   var refs = $('#refs'), dots = $('#dots'), cards = refs.querySelectorAll('.ref');
